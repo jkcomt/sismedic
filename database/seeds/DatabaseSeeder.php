@@ -16,13 +16,40 @@ class DatabaseSeeder extends Seeder
             [
                 'personales',
                 'cargos',
-                'users'
+                'users',
+                'paises',
+                'departamentos',
+                'provincias',
+                'distritos',
+                'tipo_instrucciones',
+                'contratadores',
+                'ocupaciones',
+                'lugar_labores',
+                'profesiones',
+                'areas',
+                'alturas',
+                'regimenes',
+                'pacientes'
             ]
         );
         // $this->call(UsersTableSeeder::class);
         $this->call(CargoSeeder::class);
         $this->call(PersonalSeeder::class);
         $this->call(UserSeeder::class);
+        $this->call(PaisSeeder::class);
+        $this->call(DepartamentoSeeder::class);
+        $this->call(ProvinciaSeeder::class);
+        $this->call(DistritoSeeder::class);
+        $this->call(TipoInstruccionSeeder::class);
+        $this->call(ContratadorSeeder::class);
+        $this->call(OcupacionSeeder::class);
+        $this->call(LugarLaboresSeeder::class);
+        $this->call(ProfesionSeeder::class);
+        $this->call(AreaSeeder::class);
+        $this->call(AlturasSeeder::class);
+        $this->call(GrupoSanguineoSeeder::class);
+        $this->call(RegimenSeeder::class);
+        $this->call(PacienteSeeder::class);
         //$this->call(LoteSeeder::class);
 
     }

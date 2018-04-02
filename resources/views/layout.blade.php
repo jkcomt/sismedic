@@ -104,11 +104,11 @@ desired effect
             {{--<span class="logo-mini"><b><img src="{{asset('img/logo.jpg')}}" width="100%" alt=""></b></span>--}}
             <!-- logo for regular state and mobile devices -->
             {{--<span class="logo-lg"><b>Admin</b>LTE</span>--}}
-            <span class="logo-lg"><b><img src="" alt="" width="25%"> SISTMEDIC</b></span>
+            <span class="logo-lg"><b><img src="" alt="" width="25%"> SISMEDIC</b></span>
         </a>
 
         <!-- Header Navbar -->
-        <nav class="navbar navbar-static-top" role="navigation">
+        <nav class="navbar navbar-static-top " role="navigation">
             <!-- Sidebar toggle button-->
             <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
                 <span class="sr-only">Toggle navigation</span>
@@ -191,34 +191,7 @@ desired effect
     <aside class="main-sidebar">
 
         <!-- sidebar: style can be found in sidebar.less -->
-        <section class="sidebar">
-
-            <!-- Sidebar Menu -->
-            <ul class="sidebar-menu" data-widget="tree">
-                <li class="header">OPCIONES</li>
-                <!-- Optionally, you can add icons to the links -->
-                <li class="{{ Request::is('dashboard') ? 'active' : '' }}"><a href="/"><i class="fa fa-home"></i> <span>Principal</span></a></li>
-                @if(auth()->user()->cargo->descripcion != 'secado')
-                    {{--<li class="@if(Request::is('agricultor')) active @elseif(Request::is('agricultor/*')) active @endif "><a href="{{route('agricultor.index')}}"><i class="fa fa-user-circle"></i> <span>Agricultores</span></a></li>--}}
-                @endif
-                @if(auth()->user()->cargo->descripcion != 'recepcion')
-
-                    {{--<li class="@if(Request::is('configuracion')) active @elseif(Request::is('configuracion/*')) active @elseif(Request::is('usuario')) active @elseif(Request::is('usuario/*')) active @elseif(Request::is('personal/*')) active @elseif(Request::is('personal')) active @elseif(Request::is('area')) active @elseif(Request::is('area/*')) active  @endif "><a href="{{route('configuracion')}}"><i class="fa fa-cog"></i> <span>Configuración</span></a></li>--}}
-                @endif
-                {{--<li class="treeview">--}}
-                {{--<a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>--}}
-                {{--<span class="pull-right-container">--}}
-                {{--<i class="fa fa-angle-left pull-right"></i>--}}
-                {{--</span>--}}
-                {{--</a>--}}
-                {{--<ul class="treeview-menu">--}}
-                {{--<li><a href="#">Link in level 2</a></li>--}}
-                {{--<li><a href="#">Link in level 2</a></li>--}}
-                {{--</ul>--}}
-                {{--</li>--}}
-            </ul>
-            <!-- /.sidebar-menu -->
-        </section>
+        @include('sidebar')
         <!-- /.sidebar -->
     </aside>
 
@@ -339,7 +312,7 @@ desired effect
 
 <!-- jQuery 3 -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+{{--<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>--}}
 <!-- Bootstrap 3.3.7 -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <!-- AdminLTE App -->

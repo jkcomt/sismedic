@@ -26,3 +26,23 @@ Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('pacientes','PacientesController');
+
+//Route::resource('departamentos','DepartamentosController');
+
+Route::group([
+    'prefix'=>'departamentos'
+],function() {
+    Route::get('/filtro','DepartamentosController@filtro')->name('departamento.filtro');
+    Route::get('/filtrodomicilio','DepartamentosController@filtroDomicilio')->name('departamento.filtrodomicilio');
+});
+
+Route::group([
+    'prefix'=>'provincias'
+],function() {
+    Route::get('/filtro','ProvinciasController@filtro')->name('provincia.filtro');
+    Route::get('/filtrodomicilio','ProvinciasController@filtroDomicilio')->name('provincia.filtrodomicilio');
+});
+
+//Route::get('/buscar','LoteController@search')->name('lote.search');
