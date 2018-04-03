@@ -15,9 +15,9 @@
 @section('modal-body')
     <h3 class="text-success text-center">Eliminación Exitosa</h3>
 @endsection
-{{--@section('modal-footer')--}}
-    {{--<a class="btn btn-sm btn-warning" href="{{route('lote.index')}}">Volver</a>--}}
-{{--@endsection--}}
+@section('modal-footer')
+    <a class="btn btn-sm btn-warning" href="{{route('pacientes.index')}}">Volver</a>
+@endsection
 
 @section('modal-confirmacion-title')
     <h4 class="modal-title">Aviso</h4>

@@ -29,6 +29,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('pacientes','PacientesController');
 
+Route::group([
+   'prefix'=>'pacientes'
+],function(){
+    Route::post('/delete','PacientesController@destroy')->name('pacientes.destroy');
+    Route::post('/update','PacientesController@update')->name('pacientes.update');
+});
+
 //Route::resource('departamentos','DepartamentosController');
 
 Route::group([

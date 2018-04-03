@@ -11,7 +11,7 @@ class Ocupacion extends Model
     protected $fillable = ['nombre','estado'];
 
     public function paciente(){
-        return $this->belongsTo(Paciente::class);
+        return $this->hasOne(Paciente::class);
     }
 
     public $timestamps = false;

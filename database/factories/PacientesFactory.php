@@ -17,15 +17,15 @@ $factory->define(App\Paciente::class, function (Faker $faker) {
         'pais_origen_id'=>13,
         'departamento_origen_id'=>13,
         'provincia_origen_id'=>115,
-        'distrito_origen_id'=>null,
+        'distrito_origen_id'=>1,
         'pais_domicilio_id'=>13,
         'departamento_domicilio_id'=>13,
         'provincia_domicilio_id'=>115,
-        'distrito_domicilio_id'=>null,
+        'distrito_domicilio_id'=>1,
         'direccion'=>'Cajamarca 440',
         'telf_fijo'=>'044561254',
         'celular'=>'956505497',
-        'trabajo'=>null,
+        'trabajo'=>'limpieza',
         'tipo_dni'=>'DNI',
         'num_dni'=>$faker->unique()->randomNumber(8,false),
         'estado_civil'=>'soltero',
@@ -33,6 +33,7 @@ $factory->define(App\Paciente::class, function (Faker $faker) {
         'contrata_id'=>1,
         'ocupacion_id'=>1,
         'lugar_labores_id'=>1,
+
         'email'=>'jkcomt@gmail.com',
         'comentarios'=>'MANTENIMIENTO Y REPARACION DE EQUIPOS',
         'alergias'=>'ALERGIA CAMARONES',
@@ -45,6 +46,8 @@ $factory->define(App\Paciente::class, function (Faker $faker) {
         'altura_id'=>1,
         'gs_id'=>1,
         'regimen_id'=>1,
+        'fecha_registro'=>\Carbon\Carbon::now(),
+        'hora_registro'=>\Carbon\Carbon::now(),
         'estado'=>true
     ];
 });

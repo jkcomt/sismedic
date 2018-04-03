@@ -11,7 +11,7 @@ class Regimen extends Model
     protected $fillable = ['descripcion','estado'];
 
     public function paciente(){
-        return $this->belongsTo(Paciente::class);
+        return $this->hasOne(Paciente::class);
     }
 
     public $timestamps = false;

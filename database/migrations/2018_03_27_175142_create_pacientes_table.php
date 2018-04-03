@@ -63,6 +63,7 @@ class CreatePacientesTable extends Migration
 
             $table->foreign('lugar_labores_id')->references('id')->on('lugar_labores');
             $table->integer('lugar_labores_id')->unsigned()->nullable();
+            //$table->string('tiempo_desempeno')->nullable();
 
             $table->string('email')->nullable();
             $table->string('comentarios')->nullable();
@@ -88,6 +89,8 @@ class CreatePacientesTable extends Migration
             $table->foreign('regimen_id')->references('id')->on('regimenes');
             $table->integer('regimen_id')->unsigned()->nullable();
 
+            $table->date('fecha_registro')->nullable();
+            $table->time('hora_registro')->nullable();
             $table->boolean('estado',true)->nullable();
             //$table->timestamps();
         });

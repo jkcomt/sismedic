@@ -5,7 +5,7 @@
         <li class="header">OPCIONES</li>
         <!-- Optionally, you can add icons to the links -->
         <li class="{{ Request::is('dashboard') ? 'active' : '' }}"><a href="/"><i class="fa fa-home"></i> <span>Principal</span></a></li>
-        <li class="{{ Request::is('pacientes') ? 'active' : '' }}"><a href="{{route('pacientes.index')}}"><i class="fa fa-user"></i> <span>Pacientes</span></a></li>
+        <li class="{{ Request::is('pacientes') ? 'active' : '' }} {{ Request::is('pacientes/*') ? 'active' : '' }}"><a href="{{route('pacientes.index')}}"><i class="fa fa-user"></i> <span>Pacientes</span></a></li>
         @if(auth()->user()->cargo->descripcion != 'secado')
             {{--<li class="@if(Request::is('agricultor')) active @elseif(Request::is('agricultor/*')) active @endif "><a href="{{route('agricultor.index')}}"><i class="fa fa-user-circle"></i> <span>Agricultores</span></a></li>--}}
         @endif

@@ -36,6 +36,7 @@ class Paciente extends Model
         'estado_civil',
         'instruccion_id',
         'contrata_id',
+        'ocupacion_id',
         'lugar_labores_id',
         'email',
         'comentarios',
@@ -49,21 +50,23 @@ class Paciente extends Model
         'altura_id',
         'gs_id',
         'regimen_id',
+        'fecha_registro',
+        'hora_registro',
         'estado'
     ];
 
     public $timestamps = false;
 
     public function paisOrigen(){
-        return $this->hasOne(Pais::class);
+        return $this->belongsTo(Pais::class);
     }
 
     public function departamentoOrigen(){
-        return $this->hasOne(Departamento::class);
+        return $this->belongsTo(Departamento::class);
     }
 
     public function provinciaOrigen(){
-        return $this->hasOne(Provincia::class);
+        return $this->belongsTo(Provincia::class);
     }
 
     public function distritoOrigen(){
@@ -75,11 +78,11 @@ class Paciente extends Model
     }
 
     public function departamentoDomicilio(){
-        return $this->hasOne(Departamento::class);
+        return $this->belongsTo(Departamento::class);
     }
 
     public function provinciaDomicilio(){
-        return $this->hasOne(Provincia::class);
+        return $this->belongsTo(Provincia::class);
     }
 
     public function distritoDomicilio(){
@@ -87,39 +90,39 @@ class Paciente extends Model
     }
 
     public function instruccion(){
-        return $this->hasOne(TipoInstruccion::class);
+        return $this->belongsTo(TipoInstruccion::class);
     }
 
     public function contrata(){
-        return $this->hasOne(Contratador::class);
+        return $this->belongsTo(Contratador::class);
     }
 
     public function ocupacion(){
-        return $this->hasOne(Ocupacion::class);
+        return $this->belongsTo(Ocupacion::class);
     }
 
     public function lugarLabores(){
-        return $this->hasOne(LugarLabor::class);
+        return $this->belongsTo(LugarLabor::class);
     }
 
     public function profesion(){
-        return $this->hasOne(Profesion::class);
+        return $this->belongsTo(Profesion::class);
     }
 
     public function area(){
-        return $this->hasOne(Area::class);
+        return $this->belongsTo(Area::class);
     }
 
     public function altura(){
-        return $this->hasOne(Altura::class);
+        return $this->belongsTo(Altura::class);
     }
 
     public function grupoSanguineo(){
-        return $this->hasOne(GrupoSanguineo::class);
+        return $this->belongsTo(GrupoSanguineo::class,'gs_id');
     }
 
     public function regimen(){
-        return $this->hasOne(Regimen::class);
+        return $this->belongsTo(Regimen::class);
     }
 
     public function generarSerieGuia()
