@@ -89,7 +89,7 @@ class PacientesController extends Controller
             //$data = request()->input();
             $data = request()->validate([
                 'nro_historia'=>'required',
-                'matricula'=>'required',
+                'matricula'=>'required|unique:pacientes,matricula',
                 'apellido_paterno'=>'required',
                 'apellido_materno'=>'required',
                 'nombres'=>'required',
@@ -109,7 +109,7 @@ class PacientesController extends Controller
                 'distritoDom'=>'required',
                 'direccion'=>'required',
                 'telf_fijo'=>'required',
-                'celular'=>'required',
+                'celular'=>'required|unique:pacientes',
 
                 'trabajo'=>'required',
                 'tipo_dni'=>'required',
@@ -296,10 +296,10 @@ class PacientesController extends Controller
     public function update(Request $request)
     {
         if (request()->ajax()) {
-            dd(request()->input());
             if (request()->ajax()) {
                 //$data = request()->input();
                 $data = request()->validate([
+                    'id'=>'required',
                     'nro_historia' => 'required',
                     'matricula' => 'required',
                     'apellido_paterno' => 'required',
@@ -350,7 +350,6 @@ class PacientesController extends Controller
                 $paciente = Paciente::find($data['id']);
 
                 $paciente->update([
-                    'nro_historia' => $data['nro_historia'],
                     'matricula' => $data['matricula'],
                     'apellido_paterno' => $data['apellido_paterno'],
                     'apellido_materno' => $data['apellido_materno'],
@@ -390,10 +389,7 @@ class PacientesController extends Controller
                     'seccion' => $data['seccion'],
                     'altura_id' => $data['altura'],
                     'gs_id' => $data['grupoSanguineo'],
-                    'regimen_id' => $data['regimen'],
-                    'fecha_registro' => Carbon::now(),
-                    'hora_registro' => Carbon::now(),
-                    'estado' => true
+                    'regimen_id' => $data['regimen']
                 ]);
 
                 $paciente->save();
@@ -422,5 +418,39 @@ class PacientesController extends Controller
         return response()->json([
             'mensaje'=>"eliminación exitosa"
         ]);
+    }
+
+    public function search(Request $request){
+        $pacientes = null;
+        if($request['buscar'] != '') {
+            if($request['filtro'] == "historia") {
+                $pacientes = Paciente::where('nro_historia', 'like', '%' . $request['buscar'] . '%')
+                    //->orWhere('num_dni', 'like', '%' . $request['buscar'] . '%')
+                    ->orderBy('fecha_registro', 'desc')
+                    ->orderBy('hora_registro', 'desc');
+
+                $pacientes = $pacientes->where('estado', true)->paginate(10);
+            }elseif($request['filtro'] == "dni")
+            {
+                $pacientes = Paciente::where('num_dni', 'like', '%' . $request['buscar'] . '%')
+                    ->orderBy('fecha_registro', 'desc')
+                    ->orderBy('hora_registro', 'desc');
+
+                $pacientes = $pacientes->where('estado', true)->paginate(10);
+            }
+        }else{
+            $pacientes = Paciente::where('estado', true)
+                ->orderBy('fecha_registro', 'desc')
+                ->orderBy('hora_registro', 'desc')
+                ->paginate(10);
+        }
+
+
+
+        if($request->ajax())
+        {
+            $view = view('pacientes.tabla',compact('pacientes'))->render();
+            return response()->json(['html'=>$view]);
+        }
     }
 }

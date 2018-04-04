@@ -2,6 +2,8 @@ $(document).ready(function() {
 
     $('#msg-error').hide();
 
+    $('#filtro').trigger('change');
+
     //$("select[name=paisOrigen]").val("13");
 
     //$('select[name=paisOrigen]').trigger('change');
@@ -146,85 +148,156 @@ $('#registrarPaciente').submit(function(e){
             return;
         }
     }).error(function(data){
-       /* $('#msg-error').fadeIn();
-        if(data.responseJSON.errors.campania)
+        $('#msg-error').fadeIn();
+        $('#listaerrores').html('')
+
+            $.each(data.responseJSON.errors, function( index, value ) {
+              console.log(value)
+                $('#listaerrores').append('<li>'+value+'</li>')
+            })
+
+       if(data.responseJSON.errors.matricula)
+       {
+           $('input[name=matricula]').parent().addClass('has-error')
+       }else{
+           $('input[name=matricula]').parent().removeClass('has-error')
+       }
+
+        if(data.responseJSON.errors.apellido_materno)
         {
-            $('input[name=campania]').parent().addClass('has-error')
-            console.log(data.responseJSON.errors.campania)
+            $('input[name=apellido_materno]').parent().addClass('has-error')
+
         }else{
-            $('input[name=campania]').parent().removeClass('has-error')
+            $('input[name=apellido_materno]').parent().removeClass('has-error')
         }
 
-        if(data.responseJSON.errors.fecha)
-        {
-            $('input[name=fecha]').parent().addClass('has-error')
-            console.log(data.responseJSON.errors.fecha)
-        }else{
-            $('input[name=fecha]').parent().removeClass('has-error')
-        }
+       if(data.responseJSON.errors.apellido_paterno)
+       {
+           $('input[name=apellido_paterno]').parent().addClass('has-error')
 
-        if(data.responseJSON.errors.agricultor)
-        {
-            $('#agricultorGroup').addClass('has-error')
-            console.log(data.responseJSON.errors.agricultor)
-            //$('#listaerrores').html('<li>'+data.responseJSON.errors.agricultor+'</li>')
-        }else{
-            $('#agricultorGroup').removeClass('has-error')
-        }
+       }else{
+           $('input[name=apellido_paterno]').parent().removeClass('has-error')
+       }
 
-        if(data.responseJSON.errors.cliente)
-        {
-            $('#clienteGroup').addClass('has-error')
-            console.log(data.responseJSON.errors.cliente)
-            //$('#listaerrores').html('<li>'+data.responseJSON.errors.cliente+'</li>')
-        }else{
-            $('#clienteGroup').removeClass('has-error')
-        }
+       if(data.responseJSON.errors.nombres)
+       {
+           $('input[name=nombres]').parent().addClass('has-error')
 
-        if(data.responseJSON.errors.variedad)
-        {
-            $('#grupoVariedad').addClass('has-error')
-            console.log(data.responseJSON.errors.variedad)
-            //$('#listaerrores').html('<li>'+data.responseJSON.errors.variedad+'</li>')
-        }else{
-            $('#grupoVariedad').removeClass('has-error')
-        }
+       }else{
+           $('input[name=nombres]').parent().removeClass('has-error')
+       }
 
-        if(data.responseJSON.errors.nro_sacos)
-        {
-            $('input[name=nro_sacos]').parent().removeClass('has-error')
-            console.log(data.responseJSON.errors.nro_sacos)
-            //$('#listaerrores').html('<li>'+data.responseJSON.errors.nro_sacos+'</li>')
-        }else{
-            $('input[name=nro_sacos]').parent().removeClass('has-error')
-        }
+       if(data.responseJSON.errors.jefe_inmediato)
+       {
+           $('input[name=jefe_inmediato]').parent().addClass('has-error')
 
-        if(data.responseJSON.errors.chofer)
-        {
-            $('#grupoChofer').addClass('has-error')
-            console.log(data.responseJSON.errors.chofer)
-            //$('#listaerrores').html('<li>'+data.responseJSON.errors.chofer+'</li>')
-        }else{
-            $('#grupoChofer').removeClass('has-error')
-        }
+       }else{
+           $('input[name=jefe_inmediato]').parent().removeClass('has-error')
+       }
 
-        if(data.responseJSON.errors.procedencia)
-        {
-            $('#grupoProcedencia').addClass('has-error')
-            console.log(data.responseJSON.errors.procedencia)
-            //$('#listaerrores').html('<li>'+data.responseJSON.errors.procedencia+'</li>')
-        }else{
-            $('#grupoProcedencia').removeClass('has-error')
-        }
+       if(data.responseJSON.errors.departamentoOrigen)
+       {
+           $('#departamentoOrigen').parent().addClass('has-error')
 
-        if(data.responseJSON.errors.procedencia)
-        {
-            $('#grupoVehiculo').addClass('has-error')
-            console.log(data.responseJSON.errors.procedencia)
-            //$('#listaerrores').html('<li>'+data.responseJSON.errors.procedencia+'</li>')
-        }else{
-            $('#grupoVehiculo').removeClass('has-error')
-        }*/
+       }else{
+           $('#departamentoOrigen').parent().removeClass('has-error')
+       }
+
+       if(data.responseJSON.errors.provinciaOrigen)
+       {
+           $('select[name=provinciaOrigen]').parent().addClass('has-error')
+
+       }else{
+           $('select[name=provinciaOrigen]').parent().removeClass('has-error')
+       }
+
+       if(data.responseJSON.errors.departamentoDomicilio)
+       {
+           $('#departamentoDomGroup').parent().addClass('has-error')
+
+       }else{
+           $('#departamentoDomGroup').parent().removeClass('has-error')
+       }
+
+       if(data.responseJSON.errors.provinciaDomicilio)
+       {
+           $('#provinciaDomGroup').parent().addClass('has-error')
+
+       }else{
+           $('#provinciaDomGroup').parent().removeClass('has-error')
+       }
+
+       if(data.responseJSON.errors.direccion)
+       {
+           $('#direccionGroup').parent().addClass('has-error')
+
+       }else{
+           $('#direccionGroup').parent().removeClass('has-error')
+       }
+
+       if(data.responseJSON.errors.telf_fijo)
+       {
+           $('input[name=telf_fijo]').parent().addClass('has-error')
+
+       }else{
+           $('input[name=telf_fijo]').parent().removeClass('has-error')
+       }
+
+       if(data.responseJSON.errors.celular)
+       {
+           $('input[name=celular]').parent().addClass('has-error')
+
+       }else{
+           $('input[name=celular]').parent().removeClass('has-error')
+       }
+
+       if(data.responseJSON.errors.trabajo)
+       {
+           $('input[name=trabajo]').parent().addClass('has-error')
+
+       }else{
+           $('input[name=trabajo]').parent().removeClass('has-error')
+       }
+
+       if(data.responseJSON.errors.tipo_dni)
+       {
+           $('select[name=tipo_dni]').parent().addClass('has-error')
+
+       }else{
+           $('select[name=tipo_dni]').parent().removeClass('has-error')
+       }
+
+       if(data.responseJSON.errors.num_dni)
+       {
+           $('input[name=num_dni]').parent().addClass('has-error')
+
+       }else{
+           $('input[name=num_dni]').parent().removeClass('has-error')
+       }
+
+       if(data.responseJSON.errors.nr_hijo_vivos)
+       {
+           $('input[name=nr_hijo_vivos]').parent().addClass('has-error')
+
+       }else{
+           $('input[name=nr_hijo_vivos]').parent().removeClass('has-error')
+       }
+
+       if(data.responseJSON.errors.nr_hijo_muertos)
+       {
+           $('input[name=nr_hijo_muertos]').parent().addClass('has-error')
+
+       }else{
+           $('input[name=nr_hijo_muertos]').parent().removeClass('has-error')
+       }
+
+       if(data.responseJSON.errors.seccion)
+       {
+           $('input[name=seccion]').parent().addClass('has-error')
+
+       }else{
+           $('input[name=seccion]').parent().removeClass('has-error')
+       }
 
         return;
 
@@ -253,85 +326,156 @@ $('#actualizarPaciente').submit(function(e){
             return;
         }
     }).error(function(data){
-        /* $('#msg-error').fadeIn();
-         if(data.responseJSON.errors.campania)
-         {
-         $('input[name=campania]').parent().addClass('has-error')
-         console.log(data.responseJSON.errors.campania)
-         }else{
-         $('input[name=campania]').parent().removeClass('has-error')
-         }
+        $('#msg-error').fadeIn();
+        $('#listaerrores').html('')
 
-         if(data.responseJSON.errors.fecha)
-         {
-         $('input[name=fecha]').parent().addClass('has-error')
-         console.log(data.responseJSON.errors.fecha)
-         }else{
-         $('input[name=fecha]').parent().removeClass('has-error')
-         }
+        $.each(data.responseJSON.errors, function( index, value ) {
+            console.log(value)
+            $('#listaerrores').append('<li>'+value+'</li>')
+        })
 
-         if(data.responseJSON.errors.agricultor)
-         {
-         $('#agricultorGroup').addClass('has-error')
-         console.log(data.responseJSON.errors.agricultor)
-         //$('#listaerrores').html('<li>'+data.responseJSON.errors.agricultor+'</li>')
-         }else{
-         $('#agricultorGroup').removeClass('has-error')
-         }
+        if(data.responseJSON.errors.matricula)
+        {
+            $('input[name=matricula]').parent().addClass('has-error')
+        }else{
+            $('input[name=matricula]').parent().removeClass('has-error')
+        }
 
-         if(data.responseJSON.errors.cliente)
-         {
-         $('#clienteGroup').addClass('has-error')
-         console.log(data.responseJSON.errors.cliente)
-         //$('#listaerrores').html('<li>'+data.responseJSON.errors.cliente+'</li>')
-         }else{
-         $('#clienteGroup').removeClass('has-error')
-         }
+        if(data.responseJSON.errors.apellido_materno)
+        {
+            $('input[name=apellido_materno]').parent().addClass('has-error')
 
-         if(data.responseJSON.errors.variedad)
-         {
-         $('#grupoVariedad').addClass('has-error')
-         console.log(data.responseJSON.errors.variedad)
-         //$('#listaerrores').html('<li>'+data.responseJSON.errors.variedad+'</li>')
-         }else{
-         $('#grupoVariedad').removeClass('has-error')
-         }
+        }else{
+            $('input[name=apellido_materno]').parent().removeClass('has-error')
+        }
 
-         if(data.responseJSON.errors.nro_sacos)
-         {
-         $('input[name=nro_sacos]').parent().removeClass('has-error')
-         console.log(data.responseJSON.errors.nro_sacos)
-         //$('#listaerrores').html('<li>'+data.responseJSON.errors.nro_sacos+'</li>')
-         }else{
-         $('input[name=nro_sacos]').parent().removeClass('has-error')
-         }
+        if(data.responseJSON.errors.apellido_paterno)
+        {
+            $('input[name=apellido_paterno]').parent().addClass('has-error')
 
-         if(data.responseJSON.errors.chofer)
-         {
-         $('#grupoChofer').addClass('has-error')
-         console.log(data.responseJSON.errors.chofer)
-         //$('#listaerrores').html('<li>'+data.responseJSON.errors.chofer+'</li>')
-         }else{
-         $('#grupoChofer').removeClass('has-error')
-         }
+        }else{
+            $('input[name=apellido_paterno]').parent().removeClass('has-error')
+        }
 
-         if(data.responseJSON.errors.procedencia)
-         {
-         $('#grupoProcedencia').addClass('has-error')
-         console.log(data.responseJSON.errors.procedencia)
-         //$('#listaerrores').html('<li>'+data.responseJSON.errors.procedencia+'</li>')
-         }else{
-         $('#grupoProcedencia').removeClass('has-error')
-         }
+        if(data.responseJSON.errors.nombres)
+        {
+            $('input[name=nombres]').parent().addClass('has-error')
 
-         if(data.responseJSON.errors.procedencia)
-         {
-         $('#grupoVehiculo').addClass('has-error')
-         console.log(data.responseJSON.errors.procedencia)
-         //$('#listaerrores').html('<li>'+data.responseJSON.errors.procedencia+'</li>')
-         }else{
-         $('#grupoVehiculo').removeClass('has-error')
-         }*/
+        }else{
+            $('input[name=nombres]').parent().removeClass('has-error')
+        }
+
+        if(data.responseJSON.errors.jefe_inmediato)
+        {
+            $('input[name=jefe_inmediato]').parent().addClass('has-error')
+
+        }else{
+            $('input[name=jefe_inmediato]').parent().removeClass('has-error')
+        }
+
+        if(data.responseJSON.errors.departamentoOrigen)
+        {
+            $('#departamentoOrigen').parent().addClass('has-error')
+
+        }else{
+            $('#departamentoOrigen').parent().removeClass('has-error')
+        }
+
+        if(data.responseJSON.errors.provinciaOrigen)
+        {
+            $('select[name=provinciaOrigen]').parent().addClass('has-error')
+
+        }else{
+            $('select[name=provinciaOrigen]').parent().removeClass('has-error')
+        }
+
+        if(data.responseJSON.errors.departamentoDomicilio)
+        {
+            $('#departamentoDomGroup').parent().addClass('has-error')
+
+        }else{
+            $('#departamentoDomGroup').parent().removeClass('has-error')
+        }
+
+        if(data.responseJSON.errors.provinciaDomicilio)
+        {
+            $('#provinciaDomGroup').parent().addClass('has-error')
+
+        }else{
+            $('#provinciaDomGroup').parent().removeClass('has-error')
+        }
+
+        if(data.responseJSON.errors.direccion)
+        {
+            $('#direccionGroup').parent().addClass('has-error')
+
+        }else{
+            $('#direccionGroup').parent().removeClass('has-error')
+        }
+
+        if(data.responseJSON.errors.telf_fijo)
+        {
+            $('input[name=telf_fijo]').parent().addClass('has-error')
+
+        }else{
+            $('input[name=telf_fijo]').parent().removeClass('has-error')
+        }
+
+        if(data.responseJSON.errors.celular)
+        {
+            $('input[name=celular]').parent().addClass('has-error')
+
+        }else{
+            $('input[name=celular]').parent().removeClass('has-error')
+        }
+
+        if(data.responseJSON.errors.trabajo)
+        {
+            $('input[name=trabajo]').parent().addClass('has-error')
+
+        }else{
+            $('input[name=trabajo]').parent().removeClass('has-error')
+        }
+
+        if(data.responseJSON.errors.tipo_dni)
+        {
+            $('select[name=tipo_dni]').parent().addClass('has-error')
+
+        }else{
+            $('select[name=tipo_dni]').parent().removeClass('has-error')
+        }
+
+        if(data.responseJSON.errors.num_dni)
+        {
+            $('input[name=num_dni]').parent().addClass('has-error')
+
+        }else{
+            $('input[name=num_dni]').parent().removeClass('has-error')
+        }
+
+        if(data.responseJSON.errors.nr_hijo_vivos)
+        {
+            $('input[name=nr_hijo_vivos]').parent().addClass('has-error')
+
+        }else{
+            $('input[name=nr_hijo_vivos]').parent().removeClass('has-error')
+        }
+
+        if(data.responseJSON.errors.nr_hijo_muertos)
+        {
+            $('input[name=nr_hijo_muertos]').parent().addClass('has-error')
+
+        }else{
+            $('input[name=nr_hijo_muertos]').parent().removeClass('has-error')
+        }
+
+        if(data.responseJSON.errors.seccion)
+        {
+            $('input[name=seccion]').parent().addClass('has-error')
+
+        }else{
+            $('input[name=seccion]').parent().removeClass('has-error')
+        }
 
         return;
 
@@ -403,5 +547,38 @@ $('#fecha_ingreso').on('change',function(e){
     $edad = Math.floor(($fechaIngreso-$fechaNacimiento) / (365.25 * 24 * 60 * 60 * 1000));
     $('#edad_ingreso').val($edad)
     console.log("edad "+$edad);
+});
+
+$filtro = "";
+$('#filtro').on('change',function(e){
+    e.preventDefault();
+    $filtro = $(this).val();
+});
+
+$('#buscarPaciente').on('keyup',function(){
+    valor = $(this).val();
+
+    $filtro = $('#filtro').val();
+
+    // e.preventDefault();
+    var token = $('input[name=_token]').attr('value')
+
+    var url = "/pacientes/buscar"
+    $.ajax({
+        type:"get",
+        headers: {'X-CSRF-TOKEN':token},
+        url:url,
+        dataType:"json",
+        data:{
+            buscar : valor,
+            filtro: $filtro
+        },
+        success: function(data){
+            $('#tabla').html(data.html)
+        },
+        error: function(data){
+            console.log("Error "+JSON.stringify(data))
+        }
+    });
 });
 

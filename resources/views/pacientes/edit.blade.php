@@ -8,7 +8,7 @@
     <h3 class="text-success text-center">Registro Exitoso</h3>
 @endsection
 @section('modal-footer')
-    <button class="btn btn-sm btn-primary" id="create-paciente">Insertar otro registro</button>
+    {{--<button class="btn btn-sm btn-primary" id="create-paciente">Insertar otro registro</button>--}}
     <a class="btn btn-sm btn-warning" href="{{route('pacientes.index')}}">Volver</a>
 @endsection
 {{-----------------------------------------------------------------}}
@@ -442,7 +442,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <button class="btn btn-success">Actualizar</button>
-                                <a href="#" class="btn btn-warning">Volver</a>
+                                <a href="{{route('pacientes.index')}}" class="btn btn-warning">Volver</a>
                             </div>
                         </div>
                     </div>

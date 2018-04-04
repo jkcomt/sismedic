@@ -41,11 +41,11 @@
         </div>
         <div class="col-md-10">
             <form action="" class="form-inline text-right">
-                {{--<select name="filtro" id="filtro" class="form-control">--}}
-                    {{--<option value="guia">Nro. Guía</option>--}}
-                    {{--<option value="persona">Persona Natural</option>--}}
+                <select name="filtro" id="filtro" class="form-control">
+                    <option value="historia">Nro. Historia</option>
+                    <option value="dni">DNI</option>
                     {{--<option value="empresa">Empresa</option>--}}
-                {{--</select>--}}
+                </select>
                 <input type="text" id="buscarPaciente" placeholder="BUSCAR..." class="form-control" style="width: 45%">
                 {{--<button class="btn btn-primary form-control">BUSCAR</button>--}}
             </form>

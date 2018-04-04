@@ -118,21 +118,21 @@
                             </div>
 
                             <div class="col-md-3" >
-                                <label for="control-label">Departamento:</label>
+                                <label class="control-label" >Departamento:</label>
                                 <div id="departamentoGroup">
                                     @include('pacientes.departamento')
                                 </div>
                             </div>
 
                             <div class="col-md-3">
-                                <label for="control-label">Provincia:</label>
+                                <label class="control-label">Provincia:</label>
                                 <div id="provinciaGroup">
                                     @include('pacientes.provincia')
                                 </div>
                             </div>
 
                             <div class="col-md-3">
-                                <label for="control-label">Distrito:</label>
+                                <label class="control-label">Distrito:</label>
                                 <div class="form-group" id="provinciaGroup">
                                     <select name="distritoOrigen" id="distritoOrigen" class="form-control" >
                                         {{--<input type="text" class=" form-control" name="personal" value="{{old('personal')}}">--}}
@@ -199,7 +199,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <label class="control-label">Dirección:</label>
-                                <div class="form-group" id="direccion">
+                                <div class="form-group" id="direccionGroup">
                                     <input type="text" name="direccion" id="direccion" class="form-control">
                                 </div>
                             </div>
@@ -437,7 +437,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <button class="btn btn-success">Registrar</button>
-                                <a href="#" class="btn btn-warning">Volver</a>
+                                <a href="{{route('pacientes.index')}}" class="btn btn-warning">Volver</a>
                             </div>
                         </div>
                     </div>

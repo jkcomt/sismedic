@@ -34,7 +34,9 @@ Route::group([
 ],function(){
     Route::post('/delete','PacientesController@destroy')->name('pacientes.destroy');
     Route::post('/update','PacientesController@update')->name('pacientes.update');
+    Route::get('/buscar','PacientesController@search')->name('pacientes.search');
 });
+
 
 //Route::resource('departamentos','DepartamentosController');
 
