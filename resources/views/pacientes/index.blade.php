@@ -37,6 +37,7 @@
         <div class="col-md-2">
             <div class="form-group">
                 <a href="{{route('pacientes.create')}}" class="btn btn-success">NUEVA FILIACIÓN</a>
+                <input type="hidden" value="{{route('pacientes.destroy')}}" id="deletePaciente">
             </div>
         </div>
         <div class="col-md-10">
@@ -47,6 +48,7 @@
                     {{--<option value="empresa">Empresa</option>--}}
                 </select>
                 <input type="text" id="buscarPaciente" placeholder="BUSCAR..." class="form-control" style="width: 45%">
+                <input type="hidden" value="{{route('pacientes.search')}}" id="buscarUrlPaciente">
                 {{--<button class="btn btn-primary form-control">BUSCAR</button>--}}
             </form>
         </div>

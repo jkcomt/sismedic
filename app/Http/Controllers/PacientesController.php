@@ -187,6 +187,40 @@ class PacientesController extends Controller
         }
     }
 
+    public function search(Request $request){
+        $pacientes = null;
+        if($request['buscar'] != '') {
+            if($request['filtro'] == "historia") {
+                $pacientes = Paciente::where('nro_historia', 'like', '%' . $request['buscar'] . '%')
+                    //->orWhere('num_dni', 'like', '%' . $request['buscar'] . '%')
+                    ->orderBy('fecha_registro', 'desc')
+                    ->orderBy('hora_registro', 'desc');
+
+                $pacientes = $pacientes->where('estado', true)->paginate(10);
+            }elseif($request['filtro'] == "dni")
+            {
+                $pacientes = Paciente::where('num_dni', 'like', '%' . $request['buscar'] . '%')
+                    ->orderBy('fecha_registro', 'desc')
+                    ->orderBy('hora_registro', 'desc');
+
+                $pacientes = $pacientes->where('estado', true)->paginate(10);
+            }
+        }else{
+            $pacientes = Paciente::where('estado', true)
+                ->orderBy('fecha_registro', 'desc')
+                ->orderBy('hora_registro', 'desc')
+                ->paginate(10);
+        }
+
+
+
+        if($request->ajax())
+        {
+            $view = view('pacientes.tabla',compact('pacientes'))->render();
+            return response()->json(['html'=>$view]);
+        }
+    }
+
     /**
      * Display the specified resource.
      *
@@ -420,37 +454,5 @@ class PacientesController extends Controller
         ]);
     }
 
-    public function search(Request $request){
-        $pacientes = null;
-        if($request['buscar'] != '') {
-            if($request['filtro'] == "historia") {
-                $pacientes = Paciente::where('nro_historia', 'like', '%' . $request['buscar'] . '%')
-                    //->orWhere('num_dni', 'like', '%' . $request['buscar'] . '%')
-                    ->orderBy('fecha_registro', 'desc')
-                    ->orderBy('hora_registro', 'desc');
 
-                $pacientes = $pacientes->where('estado', true)->paginate(10);
-            }elseif($request['filtro'] == "dni")
-            {
-                $pacientes = Paciente::where('num_dni', 'like', '%' . $request['buscar'] . '%')
-                    ->orderBy('fecha_registro', 'desc')
-                    ->orderBy('hora_registro', 'desc');
-
-                $pacientes = $pacientes->where('estado', true)->paginate(10);
-            }
-        }else{
-            $pacientes = Paciente::where('estado', true)
-                ->orderBy('fecha_registro', 'desc')
-                ->orderBy('hora_registro', 'desc')
-                ->paginate(10);
-        }
-
-
-
-        if($request->ajax())
-        {
-            $view = view('pacientes.tabla',compact('pacientes'))->render();
-            return response()->json(['html'=>$view]);
-        }
-    }
 }

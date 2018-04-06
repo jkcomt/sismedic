@@ -220,122 +220,173 @@
                     </div>
                 </div>
 
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-12 form-group">
+                                        <label class="control-label">Instrucción:</label>
+                                        <div class="form-group" id="tipoIntruccionGroup">
+                                            <input type="text" class="form-control" value="{{ucfirst($paciente->instruccion->nombre)}}" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 form-group">
+                                        <label class="control-label">Área:</label>
+                                        <div class="form-group" id="areaGroup">
+                                            <input type="text" class="form-control" value="{{ucfirst($paciente->area->nombre)}}" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 form-group">
+                                        <label class="control-label">Labora en:</label>
+                                        <div class="form-group" id="laboraGroup">
+                                            <input type="text" class="form-control" name="seccion" value="{{ucfirst($paciente->lugarLabores->nombre)}}" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 form-group">
+                                        <label for="email" class="control-label">Email:</label>
+                                        <div class="form-group">
+                                            <input type="email"  value="{{$paciente->email}}" class="form-control" name="email" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 form-group">
+                                        <label for="comentarios" class="control-label">Comentarios:</label>
+                                        <div class="form-group">
+                                            <input type="text"  value="{{$paciente->comentarios}}" class="form-control" name="comentarios" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="alergias" class="control-label">Alergias:</label>
+                                        <div class="form-group">
+                                            <input type="alergias"  value="{{$paciente->alergias}}" class="form-control" name="alergias" readonly>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-12 form-group">
+                                        <label class="control-label">Profesión:</label>
+                                        <div class="form-group" id="profesionGroup">
+                                            <input type="text" class="form-control" value="{{ucfirst($paciente->profesion->nombre)}}" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 form-group">
+                                        <label class="control-label">Ocupación:</label>
+                                        <div class="form-group" id="ocupacionGroup">
+                                            <input type="text" class="form-control" value="{{ucfirst($paciente->ocupacion->nombre)}}" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 form-group">
+                                        <label for="tiempodesempeno" class="control-label">Tiempo Desempeño:</label>
+                                        {{--Tiempo desempeño es un calculo?--}}
+                                        <div class="form-group">
+                                            <input type="text"  value="" class="form-control" name="tiempodesempeno" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 form-group">
+                                        <label class="control-label">Altura:</label>
+                                        <div class="form-group" id="alturaGroup">
+                                            <input type="text" class="form-control" readonly value="{{$paciente->altura->descripcion}}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 form-group">
+                                        <label class="control-label">Gs/Rh:</label>
+                                        <div class="form-group" id="grupoSanguineoGroup">
+                                            <input type="text" class="form-control" value="{{$paciente->grupoSanguineo->descripcion}}" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="">
+                                        <div class="col-md-12 ">
+                                            <label class="control-label">Regimen:</label>
+                                            <div class="row">
+                                                <div class="col-md-6 form-group ">
+                                                    <input type="text"  value="" class="form-control" name="regimenInput" readonly>
+                                                </div>
+                                                <div class="col-md-6 form-group">
+
+                                                    <input type="text"  value="{{$paciente->regimen->descripcion}}" class="form-control" name="regimenInput" readonly>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-12 form-group">
+                                        <label class="control-label">Contrata:</label>
+                                        <div class="form-group" id="contrataGroup">
+                                            <input type="text" class="form-control" value="{{ucfirst($paciente->contrata->nombre)}}" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 form-group">
+                                        <label class="control-label">Sección:</label>
+                                        <input type="text" class="form-control" name="seccion" value="{{ucfirst($paciente->seccion)}}" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            {{--<div class="panel-heading">Información</div>--}}
+                            <div class="panel-body">
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="emergencia" class="control-label">En caso de emergencia:</label>
+                                        <input type="text"  value="{{strtoupper($paciente->en_caso_emergencia)}}" class="form-control" name="emergencia" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
                 <div class="panel panel-default">
                     {{--<div class="panel-heading">Información</div>--}}
                     <div class="panel-body">
-                        <div class="row">
-
-                            <div class="col-md-4 form-group">
-                                <label class="control-label">Instrucción:</label>
-                                <div class="form-group" id="tipoIntruccionGroup">
-                                    <input type="text" class="form-control" value="{{ucfirst($paciente->instruccion->nombre)}}" readonly>
-                                </div>
-                            </div>
-                            <div class="col-md-4 form-group">
-                                <label class="control-label">Profesión:</label>
-                                <div class="form-group" id="profesionGroup">
-                                    <input type="text" class="form-control" value="{{ucfirst($paciente->profesion->nombre)}}" readonly>
-                                </div>
-                            </div>
-                            <div class="col-md-4 form-group">
-                                <label class="control-label">Contrata:</label>
-                                <div class="form-group" id="contrataGroup">
-                                    <input type="text" class="form-control" value="{{ucfirst($paciente->contrata->nombre)}}" readonly>
-                                </div>
-                            </div>
-                        </div>
 
                         <div class="row">
-
-                            <div class="col-md-4 form-group">
-                                <label class="control-label">Área:</label>
-                                <div class="form-group" id="areaGroup">
-                                    <input type="text" class="form-control" value="{{ucfirst($paciente->area->nombre)}}" readonly>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4 form-group">
-                                <label class="control-label">Ocupación:</label>
-                                <div class="form-group" id="ocupacionGroup">
-                                    <input type="text" class="form-control" value="{{ucfirst($paciente->ocupacion->nombre)}}" readonly>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4 form-group">
-                                <label class="control-label">Sección:</label>
-                                <input type="text" class="form-control" name="seccion" value="{{ucfirst($paciente->seccion)}}" readonly>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-4 form-group">
-                                <label class="control-label">Labora en:</label>
-                                <div class="form-group" id="laboraGroup">
-                                    <input type="text" class="form-control" name="seccion" value="{{ucfirst($paciente->lugarLabores->nombre)}}" readonly>
-                                </div>
-                            </div>
-                            <div class="col-md-4 form-group">
-                                <label for="tiempodesempeno" class="control-label">Tiempo Desempeño:</label>
-                                {{--Tiempo desempeño es un calculo?--}}
-                                <input type="text"  value="" class="form-control" name="tiempodesempeno" readonly>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-4 form-group">
-                                <label for="email" class="control-label">Email:</label>
-                                <input type="email"  value="{{$paciente->email}}" class="form-control" name="email" readonly>
-                            </div>
-                            <div class="col-md-4 form-group">
-                                <label class="control-label">Altura:</label>
-                                <div class="form-group" id="alturaGroup">
-                                    <input type="text" class="form-control" readonly value="{{$paciente->altura->descripcion}}">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-4 form-group">
-                                <label for="comentarios" class="control-label">Comentarios:</label>
-                                <input type="text"  value="{{$paciente->comentarios}}" class="form-control" name="comentarios" readonly>
-                            </div>
-                            <div class="col-md-4 form-group">
-                                <label class="control-label">Gs/Rh:</label>
-                                <div class="form-group" id="grupoSanguineoGroup">
-                                    <input type="text" class="form-control" value="{{$paciente->grupoSanguineo->descripcion}}" readonly>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-4 form-group">
-                                <label for="alergias" class="control-label">Alergias:</label>
-                                <input type="alergias"  value="{{$paciente->alergias}}" class="form-control" name="alergias" readonly>
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label class="control-label">Regimen:</label>
-                                <div class="form-inline">
-                                    <div class="form-group ">
-                                        <input type="text"  value="" class="form-control" name="regimenInput" readonly>
-                                    </div>
-                                    <div class="form-group">
-
-                                        <input type="text"  value="{{$paciente->regimen->descripcion}}" class="form-control" name="regimenInput" readonly>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12 form-group">
-                                <label for="emergencia" class="control-label">En caso de emergencia:</label>
-                                <input type="text"  value="{{strtoupper($paciente->en_caso_emergencia)}}" class="form-control" name="emergencia" readonly>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-12 text-right">
                                 {{--<button class="btn btn-success">Registrar</button>--}}
                                 <a href="{{route('pacientes.index')}}" class="btn btn-warning">Volver</a>
                             </div>

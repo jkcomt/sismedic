@@ -29,7 +29,12 @@ class DatabaseSeeder extends Seeder
                 'areas',
                 'alturas',
                 'regimenes',
-                'pacientes'
+                'pacientes',
+                'cliente_cuentas',
+                'tipo_examenes',
+                'perfiles',
+                'lista_examenes',
+                'perfil_examenes'
             ]
         );
         // $this->call(UsersTableSeeder::class);
@@ -50,6 +55,8 @@ class DatabaseSeeder extends Seeder
         $this->call(GrupoSanguineoSeeder::class);
         $this->call(RegimenSeeder::class);
         $this->call(PacienteSeeder::class);
+
+        $this->call(ClienteCuentasSeeder::class);
         //$this->call(LoteSeeder::class);
 
     }
