@@ -108,6 +108,7 @@
                             <div class="col-md-3">
                                 <label for="control-label">País:</label>
                                 <div class="form-group" id="paisGroup">
+                                    <input type="hidden" value="{{route('departamento.filtro')}}" id="departamentoUrlFiltro">
                                     <select name="paisOrigen" id="paisOrigen" class="form-control" >
                                         {{--<input type="text" class=" form-control" name="personal" value="{{old('personal')}}">--}}
                                         @foreach($paises as $key => $pais)
@@ -119,6 +120,7 @@
 
                             <div class="col-md-3" >
                                 <label class="control-label" >Departamento:</label>
+                                <input type="hidden" value="{{route('provincia.filtro')}}" id="provinciaUrlFiltro">
                                 <div id="departamentoGroup">
                                     @include('pacientes.departamento')
                                 </div>
@@ -158,6 +160,7 @@
                             <div class="col-md-3">
                                 <label class="control-label">País:</label>
                                 <div class="form-group" id="paisGroupDom">
+                                    <input type="hidden" value="{{route('departamento.filtrodomicilio')}}" id="departamentoDomUrlFiltro">
                                     <select name="paisOrigenDom" id="paisOrigenDom" class="form-control paisOrigenDom" >
                                         {{--<input type="text" class=" form-control" name="personal" value="{{old('personal')}}">--}}
                                         @foreach($paises as $key => $pais)
@@ -169,6 +172,7 @@
 
                             <div class="col-md-3">
                                 <label class="control-label">Departamento:</label>
+                                <input type="hidden" value="{{route('provincia.filtrodomicilio')}}" id="provinciaDomUrlFiltro">
                                 <div id="departamentoDomGroup">
                                     @include('pacientes.departamento_dom')
                                 </div>

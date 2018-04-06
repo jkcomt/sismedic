@@ -18,7 +18,9 @@ $("select[name=paisOrigen]").on('change',function(e){
     // e.preventDefault();
     var token = $('input[name=_token]').attr('value')
 
-    var url = "/departamentos/filtro"
+    //var url = "/departamentos/filtro"
+    var url = $('#departamentoUrlFiltro').val();
+    console.log(url)
     $.ajax({
         type:"get",
         headers: {'X-CSRF-TOKEN':token},
@@ -34,7 +36,7 @@ $("select[name=paisOrigen]").on('change',function(e){
 
         },
         error: function(data){
-            alert("Error "+json.stringify(data))
+            console.log("Error "+JSON.stringify(data))
         }
     });
 });
@@ -47,7 +49,8 @@ $('body').on('change','.departamentoOrigen',function(e){
     // e.preventDefault();
     var token = $('input[name=_token]').attr('value')
 
-    var url = "/provincias/filtro"
+    //var url = "/provincias/filtro"
+    var url = $('#provinciaUrlFiltro').val();
     $.ajax({
         type:"get",
         headers: {'X-CSRF-TOKEN':token},
@@ -76,7 +79,8 @@ $("select[name=paisOrigenDom]").on('change',function(e){
     // e.preventDefault();
     var token = $('input[name=_token]').attr('value')
 
-    var url = "/departamentos/filtrodomicilio"
+    //var url = "/departamentos/filtrodomicilio"
+    var url = $('#departamentoDomUrlFiltro').val()
     $.ajax({
         type:"get",
         headers: {'X-CSRF-TOKEN':token},
@@ -105,7 +109,8 @@ $('body').on('change','.departamentoDomicilio',function(e){
     // e.preventDefault();
     var token = $('input[name=_token]').attr('value')
 
-    var url = "/provincias/filtrodomicilio"
+    //var url = "/provincias/filtrodomicilio"
+    var url = $('#provinciaDomUrlFiltro').val()
     $.ajax({
         type:"get",
         headers: {'X-CSRF-TOKEN':token},
@@ -508,7 +513,8 @@ $('.confirmar').on('click',function (e) {
     var id = $(this).attr('id')
     var token = $('input[name=_token]').attr('value')
     if($estado == 'eliminar') {
-        var url = "/pacientes/delete"
+        //var url = "/pacientes/delete"
+        var url = $('#deletePaciente').val()
         console.log(id)
         $.ajax({
             type: "post",
@@ -563,9 +569,10 @@ $('#buscarPaciente').on('keyup',function(){
     // e.preventDefault();
     var token = $('input[name=_token]').attr('value')
 
-    var url = "/pacientes/buscar"
+    var url = "/pacientes/buscar";
+    //var url = $('#buscarUrlPaciente').val();
     $.ajax({
-        type:"get",
+        type:"post",
         headers: {'X-CSRF-TOKEN':token},
         url:url,
         dataType:"json",
@@ -577,7 +584,7 @@ $('#buscarPaciente').on('keyup',function(){
             $('#tabla').html(data.html)
         },
         error: function(data){
-            console.log("Error "+JSON.stringify(data))
+            //console.log("Error "+JSON.stringify(data))
         }
     });
 });
