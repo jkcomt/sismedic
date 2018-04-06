@@ -14,7 +14,8 @@ class GrupoSanguineoController extends Controller
      */
     public function index()
     {
-        //
+        $grupoSanguineos= GrupoSanguineo::where('estado',true)->paginate(10);
+       return view('grupoSanguineo.index',compact("grupoSanguineos"));
     }
 
     /**
@@ -35,7 +36,24 @@ class GrupoSanguineoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    
+    if(request()->ajax())
+     {
+            //$data = request();
+            //dd($data['rbTipoAgri']);
+        $data = request()->validate([
+            'nombre'=>'required',
+        ],[
+            'nombre.required'=>'El campo nombres es obligatorio',
+        ]);
+
+        GrupoSanguineo::create([
+            'descripcion'=>$data['nombre'],
+            'estado'=>true
+        ]);
+        return response()->json(['mensaje'=>"registro exitoso"]);
+    }
+
     }
 
     /**
@@ -55,9 +73,18 @@ class GrupoSanguineoController extends Controller
      * @param  \App\GrupoSanguineo  $grupoSanguineo
      * @return \Illuminate\Http\Response
      */
-    public function edit(GrupoSanguineo $grupoSanguineo)
+    public function edit($id)
     {
-        //
+ 
+   
+           $grupoSanguineo = GrupoSanguineo::find($id);    
+
+        return response()->json(
+          $grupoSanguineo->toArray()
+      );
+
+
+
     }
 
     /**
@@ -67,9 +94,29 @@ class GrupoSanguineoController extends Controller
      * @param  \App\GrupoSanguineo  $grupoSanguineo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, GrupoSanguineo $grupoSanguineo)
+    public function update(Request $request)
     {
-        //
+           $grupoSanguineo=  GrupoSanguineo::find($request['id']); 
+
+        $data = request()->validate([
+            'id'=>'required',
+            'nombre'=>'required'
+        ],[
+            'nombre.required'=>'El campo nombres es obligatorio',
+        ]);
+
+
+           $grupoSanguineo->update([
+            'id'=>$data['id'],
+            'descripcion'=>$data['nombre']
+        ]);
+
+           $grupoSanguineo->save();
+
+
+        return response()->json([
+            'mensaje'=>   $grupoSanguineo->toArray()
+        ]);
     }
 
     /**
@@ -78,8 +125,18 @@ class GrupoSanguineoController extends Controller
      * @param  \App\GrupoSanguineo  $grupoSanguineo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(GrupoSanguineo $grupoSanguineo)
+    public function destroy(Request $request)
     {
-        //
+               $grupoSanguineo = GrupoSanguineo::find($request['id']);
+
+       $grupoSanguineo->update(
+            ['estado'=>false]
+        );
+
+        $grupoSanguineo->save();
+
+        return response()->json(
+            ['mensaje'=>'eliminacion exitosa']
+        );
     }
 }

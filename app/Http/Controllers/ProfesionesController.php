@@ -14,7 +14,8 @@ class ProfesionesController extends Controller
      */
     public function index()
     {
-        //
+       $profesiones = Profesion::where('estado',true)->paginate(10);
+        return view('profesion.index',compact("profesiones"));
     }
 
     /**
@@ -35,7 +36,24 @@ class ProfesionesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         if(request()->ajax())
+        {
+            //$data = request();
+            //dd($data['rbTipoAgri']);
+            $data = request()->validate([
+                'nombre'=>'required',
+            ],[
+                'nombre.required'=>'El campo nombres es obligatorio',
+            ]);
+
+            Profesion::create([
+                'nombre'=>$data['nombre'],
+                'estado'=>true
+            ]);
+            return response()->json(['mensaje'=>"registro exitoso"]);
+        }
+
+     
     }
 
     /**
@@ -55,9 +73,13 @@ class ProfesionesController extends Controller
      * @param  \App\Profesion  $profesiones
      * @return \Illuminate\Http\Response
      */
-    public function edit(Profesion $profesiones)
+    public function edit($id)
     {
-        //
+         $profesiones = Profesion::find($id);    
+
+        return response()->json(
+          $profesiones->toArray()
+        );
     }
 
     /**
@@ -67,9 +89,29 @@ class ProfesionesController extends Controller
      * @param  \App\Profesion  $profesiones
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Profesion $profesiones)
+    public function update(Request $request)
     {
-        //
+        $profesiones = Profesion::find($request['id']); 
+
+        $data = request()->validate([
+                'id'=>'required',
+                'nombre'=>'required'
+            ],[
+                'nombre.required'=>'El campo nombres es obligatorio',
+            ]);
+
+
+        $profesiones->update([
+            'id'=>$data['id'],
+            'nombre'=>$data['nombre']
+        ]);
+
+        $profesiones->save();
+
+
+        return response()->json([
+            'mensaje'=>$profesiones->toArray()
+        ]);
     }
 
     /**
@@ -78,8 +120,21 @@ class ProfesionesController extends Controller
      * @param  \App\Profesion  $profesiones
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Profesion $profesiones)
+    public function destroy(Request $request)
     {
-        //
-    }
+      
+        $profesiones = Profesion::find($request['id']);
+
+        $profesiones->update(
+            ['estado'=>false]
+        );
+
+        $profesiones->save();
+
+        return response()->json(
+            ['mensaje'=>'eliminacion exitosa']
+        );
+
+
+     }
 }

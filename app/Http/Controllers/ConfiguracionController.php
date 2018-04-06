@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Contratador;
 use Illuminate\Http\Request;
 
-class ContratadoresController extends Controller
+class ConfiguracionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class ContratadoresController extends Controller
      */
     public function index()
     {
-        $contratas = Contratador::where('estado',true)->paginate(10);
-       return view('contrata.index',compact("contratas"));
+    
+       return view('configuracion.index');
     }
 
     /**
@@ -36,23 +36,7 @@ class ContratadoresController extends Controller
      */
     public function store(Request $request)
     {
-          if(request()->ajax())
-     {
-            //$data = request();
-            //dd($data['rbTipoAgri']);
-        $data = request()->validate([
-            'nombre'=>'required',
-        ],[
-            'nombre.required'=>'El campo nombres es obligatorio',
-        ]);
-
-        Contratador::create([
-            'nombre'=>$data['nombre'],
-            'estado'=>true
-        ]);
-        return response()->json(['mensaje'=>"registro exitoso"]);
-    }
-
+   
     
     }
 
@@ -76,11 +60,7 @@ class ContratadoresController extends Controller
     public function edit($id)
     {
        
-           $contrata = Contratador::find($id);    
-
-        return response()->json(
-          $contrata->toArray()
-      );
+      
     }
 
     /**
@@ -93,27 +73,7 @@ class ContratadoresController extends Controller
     public function update(Request $request)
     {
        
-    $contrata= Contratador::find($request['id']); 
-
-        $data = request()->validate([
-            'id'=>'required',
-            'nombre'=>'required'
-        ],[
-            'nombre.required'=>'El campo nombres es obligatorio',
-        ]);
-
-
-        $contrata->update([
-            'id'=>$data['id'],
-            'nombre'=>$data['nombre']
-        ]);
-
-        $contrata->save();
-
-
-        return response()->json([
-            'mensaje'=>$contrata->toArray()
-        ]);
+   
 
     }
 
@@ -125,16 +85,6 @@ class ContratadoresController extends Controller
      */
     public function destroy(Request $request)
     {
-            $contrata = Contratador::find($request['id']);
-
-        $contrata->update(
-            ['estado'=>false]
-        );
-
-        $contrata->save();
-
-        return response()->json(
-            ['mensaje'=>'eliminacion exitosa']
-        );
+       
     }
 }

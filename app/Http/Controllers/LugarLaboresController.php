@@ -14,7 +14,8 @@ class LugarLaboresController extends Controller
      */
     public function index()
     {
-        //
+            $lugares = LugarLabor::where('estado',true)->paginate(10);
+       return view('LugarLabor.index',compact("lugares"));
     }
 
     /**
@@ -36,6 +37,22 @@ class LugarLaboresController extends Controller
     public function store(Request $request)
     {
         //
+              if(request()->ajax())
+     {
+            //$data = request();
+            //dd($data['rbTipoAgri']);
+        $data = request()->validate([
+            'nombre'=>'required',
+        ],[
+            'nombre.required'=>'El campo nombres es obligatorio',
+        ]);
+
+        LugarLabor::create([
+            'nombre'=>$data['nombre'],
+            'estado'=>true
+        ]);
+        return response()->json(['mensaje'=>"registro exitoso"]);
+    }
     }
 
     /**
@@ -55,9 +72,13 @@ class LugarLaboresController extends Controller
      * @param  \App\LugarLabor  $lugarLabores
      * @return \Illuminate\Http\Response
      */
-    public function edit(LugarLabor $lugarLabores)
+    public function edit($id)
     {
-        //
+          $lugarlabor = LugarLabor::find($id);    
+
+        return response()->json(
+          $lugarlabor->toArray()
+      );
     }
 
     /**
@@ -67,9 +88,29 @@ class LugarLaboresController extends Controller
      * @param  \App\LugarLabor  $lugarLabores
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, LugarLabor $lugarLabores)
+    public function update(Request $request)
     {
-        //
+        $lugarlabor= LugarLabor::find($request['id']); 
+
+        $data = request()->validate([
+            'id'=>'required',
+            'nombre'=>'required'
+        ],[
+            'nombre.required'=>'El campo nombres es obligatorio',
+        ]);
+
+
+        $lugarlabor->update([
+            'id'=>$data['id'],
+            'nombre'=>$data['nombre']
+        ]);
+
+        $lugarlabor->save();
+
+
+        return response()->json([
+            'mensaje'=>$lugarlabor->toArray()
+        ]);
     }
 
     /**
@@ -78,8 +119,18 @@ class LugarLaboresController extends Controller
      * @param  \App\LugarLabor  $lugarLabores
      * @return \Illuminate\Http\Response
      */
-    public function destroy(LugarLabor $lugarLabores)
+    public function destroy(Request $request)
     {
-        //
+              $lugarlabor = LugarLabor::find($request['id']);
+
+       $lugarlabor->update(
+            ['estado'=>false]
+        );
+
+        $lugarlabor->save();
+
+        return response()->json(
+            ['mensaje'=>'eliminacion exitosa']
+        );
     }
 }
