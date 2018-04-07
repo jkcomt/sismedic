@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class PerfilExamen extends Model
 {
-    protected $table = "perfiles";
+    protected $table = "perfil_examenes";
 
     protected $fillable = [
         'perfil_id',
@@ -15,4 +15,12 @@ class PerfilExamen extends Model
     ];
 
     public $timestamps = false;
+
+    public function perfil(){
+        return $this->belongsTo(Perfil::class);
+    }
+
+    public function listaExamen(){
+        return $this->belongsTo(ListaExamen::class);
+    }
 }

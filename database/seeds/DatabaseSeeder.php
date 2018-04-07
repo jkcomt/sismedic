@@ -57,6 +57,10 @@ class DatabaseSeeder extends Seeder
         $this->call(PacienteSeeder::class);
 
         $this->call(ClienteCuentasSeeder::class);
+        $this->call(TipoExamenSeeder::class);
+        $this->call(PerfilSeeder::class);
+        $this->call(ListaExamenSeeder::class);
+        $this->call(PerfilExamenSeeder::class);
         //$this->call(LoteSeeder::class);
 
     }
