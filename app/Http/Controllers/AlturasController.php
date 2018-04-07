@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Alturas;
+use App\Altura;
 use Illuminate\Http\Request;
 
 class AlturasController extends Controller
@@ -14,7 +14,8 @@ class AlturasController extends Controller
      */
     public function index()
     {
-        //
+        $alturas= Altura::where('estado',true)->paginate(10);
+       return view('altura.index',compact("alturas"));
     }
 
     /**
@@ -35,7 +36,22 @@ class AlturasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+          if(request()->ajax())
+     {
+            //$data = request();
+            //dd($data['rbTipoAgri']);
+        $data = request()->validate([
+            'nombre'=>'required',
+        ],[
+            'nombre.required'=>'El campo nombres es obligatorio',
+        ]);
+
+        Altura::create([
+            'descripcion'=>$data['nombre'],
+            'estado'=>true
+        ]);
+        return response()->json(['mensaje'=>"registro exitoso"]);
+    }
     }
 
     /**
@@ -55,9 +71,15 @@ class AlturasController extends Controller
      * @param  \App\Alturas  $alturas
      * @return \Illuminate\Http\Response
      */
-    public function edit(Alturas $alturas)
+    public function edit($id)
     {
-        //
+         $altura = Altura::find($id);    
+
+        return response()->json(
+          $altura->toArray()
+      );
+
+
     }
 
     /**
@@ -67,9 +89,29 @@ class AlturasController extends Controller
      * @param  \App\Alturas  $alturas
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Alturas $alturas)
+    public function update(Request $request)
     {
-        //
+            $altura=  Altura::find($request['id']); 
+
+        $data = request()->validate([
+            'id'=>'required',
+            'nombre'=>'required'
+        ],[
+            'nombre.required'=>'El campo nombres es obligatorio',
+        ]);
+
+
+           $altura->update([
+            'id'=>$data['id'],
+            'descripcion'=>$data['nombre']
+        ]);
+
+           $altura->save();
+
+
+        return response()->json([
+            'mensaje'=>   $altura->toArray()
+        ]);
     }
 
     /**
@@ -78,8 +120,18 @@ class AlturasController extends Controller
      * @param  \App\Alturas  $alturas
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Alturas $alturas)
+    public function destroy(Request $request)
     {
-        //
+                  $altura = Altura::find($request['id']);
+
+       $altura->update(
+            ['estado'=>false]
+        );
+
+        $altura->save();
+
+        return response()->json(
+            ['mensaje'=>'eliminacion exitosa']
+        );
     }
 }

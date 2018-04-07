@@ -14,8 +14,10 @@ class TipoInstruccionController extends Controller
      */
     public function index()
     {
-        //
-    }
+       $tipoinstrucciones = TipoInstruccion::where('estado',true)->paginate(10);
+       return view('tipoinstruccion.index',compact("tipoinstrucciones"));
+       //  return view('TipoInstruccion.create');
+   }
 
     /**
      * Show the form for creating a new resource.
@@ -24,7 +26,7 @@ class TipoInstruccionController extends Controller
      */
     public function create()
     {
-        //
+        return view('tipoinstruccion.create');
     }
 
     /**
@@ -35,8 +37,28 @@ class TipoInstruccionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
+     if(request()->ajax())
+     {
+            //$data = request();
+            //dd($data['rbTipoAgri']);
+        $data = request()->validate([
+            'nombre'=>'required',
+        ],[
+            'nombre.required'=>'El campo nombres es obligatorio',
+        ]);
+
+        TipoInstruccion::create([
+            'nombre'=>$data['nombre'],
+            'estado'=>true
+        ]);
+        return response()->json(['mensaje'=>"registro exitoso"]);
     }
+
+    
+
+
+}
 
     /**
      * Display the specified resource.
@@ -55,9 +77,18 @@ class TipoInstruccionController extends Controller
      * @param  \App\TipoInstruccion  $tipoInstruccion
      * @return \Illuminate\Http\Response
      */
-    public function edit(TipoInstruccion $tipoInstruccion)
-    {
-        //
+    public function edit($id)
+    {/*
+        $tipoInstruccion = TipoInstruccion::find($id);    
+
+        return view("TipoInstruccion.edit",compact('tipoInstruccion'));*/
+        
+        $tipoInstruccion = TipoInstruccion::find($id);    
+
+        return response()->json(
+          $tipoInstruccion->toArray()
+      );
+
     }
 
     /**
@@ -67,9 +98,32 @@ class TipoInstruccionController extends Controller
      * @param  \App\TipoInstruccion  $tipoInstruccion
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TipoInstruccion $tipoInstruccion)
+    public function update(Request $request)
     {
-        //
+        
+        $tipoInstruccion= TipoInstruccion::find($request['id']); 
+
+        $data = request()->validate([
+            'id'=>'required',
+            'nombre'=>'required'
+        ],[
+            'nombre.required'=>'El campo nombres es obligatorio',
+        ]);
+
+
+        $tipoInstruccion->update([
+            'id'=>$data['id'],
+            'nombre'=>$data['nombre']
+        ]);
+
+        $tipoInstruccion->save();
+
+
+        return response()->json([
+            'mensaje'=>$tipoInstruccion->toArray()
+        ]);
+
+
     }
 
     /**
@@ -78,8 +132,39 @@ class TipoInstruccionController extends Controller
      * @param  \App\TipoInstruccion  $tipoInstruccion
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TipoInstruccion $tipoInstruccion)
+    public function destroy(Request $request)
     {
-        //
+        $tipoinstruccion = TipoInstruccion::find($request['id']);
+
+        $tipoinstruccion->update(
+            ['estado'=>false]
+        );
+
+        $tipoinstruccion->save();
+
+        return response()->json(
+            ['mensaje'=>'eliminacion exitosa']
+        );
+    }
+
+
+    public function search(Request $request)
+    {
+
+        $tipoinstrucciones = null;
+        if($request['buscar'] != '')
+        {
+            $tipoinstrucciones = TipoInstruccion::where('nombre','like','%'.$request['buscar'].'%')->paginate(10);
+        }else{
+            $tipoinstrucciones = TipoInstruccion::where('estado',true)->paginate(10);
+        }
+
+
+        if($request->ajax())
+        {
+            $view = view('tipoinstruccion.table',compact('tipoinstrucciones'))->render();
+            return  response()->json(['html'=>$view]);
+        }
+
     }
 }

@@ -1,6 +1,6 @@
 @extends('layout')
 
-{{-----------------------------------------------------------------}}
+
 @section('modal-title')
     <h4 class="modal-title">Aviso</h4>
 @endsection
@@ -11,7 +11,7 @@
     {{--<button class="btn btn-sm btn-primary" id="create-paciente">Insertar otro registro</button>--}}
     <a class="btn btn-sm btn-warning" href="{{route('pacientes.index')}}">Volver</a>
 @endsection
-{{-----------------------------------------------------------------}}
+
 @section('content')
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12">

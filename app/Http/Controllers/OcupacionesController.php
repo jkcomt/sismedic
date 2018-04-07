@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Ocupaciones;
+use App\Ocupacion;
 use Illuminate\Http\Request;
 
 class OcupacionesController extends Controller
@@ -14,7 +14,8 @@ class OcupacionesController extends Controller
      */
     public function index()
     {
-        //
+       $ocupaciones = Ocupacion::where('estado',true)->paginate(10);
+       return view('ocupaciones.index',compact("ocupaciones"));
     }
 
     /**
@@ -35,7 +36,25 @@ class OcupacionesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+   
+         if(request()->ajax())
+     {
+            //$data = request();
+            //dd($data['rbTipoAgri']);
+        $data = request()->validate([
+            'nombre'=>'required',
+        ],[
+            'nombre.required'=>'El campo nombres es obligatorio',
+        ]);
+
+        Ocupacion::create([
+            'nombre'=>$data['nombre'],
+            'estado'=>true
+        ]);
+        return response()->json(['mensaje'=>"registro exitoso"]);
+    }
+
+
     }
 
     /**
@@ -44,7 +63,7 @@ class OcupacionesController extends Controller
      * @param  \App\Ocupaciones  $ocupaciones
      * @return \Illuminate\Http\Response
      */
-    public function show(Ocupaciones $ocupaciones)
+    public function show(Ocupacion $ocupaciones)
     {
         //
     }
@@ -55,9 +74,14 @@ class OcupacionesController extends Controller
      * @param  \App\Ocupaciones  $ocupaciones
      * @return \Illuminate\Http\Response
      */
-    public function edit(Ocupaciones $ocupaciones)
+    public function edit($id)
     {
-        //
+            $ocupaciones = Ocupacion::find($id);    
+
+        return response()->json(
+           $ocupaciones->toArray()
+      );
+
     }
 
     /**
@@ -67,9 +91,31 @@ class OcupacionesController extends Controller
      * @param  \App\Ocupaciones  $ocupaciones
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Ocupaciones $ocupaciones)
+    public function update(Request $request)
     {
-        //
+          $ocupaciones= Ocupacion::find($request['id']); 
+
+        $data = request()->validate([
+            'id'=>'required',
+            'nombre'=>'required'
+        ],[
+            'nombre.required'=>'El campo nombres es obligatorio',
+        ]);
+
+
+         $ocupaciones->update([
+            'id'=>$data['id'],
+            'nombre'=>$data['nombre']
+        ]);
+
+         $ocupaciones->save();
+
+
+        return response()->json([
+            'mensaje'=> $ocupaciones->toArray()
+        ]);
+
+
     }
 
     /**
@@ -78,8 +124,18 @@ class OcupacionesController extends Controller
      * @param  \App\Ocupaciones  $ocupaciones
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Ocupaciones $ocupaciones)
+    public function destroy(Request $request)
     {
-        //
+           $ocupaciones = Ocupacion::find($request['id']);
+
+        $ocupaciones->update(
+            ['estado'=>false]
+        );
+
+         $ocupaciones->save();
+
+        return response()->json(
+            ['mensaje'=>'eliminacion exitosa']
+        );
     }
 }

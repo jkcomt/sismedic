@@ -14,7 +14,8 @@ class AreasController extends Controller
      */
     public function index()
     {
-        //
+        $areas = Area::where('estado',true)->paginate(10);
+       return view('area.index',compact("areas"));
     }
 
     /**
@@ -25,6 +26,9 @@ class AreasController extends Controller
     public function create()
     {
         //
+
+
+
     }
 
     /**
@@ -36,6 +40,27 @@ class AreasController extends Controller
     public function store(Request $request)
     {
         //
+     if(request()->ajax())
+     {
+            //$data = request();
+            //dd($data['rbTipoAgri']);
+        $data = request()->validate([
+            'nombre'=>'required',
+        ],[
+            'nombre.required'=>'El campo nombres es obligatorio',
+        ]);
+
+        Area::create([
+            'nombre'=>$data['nombre'],
+            'estado'=>true
+        ]);
+        return response()->json(['mensaje'=>"registro exitoso"]);
+    }
+
+    
+
+
+
     }
 
     /**
@@ -47,6 +72,9 @@ class AreasController extends Controller
     public function show(Area $areas)
     {
         //
+
+
+
     }
 
     /**
@@ -55,9 +83,17 @@ class AreasController extends Controller
      * @param  \App\Area  $areas
      * @return \Illuminate\Http\Response
      */
-    public function edit(Area $areas)
+    public function edit($id)
     {
         //
+
+           $area = Area::find($id);    
+
+        return response()->json(
+          $area->toArray()
+      );
+
+
     }
 
     /**
@@ -67,9 +103,34 @@ class AreasController extends Controller
      * @param  \App\Area  $areas
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Area $areas)
+    public function update(Request $request)
     {
         //
+
+    $area= Area::find($request['id']); 
+
+        $data = request()->validate([
+            'id'=>'required',
+            'nombre'=>'required'
+        ],[
+            'nombre.required'=>'El campo nombres es obligatorio',
+        ]);
+
+
+        $area->update([
+            'id'=>$data['id'],
+            'nombre'=>$data['nombre']
+        ]);
+
+        $area->save();
+
+
+        return response()->json([
+            'mensaje'=>$area->toArray()
+        ]);
+
+
+
     }
 
     /**
@@ -78,8 +139,20 @@ class AreasController extends Controller
      * @param  \App\Area  $areas
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Area $areas)
+    public function destroy(Request $request)
     {
-        //
+
+        $area = Area::find($request['id']);
+
+        $area->update(
+            ['estado'=>false]
+        );
+
+        $area->save();
+
+        return response()->json(
+            ['mensaje'=>'eliminacion exitosa']
+        );
+        
     }
 }
