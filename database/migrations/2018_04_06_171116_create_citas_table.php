@@ -20,13 +20,13 @@ class CreateCitasTable extends Migration
             $table->foreign('paciente_id')->references('id')->on('pacientes');
             $table->integer('paciente_id')->unsigned()->nullable();
 
-            $table->foreign('cliente_cuenta_id')->references('id')->on('cliente_cuenta_id');
+            $table->foreign('cliente_cuenta_id')->references('id')->on('cliente_cuentas');
             $table->integer('cliente_cuenta_id')->unsigned()->nullable();
 
-            $table->foreign('tipo_examen_id')->references('id')->on('tipo_examen_id');
+            $table->foreign('tipo_examen_id')->references('id')->on('tipo_examenes');
             $table->integer('tipo_examen_id')->unsigned()->nullable();
 
-            $table->foreign('perfil_id')->references('id')->on('perfil_id');
+            $table->foreign('perfil_id')->references('id')->on('perfiles');
             $table->integer('perfil_id')->unsigned()->nullable();
 
             $table->date('fecha_examen');

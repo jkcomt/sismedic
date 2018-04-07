@@ -15,7 +15,7 @@ class CreateClienteCuentasTable extends Migration
     {
         Schema::create('cliente_cuentas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('cliente_cuenta');
+            $table->string('descripcion');
             $table->boolean('estado');
             //$table->timestamps();
         });
