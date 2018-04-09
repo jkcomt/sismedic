@@ -54,14 +54,7 @@ th,td{
         <a href="{{route('area.index')}}" class="btn btn-lg btn-block btn-default" ><h3><span class="fa fa-cubes"></span></h3> <strong>area</strong></a>
     </div>
 
-    <div class="col-md-2">
-        <a href="{{route('ocupaciones.index')}}" class="btn btn-lg btn-block btn-default" ><h3><span class="fa fa-cubes"></span></h3> <strong>Ocupacion</strong></a>
-    </div>
-
-    <div class="col-md-2">
-        <a href="{{route('ocupaciones.index')}}" class="btn btn-lg btn-block btn-default" ><h3><span class="fa fa-cubes"></span></h3> <strong>Ocupacion</strong></a>
-    </div>
-</div>
+ </div>
 <br>
 <div class="row">
      <div class="col-md-2">
@@ -79,6 +72,35 @@ th,td{
     </div>
 
 </div>
+
+
+</div>
+</div>
+<h3>CITAS</h3>
+<div class="panel panel-body">
+ <div class="">
+
+
+    <div class="row text-center">
+       <div class="col-md-2" >
+        <a href="{{route('perfil.index')}}" class="btn btn-lg btn-block btn-default" ><h3><span class="fa fa-users"></span></h3> <strong>Perfil</strong></a>
+    </div>
+    <div class="col-md-2">
+        <a href="{{route('cliente_cuenta.index')}}" class="btn btn-lg btn-block btn-default" ><h3><span class="fa fa-user"></span></h3> <strong>Cliente Cuenta</strong></a>
+    </div>
+    <div class="col-md-2">
+        <a href="{{route('perfil_examen.index')}}" class="btn btn-lg btn-block btn-default" ><h3><span class="fa fa-cubes"></span></h3> <strong>Perfil Examen</strong></a>
+    </div>
+
+    <div class="col-md-2">
+        <a href="{{route('tipo_examen.index')}}" class="btn btn-lg btn-block btn-default" ><h3><span class="fa fa-cubes"></span></h3> <strong>Tipo Examen</strong></a>
+    </div>
+
+    <div class="col-md-2">
+        <a href="{{route('lista_examen.index')}}" class="btn btn-lg btn-block btn-default" ><h3><span class="fa fa-cubes"></span></h3> <strong>Lista Examen</strong></a>
+    </div>
+ </div>
+
 
 
 </div>

@@ -14,7 +14,8 @@ class PerfilController extends Controller
      */
     public function index()
     {
-        //
+      $perfiles= Perfil::where('estado',true)->paginate(10);
+       return view('perfil.index',compact("perfiles"));
     }
 
     /**
@@ -35,9 +36,26 @@ class PerfilController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
 
+
+            if(request()->ajax())
+       {
+              //$data = request();
+              //dd($data['rbTipoAgri']);
+          $data = request()->validate([
+              'nombre'=>'required',
+          ],[
+              'nombre.required'=>'El campo nombres es obligatorio',
+          ]);
+
+          Perfil::create([
+              'descripcion'=>$data['nombre'],
+              'estado'=>true
+          ]);
+          return response()->json(['mensaje'=>"registro exitoso"]);
+
+    }
+  }
     /**
      * Display the specified resource.
      *
@@ -55,9 +73,13 @@ class PerfilController extends Controller
      * @param  \App\Perfil  $perfil
      * @return \Illuminate\Http\Response
      */
-    public function edit(Perfil $perfil)
+    public function edit($id)
     {
-        //
+      $perfil = Perfil::find($id);
+
+     return response()->json(
+       $perfil->toArray()
+   );
     }
 
     /**
@@ -67,9 +89,29 @@ class PerfilController extends Controller
      * @param  \App\Perfil  $perfil
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Perfil $perfil)
+    public function update(Request $request)
     {
-        //
+    $perfil =  Perfil::find($request['id']);
+
+        $data = request()->validate([
+            'id'=>'required',
+            'nombre'=>'required'
+        ],[
+            'nombre.required'=>'El campo nombres es obligatorio',
+        ]);
+
+
+           $perfil->update([
+            'id'=>$data['id'],
+            'descripcion'=>$data['nombre']
+        ]);
+
+           $perfil->save();
+
+
+        return response()->json([
+            'mensaje'=>   $perfil->toArray()
+        ]);
     }
 
     /**
@@ -78,8 +120,18 @@ class PerfilController extends Controller
      * @param  \App\Perfil  $perfil
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Perfil $perfil)
+    public function destroy(Request $request)
     {
-        //
+      $perfil = Perfil::find($request['id']);
+
+        $perfil->update(
+        ['estado'=>false]
+        );
+
+        $perfil->save();
+
+        return response()->json(
+        ['mensaje'=>'eliminacion exitosa']
+      );
     }
 }

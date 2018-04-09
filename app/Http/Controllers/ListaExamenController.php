@@ -14,7 +14,8 @@ class ListaExamenController extends Controller
      */
     public function index()
     {
-        //
+      $listaexamenes= ListaExamen::where('estado',true)->paginate(10);
+       return view('listaexamen.index',compact("listaexamenes"));
     }
 
     /**
@@ -35,7 +36,32 @@ class ListaExamenController extends Controller
      */
     public function store(Request $request)
     {
-        //
+            if(request()->ajax())
+       {
+              //$data = request();
+              //dd($data['rbTipoAgri']);
+          $data = request()->validate([
+              'nombre'=>'required',
+              'tipo'=>'required',
+              'valor'=>'required',
+              'descuento'=>'required',
+          ],[
+              'nombre.required'=>'El campo nombres es obligatorio',
+              'tipo.required'=>'El campo nombres es obligatorio',
+              'valor.required'=>'El campo nombres es obligatorio',
+              'descuento.required'=>'El campo nombres es obligatorio',
+          ]);
+
+          listaexamen::create([
+              'descripcion'=>$data['nombre'],
+              'tipo'=>$data['tipo'],
+              'valor'=>$data['valor'],
+              'dscto'=>$data['descuento'],
+              'estado'=>true
+          ]);
+          return response()->json(['mensaje'=>'Registro Exitoso']);
+
+      }
     }
 
     /**
@@ -55,9 +81,13 @@ class ListaExamenController extends Controller
      * @param  \App\ListaExamen  $listaExamen
      * @return \Illuminate\Http\Response
      */
-    public function edit(ListaExamen $listaExamen)
+    public function edit($id)
     {
-        //
+      $listaExamen = listaexamen::find($id);
+
+     return response()->json(
+       $listaExamen->toArray()
+   );
     }
 
     /**
@@ -67,9 +97,41 @@ class ListaExamenController extends Controller
      * @param  \App\ListaExamen  $listaExamen
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ListaExamen $listaExamen)
+    public function update(Request $request)
     {
-        //
+    $listaExamen =  ListaExamen::find($request['id']);
+
+          $data = request()->validate([
+              'id'=>'required',
+              'editnombre'=>'required',
+              'edittipo'=>'required',
+              'editvalor'=>'required',
+              'editdescuento'=>'required'
+          ],[
+              'editnombre.required'=>'El campo nombres es obligatorio',
+              'edittipo.required'=>'El campo nombres es obligatorio',
+              'editvalor.required'=>'El campo nombres es obligatorio',
+              'editdescuento.required'=>'El campo nombres es obligatorio',
+          ]);
+
+
+             $listaExamen->update([
+              'id'=>$data['id'],
+              'descripcion'=>$data['editnombre'],
+              'tipo'=>$data['edittipo'],
+              'valor'=>$data['editvalor'],
+              'dscto'=>$data['editdescuento']
+          ]);
+
+             $listaExamen->save();
+
+
+          return response()->json([
+              'mensaje'=>   $listaExamen->toArray()
+          ]);
+
+//return response()->json(['mensaje'=>$request['id']." ".$request['editnombre']/*." ".$request['edittipo']." ".$request['editvalor']." ".$request['editdescuento']*/]);
+//    return response()->json(['mensaje'=>$request['id']." ".$request['editnombre']." ".$request['edittipo']." ".$request['editvalor']." ".$request['editdescuento']]);
     }
 
     /**
@@ -78,8 +140,19 @@ class ListaExamenController extends Controller
      * @param  \App\ListaExamen  $listaExamen
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ListaExamen $listaExamen)
+    public function destroy(Request $request)
     {
-        //
+      $listaExamen = ListaExamen::find($request['id']);
+
+        $listaExamen->update(
+        ['estado'=>false]
+        );
+
+        $listaExamen->save();
+
+        return response()->json(
+        ['mensaje'=>'eliminacion exitosa']
+      );
+
     }
 }

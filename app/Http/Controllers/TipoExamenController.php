@@ -14,7 +14,8 @@ class TipoExamenController extends Controller
      */
     public function index()
     {
-        //
+      $tipoExamens= TipoExamen::where('estado',true)->paginate(10);
+       return view('tipoexamen.index',compact("tipoExamens"));
     }
 
     /**
@@ -35,7 +36,25 @@ class TipoExamenController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+      if(request()->ajax())
+ {
+        //$data = request();
+        //dd($data['rbTipoAgri']);
+    $data = request()->validate([
+        'nombre'=>'required',
+    ],[
+        'nombre.required'=>'El campo nombres es obligatorio',
+    ]);
+
+    TipoExamen::create([
+        'descripcion'=>$data['nombre'],
+        'estado'=>true
+    ]);
+    return response()->json(['mensaje'=>"registro exitoso"]);
+}
+
+
     }
 
     /**
@@ -55,9 +74,13 @@ class TipoExamenController extends Controller
      * @param  \App\TipoExamen  $tipoExamen
      * @return \Illuminate\Http\Response
      */
-    public function edit(TipoExamen $tipoExamen)
+    public function edit($id)
     {
-        //
+      $tipoExamen = TipoExamen::find($id);
+
+     return response()->json(
+       $tipoExamen->toArray()
+   );
     }
 
     /**
@@ -67,9 +90,29 @@ class TipoExamenController extends Controller
      * @param  \App\TipoExamen  $tipoExamen
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TipoExamen $tipoExamen)
+    public function update(Request $request)
     {
-        //
+      $tipoExamen=  TipoExamen::find($request['id']);
+
+      $data = request()->validate([
+          'id'=>'required',
+          'nombre'=>'required'
+      ],[
+          'nombre.required'=>'El campo nombres es obligatorio',
+      ]);
+
+
+         $tipoExamen->update([
+          'id'=>$data['id'],
+          'descripcion'=>$data['nombre']
+      ]);
+
+         $tipoExamen->save();
+
+
+      return response()->json([
+          'mensaje'=>   $tipoExamen->toArray()
+      ]);
     }
 
     /**
@@ -78,8 +121,18 @@ class TipoExamenController extends Controller
      * @param  \App\TipoExamen  $tipoExamen
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TipoExamen $tipoExamen)
+    public function destroy(Request $request)
     {
-        //
+      $tipoExamen = TipoExamen::find($request['id']);
+
+        $tipoExamen->update(
+        ['estado'=>false]
+        );
+
+        $tipoExamen->save();
+
+        return response()->json(
+        ['mensaje'=>'eliminacion exitosa']
+        );
     }
 }
