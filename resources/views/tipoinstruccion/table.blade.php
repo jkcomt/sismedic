@@ -26,11 +26,11 @@
 
                 </td-->
                  <td>
-                   <button class="btn btn-xs btn-warning edit"  value="{{$tipoinstruccion->id}}"><span class="glyphicon glyphicon-pencil"></span> EDIT.</button>
+                   <button class="btn btn-xs btn-warning edit"  value="{{$tipoinstruccion->id}}"><span class="glyphicon glyphicon-pencil"></span> EDITAR</button>
                     {{csrf_field()}}
                     {{--<a href="{{route('lote.reporte',$tipoinstruccion->id)}}" target="_blank" class="btn btn-xs btn-info "><span class="glyphicon glyphicon-print"></span> IMP.</a>--}}
                    
-                    <button href="#" class="btn btn-xs btn-danger delete"  id="{{$tipoinstruccion->id}}"><span class="glyphicon glyphicon-remove"></span> ELIM.</button>
+                    <button href="#" class="btn btn-xs btn-danger delete"  id="{{$tipoinstruccion->id}}"><span class="glyphicon glyphicon-remove"></span> ELIMINAR</button>
                 </td>
             </tr>
         @endforeach

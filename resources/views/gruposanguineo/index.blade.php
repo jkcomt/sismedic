@@ -41,14 +41,13 @@ th,td{
         <div class="form-group">
             <!--a href="{{--route('tipoinstruccion.create')--}}" class="btn btn-success">NUEVA INSTRUCCION</a-->
             
-            <button class="btn btn-success new"><span class="glyphicon glyphicon-pencil"></span> NUEVO GRUPO SANGUINEO</button>
+            <button class="btn btn-success new"> NUEVO GRUPO SANGUINEO</button>
 
 
         </div>
     </div>
     <div class="col-md-10">
         <form action="" class="form-inline text-right">
-            <input type="text" id="buscartipoinstruccion" placeholder="BUSCAR..." class="form-control">
             {{--<button class="btn btn-primary form-control">BUSCAR</button>--}}
         </form>
     </div>

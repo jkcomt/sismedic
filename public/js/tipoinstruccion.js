@@ -135,7 +135,7 @@ $('.confirmar').on('click',function (e) {
 $('#update').on('click',function (e) {
     e.preventDefault();
 
-    var url = $('#tipoinstruccion-frm-update').attr('action');
+    var url = $('#editarTipoInstruccion').attr('action');
 
     var id = $('#update').attr('value')
     var nombre = $('input[name=nombre]').val()

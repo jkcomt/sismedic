@@ -8,7 +8,7 @@ th,td{
 
 @endsection
 
-@section('header','LISTADO DE TIPOS DE INSTRUCCION')
+@section('header','LISTADO DE TIPOS DE INSTRUCCIÓN')
 @section('modal-title')
 <h4 class="modal-title">Aviso</h4>
 @endsection
@@ -40,14 +40,14 @@ th,td{
         <div class="form-group">
             <!--a href="{{--route('tipoinstruccion.create')--}}" class="btn btn-success">NUEVA INSTRUCCION</a-->
             
-            <button class="btn btn-success new"><span class="glyphicon glyphicon-pencil"></span> NUEVA INSTRUCCION.</button>
+            <button class="btn btn-success new"> NUEVA INSTRUCCIÓN</button>
 
 
         </div>
     </div>
     <div class="col-md-10">
         <form action="" class="form-inline text-right">
-            <input type="text" id="buscartipoinstruccion" placeholder="BUSCAR..." class="form-control">
+            {{--<input type="text" id="buscartipoinstruccion" placeholder="BUSCAR..." class="form-control">--}}
             {{--<button class="btn btn-primary form-control">BUSCAR</button>--}}
         </form>
     </div>

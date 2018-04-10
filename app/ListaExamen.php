@@ -19,4 +19,8 @@ class ListaExamen extends Model
 
 
     public $timestamps = false;
+
+    public function perfiles(){
+    	return $this->belongsToMany(Perfil::class,'perfil_examenes','lista_examen_id','perfil_id');
+    }
 }

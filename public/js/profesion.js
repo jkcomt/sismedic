@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
     $('#msg-error').hide();
-    console.log("paciente.js");
+    console.log("profesion.js");
 });
 
 $('#profesion-frm-create').submit(function(e){
@@ -57,9 +57,9 @@ $('body').on('click','.edit',function(e){
     e.preventDefault();
     $botonPresionado = "edit"
 
-    $('input[name=nombre]').parent().removeClass('has-error')
+    $('input[name=editnombre]').parent().removeClass('has-error')
 
-    $('input[name=nombre]').val('')
+    $('input[name=editnombre]').val('')
 
     var id = $(this).attr('value');
 
@@ -73,8 +73,9 @@ $('body').on('click','.edit',function(e){
         },
         success: function(data){
             $('#update').attr('value',data.id)
-            $('modal-profesion-edit input[name=nombre]').val(data.nombre)
-         
+            console.log(data.nombre);
+            $(' input[name=editnombre]').val(data.nombre)
+            
             $('#modal-profesion-edit').modal('show');
         },
         error: function(data){

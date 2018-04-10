@@ -10,7 +10,7 @@ $('#registrarTipoExamen').submit(function(e){
 
     var datos = $('#registrarTipoExamen');
     var url = datos.attr('action');
-
+    console.log('click')
    $.post(url,datos.serialize(),function (result) {
 
     }).success(function(data)

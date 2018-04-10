@@ -3,7 +3,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Nuevo Tipo de Instruccion</h4>
+                <h4 class="modal-title">Nuevo Cliente Cuenta</h4>
             </div>
             <div class="modal-body ">
                   <form action="{{route('cliente_cuenta.store')}}" id="registrarClienteCuenta" method="post">
@@ -13,23 +13,25 @@
                         <div class="row">
 
                             <div class="col-md-8 form-group">
-                                <label for="nombre" class="control-label">Tipo Instruccion :</label>
+                                <label for="nombre" class="control-label">Cliente Cuenta :</label>
                                 <input type="text"  value="" class="form-control" name="nombre">
                             </div>
                         </div>
 
+                
+
+
+      
+            </div>
+            <div class="modal-footer">
                         <div class="row">
                             <div class="col-md-12 text-right">
                                 <button class="btn btn-success">Registrar</button>
                                 <a href="" class="btn btn-warning" data-dismiss="modal">Volver</a>
                     </div>
                 </div>
-
-
-            </form>
-            </div>
-            <div class="modal-footer">
              </div>
+                   </form>
         </div>
     </div>
 </div>
