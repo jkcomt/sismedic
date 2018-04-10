@@ -89,9 +89,9 @@ th,td{
     <div class="col-md-2">
         <a href="{{route('cliente_cuenta.index')}}" class="btn btn-lg btn-block btn-default" ><h3><span class="fa fa-id-card"></span></h3> <strong>Cliente Cuenta</strong></a>
     </div>
-    <div class="col-md-2">
+   {{--  <div class="col-md-2">
         <a href="" class="btn btn-lg btn-block btn-default" ><h3><span class="fa fa-address-book-o"></span></h3> <strong>Perfil Examen</strong></a>
-    </div>
+    </div> --}}
 
     <div class="col-md-2">
         <a href="{{route('tipo_examen.index')}}" class="btn btn-lg btn-block btn-default" ><h3><span class="fa fa-list-alt"></span></h3> <strong>Tipo de Examen</strong></a>
