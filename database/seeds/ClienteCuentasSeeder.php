@@ -11,6 +11,6 @@ class ClienteCuentasSeeder extends Seeder
      */
     public function run()
     {
-        factory(ClienteCuenta::class,1);
+        factory(ClienteCuenta::class,1)->create();
     }
 }

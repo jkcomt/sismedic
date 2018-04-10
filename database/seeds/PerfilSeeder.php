@@ -12,5 +12,9 @@ class PerfilSeeder extends Seeder
     public function run()
     {
         factory(Perfil::class,1)->create();
+
+        factory(Perfil::class)->create([
+            'descripcion'=>'EMPRESA SAC'
+        ]);
     }
 }

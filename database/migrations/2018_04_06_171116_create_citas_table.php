@@ -33,6 +33,7 @@ class CreateCitasTable extends Migration
             $table->time('hora_examen');
             $table->date('fecha_registro');
             $table->time('hora_registro');
+            $table->string('estado_cita')->nullable();
             $table->boolean('estado');
             //$table->timestamps();
         });

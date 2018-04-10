@@ -35,6 +35,11 @@ Route::group([
     Route::post('/buscar','PacientesController@search')->name('pacientes.search');
     Route::post('/delete','PacientesController@destroy')->name('pacientes.destroy');
     Route::post('/update','PacientesController@update')->name('pacientes.update');
+    Route::post('/citas/store','PacientesController@storeCita')->name('pacientes.citas.store');
+    Route::get('/citas/{id}/create','PacientesController@createCita')->name('pacientes.citas.create');
+    Route::get('/citas/{id}/edit','PacientesController@editCita')->name('pacientes.citas.edit');
+    Route::post('/citas/update','PacientesController@updateCita')->name('pacientes.citas.update');
+    Route::get('/citas/{id}','PacientesController@pacienteCita')->name('pacientes.citas');
 });
 
 
@@ -61,18 +66,13 @@ Route::resource('tipoinstruccion','TipoInstruccionController');
 Route::group(['prefix'=>'tipoinstruccion'],
     function()
     {
-     
         Route::post('/update','TipoInstruccionController@update')->name('tipoinstruccion.update');
         Route::post('/busqueda','TipoInstruccionController@search')->name('tipoinstruccion.buscar');//
         Route::post('/delete','TipoInstruccionController@destroy')->name('tipoinstruccion.delete');
     }
-
 );
 
-
 Route::resource('profesion','ProfesionesController');
-
-
 Route::group(['prefix'=>'profesion'],
     function()
     {
@@ -84,10 +84,7 @@ Route::group(['prefix'=>'profesion'],
 
 );
 
-
 Route::resource('area','AreasController');
-
-
 Route::group(['prefix'=>'area'],
     function()
     {
@@ -101,36 +98,24 @@ Route::group(['prefix'=>'area'],
 
 Route::resource('contrata','ContratadoresController');
 
-
-
 Route::group(['prefix'=>'contrata'],
     function()
     {
-     
         Route::post('/update','ContratadoresController@update')->name('contrata.update');
         Route::post('/busqueda','ContratadoresController@search')->name('contrata.buscar');//
         Route::post('/delete','ContratadoresController@destroy')->name('contrata.delete');
     }
-
 );
 
-
-
 Route::resource('lugarlabor','LugarLaboresController');
-
-
-
 Route::group(['prefix'=>'lugarlabor'],
     function()
     {
-     
         Route::post('/update','LugarLaboresController@update')->name('lugarlabor.update');
         Route::post('/busqueda','LugarLaboresController@search')->name('lugarlabor.buscar');//
         Route::post('/delete','LugarLaboresController@destroy')->name('lugarlabor.delete');
     }
-
 );
-
 
 Route::resource('ocupaciones','OcupacionesController');
 Route::group(['prefix'=>'ocupaciones'],
@@ -144,35 +129,26 @@ Route::group(['prefix'=>'ocupaciones'],
 
 );
 
-
-
-
 Route::resource('gruposanguineo','GrupoSanguineoController');
 
 Route::group(['prefix'=>'gruposanguineo'],
     function()
     {
-     
         Route::post('/update','GrupoSanguineoController@update')->name('gruposanguineo.update');
         Route::post('/busqueda','GrupoSanguineoController@search')->name('gruposanguineo.buscar');//
         Route::post('/delete','GrupoSanguineoController@destroy')->name('gruposanguineo.delete');
     }
-
 );
-
-
 
 Route::resource('altura','AlturasController');
 
 Route::group(['prefix'=>'altura'],
     function()
     {
-     
         Route::post('/update','AlturasController@update')->name('altura.update');
         Route::post('/busqueda','AlturasController@search')->name('altura.buscar');
         Route::post('/delete','AlturasController@destroy')->name('altura.delete');
     }
-
 );
 
 Route::resource('configuracion','ConfiguracionController');
@@ -220,8 +196,14 @@ Route::group([
     'prefix'=>'perfil_examen'
 ],function(){
     Route::post('/buscar','PerfilExamenController@search')->name('perfil_examen.search');
-    Route::post('/delete','PerfilExamenController@dwwestroy')->name('perfil_examen.destroy');
+    Route::post('/buscaredit','PerfilExamenController@searchedit')->name('perfil_examen.searchedit');
+    Route::post('/delete','PerfilExamenController@destroy')->name('perfil_examen.destroy');
     Route::post('/update','PerfilExamenController@update')->name('perfil_examen.update');
 });
 
-
+Route::resource('citas','CitaController');
+Route::group([
+    'prefix'=>'citas'
+],function(){
+    Route::post('/delete','CitaController@destroy')->name('citas.destroy');
+});

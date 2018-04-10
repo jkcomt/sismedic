@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Altura;
 use App\Area;
 use App\Cargo;
+use App\Cita;
+use App\CitaExamen;
+use App\ClienteCuenta;
 use App\Contratador;
 use App\Departamento;
 use App\Distrito;
@@ -13,9 +16,12 @@ use App\LugarLabor;
 use App\Ocupacion;
 use App\Paciente;
 use App\Pais;
+use App\Perfil;
+use App\PerfilExamen;
 use App\Profesion;
 use App\Provincia;
 use App\Regimen;
+use App\TipoExamen;
 use App\TipoInstruccion;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -454,5 +460,148 @@ class PacientesController extends Controller
         ]);
     }
 
+    public function pacienteCita($id){
+        $paciente = Paciente::find($id);
 
+        $citas = Cita::where('estado',true)->where('paciente_id',$paciente->id)
+            ->orderBy('fecha_examen','asc')
+            ->orderBy('hora_examen','asc')->paginate(10);
+
+        return view('pacientes.citas.index',compact('paciente','citas'));
+    }
+
+    public function createCita($id)
+    {
+        $cita = Cita::where('estado','=',true)->get()->last();
+        $paciente = Paciente::find($id);
+
+        $tipoExamenes = TipoExamen::where('estado',true)->get()->pluck('descripcion','id')->toArray();
+
+        $clienteCuentas = ClienteCuenta::where('estado',true)->get()->pluck('descripcion','id')->toArray();
+
+        $perfiles = Perfil::where('estado',true)->get()->pluck('descripcion','id')->toArray();
+
+        $perfilesExamenes = PerfilExamen::where('estado',true)->get();
+
+        return view('pacientes.citas.create',compact('paciente','cita','tipoExamenes','clienteCuentas','perfiles','perfilesExamenes'));
+    }
+
+    public function storeCita(Request $request)
+    {
+
+        if(request()->ajax())
+        {
+            //$data = request()->input();
+            $data = request()->validate([
+                'nro_serie_cita'=>'required',
+                'pacienteId'=>'required',
+                'fecha_examen'=>'required',
+                'hora_examen'=>'required',
+                'clienteCuenta'=>'required',
+                'tipoExamen'=>'required',
+                'perfil'=>'required',
+                'items'=>'required|array'
+            ],[
+                'items.required'=>'Seleccione al menos un examen para la cita'
+            ]);
+
+            $cita = Cita::create([
+                'nro_serie_cita'=>$data['nro_serie_cita'],
+                'paciente_id'=>$data['pacienteId'],
+                'cliente_cuenta_id'=>$data['clienteCuenta'],
+                'tipo_examen_id'=>$data['tipoExamen'],
+                'perfil_id'=>$data['perfil'],
+                'fecha_examen'=>$data['fecha_examen'],
+                'hora_examen'=>$data['hora_examen'],
+                'fecha_registro'=>Carbon::now(),
+                'hora_registro'=>Carbon::now(),
+                'estado_cita'=>'agendado',
+                'estado'=>true
+            ]);
+
+            foreach ($request['items'] as $item){
+                $citaItem = CitaExamen::create([
+                   'cita_id'=>$cita->id,
+                   'item_examen_id'=>$item,
+                   'estado'=>true
+                ]);
+            }
+
+            return response()->json(['mensaje' => $cita->with('paciente')->get()->last()]);
+        }
+    }
+
+    public function destroyCita(Request $request)
+    {
+        $cita = Cita::find($request['id']);
+
+        $cita->update([
+            'estado'=>false
+        ]);
+
+        $cita->save();
+
+        return response()->json([
+            'mensaje'=>"eliminación exitosa"
+        ]);
+    }
+
+    public function editCita($id)
+    {
+        $cita = Cita::where('id','=',$id)->first();
+
+        $paciente = Paciente::find($cita->paciente->id);
+
+        $tipoExamenes = TipoExamen::where('estado',true)->get()->pluck('descripcion','id')->toArray();
+
+        $clienteCuentas = ClienteCuenta::where('estado',true)->get()->pluck('descripcion','id')->toArray();
+
+        $perfiles = Perfil::where('estado',true)->get()->pluck('descripcion','id')->toArray();
+
+        $perfilesExamenes = PerfilExamen::where('estado',true)->get();
+
+        return view('pacientes.citas.edit',compact('paciente','cita','tipoExamenes','clienteCuentas','perfiles','perfilesExamenes'));
+    }
+
+    public function updateCita(Request $request){
+        if(request()->ajax())
+        {
+            //$data = request()->input();
+            $data = request()->validate([
+                'nro_serie_cita'=>'required',
+                'pacienteId'=>'required',
+                'fecha_examen'=>'required',
+                'hora_examen'=>'required',
+                'clienteCuenta'=>'required',
+                'tipoExamen'=>'required',
+                'perfilEditar'=>'required',
+                'items'=>'required|array'
+            ],[
+                'items.required'=>'Seleccione al menos un examen para la cita'
+            ]);
+
+            $cita = Cita::find($request['cita_id']);
+
+            $cita->update([
+                'cliente_cuenta_id'=>$data['clienteCuenta'],
+                'tipo_examen_id'=>$data['tipoExamen'],
+                'perfil_id'=>$data['perfilEditar'],
+                'fecha_examen'=>$data['fecha_examen'],
+                'hora_examen'=>$data['hora_examen'],
+                'estado_cita'=>'agendado'
+            ]);
+
+            $citaExamenes = CitaExamen::where('cita_id',$cita->id)->delete();
+
+            foreach ($request['items'] as $item){
+                $citaItem = CitaExamen::create([
+                    'cita_id'=>$cita->id,
+                    'item_examen_id'=>$item,
+                    'estado'=>true
+                ]);
+            }
+
+            return response()->json(['mensaje' => $cita->with('paciente')->get()->last()]);
+        }
+    }
 }

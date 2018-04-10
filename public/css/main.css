@@ -1,0 +1,16 @@
+.altura-md{
+    height: 200px;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+.borde-inferior{
+    border-bottom: solid 1px black;
+    min-height: 21px;
+}
+.item{
+    padding-left: 10px;
+}
+.item:hover{
+    background-color: #98cbe8;
+}

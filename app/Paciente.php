@@ -146,7 +146,7 @@ class Paciente extends Model
                 $nuevaserie = "H00" . $valor;
                 break;
             case 5:
-                $nuevaserie = "h0" . $valor;
+                $nuevaserie = "H0" . $valor;
                 break;
             case 6:
                 $nuevaserie = "H" . $valor;

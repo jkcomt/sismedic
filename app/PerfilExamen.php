@@ -23,4 +23,13 @@ class PerfilExamen extends Model
     public function listaExamen(){
         return $this->belongsTo(ListaExamen::class);
     }
+
+    public function citaExamen(){
+        return $this->hasMany(CitaExamen::class,'item_examen_id');
+    }
+
+    public function cita(){
+        return $this->belongsToMany(Cita::class,'cita_examenes','item_examen_id','cita_id');
+    }
+
 }

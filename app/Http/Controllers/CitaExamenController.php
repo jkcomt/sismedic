@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Cita;
-use App\PerfilExamen;
+use App\CitaExamen;
 use Illuminate\Http\Request;
 
-class CitaController extends Controller
+class CitaExamenController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,11 +22,9 @@ class CitaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create()
     {
-        $citas = Cita::Where('estado',true)->where('paciente_id',$id)->paginate(10);
-
-        return view('citas.create',compact('citas'));
+        //
     }
 
     /**
@@ -44,10 +41,10 @@ class CitaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Cita  $cita
+     * @param  \App\CitaExamen  $citaExamen
      * @return \Illuminate\Http\Response
      */
-    public function show(Cita $cita)
+    public function show(CitaExamen $citaExamen)
     {
         //
     }
@@ -55,10 +52,10 @@ class CitaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Cita  $cita
+     * @param  \App\CitaExamen  $citaExamen
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cita $cita)
+    public function edit(CitaExamen $citaExamen)
     {
         //
     }
@@ -67,10 +64,10 @@ class CitaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Cita  $cita
+     * @param  \App\CitaExamen  $citaExamen
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cita $cita)
+    public function update(Request $request, CitaExamen $citaExamen)
     {
         //
     }
@@ -78,23 +75,11 @@ class CitaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Cita  $cita
+     * @param  \App\CitaExamen  $citaExamen
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy(CitaExamen $citaExamen)
     {
-        $cita = Cita::find($request['id']);
-
-        $cita->update([
-            'estado'=>false
-        ]);
-
-        $cita->save();
-
-        return response()->json([
-            'mensaje'=>"eliminación exitosa"
-        ]);
+        //
     }
-
-
 }

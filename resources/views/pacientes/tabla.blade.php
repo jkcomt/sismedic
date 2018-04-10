@@ -14,12 +14,15 @@
                 <td>{{$paciente->apellido_paterno.' '.$paciente->apellido_materno}}</td>
                 <td>{{$paciente->nombres}}</td>
                 <td>
-                    <form action="{{route('pacientes.show',[$paciente->id])}}">
+                    <form action="{{route('pacientes.show',[$paciente->id])}}" method="get">
                         <button class="btn btn-xs btn-default"><span class="glyphicon glyphicon-info-sign"></span> DETALLE</button>
                     </form>
                 </td>
                 <td>
-                    <a href="#" class="btn btn-xs btn-success cita"  id="{{$paciente->id}}"><span class="glyphicon glyphicon-plus"></span> NUEVA CITA</a>
+                    {{--<form action="{{route('pacientes.citas',[$paciente->id])}}" method="get">--}}
+                        {{--<button class="btn btn-xs btn-success cita"><span class="glyphicon glyphicon-plus"></span> CITAS</button>--}}
+                    {{--</form>--}}
+                    <a href="{{route('pacientes.citas',[$paciente->id])}}" class="btn btn-xs btn-success cita"  id="{{$paciente->id}}"><span class="glyphicon glyphicon-plus"></span> CITAS</a>
                     {{--<form action="{{route('pacientes.edit',[$paciente->id])}}" class="form-group">--}}
                         {{--<button class="btn btn-xs btn-warning editar"><span class="glyphicon glyphicon-pencil"></span> EDITAR</button>--}}
                     {{--</form>--}}
