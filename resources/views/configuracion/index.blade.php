@@ -51,7 +51,8 @@ th,td{
     </div>
 
     <div class="col-md-2">
-        <a href="{{route('area.index')}}" class="btn btn-lg btn-block btn-default" ><h3><span class="fa fa-cube"></span></h3> <strong>Area</strong></a>
+        <a href="{{route('area.index')}}" class="btn btn-lg btn-block btn-default" ><h3><span class="fa fa-cube"></span></h3> <strong>Área</strong></a>
+
     </div>
 
  </div>
@@ -68,7 +69,7 @@ th,td{
         <a href="{{route('altura.index')}}" class="btn btn-lg btn-block btn-default" ><h3><span class="fa fa-arrow-up"></span></h3> <strong>Altura</strong></a>
     </div>
     <div class="col-md-2">
-        <a href="{{route('gruposanguineo.index')}}" class="btn btn-lg btn-block btn-default" ><h3><span class="fa fa-heart-o"></span></h3> <strong>Grupo Sanguineo</strong></a>
+        <a href="{{route('gruposanguineo.index')}}" class="btn btn-lg btn-block btn-default" ><h3><span class="fa fa-heart-o"></span></h3> <strong>Grupo Sanguíneo</strong></a>
     </div>
 
 </div>
