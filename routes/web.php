@@ -222,4 +222,9 @@ Route::group([
     Route::post('/buscar','PerfilExamenController@search')->name('perfil_examen.search');
     Route::post('/delete','PerfilExamenController@destroy')->name('perfil_examen.destroy');
     Route::post('/update','PerfilExamenController@update')->name('perfil_examen.update');
+    Route::get('/perfil/{id}','PerfilExamenController@index')->name('perfil_examen.index');
+});
+
+Route::get('/calendar',function(){
+    return view('calendario.index');
 });

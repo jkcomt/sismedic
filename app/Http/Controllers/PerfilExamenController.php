@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\PerfilExamen;
 use App\ListaExamen;
 use App\Perfil;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class PerfilExamenController extends Controller
@@ -14,12 +15,19 @@ class PerfilExamenController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-      $perfiles=Perfil::where('estado',true)->paginate(10);
-      $listaexamenes=ListaExamen::where('estado',true)->paginate(10);
-      $perfilExamens= PerfilExamen::where('estado',true)->paginate(10);
-       return view('perfilexamen.index',compact("perfilExamens","listaexamenes","perfiles"));
+      //$perfiles=Perfil::where('estado',true)->paginate(10);}
+        $perfil=Perfil::find($id);
+
+        $perfilExamens= PerfilExamen::where('estado',true)->where('perfil_id',$perfil->id)->get();
+
+       $listaexamenes=ListaExamen::where('estado',true)
+                        ->whereNotIn('id',function($query)  use($id){
+                            $query->select('lista_examen_id')->from('perfil_examenes')->whereRaw('perfil_examenes.perfil_id',$id);
+                        })->get();
+    
+       return view('perfilexamen.index',compact("perfil","listaexamenes"));
     }
 
     /**
@@ -83,7 +91,8 @@ class PerfilExamenController extends Controller
      */
     public function edit($id)
     {
-        //
+
+   
     }
 
     /**
@@ -120,4 +129,14 @@ class PerfilExamenController extends Controller
 
 
     }
+
+
+
+    public function detalle($id)
+    {
+        $perfiles=Perfil::where('id',$id)->paginate(10);
+       return view('perfilexamen.detalle',compact("perfiles"));
+   
+    }
+
 }

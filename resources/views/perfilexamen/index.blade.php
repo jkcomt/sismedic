@@ -8,7 +8,7 @@ th,td{
 
 @endsection
 
-@section('header','LISTADO DE AREAS')
+@section('header','LISTADO DE EXAMENES DE '.$perfil->descripcion)
 @section('modal-title')
 <h4 class="modal-title">Aviso</h4>
 @endsection
@@ -16,7 +16,7 @@ th,td{
 <h3 class="text-success text-center">Registro Exitoso</h3>
 @endsection
 @section('modal-footer')
-<a class="btn btn-sm btn-warning" href="{{route('perfil_examen.index')}}">Volver</a>
+<a class="btn btn-sm btn-warning" href="{{route('perfil_examen.index',['id',$perfil->id])}}">Volver</a>
 @endsection
 
 @section('modal-confirmacion-title')
@@ -32,8 +32,8 @@ th,td{
 
 @section('content')
 {{-- @include('area.modals.edit') @include('area.modals.create') --}}
+
 @include('perfilexamen.modals.create')
-@include('perfilexamen.modals.edit')
 
 
 <div class="row">
@@ -41,14 +41,14 @@ th,td{
         <div class="form-group">
             <!--a href="{{--route('tipoinstruccion.create')--}}" class="btn btn-success">NUEVA INSTRUCCION</a-->
 
-            <button class="btn btn-success new"><span class="glyphicon glyphicon-pencil"></span> NUEVA AREA</button>
+            <button class="btn btn-success new"> NUEVO PERFIL EXAMEN</button>
 
 
         </div>
     </div>
     <div class="col-md-10">
         <form action="" class="form-inline text-right">
-            <input type="text" id="buscartipoinstruccion" placeholder="BUSCAR..." class="form-control">
+           {{-- <input type="text" id="buscartipoinstruccion" placeholder="BUSCAR..." class="form-control">
             {{--<button class="btn btn-primary form-control">BUSCAR</button>--}}
         </form>
     </div>
@@ -56,7 +56,7 @@ th,td{
 <br>
 <div class="row" id="tabla">
 
-     @include('perfilexamen.table')
+      @include('perfilexamen.table') 
 </div>
 @endsection
 @section('script')

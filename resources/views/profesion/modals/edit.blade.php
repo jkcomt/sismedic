@@ -3,14 +3,14 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Editar profesion</h4>
+                <h4 class="modal-title">Editar profesión</h4>
             </div>
             <div class="modal-body">
                 <form action="{{route('profesion.update')}}" method="post" id="editarprofesion">
                     {{csrf_field()}}
                     <div class="form-group">
-                        <label for="" class="control-label">profesion :</label>
-                        <input type="text" class=" form-control" name="nombre" value="">
+                        <label for="" class="control-label">profesión:</label>
+                        <input type="text" class=" form-control" name="editnombre" value="">
                     </div>
                 </form>
             </div>

@@ -18,18 +18,20 @@
                             </div>
                         </div>
 
-                        <div class="row">
+                 
+
+
+    
+            </div>
+            <div class="modal-footer">
+                       <div class="row">
                             <div class="col-md-12 text-right">
                                 <button class="btn btn-success">Registrar</button>
                                 <a href="" class="btn btn-warning" data-dismiss="modal">Volver</a>                    
                     </div>
                 </div>
-
-
-            </form>
-            </div>
-            <div class="modal-footer">
              </div>
+                     </form>
         </div>
     </div>
 </div>

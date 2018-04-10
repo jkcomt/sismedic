@@ -3,7 +3,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Nueva Empresa</h4>
+                <h4 class="modal-title">Nuevo Contrato</h4>
             </div>
             <div class="modal-body ">
                   <form action="{{route('contrata.store')}}" id="registrarContrata" method="post">
@@ -13,23 +13,25 @@
                         <div class="row">
                           
                             <div class="col-md-8 form-group">
-                                <label for="nombre" class="control-label">Razon Social :</label>
+                                <label for="nombre" class="control-label">Contrato :</label>
                                 <input type="text"  value="" class="form-control" name="nombre">
                             </div>
                         </div>
 
-                        <div class="row">
+                 
+
+
+         
+            </div>
+            <div class="modal-footer">
+                       <div class="row">
                             <div class="col-md-12 text-right">
                                 <button class="btn btn-success">Registrar</button>
                                 <a href="" class="btn btn-warning" data-dismiss="modal">Volver</a>                    
                     </div>
                 </div>
-
-
-            </form>
-            </div>
-            <div class="modal-footer">
              </div>
+                </form>
         </div>
     </div>
 </div>

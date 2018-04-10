@@ -8,7 +8,7 @@ th,td{
 
 @endsection
 
-@section('header','LISTADO DE LUGARES LABORALES')
+@section('header','CALENDARIO')
 @section('modal-title')
 <h4 class="modal-title">Aviso</h4>
 @endsection
@@ -16,7 +16,7 @@ th,td{
 <h3 class="text-success text-center">Registro Exitoso</h3>
 @endsection
 @section('modal-footer')
-<a class="btn btn-sm btn-warning" href="{{route('lugarlabor.index')}}">Volver</a>
+<a class="btn btn-sm btn-warning" href="{{route('tipoinstruccion.index')}}">Volver</a>
 @endsection
 
 @section('modal-confirmacion-title')
@@ -31,8 +31,7 @@ th,td{
 @endsection
 
 @section('content')
-@include('lugarlabor.modals.edit')
-@include('lugarlabor.modals.create')
+
 
 
 <div class="row">
@@ -40,23 +39,23 @@ th,td{
         <div class="form-group">
             <!--a href="{{--route('tipoinstruccion.create')--}}" class="btn btn-success">NUEVA INSTRUCCION</a-->
             
-            <button class="btn btn-success new"> NUEVA CENTRO DE LABOR</button>
+            <button class="btn btn-success new"> NUEVA INSTRUCCIÓN</button>
 
 
         </div>
     </div>
     <div class="col-md-10">
         <form action="" class="form-inline text-right">
-           {{--<input type="text" id="buscartipoinstruccion" placeholder="BUSCAR..." class="form-control">--}} 
+            {{--<input type="text" id="buscartipoinstruccion" placeholder="BUSCAR..." class="form-control">--}}
             {{--<button class="btn btn-primary form-control">BUSCAR</button>--}}
         </form>
     </div>
 </div>
 <br>
 <div class="row" id="tabla">
-    @include('lugarlabor.table')
+
 </div>
 @endsection
 @section('script')
-<script src="{{asset('js/lugarlabor.js')}}"></script>
+<script src="{{asset('js/tipoinstruccion.js')}}"></script>
 @endsection
