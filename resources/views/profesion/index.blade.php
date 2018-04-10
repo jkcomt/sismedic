@@ -16,7 +16,7 @@
     <h3 class="text-success text-center">Eliminación Exitosa</h3>
 @endsection
 @section('modal-footer')
-    <a class="btn btn-sm btn-warning" href="{{route('tipoinstruccion.index')}}">Volver</a>
+    <a class="btn btn-sm btn-warning" href="{{route('profesion.index')}}">Volver</a>
 @endsection
 
 @section('modal-confirmacion-title')
@@ -39,7 +39,7 @@
         <div class="col-md-2">
             <div class="form-group">
                 <!--a href="{{--route('tipoinstruccion.create')--}}" class="btn btn-success">NUEVA INSTRUCCION</a-->
-                 <button class="btn btn-success new"><span class="glyphicon glyphicon-pencil"></span> NUEVA PROFESION.</button>
+                 <button class="btn btn-success new"> NUEVA PROFESIÓN</button>
             </div>
         </div>
         <div class="col-md-10">
@@ -49,7 +49,7 @@
                     <option value="dni">DNI</option>
                     <option value="empresa">Empresa</option>
                 </select>--}}
-                <input type="text" id="buscarPaciente" placeholder="BUSCAR..." class="form-control" style="width: 45%">
+                {{--<input type="text" id="buscarPaciente" placeholder="BUSCAR..." class="form-control" style="width: 45%">--}}
                 {{--<button class="btn btn-primary form-control">BUSCAR</button>--}}
             </form>
         </div>

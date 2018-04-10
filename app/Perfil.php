@@ -13,5 +13,13 @@ class Perfil extends Model
         'estado'
     ];
 
+    public function perfilExamen(){
+        return $this->hasMany(PerfilExamen::class);
+    }
+
+    public function listaExamen(){
+    	return $this->belongsToMany(ListaExamen::class,'perfil_examenes','perfil_id','lista_examen_id');
+    }
+
     public $timestamps = false;
 }

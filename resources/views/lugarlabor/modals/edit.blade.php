@@ -12,12 +12,13 @@
                         <label for="" class="control-label">Lugar de Labor :</label>
                         <input type="text" class=" form-control" name="editnombre" value="">
                     </div>
-                </form>
+               
             </div>
             <div class="modal-footer">
                 <button class="btn btn-success" value="" id="update">Actualizar</button>
                 <a href="" class="btn btn-warning " data-dismiss="modal" id="index">Volver</a>
             </div>
+             </form>
         </div>
     </div>
 </div>

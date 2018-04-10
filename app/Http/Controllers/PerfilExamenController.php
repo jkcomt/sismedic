@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Cita;
 use App\PerfilExamen;
+use App\ListaExamen;
+use App\Perfil;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class PerfilExamenController extends Controller
@@ -13,9 +16,19 @@ class PerfilExamenController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        //
+      //$perfiles=Perfil::where('estado',true)->paginate(10);}
+        $perfil=Perfil::find($id);
+
+        $perfilExamens= PerfilExamen::where('estado',true)->where('perfil_id',$perfil->id)->get();
+
+       $listaexamenes=ListaExamen::where('estado',true)
+                        ->whereNotIn('id',function($query)  use($id){
+                            $query->select('lista_examen_id')->from('perfil_examenes')->whereRaw('perfil_examenes.perfil_id',$id);
+                        })->get();
+    
+       return view('perfilexamen.index',compact("perfil","listaexamenes"));
     }
 
     /**
@@ -36,7 +49,28 @@ class PerfilExamenController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+           if(request()->ajax())
+         {
+                //$data = request();
+                //dd($data['rbTipoAgri']);
+            $data = request()->validate([
+                'perfilid'=>'required',
+                'listaexamen'=>'required'
+            ],[
+                'perfilide.required'=>'El campo nombres es obligatorio',
+                'listaexamen.required'=>'El campo nombres es obligatorio',
+            ]);
+
+            PerfilExamen::create([
+                'perfil_id'=>$data['perfilid'],
+                'lista_examen_id'=>$data['listaexamen'],
+                'estado'=>true
+            ]);
+            return response()->json(['mensaje'=>"Registro Exitoso"]);
+
+        }
+
     }
 
     /**
@@ -56,9 +90,10 @@ class PerfilExamenController extends Controller
      * @param  \App\PerfilExamen  $perfilExamen
      * @return \Illuminate\Http\Response
      */
-    public function edit(PerfilExamen $perfilExamen)
+    public function edit($id)
     {
-        //
+
+   
     }
 
     /**
@@ -68,7 +103,7 @@ class PerfilExamenController extends Controller
      * @param  \App\PerfilExamen  $perfilExamen
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PerfilExamen $perfilExamen)
+    public function update(Request $request)
     {
         //
     }
@@ -79,11 +114,24 @@ class PerfilExamenController extends Controller
      * @param  \App\PerfilExamen  $perfilExamen
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PerfilExamen $perfilExamen)
+    public function destroy(Request $request)
     {
-        //
+       $perfilexamen = PerfilExamen::find($request['id']);
+
+        $perfilexamen->update(
+        ['estado'=>false]
+        );
+
+        $perfilexamen->save();
+
+        return response()->json(
+        ['mensaje'=>"Registro Eliminado"]
+      );
+
+
     }
 
+<<<<<<< HEAD
     public function search(Request $request){
         $perfilesExamenes = null;
         if($request['buscar'] != '') {
@@ -113,4 +161,15 @@ class PerfilExamenController extends Controller
             return response()->json(['html'=>$view]);
         }
     }
+=======
+
+
+    public function detalle($id)
+    {
+        $perfiles=Perfil::where('id',$id)->paginate(10);
+       return view('perfilexamen.detalle',compact("perfiles"));
+   
+    }
+
+>>>>>>> dev2
 }

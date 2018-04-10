@@ -14,7 +14,8 @@ class ClienteCuentaController extends Controller
      */
     public function index()
     {
-        //
+      $clientecuentas= ClienteCuenta::where('estado',true)->paginate(10);
+       return view('clientecuenta.index',compact("clientecuentas"));
     }
 
     /**
@@ -35,7 +36,24 @@ class ClienteCuentaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+            if(request()->ajax())
+       {
+              //$data = request();
+              //dd($data['rbTipoAgri']);
+          $data = request()->validate([
+              'nombre'=>'required',
+          ],[
+              'nombre.required'=>'El campo nombres es obligatorio',
+          ]);
+
+          ClienteCuenta::create([
+              'descripcion'=>$data['nombre'],
+              'estado'=>true
+          ]);
+          return response()->json(['mensaje'=>"registro exitoso"]);
+
+      }
+
     }
 
     /**
@@ -55,9 +73,13 @@ class ClienteCuentaController extends Controller
      * @param  \App\ClienteCuenta  $clienteCuenta
      * @return \Illuminate\Http\Response
      */
-    public function edit(ClienteCuenta $clienteCuenta)
+    public function edit($id)
     {
-        //
+        $clientecuenta = ClienteCuenta::find($id);
+
+       return response()->json(
+         $clientecuenta->toArray()
+     );
     }
 
     /**
@@ -67,9 +89,29 @@ class ClienteCuentaController extends Controller
      * @param  \App\ClienteCuenta  $clienteCuenta
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ClienteCuenta $clienteCuenta)
+    public function update(Request $request)
     {
-        //
+      $clientecuenta =  ClienteCuenta::find($request['id']);
+
+          $data = request()->validate([
+              'id'=>'required',
+              'nombre'=>'required'
+          ],[
+              'nombre.required'=>'El campo nombres es obligatorio',
+          ]);
+
+
+             $clientecuenta->update([
+              'id'=>$data['id'],
+              'descripcion'=>$data['nombre']
+          ]);
+
+             $clientecuenta->save();
+
+
+          return response()->json([
+              'mensaje'=>   $clientecuenta->toArray()
+          ]);
     }
 
     /**
@@ -78,8 +120,18 @@ class ClienteCuentaController extends Controller
      * @param  \App\ClienteCuenta  $clienteCuenta
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ClienteCuenta $clienteCuenta)
+    public function destroy(Request $request)
     {
-        //
+      $clientecuenta = ClienteCuenta::find($request['id']);
+
+        $clientecuenta->update(
+        ['estado'=>false]
+        );
+
+        $clientecuenta->save();
+
+        return response()->json(
+        ['mensaje'=>'eliminacion exitosa']
+      );
     }
 }
