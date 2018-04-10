@@ -3,7 +3,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Nuevo Perfil de Examen</h4>
+                <h4 class="modal-title">Añadir nuevo examen al perfil</h4>
             </div>
             <div class="modal-body ">
                   <form action="{{route('perfil_examen.store')}}" id="registrarPerfilExamen" method="post">
@@ -44,7 +44,7 @@
             <div class="modal-footer">
                   <div class="row">
                             <div class="col-md-12 text-right">
-                                <button class="btn btn-success">EXAMEN</button>
+                                <button class="btn btn-success">Asociar Examen</button>
                                 <a href="" class="btn btn-warning" data-dismiss="modal">Volver</a>
                             </div>
                        </div>

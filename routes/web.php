@@ -199,10 +199,20 @@ Route::resource('perfil_examen','PerfilExamenController');
 Route::group([
     'prefix'=>'perfil_examen'
 ],function(){
+    Route::post('/buscaredit','PerfilExamenController@searchedit')->name('perfil_examen.searchedit');
     Route::post('/buscar','PerfilExamenController@search')->name('perfil_examen.search');
     Route::post('/delete','PerfilExamenController@destroy')->name('perfil_examen.destroy');
     Route::post('/update','PerfilExamenController@update')->name('perfil_examen.update');
     Route::get('/perfil/{id}','PerfilExamenController@index')->name('perfil_examen.index');
 });
 
+Route::resource('citas','CitaController');
+Route::group([
+    'prefix'=>'citas'
+],function(){
+    Route::post('/delete','CitaController@destroy')->name('citas.destroy');
+});
 
+Route::get('/calendar',function(){
+    return view('calendario.index');
+});

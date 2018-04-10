@@ -2,6 +2,9 @@
     <table class="table table-responsive table-hover table-condensed small box" id="tabla">
         <thead>
         <th>EXAMENES</th>
+        <th>TIPO</th>
+        <th>VALOR</th>
+        <th>DSCTO</th>
         <th>OPCIONES</th>
 
         </thead>
@@ -9,7 +12,10 @@
         @foreach($perfil->perfilExamen as $examen)
             <tr>
 
-                <td>{{$examen->listaExamen->descripcion}}</td>
+                <td class="text-left">{{$examen->listaExamen->descripcion}}</td>
+                <td>{{$examen->listaExamen->tipo}}</td>
+                <td>{{$examen->listaExamen->valor}}</td>
+                <td>{{$examen->listaExamen->dscto}}</td>
                  <td>                  
                     {{csrf_field()}}
 

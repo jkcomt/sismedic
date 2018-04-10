@@ -2,7 +2,7 @@
     <table class="table table-responsive table-hover table-condensed small box" id="tabla">
         <thead>
         <th>PERFILES</th>
-        <th>DETALLE</th>
+        <th>EXAMENES ASOCIADOS AL PERFIL</th>
         <th>OPCIONES</th>
         </thead>
         <tbody>
@@ -11,7 +11,7 @@
                 <td>{{$perfil->descripcion}}</td>
 
                 <td>
-                     <a href="{{route('perfil_examen.index',$perfil->id)}}" target="_blank" class="btn btn-xs btn-info "> DETALLE</a>
+                     <a href="{{route('perfil_examen.index',$perfil->id)}}" class="btn btn-xs btn-info "> LISTA DE EXAMENES</a>
 
                 </td>
 

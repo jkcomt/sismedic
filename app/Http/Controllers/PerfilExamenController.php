@@ -131,7 +131,7 @@ class PerfilExamenController extends Controller
 
     }
 
-<<<<<<< HEAD
+
     public function search(Request $request){
         $perfilesExamenes = null;
         if($request['buscar'] != '') {
@@ -161,15 +161,5 @@ class PerfilExamenController extends Controller
             return response()->json(['html'=>$view]);
         }
     }
-=======
 
-
-    public function detalle($id)
-    {
-        $perfiles=Perfil::where('id',$id)->paginate(10);
-       return view('perfilexamen.detalle',compact("perfiles"));
-   
-    }
-
->>>>>>> dev2
 }
