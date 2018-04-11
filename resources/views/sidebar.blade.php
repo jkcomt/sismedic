@@ -8,6 +8,9 @@
         <li class="{{ Request::is('pacientes') ? 'active' : '' }} {{ Request::is('pacientes/*') ? 'active' : '' }}">
             <a href="{{route('pacientes.index')}}"><i class="fa fa-user"></i> <span>Pacientes</span></a>
         </li>
+        <li  class="{{ Request::is('citas') ? 'active' : '' }} {{ Request::is('citas/*') ? 'active' : '' }}">
+            <a href="{{route('calendario.index')}}"><i class="fa fa-calendar"></i> <span>Citas</span></a>
+        </li>
         <li class="{{ Request::is('configuracion') ? 'active' : '' }} {{ Request::is('configuracion/*') ? 'active' : '' }}"><a href="{{route('configuracion.index')}}"><i class="fa fa-gear"></i><span>Configuración</span></a></li>
 
         @if(auth()->user()->cargo->descripcion != 'secado')

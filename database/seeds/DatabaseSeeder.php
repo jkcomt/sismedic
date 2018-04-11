@@ -61,6 +61,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PerfilSeeder::class);
         $this->call(ListaExamenSeeder::class);
         $this->call(PerfilExamenSeeder::class);
+//        $this->call(EventSeeder::class);
         //$this->call(LoteSeeder::class);
 
     }

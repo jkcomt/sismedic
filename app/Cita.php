@@ -78,4 +78,8 @@ class Cita extends Model
 
         return $nuevaserie;
     }
+
+    public function event(){
+        return $this->hasOne(Event::class);
+    }
 }

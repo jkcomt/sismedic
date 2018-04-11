@@ -179,6 +179,8 @@ $tipo = '';
 $('body').on('click','.conformidad',function(e){
     e.preventDefault();
 
+    console.log('click')
+
     $botonPresionado = 'conforme';
 
     $tipo = $(this).attr('tipo');

@@ -24,9 +24,13 @@ class PerfilExamenController extends Controller
         $perfilExamens= PerfilExamen::where('estado',true)->where('perfil_id',$perfil->id)->get();
 
        $listaexamenes=ListaExamen::where('estado',true)
-                        ->whereNotIn('id',function($query)  use($id){
-                            $query->select('lista_examen_id')->from('perfil_examenes')->whereRaw('perfil_examenes.perfil_id',$id);
+                        ->whereNOTIn('id',function($query)  use($perfil){
+                            $query->select('lista_examen_id')->from('perfil_examenes')->where('perfil_examenes.perfil_id',$perfil->id);
                         })->get();
+
+//        $listaexamenes = ListaExamen::selectRaw('lista_examenes.* from list_examenes where lista_examenes.id not in (select lista_examen_id from perfil_examenes where perfil_examenes.perfil_id = ?)',[$perfil->id])->get();
+
+       //dd($listaexamenes);
     
        return view('perfilexamen.index',compact("perfil","listaexamenes"));
     }
@@ -55,15 +59,15 @@ class PerfilExamenController extends Controller
                 //$data = request();
                 //dd($data['rbTipoAgri']);
             $data = request()->validate([
-                'perfilid'=>'required',
+                'perfil_id'=>'required',
                 'listaexamen'=>'required'
             ],[
-                'perfilide.required'=>'El campo nombres es obligatorio',
+                'perfil_id.required'=>'El campo nombres es obligatorio',
                 'listaexamen.required'=>'El campo nombres es obligatorio',
             ]);
 
             PerfilExamen::create([
-                'perfil_id'=>$data['perfilid'],
+                'perfil_id'=>$data['perfil_id'],
                 'lista_examen_id'=>$data['listaexamen'],
                 'estado'=>true
             ]);

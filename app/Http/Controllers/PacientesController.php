@@ -11,6 +11,7 @@ use App\ClienteCuenta;
 use App\Contratador;
 use App\Departamento;
 use App\Distrito;
+use App\Event;
 use App\GrupoSanguineo;
 use App\LugarLabor;
 use App\Ocupacion;
@@ -519,6 +520,15 @@ class PacientesController extends Controller
                 'estado'=>true
             ]);
 
+            Event::create([
+                    'title'=>$cita->paciente->apellido_paterno.' '.$cita->paciente->apellido_materno.' '.$cita->paciente->nombres,
+                    'start_date'=>$cita->fecha_examen,
+                    'end_date'=>$cita->fecha_examen,
+                    'color'=>'#00C1DE',
+                    'cita_id'=>$cita->id,
+                    'estado'=>true
+                ]);
+
             foreach ($request['items'] as $item){
                 $citaItem = CitaExamen::create([
                    'cita_id'=>$cita->id,
@@ -540,6 +550,14 @@ class PacientesController extends Controller
         ]);
 
         $cita->save();
+
+        $event = Event::find($cita->event->id);
+
+        $event->update([
+           'estado'=>false
+        ]);
+
+        $event->save();
 
         return response()->json([
             'mensaje'=>"eliminación exitosa"
@@ -589,6 +607,14 @@ class PacientesController extends Controller
                 'fecha_examen'=>$data['fecha_examen'],
                 'hora_examen'=>$data['hora_examen'],
                 'estado_cita'=>'agendado'
+            ]);
+
+
+            $event = Event::where('cita_id',$cita->id);
+
+            $event->update([
+                'start_date'=>$cita->fecha_examen,
+                'end_date'=>$cita->fecha_examen
             ]);
 
             $citaExamenes = CitaExamen::where('cita_id',$cita->id)->delete();

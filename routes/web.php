@@ -210,9 +210,9 @@ Route::resource('citas','CitaController');
 Route::group([
     'prefix'=>'citas'
 ],function(){
+    Route::get('/','EventController@index')->name('calendario.index');;
     Route::post('/delete','CitaController@destroy')->name('citas.destroy');
+    Route::post('/buscarfecha','CitaController@searchFecha')->name('citas.searchfecha');
 });
 
-Route::get('/calendar',function(){
-    return view('calendario.index');
-});
+//Route::get('/calendario','EventController@index')->name('calendario.index');
