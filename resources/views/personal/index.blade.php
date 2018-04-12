@@ -40,7 +40,7 @@ th,td{
     <div class="col-md-8">
         <div class="form-group">
             <!--a href="{{--route('tipoinstruccion.create')--}}" class="btn btn-success">NUEVA INSTRUCCION</a-->
-            <a href="{{route('personal.index')}}" class="btn btn-warning">VOLVER</a>    
+            <a href="{{route('configuracion.index')}}" class="btn btn-warning">VOLVER</a>    
             <button class="btn btn-success new"> NUEVO PERSONAL</button>
 
 

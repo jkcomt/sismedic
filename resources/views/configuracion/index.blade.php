@@ -102,9 +102,6 @@ th,td{
     <div class="col-md-2">
         <a href="{{route('lista_examen.index')}}" class="btn btn-lg btn-block btn-default" ><h3><span class="fa fa-list"></span></h3> <strong>Lista de Examenes</strong></a>
     </div>
-       <div class="col-md-2">
-        <a href="{{route('lista_examen.index')}}" class="btn btn-lg btn-block btn-default" ><h3><span class="fa fa-list"></span></h3> <strong>Calendario</strong></a>
-    </div>
  </div>
 
 
