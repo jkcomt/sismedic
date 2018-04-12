@@ -210,9 +210,10 @@ Route::resource('citas','CitaController');
 Route::group([
     'prefix'=>'citas'
 ],function(){
+    Route::get('/','EventController@index')->name('calendario.index');
     Route::post('/delete','CitaController@destroy')->name('citas.destroy');
+    Route::post('/buscarfecha','CitaController@searchFecha')->name('citas.searchfecha');
 });
-
 
 Route::resource('cargo','CargoController');
 Route::group([
@@ -244,4 +245,11 @@ Route::group(['prefix'=>'personal'],function(){
 
 Route::get('/calendar',function(){
     return view('calendario.index');
+});
+
+Route::resource('funcion_vital','FuncionVitalController');
+Route::group([
+   'prefix'=>'funcion_vital'
+],function(){
+    Route::get('/{id}/create','FuncionVitalController@create')->name('funcion_vital.create');
 });

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cita;
+use App\Event;
 use App\PerfilExamen;
 use Illuminate\Http\Request;
 
@@ -91,9 +92,34 @@ class CitaController extends Controller
 
         $cita->save();
 
+        $event = Event::find($cita->event->id);
+
+        $event->update([
+            'estado'=>false
+        ]);
+
+        $event->save();
+
         return response()->json([
             'mensaje'=>"eliminación exitosa"
         ]);
+    }
+
+    public function searchFecha(Request $request){
+        $citas = null;
+
+        if($request['fecha'] != '') {
+            $citas = Cita::where('fecha_examen','=', $request['fecha'])
+                //->orWhere('num_dni', 'like', '%' . $request['buscar'] . '%')
+                ->orderBy('hora_examen', 'asc');
+            $citas = $citas->where('estado', true)->paginate(10);
+        }
+
+        if($request->ajax())
+        {
+            $view = view('citas.modal.tabla',compact('citas'))->render();
+            return response()->json(['html'=>$view]);
+        }
     }
 
 

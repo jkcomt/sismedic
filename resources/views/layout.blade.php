@@ -8,7 +8,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sistmedic</title>
+    <title>Sismedic</title>
 
     <link rel="apple-touch-icon" sizes="57x57" href="{{asset('img/logo.ico/apple-icon-57x57.png')}}">
     <link rel="apple-touch-icon" sizes="60x60" href="{{asset('img/logo.ico//apple-icon-60x60.png')}}">
@@ -24,9 +24,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="icon" type="image/png" sizes="96x96" href="{{asset('img/logo.ico/favicon-96x96.png')}}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('img/logo.ico/favicon-16x16.png')}}">
     <link rel="manifest" href="{{asset('img/logo.ico//manifest.json')}}">
-
-    
-
 
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="{{asset('img/logo.ico/ms-icon-144x144.png')}}">
@@ -59,7 +56,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Google Font -->
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-
+    {{--<script src="{{asset('providers/fullcalendar/lib/jquery.min.js')}}"></script>--}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     @yield('api')
 
     <style>
@@ -73,6 +71,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
             color:black !important;
         }
     </style>
+
+
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -317,7 +317,7 @@ desired effect
 <!-- REQUIRED JS SCRIPTS -->
 
 <!-- jQuery 3 -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+{{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>--}}
 {{--<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>--}}
 <!-- Bootstrap 3.3.7 -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>

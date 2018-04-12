@@ -24,6 +24,10 @@ class Cita extends Model
 
     public $timestamps = false;
 
+    public function cita(){
+        return $this->hasOne(FuncionVital::class);
+    }
+
     public function paciente(){
         return $this->belongsTo(Paciente::class);
     }
@@ -77,5 +81,9 @@ class Cita extends Model
         }
 
         return $nuevaserie;
+    }
+
+    public function event(){
+        return $this->hasOne(Event::class);
     }
 }

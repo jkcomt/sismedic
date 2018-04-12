@@ -65,7 +65,7 @@ $('#registrarCita').submit(function(e){
     }).error(function(data) {
         $('#msg-error').fadeIn();
         $('#listaerrores').html('')
-
+        $('#modal-confirmacion').modal('hide');
         $.each(data.responseJSON.errors, function( index, value ) {
             console.log(value);
             $('#listaerrores').append('<li>'+value+'</li>')
@@ -178,6 +178,8 @@ $botonPresionado = '';
 $tipo = '';
 $('body').on('click','.conformidad',function(e){
     e.preventDefault();
+
+    console.log('click')
 
     $botonPresionado = 'conforme';
 
