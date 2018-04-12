@@ -27,7 +27,7 @@
                                         <td>
                                             {{--<button class="btn btn-xs btn-warning edit"  value=""><span class="glyphicon glyphicon-pencil"></span> EDITAR</button>--}}
                                             {{csrf_field()}}
-                                            <button href="#" class="btn btn-xs btn-default detalle"  id=""><span class="glyphicon glyphicon-info-sign"></span> DETALLE</button>
+                                            <a href="{{route('funcion_vital.create',$cita->id)}}" class="btn btn-xs btn-info"  id=""><span class="glyphicon glyphicon-info-sign"></span> FUNCIONES VITALES</a>
                                             {{--<button href="#" class="btn btn-xs btn-danger delete"  id=""><span class="glyphicon glyphicon-remove"></span> ELIMINAR</button>--}}
                                         </td>
                                     </tr>

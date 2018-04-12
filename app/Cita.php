@@ -24,6 +24,10 @@ class Cita extends Model
 
     public $timestamps = false;
 
+    public function cita(){
+        return $this->hasOne(FuncionVital::class);
+    }
+
     public function paciente(){
         return $this->belongsTo(Paciente::class);
     }

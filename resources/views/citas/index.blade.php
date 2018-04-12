@@ -39,14 +39,11 @@
                         },
                     @endforeach
                 ],
-                dayClick: function(date, allDay, jsEvent, view) {
-                    //console.log(date.format());
+                dayClick: function(date) {
                     $citas = 0;
                     var dayEvents = $('#calendar').fullCalendar( 'clientEvents' ,function(event){
                         if(event.start >= date && event.start <= date){
-                            console.log(event.title+' '+event.id);
                             $citas = $citas + 1;
-                            console.log($citas)
                         }
                     });
 

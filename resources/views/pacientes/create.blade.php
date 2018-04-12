@@ -1,5 +1,5 @@
 @extends('layout')
-
+@section('header','REGISTRO DE NUEVO PACIENTE')
 {{-----------------------------------------------------------------}}
 @section('modal-title')
     <h4 class="modal-title">Aviso</h4>
@@ -99,8 +99,6 @@
                         </div>
                     </div>
                 </div>
-                <hr>
-
                 <div class="panel panel-default">
                     <div class="panel-heading">Lugar de Nacimiento</div>
                     <div class="panel-body">
