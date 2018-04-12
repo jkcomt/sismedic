@@ -55,6 +55,7 @@ th,td{
 
     </div>
 
+
  </div>
 <br>
 <div class="row">
@@ -72,6 +73,7 @@ th,td{
         <a href="{{route('gruposanguineo.index')}}" class="btn btn-lg btn-block btn-default" ><h3><span class="fa fa-heart-o"></span></h3> <strong>Grupo Sanguíneo</strong></a>
     </div>
 
+   
 </div>
 
 
@@ -104,6 +106,39 @@ th,td{
         <a href="{{route('lista_examen.index')}}" class="btn btn-lg btn-block btn-default" ><h3><span class="fa fa-list"></span></h3> <strong>Calendario</strong></a>
     </div>
  </div>
+
+
+
+</div>
+</div>
+
+<h3>USUARIOS</h3>
+<div class="panel panel-body">
+ <div class="">
+
+
+    <div class="row text-center">
+
+    <div class="col-md-2">
+        <a href="{{route('cargo.index')}}" class="btn btn-lg btn-block btn-default" ><h3><span class="fa fa-id-card-o"></span></h3> <strong>Cargos</strong></a>
+
+    </div>
+
+
+  <div class="col-md-2">
+        <a href="{{route('personal.index')}}" class="btn btn-lg btn-block btn-default" ><h3><span class="fa fa-users"></span></h3> <strong>Personal</strong></a>
+
+    </div>
+
+    <div class="col-md-2">
+        <a href="{{route('usuario.index')}}" class="btn btn-lg btn-block btn-default" ><h3><span class="fa fa-user"></span></h3> <strong>Usuarios</strong></a>
+
+    </div>
+
+
+    
+
+    </div>
 
 
 

@@ -52,6 +52,7 @@ class AlturasController extends Controller
         ]);
         return response()->json(['mensaje'=>"registro exitoso"]);
     }
+    
     }
 
     /**

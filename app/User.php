@@ -12,7 +12,7 @@ class User extends Authenticatable
     protected $table = 'users';
 
     protected $fillable = [
-        'name', 'password','cargo_id','personal_id','estado','remember_token','password'
+        'name', 'password','cargo_id','personal_id','estado','remember_token'
     ];
 
     public function cargo()

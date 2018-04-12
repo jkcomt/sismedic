@@ -16,7 +16,7 @@ th,td{
 <h3 class="text-success text-center">Registro Exitoso</h3>
 @endsection
 @section('modal-footer')
-<a class="btn btn-sm btn-warning" href="{{route('perfil_examen.index',['id',$perfil->id])}}">Volver</a>
+<a class="btn btn-sm btn-warning" href="{{route('perfil_examen.index',[$perfil->id])}}">Volver</a>
 @endsection
 
 @section('modal-confirmacion-title')

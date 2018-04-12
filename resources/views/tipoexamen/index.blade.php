@@ -37,16 +37,16 @@ th,td{
 
 
 <div class="row">
-    <div class="col-md-2">
+    <div class="col-md-8">
         <div class="form-group">
             <!--a href="{{--route('tipoinstruccion.create')--}}" class="btn btn-success">NUEVA INSTRUCCION</a-->
-
+    <a href="{{route('configuracion.index')}}" class="btn btn-warning">VOLVER</a>
             <button class="btn btn-success new">NUEVO TIPO EXAMEN</button>
 
 
         </div>
     </div>
-    <div class="col-md-10">
+    <div class="col-md-4">
         <form action="" class="form-inline text-right">
             {{--<input type="text" id="buscartipoinstruccion" placeholder="BUSCAR..." class="form-control">
             {{--<button class="btn btn-primary form-control">BUSCAR</button>--}}

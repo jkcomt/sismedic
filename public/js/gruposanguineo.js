@@ -73,7 +73,7 @@ $('body').on('click','.edit',function(e){
 
     var id = $(this).attr('value');
 
-    var url = "/gruposanguineo/"+id+"/edit"
+    var url = "gruposanguineo/"+id+"/edit"
     $.ajax({
         type:"get",
         url:url,
@@ -152,7 +152,7 @@ $('.confirmar').on('click',function (e) {
 
     var id = $(this).attr('id')
     var token = $('input[name=_token]').attr('value')
-    var url = "/gruposanguineo/delete"
+    var url = "gruposanguineo/delete"
 
     console.log(id)
     $.ajax({

@@ -43,7 +43,8 @@ class ProfesionesController extends Controller
             $data = request()->validate([
                 'nombre'=>'required',
             ],[
-                'nombre.required'=>'El campo nombres es obligatorio',
+
+                'nombre.required'=>'El campo nombres es obligatorio'
             ]);
 
             Profesion::create([
@@ -97,7 +98,8 @@ class ProfesionesController extends Controller
                 'id'=>'required',
                 'nombre'=>'required'
             ],[
-                'nombre.required'=>'El campo nombres es obligatorio',
+                'id.required'=>'El id  es obligatorio',
+                'nombre.required'=>'El campo nombres es obligatorio'
             ]);
 
 

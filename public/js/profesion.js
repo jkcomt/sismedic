@@ -63,7 +63,7 @@ $('body').on('click','.edit',function(e){
 
     var id = $(this).attr('value');
 
-    var url = "/profesion/"+id+"/edit"
+    var url = "profesion/"+id+"/edit"
     $.ajax({
         type:"get",
         url:url,
@@ -92,7 +92,7 @@ $('#update').on('click',function (e) {
     var url = $('#editarprofesion').attr('action');
 
     var id = $('#update').attr('value')
-    var nombre = $('input[name=nombre]').val()
+    var nombre = $('input[name=editnombre]').val()
     var token = $('input[name=_token]').val()
 
     $.ajax({
@@ -112,10 +112,10 @@ $('#update').on('click',function (e) {
         error: function(data){
             if(data.responseJSON.errors.nombre)
             {
-                $('input[name=nombre]').parent().addClass('has-error')
+                $('input[name=editnombre]').parent().addClass('has-error')
                 console.log(data.responseJSON.errors.nombre)
             }else{
-                $('input[name=nombre]').parent().removeClass('has-error')
+                $('input[name=editnombre]').parent().removeClass('has-error')
             }
         }
     });
@@ -148,7 +148,7 @@ $('.confirmar').on('click',function (e) {
 
     var id = $(this).attr('id')
     var token = $('input[name=_token]').attr('value')
-    var url = "/profesion/delete"
+    var url = "profesion/delete"
 
     console.log(id)
     $.ajax({

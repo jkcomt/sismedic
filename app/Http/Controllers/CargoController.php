@@ -14,7 +14,10 @@ class CargoController extends Controller
      */
     public function index()
     {
-        //
+        $cargos= Cargo::where('estado',true)->paginate(10);
+        return view('cargo.index',compact('cargos'));
+
+
     }
 
     /**
@@ -35,7 +38,25 @@ class CargoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if(request()->ajax())
+     {
+            //$data = request();
+            //dd($data['rbTipoAgri']);
+        $data = request()->validate([
+            'nombre'=>'required',
+        ],[
+            'nombre.required'=>'El campo nombres es obligatorio',
+        ]);
+
+        Cargo::create([
+            'descripcion'=>$data['nombre'],
+            'estado'=>true
+        ]);
+        return response()->json(['mensaje'=>"registro exitoso"]);
+    }
+
+
+
     }
 
     /**
@@ -55,9 +76,12 @@ class CargoController extends Controller
      * @param  \App\Cargo  $cargo
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cargo $cargo)
+    public function edit($id)
     {
-        //
+        $cargo = Cargo::find($id);    
+        return response()->json(
+          $cargo->toArray()
+      );
     }
 
     /**
@@ -67,9 +91,29 @@ class CargoController extends Controller
      * @param  \App\Cargo  $cargo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cargo $cargo)
+    public function update(Request $request)
     {
-        //
+        
+        $cargo= Cargo::find($request['id']); 
+        $data = request()->validate([
+            'id'=>'required',
+            'nombre'=>'required'
+        ],[    
+            'nombre.required'=>'El campo nombres es obligatorio',
+        ]);
+
+
+        $cargo->update([
+            'id'=>$data['id'],
+            'descripcion'=>$data['nombre']
+        ]);
+
+        $cargo->save();
+
+
+        return response()->json([
+            'mensaje'=>$cargo->toArray()
+        ]);    
     }
 
     /**
@@ -78,8 +122,19 @@ class CargoController extends Controller
      * @param  \App\Cargo  $cargo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cargo $cargo)
+    public function destroy(Request $request)
     {
-        //
+        $cargo = Cargo::find($request['id']);
+
+        $cargo->update(
+            ['estado'=>false]
+        );
+
+        $cargo->save();
+
+        return response()->json(
+            ['mensaje'=>'eliminacion exitosa']
+        );
+        
     }
 }

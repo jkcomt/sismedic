@@ -201,7 +201,7 @@ Route::group([
 ],function(){
     Route::post('/buscaredit','PerfilExamenController@searchedit')->name('perfil_examen.searchedit');
     Route::post('/buscar','PerfilExamenController@search')->name('perfil_examen.search');
-    Route::post('/delete','PerfilExamenController@destroy')->name('perfil_examen.destroy');
+    Route::post('/perfil/delete','PerfilExamenController@destroy')->name('perfil_examen.destroy');
     Route::post('/update','PerfilExamenController@update')->name('perfil_examen.update');
     Route::get('/perfil/{id}','PerfilExamenController@index')->name('perfil_examen.index');
 });
@@ -212,6 +212,35 @@ Route::group([
 ],function(){
     Route::post('/delete','CitaController@destroy')->name('citas.destroy');
 });
+
+
+Route::resource('cargo','CargoController');
+Route::group([
+    'prefix'=>'cargo'
+],function(){
+    Route::post('/buscar','CargoController@search')->name('cargo.search');
+    Route::post('/delete','CargoController@destroy')->name('cargo.destroy');
+    Route::post('/update','CargoController@update')->name('cargo.update');
+});
+
+Route::resource('usuario','UsuarioController');
+
+Route::group(['prefix'=>'usuario'],function(){
+    Route::post('/buscar','UsuarioController@search')->name('usuario.search');
+    Route::post('/delete','UsuarioController@destroy')->name('usuario.destroy');
+    Route::post('/update','UsuarioController@update')->name('usuario.update');
+});
+
+
+
+Route::resource('personal','PersonalController');
+
+Route::group(['prefix'=>'personal'],function(){
+    Route::post('/buscar','PersonalController@search')->name('personal.search');
+    Route::post('/delete','PersonalController@destroy')->name('personal.destroy');
+    Route::post('/update','PersonalController@update')->name('personal.update');
+});
+
 
 Route::get('/calendar',function(){
     return view('calendario.index');

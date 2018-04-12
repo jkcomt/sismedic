@@ -15,7 +15,8 @@ class ClienteCuentaController extends Controller
     public function index()
     {
       $clientecuentas= ClienteCuenta::where('estado',true)->paginate(10);
-       return view('clientecuenta.index',compact("clientecuentas"));
+
+      return view('clientecuenta.index',compact("clientecuentas"));
     }
 
     /**

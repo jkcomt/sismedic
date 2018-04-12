@@ -11,7 +11,7 @@
                 <td>{{$perfil->descripcion}}</td>
 
                 <td>
-                     <a href="{{route('perfil_examen.index',$perfil->id)}}" class="btn btn-xs btn-info "> LISTA DE EXAMENES</a>
+                     <a href="{{route('perfil_examen.index',['id'=>$perfil->id])}}" class="btn btn-xs btn-info "> LISTA DE EXAMENES</a>
 
                 </td>
 

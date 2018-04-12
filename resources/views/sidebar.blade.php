@@ -8,7 +8,11 @@
         <li class="{{ Request::is('pacientes') ? 'active' : '' }} {{ Request::is('pacientes/*') ? 'active' : '' }}">
             <a href="{{route('pacientes.index')}}"><i class="fa fa-user"></i> <span>Pacientes</span></a>
         </li>
-        <li class="{{ Request::is('configuracion') ? 'active' : '' }} {{ Request::is('configuracion/*') ? 'active' : '' }}"><a href="{{route('configuracion.index')}}"><i class="fa fa-gear"></i><span>Configuración</span></a></li>
+        <li class="@if(Request::is('configuracion')) active @elseif(Request::is('area')) active @elseif(Request::is('altura')) active @elseif(Request::is('contrata')) active @elseif(Request::is('lugarlabor')) active @elseif(Request::is('ocupaciones')) active @elseif(Request::is('gruposanguineo')) active @elseif(Request::is('profesion')) active  @elseif(Request::is('tipoinstruccion')) active @elseif(Request::is('perfil')) active   @elseif(Request::is('cliente_cuenta')) active   @elseif(Request::is('tipo_examen')) active   @elseif(Request::is('lista_examen')) active @elseif(Request::is('perfil_examen')) active @elseif(Request::is('perfil_examen/*')) active @elseif(Request::is('cargo')) active  @elseif(Request::is('usuario')) active @elseif(Request::is('personal')) active  @endif ">
+            <a href="{{route('configuracion.index')}}"> 
+                <i class="fa fa-gear"></i><span>Configuración</span>
+            </a>
+        </li>
 
         @if(auth()->user()->cargo->descripcion != 'secado')
             {{--<li class="@if(Request::is('agricultor')) active @elseif(Request::is('agricultor/*')) active @endif "><a href="{{route('agricultor.index')}}"><i class="fa fa-user-circle"></i> <span>Agricultores</span></a></li>--}}

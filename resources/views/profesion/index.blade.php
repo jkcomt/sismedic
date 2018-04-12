@@ -13,7 +13,7 @@
     <h4 class="modal-title">Aviso</h4>
 @endsection
 @section('modal-body')
-    <h3 class="text-success text-center">Eliminación Exitosa</h3>
+    <h3 class="text-success text-center">Registro Exitosa</h3>
 @endsection
 @section('modal-footer')
     <a class="btn btn-sm btn-warning" href="{{route('profesion.index')}}">Volver</a>
@@ -36,13 +36,14 @@
 @include('profesion.modals.create')
 
     <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-8">
             <div class="form-group">
                 <!--a href="{{--route('tipoinstruccion.create')--}}" class="btn btn-success">NUEVA INSTRUCCION</a-->
+                    <a href="{{route('configuracion.index')}}" class="btn btn-warning">VOLVER</a>
                  <button class="btn btn-success new"> NUEVA PROFESIÓN</button>
             </div>
         </div>
-        <div class="col-md-10">
+        <div class="col-md-4">
             <form action="" class="form-inline text-right">
                 {{-- <select name="filtro" id="filtro" class="form-control">
                     <option value="historia">Nro. Historia</option>

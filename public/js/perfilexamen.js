@@ -73,7 +73,7 @@ $('body').on('click','.edit',function(e){
 
     var id = $(this).attr('value');
 
-    var url = "/perfil_examen/"+id+"/edit"
+    var url = "perfil_examen/"+id+"/edit"
     $.ajax({
         type:"get",
         url:url,
@@ -153,7 +153,7 @@ $('.confirmar').on('click',function (e) {
 
     var id = $(this).attr('id')
     var token = $('input[name=_token]').attr('value')
-    var url = "/perfil_examen/delete"
+    var url = "delete"
 
 
     $.ajax({
@@ -166,7 +166,7 @@ $('.confirmar').on('click',function (e) {
         },
         success: function(data){
 
-            console.log(data.responseJSON)
+            console.log(data.mensaje)
 
             $('#modal-confirmacion').modal('hide')
             $('#modal-exito .modal-body').html('')
@@ -175,7 +175,7 @@ $('.confirmar').on('click',function (e) {
 
         },
         error: function(data){
-            console.log(data.responseJSON)
+            console.log(data.mensaje)
         }
     });
 });
