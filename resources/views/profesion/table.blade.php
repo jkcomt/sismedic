@@ -22,5 +22,5 @@
         @endforeach
         </tbody>
     </table>
-
+{{$profesiones->links()}}
 </div>

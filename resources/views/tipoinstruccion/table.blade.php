@@ -17,5 +17,5 @@
         @endforeach
         </tbody>
     </table>
-
+{{$tipoinstrucciones->links()}}
 </div>

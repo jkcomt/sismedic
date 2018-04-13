@@ -42,7 +42,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
           page. However, you can choose any other skin. Make sure you
           apply the skin class to the body tag so the changes take effect. -->
-    <link rel="stylesheet" href="{{asset('css/skins/skin-blue.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/skins/skin-blue-light.css')}}">
     {{--custom css--}}
     <link rel="stylesheet" href="{{asset('css/main.css')}}">
 
@@ -52,12 +52,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+    <!--LINETIME-->
+     
     <!-- Google Font -->
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     {{--<script src="{{asset('providers/fullcalendar/lib/jquery.min.js')}}"></script>--}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+ 
     @yield('api')
 
     <style>
@@ -94,7 +96,7 @@ desired effect
 |               | sidebar-mini                            |
 |---------------------------------------------------------|
 -->
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue-light sidebar-mini fixed">
 @include('mensajes.exito')
 @include('mensajes.confirmacion')
 @yield('modal')

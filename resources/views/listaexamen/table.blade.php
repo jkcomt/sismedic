@@ -25,5 +25,5 @@
         @endforeach
         </tbody>
     </table>
-
+{{$listaexamenes->links()}}
 </div>

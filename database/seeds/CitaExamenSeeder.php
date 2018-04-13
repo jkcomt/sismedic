@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Paciente;
-class PacienteSeeder extends Seeder
+use App\CitaExamen;
+class CitaExamenSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,8 +12,8 @@ class PacienteSeeder extends Seeder
     public function run()
     {
         for ($i=1; $i <=9; $i++) { 
-        factory(Paciente::class)->create([
-        	'nro_historia'=>'H00000'.$i
+        factory(CitaExamen::class)->create([
+        	  'item_examen_id'=>16,
         ]);
         	
         }

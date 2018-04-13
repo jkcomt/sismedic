@@ -19,5 +19,5 @@
         @endforeach
         </tbody>
     </table>
-
+{{$clientecuentas->links()}}
 </div>

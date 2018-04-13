@@ -15,9 +15,14 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
+        // \Carbon\Carbon::setLocale('es');
+        setLocale(LC_ALL,'es_ES');
+        \Carbon\Carbon::setLocale(env('LOCALE', 'es'));
+
         $this->app->singleton(\Faker\Generator::class, function () {
             return \Faker\Factory::create('es_PE');
         });
+
     }
 
     /**

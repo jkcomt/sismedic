@@ -34,7 +34,7 @@ $factory->define(App\Paciente::class, function (Faker $faker) {
         'ocupacion_id'=>1,
         'lugar_labores_id'=>1,
 
-        'email'=>'jkcomt@gmail.com',
+        'email'=>$faker->email,
         'comentarios'=>'MANTENIMIENTO Y REPARACION DE EQUIPOS',
         'alergias'=>'ALERGIA CAMARONES',
         'en_caso_emergencia'=>'AMALIA FLOR 44561254',

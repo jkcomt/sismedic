@@ -19,5 +19,5 @@
         @endforeach
         </tbody>
     </table>
-
+{{$grupoSanguineos->links()}}
 </div>

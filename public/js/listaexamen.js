@@ -42,6 +42,24 @@ $('#registrarListaExamen').submit(function(e){
        }else{
            $('input[name=nombre]').parent().removeClass('has-error')
        }
+       if(data.responseJSON.errors.tipo)
+       {
+           $('input[name=tipo]').parent().addClass('has-error')
+       }else{
+           $('input[name=tipo]').parent().removeClass('has-error')
+       }
+       if(data.responseJSON.errors.valor)
+       {
+           $('input[name=valor]').parent().addClass('has-error')
+       }else{
+           $('input[name=valor]').parent().removeClass('has-error')
+       }
+       if(data.responseJSON.errors.descuento)
+       {
+           $('input[name=descuento]').parent().addClass('has-error')
+       }else{
+           $('input[name=descuento]').parent().removeClass('has-error')
+       }
 
         return;
 

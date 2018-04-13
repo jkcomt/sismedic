@@ -19,5 +19,5 @@
         @endforeach
         </tbody>
     </table>
-
+{{$contratas->links()}}
 </div>
