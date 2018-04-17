@@ -40,6 +40,8 @@ Route::group([
     Route::get('/citas/{id}/edit','PacientesController@editCita')->name('pacientes.citas.edit');
     Route::post('/citas/update','PacientesController@updateCita')->name('pacientes.citas.update');
     Route::get('/citas/{id}','PacientesController@pacienteCita')->name('pacientes.citas');
+    Route::post('/citas/buscarCita','PacientesController@searchCita')->name('pacientes.citas.buscarCita');
+    Route::get('/citas/{id}/detalle_cita','PacientesController@detailsCita')->name('pacientes.citas.detailsCita');
 });
 
 
@@ -155,6 +157,19 @@ Route::group(['prefix'=>'altura'],
     }
 );
 
+Route::get('citas/catalogo','CitaController@catalogo')->name('citas.catalogo');
+Route::post('citas/delete','CitaController@destroy')->name('citas.destroy');
+Route::post('citas/buscarfecha','CitaController@searchFecha')->name('citas.searchfecha');
+Route::resource('citas','CitaController');
+Route::group([
+    'prefix'=>'citas'
+],function(){
+
+    Route::get('/','EventController@index')->name('calendario.index');
+});
+
+//  Route::get('/citas_catalogo','CitaController@catalogo')->name('citas.catalogo');
+
 Route::resource('configuracion','ConfiguracionController');
 
 //Route::get('/buscar','LoteController@search')->name('lote.search');
@@ -206,14 +221,6 @@ Route::group([
     Route::get('/perfil/{id}','PerfilExamenController@index')->name('perfil_examen.index');
 });
 
-Route::resource('citas','CitaController');
-Route::group([
-    'prefix'=>'citas'
-],function(){
-    Route::get('/','EventController@index')->name('calendario.index');
-    Route::post('/delete','CitaController@destroy')->name('citas.destroy');
-    Route::post('/buscarfecha','CitaController@searchFecha')->name('citas.searchfecha');
-});
 
 Route::resource('cargo','CargoController');
 Route::group([

@@ -8,7 +8,7 @@ th,td{
 
 @endsection
 
-@section('header','LISTADO DE ALTURAS')
+@section('header','LISTADO DE CITAS')
 @section('modal-title')
 <h4 class="modal-title">Aviso</h4>
 @endsection
@@ -40,8 +40,8 @@ th,td{
     <div class="col-md-8">
         <div class="form-group">
             <!--a href="{{--route('tipoinstruccion.create')--}}" class="btn btn-success">NUEVA INSTRUCCION</a-->
-                <a href="{{route('configuracion.index')}}" class="btn btn-warning">VOLVER</a>
-            <button class="btn btn-success new">NUEVAS ALTURAS</button>
+                <a href="{{route('citas.catalogo')}}" class="btn btn-warning">VOLVER</a>
+            {{--<button class="btn btn-success new">NUEVAS ALTURAS</button>--}}
 
 
         </div>
@@ -54,10 +54,9 @@ th,td{
 </div>
 <br>
 <div class="row" id="tabla">
-
-     @include('altura.table')
+     @include('citas.table')
 </div>
 @endsection
 @section('script')
-<script src="{{asset('js/altura.js')}}"></script>
+<script src="{{asset('')}}"></script>
 @endsection

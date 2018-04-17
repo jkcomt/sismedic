@@ -45,7 +45,7 @@
                 <select name="filtro" id="filtro" class="form-control">
                     <option value="historia">Nro. Historia</option>
                     <option value="dni">DNI</option>
-                    {{--<option value="empresa">Empresa</option>--}}
+                    <option value="paciente">PACIENTE</option>
                 </select>
                 <input type="text" id="buscarPaciente" placeholder="BUSCAR..." class="form-control" style="width: 45%">
                 <input type="hidden" value="{{route('pacientes.search')}}" id="buscarUrlPaciente">

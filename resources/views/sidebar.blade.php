@@ -5,19 +5,48 @@
         <li class="header">OPCIONES</li>
         <!-- Optionally, you can add icons to the links -->
         <li class="{{ Request::is('dashboard') ? 'active' : '' }}"><a href="/"><i class="fa fa-home"></i> <span>Principal</span></a></li>
-        <li class="{{ Request::is('pacientes') ? 'active' : '' }} {{ Request::is('pacientes/*') ? 'active' : '' }}">
-            <a href="{{route('pacientes.index')}}"><i class="fa fa-user"></i> <span>Pacientes</span></a>
+
+        <li class="treeview">
+            <a href="#"><i class="fa fa-user"></i> <span>Paciente</span>
+                <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+            </span>
+            </a>
+            <ul class="treeview-menu">
+              <li class="{{ Request::is('pacientes') ? 'active' : '' }} {{ Request::is('pacientes/*') ? 'active' : '' }}">
+                  <a href="{{route('pacientes.index')}}"><i class="fa fa-user"></i> <span>Pacientes</span></a>
+              </li>
+                <li  class="">
+                    <a href=""><i class=""></i> <span>Catalogo</span></a>
+                </li>
+            </ul>
         </li>
 
-        <li  class="{{ Request::is('citas') ? 'active' : '' }} {{ Request::is('citas/*') ? 'active' : '' }}">
-            <a href="{{route('calendario.index')}}"><i class="fa fa-calendar"></i> <span>Citas</span></a>
+        <li class="treeview">
+            <a href="#"><i class="fa fa-address-book"></i> <span>Citas</span>
+                <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+            </span>
+            </a>
+            <ul class="treeview-menu">
+                <li class="{{ Request::is('citas/catalogo') ? 'active' : '' }}"><a href="{{route('citas.catalogo')}}"><i class="fa fa-list-alt"></i> <span>Catalogo</span></a></li>
+                <li  class="{{ Request::is('citas') ? 'active' : '' }}">
+                    <a href="{{route('calendario.index')}}"><i class="fa fa-calendar"></i> <span>Calendario</span></a>
+                </li>
+            </ul>
         </li>
 
+        <li class=" ">
+            <a href="">
+                <i class="fa fa-gear"></i><span>Reportes</span>
+            </a>
+        </li>
         <li class="@if(Request::is('configuracion')) active @elseif(Request::is('area')) active @elseif(Request::is('altura')) active @elseif(Request::is('contrata')) active @elseif(Request::is('lugarlabor')) active @elseif(Request::is('ocupaciones')) active @elseif(Request::is('gruposanguineo')) active @elseif(Request::is('profesion')) active  @elseif(Request::is('tipoinstruccion')) active @elseif(Request::is('perfil')) active   @elseif(Request::is('cliente_cuenta')) active   @elseif(Request::is('tipo_examen')) active   @elseif(Request::is('lista_examen')) active @elseif(Request::is('perfil_examen')) active @elseif(Request::is('perfil_examen/*')) active @elseif(Request::is('cargo')) active  @elseif(Request::is('usuario')) active @elseif(Request::is('personal')) active  @endif ">
-            <a href="{{route('configuracion.index')}}"> 
+            <a href="{{route('configuracion.index')}}">
                 <i class="fa fa-gear"></i><span>Configuración</span>
             </a>
         </li>
+
 
 
         @if(auth()->user()->cargo->descripcion != 'secado')
@@ -41,9 +70,9 @@
         {{--</li>--}}
 
 <!-- luis teran -->
-      
 
-   
+
+
 
 <!-- luis teran -->
 

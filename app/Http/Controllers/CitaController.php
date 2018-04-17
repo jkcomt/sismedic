@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Cita;
 use App\Event;
 use App\PerfilExamen;
-use Illuminate\Http\Request;
-
 class CitaController extends Controller
 {
     /**
@@ -24,11 +23,11 @@ class CitaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create()
     {
-        $citas = Cita::Where('estado',true)->where('paciente_id',$id)->paginate(10);
+      $citas = Cita::Where('estado',true)->where('paciente_id',$id)->paginate(10);
 
-        return view('citas.create',compact('citas'));
+      return view('citas.create',compact('citas'));
     }
 
     /**
@@ -45,10 +44,10 @@ class CitaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Cita  $cita
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Cita $cita)
+    public function show($id)
     {
         //
     }
@@ -56,10 +55,10 @@ class CitaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Cita  $cita
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cita $cita)
+    public function edit($id)
     {
         //
     }
@@ -68,10 +67,10 @@ class CitaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Cita  $cita
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cita $cita)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -79,48 +78,57 @@ class CitaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Cita  $cita
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-        $cita = Cita::find($request['id']);
+      $cita = Cita::find($request['id']);
 
-        $cita->update([
-            'estado'=>false
-        ]);
+          $cita->update([
+              'estado'=>false
+          ]);
 
-        $cita->save();
+          $cita->save();
 
-        $event = Event::find($cita->event->id);
+          $event = Event::find($cita->event->id);
 
-        $event->update([
-            'estado'=>false
-        ]);
+          $event->update([
+              'estado'=>false
+          ]);
 
-        $event->save();
+          $event->save();
 
-        return response()->json([
-            'mensaje'=>"eliminación exitosa"
-        ]);
+          return response()->json([
+              'mensaje'=>"eliminación exitosa"
+          ]);
     }
 
     public function searchFecha(Request $request){
-        $citas = null;
+         $citas = null;
 
-        if($request['fecha'] != '') {
-            $citas = Cita::where('fecha_examen','=', $request['fecha'])
-                //->orWhere('num_dni', 'like', '%' . $request['buscar'] . '%')
-                ->orderBy('hora_examen', 'asc');
-            $citas = $citas->where('estado', true)->paginate(10);
-        }
+         if($request['fecha'] != '') {
+             $citas = Cita::where('fecha_examen','=', $request['fecha'])
+                 //->orWhere('num_dni', 'like', '%' . $request['buscar'] . '%')
+                 ->orderBy('hora_examen', 'asc');
+             $citas = $citas->where('estado', true)->paginate(10);
+         }
 
-        if($request->ajax())
-        {
-            $view = view('citas.modal.tabla',compact('citas'))->render();
-            return response()->json(['html'=>$view]);
-        }
+         if($request->ajax())
+         {
+             $view = view('citas.modal.tabla',compact('citas'))->render();
+             return response()->json(['html'=>$view]);
+         }
+     }
+
+    public function catalogo()
+    {
+      $citas= Cita::where('estado',true)->paginate(10);
+      return view('citas.catalogo',compact('citas'));
     }
-
-
+    public function cata()
+    {
+      $citas= Cita::where('estado',true)->paginate(10);
+      return view('citas.catalogo',compact('citas'));
+    }
 }

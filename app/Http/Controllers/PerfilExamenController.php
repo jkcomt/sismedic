@@ -24,13 +24,13 @@ class PerfilExamenController extends Controller
         $perfilExamens= PerfilExamen::where('estado',true)->where('perfil_id',$perfil->id)->get();
 
        $listaexamenes=ListaExamen::where('estado',true)
-
-                        ->whereNOTIn('id',function($query)  use($perfil){
+                        ->whereNOTIn('id',function($query)  use($perfil)
+                        {
                             $query->select('lista_examen_id')->from('perfil_examenes')->where('perfil_examenes.perfil_id',$perfil->id);
                         })->get();
-    
+
        return view('perfilexamen.index',compact("perfil","listaexamenes"));
-                   
+
     }
 
     /**
@@ -95,7 +95,7 @@ class PerfilExamenController extends Controller
     public function edit($id)
     {
 
-   
+
     }
 
     /**

@@ -38,7 +38,7 @@
             <div class="form-group">
                 <a href="{{route('pacientes.index')}}" class="btn btn-warning">VOLVER</a>
                 <a href="{{route('pacientes.citas.create',[$paciente->id])}}" class="btn btn-success">NUEVA CITA</a>
-                {{--<input type="hidden" value="{{route('pacientes.destroy')}}" id="deletePaciente">--}}
+                <input type="hidden" value="{{$paciente->id}}" id="idPaciente">
             </div>
         </div>
         <div class="col-md-8">
@@ -49,6 +49,7 @@
                     {{--<option value="empresa">Empresa</option>--}}
                 {{--</select>--}}
                 <input type="text" id="buscarCita" placeholder="BUSCAR..." class="form-control" style="width: 45%">
+
                 {{--<input type="hidden" value="{{route('pacientes.search')}}" id="buscarUrlPaciente">--}}
                 {{--<button class="btn btn-primary form-control">BUSCAR</button>--}}
             </form>

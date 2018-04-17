@@ -1,5 +1,9 @@
 @extends('layout')
-@section('header','REGISTRO DE NUEVO PACIENTE')
+
+@section('header')
+<a href="{{route('pacientes.index')}}" class="btn btn-warning">Volver</a>
+ REGISTRO DE NUEVO PACIENTE
+@endsection
 {{-----------------------------------------------------------------}}
 @section('modal-title')
     <h4 class="modal-title">Aviso</h4>
@@ -13,7 +17,9 @@
 @endsection
 {{-----------------------------------------------------------------}}
 @section('content')
+
     <div class="row">
+
         <div class="col-lg-12 col-md-12 col-sm-12">
             <div id="msg-error" class="alert alert-danger" style="display:none;">
                 <strong>Corriga los campos indicados por favor.</strong>

@@ -1,24 +1,8 @@
-/**
- * Created by Ricardo on 07/04/2018.
- */
 $(document).ready(function() {
     $('#msg-error').hide();
 
     $('#perfil').trigger('change');
     $('#perfilEditar').trigger('change');
-
-    // if($items.length <= 0){
-    //     var checks = $('input[name=check]');
-    //     console.log(checks.length);
-    //     for(var i = 0; i < checks.length; ++i)
-    //     {
-    //
-    //         if(checks[i].checked){
-    //             console.log("checked");
-    //         }
-    //     }
-    // }
-
 });
 
 $items = [];
@@ -256,4 +240,33 @@ $('body').on('click','.delete',function (e) {
     $('.confirmar').attr('id',id)
     $('.confirmar').attr('estado','eliminar')
     $('#modal-confirmacion').modal('show')
+});
+
+/*****************************************************************************/
+
+
+$('#buscarCita').on('keyup',function(){
+    valor = $(this).val();
+    // e.preventDefault();
+    var token = $('input[name=_token]').attr('value')
+    var id= $('#idPaciente').val()
+    var url = "buscarCita";
+    //var url = $('#buscarUrlPaciente').val();
+    $.ajax({
+        type:"post",
+        headers: {'X-CSRF-TOKEN':token},
+        url:url,
+        dataType:"json",
+        data:{
+            buscar : valor,
+            id:id
+        },
+        success: function(data){
+          //console.log(data);
+            $('#tabla').html(data.html)
+        },
+        error: function(data){
+            //console.log("Error "+JSON.stringify(data))
+        }
+    });
 });

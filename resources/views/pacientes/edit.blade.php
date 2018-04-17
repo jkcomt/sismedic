@@ -1,6 +1,8 @@
 @extends('layout')
-
-
+@section('header')
+<a href="{{route('pacientes.index')}}" class="btn btn-warning">Volver</a>
+ EDITAR PACIENTE  {{$paciente->apellido_paterno." ".$paciente->apellido_materno." ".$paciente->nombres}}
+@endsection
 @section('modal-title')
     <h4 class="modal-title">Aviso</h4>
 @endsection

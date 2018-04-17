@@ -588,4 +588,3 @@ $('#buscarPaciente').on('keyup',function(){
         }
     });
 });
-

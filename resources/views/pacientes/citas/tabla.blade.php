@@ -14,9 +14,10 @@
                 <td>{{$cita->fecha_examen.' - '.Carbon\Carbon::parse($cita->hora_examen)->format('h:i A')}}</td>
                 <td>{{ucfirst($cita->estado_cita)}}</td>
                 <td>
-                    <form action="">
+                    <!--form action="">
                         <button class="btn btn-xs btn-default"><span class="glyphicon glyphicon-info-sign"></span> DETALLE</button>
-                    </form>
+                    </form-->
+                    <a href="{{route('pacientes.citas.detailsCita',[$cita->id])}}" class="btn btn-xs btn-default"  id=""><span class="glyphicon glyphicon-info-sign"></span> DETALLE</a>
                 </td>
                 <td>
                     <a href="{{route('pacientes.citas.edit',[$cita->id])}}" class="btn btn-xs btn-warning editar"  id=""><span class="glyphicon glyphicon-pencil"></span> EDITAR</a>

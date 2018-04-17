@@ -212,15 +212,22 @@ class PacientesController extends Controller
 
                 $pacientes = $pacientes->where('estado', true)->paginate(10);
             }
+            elseif($request['filtro'] == "paciente")
+            {
+              $pacientes = Paciente::
+                  where('apellido_paterno', 'like', '%' . $request['buscar'] . '%')
+                  ->orWhere('apellido_materno', 'like', '%' . $request['buscar'] . '%')
+                  ->orderBy('fecha_registro', 'desc')
+                  ->orderBy('hora_registro', 'desc');
+
+              $pacientes = $pacientes->where('estado', true)->paginate(10);
+            }
         }else{
             $pacientes = Paciente::where('estado', true)
                 ->orderBy('fecha_registro', 'desc')
                 ->orderBy('hora_registro', 'desc')
                 ->paginate(10);
         }
-
-
-
         if($request->ajax())
         {
             $view = view('pacientes.tabla',compact('pacientes'))->render();
@@ -462,7 +469,7 @@ class PacientesController extends Controller
     }
 
     public function pacienteCita($id){
-        $paciente = Paciente::find($id);
+          $paciente = Paciente::find($id);
 
         $citas = Cita::where('estado',true)->where('paciente_id',$paciente->id)
             ->orderBy('fecha_examen','asc')
@@ -581,6 +588,24 @@ class PacientesController extends Controller
         return view('pacientes.citas.edit',compact('paciente','cita','tipoExamenes','clienteCuentas','perfiles','perfilesExamenes'));
     }
 
+    public function detailsCita($id)
+    {
+      $cita = Cita::where('id','=',$id)->first();
+
+      $paciente = Paciente::find($cita->paciente->id);
+
+      $tipoExamenes = TipoExamen::where('estado',true)->get()->pluck('descripcion','id')->toArray();
+
+      $clienteCuentas = ClienteCuenta::where('estado',true)->get()->pluck('descripcion','id')->toArray();
+
+      $perfiles = Perfil::where('estado',true)->get()->pluck('descripcion','id')->toArray();
+
+      $perfilesExamenes = PerfilExamen::where('estado',true)->get();
+
+      return view('pacientes.citas.details',compact('paciente','cita','tipoExamenes','clienteCuentas','perfiles','perfilesExamenes'));
+    }
+
+
     public function updateCita(Request $request){
         if(request()->ajax())
         {
@@ -630,4 +655,32 @@ class PacientesController extends Controller
             return response()->json(['mensaje' => $cita->with('paciente')->get()->last()]);
         }
     }
+
+    public function searchCita(Request $request){
+
+            if($request->ajax())
+            {
+                  $paciente = Paciente::find($request['id']);
+                  if($request['buscar']!="")
+                  {
+                    $citas = Cita::where('estado',true)->
+                    where('nro_serie_cita','like', '%' . $request['buscar'] . '%')
+                    ->where('paciente_id',$request['id'])
+                        ->orderBy('fecha_examen','asc')
+                        ->orderBy('hora_examen','asc')->paginate(10);
+                  }
+              else {
+                $citas = Cita::where('estado',true)//->where('nro_serie_cita','like', '%' . $request['buscar'] . '%')
+                    ->where('paciente_id',$request['id'])
+                    ->orderBy('fecha_examen','asc')
+                    ->orderBy('hora_examen','asc')->paginate(10);
+              }
+                //  dd($citas);
+
+                    $view = view('pacientes.citas.tabla',compact('citas'))->render();
+                    return response()->json(['html'=>$view]);
+
+            }
+    }
+
 }
