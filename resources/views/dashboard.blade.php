@@ -12,11 +12,11 @@
     {{--</div>--}}
 @endsection
 @section('content')
-<div class="panel panel-body">
+{{-- <div class="panel panel-body">
     <h2 class="text-center">
         SISMEDIC
     </h2>
-</div>
+</div> --}}
 <div class="row">
     <div class="col-md-6">
         <div class="panel panel-default">
