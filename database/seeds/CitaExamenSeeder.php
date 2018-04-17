@@ -13,7 +13,8 @@ class CitaExamenSeeder extends Seeder
     {
         for ($i=1; $i <=9; $i++) { 
         factory(CitaExamen::class)->create([
-        	  'item_examen_id'=>16,
+              'cita_id'=>$i,
+        	  'item_examen_id'=>16
         ]);
         	
         }
