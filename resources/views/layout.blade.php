@@ -108,11 +108,11 @@ desired effect
         <!-- Logo -->
         <a href="{{route('dashboard')}}" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
-            {{--<span class="logo-mini"><b>A</b>LT</span>--}}
+            <span class="logo-mini"><b><img src="{{asset('img/logo.ico/favicon-32x32.png')}}" alt="" ></b></span>
             {{--<span class="logo-mini"><b><img src="{{asset('img/logo.jpg')}}" width="100%" alt=""></b></span>--}}
             <!-- logo for regular state and mobile devices -->
             {{--<span class="logo-lg"><b>Admin</b>LTE</span>--}}
-            <span class="logo-lg"><b><img src="" alt="" width="25%"> SISMEDIC</b></span>
+            <span class="logo-lg"><b><img src="{{asset('img/logo.ico/favicon-32x32.png')}}" alt="" > SISMEDIC</b></span>
         </a>
 
         <!-- Header Navbar -->

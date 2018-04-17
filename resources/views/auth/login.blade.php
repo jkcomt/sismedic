@@ -24,6 +24,9 @@
                     <h1 class="panel-title">Acceso a la aplicación</h1>
                 </div>
                 <div class="panel-body">
+                    <div class="text-center">
+                        <img src="{{asset('img/logo.ico/logo.jpg')}}" alt="">
+                    </div>
                     <form action="{{route('login')}}" method="post">
                         {{csrf_field()}}
                         <div class="form-group {{$errors->has('name')? 'has-error':''}} ">

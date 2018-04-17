@@ -2,18 +2,20 @@
 @section('api')
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
 @endsection
+@section('header')
+    {{--<div class="panel panel-heading">--}}
+        <h1 class="panel-title">
+            <strong>
+                Bienvenid@ {{auth()->user()->personal->nombres}}
+            </strong>
+        </h1>
+    {{--</div>--}}
+@endsection
 @section('content')
-<div class="panel panel-heading">
-    <h1 class="panel-title">
-        <strong>
-            Bienvenid@ {{auth()->user()->personal->nombres}}
-        </strong>
-    </h1>
-</div>
 <div class="panel panel-body">
-    <h1 class="text-center">
+    <h2 class="text-center">
         SISMEDIC
-    </h1>
+    </h2>
 </div>
 <div class="row">
     <div class="col-md-6">

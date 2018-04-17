@@ -86,4 +86,8 @@ class Cita extends Model
     public function event(){
         return $this->hasOne(Event::class);
     }
+
+    public function funcionVital(){
+        return $this->hasOne(FuncionVital::class);
+    }
 }

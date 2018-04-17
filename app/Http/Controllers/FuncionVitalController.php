@@ -15,7 +15,8 @@ class FuncionVitalController extends Controller
      */
     public function index()
     {
-        //
+        $citas = Cita::where('estado',true)->orderBy('fecha_examen')->orderBy('hora_examen')->paginate(10);
+        return view('funcionvital.index',compact('citas'));
     }
 
     /**
@@ -91,9 +92,11 @@ class FuncionVitalController extends Controller
      * @param  \App\FuncionVital  $funcionVital
      * @return \Illuminate\Http\Response
      */
-    public function show(FuncionVital $funcionVital)
+    public function show($id)
     {
-        //
+        $funcionVital = FuncionVital::where('cita_id',$id)->get()->first();
+//        dd($funcionVital);
+        return view('funcionvital.detalle',compact('funcionVital'));
     }
 
     /**
