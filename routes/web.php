@@ -160,6 +160,8 @@ Route::group(['prefix'=>'altura'],
 Route::get('citas/catalogo','CitaController@catalogo')->name('citas.catalogo');
 Route::post('citas/delete','CitaController@destroy')->name('citas.destroy');
 Route::post('citas/buscarfecha','CitaController@searchFecha')->name('citas.searchfecha');
+Route::post('citas/buscar_dni','CitaController@searchdni')->name('citas.searchdni');
+Route::get('citas/nueva_cita','CitaController@nuevacita')->name('citas.nuevacita');
 Route::resource('citas','CitaController');
 Route::group([
     'prefix'=>'citas'
@@ -259,4 +261,8 @@ Route::group([
    'prefix'=>'funcion_vital'
 ],function(){
     Route::get('/{id}/create','FuncionVitalController@create')->name('funcion_vital.create');
+    Route::get('editar/{id}','FuncionVitalController@edit')->name('funcion_vital.edit');
+    Route::post('/update','FuncionVitalController@update')->name('funcion_vital.update');
+    Route::post('/delete','FuncionVitalController@destroy')->name('funcion_vital.destroy');
+    Route::post('/buscar','FuncionVitalController@search')->name('funcion_vital.buscar');
 });

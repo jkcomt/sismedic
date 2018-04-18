@@ -12,6 +12,7 @@ $('body').on('click','.conformidad',function(e){
     $botonPresionado = 'conforme';
 
     $tipo = $(this).attr('tipo');
+    console.log($tipo)
     if($tipo == "registrar")
     {
         $('.confirmar').attr('estado','conforme')
@@ -33,17 +34,27 @@ $('body').on('click','.conformidad',function(e){
         $('.confirmar').addClass('btn-success')
         $('#modal-confirmacion').modal('show')
     }
+    else if($tipo=="eliminar")
+    {
+      $('.confirmar').attr('estado','conforme')
+      $('#modal-confirmacion .modal-body').html('<h3 class="text-warning text-center">¿Deseas Eliminar Funciones Vitales?</h3>')
+      $('#modal-confirmacion .confirmar').attr('estado','eliminar')
+      $('#modal-confirmacion .confirmar').attr('id',$(this).attr('id'));
+      $('#modal-confirmacion .confirmar').removeClass('btn-danger')
+      $('#modal-confirmacion .confirmar').addClass('btn-success')
+      $('#modal-confirmacion').modal('show')
+    }
 });
 
 $('.confirmar').on('click',function (e) {
     e.preventDefault();
     $estado = $(this).attr('estado')
     //console.log($estado);
-
     var token = $('input[name=_token]').attr('value')
+
     if($estado == 'eliminar') {
         $(this).attr('disabled','disabled');
-        var url = "/citas/delete"
+        var url = "/funcion_vital/delete"
         var id = $(this).attr('id')
         console.log(id)
         $.ajax({
@@ -69,7 +80,7 @@ $('.confirmar').on('click',function (e) {
         if($tipo == "registrar"){
             $('#registrarFuncionVital').submit();
         }else if($tipo == "actualizar"){
-            $('#actualizarCita').submit();
+            $('#editarFuncionVital').submit();
         }
     }
 });
@@ -251,5 +262,66 @@ $('#registrarFuncionVital').submit(function(e){
         return;
 
     });
+
 });
 
+$('#editarFuncionVital').submit(function(e){
+  e.preventDefault();
+
+  var datos = $('#editarFuncionVital');
+  var url = datos.attr('action');
+
+  $.post(url,datos.serialize(),function (result) {
+
+  }).success(function(data)
+  {
+
+      if($.isEmptyObject(data.error)){
+          console.log(data)
+          $('#modal-confirmacion').modal('hide');
+          $('#modal-exito').modal({
+              backdrop: 'static',
+              keyboard:false
+          });
+          $('#modal-exito .modal-body').html('<h3 class="text-success text-center">Actualización exitosa</h3>')
+          $('#modal-exito').modal('show')
+      }else{
+          console.log(data.error)
+          return;
+      }
+  }).error(function(data){
+      $('#msg-error').fadeIn();
+      $('#listaerrores').html('')
+
+      $.each(data.responseJSON.errors, function( index, value ) {
+          console.log(value)
+          $('#listaerrores').append('<li>'+value+'</li>')
+      });
+      return;
+  });
+});
+
+
+$('#buscarFuncionVital').on('keyup',function(){
+    valor = $(this).val();
+    $filtro = $('#filtro').val();
+    var token = $('input[name=_token]').attr('value')
+    var url = "/funcion_vital/buscar";
+
+    $.ajax({
+        type:"post",
+        headers: {'X-CSRF-TOKEN':token},
+        url:url,
+        dataType:"json",
+        data:{
+            buscar : valor,
+            filtro: $filtro
+        },
+        success: function(data){
+  $('#tabla').html(data.html)
+        },
+        error: function(data){
+            //console.log("Error "+JSON.stringify(data))
+        }
+    });
+});

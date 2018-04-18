@@ -6,6 +6,12 @@ use Illuminate\Http\Request;
 use App\Cita;
 use App\Event;
 use App\PerfilExamen;
+use App\FuncionVital;
+use App\Paciente;
+use App\clienteCuenta;
+use App\TipoExamen;
+use App\Perfil;
+
 class CitaController extends Controller
 {
     /**
@@ -81,7 +87,7 @@ class CitaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
       $cita = Cita::find($request['id']);
 
@@ -98,6 +104,13 @@ class CitaController extends Controller
           ]);
 
           $event->save();
+
+           if(isset($cita->funcionVital))
+           {
+             $funcionVital=FuncionVital::find($cita->funcionVital->id);
+             $funcionVital->delete();
+
+           }
 
           return response()->json([
               'mensaje'=>"eliminación exitosa"
@@ -120,6 +133,34 @@ class CitaController extends Controller
              return response()->json(['html'=>$view]);
          }
      }
+     public function searchdni(Request $request)
+     {
+       $citas = null;
+
+       if($request['buscar'] != '')
+       {
+         $citas= Cita::leftjoin('pacientes','citas.paciente_id','pacientes.id')
+         ->where('pacientes.num_dni','like','%'.$request['buscar'].'%')
+         ->where('citas.estado',true)
+         ->orderBy('citas.fecha_registro','desc')
+         ->orderBy('citas.hora_registro','desc')->paginate(10);
+       }
+       else{
+         $citas= Cita::where('estado',true)
+         ->orderBy('fecha_registro','desc')
+         ->orderBy('hora_registro','desc')->paginate(10);
+       }
+
+           if($request->ajax())
+           {
+               $view = view('citas.table',compact('citas'))->render();
+               return response()->json(['html'=>$view]);
+           }
+      /*  return  response()->json([
+            'mensaje'=>$request['buscar']
+        ]);*/
+     }
+
 
     public function catalogo()
     {
@@ -131,4 +172,18 @@ class CitaController extends Controller
       $citas= Cita::where('estado',true)->paginate(10);
       return view('citas.catalogo',compact('citas'));
     }
+
+    public function nuevacita()
+    {
+      $clienteCuentas = ClienteCuenta::where('estado',true)->get()->pluck('descripcion','id')->toArray();
+      $tipoExamenes = TipoExamen::where('estado',true)->get()->pluck('descripcion','id')->toArray();
+      $perfiles = Perfil::where('estado',true)->get()->pluck('descripcion','id')->toArray();
+      $perfilesExamenes = PerfilExamen::where('estado',true)->get();
+      $cita = Cita::where('estado','=',true)->get()->last();
+      
+      return view('citas.create',compact('clienteCuentas','tipoExamenes','perfiles','perfilesExamenes','cita'));
+    //  dd($citas);
+    }
+
+
 }

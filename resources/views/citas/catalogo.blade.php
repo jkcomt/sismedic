@@ -16,7 +16,7 @@ th,td{
 <h3 class="text-success text-center">Registro Exitoso</h3>
 @endsection
 @section('modal-footer')
-<a class="btn btn-sm btn-warning" href="{{route('altura.index')}}">Volver</a>
+<a class="btn btn-sm btn-warning" href="{{route('citas.catalogo')}}">Volver</a>
 @endsection
 
 @section('modal-confirmacion-title')
@@ -37,18 +37,18 @@ th,td{
 
 
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-3">
         <div class="form-group">
             <!--a href="{{--route('tipoinstruccion.create')--}}" class="btn btn-success">NUEVA INSTRUCCION</a-->
                 <a href="{{route('citas.catalogo')}}" class="btn btn-warning">VOLVER</a>
-            {{--<button class="btn btn-success new">NUEVAS ALTURAS</button>--}}
-
+                <a href="{{route('citas.nuevacita')}}" class="btn btn-success">NUEVA CITA</a>
 
         </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-9">
         <form action="" class="form-inline text-right">
-           {{--<button class="btn btn-primary form-control">BUSCAR</button>--}}
+          <input type="text" id="buscarCitaDni" placeholder="BUSCAR..." class="form-control" style="width: 45%">
+
         </form>
     </div>
 </div>
@@ -58,5 +58,5 @@ th,td{
 </div>
 @endsection
 @section('script')
-<script src="{{asset('')}}"></script>
+    <script src="{{asset('js/pacientes/citas.js')}}"></script>
 @endsection

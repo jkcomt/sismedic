@@ -40,13 +40,12 @@
         </div>
         <div class="col-md-10">
             <form action="" class="form-inline text-right">
-                {{--<select name="filtro" id="filtro" class="form-control">--}}
-                    {{--<option value="historia">Nro. Historia</option>--}}
-                    {{--<option value="dni">DNI</option>--}}
-                    {{--<option value="paciente">PACIENTE</option>--}}
-                {{--</select>--}}
-                <input type="text" id="buscarPaciente" placeholder="BUSCAR..." class="form-control" style="width: 45%">
-                <input type="hidden" value="{{route('pacientes.search')}}" id="buscarUrlPaciente">
+                <select name="filtro" id="filtro" class="form-control">
+                    <option value="historia">Nro. Historia</option>
+                    <option value="paciente">PACIENTE</option>
+                </select>
+                <input type="text" id="buscarFuncionVital" placeholder="BUSCAR..." class="form-control" style="width: 45%">
+
             </form>
         </div>
     </div>
@@ -56,5 +55,5 @@
     </div>
 @endsection
 @section('script')
-    {{--<script src="{{asset('js/pacientes/pacientes.js')}}"></script>--}}
+    <script src="{{asset('js/funcionvital.js')}}"></script>
 @endsection

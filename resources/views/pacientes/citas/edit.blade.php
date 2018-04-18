@@ -1,5 +1,9 @@
 @extends('layout')
-@section('header','Modificar Cita')
+@section('header')
+  <a class="btn btn-sm btn-warning" href="{{route('pacientes.citas',[$paciente->id])}}">Volver</a>
+MODIFICAR CITA
+
+@endsection
 {{-----------------------------------------------------------------}}
 @section('modal-title')
     <h4 class="modal-title">Aviso</h4>
