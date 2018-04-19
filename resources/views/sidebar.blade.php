@@ -6,14 +6,17 @@
         <!-- Optionally, you can add icons to the links -->
         <li class="{{ Request::is('dashboard') ? 'active' : '' }}"><a href="/"><i class="fa fa-home"></i> <span>Principal</span></a></li>
 
-        <li class="treeview">
+        <li class="treeview {{ Request::is('pacientes/*') ? 'active' : '' }} {{ Request::is('pacientes') ? 'active' : '' }}">
             <a href="#"><i class="fa fa-user"></i> <span>Pacientes</span>
                 <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
             </span>
             </a>
             <ul class="treeview-menu">
-              <li class="{{ Request::is('pacientes') ? 'active' : '' }} {{ Request::is('pacientes/*') ? 'active' : '' }}">
+              <li class="{{ Request::is('pacientes/create') ? 'active' : '' }} ">
+                  <a href="{{route('pacientes.create')}}"><i class="fa  fa-plus-circle"></i> <span>Registrar Paciente</span></a>
+              </li>
+              <li class="{{ Request::is('pacientes') ? 'active' : '' }} ">
                   <a href="{{route('pacientes.index')}}"><i class="fa fa-list-alt"></i> <span>Catálogo</span></a>
               </li>
                 {{--<li  class="">--}}
@@ -21,25 +24,26 @@
                 {{--</li>--}}
             </ul>
         </li>
-        <li class="treeview">
+        <li class="treeview {{ Request::is('citas/*') ? 'active' : '' }} {{ Request::is('citas') ? 'active' : '' }}">
             <a href="#"><i class="fa fa-address-book"></i> <span>Citas</span>
                 <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
             </span>
             </a>
             <ul class="treeview-menu">
+                <li class="{{ Request::is('citas/nueva_cita') ? 'active' : '' }}"><a href="{{route('citas.nuevacita')}}"><i class="fa fa-plus-circle"></i> <span>Nueva Cita</span></a></li>
                 <li class="{{ Request::is('citas/catalogo') ? 'active' : '' }}"><a href="{{route('citas.catalogo')}}"><i class="fa fa-list-alt"></i> <span>Catalogo</span></a></li>
                 <li  class="{{ Request::is('citas') ? 'active' : '' }}">
                     <a href="{{route('calendario.index')}}"><i class="fa fa-calendar"></i> <span>Calendario</span></a>
                 </li>
             </ul>
         </li>
-        <li class="@if(Request::is('funcion_vital')) active @endif">
+        <li class="{{ Request::is('funcion_vital/*') ? 'active' : '' }} {{ Request::is('funcion_vital') ? 'active' : '' }}">
             <a href="{{route('funcion_vital.index')}}">
                 <i class="fa fa-stethoscope"></i><span>Funciones Vitales</span>
             </a>
         </li>
-        <li class="{{Request::is('evaluacion_medica') ? 'active' : '' }}">
+        <li class="{{Request::is('evaluacion_medica/*') ? 'active' : '' }} {{Request::is('evaluacion_medica') ? 'active' : '' }}">
             <a href="{{route('evaluacion_medica.index')}}">
                 <i class="fa fa-heartbeat"></i><span>Evaluación Médica</span>
             </a>

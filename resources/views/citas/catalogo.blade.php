@@ -40,14 +40,14 @@ th,td{
     <div class="col-md-3">
         <div class="form-group">
             <!--a href="{{--route('tipoinstruccion.create')--}}" class="btn btn-success">NUEVA INSTRUCCION</a-->
-                <a href="{{route('citas.catalogo')}}" class="btn btn-warning">VOLVER</a>
+                {{-- <a href="{{route('citas.catalogo')}}" class="btn btn-warning">VOLVER</a> --}}
                 <a href="{{route('citas.nuevacita')}}" class="btn btn-success">NUEVA CITA</a>
 
         </div>
     </div>
     <div class="col-md-9">
         <form action="" class="form-inline text-right">
-          <input type="text" id="buscarCitaDni" placeholder="BUSCAR..." class="form-control" style="width: 45%">
+          <input type="text" id="buscarCitaDni" placeholder="BUSCAR CITAS POR DNI DEL PACIENTE..." class="form-control" style="width: 45%">
 
         </form>
     </div>

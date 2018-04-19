@@ -57,7 +57,17 @@
         });
     </script>
 @endsection
-@section('header','CALENDARIO DE CITAS')
+@section('header')
+  <div class="row">
+    <div class="col-md-4">
+      CALENDARIO DE CITAS
+    </div>
+    <div class="col-md-8 text-right">
+      <a href="{{route('citas.nuevacita')}}" class="btn btn-success">REGISTRAR NUEVA CITA</a>
+    </div>
+  </div>
+
+@endsection
 @section('content')
 <div id="tabla">
 

@@ -91,7 +91,7 @@ $('#registrarCita').submit(function(e){
                 keyboard:false
             });
             $('#modal-confirmacion').modal('hide');
-            $('#modal-exito .modal-body').html('<h3 class="text-success text-center">Cita Ocupacional '+'</h3>')
+            $('#modal-exito .modal-body').html('<h3 class="text-success text-center">Registro Exitoso</h3>')
             $('#modal-exito').modal('show')
         }else{
             console.log(data.error)

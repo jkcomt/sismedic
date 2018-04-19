@@ -1,8 +1,22 @@
 @extends('layout')
 
 @section('header')
-<a href="{{route('pacientes.index')}}" class="btn btn-warning">Volver</a>
- REGISTRO DE NUEVO PACIENTE
+  <div class="row">
+    <div class="col-md-6">
+      REGISTRO DE NUEVO PACIENTE
+    </div>
+    <div class="col-md-6 text-right">
+      @if(str_replace(url('/'), '', url()->previous()) == '/pacientes')
+        {{-- esto regresa a catalogo de pacientes --}}
+          <a href="{{route('pacientes.index')}}" class="btn btn-warning">VOLVER A CATÁLOGO DE PACIENTES</a>
+      @else
+        {{-- esto redirige a calendario --}}
+          <a href="{{route('pacientes.index')}}" class="btn btn-warning">IR A CATÁLOGO DE PACIENTES</a>
+      @endif
+    </div>
+  </div>
+
+
 @endsection
 {{-----------------------------------------------------------------}}
 @section('modal-title')

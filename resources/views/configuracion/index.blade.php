@@ -4,6 +4,9 @@
 th,td{
     text-align: center;
 }
+strong{
+  font-size: 15px;
+}
 </style>
 
 @endsection
@@ -73,7 +76,7 @@ th,td{
         <a href="{{route('gruposanguineo.index')}}" class="btn btn-lg btn-block btn-default" ><h3><span class="fa fa-heart-o"></span></h3> <strong>Grupo Sanguíneo</strong></a>
     </div>
 
-   
+
 </div>
 
 
@@ -133,7 +136,7 @@ th,td{
     </div>
 
 
-    
+
 
     </div>
 

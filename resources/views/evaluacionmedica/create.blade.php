@@ -1,8 +1,14 @@
 @extends('layout')
 
 @section('header')
-    <a href="" class="btn btn-warning">Volver</a>
-    EVALUACIÓN MÉDICA - Evaluación de Resultados
+  <div class="row">
+    <div class="col-md-6">
+      EVALUACIÓN MÉDICA - Evaluación de Resultados
+    </div>
+    <div class="col-md-6 text-right">
+      <a href="{{route('evaluacion_medica.index')}}" class="btn btn-warning">VOLVER A CATÁLOGO</a>
+    </div>
+  </div>
 @endsection
 {{-----------------------------------------------------------------}}
 @section('modal-title')
@@ -722,7 +728,7 @@
                         <div class="row">
                             <div class="col-md-12 text-right">
                                 <button class="btn btn-success">Registrar</button>
-                                <a href="" class="btn btn-warning">Volver</a>
+                                <a href="{{route('evaluacion_medica.index')}}" class="btn btn-warning">Volver</a>
                             </div>
                         </div>
                     </div>

@@ -2,7 +2,22 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
 
 @section('header')
-      <a class="btn btn-sm btn-warning" href="{{route('citas.catalogo')}}">Volver</a> NUEVA CITA
+  <div class="row">
+    <div class="col-md-6">
+      NUEVA CITA
+    </div>
+    <div class="col-md-6 text-right">
+      @if(str_replace(url('/'), '', url()->previous()) == '/citas/catalogo')
+        {{-- esto rediriga al catalogo de citas --}}
+          <a class="btn btn-sm btn-warning" href="{{route('citas.catalogo')}}">VOLVER CATÁLOGO DE CITAS</a>
+      @elseif(str_replace(url('/'), '', url()->previous()) == '/citas')
+        {{-- esto redirige a calendario --}}
+          <a class="btn btn-sm btn-warning" href="{{route('calendario.index')}}">VOLVER A CALENDARIO</a>
+      @else
+          <a class="btn btn-sm btn-warning" href="{{route('citas.catalogo')}}">IR A CATÁLOGO DE CITAS</a>
+      @endif
+    </div>
+  </div>
 @endsection
 {{-----------------------------------------------------------------}}
 @section('modal-title')
@@ -13,7 +28,8 @@
 @endsection
 @section('modal-footer')
     {{--<button class="btn btn-sm btn-primary" id="create-paciente">Insertar otro registro</button>--}}
-    <a class="btn btn-sm btn-warning" href="">Volver</a>
+    <a class="btn btn-sm btn-warning" href="{{route('citas.catalogo')}}">Ir a Cátalogo de Citas</a>
+    <a class="btn btn-sm btn-primary" href="{{route('citas.nuevacita')}}">Registrar Nueva Cita</a>
 @endsection
 {{-----------------------------------------------------------------}}
 @section('modal-confirmacion-title')
@@ -44,19 +60,19 @@
                     <div class="panel-heading">Información de Paciente</div>
                     <div class="panel-body">
                       <div class="row">
-                          <div class="col-md-12">
-                          <div class="col-md-4 input-group">
-                                <label for="paciente" class="control-label">Paciente : </label>
-                                <div class="form-group" id="pacienteGroup">
-                                    <select name="paciente" id="paciente" class="form-control selectPersonal">
-                                      <option value=""></option>
-                                        @foreach($pacientes as $key => $paciente)
-                                            <option value="{{$key}}">{{$paciente}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label for="paciente" class="control-label">Paciente : </label>
+                              <div class="form-group" id="pacienteGroup">
+                                  <select name="paciente" id="paciente" class="form-control selectPersonal">
+                                    <option value=""></option>
+                                      @foreach($pacientes as $key => $paciente)
+                                          <option value="{{$key}}">{{$paciente}}</option>
+                                      @endforeach
+                                  </select>
+                              </div>
                             </div>
-                          </div>
+                            </div>
                       </div>
 
                         <div class="row">

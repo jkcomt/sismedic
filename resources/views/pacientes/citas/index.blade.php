@@ -48,7 +48,7 @@
                     {{--<option value="dni">DNI</option>--}}
                     {{--<option value="empresa">Empresa</option>--}}
                 {{--</select>--}}
-                <input type="text" id="buscarCita" placeholder="BUSCAR..." class="form-control" style="width: 45%">
+                <input type="text" id="buscarCita" placeholder="BUSCAR POR NÚMERO DE CITA..." class="form-control" style="width: 45%">
 
                 {{--<input type="hidden" value="{{route('pacientes.search')}}" id="buscarUrlPaciente">--}}
                 {{--<button class="btn btn-primary form-control">BUSCAR</button>--}}

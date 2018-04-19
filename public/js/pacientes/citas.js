@@ -278,7 +278,6 @@ $('#buscarCitaDni').on('keyup',function(){
     // e.preventDefault();
     var token = $('input[name=_token]').attr('value')
     var id= $('#idPaciente').val()
-    var url = "buscarCita";
     $.ajax({
         type:"post",
         headers: {'X-CSRF-TOKEN':token},

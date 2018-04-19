@@ -1,11 +1,17 @@
 @extends('layout')
 @section('header')
-    @if(str_replace(url('/'), '', url()->previous()) == '/funcion_vital')
-        <a href="{{route('funcion_vital.index')}}" class="btn btn-warning">Volver</a>
-    @elseif(str_replace(url('/'), '', url()->previous()) == '/citas')
-        <a href="{{route('calendario.index')}}" class="btn btn-warning">Volver</a>
-    @endif
-FUNCIONES VITALES
+  <div class="row">
+    <div class="col-md-6">
+      FUNCIONES VITALES
+    </div>
+    <div class="col-md-6 text-right">
+      @if(str_replace(url('/'), '', url()->previous()) == '/funcion_vital')
+          <a href="{{route('funcion_vital.index')}}" class="btn btn-warning">VOLVER A CATALOGO</a>
+      @elseif(str_replace(url('/'), '', url()->previous()) == '/citas')
+          <a href="{{route('calendario.index')}}" class="btn btn-warning">VOLVER A CALENDARIO</a>
+      @endif
+    </div>
+  </div>
 @endsection
 {{-----------------------------------------------------------------}}
 @section('modal-title')
