@@ -159,7 +159,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-4 form-group">
-                                <label for="maxima_inspiracion" class="control-label">Máxima Inspiricación:</label>
+                                <label for="maxima_inspiracion" class="control-label">Máxima Inspiración:</label>
                                 <div class="input-group">
                                     <input type="number" value="{{$funcionVital->maxima_inspiracion}}" class="form-control" name="maxima_inspiracion" min="0" step="any" readonly>
                                     <div class="input-group-addon">cm</div>

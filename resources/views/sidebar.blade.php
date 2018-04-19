@@ -39,8 +39,8 @@
                 <i class="fa fa-stethoscope"></i><span>Funciones Vitales</span>
             </a>
         </li>
-        <li class="">
-            <a href="#">
+        <li class="{{Request::is('evaluacion_medica') ? 'active' : '' }}">
+            <a href="{{route('evaluacion_medica.index')}}">
                 <i class="fa fa-heartbeat"></i><span>Evaluación Médica</span>
             </a>
         </li>

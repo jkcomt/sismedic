@@ -70,11 +70,11 @@ class Paciente extends Model
     }
 
     public function distritoOrigen(){
-        return $this->hasOne(Distrito::class);
+        return $this->belongsTo(Distrito::class);
     }
 
     public function paisDomicilio(){
-        return $this->hasOne(Pais::class);
+        return $this->belongsTo(Pais::class);
     }
 
     public function departamentoDomicilio(){
@@ -86,7 +86,7 @@ class Paciente extends Model
     }
 
     public function distritoDomicilio(){
-        return $this->hasOne(Distrito::class);
+        return $this->belongsTo(Distrito::class);
     }
 
     public function instruccion(){

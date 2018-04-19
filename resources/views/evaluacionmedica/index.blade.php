@@ -8,7 +8,7 @@
 
 @endsection
 
-@section('header','LISTADO DE PACIENTES')
+@section('header','EVALUACIÓN MÉDICA - LISTADO DE PACIENTES')
 @section('modal-title')
     <h4 class="modal-title">Aviso</h4>
 @endsection
@@ -36,28 +36,26 @@
     <div class="row">
         <div class="col-md-2">
             <div class="form-group">
-                <a href="{{route('pacientes.create')}}" class="btn btn-success">NUEVA FILIACIÓN</a>
-                <input type="hidden" value="{{route('pacientes.destroy')}}" id="deletePaciente">
+                {{--<a href="{{route('pacientes.create')}}" class="btn btn-success">NUEVA FILIACIÓN</a>--}}
             </div>
         </div>
         <div class="col-md-10">
             <form action="" class="form-inline text-right">
-                <select name="filtro" id="filtro" class="form-control">
-                    <option value="historia">Nro. Historia</option>
-                    <option value="dni">DNI</option>
-                    <option value="paciente">PACIENTE</option>
-                </select>
+                {{--<select name="filtro" id="filtro" class="form-control">--}}
+                    {{--<option value="historia">Nro. Historia</option>--}}
+                    {{--<option value="dni">DNI</option>--}}
+                    {{--<option value="paciente">PACIENTE</option>--}}
+                {{--</select>--}}
                 <input type="text" id="buscarPaciente" placeholder="BUSCAR..." class="form-control" style="width: 45%">
-                <input type="hidden" value="{{route('pacientes.search')}}" id="buscarUrlPaciente">
                 {{--<button class="btn btn-primary form-control">BUSCAR</button>--}}
             </form>
         </div>
     </div>
     <br>
     <div class="row" id="tabla">
-        @include('pacientes.tabla')
+        @include('evaluacionmedica.tabla')
     </div>
 @endsection
 @section('script')
-    <script src="{{asset('js/pacientes/pacientes.js')}}"></script>
+    {{--<script src="{{asset('js/pacientes/pacientes.js')}}"></script>--}}
 @endsection

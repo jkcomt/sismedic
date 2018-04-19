@@ -32,6 +32,7 @@ Route::resource('pacientes','PacientesController');
 Route::group([
    'prefix'=>'pacientes'
 ],function(){
+    Route::get('reporte/{id}/detalle','PacientesController@reporteDetalle')->name('pacientes.reporte');
     Route::post('/buscar','PacientesController@search')->name('pacientes.search');
     Route::post('/delete','PacientesController@destroy')->name('pacientes.destroy');
     Route::post('/update','PacientesController@update')->name('pacientes.update');
@@ -260,3 +261,10 @@ Route::group([
 ],function(){
     Route::get('/{id}/create','FuncionVitalController@create')->name('funcion_vital.create');
 });
+
+
+Route::get('evaluacion_medica/create/{id}', [
+    'as' => 'evaluacion_medica.create',
+    'uses' => 'EvaluacionMedicaController@create'
+]);
+Route::resource('evaluacion_medica','EvaluacionMedicaController',['except' => 'create']);

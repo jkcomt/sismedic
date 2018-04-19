@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Altura;
 use App\Area;
-use App\Cargo;
 use App\Cita;
 use App\CitaExamen;
 use App\ClienteCuenta;
@@ -26,7 +25,7 @@ use App\TipoExamen;
 use App\TipoInstruccion;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-
+use View;
 class PacientesController extends Controller
 {
     /**
@@ -681,6 +680,59 @@ class PacientesController extends Controller
                     return response()->json(['html'=>$view]);
 
             }
+    }
+
+    public function reporteDetalle($id){
+
+        $paciente = Paciente::find($id);
+
+        $paisOrigen =Pais::select('nombre','id')
+            ->where('estado',true)
+            ->where('id',$paciente->pais_origen_id)->first();
+
+        $departamentosOrigen = Departamento::where('estado',true)->where('id',$paciente->departamento_origen_id)->first();
+        //$departamentos = null;
+
+        $provinciasOrigen = Provincia::where('estado',true)->where('id',$paciente->provincia_origen_id)->first();
+        //$provincias = null;
+
+        $distritosOrigen = Distrito::where('estado',true)->where('id',$paciente->distrito_origen_id)->first();
+
+        $paisDomicilio =Pais::select('nombre','id')
+            ->where('estado',true)
+            ->where('id',$paciente->pais_domicilio_id)->first();
+
+        $departamentosDomicilio = Departamento::where('estado',true)->where('id',$paciente->departamento_domicilio_id)->first();
+        //$departamentos = null;
+
+        $provinciasDomicilio = Provincia::where('estado',true)->where('id',$paciente->provincia_domicilio_id)->first();
+
+        $distritosDomicilio = Distrito::where('estado',true)->where('id',$paciente->distrito_domicilio_id)->first();
+
+        $tipoInstrucciones = TipoInstruccion::where('estado',true)->get()->pluck('nombre','id')->toArray();
+
+        $profesiones = Profesion::where('estado',true)->get()->pluck('nombre','id')->toArray();
+
+        $contratadores = Contratador::where('estado',true)->get()->pluck('nombre','id')->toArray();
+
+        $areas = Area::where('estado',true)->get()->pluck('nombre','id')->toArray();
+
+        $ocupaciones = Ocupacion::where('estado',true)->get()->pluck('nombre','id')->toArray();
+
+        $lugarLabores = LugarLabor::where('estado',true)->get()->pluck('nombre','id')->toArray();
+
+        $alturas = Altura::where('estado',true)->get()->pluck('descripcion','id')->toArray();
+
+        $grupoSanguineos = GrupoSanguineo::where('estado',true)->get()->pluck('descripcion','id')->toArray();
+
+        $regimenes = Regimen::where('estado',true)->get()->pluck('descripcion','id')->toArray();
+
+        $view = View::make('pacientes.reporte.detalle',compact('paciente','paisOrigen','departamentosOrigen','provinciasOrigen','paisDomicilio','departamentosDomicilio','provinciasDomicilio','distritosDomicilio','tipoInstrucciones','profesiones','contratadores','areas','ocupaciones','lugarLabores','alturas','grupoSanguineos','regimenes','distritosOrigen'));
+
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        $pdf->stream($view);
+        return $pdf->stream();
     }
 
 }

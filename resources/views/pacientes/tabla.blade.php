@@ -25,6 +25,7 @@
                     </form>
                 </td>
                 <td>
+                    <a href="{{route('pacientes.reporte',$paciente->id)}}" target="_blank" class="btn btn-xs btn-info "><span class="glyphicon glyphicon-print"></span> IMP.</a>
                     <a href="{{route('pacientes.citas',[$paciente->id])}}" class="btn btn-xs btn-success cita"  id="{{$paciente->id}}"><span class="glyphicon glyphicon-plus"></span> CITAS</a>
                     <a href="{{route('pacientes.edit',[$paciente->id])}}" class="btn btn-xs btn-warning editar"  id="{{$paciente->id}}"><span class="glyphicon glyphicon-pencil"></span> EDITAR</a>
                     {{csrf_field()}}
