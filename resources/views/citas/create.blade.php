@@ -1,4 +1,6 @@
 @extends('layout')
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+
 @section('header')
       <a class="btn btn-sm btn-warning" href="{{route('citas.catalogo')}}">Volver</a> NUEVA CITA
 @endsection
@@ -26,6 +28,7 @@
 @endsection
 {{-----------------------------------------------------------------}}
 @section('content')
+
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12">
             <div id="msg-error" class="alert alert-danger" style="display:none;">
@@ -36,47 +39,41 @@
                 </ul>
 
             </div>
-
+<form action="{{route('citas.registrar')}}" id="registrarCita">
                 <div class="panel panel-default">
                     <div class="panel-heading">Información de Paciente</div>
                     <div class="panel-body">
                       <div class="row">
                           <div class="col-md-12">
-                            {{-- <div class="col-md-4 form-group">
-                                <label for="paciente" class="control-label">Cliente o Cuenta : </label>
+                          <div class="col-md-4 input-group">
+                                <label for="paciente" class="control-label">Paciente : </label>
                                 <div class="form-group" id="pacienteGroup">
-                                    <select name="paciente" id="paciente" class="form-control">
-
+                                    <select name="paciente" id="paciente" class="form-control selectPersonal">
+                                      <option value=""></option>
                                         @foreach($pacientes as $key => $paciente)
                                             <option value="{{$key}}">{{$paciente}}</option>
                                         @endforeach
                                     </select>
                                 </div>
-                            </div> --}}
+                            </div>
                           </div>
                       </div>
 
                         <div class="row">
                             <div class="col-md-12">
-                                <label for="">Paciente : </label>
-                                <strong> </strong>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
                                 <label for="">DNI : </label>
-                                <strong> </strong>
+                                <strong id="DNI"> </strong>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
                                 <label for="">Nro Historia : </label>
-                                <strong> </strong>
+                                <strong id="nroHistoria"> </strong>
                             </div>
                         </div>
                     </div>
                 </div>
-            <form action="{{route('pacientes.citas.store')}}" id="registrarCita">
+
                 {{csrf_field()}}
                 <input type="hidden" name="pacienteId" value="">
                 <div class="panel panel-default">
@@ -150,22 +147,23 @@
                         </div>
                     </div>
                 </div>
-            </form>
+
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-12 text-right">
                                     <a class="btn  btn-warning" href="{{route('citas.catalogo')}}">Volver</a>
-                                <button class="btn btn-success conformidad" tipo="registrar">Registrar</button>
+                                <button class="btn btn-success conformidad" type="submit" tipo="registrar">Registrar</button>
                             </div>
                         </div>
                     </div>
                 </div>
-
+                  </form>
         </div>
     </div>
+
 @endsection
 @section('script')
-    <script src="{{asset('js/pacientes/citas.js')}}"></script>
+    <script src="{{asset('js/citas.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 @endsection

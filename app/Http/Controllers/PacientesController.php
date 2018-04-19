@@ -683,4 +683,12 @@ class PacientesController extends Controller
             }
     }
 
+
+
+    public function pacienteAjax(Request $request)
+    {
+      $paciente=Paciente::find($request['buscar']);
+      return response()->json($paciente);
+    }
+
 }

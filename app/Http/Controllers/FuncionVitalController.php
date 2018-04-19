@@ -220,4 +220,7 @@ class FuncionVitalController extends Controller
     }
 
 
+  
+
+
 }
