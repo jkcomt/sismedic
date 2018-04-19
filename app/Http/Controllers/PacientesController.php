@@ -682,6 +682,14 @@ class PacientesController extends Controller
             }
     }
 
+
+
+    public function pacienteAjax(Request $request)
+    {
+      $paciente=Paciente::find($request['buscar']);
+      return response()->json($paciente);
+    }
+
     public function reporteDetalle($id){
 
         $paciente = Paciente::find($id);
@@ -733,6 +741,6 @@ class PacientesController extends Controller
         $pdf->loadHTML($view);
         $pdf->stream($view);
         return $pdf->stream();
-    }
+      }
 
 }

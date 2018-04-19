@@ -6,6 +6,14 @@ use Illuminate\Http\Request;
 use App\Cita;
 use App\Event;
 use App\PerfilExamen;
+use App\FuncionVital;
+use App\Paciente;
+use App\clienteCuenta;
+use App\TipoExamen;
+use App\Perfil;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
+use App\CitaExamen;
 class CitaController extends Controller
 {
     /**
@@ -81,7 +89,7 @@ class CitaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
       $cita = Cita::find($request['id']);
 
@@ -98,6 +106,13 @@ class CitaController extends Controller
           ]);
 
           $event->save();
+
+           if(isset($cita->funcionVital))
+           {
+             $funcionVital=FuncionVital::find($cita->funcionVital->id);
+             $funcionVital->delete();
+
+           }
 
           return response()->json([
               'mensaje'=>"eliminación exitosa"
@@ -120,6 +135,34 @@ class CitaController extends Controller
              return response()->json(['html'=>$view]);
          }
      }
+     public function searchdni(Request $request)
+     {
+       $citas = null;
+
+       if($request['buscar'] != '')
+       {
+         $citas= Cita::leftjoin('pacientes','citas.paciente_id','pacientes.id')
+         ->where('pacientes.num_dni','like','%'.$request['buscar'].'%')
+         ->where('citas.estado',true)
+         ->orderBy('citas.fecha_registro','desc')
+         ->orderBy('citas.hora_registro','desc')->paginate(10);
+       }
+       else{
+         $citas= Cita::where('estado',true)
+         ->orderBy('fecha_registro','desc')
+         ->orderBy('hora_registro','desc')->paginate(10);
+       }
+
+           if($request->ajax())
+           {
+               $view = view('citas.table',compact('citas'))->render();
+               return response()->json(['html'=>$view]);
+           }
+      /*  return  response()->json([
+            'mensaje'=>$request['buscar']
+        ]);*/
+     }
+
 
     public function catalogo()
     {
@@ -131,4 +174,104 @@ class CitaController extends Controller
       $citas= Cita::where('estado',true)->paginate(10);
       return view('citas.catalogo',compact('citas'));
     }
+
+    public function nuevacita()
+    {
+      $clienteCuentas = ClienteCuenta::where('estado',true)->get()->pluck('descripcion','id')->toArray();
+      $tipoExamenes = TipoExamen::where('estado',true)->get()->pluck('descripcion','id')->toArray();
+      $perfiles = Perfil::where('estado',true)->get()->pluck('descripcion','id')->toArray();
+      $perfilesExamenes = PerfilExamen::where('estado',true)->get();
+      $cita = Cita::where('estado','=',true)->get()->last();
+
+      $pacientes=Paciente::select(DB::raw("CONCAT(apellido_paterno,' ',apellido_materno,' ',nombres) as nombres_completos"),'id')
+            ->where('estado',true)
+                    ->get()->pluck('nombres_completos','id')->toArray();
+
+
+
+      return view('citas.create',compact('clienteCuentas','tipoExamenes','perfiles','perfilesExamenes','cita','pacientes'));
+    //  dd($citas);
+    }
+    public function searchPaciente(Request $request)
+    {
+      $term = $request->term ?:'';
+      $pacientes =Paciente::select(DB::raw("CONCAT(apellido_paterno,' ',apellido_materno,' ',nombres) as nombres_completos"),'id')
+          ->where('estado',true)
+          ->where('apellido_paterno','like','%'.$term.'%')
+          ->orWhere('nombres','like','%'.$term.'%')
+          ->orWhere('num_dni','like','%'.$term.'%')
+          ->take(5)
+          ->get()->pluck('nombres_completos','id')->toArray();
+
+      $listapaciente = [];
+      foreach ($pacientes as $id => $tag){
+          $listapaciente[] = ['id'=>$id,'text'=>$tag];
+      }
+
+      return response()->json(
+          $listapaciente
+      );
+    }
+
+
+    public function registrar(Request $request)
+    {
+
+      if(request()->ajax())
+      {
+          //$data = request()->input();
+          $data = request()->validate([
+              'nro_serie_cita'=>'required',
+              'paciente'=>'required',
+              'fecha_examen'=>'required',
+              'hora_examen'=>'required',
+              'clienteCuenta'=>'required',
+              'tipoExamen'=>'required',
+              'perfil'=>'required',
+              'items'=>'required|array'
+          ],[
+              'items.required'=>'Seleccione al menos un examen para la cita'
+          ]);
+
+          $cita = Cita::create([
+              'nro_serie_cita'=>$data['nro_serie_cita'],
+              'paciente_id'=>$data['paciente'],
+              'cliente_cuenta_id'=>$data['clienteCuenta'],
+              'tipo_examen_id'=>$data['tipoExamen'],
+              'perfil_id'=>$data['perfil'],
+              'fecha_examen'=>$data['fecha_examen'],
+              'hora_examen'=>$data['hora_examen'],
+              'fecha_registro'=>Carbon::now(),
+              'hora_registro'=>Carbon::now(),
+              'estado_cita'=>'agendado',
+              'estado'=>true
+          ]);
+
+          Event::create([
+                  'title'=>$cita->paciente->apellido_paterno.' '.$cita->paciente->apellido_materno.' '.$cita->paciente->nombres,
+                  'start_date'=>$cita->fecha_examen,
+                  'end_date'=>$cita->fecha_examen,
+                  'color'=>'#00C1DE',
+                  'cita_id'=>$cita->id,
+                  'estado'=>true
+              ]);
+
+          foreach ($request['items'] as $item){
+              $citaItem = CitaExamen::create([
+                 'cita_id'=>$cita->id,
+                 'item_examen_id'=>$item,
+                 'estado'=>true
+              ]);
+          }
+
+          return response()->json(['mensaje' => $cita->with('paciente')->get()->last()]);
+      }
+
+
+    //  return response()->json(["mensaje de  req"=>$request['paciente']]);
+
+
+
+    }
+
 }

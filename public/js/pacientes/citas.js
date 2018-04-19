@@ -270,3 +270,30 @@ $('#buscarCita').on('keyup',function(){
         }
     });
 });
+
+
+
+$('#buscarCitaDni').on('keyup',function(){
+    valor = $(this).val();
+    // e.preventDefault();
+    var token = $('input[name=_token]').attr('value')
+    var id= $('#idPaciente').val()
+    var url = "buscarCita";
+    $.ajax({
+        type:"post",
+        headers: {'X-CSRF-TOKEN':token},
+        url:'/citas/buscar_dni',
+        dataType:"json",
+        data:{
+            buscar : valor,
+            id:id
+        },
+        success: function(data){
+
+            $('#tabla').html(data.html)
+        },
+        error: function(data){
+            //console.log("Error "+JSON.stringify(data))
+        }
+    });
+});

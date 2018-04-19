@@ -156,5 +156,9 @@ class Paciente extends Model
         return $nuevaserie;
     }
 
+    public function citas(){
+      return $this->hasMany(Cita::class);
+    }
+
 
 }

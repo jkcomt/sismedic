@@ -105,11 +105,12 @@ class FuncionVitalController extends Controller
      * @param  \App\FuncionVital  $funcionVital
      * @return \Illuminate\Http\Response
      */
-    public function edit(FuncionVital $funcionVital)
+    public function edit($id)
     {
-        //
+      $funcionVital = FuncionVital::where('cita_id',$id)->get()->first();
+    //        dd($funcionVital);
+      return view('funcionvital.edit',compact('funcionVital'));
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -117,9 +118,57 @@ class FuncionVitalController extends Controller
      * @param  \App\FuncionVital  $funcionVital
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, FuncionVital $funcionVital)
+    public function update(Request $request)
     {
-        //
+          $funcionVital=  FuncionVital::find($request['id']);
+        if(request()->ajax())
+        {
+          $data = request()->validate([
+              'fecha_funcion_vital'=>'required',
+              'talla'=>'required',
+              'peso'=>'required',
+              'imc'=>'required',
+              'temperatura'=>'required',
+              'fc'=>'required',
+              'fr'=>'required',
+              'ps'=>'required',
+              'pd'=>'required',
+              'sat02'=>'required',
+              'en_reposo'=>'required',
+              'perimetro_abdominal'=>'required',
+              'maxima_inspiracion'=>'required',
+              'perimetro_cadera'=>'required',
+              'expiracion_forzada'=>'required',
+              'indice_cintura'=>'required',
+              'circunferencia_cuello'=>'required',
+          ]);
+
+          $funcionVital->update([
+              'fecha'=>$data['fecha_funcion_vital'],
+              'talla'=>$data['talla'],
+              'peso'=>$data['peso'],
+              'imc'=>$data['imc'],
+              'temperatura'=>$data['temperatura'],
+              'fc'=>$data['fc'],
+              'fr'=>$data['fr'],
+              'ps'=>$data['ps'],
+              'pd'=>$data['pd'],
+              'sat_02'=>$data['sat02'],
+              'en_reposo'=>$data['en_reposo'],
+              'perimetro_abdominal'=>$data['perimetro_abdominal'],
+              'maxima_inspiracion'=>$data['maxima_inspiracion'],
+              'perimetro_cadera'=>$data['perimetro_cadera'],
+              'expiracion_forzada'=>$data['expiracion_forzada'],
+              'indice_cintura'=>$data['indice_cintura'],
+              'circunferencia_cuello'=>$data['circunferencia_cuello'],
+              'estado'=>true
+          ]);
+
+          $funcionVital->save();
+          return response()->json([
+              'mensaje'=>   $funcionVital->toArray()
+          ]);
+        }
     }
 
     /**
@@ -128,8 +177,50 @@ class FuncionVitalController extends Controller
      * @param  \App\FuncionVital  $funcionVital
      * @return \Illuminate\Http\Response
      */
-    public function destroy(FuncionVital $funcionVital)
+    public function destroy(Request $request)
     {
-        //
+        FuncionVital::destroy($request['id']);
+        return response()->json(["mensaje"=>"Registro Eliminado"]);
     }
+
+    public function search(Request $request)
+    {
+
+      if($request['buscar'] != ''){
+        if($request['filtro']=='historia')
+        {
+            $citas= Cita::leftjoin('pacientes','citas.paciente_id','pacientes.id')
+            ->where('pacientes.nro_historia','like','%'.$request['buscar'].'%')
+            ->where('citas.estado',true)
+            ->orderBy('fecha_examen')
+            ->orderBy('hora_examen')->paginate(10);
+
+        }
+        else if($request['filtro']=='paciente')
+        {
+
+            $citas= Cita::leftjoin('pacientes','citas.paciente_id','pacientes.id')
+            ->where('pacientes.apellido_paterno','like','%'.$request['buscar'].'%')
+            ->where('citas.estado',true)
+            ->orderBy('fecha_examen')->orderBy('hora_examen')->paginate(10);
+
+        }
+      }
+      else
+      {
+        $citas= Cita::where('estado',true)
+      ->orderBy('fecha_examen')->orderBy('hora_examen')->paginate(10);
+      }
+
+          if($request->ajax())
+          {
+              $view = view('funcionvital.tabla',compact('citas'))->render();
+              return response()->json(['html'=>$view]);
+          }
+    }
+
+
+  
+
+
 }
