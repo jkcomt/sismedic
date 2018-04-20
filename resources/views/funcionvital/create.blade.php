@@ -6,9 +6,11 @@
     </div>
     <div class="col-md-6 text-right">
       @if(str_replace(url('/'), '', url()->previous()) == '/funcion_vital')
-          <a href="{{route('funcion_vital.index')}}" class="btn btn-warning">VOLVER A CATALOGO</a>
+          <a href="{{route('funcion_vital.index')}}" class="btn btn-sm btn-warning">VOLVER A CATALOGO</a>
       @elseif(str_replace(url('/'), '', url()->previous()) == '/citas')
-          <a href="{{route('calendario.index')}}" class="btn btn-warning">VOLVER A CALENDARIO</a>
+          <a href="{{route('calendario.index')}}" class="btn btn-sm btn-warning">VOLVER A CALENDARIO</a>
+      @elseif(str_replace(url('/'), '', url()->previous()) == '/citas/catalogo')
+            <a href="{{route('citas.catalogo')}}" class="btn btn-sm btn-warning">VOLVER A CATÁLOGO DE CITAS</a>
       @endif
     </div>
   </div>
@@ -22,7 +24,14 @@
 @endsection
 @section('modal-footer')
     {{--<button class="btn btn-sm btn-primary" id="create-">Insertafunr otro registro</button>--}}
-    <a class="btn btn-sm btn-warning" href="{{route('calendario.index')}}">Volver a Citas</a>
+    {{--<a class="btn btn-sm btn-warning" href="{{route('calendario.index')}}">Volver a Citas</a>--}}
+    @if(str_replace(url('/'), '', url()->previous()) == '/funcion_vital')
+        <a href="{{route('funcion_vital.index')}}" class="btn btn-sm btn-warning">VOLVER A CATALOGO</a>
+    @elseif(str_replace(url('/'), '', url()->previous()) == '/citas')
+        <a href="{{route('calendario.index')}}" class="btn btn-sm btn-warning">VOLVER A CALENDARIO</a>
+    @elseif(str_replace(url('/'), '', url()->previous()) == '/citas/catalogo')
+        <a href="{{route('citas.catalogo')}}" class="btn btn-sm btn-warning">VOLVER A CATÁLOGO DE CITAS</a>
+    @endif
 @endsection
 {{-----------------------------------------------------------------}}
 @section('modal-confirmacion-title')
@@ -54,8 +63,15 @@
             </div>
             <form action="{{route('funcion_vital.store')}}" id="registrarFuncionVital">
                 {{csrf_field()}}
-                <div class="panel panel-default">
-                    <div class="panel-body">
+                <div class="box box-default">
+                    <div class="box-header with-border">Información de Paciente
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body">
                         <div class="row">
                             <div class="col-md-2 form-group">
                                 <label for="cita" class="control-label">Cita:</label>
@@ -83,8 +99,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="panel panel-default">
-                    <div class="panel-body">
+                <div class="box box-default">
+                    <div class="box-header with-border">Información de Función Vital
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body">
                         <div class="row">
                             <div class="col-md-2 form-group">
                                 <label for="talla" class="control-label">Talla:</label>
@@ -151,8 +174,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="panel panel-default">
-                    <div class="panel-body">
+                <div class="box box-default">
+                    <div class="box-header with-border">Información de Función Vital
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body">
                         <div class="row">
                             <div class="col-md-4 form-group">
                                 <label for="en_reposo" class="control-label">En Reposo:</label>
@@ -201,8 +231,15 @@
                     </div>
                 </div>
 
-                <div class="panel panel-default">
-                    <div class="panel-body">
+                <div class="box box-default">
+                    <div class="box-header with-border">Información de Función Vital
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body">
                         <div class="row">
                             <div class="col-md-4 form-group">
                                 <label for="circunferencia_cuello" class="control-label">Circunferencia Cuello:</label>

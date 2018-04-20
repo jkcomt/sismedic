@@ -34,8 +34,10 @@ class CitaController extends Controller
      */
     public function create()
     {
+
       /*$citas = Cita::Where('estado',true)->where('paciente_id',$id)->paginate(10);
       return view('citas.create',compact('citas'));*/
+
     }
 
     /**

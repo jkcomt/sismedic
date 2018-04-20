@@ -1,7 +1,14 @@
 @extends('layout')
 @section('header')
-<a href="{{route('pacientes.index')}}" class="btn btn-warning">Volver</a>
- INFORMACIÓN {{$paciente->apellido_paterno." ".$paciente->apellido_materno." ".$paciente->nombres}}
+<div class="row">
+    <div class="col-md-6">
+        INFORMACIÓN de {{$paciente->apellido_paterno." ".$paciente->apellido_materno." ".$paciente->nombres}}
+    </div>
+    <div class="col-md-6 text-right">
+        <a href="{{route('pacientes.index')}}" class="btn btn-sm btn-warning">Volver</a>
+    </div>
+</div>
+
 @endsection
 {{-----------------------------------------------------------------}}
 {{--@section('modal-title')--}}

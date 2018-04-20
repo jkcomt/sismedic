@@ -2,7 +2,7 @@ $(document).ready(function() {
 
     $('#paciente').select2({
       minimumResultsForSearch: 5,
-      placeholder: 'Seleccione un paciente',
+      placeholder: 'Seleccione un paciente | filtre por DNI',
     ajax: {
         dataType: 'json',
         //
