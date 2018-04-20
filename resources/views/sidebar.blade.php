@@ -13,10 +13,10 @@
             </span>
             </a>
             <ul class="treeview-menu">
-              <li class="{{ Request::is('pacientes/create') ? 'active' : '' }} ">
+              <li class="{{ Request::is('pacientes/create') ? 'active' : '' }}">
                   <a href="{{route('pacientes.create')}}"><i class="fa  fa-plus-circle"></i> <span>Registrar Paciente</span></a>
               </li>
-              <li class="{{ Request::is('pacientes') ? 'active' : '' }} ">
+              <li class="{{ Request::is('pacientes') ? 'active' : '' }} {{ Request::is('pacientes/citas/*') ? 'active' : '' }} {{ Request::is('pacientes/*/edit') ? 'active' : '' }}">
                   <a href="{{route('pacientes.index')}}"><i class="fa fa-list-alt"></i> <span>Catálogo</span></a>
               </li>
                 {{--<li  class="">--}}
