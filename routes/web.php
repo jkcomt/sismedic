@@ -32,6 +32,8 @@ Route::resource('pacientes','PacientesController');
 Route::group([
    'prefix'=>'pacientes'
 ],function(){
+    Route::get('reporte/citas_paciente/{id}','PacientesController@citaspaciente')->name('pacientes.citas_paciente');
+    Route::get('reporte/lista','PacientesController@reporteLista')->name('pacientes.listareporte');
     Route::get('reporte/{id}/detalle','PacientesController@reporteDetalle')->name('pacientes.reporte');
     Route::post('/paciente_ajax','PacientesController@pacienteAjax')->name('pacientes.pacienteajax');
     Route::post('/buscar','PacientesController@search')->name('pacientes.search');
@@ -158,7 +160,8 @@ Route::group(['prefix'=>'altura'],
         Route::post('/delete','AlturasController@destroy')->name('altura.delete');
     }
 );
-
+Route::get('citas/examenes_cliente/{var}','CitaController@examenescliente')->name('citas.examenescliente');
+Route::get('citas/listareporte','CitaController@listareporte')->name('citas.listareporte');
 Route::get('citas/catalogo','CitaController@catalogo')->name('citas.catalogo');
 Route::post('citas/delete','CitaController@destroy')->name('citas.destroy');
 Route::post('citas/buscarfecha','CitaController@searchFecha')->name('citas.searchfecha');
@@ -266,6 +269,7 @@ Route::resource('funcion_vital','FuncionVitalController');
 Route::group([
    'prefix'=>'funcion_vital'
 ],function(){
+    Route::get('reporte/lista','FuncionVitalController@listareporte')->name('funcion_vital.listareporte');
     Route::get('/{id}/create','FuncionVitalController@create')->name('funcion_vital.create');
     Route::get('editar/{id}','FuncionVitalController@edit')->name('funcion_vital.edit');
     Route::post('/update','FuncionVitalController@update')->name('funcion_vital.update');

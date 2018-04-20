@@ -141,7 +141,7 @@ class PacientesController extends Controller
 
             ]);
 
-            Paciente::create([
+          $paciente= Paciente::create([
                'nro_historia'=>$data['nro_historia'],
                'matricula'=>$data['matricula'],
                'apellido_paterno'=>$data['apellido_paterno'],
@@ -189,7 +189,7 @@ class PacientesController extends Controller
 
             ]);
 
-            return response()->json(['mensaje' => $data]);
+            return response()->json(['mensaje' => $paciente]);
         }
     }
 
@@ -694,49 +694,33 @@ class PacientesController extends Controller
 
         $paciente = Paciente::find($id);
 
-        $paisOrigen =Pais::select('nombre','id')
-            ->where('estado',true)
-            ->where('id',$paciente->pais_origen_id)->first();
+        $view = View::make('pacientes.reporte.detalle',compact('paciente'));
 
-        $departamentosOrigen = Departamento::where('estado',true)->where('id',$paciente->departamento_origen_id)->first();
-        //$departamentos = null;
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        $pdf->stream($view);
+        return $pdf->stream();
+      }
 
-        $provinciasOrigen = Provincia::where('estado',true)->where('id',$paciente->provincia_origen_id)->first();
-        //$provincias = null;
+      public function reporteLista()
+      {
+        $pacientes=Paciente::where('estado',true)->orderBy('apellido_paterno','asc')->get();
+        $view=View::make('pacientes.reporte.listapaciente',compact('pacientes'));
 
-        $distritosOrigen = Distrito::where('estado',true)->where('id',$paciente->distrito_origen_id)->first();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        $pdf->stream($view);
+        return $pdf->stream();
+      }
 
-        $paisDomicilio =Pais::select('nombre','id')
-            ->where('estado',true)
-            ->where('id',$paciente->pais_domicilio_id)->first();
 
-        $departamentosDomicilio = Departamento::where('estado',true)->where('id',$paciente->departamento_domicilio_id)->first();
-        //$departamentos = null;
-
-        $provinciasDomicilio = Provincia::where('estado',true)->where('id',$paciente->provincia_domicilio_id)->first();
-
-        $distritosDomicilio = Distrito::where('estado',true)->where('id',$paciente->distrito_domicilio_id)->first();
-
-        $tipoInstrucciones = TipoInstruccion::where('estado',true)->get()->pluck('nombre','id')->toArray();
-
-        $profesiones = Profesion::where('estado',true)->get()->pluck('nombre','id')->toArray();
-
-        $contratadores = Contratador::where('estado',true)->get()->pluck('nombre','id')->toArray();
-
-        $areas = Area::where('estado',true)->get()->pluck('nombre','id')->toArray();
-
-        $ocupaciones = Ocupacion::where('estado',true)->get()->pluck('nombre','id')->toArray();
-
-        $lugarLabores = LugarLabor::where('estado',true)->get()->pluck('nombre','id')->toArray();
-
-        $alturas = Altura::where('estado',true)->get()->pluck('descripcion','id')->toArray();
-
-        $grupoSanguineos = GrupoSanguineo::where('estado',true)->get()->pluck('descripcion','id')->toArray();
-
-        $regimenes = Regimen::where('estado',true)->get()->pluck('descripcion','id')->toArray();
-
-        $view = View::make('pacientes.reporte.detalle',compact('paciente','paisOrigen','departamentosOrigen','provinciasOrigen','paisDomicilio','departamentosDomicilio','provinciasDomicilio','distritosDomicilio','tipoInstrucciones','profesiones','contratadores','areas','ocupaciones','lugarLabores','alturas','grupoSanguineos','regimenes','distritosOrigen'));
-
+      public function citaspaciente($id)
+      {
+        $paciente = Paciente::find($id);
+        $citas = Cita::where('estado',true)->where('paciente_id',$paciente->id)
+          ->orderBy('fecha_examen','asc')
+          ->orderBy('hora_examen','asc')->get();
+        $view=View::make('pacientes.reporte.citaspaciente',compact('paciente','citas'));
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         $pdf->stream($view);

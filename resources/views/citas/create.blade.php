@@ -28,8 +28,25 @@
 @endsection
 @section('modal-footer')
     {{--<button class="btn btn-sm btn-primary" id="create-paciente">Insertar otro registro</button>--}}
-    <a class="btn btn-sm btn-warning" href="{{route('citas.catalogo')}}">Ir a Cátalogo de Citas</a>
-    <a class="btn btn-sm btn-primary" href="{{route('citas.nuevacita')}}">Registrar Nueva Cita</a>
+@isset($cita)@php $var=$cita->generarNroCita() @endphp @else @php $var="#000001" @endphp @endisset
+    {{-- <a href="{{route('citas.examenescliente',substr($var,1))}}" target="_blank" class="btn btn-xs btn-info" name="imprimirCita"><span class="glyphicon glyphicon-print"></span></a> --}}
+    <div class="row">
+      <div class="col-md-6">
+        {{-- <a class="btn btn-sm btn-warning btn-block" href="{{route('citas.catalogo')}}">Volver a Citas</a> --}}
+        @if(str_replace(url('/'), '', url()->previous()) == '/citas/catalogo')
+          {{-- esto rediriga al catalogo de citas --}}
+            <a class="btn btn-sm btn-warning" href="{{route('citas.catalogo')}}">Volver a catálogo de citas</a>
+        @elseif(str_replace(url('/'), '', url()->previous()) == '/citas')
+          {{-- esto redirige a calendario --}}
+            <a class="btn btn-sm btn-warning" href="{{route('calendario.index')}}">Volver a calendario</a>
+        @else
+            <a class="btn btn-sm btn-warning" href="{{route('citas.catalogo')}}">Ir a catálgo de citas</a>
+        @endif
+      </div>
+      <div class="col-md-6">
+        <a class="btn btn-sm btn-primary btn-block" href="{{route('citas.nuevacita')}}">Registrar Nueva Cita</a>
+      </div>
+    </div>
 @endsection
 {{-----------------------------------------------------------------}}
 @section('modal-confirmacion-title')
@@ -39,7 +56,7 @@
     <h3 class="text-warning text-center">¿Desea eliminar el registro?</h3>
 @endsection
 @section('modal-confirmacion-footer')
-    <button class="btn btn-danger confirmar" id="">Confirmar</button>
+    <a href="" class="btn btn-danger confirmar" id="">Confirmar</a>
     <a href="" class="btn btn-warning " data-dismiss="modal" id="index" >Volver</a>
 @endsection
 {{-----------------------------------------------------------------}}
@@ -163,18 +180,18 @@
                         </div>
                     </div>
                 </div>
-
+      </form>
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-12 text-right">
                                     <a class="btn  btn-warning" href="{{route('citas.catalogo')}}">Volver</a>
-                                <button class="btn btn-success conformidad" type="submit" tipo="registrar">Registrar</button>
+                                <button class="btn btn-success conformidad"  tipo="registrar">Registrar</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                  </form>
+
         </div>
     </div>
 

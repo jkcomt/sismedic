@@ -23,7 +23,7 @@
     <h4 class="modal-title">Aviso</h4>
 @endsection
 @section('modal-body')
-    <h3 class="text-success text-center">Registro Exitoso</h3>
+    {{-- <h3 class="text-success text-center">Registro Exitoso</h3> --}}
 @endsection
 @section('modal-footer')
     <button class="btn btn-sm btn-primary" id="create-paciente">Insertar otro registro</button>

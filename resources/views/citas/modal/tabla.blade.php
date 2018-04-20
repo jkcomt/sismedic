@@ -9,7 +9,7 @@
             <div class="modal-body ">
                     {{csrf_field()}}
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-12" style="max-height:60vh; overflow-y:scroll;">
                             <table class="table table-responsive table-hover table-condensed small box">
                                 <thead>
                                 <th>Nro. CITA</th>
@@ -39,7 +39,7 @@
                                 @endisset
                                 </tbody>
                             </table>
-                            {{$citas->links()}}
+
                         </div>
                     </div>
             </div>

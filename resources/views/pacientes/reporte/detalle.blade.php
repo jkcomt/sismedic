@@ -68,8 +68,7 @@
     </div>
     <hr>
     <div class="row">
-        {{--<div class="panel panel-default">--}}
-            {{--<div class="panel-body">--}}
+        <h4>Historial de Paciente</h4>
         <table class="table table-condensed ">
             <tr>
                 <td><strong>Nro. Historia : </strong> {{$paciente->nro_historia}}</td>

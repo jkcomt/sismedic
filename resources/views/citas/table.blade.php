@@ -19,7 +19,11 @@
                  <td>{{$cita->fecha_examen.' - '.Carbon\Carbon::parse($cita->hora_examen)->format('h:i A')}}</td>
                  <td>
                      {{--<button class="btn btn-xs btn-warning edit"  value=""><span class="glyphicon glyphicon-pencil"></span> EDITAR</button>--}}
+
                      {{csrf_field()}}
+            
+                     <a href="{{route('citas.examenescliente',[$cita->id])}}" class="btn btn-xs btn-info editar" target="_blank" id=""><span class="glyphicon glyphicon-print"></span></a>
+
                      <a href="{{route('pacientes.citas.edit',[$cita->id])}}" class="btn btn-xs btn-warning editar"  id=""><span class="glyphicon glyphicon-pencil"></span> EDITAR</a>
 
                      <a href="#" class="btn btn-xs btn-danger delete"  id="{{$cita->id}}"><span class="glyphicon glyphicon-remove"></span> ELIMINAR</a>

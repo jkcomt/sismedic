@@ -21,7 +21,9 @@ $('body').on('click','.item',function(e){
         console.log($items)
     }
 });
-
+$botonPresionado = '';
+$tipo = '';
+$idCita = '';
 $('#registrarCita').submit(function(e){
     e.preventDefault();
 
@@ -33,6 +35,7 @@ $('#registrarCita').submit(function(e){
 
     }).success(function(data)
     {
+          $idCita = data.mensaje.id;
         if($.isEmptyObject(data.error)){
             console.log(data)
             $('#modal-exito').modal({
@@ -40,7 +43,7 @@ $('#registrarCita').submit(function(e){
                 keyboard:false
             });
             $('#modal-confirmacion').modal('hide');
-            $('#modal-exito .modal-body').html('<h3 class="text-success text-center">Cita Ocupacional '+ data.mensaje.nro_serie_cita+' al paciente '+ data.mensaje.paciente.apellido_paterno +' '+ data.mensaje.paciente.apellido_materno +', '+ data.mensaje.paciente.nombres +'</h3>')
+            $('#modal-exito .modal-body').html('<h3 class="text-success text-center">Cita Ocupacional '+ data.mensaje.nro_serie_cita+' al paciente '+ data.mensaje.paciente.apellido_paterno +' '+ data.mensaje.paciente.apellido_materno +', '+ data.mensaje.paciente.nombres +'</h3> <div class="text-center"><button type="button" name="imprimirCita" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-print"></span> Imprimir Cita</button></div>')
             $('#modal-exito').modal('show')
         }else{
             console.log(data.error)
@@ -59,6 +62,9 @@ $('#registrarCita').submit(function(e){
     });
 });
 
+
+
+
 $('#actualizarCita').submit(function(e){
     e.preventDefault();
 
@@ -72,12 +78,13 @@ $('#actualizarCita').submit(function(e){
 {
     if($.isEmptyObject(data.error)){
         console.log(data)
+          $idCita = data.mensaje.id;
         $('#modal-exito').modal({
             backdrop: 'static',
             keyboard:false
         });
         $('#modal-confirmacion').modal('hide');
-        $('#modal-exito .modal-body').html('<h3 class="text-success text-center">Cita Ocupacional '+ data.mensaje.nro_serie_cita+' al paciente '+ data.mensaje.paciente.apellido_paterno +' '+ data.mensaje.paciente.apellido_materno +', '+ data.mensaje.paciente.nombres +'</h3>')
+        $('#modal-exito .modal-body').html('<h3 class="text-success text-center">Cita Ocupacional '+ data.mensaje.nro_serie_cita+' al paciente '+ data.mensaje.paciente.apellido_paterno +' '+ data.mensaje.paciente.apellido_materno +', '+ data.mensaje.paciente.nombres +'</h3> <div class="text-center"><button type="button" name="imprimirCita" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-print"></span> Imprimir Cita</button></div>')
         $('#modal-exito').modal('show')
     }else{
         console.log(data.error)
@@ -295,4 +302,8 @@ $('#buscarCitaDni').on('keyup',function(){
             //console.log("Error "+JSON.stringify(data))
         }
     });
+});
+$('body').on('click','button[name=imprimirCita]',function(e){
+  var url = window.location.protocol + "//" + window.location.host+"/citas/examenes_cliente/"+$idCita
+  window.open(url, '_blank');
 });

@@ -37,22 +37,20 @@ th,td{
 
 
 <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-5">
         <div class="form-group">
-            <!--a href="{{--route('tipoinstruccion.create')--}}" class="btn btn-success">NUEVA INSTRUCCION</a-->
-                {{-- <a href="{{route('citas.catalogo')}}" class="btn btn-warning">VOLVER</a> --}}
+                <a href="{{route('citas.listareporte')}}" target="_blank"  class="btn btn-info"><span class="glyphicon glyphicon-print"></span> REPORTE GENERAL DE CITAS</a>
                 <a href="{{route('citas.nuevacita')}}" class="btn btn-success">NUEVA CITA</a>
-
         </div>
     </div>
-    <div class="col-md-9">
+    <div class="col-md-7">
         <form action="" class="form-inline text-right">
           <input type="text" id="buscarCitaDni" placeholder="BUSCAR CITAS POR DNI DEL PACIENTE..." class="form-control" style="width: 45%">
 
         </form>
     </div>
 </div>
-<br>
+
 <div class="row" id="tabla">
      @include('citas.table')
 </div>

@@ -34,28 +34,28 @@
     {{--@include('lote.modals.edit')--}}
 
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-6">
             <div class="form-group">
+              <a href="{{route('pacientes.citas_paciente',[$paciente->id])}}" target="_blank"  class="btn btn-info"><span class="glyphicon glyphicon-print"></span> REPORTE DE CITAS POR PACIENTE</a>
                 <a href="{{route('pacientes.index')}}" class="btn btn-warning">VOLVER</a>
                 <a href="{{route('pacientes.citas.create',[$paciente->id])}}" class="btn btn-success">NUEVA CITA</a>
                 <input type="hidden" value="{{$paciente->id}}" id="idPaciente">
             </div>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-6">
             <form action="" class="form-inline text-right">
                 {{--<select name="filtro" id="filtro" class="form-control">--}}
                     {{--<option value="historia">Nro. Historia</option>--}}
                     {{--<option value="dni">DNI</option>--}}
                     {{--<option value="empresa">Empresa</option>--}}
                 {{--</select>--}}
-                <input type="text" id="buscarCita" placeholder="BUSCAR POR NÚMERO DE CITA..." class="form-control" style="width: 45%">
+                <input type="text" id="buscarCita" placeholder="BUSCAR POR NÚMERO DE CITA..." class="form-control" style="width: 59%">
 
                 {{--<input type="hidden" value="{{route('pacientes.search')}}" id="buscarUrlPaciente">--}}
                 {{--<button class="btn btn-primary form-control">BUSCAR</button>--}}
             </form>
         </div>
     </div>
-    <br>
     <div class="row" id="tabla">
         @include('pacientes.citas.tabla')
     </div>

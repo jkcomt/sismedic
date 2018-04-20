@@ -9,7 +9,7 @@
 @endsection
 @section('modal-footer')
     {{--<button class="btn btn-sm btn-primary" id="create-paciente">Insertar otro registro</button>--}}
-    <a class="btn btn-sm btn-warning" href="{{route('pacientes.citas',[$paciente->id])}}">Volver</a>
+    <a class="btn btn-sm btn-block btn-warning" href="{{route('pacientes.citas',[$paciente->id])}}">Volver</a>
 @endsection
 {{-----------------------------------------------------------------}}
 @section('modal-confirmacion-title')

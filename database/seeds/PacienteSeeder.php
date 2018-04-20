@@ -11,11 +11,11 @@ class PacienteSeeder extends Seeder
      */
     public function run()
     {
-        for ($i=1; $i <=9; $i++) { 
+        for ($i=1; $i <=50; $i++) { 
         factory(Paciente::class)->create([
         	'nro_historia'=>'H00000'.$i
         ]);
-        	
+
         }
     }
 }

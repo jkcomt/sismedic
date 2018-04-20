@@ -35,6 +35,7 @@
     <div class="row">
         <div class="col-md-2">
             <div class="form-group">
+              <a href="{{route('funcion_vital.listareporte')}}" target="_blank"  class="btn btn-info"><span class="glyphicon glyphicon-print"></span> REPORTE GENERAL</a>
                 {{--<a href="" class="btn btn-success">NUEVA FILIACIÓN</a>--}}
             </div>
         </div>
@@ -49,7 +50,7 @@
             </form>
         </div>
     </div>
-    <br>
+
     <div class="row" id="tabla">
         @include('funcionvital.tabla')
     </div>

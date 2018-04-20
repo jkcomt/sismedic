@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Cita;
 use App\FuncionVital;
 use Illuminate\Http\Request;
-
+use View;
 class FuncionVitalController extends Controller
 {
     /**
@@ -219,8 +219,20 @@ class FuncionVitalController extends Controller
           }
     }
 
+      public function listareporte()
+      {
 
-  
+          $citas = Cita::where('estado',true)
+            ->orderBy('fecha_examen','asc')
+            ->orderBy('hora_examen','asc')->get();
+          $view=View::make('funcionvital.reporte.listafuncionvital',compact('citas'));
+          $pdf = \App::make('dompdf.wrapper');
+          $pdf->loadHTML($view);
+          $pdf->stream($view);
+          return $pdf->stream();
+
+      }
+
 
 
 }

@@ -8,12 +8,13 @@ use App\Event;
 use App\PerfilExamen;
 use App\FuncionVital;
 use App\Paciente;
-use App\clienteCuenta;
+use App\ClienteCuenta;
 use App\TipoExamen;
 use App\Perfil;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use App\CitaExamen;
+use View;
 class CitaController extends Controller
 {
     /**
@@ -33,9 +34,8 @@ class CitaController extends Controller
      */
     public function create()
     {
-      $citas = Cita::Where('estado',true)->where('paciente_id',$id)->paginate(10);
-
-      return view('citas.create',compact('citas'));
+      /*$citas = Cita::Where('estado',true)->where('paciente_id',$id)->paginate(10);
+      return view('citas.create',compact('citas'));*/
     }
 
     /**
@@ -126,7 +126,7 @@ class CitaController extends Controller
              $citas = Cita::where('fecha_examen','=', $request['fecha'])
                  //->orWhere('num_dni', 'like', '%' . $request['buscar'] . '%')
                  ->orderBy('hora_examen', 'asc');
-             $citas = $citas->where('estado', true)->paginate(10);
+             $citas = $citas->where('estado', true)->get();
          }
 
          if($request->ajax())
@@ -272,6 +272,37 @@ class CitaController extends Controller
 
 
 
+    }
+
+    public function listareporte()
+    {
+      $citas=Cita::where('estado',true)->orderBy('hora_examen','asc')->get();
+      $view=View::make('citas.reporte.listacitas',compact('citas'));
+      $pdf = \App::make('dompdf.wrapper');
+      $pdf->loadHTML($view);
+      $pdf->stream($view);
+      return $pdf->stream();
+    }
+
+    public function examenescliente($id)
+    {
+      $cita=Cita::find($id);
+
+      //$paciente = Paciente::find($cita->paciente->id);
+/*
+      $tipoExamenes = TipoExamen::where('estado',true)->get()->pluck('descripcion','id')->toArray();
+
+      $clienteCuentas = ClienteCuenta::where('estado',true)->get()->pluck('descripcion','id')->toArray();
+
+      $perfiles = Perfil::where('estado',true)->get()->pluck('descripcion','id')->toArray();
+
+      $perfilesExamenes = PerfilExamen::where('estado',true)->get();*/
+
+      $view=View::make('citas.reporte.examenescliente',compact('cita'));
+      $pdf = \App::make('dompdf.wrapper');
+      $pdf->loadHTML($view);
+      $pdf->stream($view);
+      return $pdf->stream();
     }
 
 }

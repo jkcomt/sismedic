@@ -1,5 +1,7 @@
 <div class="row altura-md">
+
     @foreach($perfilesExamenes as $perfilesExamen)
+
         <div class="row item">
             <div class="col-md-8 borde-inferior ">{{$perfilesExamen->listaExamen->descripcion}} </div>
             <div class="col-md-1 text-center borde-inferior">{{$perfilesExamen->listaExamen->tipo}}</div>

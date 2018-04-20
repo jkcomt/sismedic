@@ -9,7 +9,7 @@ $(document).ready(function() {
     //$('select[name=paisOrigen]').trigger('change');
     //console.log($("select[name=paisOrigen]").val())
 });
-
+$idCita = '';
 $("select[name=paisOrigen]").on('change',function(e){
      //e.preventDefault();
      console.log($(this).val())
@@ -141,12 +141,15 @@ $('#registrarPaciente').submit(function(e){
 
     }).success(function(data)
     {
+
         if($.isEmptyObject(data.error)){
             console.log(data)
+            $idCita =data.mensaje.id;
             $('#modal-exito').modal({
                 backdrop: 'static',
                 keyboard:false
             });
+            $('.modal-body').html('<h3 class="text-success text-center"> Paciente Registro Exitosamente </h3> '+'<div class="text-center"><button type="button" name="imprimirPaciente" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-print"></span> Imprimir  Paciente</button></div>')
             $('#modal-exito').modal('show')
         }else{
             console.log(data.error)
@@ -321,10 +324,12 @@ $('#actualizarPaciente').submit(function(e){
     {
         if($.isEmptyObject(data.error)){
             console.log(data)
+              $idCita =data.mensaje.id;
             $('#modal-exito').modal({
                 backdrop: 'static',
                 keyboard:false
             });
+            $('.modal-body').html('<h3 class="text-success text-center"> Paciente Actualizo Exitosamente </h3> '+'<div class="text-center"><button type="button" name="imprimirPaciente" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-print"></span> Imprimir  Paciente</button></div>')
             $('#modal-exito').modal('show')
         }else{
             console.log(data.error)
@@ -587,4 +592,9 @@ $('#buscarPaciente').on('keyup',function(){
             //console.log("Error "+JSON.stringify(data))
         }
     });
+});
+
+$('body').on('click','button[name=imprimirPaciente]',function(e){
+  var url = window.location.protocol + "//" + window.location.host+"/pacientes/reporte/"+$idCita+"/detalle/"
+  window.open(url, '_blank');
 });

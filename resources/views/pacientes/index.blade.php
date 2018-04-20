@@ -34,13 +34,16 @@
     {{--@include('lote.modals.edit')--}}
 
     <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-5">
             <div class="form-group">
-                <a href="{{route('pacientes.create')}}" class="btn btn-success">NUEVA FILIACIÓN</a>
-                <input type="hidden" value="{{route('pacientes.destroy')}}" id="deletePaciente">
+              <a href="{{route('pacientes.listareporte')}}" target="_blank"  class="btn btn-info"><span class="glyphicon glyphicon-print"></span> REPORTE GENERAL PACIENTES</a>
+              <a href="{{route('pacientes.create')}}" class="btn btn-success">NUEVA FILIACIÓN</a>
+              <input type="hidden" value="{{route('pacientes.destroy')}}" id="deletePaciente">
+
             </div>
         </div>
-        <div class="col-md-10">
+
+        <div class="col-md-7">
             <form action="" class="form-inline text-right">
                 <select name="filtro" id="filtro" class="form-control">
                     <option value="historia">Nro. Historia</option>
@@ -53,7 +56,7 @@
             </form>
         </div>
     </div>
-    <br>
+
     <div class="row" id="tabla">
         @include('pacientes.tabla')
     </div>
