@@ -196,23 +196,14 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-12 text-right">
-<<<<<<< HEAD
                                     <a class="btn  btn-warning" href="{{route('citas.catalogo')}}">Volver</a>
                                 <button class="btn btn-success conformidad"  tipo="registrar">Registrar</button>
-=======
-                                <a class="btn  btn-warning" href="{{route('citas.catalogo')}}">Volver</a>
-                                <button class="btn btn-success conformidad" type="submit" tipo="registrar">Registrar
-                                </button>
->>>>>>> 1016adba78d831114f8d75fc111a6dcfa37ebb22
+
                             </div>
                         </div>
                     </div>
                 </div>
-<<<<<<< HEAD
 
-=======
-            </form>
->>>>>>> 1016adba78d831114f8d75fc111a6dcfa37ebb22
         </div>
     </div>
 
