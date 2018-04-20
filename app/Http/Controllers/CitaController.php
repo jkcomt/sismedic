@@ -8,7 +8,7 @@ use App\Event;
 use App\PerfilExamen;
 use App\FuncionVital;
 use App\Paciente;
-use App\clienteCuenta;
+use App\ClienteCuenta;
 use App\TipoExamen;
 use App\Perfil;
 use Illuminate\Support\Facades\DB;
@@ -33,9 +33,9 @@ class CitaController extends Controller
      */
     public function create()
     {
-      $citas = Cita::Where('estado',true)->where('paciente_id',$id)->paginate(10);
+      //$citas = Cita::Where('estado',true)->where('paciente_id',$id)->paginate(10);
 
-      return view('citas.create',compact('citas'));
+      //return view('citas.create',compact('citas'));
     }
 
     /**

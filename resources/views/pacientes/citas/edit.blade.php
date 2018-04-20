@@ -1,8 +1,19 @@
 @extends('layout')
 @section('header')
-  <a class="btn btn-sm btn-warning" href="{{route('pacientes.citas',[$paciente->id])}}">Volver</a>
-MODIFICAR CITA
-
+    <div class="row">
+        <div class="col-md-6">
+            MODIFICAR CITA
+        </div>
+        <div class="col-md-6 text-right">
+            @if(str_replace(url('/'), '', url()->previous()) == '/citas/catalogo')
+                {{-- esto regresa a catalogo de pacientes --}}
+                <a href="{{route('citas.catalogo')}}" class="btn btn-sm btn-warning">VOLVER A CATÁLOGO DE CITAS</a>
+            @else
+                {{-- esto redirige a calendario --}}
+                <a class="btn btn-sm btn-warning" href="{{route('pacientes.citas',[$paciente->id])}}">Volver</a>
+            @endif
+        </div>
+    </div>
 @endsection
 {{-----------------------------------------------------------------}}
 @section('modal-title')
@@ -43,9 +54,15 @@ MODIFICAR CITA
                 {{--</ul>--}}
             </div>
 
-            <div class="panel panel-default">
-                <div class="panel-heading">Información de Paciente</div>
-                <div class="panel-body">
+            <div class="box box-default">
+                <div class="box-header with-border">Información de Paciente
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
                     <div class="row">
                         <div class="col-md-12">
                             <label for="">Paciente : </label>
@@ -69,9 +86,15 @@ MODIFICAR CITA
             <form action="{{route('pacientes.citas.update')}}" id="actualizarCita">
                 {{csrf_field()}}
                 <input type="hidden" name="pacienteId" value="{{$paciente->id}}">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Información de Cita Ocupacional</div>
-                    <div class="panel-body">
+                <div class="box box-default">
+                    <div class="box-header with-border">Información de Cita Ocupacional
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body">
                         <div class="row">
                             <div class="col-md-2 form-group">
                                 <label for="nro_serie_cita" class="control-label">Nro. Cita : </label>

@@ -1,5 +1,14 @@
 @extends('layout')
-@section('header','Nueva Cita')
+@section('header')
+    <div class="row">
+        <div class="col-md-6">
+            NUEVA CITA
+        </div>
+        <div class="col-md-6 text-right">
+            <a href="{{route('pacientes.citas',[$paciente->id])}}" class="btn btn-sm btn-warning">Volver</a>
+        </div>
+    </div>
+@endsection
 {{-----------------------------------------------------------------}}
 @section('modal-title')
     <h4 class="modal-title">Aviso</h4>
@@ -38,10 +47,15 @@
                 {{--@endforeach--}}
                 {{--</ul>--}}
             </div>
-
-                <div class="panel panel-default">
-                    <div class="panel-heading">Información de Paciente</div>
-                    <div class="panel-body">
+                <div class="box box-default">
+                    <div class="box-header with-border">Información de Paciente
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body">
                         <div class="row">
                             <div class="col-md-12">
                                 <label for="">Paciente : </label>
@@ -65,9 +79,15 @@
             <form action="{{route('pacientes.citas.store')}}" id="registrarCita">
                 {{csrf_field()}}
                 <input type="hidden" name="pacienteId" value="{{$paciente->id}}">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Información de Cita Ocupacional</div>
-                    <div class="panel-body">
+                <div class="box box-default">
+                    <div class="box-header with-border">Información de Cita Ocupacional
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body">
                         <div class="row">
                             <div class="col-md-2 form-group">
                                 <label for="nro_serie_cita" class="control-label">Nro. Cita : </label>

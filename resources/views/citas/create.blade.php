@@ -1,23 +1,23 @@
 @extends('layout')
-<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet"/>
 
 @section('header')
-  <div class="row">
-    <div class="col-md-6">
-      NUEVA CITA
+    <div class="row">
+        <div class="col-md-6">
+            NUEVA CITA
+        </div>
+        <div class="col-md-6 text-right">
+            @if(str_replace(url('/'), '', url()->previous()) == '/citas/catalogo')
+                {{-- esto rediriga al catalogo de citas --}}
+                <a class="btn btn-sm btn-warning" href="{{route('citas.catalogo')}}">VOLVER CATÁLOGO DE CITAS</a>
+            @elseif(str_replace(url('/'), '', url()->previous()) == '/citas')
+                {{-- esto redirige a calendario --}}
+                <a class="btn btn-sm btn-warning" href="{{route('calendario.index')}}">VOLVER A CALENDARIO</a>
+            @else
+                <a class="btn btn-sm btn-warning" href="{{route('citas.catalogo')}}">IR A CATÁLOGO DE CITAS</a>
+            @endif
+        </div>
     </div>
-    <div class="col-md-6 text-right">
-      @if(str_replace(url('/'), '', url()->previous()) == '/citas/catalogo')
-        {{-- esto rediriga al catalogo de citas --}}
-          <a class="btn btn-sm btn-warning" href="{{route('citas.catalogo')}}">VOLVER CATÁLOGO DE CITAS</a>
-      @elseif(str_replace(url('/'), '', url()->previous()) == '/citas')
-        {{-- esto redirige a calendario --}}
-          <a class="btn btn-sm btn-warning" href="{{route('calendario.index')}}">VOLVER A CALENDARIO</a>
-      @else
-          <a class="btn btn-sm btn-warning" href="{{route('citas.catalogo')}}">IR A CATÁLOGO DE CITAS</a>
-      @endif
-    </div>
-  </div>
 @endsection
 {{-----------------------------------------------------------------}}
 @section('modal-title')
@@ -40,7 +40,7 @@
 @endsection
 @section('modal-confirmacion-footer')
     <button class="btn btn-danger confirmar" id="">Confirmar</button>
-    <a href="" class="btn btn-warning " data-dismiss="modal" id="index" >Volver</a>
+    <a href="" class="btn btn-warning " data-dismiss="modal" id="index">Volver</a>
 @endsection
 {{-----------------------------------------------------------------}}
 @section('content')
@@ -55,36 +55,41 @@
                 </ul>
 
             </div>
-<form action="{{route('citas.registrar')}}" id="registrarCita">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Información de Paciente</div>
-                    <div class="panel-body">
-                      <div class="row">
-                          <div class="col-md-6">
-                            <div class="form-group">
-                              <label for="paciente" class="control-label">Paciente : </label>
-                              <div class="form-group" id="pacienteGroup">
-                                  <select name="paciente" id="paciente" class="form-control selectPersonal">
-                                    <option value=""></option>
-                                      @foreach($pacientes as $key => $paciente)
-                                          <option value="{{$key}}">{{$paciente}}</option>
-                                      @endforeach
-                                  </select>
-                              </div>
-                            </div>
-                            </div>
-                      </div>
-
-                        <div class="row">
-                            <div class="col-md-12">
-                                <label for="">DNI : </label>
-                                <strong id="DNI"> </strong>
-                            </div>
+            <form action="{{route('citas.registrar')}}" id="registrarCita">
+                <div class="box box-default">
+                    <div class="box-header with-border">Información de Paciente
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-plus"></i>
+                            </button>
                         </div>
+                    </div>
+                    <div class="box-body">
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="paciente" class="control-label">Paciente : </label>
+                                    <div class="form-group" id="pacienteGroup">
+                                        <select name="paciente" id="paciente" class="form-control selectPersonal">
+                                            <option value=""></option>
+                                            @foreach($pacientes as $key => $paciente)
+                                                <option value="{{$key}}">{{$paciente}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-1">
+                                <label for="">DNI : </label>
+                                <div class="form-group">
+                                    <strong id="DNI"> </strong>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
                                 <label for="">Nro Historia : </label>
-                                <strong id="nroHistoria"> </strong>
+                                <div class="form-group">
+                                    <strong id="nroHistoria"> </strong>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -92,9 +97,15 @@
 
                 {{csrf_field()}}
                 <input type="hidden" name="pacienteId" value="">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Información de Cita Ocupacional</div>
-                    <div class="panel-body">
+                <div class="box box-default">
+                    <div class="box-header with-border">Información de Cita Ocupacional
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body">
                         <div class="row">
                             <div class="col-md-2 form-group">
                                 <label for="nro_serie_cita" class="control-label">Nro. Cita : </label>
@@ -158,7 +169,7 @@
                                 <div class="col-md-1 text-center bg-primary">MARCAR</div>
                             </div>
                             <div id="tabla">
-                            @include('pacientes.citas.perfilexamen')
+                                @include('pacientes.citas.perfilexamen')
                             </div>
                         </div>
                     </div>
@@ -168,13 +179,14 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-12 text-right">
-                                    <a class="btn  btn-warning" href="{{route('citas.catalogo')}}">Volver</a>
-                                <button class="btn btn-success conformidad" type="submit" tipo="registrar">Registrar</button>
+                                <a class="btn  btn-warning" href="{{route('citas.catalogo')}}">Volver</a>
+                                <button class="btn btn-success conformidad" type="submit" tipo="registrar">Registrar
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
-                  </form>
+            </form>
         </div>
     </div>
 

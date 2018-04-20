@@ -1,7 +1,15 @@
 @extends('layout')
 @section('header')
-<a href="{{route('pacientes.index')}}" class="btn btn-warning">Volver</a>
- EDITAR PACIENTE  {{$paciente->apellido_paterno." ".$paciente->apellido_materno." ".$paciente->nombres}}
+<div class="row">
+    <div class="col-md-6">
+        EDITAR PACIENTE : {{$paciente->apellido_paterno." ".$paciente->apellido_materno." ".$paciente->nombres}}
+    </div>
+    <div class="col-md-6 text-right">
+        <a href="{{route('pacientes.index')}}" class="btn btn-sm btn-warning">Volver</a>
+    </div>
+</div>
+
+
 @endsection
 @section('modal-title')
     <h4 class="modal-title">Aviso</h4>
@@ -32,8 +40,15 @@
             <form action="{{route('pacientes.update')}}" id="actualizarPaciente">
                 {{csrf_field()}}
                 <input type="hidden" value="{{$paciente->id}}" name="id">
-                <div class="panel panel-default">
-                    <div class="panel-body">
+                <div class="box box-default">
+                    <div class="box-header with-border">Información de Paciente
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body">
                         <div class="row">
                             <div class="col-md-2 form-group">
                                 <label for="nro_historia" class="control-label">Historia:</label>
@@ -102,11 +117,15 @@
                         </div>
                     </div>
                 </div>
-                <hr>
-
-                <div class="panel panel-default">
-                    <div class="panel-heading">Lugar de Nacimiento</div>
-                    <div class="panel-body">
+                <div class="box box-default">
+                    <div class="box-header with-border">Lugar de Nacimiento
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body">
                         <div class="row">
                             <div class="col-md-3">
                                 <label for="control-label">País:</label>
@@ -158,9 +177,15 @@
 
                 </div>
 
-                <div class="panel panel-default">
-                    <div class="panel-heading">Domicilio</div>
-                    <div class="panel-body">
+                <div class="box box-default">
+                    <div class="box-header with-border">Domicilio
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body">
                         <div class="row">
                             <div class="col-md-3">
                                 <label class="control-label">País:</label>
@@ -217,11 +242,16 @@
                         </div>
                     </div>
                 </div>
-                <hr>
-
-                <div class="panel panel-default">
-                    {{--<div class="panel-heading">Información</div>--}}
-                    <div class="panel-body">
+                <div class="box box-default">
+                    <div class="box-header with-border">
+                        Información Personal
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body">
                         <div class="row">
                             <div class="col-md-4 form-group">
                                 <label for="telf_fijo" class="control-label">Teléfono Fijo:</label>
