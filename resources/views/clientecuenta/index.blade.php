@@ -8,7 +8,14 @@ th,td{
 
 @endsection
 
-@section('header','LISTADO DE CLIENTE CUENTA')
+@section('header')
+<div class="row">
+  <div class="col-sm-6">LISTADO DE CLIENTE CUENTA
+  </div>
+  <div class="col-sm-6 text-right"> <a href="{{route('configuracion.index')}}" class="btn btn-warning btn-sm">VOLVER</a></div>
+</div>
+
+@endsection
 @section('modal-title')
 <h4 class="modal-title">Aviso</h4>
 @endsection
@@ -39,7 +46,7 @@ th,td{
     <div class="col-md-8">
         <div class="form-group">
             <!--a href="{{--route('tipoinstruccion.create')--}}" class="btn btn-success">NUEVA INSTRUCCION</a-->
-    <a href="{{route('configuracion.index')}}" class="btn btn-warning">VOLVER</a>
+    {{-- <a href="{{route('configuracion.index')}}" class="btn btn-warning">VOLVER</a> --}}
             <button class="btn btn-success new"> NUEVO CLIENTE CUENTA</button>
 
 
@@ -52,7 +59,6 @@ th,td{
         </form>
     </div>
 </div>
-<br>
 <div class="row" id="tabla">
 
      @include('clientecuenta.table')
