@@ -6,11 +6,11 @@
         </div>
         <div class="col-md-6 text-right">
             @if(str_replace(url('/'), '', url()->previous()) == '/funcion_vital')
-                <a href="{{route('funcion_vital.index')}}" class="btn btn-sm btn-warning">Volver a catálogo de funciones vitales</a>
+                <a href="{{route('funcion_vital.index')}}" class="btn btn-sm btn-warning">VOLVER A CATÁLOGO DE FUNCIONES VITALES</a>
             @elseif(str_replace(url('/'), '', url()->previous()) == '/citas')
-                <a href="{{route('calendario.index')}}" class="btn btn-sm btn-warning">Volver al calendario</a>
+                <a href="{{route('calendario.index')}}" class="btn btn-sm btn-warning">VOLVER A CALENDARIO</a>
             @elseif(str_replace(url('/'), '', url()->previous()) == '/citas/catalogo')
-                <a href="{{route('citas.catalogo')}}" class="btn btn-sm btn-warning">Volver a catálogo de citas</a>
+                <a href="{{route('citas.catalogo')}}" class="btn btn-sm btn-warning">VOLVER A CATÁLOGO DE CITAS</a>
             @endif
         </div>
     </div>

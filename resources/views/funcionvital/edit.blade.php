@@ -1,11 +1,18 @@
 @extends('layout')
 @section('header')
-    @if(str_replace(url('/'), '', url()->previous()) == '/funcion_vital')
-        <a href="{{route('funcion_vital.index')}}" class="btn btn-warning">Volver</a>
-    @elseif(str_replace(url('/'), '', url()->previous()) == '/citas')
-        <a href="{{route('calendario.index')}}" class="btn btn-warning">Volver</a>
-    @endif
-  EDITAR FUNCIONES VITALES
+    <div class="row">
+        <div class="col-md-6">
+            EDITAR FUNCIONES VITALES
+        </div>
+        <div class="col-md-6 text-right">
+            @if(str_replace(url('/'), '', url()->previous()) == '/funcion_vital')
+                <a href="{{route('funcion_vital.index')}}" class="btn btn-sm btn-warning">VOLVER</a>
+            @elseif(str_replace(url('/'), '', url()->previous()) == '/citas')
+                <a href="{{route('calendario.index')}}" class="btn btn-sm btn-warning">VOLVER</a>
+            @endif
+        </div>
+    </div>
+
 @endsection
 {{-----------------------------------------------------------------}}
 @section('modal-title')
@@ -43,8 +50,15 @@
             </div>
             <form action="{{route('funcion_vital.update')}}" id="editarFuncionVital">
                 {{csrf_field()}}
-                <div class="panel panel-default">
-                    <div class="panel-body">
+                <div class="box box-default">
+                    <div class="box-header with-border">Información de Paciente
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body">
                         <div class="row">
                             <div class="col-md-2 form-group">
                                 <label for="cita" class="control-label">Cita:</label>
@@ -73,8 +87,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="panel panel-default">
-                    <div class="panel-body">
+                <div class="box box-default">
+                    <div class="box-header with-border">Información de Función Vital
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body">
                         <div class="row">
                             <div class="col-md-2 form-group">
                                 <label for="talla" class="control-label">Talla:</label>
@@ -141,8 +162,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="panel panel-default">
-                    <div class="panel-body">
+                <div class="box box-default">
+                    <div class="box-header with-border">Información de Función Vital
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body">
                         <div class="row">
                             <div class="col-md-4 form-group">
                                 <label for="en_reposo" class="control-label">En Reposo:</label>
@@ -191,8 +219,15 @@
                     </div>
                 </div>
 
-                <div class="panel panel-default">
-                    <div class="panel-body">
+                <div class="box box-default">
+                    <div class="box-header with-border">Información de Función Vital
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body">
                         <div class="row">
                             <div class="col-md-4 form-group">
                                 <label for="circunferencia_cuello" class="control-label">Circunferencia Cuello:</label>
