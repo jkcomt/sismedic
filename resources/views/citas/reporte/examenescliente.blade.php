@@ -32,8 +32,8 @@
     <div class="row">
         <table>
             <tr>
-                <td>
-                    <img src="{{asset('img/logo.ico/logo.jpg')}}" alt="" width="120px" height="100px">
+                <td style="padding-right: 10px;">
+                    <img src="{{asset('img/logo.ico/logo.jpg')}}" alt="" width="80px" height="100px" >
                 </td>
                 <td >
                     <h5>Dirección: Calle Los Girasoles 274 Urb. California, Trujillo</h5>

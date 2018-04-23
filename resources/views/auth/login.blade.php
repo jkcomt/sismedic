@@ -25,7 +25,7 @@
                 </div>
                 <div class="panel-body">
                     <div class="text-center">
-                        <img src="{{asset('img/logo.ico/logo.jpg')}}" alt="">
+                        <img src="{{asset('img/logo.ico/logo.jpg')}}" alt="" style="height: 50vh;">
                     </div>
                     <form action="{{route('login')}}" method="post">
                         {{csrf_field()}}

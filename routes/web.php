@@ -65,6 +65,13 @@ Route::group([
     Route::get('/filtrodomicilio','ProvinciasController@filtroDomicilio')->name('provincia.filtrodomicilio');
 });
 
+Route::group([
+    'prefix'=>'distritos'
+],function() {
+    Route::get('/filtro','DistritosController@filtro')->name('distrito.filtro');
+    Route::get('/filtrodomicilio','DistritosController@filtroDomicilio')->name('distrito.filtrodomicilio');
+});
+
 
 /*luis teran*/
 Route::resource('tipoinstruccion','TipoInstruccionController');

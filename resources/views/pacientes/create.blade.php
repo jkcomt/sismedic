@@ -160,6 +160,7 @@
 
                             <div class="col-md-3">
                                 <label class="control-label">Provincia:</label>
+                                <input type="hidden" value="{{route('distrito.filtro')}}" id="distritoUrlFiltro">
                                 <div id="provinciaGroup">
                                     @include('pacientes.provincia')
                                 </div>
@@ -167,16 +168,8 @@
 
                             <div class="col-md-3">
                                 <label class="control-label">Distrito:</label>
-                                <div class="form-group" id="provinciaGroup">
-                                    <select name="distritoOrigen" id="distritoOrigen" class="form-control" >
-                                        {{--<input type="text" class=" form-control" name="personal" value="{{old('personal')}}">--}}
-                                        {{--<option value="1">Chepen</option>--}}
-                                        @if($distritos)
-                                        @foreach($distritos as $key => $distrito)
-                                            <option value="{{$key}}">{{$distrito}}</option>
-                                        @endforeach
-                                        @endif
-                                    </select>
+                                <div class="form-group" id="distritoGroup">
+                                    @include('pacientes.distrito')
                                 </div>
                             </div>
                         </div>

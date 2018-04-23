@@ -11,7 +11,7 @@ class Distrito extends Model
     protected $fillable = ['provincia_id','nombre','estado'];
 
     public function paciente(){
-        return $this->belongsTo(Paciente::class);
+        return $this->hasMany(Paciente::class);
     }
 
     public $timestamps = false;

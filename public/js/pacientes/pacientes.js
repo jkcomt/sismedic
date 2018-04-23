@@ -71,6 +71,35 @@ $('body').on('change','.departamentoOrigen',function(e){
     });
 });
 
+$('body').on('change','.provinciaOrigen',function(e){
+    e.preventDefault();
+    //console.log($(this).val())
+
+    $filtro = $(this).val();
+    // e.preventDefault();
+    var token = $('input[name=_token]').attr('value')
+
+    //var url = "/provincias/filtro"
+    var url = $('#distritoUrlFiltro').val();
+    $.ajax({
+        type:"get",
+        headers: {'X-CSRF-TOKEN':token},
+        url:url,
+        dataType:"json",
+        data:{
+            //buscar : valor,
+            filtro : $filtro
+        },
+        success: function(data){
+            //console.log(JSON.stringify(data))
+            $('#distritoGroup').html(data.html)
+        },
+        error: function(data){
+            alert("Error "+json.stringify(data))
+        }
+    });
+});
+
 $("select[name=paisOrigenDom]").on('change',function(e){
     //e.preventDefault();
     //console.log($(this).val())
