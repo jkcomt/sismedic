@@ -3,9 +3,98 @@ $(document).ready(function() {
 
     $('#perfil').trigger('change');
     $('#perfilEditar').trigger('change');
-});
+    $('#tipoBusqueda').trigger('change');
 
+    startdate = fechaActual();
+    enddate = startdate;
+    console.log(startdate+' '+enddate)
+
+    $('input[name="daterange"]').daterangepicker({
+      "locale": {
+            "format": "YYYY-MM-DD",
+            "separator": " - ",
+            "applyLabel": "Guardar",
+            "cancelLabel": "Cancelar",
+            "fromLabel": "Desde",
+            "toLabel": "Hasta",
+            "customRangeLabel": "Personalizar",
+            "daysOfWeek": [
+                "Do",
+                "Lu",
+                "Ma",
+                "Mi",
+                "Ju",
+                "Vi",
+                "Sa"
+            ],
+            "monthNames": [
+                "Enero",
+                "Febrero",
+                "Marzo",
+                "Abril",
+                "Mayo",
+                "Junio",
+                "Julio",
+                "Agosto",
+                "Setiembre",
+                "Octubre",
+                "Noviembre",
+                "Diciembre"
+            ],
+            "firstDay": 1
+            }
+    });
+    $('#daterange').on('apply.daterangepicker', function(ev, picker)
+    {
+      if($tipoBusqueda == 'fecha'){
+       startdate= picker.startDate.format('YYYY-MM-DD');
+       enddate=picker.endDate.format('YYYY-MM-DD');
+       var token = $('input[name=_token]').attr('value')
+       $.ajax({
+           type:"post",
+           headers: {'X-CSRF-TOKEN':token},
+           url:'/citas/busqueda_fecha',
+           dataType:"json",
+           data:{
+             startdate:startdate,
+             enddate:enddate
+           },
+           success: function(data){
+               $('#tabla').html(data.html)
+           },
+           error: function(data){
+               console.log("Error "+JSON.stringify(data))
+           }
+       });
+     }
+     else{
+       startdate= picker.startDate.format('YYYY-MM-DD');
+       enddate=picker.endDate.format('YYYY-MM-DD');
+     }
+   });
+});
+var startdate;
+var enddate;
 $items = [];
+
+function fechaActual(){
+  var today = new Date();
+var dd = today.getDate();
+
+var mm = today.getMonth()+1;
+var yyyy = today.getFullYear();
+if(dd<10)
+{
+    dd='0'+dd;
+}
+
+if(mm<10)
+{
+    mm='0'+mm;
+}
+today = yyyy+'-'+mm+'-'+dd;
+return today;
+}
 
 $('body').on('click','.item',function(e){
     if ($(this).find('input[name=check]').is(':checked')) {
@@ -102,7 +191,11 @@ $('#actualizarCita').submit(function(e){
         return;
     });
 });
-
+$tipoBusqueda = ''
+$('#tipoBusqueda').on('change',function(e){
+    e.preventDefault();
+    $tipoBusqueda = $(this).val()
+});
 
 $('#perfil').on('change',function(e){
     e.preventDefault();
@@ -281,28 +374,51 @@ $('#buscarCita').on('keyup',function(){
 
 
 $('#buscarCitaDni').on('keyup',function(){
-    valor = $(this).val();
+  valor = $(this).val();
+  if($tipoBusqueda == 'dni'){
     // e.preventDefault();
     var token = $('input[name=_token]').attr('value')
-    var id= $('#idPaciente').val()
     $.ajax({
         type:"post",
         headers: {'X-CSRF-TOKEN':token},
         url:'/citas/buscar_dni',
         dataType:"json",
         data:{
-            buscar : valor,
-            id:id
+            buscar : valor
         },
         success: function(data){
-
             $('#tabla').html(data.html)
         },
         error: function(data){
             //console.log("Error "+JSON.stringify(data))
         }
     });
+  }else if($tipoBusqueda == 'dni_fecha'){
+    // var startdate= picker.startDate.format('YYYY-MM-DD');
+    // var enddate=picker.endDate.format('YYYY-MM-DD');
+    var token = $('input[name=_token]').attr('value')
+    $.ajax({
+        type:"post",
+        headers: {'X-CSRF-TOKEN':token},
+        url:'/citas/buscar_dni_fecha',
+        dataType:"json",
+        data:{
+          startdate:startdate,
+          enddate:enddate,
+          dni: valor
+        },
+        success: function(data){
+            $('#tabla').html(data.html)
+        },
+        error: function(data){
+            //console.log("Error "+JSON.stringify(data))
+        }
+    });
+  }
+
 });
+
+
 $('body').on('click','button[name=imprimirCita]',function(e){
   var url = window.location.protocol + "//" + window.location.host+"/citas/examenes_cliente/"+$idCita
   window.open(url, '_blank');

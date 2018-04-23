@@ -1,5 +1,7 @@
 @extends('layout')
 @section('api')
+  {{-- <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css" /> --}}
+     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
 <style>
 th,td{
     text-align: center;
@@ -44,10 +46,23 @@ th,td{
         </div>
     </div>
     <div class="col-md-7">
-        <form action="" class="form-inline text-right">
-          <input type="text" id="buscarCitaDni" placeholder="BUSCAR CITAS POR DNI DEL PACIENTE..." class="form-control" style="width: 45%">
-
-        </form>
+        {{-- <form action="" class="form-inline text-right"> --}}
+          <div class="row">
+            <div class="col-md-4">
+              <select class="form-control" name="tipoBusqueda" id="tipoBusqueda">
+                <option value="dni">POR DNI</option>
+                <option value="fecha">POR FECHA</option>
+                <option value="dni_fecha">POR DNI Y FECHA</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <input type="text" id="buscarCitaDni" placeholder="BUSCAR CITAS POR DNI..." class="form-control" style="width: 100%">
+           </div>
+           <div class="col-md-4">
+             <input type="text" id="daterange"  class="form-control pull-right" name="daterange" style="width: 100%">
+            </div>
+          </div>
+        {{-- </form> --}}
     </div>
 </div>
 
@@ -56,5 +71,7 @@ th,td{
 </div>
 @endsection
 @section('script')
-    <script src="{{asset('js/pacientes/citas.js')}}"></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+  <script src="{{asset('js/pacientes/citas.js')}}"></script>
 @endsection

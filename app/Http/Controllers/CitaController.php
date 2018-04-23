@@ -165,15 +165,17 @@ class CitaController extends Controller
         ]);*/
      }
 
+     public function searchDniFecha(Request $request)
+     {
+       dd($request['startdate']);
+     }
 
     public function catalogo()
     {
-      $citas= Cita::where('estado',true)->paginate(10);
-      return view('citas.catalogo',compact('citas'));
-    }
-    public function cata()
-    {
-      $citas= Cita::where('estado',true)->paginate(10);
+      $citas= Cita::where('estado',true)
+              ->orderBy('fecha_registro','desc')
+              ->orderBy('hora_registro','desc')
+              ->paginate(10);
       return view('citas.catalogo',compact('citas'));
     }
 
@@ -188,8 +190,6 @@ class CitaController extends Controller
       $pacientes=Paciente::select(DB::raw("CONCAT(apellido_paterno,' ',apellido_materno,' ',nombres) as nombres_completos"),'id')
             ->where('estado',true)
                     ->get()->pluck('nombres_completos','id')->toArray();
-
-
 
       return view('citas.create',compact('clienteCuentas','tipoExamenes','perfiles','perfilesExamenes','cita','pacientes'));
     //  dd($citas);
@@ -305,6 +305,22 @@ class CitaController extends Controller
       $pdf->loadHTML($view);
       $pdf->stream($view);
       return $pdf->stream();
+    }
+
+    public function busquedafecha(Request $request)
+    {
+      if($request->ajax())
+      {
+          $citas = Cita::where('estado',true)
+              ->where('fecha_examen','>=',$request['startdate'])
+              ->where('fecha_examen','<=',$request['enddate'])
+              ->orderBy('fecha_examen','asc')
+              ->orderBy('hora_examen','asc')->paginate(10);
+
+              $view = view('citas.table',compact('citas'))->render();
+              return response()->json(['html'=>$view]);
+
+      }
     }
 
 }

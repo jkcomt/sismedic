@@ -26,6 +26,10 @@ $(document).ready(function() {
 
     $('#perfil').trigger('change');
     $('#perfilEditar').trigger('change');
+
+
+
+
 });
 
 $items = [];

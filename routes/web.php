@@ -160,11 +160,14 @@ Route::group(['prefix'=>'altura'],
         Route::post('/delete','AlturasController@destroy')->name('altura.delete');
     }
 );
+
+Route::post('citas/busqueda_fecha','CitaController@busquedafecha')->name('citas.busquedafecha');
 Route::get('citas/examenes_cliente/{var}','CitaController@examenescliente')->name('citas.examenescliente');
 Route::get('citas/listareporte','CitaController@listareporte')->name('citas.listareporte');
 Route::get('citas/catalogo','CitaController@catalogo')->name('citas.catalogo');
 Route::post('citas/delete','CitaController@destroy')->name('citas.destroy');
 Route::post('citas/buscarfecha','CitaController@searchFecha')->name('citas.searchfecha');
+Route::post('citas/buscar_dni_fecha','CitaController@searchDniFecha')->name('citas.searchdnifecha');
 Route::post('citas/buscar_dni','CitaController@searchdni')->name('citas.searchdni');
 Route::get('citas/nueva_cita','CitaController@nuevacita')->name('citas.nuevacita');
 //////////CARGAR SELECTED
