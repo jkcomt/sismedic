@@ -8,7 +8,15 @@
 
 @endsection
 
-@section('header','LISTADO DE PROFESIONES')
+@section('header')
+
+<div class="row">
+  <div class="col-sm-6">LISTADO DE PROFESIONES
+  </div>
+  <div class="col-sm-6 text-right"><a href="{{route('configuracion.index')}}" class="btn btn-warning btn-sm">VOLVER</a></div>
+</div>
+
+@endsection
 @section('modal-title')
     <h4 class="modal-title">Aviso</h4>
 @endsection
@@ -39,7 +47,7 @@
         <div class="col-md-8">
             <div class="form-group">
                 <!--a href="{{--route('tipoinstruccion.create')--}}" class="btn btn-success">NUEVA INSTRUCCION</a-->
-                    <a href="{{route('configuracion.index')}}" class="btn btn-warning">VOLVER</a>
+
                  <button class="btn btn-success new"> NUEVA PROFESIÓN</button>
             </div>
         </div>
@@ -55,7 +63,7 @@
             </form>
         </div>
     </div>
-    <br>
+
     <div class="row" id="tabla">
         @include('profesion.table')
     </div>

@@ -198,12 +198,10 @@
                             <div class="col-md-12 text-right">
                                     <a class="btn  btn-warning" href="{{route('citas.catalogo')}}">Volver</a>
                                 <button class="btn btn-success conformidad"  tipo="registrar">Registrar</button>
-
                             </div>
                         </div>
                     </div>
                 </div>
-
         </div>
     </div>
 
