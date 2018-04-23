@@ -37,7 +37,6 @@ class ProvinciaSeeder extends Seeder
             "23"=>array('Candarave','Jorge Basadre','Tacna','Tarata'),
             "24"=>array('Contralmierante Villar','Tumbes','Zarumilla'),
             "25"=>array('Atalaya','Coronel Portillo','Padre Abad','Purus')
-
         );
 
         foreach($provincias as $key => $value){

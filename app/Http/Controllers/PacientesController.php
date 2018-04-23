@@ -59,7 +59,8 @@ class PacientesController extends Controller
         //$provincias = Provincia::where('estado',true)->get()->pluck('nombre','id')->toArray();
         $provincias = null;
 
-        $distritos = Distrito::where('estado',true)->get()->pluck('nombre','id')->toArray();
+        //$distritos = Distrito::where('estado',true)->get()->pluck('nombre','id')->toArray();
+        $distritos = null;
 
         $tipoInstrucciones = TipoInstruccion::where('estado',true)->get()->pluck('nombre','id')->toArray();
 
