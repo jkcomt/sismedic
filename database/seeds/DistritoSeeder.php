@@ -1132,7 +1132,7 @@ class DistritoSeeder extends Seeder
                         'Tapo',
                         'Tarma'),
             "112"=>array('Chacapalpa',
-                        'Huay.Huay',
+                        'Huay-Huay',
                         'La Oroya',
                         'Marcapomacocha',
                         'Morococha',
@@ -1140,7 +1140,7 @@ class DistritoSeeder extends Seeder
                         'Santa Barbara de Carhuacayan',
                         'Santa Rosa de Sacco',
                         'Suitucancha',
-                        'Yauli')
+                        'Yauli'),
 
 
             "113"=>array('Ascope',

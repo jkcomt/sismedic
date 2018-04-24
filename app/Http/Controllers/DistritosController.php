@@ -92,11 +92,11 @@ class DistritosController extends Controller
         return response()->json(['html'=>$view]);
     }
 
-//    public function filtroDomicilio(Request $request){
-//        $id =$request['filtro'];
-//        $departamentos = Departamento::where('estado',true)->where('pais_id',$id)->pluck('nombre','id')->toArray();
-//
-//        $view = view('pacientes.departamento_dom',compact('departamentos'))->render();
-//        return response()->json(['html'=>$view]);
-//    }
+   public function filtroDomicilio(Request $request){
+       $id =$request['filtro'];
+       $distritos = Distrito::where('estado',true)->where('provincia_id',$id)->pluck('nombre','id')->toArray();
+
+       $view = view('pacientes.distrito_dom',compact('distritos'))->render();
+       return response()->json(['html'=>$view]);
+   }
 }

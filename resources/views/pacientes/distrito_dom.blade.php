@@ -1,6 +1,6 @@
 <div class="form-group">
-    <select name="distritoOrigen" id="distritoOrigen" class="form-control distritoOrigen">
-      <option value="">Seleccione Distrito</option>
+    <select name="distritoDom" id="distritoDom" class="form-control distritoDom">
+        <option value="">Seleccione Distrito</option>
         @if($distritos)
             @foreach($distritos as $key => $distrito)
                 <option value="{{$key}}"

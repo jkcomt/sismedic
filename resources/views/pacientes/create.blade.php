@@ -142,7 +142,7 @@
                                 <div class="form-group" id="paisGroup">
                                     <input type="hidden" value="{{route('departamento.filtro')}}" id="departamentoUrlFiltro">
                                     <select name="paisOrigen" id="paisOrigen" class="form-control" >
-                                        {{--<input type="text" class=" form-control" name="personal" value="{{old('personal')}}">--}}
+                                        <option value="">Seleccione País</option>
                                         @foreach($paises as $key => $pais)
                                             <option value="{{$key}}">{{$pais}}</option>
                                         @endforeach
@@ -194,7 +194,7 @@
                                 <div class="form-group" id="paisGroupDom">
                                     <input type="hidden" value="{{route('departamento.filtrodomicilio')}}" id="departamentoDomUrlFiltro">
                                     <select name="paisOrigenDom" id="paisOrigenDom" class="form-control paisOrigenDom" >
-                                        {{--<input type="text" class=" form-control" name="personal" value="{{old('personal')}}">--}}
+                                        <option value="">Seleccione País</option>
                                         @foreach($paises as $key => $pais)
                                             <option value="{{$key}}">{{$pais}}</option>
                                         @endforeach
@@ -212,6 +212,7 @@
 
                             <div class="col-md-3">
                                 <label class="control-label">Provincia:</label>
+                                <input type="hidden" value="{{route('distrito.filtrodomicilio')}}" id="distritoDomUrlFiltro">
                                 <div id="provinciaDomGroup">
                                     @include('pacientes.provincia_dom')
                                 </div>
@@ -219,16 +220,8 @@
 
                             <div class="col-md-3">
                                 <label class="control-label">Distrito:</label>
-                                <div class="form-group" id="distritoGroup">
-                                    <select name="distritoDom" id="distritoDom" class="form-control" >
-                                        {{--<input type="text" class=" form-control" name="personal" value="{{old('personal')}}">--}}
-                                        {{--<option>Chepen</option>--}}
-                                        @if($distritos)
-                                            @foreach($distritos as $key => $distrito)
-                                                <option value="{{$key}}">{{$distrito}}</option>
-                                            @endforeach
-                                        @endif
-                                    </select>
+                                <div class="form-group" id="distritoDomGroup">
+                                  @include('pacientes.distrito_dom')
                                 </div>
                             </div>
                         </div>
