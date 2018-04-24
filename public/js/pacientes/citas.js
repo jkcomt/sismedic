@@ -4,6 +4,7 @@ $(document).ready(function() {
     $('#perfil').trigger('change');
     $('#perfilEditar').trigger('change');
     $('#tipoBusqueda').trigger('change');
+    $('#tipoBusquedacita').trigger('change');
 
     startdate = fechaActual();
     enddate = startdate;
@@ -44,6 +45,7 @@ $(document).ready(function() {
             "firstDay": 1
             }
     });
+
     $('#daterange').on('apply.daterangepicker', function(ev, picker)
     {
       if($tipoBusqueda == 'fecha'){
@@ -72,6 +74,73 @@ $(document).ready(function() {
        enddate=picker.endDate.format('YYYY-MM-DD');
      }
    });
+
+   $('input[name="daterangecita"]').daterangepicker({
+     "locale": {
+           "format": "YYYY-MM-DD",
+           "separator": " - ",
+           "applyLabel": "Guardar",
+           "cancelLabel": "Cancelar",
+           "fromLabel": "Desde",
+           "toLabel": "Hasta",
+           "customRangeLabel": "Personalizar",
+           "daysOfWeek": [
+               "Do",
+               "Lu",
+               "Ma",
+               "Mi",
+               "Ju",
+               "Vi",
+               "Sa"
+           ],
+           "monthNames": [
+               "Enero",
+               "Febrero",
+               "Marzo",
+               "Abril",
+               "Mayo",
+               "Junio",
+               "Julio",
+               "Agosto",
+               "Setiembre",
+               "Octubre",
+               "Noviembre",
+               "Diciembre"
+           ],
+           "firstDay": 1
+           }
+   });
+
+   $('#daterangecita').on('apply.daterangepicker', function(ev, picker)
+   {
+        if($tipoBusquedaCita =="fecha"){
+              startdate= picker.startDate.format('YYYY-MM-DD');
+              enddate=picker.endDate.format('YYYY-MM-DD');
+                var id= $('#idPaciente').val()
+              var token = $('input[name=_token]').attr('value')
+              $.ajax({
+                  type:"post",
+                  headers: {'X-CSRF-TOKEN':token},
+                  url:'/pacientes/citas/fecha_rango',
+                  dataType:"json",
+                  data:{
+                    startdate:startdate,
+                    enddate:enddate,
+                    id:id
+                  },
+                  success: function(data){
+                      $('#tabla').html(data.html)
+                  },
+                  error: function(data){
+                      console.log("Error "+JSON.stringify(data))
+                  }
+              });
+        }
+  });
+
+
+
+
 });
 var startdate;
 var enddate;
@@ -196,6 +265,14 @@ $('#tipoBusqueda').on('change',function(e){
     e.preventDefault();
     $tipoBusqueda = $(this).val()
 });
+/************************PACIENTE-CITA****************************/
+$tipobusquedaCita='';
+$('#tipoBusquedacita').on('change',function(e){
+    e.preventDefault();
+    $tipoBusquedaCita = $(this).val();
+
+});
+
 
 $('#perfil').on('change',function(e){
     e.preventDefault();
@@ -346,6 +423,7 @@ $('body').on('click','.delete',function (e) {
 
 
 $('#buscarCita').on('keyup',function(){
+if($tipoBusquedaCita =="cita"){
     valor = $(this).val();
     // e.preventDefault();
     var token = $('input[name=_token]').attr('value')
@@ -369,6 +447,7 @@ $('#buscarCita').on('keyup',function(){
             //console.log("Error "+JSON.stringify(data))
         }
     });
+  }
 });
 
 

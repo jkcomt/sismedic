@@ -32,6 +32,7 @@ Route::resource('pacientes','PacientesController');
 Route::group([
    'prefix'=>'pacientes'
 ],function(){
+    Route::post('/citas/fecha_rango','PacientesController@citasFechaRange')->name('pacientes.citasfecharange');
     Route::get('reporte/citas_paciente/{id}','PacientesController@citaspaciente')->name('pacientes.citas_paciente');
     Route::get('reporte/lista','PacientesController@reporteLista')->name('pacientes.listareporte');
     Route::get('reporte/{id}/detalle','PacientesController@reporteDetalle')->name('pacientes.reporte');

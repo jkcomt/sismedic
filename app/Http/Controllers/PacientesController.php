@@ -728,4 +728,25 @@ class PacientesController extends Controller
         return $pdf->stream();
       }
 
+      public function citasFechaRange(Request $request)
+      {
+      if($request->ajax())
+        {
+              $paciente = Paciente::find($request['id']);
+
+                $citas = Cita::where('estado',true)
+                ->where('fecha_examen','>=',$request['startdate'])
+                ->where('fecha_examen','<=',$request['enddate'])
+                ->where('paciente_id',$request['id'])
+                    ->orderBy('fecha_examen','asc')
+                    ->orderBy('hora_examen','asc')->paginate(10);
+
+                $view = view('pacientes.citas.tabla',compact('citas'))->render();
+                return response()->json(['html'=>$view]);
+
+        }
+
+
+
+      }
 }

@@ -167,7 +167,19 @@ class CitaController extends Controller
 
      public function searchDniFecha(Request $request)
      {
-       dd($request['startdate']);
+       if($request->ajax())
+       {
+           $citas = Cita::leftjoin('pacientes','citas.paciente_id','pacientes.id')
+              ->where('pacientes.num_dni','like','%'.$request['dni'].'%')
+               ->where('fecha_examen','>=',$request['startdate'])
+               ->where('fecha_examen','<=',$request['enddate'])
+               ->orderBy('fecha_examen','asc')
+               ->orderBy('hora_examen','asc')->paginate(10);
+
+               $view = view('citas.table',compact('citas'))->render();
+               return response()->json(['html'=>$view]);
+       }
+
      }
 
     public function catalogo()
@@ -319,7 +331,6 @@ class CitaController extends Controller
 
               $view = view('citas.table',compact('citas'))->render();
               return response()->json(['html'=>$view]);
-
       }
     }
 

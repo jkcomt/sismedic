@@ -178,6 +178,753 @@ class DistritoSeeder extends Seeder
                         'San Pedro de Chaná',
                         'Uco'),
 
+
+            "113"=>array('Ascope',
+                          'Casa Grande',
+                          'Chicama',
+                          'Chocope',
+                          'Magdalena de Cao',
+                          'Paiján',
+                          'Rázuri',
+                          'Santiago de Cao'),
+
+            "114"=>array('Bambamarca',
+                          'Bolívar',
+                          'Condomarca',
+                          'Longotea',
+                          'Uchumarca',
+                          'Ucuncha'),
+
+            "115"=>array('Chepén',
+                          'Pacanga',
+                          'Pueblo Nuevo'),
+
+            "116"=>array('Cascas',
+                          'Lucma',
+                          'Marmot',
+                          'Sayapullo'),
+
+            "117"=>array('Calamarca',
+                         'Carabamba',
+                         'Huaso',
+                         'Julcán'),
+
+           "118"=>array('Agallpampa',
+                        'Charat',
+                        'Huaranchal',
+                        'La Cuesta',
+                        'Mache',
+                        'Otuzco',
+                        'Paranday',
+                        'Salpo',
+                        'Sinsicap',
+                        'Usquil'),
+
+          "119"=>array('Guadalupe',
+            'Jequetepeque',
+            'Pacasmayo',
+            'San Jose',
+            'San Pedro de LLoc'),
+
+          "120"=>array('Buldibuyo',
+                        'Chillia',
+                        'Huancaspata',
+                        'Huaylillas',
+                        'Huayo',
+                        'Ongón',
+                        'Parcoy',
+                        'Pataz',
+                        'Pias',
+                        'Santiago de Challas',
+                        'Taurija',
+                        'Tayabamba',
+                        'Urpay'),
+
+          "121"=>array(    'Chugay',
+                          'Cochorco',
+                          'Curgos',
+                          'Huamachuco',
+                          'Marcabal',
+                          'Sanagorán',
+                          'Sarín',
+                          'Sartimbamba'
+          ),
+          "122"=>array('Angasmarca','Cachicadán','Mollebamba','Quiruvilca','Santa Cruz de Chuca','Santiago de Chuco','Sitabamba'),
+          "123"=>array('El Provenir','Florencia de Mora','Huanchaco','La esperanza','Laredo','Moche','Poroto','Salaverry','Simbal','Trujillo','Víctor Larco Herrera'),
+          "124"=>array('Chao','Guadalupito','Virú'),
+
+          "125"=>array('Cayaltí','Chiclayo','Chongoyape','Eten','Jose Leonardo Ortiz','La Victoria','Lagunas','Monsefú','Nueva Arica','Oyotún','Pátapo','Picsi','Pimentel','Pomalca','Pucalá','Puerto Eten','Reque','Santa Rosa','Tuman','Zaña'),
+          "126"=>array('Pítipo','Ferreñafe','Incahuasi','Kañaris','Manuel Antonio Mesones Muro','Pueblo Nuevo'),
+          "127"=>array('Chocope','Illimo','Jayanca','Lambayeque','Mochumí','Mórrope','Motupe','Olmos','Pacora','Salas','San José','Túcume'),
+
+          "128"=>array('Barranca','Paramonga','Pativilca','Supe','Supe Puerto'),
+          "129"=>array('Cajatambo','Copa','Gorgor','Huancapon','Manas'),
+          "130"=>array('Arahuay','Canta','Huamantanga','Huaros','Lachaqui','San Buena Ventura','Santa Rosa de Quives'),
+          "131"=>array('Asia','Calango','Cerro Azul','Chilica','Coayllo','Imperial','Lunahuaná','Mala','Nuevo Imperial',
+        'Pacaran','Quilmaná','San Antonio','San Luis','San Vicente de Cañete','Santa Cruz de Flores','Zuñiga'),
+        "132"=>array('Atavillos Alto','Atavillos Bajo','Aucallama','Chancay','Huaral','Ihuari','Lampian','Pacaraos',
+      'San Miguel de Acos','Santa Cruz de Andamarca','Sumbilca','Veintisiete de Noviembre'),
+
+"133"=>array( 'Antioquía',
+              'Callahuanca',
+              'Carampoma',
+              'Chicla',
+              'Cuenca',
+            '  Huachupampa',
+              'Huanza',
+              'Huarochirí',
+              'Lahuaytambo',
+              'Langa',
+              'Laraos ',
+              'Mariatana',
+              'Matucana',
+              'Ricardo Palma',
+              'San Andrés de Tupicocha',
+              'San Antonio ',
+              'San Bartolomé',
+              'San Damián',
+              'San Juan de Iris',
+              'San Juan de Tantaranche',
+              'San Lorenzo de Quinti',
+              'San Mateo',
+              'San Mateo de Otao',
+              'San Pedro de Casta',
+              'San Pedro de Huancayre',
+              'Sangallaya',
+              'Santa Cruz de Cocachacra',
+              'Santa Eulalia',
+              'Santiago de Anchucaya',
+              'Santiago de Tuna',
+              'Santo Domingo de los Olleros',
+              'San Jerónimo de Surco'),
+
+      "134"=>array('Ambar','Caleta de Carquín','Checras','Huacho','Hualmay','Huaura','Leoncio Prado'
+      ,'Paccho','Santa Leonor','Santa María','Sayán','Végueta'),
+
+      "135"=>array(
+                'Ancón',
+                'Ate',
+                'Barranco',
+                'Breña',
+                'Carabayllo',
+                'Chaclacayo',
+                'Chorrillos',
+                'Cieneguilla',
+                'Comas',
+                'El Agustino',
+                'Independencia',
+                'Jesús María',
+                'La Molina',
+                'La Victoria',
+                'Lima',
+                'Lince',
+                'Los Olivos',
+                'Lurigancho-Chosica',
+                'Lurín',
+                'Magdalena del Mar',
+                'Miraflores',
+                'Pachacamac',
+                'Pucusana',
+                'Pueblo Libre',
+                'Puente Piedra',
+                'Punta Hermosa',
+                'Punta Negra',
+                'Rímac',
+                'San Bartolo',
+                'San Borja',
+                'San Isidro',
+                'San Juan de Lurigancho',
+                'San Juan de Miraflores',
+                'San Luis',
+                'San Martín de Porres',
+                'San Miguel',
+                'Santa Anita',
+                'Santa María del Mar',
+                'Santa Rosa',
+                'Santiago de Surco',
+                'Surquillo',
+                'Villa El Salvador',
+                'Villa María del Triunfo'
+                ),
+
+  "136"=>array( 'Oyón',
+                'Andajes',
+                'Caujul',
+                'Cochamarca',
+                'Naván',
+                'Pachangara'),
+
+  "137"=>array(
+                'Alis',
+                'Ayauca3​',
+                'Ayavirí',
+                'Azángaro',
+                'Cacra',
+                'Carania',
+                'Catahuasi',
+                'Chocos',
+                'Cochas',
+                'Colonia',
+                'Hongos',
+                'Huampara',
+                'Huancaya',
+                'Huangáscar',
+              '  Huantán',
+                'Huañec',
+                'Laraos',
+                'Lincha',
+                'Madean',
+                'Miraflores',
+                'Omas',
+                'Quinches',
+                'Quinocay',
+                'San Lorenzo de Putinza',
+                'San Joaquín',
+                'San Pedro de Pilas',
+                'Tanta',
+                'Tauripampa',
+                'Tomas',
+                'Tupe',
+                'Viñac',
+                'Vitis',
+                'Yauyos'),
+          "138"=>array(
+                        'Balsapuerto',
+                        'Jeberos',
+                        'Lagunas',
+                        'Santa Cruz',
+                        'Teniente César López Rojas',
+                        'Yurimaguas'),
+          "139"=>array(
+                        'Andoas',
+                        'Barranca',
+                        'Cahuapanas',
+                        'Manseriche',
+                        'Morona',
+                        'Pastaza'  ),
+          "140"=>array( 'Nauta',
+                        'Parinari',
+                        'Tigre',
+                        'Trompeteros',
+                        'Urarinas'),
+          "141"=>array( 'Ramón Castilla',
+                        'Pebas',
+                        'San Pablo',
+                        'Yavarí'),
+
+          "142"=>array(
+                          'Alto Nanay',
+                          'Belén​',
+                          'Fernando Lores',
+                          'Indiana',
+                          'Iquitos',
+                          'Las Amazonas',
+                          'Mazán',
+                          'Napo',
+                          'Punchana',
+                          'Putumayo',
+                          'San Juan Bautista',
+                          'Teniente Manuel Clavero',
+                          'Torres Causana'
+                        ),
+          "143"=>array(
+                            'Alto Tapiche',
+                            'Capelo',
+                            'Emilio San Martín',
+                            'Maquía',
+                            'Puinahua',
+                            'Requena',
+                            'Saquena',
+                            'Soplin',
+                            'Tapiche',
+                            'Jenaro Herrera',
+                            'Yaquerana'
+                      ),
+           "144"=>array(
+                        'Contamana',
+                        'Inahuaya',
+                        'Padre Márquez',
+                        'Pampa Hermosa',
+                        'Alfredo Vargas Guerra'
+                      ),
+            "145"=>array(
+                        'Fitzcarrald',
+                        'Madre de Dios',
+                        'Huepetuhe',
+                        'Manu'
+                      ),
+            "146"=>array(
+                        'Iberia',
+                        'Iñapari',
+                        'Tahuamanu'
+                      ),
+            "147"=>array(
+                        'Inambari',
+                        'Las Piedras',
+                        'Laberinto',
+                        'Tambopata'
+                        ),
+            "148"=>array(
+                          'Coalaque',
+                          'Chojata',
+                          'Ichuña',
+                          'La Capilla',
+                          'Lloque',
+                          'Matalaque',
+                          'Omate',
+                          'Puquina',
+                          'Quinistaquillas',
+                          'Ubinas',
+                          'Yunga'
+                        ),
+            "149"=>array(
+                      'El Algarrobal',
+                      'Ilo',
+                      'Pacocha'
+                      ),
+            "150"=>array(
+                    'Carumas',
+                    'Cuchumbaya',
+                    'Moquegua',
+                    'Samegua',
+                    'San Cristóbal de Calacoa',
+                    'Torata'
+                    ),
+            "151"=>array(
+                'Chacayán',
+                'Goyllarisquizga',
+                'Paucar',
+                'San Pedro de Pillao',
+                'Santa Ana de Tusi',
+                'Tápuc',
+                'Vilcabamba',
+                'Yanahuanca'
+            ),
+            "152"=>array(
+
+                            'Chontabamba',
+                            'Huancabamba',
+                            'Oxapampa',
+                            'Palcazu',
+                            'Pozuzo',
+                            'Puerto Bermúdez',
+                            'Villa Rica'
+            ),
+            "153"=>array(
+                          'Chaupimarca',
+                          'Huachón',
+                          'Huariaca',
+                          'Huayllay',
+                          'Ninacaca',
+                          'Pallanchacra',
+                          'Paucartambo',
+                          'San Francisco de Asís de Yarusyacán',
+                          'Simón Bolívar',
+                          'Ticlacayán',
+                          'Tinyahuarco',
+                          'Vicco',
+                          'Yanacancha'
+            ),
+            "154"=>array(
+                            'Ayabaca',
+                            'Frías',
+                            'Jililí',
+                            'Lagunas',
+                            'Montero',
+                            'Pacaipampa',
+                            'Paimas',
+                            'Sapillica',
+                            'Sicchez',
+                            'Suyo'
+            ),
+            "155"=>array(
+                          'Canchaque',
+                          'El Carmen de la Frontera',
+                          'Huancabamba',
+                          'Huarmaca',
+                          'Lalaquiz',
+                          'San Miguel de El Faique',
+                          'Sóndor',
+                          'Sondorillo'
+            ),
+            "156"=>array(
+                        'Buenos Aires',
+                        'Chalaco',
+                        'Chulucanas',
+                        'La Matanza',
+                        'Morropón',
+                        'Salitral',
+                        'San Juan de Bigote',
+                        'Santa Catalina de Mossa',
+                        'Santo Domingo',
+                        'Yamango'
+            ),
+            "157"=>array(
+
+                        'Amotape',
+                        'Arenal',
+                        'Colán',
+                        'La Huaca',
+                        'Paita',
+                        'Tamarindo',
+                        'Vichayal'
+            ),
+            "158"=>array(
+              'Castilla',
+              'Catacaos',
+              'Cura Mori',
+              'El Tallán',
+              'La Arena',
+              'La Unión',
+              'Las Lomas',
+              'Piura',
+              'Tambogrande'
+            ),
+            "159"=>array(
+
+              'Bellavista de la Unión',
+              'Bernal',
+              'Cristo nos Valga',
+              'Rinconada-Llicuar',
+              'Sechura',
+              'Vice'
+            ),
+            "160"=>array(
+
+                      'Bellavista',
+                      'Ignacio Escudero',
+                      'Lancones',
+                      'Marcavelica',
+                      'Miguel Checa',
+                      'Querecotillo',
+                      'Salitral',
+                      'Sullana'
+            ),
+            "161"=>array(
+
+              'El Alto',
+              'La Brea',
+              'Lobitos',
+              'Los Órganos',
+              'Máncora',
+              'Pariñas'
+            ),
+            "162"=>array(
+                    'Achaya',
+                    'Arapa',
+                    'Asillo',
+                    'Azángaro',
+                    'Caminaca',
+                    'Chupa',
+                    'José Domingo Choquehuanca',
+                    'Muñani',
+                    'Potoni',
+                    'Samán',
+                    'San Antón',
+                    'San José',
+                    'San Juan de Salinas',
+                    'Santiago de Pupuja',
+                    'Tirapata'
+            ),
+            "163"=>array(
+                    'Ajoyani',
+                    'Ayapata',
+                    'Coasa',
+                    'Corani',
+                    'Crucero',
+                    'Ituata',
+                    'Macusani',
+                    'Ollachea',
+                    'San Gabán',
+                    'Usicayos'
+            ),
+            "164"=>array(
+                    'Desaguadero',
+                    'Huacullani',
+                    'Juli',
+                    'Kelluyo',
+                    'Pisacoma',
+                    'Pomata',
+                    'Zepita'
+            ),
+            "165"=>array(
+                    'Capazo',
+                    'Conduriri',
+                    'Ilave',
+                    'Pilcuyo',
+                    'Santa Rosa'
+            ),
+            "166"=>array(
+                  'Cojota',
+                  'Huancané',
+                  'Huatasani',
+                  'Inchupalla',
+                  'Pusi',
+                  'RosasPata',
+                  'Taraco',
+                  'Vilque Chico',
+            ),
+            "167"=>array(
+              'Cabanilla',
+              'Calapuja',
+              'Lampa',
+              'Nicasio',
+              'Ocuviri',
+              'Palca',
+              'Paratía',
+              'Pucará',
+              'Santa Lucía',
+              'Vilavila'
+            ),
+            "168"=>array(
+                'Antauta',
+                'Ayaviri',
+                'Cupi',
+                'Llalli',
+                'Macari',
+                'Ñuñoa',
+                'Orurillo',
+                'Santa Rosa',
+                'Umachiri'
+            ),
+            "169"=>array(
+            'Conima',
+            'Huayrapata',
+            'Moho',
+              'Tilali'
+            ),
+            "170"=>array(
+                'Ácora',
+                'Amantaní',
+                'Atuncolla',
+                'Capachica',
+                'Chucuito',
+                'Coata',
+                'Huata',
+                'Mañazo',
+                'Paucarcolla',
+                'Pichacani',
+                'Platería',
+                'Puno',
+                'San Antonio',
+                'Tiquillaca',
+                'Vilque'
+            ),
+            "171"=>array(
+              'Ananea',
+              'Pedro Vilca Apaza',
+              'Putina',
+              'Quilcapuncu',
+              'Sina'
+            ),
+            "172"=>array(
+              'Cabana',
+              'Cabanillas',
+              'Caracoto',
+              'Juliaca'
+            ),
+            "173"=>array(
+              'Alto Inambari',
+              'Cuyocuyo',
+              'Limbani',
+              'Patambuco',
+              'Phara',
+              'Quiaca',
+              'San Juan del Oro',
+              'San Pedro de Putinapunco',
+              'Sandia',
+              'Yanahuaya'
+            ),
+            "174"=>array(
+                'Yunguyo',
+              	'Anapia'	,
+                'Copani'	,
+              	'Cuturapi',
+              	'Ollaraya'	,
+              	'Tinicachi'	,
+                'Unicachi'
+            ),
+            "175"=>array(
+
+              'Alto Biavo',
+              'Bajo Biavo',
+              'Bellavista',
+              'Huallaga',
+              'San Pablo',
+              'San Rafael'
+            ),
+            "176"=>array(
+              'San José de Sisa',
+              'Agua Blanca',
+              'San Martín',
+              'Santa Rosa',
+              'Shatoja'
+            ),
+            "177"=>array(
+
+              'Alto Saposoa',
+              'El Eslabón',
+              'Piscoyacu',
+              'Sacanche',
+              'Saposoa',
+              'Tingo de Saposoa'
+            ),
+            "178"=>array(
+                'Alonso de Alvarado',
+                'Barranquita',
+                'Caynarachi',
+                'Cuñunbuqui',
+                'Lamas',
+                'Pinto Recodo',
+                'Rumisapa',
+                'San Roque de Cumbaza',
+                'Shanao',
+                'Tabalosos',
+                'Zapatero'
+            ),
+            "179"=>array(
+                'Campanilla',
+                'Huicungo',
+                'Juanjuí',
+                'Pachiza',
+                'Pajarillo'
+            ),
+            "180"=>array(
+                'Calzada',
+                'Habana',
+                'Jepelacio',
+                'Moyobamba',
+                'Soritor',
+                'Yantalo'
+            ),
+            "181"=>array(
+                'Buenos Aires',
+                'Caspisapa',
+                'Picota',
+                'Pilluana',
+                'Pucacaca',
+                'San Cristobal',
+                'San Hilarión',
+                'Shamboyacu',
+                'tingo de Ponasa',
+                'Tres Unidos'
+            ),
+            "182"=>array(
+              'Awajún'	,
+              'Elias Soplin Vargas'	,
+              'Nueva Cajamarca',
+              'Pardo Miguel',
+              'Posic',
+              'Rioja',
+              'San Fernando'	,
+              'Yorongos'	,
+              'Yuracyacu'
+            ),
+            "183"=>array(
+                'Alberto Leveau',
+                'Cacatachi',
+                'Chazuta',
+                'Chipurana',
+                'El Porvenir',
+                'Huimbayoc',
+                'Juan Guerra',
+                'La Banda de Shilcayo',
+                'Morales',
+                'Papaplaya',
+                'San Antonio',
+                'Sauce',
+                'Shapaja',
+                'Tarapoto'
+            ),
+
+            "184"=>array(
+              'Tocache',
+              'Nuevo Progreso',
+              'Pólvora',
+              'Shunte',
+              'Uchiza'
+            ),
+            "185"=>array(
+
+              'Cairani',
+              'Camilaca',
+              'Candarave',
+              'Curibaya',
+              'Huanuara',
+              'Quilahuani'
+
+            ),
+            "186"=>array(
+              'Ilabaya',
+              'Ite',
+              'Locumba'
+            ),
+            "187"=>array(
+              'Alto de la Alianza',
+              'Calana',
+              'Ciudad Nueva',
+              'Coronel Gregorio Albarracín Lanchipa',
+              'Inclán',
+              'Pachía',
+              'Palca',
+              'Pocollay',
+              'Sama',
+              'Tacna'
+            ),
+            "188"=>array(
+              'Estique',
+              'Estique Pampa',
+              'Héroes Albarracín' ,
+              'Sitajara',
+              'Susapaya',
+              'Tarata',
+              'Tarucachi',
+              'Ticaco'
+            ),
+            "189"=>array(
+
+              'Casitas',
+              'Zorritos'
+            ),
+            "190"=>array(
+                'Corrales',
+                'La Cruz',
+                'Pampas de Hospital',
+                'San Jacinto',
+                'San Juan de la Virgen',
+                'Tumbes'
+            ),
+            "191"=>array(
+
+              'Aguas Verdes',
+              'Papayal',
+              'Matapalo',
+              'Zarumilla'
+            ),
+            "192"=>array(
+              'Raimondi',
+	            'Sepahua',
+	            'Tahuanía',
+	            'Yurúa'
+            ),
+            "193"=>array(
+              'Callería',
+              'CampoVerde',
+              'Iparía',
+              'Manatay',
+              'Masisea',
+              'Nueva Requena',
+              'Yarinacocha'
+            ),
+            "194"=>array(
+              'Curimaná',
+              'Irázola',
+              'Padre Abad'
+            ),
+            "195"=>array(
+              'Purús'
+            )
+
         );
         //factory(Distrito::class,1)->create();
 

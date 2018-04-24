@@ -6,9 +6,22 @@
         }
     </style>
 
+    <!-- Include Date Range Picker -->
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
 @endsection
 
-@section('header','LISTADO DE CITAS DEL PACIENTE : '.$paciente->apellido_paterno.' '.$paciente->apellido_materno.', '.$paciente->nombres)
+@section('header')
+
+    <div class="row">
+      <div class="col-md-10">
+        LISTADO DE CITAS DEL PACIENTE : {{$paciente->apellido_paterno.' '.$paciente->apellido_materno.', '.$paciente->nombres}}
+
+      </div>
+      <div class="col-md-2 text-right">
+    <a href="{{route('pacientes.index')}}" class="btn btn-sm btn-warning">VOLVER</a>
+      </div>
+    </div>
+@endsection
 @section('modal-title')
     <h4 class="modal-title">Aviso</h4>
 @endsection
@@ -34,26 +47,35 @@
     {{--@include('lote.modals.edit')--}}
 
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-5">
             <div class="form-group">
               <a href="{{route('pacientes.citas_paciente',[$paciente->id])}}" target="_blank"  class="btn btn-info"><span class="glyphicon glyphicon-print"></span> REPORTE DE CITAS POR PACIENTE</a>
-                <a href="{{route('pacientes.index')}}" class="btn btn-warning">VOLVER</a>
+
                 <a href="{{route('pacientes.citas.create',[$paciente->id])}}" class="btn btn-success">NUEVA CITA</a>
                 <input type="hidden" value="{{$paciente->id}}" id="idPaciente">
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-7">
             <form action="" class="form-inline text-right">
-                {{--<select name="filtro" id="filtro" class="form-control">--}}
-                    {{--<option value="historia">Nro. Historia</option>--}}
-                    {{--<option value="dni">DNI</option>--}}
-                    {{--<option value="empresa">Empresa</option>--}}
-                {{--</select>--}}
-                <input type="text" id="buscarCita" placeholder="BUSCAR POR NÚMERO DE CITA..." class="form-control" style="width: 59%">
 
-                {{--<input type="hidden" value="{{route('pacientes.search')}}" id="buscarUrlPaciente">--}}
-                {{--<button class="btn btn-primary form-control">BUSCAR</button>--}}
+              <div class="row">
+                <div class="col-md-4">
+                  <select class="form-control" name="tipoBusquedacita" id="tipoBusquedacita">
+                    <option value="cita">POR N° CITA</option>
+                    <option value="fecha">POR FECHA</option>
+                  </select>
+                </div>
+                <div class="col-md-4">
+                  <input type="text" id="buscarCita" placeholder="N° DE CITA A BUSCAR" class="form-control" >
+
+               </div>
+               <div class="col-md-4">
+                 <input type="text" id="daterangecita"  class="form-control pull-right" name="daterangecita" style="width: 100%">
+                </div>
+              </div>
+
             </form>
+
         </div>
     </div>
     <div class="row" id="tabla">
@@ -61,5 +83,9 @@
     </div>
 @endsection
 @section('script')
+
+  <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
     <script src="{{asset('js/pacientes/citas.js')}}"></script>
 @endsection
