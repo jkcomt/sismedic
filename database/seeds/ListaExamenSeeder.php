@@ -11,7 +11,28 @@ class ListaExamenSeeder extends Seeder
      */
     public function run()
     {
-        factory(ListaExamen::class,1)->create();
+        //factory(ListaExamen::class,1)->create();
+
+        factory(ListaExamen::class)->create([
+            'descripcion'=>'ANEXO 7D',
+            'valor'=>2.63,
+            'dscto'=>2.63,
+            'tipo'=>null
+        ]);
+
+        factory(ListaExamen::class)->create([
+            'descripcion'=>'ELECTROCARDIOGRAMA',
+            'valor'=>2.63,
+            'dscto'=>2.63,
+            'tipo'=>null
+        ]);
+
+        factory(ListaExamen::class)->create([
+            'descripcion'=>'ESPIROMETRÍA',
+            'valor'=>2.63,
+            'dscto'=>2.63,
+            'tipo'=>null
+        ]);
 
         factory(ListaExamen::class)->create([
             'descripcion'=>'HEMOGRAMA - SOLO NUMERACION Y FORMULAR',

@@ -178,6 +178,8 @@ Route::post('citas/buscarfecha','CitaController@searchFecha')->name('citas.searc
 Route::post('citas/buscar_dni_fecha','CitaController@searchDniFecha')->name('citas.searchdnifecha');
 Route::post('citas/buscar_dni','CitaController@searchdni')->name('citas.searchdni');
 Route::get('citas/nueva_cita','CitaController@nuevacita')->name('citas.nuevacita');
+//filtrar examen modal
+Route::post('citas/filtra_examen','CitaController@filtrarExamen')->name('citas.filtraexamen');
 //////////CARGAR SELECTED
 Route::get('/buscar_paciente','CitaController@searchPaciente')->name('citas.buscarpaciente');
 /*************************************************************************************/

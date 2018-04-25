@@ -21,9 +21,12 @@
     <button class="btn btn-sm btn-primary" id="create-paciente">Insertar otro registro</button>
     <a class="btn btn-sm btn-warning" href="{{route('pacientes.index')}}">Volver</a>
 @endsection
+
 {{-----------------------------------------------------------------}}
 @section('content')
+    <div id="examen">
 
+    </div>
     <div class="row">
 
         <div class="col-lg-12 col-md-12 col-sm-12">
@@ -591,6 +594,7 @@
                                                         <th>Resultado</th>
                                                         <th>Observaciones</th>
                                                         <th>Fecha</th>
+                                                        <th>Opciones</th>
                                                         </thead>
                                                         <tbody>
                                                         @foreach($cita->citaExamen as $citaExamen)
@@ -600,6 +604,7 @@
                                                                 <td></td>
                                                                 <td></td>
                                                                 <td>{{Carbon\Carbon::parse($cita->fecha_examen)->format('m - y')}}</td>
+                                                                <td><button type="button" idcita="{{$cita->id}}" idexamen="{{$citaExamen->perfilExamen->listaExamen->id}}" class="btn btn-xs btn-block btn-primary filtrarExamen">EXAMEN</button></td>
                                                             </tr>
                                                         @endforeach
                                                         </tbody>
@@ -741,6 +746,6 @@
     </div>
 @endsection
 @section('script')
-    {{--<script src="{{asset('js/pacientes/pacientes.js')}}"></script>--}}
+    <script src="{{asset('js/evaluacionmedica/evaluacion.js')}}"></script>
     {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>--}}
 @endsection

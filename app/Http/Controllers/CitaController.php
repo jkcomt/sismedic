@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ListaExamen;
 use Illuminate\Http\Request;
 use App\Cita;
 use App\Event;
@@ -332,6 +333,29 @@ class CitaController extends Controller
               $view = view('citas.table',compact('citas'))->render();
               return response()->json(['html'=>$view]);
       }
+    }
+
+    public function filtrarExamen(Request $request){
+        $cita = Cita::find($request['idCita']);
+        $listaExamen = ListaExamen::find($request['idExamen']);
+        $view = null;
+        switch ($listaExamen->id){
+            case 1:
+                $view = view('evaluacionmedica.examenes.anexo7d.create',compact('cita','listaExamen'))->render();
+                break;
+            case 2:
+                $view = view('evaluacionmedica.examenes.electrocardiograma.create',compact('cita','listaExamen'))->render();
+                break;
+            case 3:
+                $view = view('evaluacionmedica.examenes.espirometria.create',compact('cita','listaExamen'))->render();
+                break;
+        }
+
+        if($request->ajax())
+        {
+            return response()->json(['html'=>$view]);
+        }
+
     }
 
 }
