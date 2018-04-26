@@ -11,6 +11,8 @@
           <a href="{{route('calendario.index')}}" class="btn btn-sm btn-warning">VOLVER A CALENDARIO</a>
       @elseif(str_replace(url('/'), '', url()->previous()) == '/citas/catalogo')
             <a href="{{route('citas.catalogo')}}" class="btn btn-sm btn-warning">VOLVER A CATÁLOGO DE CITAS</a>
+      @elseif(str_replace(url('/'), '', url()->previous()) == '/evaluacion_medica/create/'.$cita->id)
+           <a href="{{route('evaluacion_medica.create',$cita->id)}}" class="btn btn-sm btn-warning">VOLVER A EVALUACIÓN MÉDICA</a>
       @endif
     </div>
   </div>
@@ -31,6 +33,8 @@
         <a href="{{route('calendario.index')}}" class="btn btn-sm btn-warning">VOLVER A CALENDARIO</a>
     @elseif(str_replace(url('/'), '', url()->previous()) == '/citas/catalogo')
         <a href="{{route('citas.catalogo')}}" class="btn btn-sm btn-warning">VOLVER A CATÁLOGO DE CITAS</a>
+    @elseif(str_replace(url('/'), '', url()->previous()) == '/evaluacion_medica/create/'.$cita->id)
+        <a href="{{route('evaluacion_medica.create',$cita->id)}}" class="btn btn-sm btn-warning">VOLVER A EVALUACIÓN MÉDICA</a>
     @endif
 @endsection
 {{-----------------------------------------------------------------}}

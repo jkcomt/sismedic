@@ -32,6 +32,43 @@ class EvaluacionMedicaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    private $examenes_fisicos = array(
+        'CABEZA'=>'NORMOCEFALA',
+        'PIEL Y FANERAS'=>'TIBIA, ELASTICA, HUMEDA, TURGENTE, LLENADO CAPILAR MENOR A 2 SEGUNDOS',
+        'REFLEJOS PUPILARES VISTA DERECHA'=>'CIRCULARES, ISCORICAS, REACTIVAS',
+        'REFLEJOS PUPILARES VISTA IZQUIERDA'=>'CIRCULARES, ISOCORICAS, REACTIVAS',
+        'ENFERMEDADES OCULARES'=>'NO PTERIGION',
+        'NARIZ'=>'PIRAMIDAL, NO DESVIACION DE TABIQUE NASAL, FOSAS NASALES PERMEABLES',
+        'OTOSCOPIA OIDO DERECHO'=>'',
+        'OTOSCOPIA OIDO IZQUIERDO'=>'',
+        'BOCA, AMIGDALAS, FARINGE, LARINGE'=>'LENGUA CENTRAL, MOVIL AMIGDALAS',
+        'PIEZAS MAL ESTADO'=>0,
+        'PIEZAS QUE FALTAN'=>0,
+        'ULTIMO CONTROL DENTAL'=>'',
+        'CUELLO Y PERIMETRO'=>'CIRCULAR, NO ADENOPATIAS MANIFIESTAS, MOVIL, NO INGURGITACION',
+        'TORAX'=>'CILINDRICO, SIMETRICO, AMPLEXACION CONVERSVADA',
+        'CORAZON'=>'RUIDOS CARDIACOS RITMICOS, DE BUANA INTENSIDAD, NO SOPLOS, IMPULSO VENTRICULAR CONSERVADO',
+        'PULMON DERECHO'=>'MURMULLO VESICULAR PASA BIEN AMBOS CAMPOS PULMONARES, NO RUIDOS SOBREAGREGADOS',
+        'PULMON IZQUIERDO'=>'MURMULLO VESICULAR PASA BIEN AMBOS CAMPOS PULMONARES, NO RUIDOS SOBREAGREGADOS',
+        'COLUMNA VERTEBRAL'=>'NO IMPRESIONA DESVIACION, DANDY NEGATIVO, LASEGUE NEGATIVO',
+        'ABDOMEN'=>'PLANO, RUIDOS HIDROAEREOS PRESENTES, BLANDO DEPRESIBLE, NO DOLOROSO A LA PALPACION, NO VISCEROMEGALIAS',
+        'ANILLOS INGUINALES'=>'CERRADOS',
+        'HERNIAS'=>'AUSENTES',
+        'ORGANOS GENITALES'=>'ADECUADOS A EDAD Y SEXO',
+        'GANGLIOS'=>'NO ADENOPATIAS',
+        'MIEMBRO SUPERIOR DERECHO'=>'COMPLETO, RANGOS ARTICULARES CONSERVADOS, PULSOS PERIFERICOS PRESENTES',
+        'MIEMBRO SUPERIOR IZQUIERDO'=>'COMPLETO, RANGOS ARTICULARES CONSERVADOS, PULSOS PERIFERICOS PRESENTES',
+        'MIEMBRO INFERIOR DERECHO'=>'COMPLETO, RANGOS ARTICULARES CONSERVADOS, PULSOS PERIFERICOS PRESENTES',
+        'MIEMBRO INFERIOR IZQUIERDO'=>'COMPLETO, RANGOS ARTICULARES CONSERVADOS, PULSOS PERIFERICOS PRESENTES',
+        'VARICES'=>'AUSENTES',
+        'TACTO RECTAL'=>'NO SE HIZO',
+        'LENGUAJE, ATENCION, MEMORIA,ORIENTACION, INTELIGENCIA'=>'NORMALES',
+        'FUERZA MUSCULAR'=>'NORMALES',
+        'REFLEJOS OSTEOTENDINOSOS'=>'NORMALES',
+        'MARCHA'=>'NORMALES',
+        'EVALUACION CARDIOVASCULAR'=>'0'
+    );
+
     public function index()
     {
         $citas = Cita::where('estado',true)->orderBy('fecha_examen','asc')->orderBy('hora_examen','asc')->paginate(10);
@@ -90,7 +127,9 @@ class EvaluacionMedicaController extends Controller
         $grupoSanguineos = GrupoSanguineo::where('estado',true)->get()->pluck('descripcion','id')->toArray();
 
         $regimenes = Regimen::where('estado',true)->get()->pluck('descripcion','id')->toArray();
-        return view('evaluacionmedica.create',compact('cita','paciente','paisOrigen','departamentosOrigen','provinciasOrigen','paisDomicilio','departamentosDomicilio','provinciasDomicilio','distritosDomicilio','tipoInstrucciones','profesiones','contratadores','areas','ocupaciones','lugarLabores','alturas','grupoSanguineos','regimenes','distritosOrigen'));
+
+        $examenes_fisicos = $this->examenes_fisicos;
+        return view('evaluacionmedica.create',compact('cita','paciente','paisOrigen','departamentosOrigen','provinciasOrigen','paisDomicilio','departamentosDomicilio','provinciasDomicilio','distritosDomicilio','tipoInstrucciones','profesiones','contratadores','areas','ocupaciones','lugarLabores','alturas','grupoSanguineos','regimenes','distritosOrigen','examenes_fisicos'));
     }
 
     /**

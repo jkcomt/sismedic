@@ -1,5 +1,9 @@
 @extends('layout')
-
+@section('api')
+    <style>
+        input.mayusculas{text-transform:uppercase;}
+    </style>
+@endsection
 @section('header')
   <div class="row">
     <div class="col-md-6">
@@ -559,22 +563,48 @@
                                     <div class="panel panel-default">
                                         <div class="panel-body">
                                             <div class="row">
-                                                <table class="table table-hover table-bordered table-condensed">
-                                                    <thead>
-                                                    <th>Descripción</th>
-                                                    <th>Resultado</th>
-                                                    </thead>
-                                                    <tbody>
-                                                    <tr>
-                                                        <td>COLUMNA VERTEBRAL</td>
-                                                        <td>NO IMPRESIONA DESVIACIÓN, DANDY NEGATIVO, LASEGUE NEGATIVO</td>
-                                                    </tr>
-                                                    <tr class="text-danger">
-                                                        <td>HERNIAS</td>
-                                                        <td>AUSENTES</td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
+                                                <div class="row container-fluid">
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="">Descripción</label>
+                                                            <input type="text" value="" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="">Resultado</label>
+                                                            <input type="text" value="" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <div class=""><button type="button" class="btn btn-sm btn-block btn-app" style="background-color:#00a65a !important; color:white;"><i class="glyphicon glyphicon-plus"></i>AÑADIR</button></div>
+                                                    </div>
+                                                </div>
+                                                <div class="box box-default">
+                                                    <div class="box-header with-border">Listado de Examenes Físicos
+                                                        <div class="box-tools pull-right">
+                                                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                                                <i class="fa fa-plus"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="box-body">
+                                                        <table class="table table-hover table-bordered table-condensed">
+                                                            <thead>
+                                                            <th>Descripción</th>
+                                                            <th>Resultado</th>
+                                                            </thead>
+                                                            <tbody>
+                                                            @foreach($examenes_fisicos as $key=>$value)
+                                                                <tr>
+                                                                    <td><input type="text" class="form-control mayusculas" value="{{$key}}" ></td>
+                                                                    <td><input type="text" class="form-control mayusculas" value="{{$value}}"></td>
+                                                                </tr>
+                                                            @endforeach
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
