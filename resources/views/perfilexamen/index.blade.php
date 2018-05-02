@@ -53,10 +53,9 @@ th,td{
         </form> --}}
     </div>
 </div>
-<br>
 <div class="row" id="tabla">
 
-      @include('perfilexamen.table') 
+      @include('perfilexamen.table')
 </div>
 @endsection
 @section('script')

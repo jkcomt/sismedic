@@ -110,5 +110,33 @@ class ListaExamenSeeder extends Seeder
             'dscto'=>1,
             'tipo'=>null
         ]);
+
+        factory(ListaExamen::class)->create([
+            'descripcion'=>'VISION',
+            'valor'=>1,
+            'dscto'=>1,
+            'tipo'=>null
+        ]);
+
+        factory(ListaExamen::class)->create([
+            'descripcion'=>'COLESTEROL TOTAL',
+            'valor'=>1,
+            'dscto'=>1,
+            'tipo'=>null
+        ]);
+
+        factory(ListaExamen::class)->create([
+            'descripcion'=>'ORINA',
+            'valor'=>1,
+            'dscto'=>1,
+            'tipo'=>null
+        ]);
+
+        factory(ListaExamen::class)->create([
+            'descripcion'=>'SIFILIS',
+            'valor'=>1,
+            'dscto'=>1,
+            'tipo'=>null
+        ]);
     }
 }

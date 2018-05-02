@@ -21,7 +21,7 @@ class PerfilExamenController extends Controller
       //$perfiles=Perfil::where('estado',true)->paginate(10);}
         $perfil=Perfil::find($id);
 
-        $perfilExamens= PerfilExamen::where('estado',true)->where('perfil_id',$perfil->id)->get();
+        $perfilExamenes= PerfilExamen::where('estado',true)->where('perfil_id',$perfil->id)->paginate(10);
 
        $listaexamenes=ListaExamen::where('estado',true)
                         ->whereNOTIn('id',function($query)  use($perfil)
@@ -29,7 +29,7 @@ class PerfilExamenController extends Controller
                             $query->select('lista_examen_id')->from('perfil_examenes')->where('perfil_examenes.perfil_id',$perfil->id);
                         })->get();
 
-       return view('perfilexamen.index',compact("perfil","listaexamenes"));
+       return view('perfilexamen.index',compact("perfil","perfilExamenes","listaexamenes"));
 
     }
 

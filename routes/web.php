@@ -298,3 +298,5 @@ Route::get('evaluacion_medica/create/{id}', [
     'uses' => 'EvaluacionMedicaController@create'
 ]);
 Route::resource('evaluacion_medica','EvaluacionMedicaController',['except' => 'create']);
+
+Route::view('/antecedentes', 'antecedentes.index');

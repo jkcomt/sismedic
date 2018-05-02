@@ -9,23 +9,23 @@
 
         </thead>
         <tbody>
-        @foreach($perfil->perfilExamen as $examen)
+        @foreach($perfilExamenes as $examen)
             @if($examen->estado)
                 <tr>
-                    
+
                     <td class="text-left">{{$examen->listaExamen->descripcion}}</td>
                     <td>{{$examen->listaExamen->tipo}}</td>
                     <td>{{$examen->listaExamen->valor}}</td>
                     <td>{{$examen->listaExamen->dscto}}</td>
-                     <td>                  
+                     <td>
                         {{csrf_field()}}
 
                         <button href="#" class="btn btn-xs btn-danger delete"  id="{{$examen->id}}"><span class="glyphicon glyphicon-remove"></span> ELIMINAR</button>
-                    </td> 
+                    </td>
                 </tr>
             @endif
         @endforeach
         </tbody>
     </table>
-{{$perfil->perfilExamen->links()}}
+{{$perfilExamenes->links()}}
 </div>

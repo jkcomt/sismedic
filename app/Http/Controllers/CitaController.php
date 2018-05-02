@@ -339,7 +339,8 @@ class CitaController extends Controller
         $cita = Cita::find($request['idCita']);
         $listaExamen = ListaExamen::find($request['idExamen']);
         $view = null;
-        switch ($listaExamen->id){
+        switch ($listaExamen->id)
+        {
             case 1:
                 $view = view('evaluacionmedica.examenes.anexo7d.create',compact('cita','listaExamen'))->render();
                 break;
@@ -349,6 +350,51 @@ class CitaController extends Controller
             case 3:
                 $view = view('evaluacionmedica.examenes.espirometria.create',compact('cita','listaExamen'))->render();
                 break;
+            case 4:
+                $view = view('evaluacionmedica.examenes.hemograma.create',compact('cita','listaExamen'))->render();
+                break;
+            case 5:
+                $view = view('evaluacionmedica.examenes.velocidaddesedimentacion.create',compact('cita','listaExamen'))->render();
+                break;
+            case 7:
+                $view = view('evaluacionmedica.examenes.glucosa.create',compact('cita','listaExamen'))->render();
+                break;
+            case 8:
+                $view = view('evaluacionmedica.examenes.creatina.create',compact('cita','listaExamen'))->render();
+                break;
+            case 9:
+                $view = view('evaluacionmedica.examenes.acidourico.create',compact('cita','listaExamen'))->render();
+                break;
+            case 10:
+                $view = view('evaluacionmedica.examenes.colesteroltotal.create',compact('cita','listaExamen'))->render();
+                break;
+            case 11:
+                $view = view('evaluacionmedica.examenes.Trigliceridos.create',compact('cita','listaExamen'))->render();
+                break;
+            case 12:
+                $view = view('evaluacionmedica.examenes.colesterolhdl.create',compact('cita','listaExamen'))->render();
+                break;
+            case 13:
+                $view = view('evaluacionmedica.examenes.colesterolldl.create',compact('cita','listaExamen'))->render();
+                break;
+            case 14:
+                $view = view('evaluacionmedica.examenes.gamma.create',compact('cita','listaExamen'))->render();
+                break;
+            case 15:
+                $view = view('evaluacionmedica.examenes.vision.create',compact('cita','listaExamen'))->render();
+                break;
+            case 17:
+                $view = view('evaluacionmedica.examenes.orina.create',compact('cita','listaExamen'))->render();
+                break;
+            case 18:
+                $view = view('evaluacionmedica.examenes.sifilis.create',compact('cita','listaExamen'))->render();
+                break;
+            case 19:
+                $view = view('evaluacionmedica.examenes.examenmedicoinsuficiencia.create',compact('cita','listaExamen'))->render();
+                break;
+
+
+
         }
 
         if($request->ajax())

@@ -10,7 +10,7 @@ $('.filtrarExamen').on('click',function(e){
 
     $idCita = $(this).attr('idcita');
     $idExamen = $(this).attr('idexamen');
-    //console.log($idCita+' '+$idExamen)
+    console.log($idCita+' '+$idExamen)
         var token = $('input[name=_token]').attr('value')
         var url = "/citas/filtra_examen";
         $.ajax({
@@ -23,7 +23,7 @@ $('.filtrarExamen').on('click',function(e){
                 idExamen : $idExamen
             },
             success: function(data){
-                //console.log(data);
+                console.log(data);
                 $('#examen').html(data.html)
                 $id = $('#examen .modal').attr('id')
                 $('#'+$id).modal('show')

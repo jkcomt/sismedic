@@ -1,0 +1,16 @@
+examenes
+
+-vision	SEED
+-audiometria //
+-hemograma seed
+-velocidad de sedimentacion seed
+-acido urico seed
+-colesterol hdl seed
+-colesterol ldl seed
+-colesterol total SEED
+-creatinina seed
+-gamma  seed
+-glucosa seed
+-orina 		SEED
+-trigliceridos seed
+-sifilis
