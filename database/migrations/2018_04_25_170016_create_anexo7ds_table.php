@@ -33,6 +33,7 @@ class CreateAnexo7dsTable extends Migration
             $table->boolean('alergias')->nullable();
             $table->string('uso_de_medicacion_actual',400)->nullable();
             $table->string('observacion',400)->nullable();
+            $table->boolean('apto')->nullable();
             $table->date('fecha_registro');
             $table->foreign('cita_id')->references('id')->on('citas');
             $table->integer('cita_id')->unsigned()->nullable();
