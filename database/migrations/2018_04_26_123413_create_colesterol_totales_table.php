@@ -16,7 +16,6 @@ class CreateColesterolTotalesTable extends Migration
         Schema::create('colesterol_totales', function (Blueprint $table) {
             $table->increments('id');
             $table->decimal('colesterol_total',10,2);
-            $table->string('estado_examen');//realizado por defecto
             $table->date('fecha_registro');
             $table->foreign('lista_examen_id')->references('id')->on('lista_examenes');
             $table->integer('lista_examen_id')->unsigned()->nullable();

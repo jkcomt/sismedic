@@ -17,7 +17,7 @@ th,td{
             ANTECEDENTES DEL PACIENTE: {{$paciente->apellido_paterno." ".$paciente->apellido_materno." ".$paciente->nombres}}
         </div>
         <div class="col-md-6 text-right">
-            @if(str_replace(url('/'), '', url()->previous()) == '/evaluacion_medica/create/'.$paciente->id)
+            @if(str_replace(url('/'), '', url()->previous()) == '/evaluacion_medica/create/'.$cita->id)
                 {{-- esto rediriga al catalogo de citas --}}
                 <a class="btn btn-sm btn-warning" href="{{route('evaluacion_medica.create',$cita->id)}}">VOLVER EVALUACION</a>
             @elseif(str_replace(url('/'), '', url()->previous()) == '/citas')
