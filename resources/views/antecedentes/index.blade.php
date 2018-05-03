@@ -12,33 +12,57 @@ th,td{
 @endsection
 
 @section('header')
-<div class="row">
-  <div class="col-sm-6">ANTECEDENTES
-  </div>
-  <div class="col-sm-6 text-right"> <a href="{{route('configuracion.index')}}" class="btn btn-warning btn-sm">VOLVER</a></div>
-</div>
-
+    <div class="row">
+        <div class="col-md-6">
+            ANTECEDENTES DEL PACIENTE: {{$paciente->apellido_paterno." ".$paciente->apellido_materno." ".$paciente->nombres}}
+        </div>
+        <div class="col-md-6 text-right">
+            @if(str_replace(url('/'), '', url()->previous()) == '/evaluacion_medica/create/'.$paciente->id)
+                {{-- esto rediriga al catalogo de citas --}}
+                <a class="btn btn-sm btn-warning" href="{{route('evaluacion_medica.create',$cita->id)}}">VOLVER EVALUACION</a>
+            @elseif(str_replace(url('/'), '', url()->previous()) == '/citas')
+                {{-- esto redirige a calendario --}}
+                <a class="btn btn-sm btn-warning" href="">VOLVER A CALENDARIO</a>
+            @else
+                <a class="btn btn-sm btn-warning" href="">IR A CATÁLOGO DE CITAS</a>
+            @endif
+        </div>
+    </div>
 @endsection
+{{-----------------------------------------------------------------}}
 @section('modal-title')
-<h4 class="modal-title">Aviso</h4>
+    <h4 class="modal-title">Aviso</h4>
 @endsection
 @section('modal-body')
-<h3 class="text-success text-center">Registro Exitoso</h3>
+    <h3 class="text-success text-center">Registro Exitoso</h3>
 @endsection
 @section('modal-footer')
-<a class="btn btn-sm btn-warning" href="{{route('altura.index')}}">Volver</a>
-@endsection
+    {{--<button class="btn btn-sm btn-primary" id="create-paciente">Insertar otro registro</button>--}}
+@isset($cita)@php $var=$cita->generarNroCita() @endphp @else @php $var="#000001" @endphp @endisset
+    {{-- <a href="{{route('citas.examenescliente',substr($var,1))}}" target="_blank" class="btn btn-xs btn-info" name="imprimirCita"><span class="glyphicon glyphicon-print"></span></a> --}}
+    <div class="row">
+      <div class="col-md-12 text-right">
+        {{-- <a class="btn btn-sm btn-warning btn-block" href="{{route('citas.catalogo')}}">Volver a Citas</a> --}}
+          {{-- esto rediriga al catalogo de citas --}}
+            <a class="btn btn-sm btn-warning" href="{{route('antecedentes.principal',$cita->id)}}">Cerrar</a>
+      </div>
 
+    </div>
+@endsection
+{{-----------------------------------------------------------------}}
 @section('modal-confirmacion-title')
-<h4 class="modal-title">Aviso</h4>
+    <h4 class="modal-title">Aviso</h4>
 @endsection
 @section('modal-confirmacion-body')
-<h3 class="text-warning text-center">¿Desea eliminar el registro?</h3>
+    <h3 class="text-warning text-center">¿Desea eliminar el registro?</h3>
 @endsection
 @section('modal-confirmacion-footer')
-<button class="btn btn-danger confirmar" id="">Confirmar</button>
-<a href="" class="btn btn-warning " data-dismiss="modal" id="index" >Volver</a>
+    <button class="btn btn-danger confirmar" id="">Confirmar</button>
+    <a href="" class="btn btn-warning " data-dismiss="modal" id="index">Volver</a>
 @endsection
+{{-----------------------------------------------------------------}}
+
+
 
 @section('content')
 {{-- @include('area.modals.edit') @include('area.modals.create') --}}
@@ -140,9 +164,9 @@ th,td{
         </div>
     </div>
     <div class="col-md-4">
-        <form action="" class="form-inline text-right">
-           {{--<button class="btn btn-primary form-control">BUSCAR</button>--}}
-        </form>
+        {{-- <form action="" class="form-inline text-right">
+           {{--<button class="btn btn-primary form-control">BUSCAR</button>}}
+        </form> --}}
     </div>
 </div>
 

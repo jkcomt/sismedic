@@ -7,9 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class AntecedentePersonal extends Model
 {
     protected $table = "antecedente_personales";
-
     protected $fillable = [
-      'sobrepeso',
+        'sobrepeso',
         'enfermedad_cronica',
         'farmacos_uso_comun',
         'alergias_no_medicantosa',
@@ -69,4 +68,12 @@ class AntecedentePersonal extends Model
         'cita_id',
         'estado'
     ];
+
+    public function cita()
+    {
+      return $this->belongsTo(Cita::class);
+    }
+
+        public $timestamps = false;
+
 }

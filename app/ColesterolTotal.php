@@ -16,4 +16,9 @@ class ColesterolTotal extends Model
     ];
 
     public $timestamps = false;
+
+    public function cita()
+    {
+      return $this->belongsTo(Cita::class);
+    }
 }

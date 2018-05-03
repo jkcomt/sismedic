@@ -634,7 +634,9 @@
                                                                 <td></td>
                                                                 <td></td>
                                                                 <td>{{Carbon\Carbon::parse($cita->fecha_examen)->format('m - y')}}</td>
-                                                                <td><button type="button" idcita="{{$cita->id}}" idexamen="{{$citaExamen->perfilExamen->listaExamen->id}}" class="btn btn-xs btn-block btn-primary filtrarExamen">EXAMEN</button></td>
+                                                                <td>
+                                                                  <button type="button" idcita="{{$cita->id}}" idexamen="{{$citaExamen->perfilExamen->listaExamen->id}}" class="btn btn-xs btn-block btn-primary filtrarExamen">EXAMEN</button>
+                                                                </td>
                                                             </tr>
                                                         @endforeach
                                                         </tbody>

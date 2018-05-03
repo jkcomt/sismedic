@@ -13,7 +13,7 @@
 
 //Route::get('/', function () {
 //    return view('auth/login');
-//});
+//});.
 
 Route::get('/','Auth\LoginController@showLoginForm');
 
@@ -289,7 +289,6 @@ Route::group([
     Route::post('/update','FuncionVitalController@update')->name('funcion_vital.update');
     Route::post('/delete','FuncionVitalController@destroy')->name('funcion_vital.destroy');
     Route::post('/buscar','FuncionVitalController@search')->name('funcion_vital.buscar');
-
 });
 
 
@@ -299,4 +298,10 @@ Route::get('evaluacion_medica/create/{id}', [
 ]);
 Route::resource('evaluacion_medica','EvaluacionMedicaController',['except' => 'create']);
 
-Route::view('/antecedentes', 'antecedentes.index');
+Route::group([
+  "prefix"=>"antecedentes"
+],function(){
+  Route::get('/{idpaciente}/principal','AntecedentePersonalController@principal')->name('antecedentes.principal');
+  Route::post('/crear','AntecedentePersonalController@store')->name('antecedentes.create');
+  Route::post('/dos/crear','AntecendeDosPersonalController@store')->name('antecedentesdos.create');
+});
