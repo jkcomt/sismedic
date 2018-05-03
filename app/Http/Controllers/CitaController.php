@@ -356,6 +356,10 @@ class CitaController extends Controller
             case 5:
                 $view = view('evaluacionmedica.examenes.velocidaddesedimentacion.create',compact('cita','listaExamen'))->render();
                 break;
+            case 6:
+               // $view = view('evaluacionmedica.examenes.gruposanguineo.create',compact('cita','listaExamen'))->render();
+                $view = view('evaluacionmedica.examenes.enproceso.create',compact('cita','listaExamen'))->render();
+                break;
             case 7:
                 $view = view('evaluacionmedica.examenes.glucosa.create',compact('cita','listaExamen'))->render();
                 break;
@@ -369,7 +373,7 @@ class CitaController extends Controller
                 $view = view('evaluacionmedica.examenes.colesteroltotal.create',compact('cita','listaExamen'))->render();
                 break;
             case 11:
-                $view = view('evaluacionmedica.examenes.Trigliceridos.create',compact('cita','listaExamen'))->render();
+                $view = view('evaluacionmedica.examenes.trigliceridos.create',compact('cita','listaExamen'))->render();
                 break;
             case 12:
                 $view = view('evaluacionmedica.examenes.colesterolhdl.create',compact('cita','listaExamen'))->render();
@@ -383,13 +387,13 @@ class CitaController extends Controller
             case 15:
                 $view = view('evaluacionmedica.examenes.vision.create',compact('cita','listaExamen'))->render();
                 break;
-            case 17:
+            case 16:
                 $view = view('evaluacionmedica.examenes.orina.create',compact('cita','listaExamen'))->render();
                 break;
-            case 18:
+            case 17:
                 $view = view('evaluacionmedica.examenes.sifilis.create',compact('cita','listaExamen'))->render();
                 break;
-            case 19:
+            case 18:
                 $view = view('evaluacionmedica.examenes.examenmedicoinsuficiencia.create',compact('cita','listaExamen'))->render();
                 break;
 

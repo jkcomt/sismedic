@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\VelocidadSedimentacion;
 use Illuminate\Http\Request;
-
+use Carbon\Carbon;
 class VelocidadSedimentacionController extends Controller
 {
     /**
@@ -35,7 +35,23 @@ class VelocidadSedimentacionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if(request()->ajax()) {
+            $data = request()->validate([
+                'sedimentacion'=>'required',
+                'lista_examen_id'=>'required',
+                'cita_id'=>'required'
+            ]);
+
+            $sedimentacion = VelocidadSedimentacion::create([
+                'velocidad_sedimentacion_globular'=>$data['sedimentacion'],
+                'fecha_registro'=>Carbon::now(),
+                'lista_examen_id'=>$data['lista_examen_id'],
+                'cita_id'=>$data['cita_id'],
+                'estado'=>true
+            ]);
+
+            return response()->json(['mensaje' => 'registro exitoso']);
+        }
     }
 
     /**

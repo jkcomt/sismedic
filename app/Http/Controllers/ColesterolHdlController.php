@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\ColesterolHdl;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class ColesterolHdlController extends Controller
 {
@@ -33,9 +34,25 @@ class ColesterolHdlController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+        if(request()->ajax()) {
+            $data = request()->validate([
+                'colesterol_hdl'=>'required',
+                'lista_examen_id'=>'required',
+                'cita_id'=>'required'
+            ]);
+
+            $colesterolHdl = ColesterolHdl::create([
+                'colesterol_hdl'=>$data['colesterol_hdl'],
+                'fecha_registro'=>Carbon::now(),
+                'lista_examen_id'=>$data['lista_examen_id'],
+                'cita_id'=>$data['cita_id'],
+                'estado'=>true
+            ]);
+
+            return response()->json(['mensaje' => 'registro exitoso']);
+        }
     }
 
     /**

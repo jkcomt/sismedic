@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Triglicerido;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class TrigliceridoController extends Controller
 {
@@ -35,7 +36,23 @@ class TrigliceridoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if(request()->ajax()) {
+            $data = request()->validate([
+                'triglicerido'=>'required',
+                'lista_examen_id'=>'required',
+                'cita_id'=>'required'
+            ]);
+
+            $triglicerido = Triglicerido::create([
+                'triglicerido'=>$data['triglicerido'],
+                'fecha_registro'=>Carbon::now(),
+                'lista_examen_id'=>$data['lista_examen_id'],
+                'cita_id'=>$data['cita_id'],
+                'estado'=>true
+            ]);
+
+            return response()->json(['mensaje' => 'registro exitoso']);
+        }
     }
 
     /**

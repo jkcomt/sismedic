@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Creatinina;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class CreatininaController extends Controller
 {
@@ -33,9 +34,25 @@ class CreatininaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+        if(request()->ajax()) {
+            $data = request()->validate([
+                'creatinina'=>'required',
+                'lista_examen_id'=>'required',
+                'cita_id'=>'required'
+            ]);
+
+            $creatinina = Creatinina::create([
+                'creatinina'=>$data['creatinina'],
+                'fecha_registro'=>Carbon::now(),
+                'lista_examen_id'=>$data['lista_examen_id'],
+                'cita_id'=>$data['cita_id'],
+                'estado'=>true
+            ]);
+
+            return response()->json(['mensaje' => 'registro exitoso']);
+        }
     }
 
     /**

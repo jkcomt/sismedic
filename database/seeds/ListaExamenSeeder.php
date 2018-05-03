@@ -119,13 +119,6 @@ class ListaExamenSeeder extends Seeder
         ]);
 
         factory(ListaExamen::class)->create([
-            'descripcion'=>'COLESTEROL TOTAL',
-            'valor'=>1,
-            'dscto'=>1,
-            'tipo'=>null
-        ]);
-
-        factory(ListaExamen::class)->create([
             'descripcion'=>'ORINA',
             'valor'=>1,
             'dscto'=>1,

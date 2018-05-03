@@ -15,7 +15,7 @@ class CreateAntecedentePersonalesTable extends Migration
     {
         Schema::create('antecedente_personales', function (Blueprint $table) {
             $table->increments('id');
-            $table->boolean('sobrepeso');
+            $table->boolean('sobrepeso')->nullable();
             $table->boolean('enfermedad_cronica');
             $table->boolean('farmacos_uso_comun');
             $table->boolean('alergias_no_medicantosa');

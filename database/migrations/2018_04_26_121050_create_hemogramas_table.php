@@ -26,6 +26,8 @@ class CreateHemogramasTable extends Migration
             $table->decimal('basofilos',10,2);
             $table->string('conclusion_hemograma');
             $table->date('fecha_registro');
+            $table->foreign('lista_examen_id')->references('id')->on('lista_examenes');
+            $table->integer('lista_examen_id')->unsigned()->nullable();
             $table->foreign('cita_id')->references('id')->on('citas');
             $table->integer('cita_id')->unsigned()->nullable();
             $table->boolean('estado');
