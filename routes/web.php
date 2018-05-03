@@ -296,6 +296,10 @@ Route::get('evaluacion_medica/create/{id}', [
     'as' => 'evaluacion_medica.create',
     'uses' => 'EvaluacionMedicaController@create'
 ]);
+Route::get('evaluacion_medica/recargar_lista_examen/{id}', [
+    'as' => 'evaluacion_medica.recargarlistaexamen',
+    'uses' => 'EvaluacionMedicaController@recargarListaExamenes'
+]);
 Route::resource('evaluacion_medica','EvaluacionMedicaController',['except' => 'create']);
 
 Route::group([
@@ -305,3 +309,17 @@ Route::group([
   Route::post('/crear','AntecedentePersonalController@store')->name('antecedentes.create');
   Route::post('/dos/crear','AntecendeDosPersonalController@store')->name('antecedentesdos.create');
 });
+
+Route::resource('colesterol_hdl','ColesterolHdlController');
+Route::resource('colesterol_ldl','ColesterolLdlController');
+Route::resource('trigliceridos','TrigliceridoController');
+Route::resource('gamma','GammaController');
+Route::resource('sifilis','SifilisController');
+
+Route::resource('creatinina','CreatininaController');
+Route::resource('glucosa','GlucosaController');
+Route::resource('velocidad_sedimentacion','VelocidadSedimentacionController');
+Route::resource('acido_urico','AcidoUricoController');
+Route::resource('colesterol_total','ColesterolTotalController');
+
+Route::view('/antecedentes', 'antecedentes.index');

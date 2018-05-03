@@ -2,15 +2,11 @@ $(document).ready(function() {
 
 });
 
-
-
-
-$('.filtrarExamen').on('click',function(e){
+$('body').on('click','.filtrarExamen',function(e){
     e.preventDefault();
 
     $idCita = $(this).attr('idcita');
     $idExamen = $(this).attr('idexamen');
-    console.log($idCita+' '+$idExamen)
         var token = $('input[name=_token]').attr('value')
         var url = "/citas/filtra_examen";
         $.ajax({
@@ -23,7 +19,6 @@ $('.filtrarExamen').on('click',function(e){
                 idExamen : $idExamen
             },
             success: function(data){
-                console.log(data);
                 $('#examen').html(data.html)
                 $id = $('#examen .modal').attr('id')
                 $('#'+$id).modal('show')
@@ -33,3 +28,27 @@ $('.filtrarExamen').on('click',function(e){
             }
         });
 });
+
+$('.volver-evaluacion-examen').on('click',function(e){
+    recargarListaExamenes();
+});
+
+function recargarListaExamenes(){
+    $citaId = $('#CitaId').val();
+    url = '/evaluacion_medica/recargar_lista_examen/'+$citaId;
+    $.ajax({
+        type:"get",
+        url:url,
+        dataType:"json",
+        data:{
+            id : $citaId
+        },
+        success: function(data){
+            $('#tablaexamenes').html(data.html)
+            $('#modal-exito').modal('hide')
+        },
+        error: function(data){
+            //console.log("Error "+JSON.stringify(data))
+        }
+    });
+}

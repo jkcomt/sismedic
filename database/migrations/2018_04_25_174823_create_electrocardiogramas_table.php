@@ -25,6 +25,8 @@ class CreateElectrocardiogramasTable extends Migration
             $table->string('isquemia');
             $table->string('hipertrofias');
             $table->string('otros_hallazgos',400);
+            $table->foreign('lista_examen_id')->references('id')->on('lista_examenes');
+            $table->integer('lista_examen_id')->unsigned()->nullable();
             $table->foreign('cita_id')->references('id')->on('citas');
             $table->integer('cita_id')->unsigned()->nullable();
             $table->date('fecha_registro');

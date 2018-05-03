@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\ColesterolTotal;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class ColesterolTotalController extends Controller
 {
@@ -35,7 +36,23 @@ class ColesterolTotalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if(request()->ajax()) {
+            $data = request()->validate([
+                'colesterol_total'=>'required',
+                'lista_examen_id'=>'required',
+                'cita_id'=>'required'
+            ]);
+
+            $colesterolTotal = ColesterolTotal::create([
+                'colesterol_total'=>$data['colesterol_total'],
+                'fecha_registro'=>Carbon::now(),
+                'lista_examen_id'=>$data['lista_examen_id'],
+                'cita_id'=>$data['cita_id'],
+                'estado'=>true
+            ]);
+
+            return response()->json(['mensaje' => 'registro exitoso']);
+        }
     }
 
     /**

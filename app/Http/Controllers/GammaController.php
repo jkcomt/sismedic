@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Gamma;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class GammaController extends Controller
 {
@@ -35,7 +36,23 @@ class GammaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if(request()->ajax()) {
+            $data = request()->validate([
+                'ggt'=>'required',
+                'lista_examen_id'=>'required',
+                'cita_id'=>'required'
+            ]);
+
+            $gama = Gamma::create([
+                'ggt'=>$data['ggt'],
+                'fecha_registro'=>Carbon::now(),
+                'lista_examen_id'=>$data['lista_examen_id'],
+                'cita_id'=>$data['cita_id'],
+                'estado'=>true
+            ]);
+
+            return response()->json(['mensaje' => 'registro exitoso']);
+        }
     }
 
     /**

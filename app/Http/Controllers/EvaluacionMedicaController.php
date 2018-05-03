@@ -132,6 +132,12 @@ class EvaluacionMedicaController extends Controller
         return view('evaluacionmedica.create',compact('cita','paciente','paisOrigen','departamentosOrigen','provinciasOrigen','paisDomicilio','departamentosDomicilio','provinciasDomicilio','distritosDomicilio','tipoInstrucciones','profesiones','contratadores','areas','ocupaciones','lugarLabores','alturas','grupoSanguineos','regimenes','distritosOrigen','examenes_fisicos'));
     }
 
+    public function recargarListaExamenes($id){
+        $cita = Cita::find($id);
+        $view = view('evaluacionmedica.tablaexamenes',compact('cita'))->render();
+        return response()->json(['html'=>$view]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *

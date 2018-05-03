@@ -6,27 +6,22 @@
             <div class="modal-body ">
                 {{csrf_field()}}
 
-
                 <div class="row ">
-                  {{-- <div class="">
-
-                  </div> --}}
                   <div class="col-md-8">
 
                     <table class="table table-responsive table-hover box">
                       <thead>
-                        <th colspan="2">          El / La presente o ha presentado en los ultimos 6 meses: </th>
+                        <th colspan="2"> El / La presente o ha presentado en los ultimos 6 meses: </th>
                       </thead>
-
 
                       <tbody class="">
                         <tr>
-                            <td class=" "> Anemia </td>
-                            <td class="" ><input type="checkbox" value=""></td>
+                            <td class=""> Anemia </td>
+                            <td class="" ><input type="checkbox" value="" name="anemia"></td>
                         </tr>
                         <tr>
                           <td class="">Cirugia mayor reciente </td>
-                          <td class="" ><input type="checkbox" value=""></td>
+                          <td class="" ><input type="checkbox" value="" name=""></td>
                         </tr>
                         <tr>
                           <td class="">Desórdenes de la coagulación, trombosis, etc </td>

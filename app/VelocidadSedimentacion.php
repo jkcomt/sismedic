@@ -11,9 +11,18 @@ class VelocidadSedimentacion extends Model
     protected $fillable = [
         'velocidad_sedimentacion_globular',
         'fecha_registro',
+        'lista_examen_id',
         'cita_id',
         'estado'
     ];
 
     public $timestamps = false;
+
+    public function cita(){
+        return $this->belongsTo(Cita::class);
+    }
+
+    public function listaExamen(){
+        return $this->belongsTo(ListaExamen::class);
+    }
 }

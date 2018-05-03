@@ -22,10 +22,20 @@
     <h3 class="text-success text-center">Registro Exitoso</h3>
 @endsection
 @section('modal-footer')
-    <button class="btn btn-sm btn-primary" id="create-paciente">Insertar otro registro</button>
-    <a class="btn btn-sm btn-warning" href="{{route('pacientes.index')}}">Volver</a>
+    {{--<button class="btn btn-sm btn-primary" id="create-paciente">Insertar otro registro</button>--}}
+    <button class="btn btn-sm btn-warning volver-evaluacion-examen">Volver</button>
 @endsection
-
+{{-----------------------------------------------------------------}}
+@section('modal-confirmacion-title')
+    <h4 class="modal-title">Aviso</h4>
+@endsection
+@section('modal-confirmacion-body')
+    <h3 class="text-warning text-center">¿Desea registrar el examen?</h3>
+@endsection
+@section('modal-confirmacion-footer')
+    <button class="btn btn-success confirmar" id="">Confirmar</button>
+    <a href="" class="btn btn-warning volver-form-examen" id="index">Volver</a>
+@endsection
 {{-----------------------------------------------------------------}}
 @section('content')
     <div id="examen">
@@ -40,14 +50,10 @@
                     <div id="listaerrores">
                     </div>
                 </ul>
-                {{--<ul>--}}
-                {{--@foreach($errors->all() as $error)--}}
-                {{--<li>{{$error}}</li>--}}
-                {{--@endforeach--}}
-                {{--</ul>--}}
             </div>
             <form action="" id="registrarEvaluacionMedica">
                 {{csrf_field()}}
+                <input type="hidden" value="{{$cita->id}}" id="CitaId">
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <ul class="nav nav-tabs">
@@ -550,7 +556,9 @@
                                                     </div>
                                                 </div>
                                             @else
-                                                <a href="{{route('funcion_vital.create',$cita->id)}}" class="btn btn-xs btn-info"  id=""><span class="glyphicon glyphicon-info-sign"></span> REGISTRAR FUNCIONES VITALES</a>
+                                                <div class="text-center">
+                                                    <a href="{{route('funcion_vital.create',$cita->id)}}" class="btn btn-info"  id=""><span class="glyphicon glyphicon-info-sign"></span> REGISTRAR FUNCIONES VITALES</a>
+                                                </div>
                                             @endisset
                                             </div>
                                         </div>
@@ -616,31 +624,8 @@
                                     <div class="col-md-12">
                                         <div class="panel panel-default">
                                             <div class="panel-body">
-                                                <div class="row">
-                                                    <table class="table table-hover table-bordered table-condensed">
-                                                        <thead>
-                                                        <th>Med</th>
-                                                        <th>Examen</th>
-                                                        <th>Resultado</th>
-                                                        <th>Observaciones</th>
-                                                        <th>Fecha</th>
-                                                        <th>Opciones</th>
-                                                        </thead>
-                                                        <tbody>
-                                                        @foreach($cita->citaExamen as $citaExamen)
-                                                            <tr class="text-danger">
-                                                                <td></td>
-                                                                <td>{{$citaExamen->perfilExamen->listaExamen->descripcion}}</td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td>{{Carbon\Carbon::parse($cita->fecha_examen)->format('m - y')}}</td>
-                                                                <td>
-                                                                  <button type="button" idcita="{{$cita->id}}" idexamen="{{$citaExamen->perfilExamen->listaExamen->id}}" class="btn btn-xs btn-block btn-primary filtrarExamen">EXAMEN</button>
-                                                                </td>
-                                                            </tr>
-                                                        @endforeach
-                                                        </tbody>
-                                                    </table>
+                                                <div class="row" id="tablaexamenes">
+                                                 @include('evaluacionmedica.tablaexamenes')
                                                 </div>
                                             </div>
                                         </div>
@@ -760,16 +745,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-md-12 text-right">
-                                <button class="btn btn-success">Registrar</button>
-                                <a href="{{route('evaluacion_medica.index')}}" class="btn btn-warning">Volver</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {{--<div class="panel panel-default">--}}
+                    {{--<div class="panel-body">--}}
+                        {{--<div class="row">--}}
+                            {{--<div class="col-md-12 text-right">--}}
+                                {{--<button class="btn btn-success">Registrar</button>--}}
+                                {{--<a href="{{route('evaluacion_medica.index')}}" class="btn btn-warning">Volver</a>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
 
 
             </form>
@@ -779,5 +764,15 @@
 @endsection
 @section('script')
     <script src="{{asset('js/evaluacionmedica/evaluacion.js')}}"></script>
+    <script src="{{asset('js/evaluacionmedica/examen/colesterolhdl.js')}}"></script>
+    <script src="{{asset('js/evaluacionmedica/examen/creatinina.js')}}"></script>
+    <script src="{{asset('js/evaluacionmedica/examen/glucosa.js')}}"></script>
+    <script src="{{asset('js/evaluacionmedica/examen/sedimentacion.js')}}"></script>
+    <script src="{{asset('js/evaluacionmedica/examen/acidourico.js')}}"></script>
+    <script src="{{asset('js/evaluacionmedica/examen/colesterol_total.js')}}"></script>
+    <script src="{{asset('js/evaluacionmedica/examen/colesterolldl.js')}}"></script>
+    <script src="{{asset('js/evaluacionmedica/examen/triglicerido.js')}}"></script>
+    <script src="{{asset('js/evaluacionmedica/examen/gamma.js')}}"></script>
+    <script src="{{asset('js/evaluacionmedica/examen/sifilis.js')}}"></script>
     {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>--}}
 @endsection

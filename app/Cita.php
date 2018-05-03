@@ -91,11 +91,6 @@ class Cita extends Model
         return $this->hasOne(FuncionVital::class);
     }
 
-    public function colesterolTotal()
-    {
-      return $this->hasOne(ColesterolTotal::class);
-    }
-
     public function antecedentePersonal()
     {
       return $this->hasOne(AntecedentePersonal::class);
@@ -107,4 +102,43 @@ class Cita extends Model
     }
 
 
+    public function colesterolHdl(){
+        return $this->hasOne(ColesterolHdl::class);
+    }
+
+    public function creatinina(){
+        return $this->hasOne(Creatinina::class);
+    }
+
+    public function glucosa(){
+        return $this->hasOne(Glucosa::class);
+    }
+
+    public function velocidadSedimentacion(){
+        return $this->hasOne(VelocidadSedimentacion::class);
+    }
+
+    public function acidoUrico(){
+        return $this->hasOne(AcidoUrico::class);
+    }
+
+    public function colesterolTotal(){
+        return $this->hasOne(ColesterolTotal::class);
+    }
+
+    public function colesterolLdl(){
+        return $this->hasOne(ColesterolLdl::class);
+    }
+
+    public function triglicerido(){
+        return $this->hasOne(Triglicerido::class);
+    }
+
+    public function gamma(){
+        return $this->hasOne(Gamma::class);
+    }
+
+    public function sifilis(){
+        return $this->hasOne(Sifilis::class);
+    }
 }

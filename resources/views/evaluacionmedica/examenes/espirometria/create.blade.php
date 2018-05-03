@@ -5,7 +5,7 @@
             <form action="" id="" method="post">
                 <div class="modal-body ">
                     {{csrf_field()}}
-                    <div class="">
+                    <div class="row">
 
                         <div class="col-md-12" >
                             {{-- style="max-height:60vh; overflow-y:scroll;" --}}
