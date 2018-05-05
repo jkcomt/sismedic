@@ -17,7 +17,7 @@
                       <tbody class="">
                         <tr>
                             <td class=""> Anemia </td>
-                            <td class="" ><input type="checkbox" value="" name="anemia"></td>
+                            <td class="" ><input type="checkbox" value="true" name="anemia"></td>
                         </tr>
                         <tr>
                           <td class="">Cirugia mayor reciente </td>
@@ -25,7 +25,7 @@
                         </tr>
                         <tr>
                           <td class="">Desórdenes de la coagulación, trombosis, etc </td>
-                          <td class="" ><input type="checkbox" value=""></td>
+                          <td class="" ><input type="checkbox" value="true"></td>
                         </tr>
                         <tr>
                           <td class=" "> Diabetes Mellitus </td>

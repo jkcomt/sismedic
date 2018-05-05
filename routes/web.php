@@ -308,6 +308,7 @@ Route::resource('colesterol_ldl','ColesterolLdlController');
 Route::resource('trigliceridos','TrigliceridoController');
 Route::resource('gamma','GammaController');
 Route::resource('sifilis','SifilisController');
+Route::resource('anexo7d','Anexo7dsController');
 
 Route::resource('creatinina','CreatininaController');
 Route::resource('glucosa','GlucosaController');
