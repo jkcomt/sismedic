@@ -160,5 +160,18 @@ class Paciente extends Model
       return $this->hasMany(Cita::class);
     }
 
+    public function antecedentePersonal()
+    {
+      return $this->hasOne(AntecedentePersonal::class);
+    }
+
+    public function antecendeDosPersonal()
+    {
+      return $this->hasOne(AntecendeDosPersonal::class);
+    }
+    public function antecedentesOculares()
+    {
+        return $this->hasOne(AntecedentesOculares::class);
+    }
 
 }

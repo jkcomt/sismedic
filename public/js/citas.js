@@ -217,7 +217,8 @@ $('.confirmar').on('click',function (e) {
     //console.log($estado);
 
     var token = $('input[name=_token]').attr('value')
-    if($estado == 'eliminar') {
+
+    if($estado == 'eliminar'){
         $(this).attr('disabled','disabled');
         var url = "/citas/delete"
         var id = $(this).attr('id')

@@ -4,6 +4,104 @@ $(function(){
 
 });
 console.log("PERSONALUNO.JS");
+
+var url_='';
+
+$('body').on('click','.conformidad',function(e){
+    e.preventDefault();
+    console.log('click')
+    $tipo = $(this).attr('tipo');
+    console.log($tipo);
+  //  alert($tipo);
+    if($tipo == "registrar")
+    {
+      $('.confirmar').attr('estado','conforme')
+      $('#modal-confirmacion .modal-body').html('<h3 class="text-warning text-center">Registrar Antecedentes Seccion <br>Personal Uno</h3>')
+      $('.confirmar').attr('estado','conforme')
+      $('.confirmar').removeClass('btn-danger')
+      $('.confirmar').addClass('btn-success')
+      $('#modal-confirmacion').modal('show')
+    }
+    else if($tipo == "actualizar")
+    {
+      $('.confirmar').attr('estado','conforme')
+      $('#modal-confirmacion .modal-body').html('<h3 class="text-warning text-center">Actualizar Antecedentes Seccion <br>Personal Uno</h3>')
+      $('.confirmar').attr('estado','conforme')
+      $('.confirmar').removeClass('btn-danger')
+      $('.confirmar').addClass('btn-success')
+      $('#modal-confirmacion').modal('show')
+    }
+
+});
+
+$('.confirmar').on('click',function (e) {
+    e.preventDefault();
+    $estado = $(this).attr('estado')
+    //console.log($estado);
+    var token = $('input[name=_token]').attr('value')
+
+    if($estado == 'eliminar'){
+
+    }else if($estado == 'conforme'){
+        if($tipo == "registrar"){
+          url_='/antecedentes/crear';
+            $('#registrar_antecedente_personal_uno').submit();
+      //    console.log("REGISTRANDO ANTECEDENTE PACIENTE 1");
+        }else if($tipo == "actualizar"){
+          url_='/antecedentes/uno/actualizar';
+          console.log(url_);
+            $('#registrar_antecedente_personal_uno').submit();
+        }
+    }
+});
+
+$('#registrar_antecedente_personal_uno').submit(function(e)
+{
+  e.preventDefault();
+    //var url=url_;
+
+  $.post(url_,$(this).serialize(),function (result) {
+
+  }).success(function(data)
+  {
+    console.log(data.mensaje);
+      if($.isEmptyObject(data.error)){
+
+
+        $('#modal-exito').modal({
+             backdrop: 'static',
+             keyboard:false
+        });
+        $('#modal-confirmacion').modal('hide');
+        $('#modal-exito .modal-body').html('<h3 class="text-success text-center">Registro Exitoso' +'</h3>');
+        $('#modal-exito').modal('show')
+
+
+      }else{
+          console.log(data.error)
+          return;
+      }
+  }).error(function(data) {
+      $('#msg-error').fadeIn();
+      $('#listaerrores').html('')
+      $('#modal-confirmacion').modal('hide');
+      $.each(data.responseJSON.errors, function( index, value ) {
+          console.log(value);
+          $('#listaerrores').append('<li>'+value+'</li>')
+      });
+
+      return;
+  });
+
+});
+
+
+
+
+
+
+
+
 function activar(chk)
 {
   if( $("#"+chk.id+"").prop('checked') )
@@ -25,6 +123,9 @@ function activar(chk)
       {
         document.getElementById("txt"+chk.id).readOnly= false ;
         document.getElementById("txt"+chk.id).value="" ;
+
+        document.getElementById("txtalcoholtiempo").readOnly= false ;
+        document.getElementById("txtalcoholtiempo").value="" ;
         document.getElementById("cbo"+chk.id).disabled = false;
       }
       if(chk.id=='coca')
@@ -47,17 +148,35 @@ function activar(chk)
         document.getElementById("txt"+chk.id).readOnly= false ;
         document.getElementById("txt"+chk.id).value="" ;
       }
-      if(chk.id=='enfermedadestiroidea')
+      if(chk.id=='insuficienciavenosa')
       {
-        document.getElementById("txtettratamientoactual").readOnly= false ;
-        document.getElementById("txtettratamientoactual").value="" ;
+        document.getElementById("txtinsuficienciavenosatratamientoactual").readOnly=false ;
+        document.getElementById("txtinsuficienciavenosatratamientoactual").value="" ;
+        document.getElementById("txtinsuficienciavenosa").readOnly= false ;
+        document.getElementById("txtinsuficienciavenosa").value="" ;
+      }
+      if(chk.id=='dislipidemia')
+      {
+        document.getElementById("txtdislipidemiatratamientoactual").readOnly=false ;
+        document.getElementById("txtdislipidemiatratamientoactual").value="" ;
         document.getElementById("txt"+chk.id).readOnly= false ;
         document.getElementById("txt"+chk.id).value="" ;
       }
+      if(chk.id=='enfermedadestiroidea')
+      {
+        document.getElementById("txtenfermedadestiroidea").readOnly= false ;
+        document.getElementById("txtenfermedadestiroidea").value="" ;
+        document.getElementById("txtenfermedadestiroideaanio").readOnly= false ;
+        document.getElementById("txtenfermedadestiroideaanio").value="" ;
+        document.getElementById("txtenfermedadestiroideatratamientoactual").readOnly= false ;
+        document.getElementById("txtenfermedadestiroideatratamientoactual").value="" ;
+      }
       if(chk.id=='neoplasias')
       {
-        document.getElementById("txtntratamientoactual").readOnly=false ;
-        document.getElementById("txtntratamientoactual").value="" ;
+        document.getElementById("txtneoplasiasanio").readOnly=false ;
+        document.getElementById("txtneoplasiasanio").value="" ;
+        document.getElementById("txtneoplasiastratamientoactual").readOnly=false ;
+        document.getElementById("txtneoplasiastratamientoactual").value="" ;
         document.getElementById("txt"+chk.id).readOnly= false;
         document.getElementById("txt"+chk.id).value="" ;
       }
@@ -88,6 +207,8 @@ function activar(chk)
         {
           document.getElementById("txt"+chk.id).readOnly= true ;
           document.getElementById("txt"+chk.id).value="" ;
+          document.getElementById("txtalcoholtiempo").readOnly= true ;
+          document.getElementById("txtalcoholtiempo").value="" ;
           document.getElementById("cbo"+chk.id).disabled = true;
         }
         if(chk.id=='coca')
@@ -111,18 +232,36 @@ function activar(chk)
           document.getElementById("txt"+chk.id).value="" ;
         }
 
-        if(chk.id=='enfermedadestiroidea')
+        if(chk.id=='insuficienciavenosa')
         {
-          document.getElementById("txtettratamientoactual").readOnly=true ;
-          document.getElementById("txtettratamientoactual").value="" ;
+          document.getElementById("txtinsuficienciavenosatratamientoactual").readOnly=true ;
+          document.getElementById("txtinsuficienciavenosatratamientoactual").value="" ;
+          document.getElementById("txtinsuficienciavenosa").readOnly= true ;
+          document.getElementById("txtinsuficienciavenosa").value="" ;
+        }
+        if(chk.id=='dislipidemia')
+        {
+          document.getElementById("txtdislipidemiatratamientoactual").readOnly=true ;
+          document.getElementById("txtdislipidemiatratamientoactual").value="" ;
           document.getElementById("txt"+chk.id).readOnly= true ;
           document.getElementById("txt"+chk.id).value="" ;
         }
+        if(chk.id=='enfermedadestiroidea')
+        {
+          document.getElementById("txtenfermedadestiroidea").readOnly= true ;
+          document.getElementById("txtenfermedadestiroidea").value="" ;
+          document.getElementById("txtenfermedadestiroideaanio").readOnly= true ;
+          document.getElementById("txtenfermedadestiroideaanio").value="" ;
+          document.getElementById("txtenfermedadestiroideatratamientoactual").readOnly= true ;
+          document.getElementById("txtenfermedadestiroideatratamientoactual").value="" ;
+        }
         if(chk.id=='neoplasias')
         {
-          document.getElementById("txtntratamientoactual").readOnly=true ;
-          document.getElementById("txtntratamientoactual").value="" ;
-          document.getElementById("txt"+chk.id).readOnly= true ;
+          document.getElementById("txtneoplasiasanio").readOnly=true ;
+          document.getElementById("txtneoplasiasanio").value="" ;
+          document.getElementById("txtneoplasiastratamientoactual").readOnly=true ;
+          document.getElementById("txtneoplasiastratamientoactual").value="" ;
+          document.getElementById("txt"+chk.id).readOnly= true;
           document.getElementById("txt"+chk.id).value="" ;
         }
         else{

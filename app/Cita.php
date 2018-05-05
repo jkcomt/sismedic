@@ -91,6 +91,17 @@ class Cita extends Model
         return $this->hasOne(FuncionVital::class);
     }
 
+    public function antecedentePersonal()
+    {
+      return $this->hasOne(AntecedentePersonal::class);
+    }
+
+    public function antecedenteDosPersonal()
+    {
+      return $this->hasOne(AntecedenteDosPersonal::class);
+    }
+
+
     public function colesterolHdl(){
         return $this->hasOne(ColesterolHdl::class);
     }

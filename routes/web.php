@@ -13,7 +13,7 @@
 
 //Route::get('/', function () {
 //    return view('auth/login');
-//});
+//});.
 
 Route::get('/','Auth\LoginController@showLoginForm');
 
@@ -289,7 +289,6 @@ Route::group([
     Route::post('/update','FuncionVitalController@update')->name('funcion_vital.update');
     Route::post('/delete','FuncionVitalController@destroy')->name('funcion_vital.destroy');
     Route::post('/buscar','FuncionVitalController@search')->name('funcion_vital.buscar');
-
 });
 
 
@@ -302,6 +301,19 @@ Route::get('evaluacion_medica/recargar_lista_examen/{id}', [
     'uses' => 'EvaluacionMedicaController@recargarListaExamenes'
 ]);
 Route::resource('evaluacion_medica','EvaluacionMedicaController',['except' => 'create']);
+
+Route::group([
+  "prefix"=>"antecedentes"
+],function(){
+  Route::get('/{idpaciente}/principal','AntecedentePersonalController@principal')->name('antecedentes.principal');
+  Route::post('/crear','AntecedentePersonalController@store')->name('antecedentes.create');
+  Route::post('/dos/crear','AntecendeDosPersonalController@store')->name('antecedentesdos.create');
+  Route::post('/tres/crear','AntecedentesOcularesController@store')->name('antecedentes.tres.create');
+
+  Route::post('/uno/actualizar','AntecedentePersonalController@update')->name('antecedentes.uno.actualizar');
+  Route::post('/dos/actualizar','AntecendeDosPersonalController@update')->name('antecedentes.dos.actualizar');
+  Route::post('/tres/actualizar','AntecedentesOcularesController@update')->name('antecedentes.tres.actualizar');
+});
 
 Route::resource('colesterol_hdl','ColesterolHdlController');
 Route::resource('colesterol_ldl','ColesterolLdlController');
