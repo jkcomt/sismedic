@@ -16,14 +16,16 @@ class CreateAntecendeDosPersonalesTable extends Migration
         Schema::create('antecende_dos_personales', function (Blueprint $table) {
             $table->increments('id');
             $table->boolean('tuberculosis')->nullable();
-            $table->integer('tuberculosis_meses_tratamiento')->nullable();
+            $table->string('tuberculosis_anio_dx')->nullable();
+            $table->string('tuberculosis_meses_tratamiento')->nullable();
             $table->boolean('hepatitis')->nullable();
             $table->string('hepatitis_descripcion')->nullable();
-            $table->integer('hepatitis_edad')->nullable();
+            $table->string('hepatitis_edad')->nullable();
             $table->boolean('tifoidea')->nullable();
             $table->integer('tifoidea_ano_dx')->nullable();
-            $table->boolean('tifoidea_brucelosis')->nullable();
-            $table->integer('tifoidea_ulcera_peptica')->nullable();
+            $table->boolean('brucelosis')->nullable();
+            $table->boolean('brucelosis_anio_dx')->nullable();
+            $table->integer('ulcera_hepatica')->nullable();
             $table->boolean('convulsiones')->nullable();
             $table->string('convulsiones_descripcion')->nullable();
             $table->integer('convulsiones_ano_dx')->nullable();
@@ -58,12 +60,12 @@ class CreateAntecendeDosPersonalesTable extends Migration
             $table->string('its_descripcion')->nullable();
             $table->integer('its_ano_dx')->nullable();
             $table->string('its_tratamiento_actual')->nullable();
-            $table->boolean('otros')->nullable();
-            $table->string('otros_descripcion')->nullable();
+            $table->boolean('otros_sintomas')->nullable();
+            $table->string('otros_sintomas_descripcion')->nullable();
             $table->string('sintomatologia_6_meses')->nullable();
             $table->date('fecha_registro')->nullable();
-            $table->foreign('cita_id')->references('id')->on('citas');
-            $table->integer('cita_id')->unsigned()->nullable();
+            $table->foreign('paciente_id')->references('id')->on('pacientes');
+            $table->integer('paciente_id')->unsigned()->nullable();
             $table->boolean('estado');
             //$table->timestamps();
         });

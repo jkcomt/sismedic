@@ -5,15 +5,27 @@ $(function(){
 });
 console.log("PERSONALUNO.JS");
 
+var url_='';
+
 $('body').on('click','.conformidad',function(e){
     e.preventDefault();
     console.log('click')
     $tipo = $(this).attr('tipo');
+    console.log($tipo);
   //  alert($tipo);
     if($tipo == "registrar")
     {
       $('.confirmar').attr('estado','conforme')
       $('#modal-confirmacion .modal-body').html('<h3 class="text-warning text-center">Registrar Antecedentes Seccion <br>Personal Uno</h3>')
+      $('.confirmar').attr('estado','conforme')
+      $('.confirmar').removeClass('btn-danger')
+      $('.confirmar').addClass('btn-success')
+      $('#modal-confirmacion').modal('show')
+    }
+    else if($tipo == "actualizar")
+    {
+      $('.confirmar').attr('estado','conforme')
+      $('#modal-confirmacion .modal-body').html('<h3 class="text-warning text-center">Actualizar Antecedentes Seccion <br>Personal Uno</h3>')
       $('.confirmar').attr('estado','conforme')
       $('.confirmar').removeClass('btn-danger')
       $('.confirmar').addClass('btn-success')
@@ -32,10 +44,12 @@ $('.confirmar').on('click',function (e) {
 
     }else if($estado == 'conforme'){
         if($tipo == "registrar"){
+          url_='/antecedentes/crear';
             $('#registrar_antecedente_personal_uno').submit();
       //    console.log("REGISTRANDO ANTECEDENTE PACIENTE 1");
-
         }else if($tipo == "actualizar"){
+          url_='/antecedentes/uno/actualizar';
+          console.log(url_);
             $('#registrar_antecedente_personal_uno').submit();
         }
     }
@@ -44,14 +58,15 @@ $('.confirmar').on('click',function (e) {
 $('#registrar_antecedente_personal_uno').submit(function(e)
 {
   e.preventDefault();
-    var url='/antecedentes/crear';
+    //var url=url_;
 
-  $.post(url,$(this).serialize(),function (result) {
+  $.post(url_,$(this).serialize(),function (result) {
 
   }).success(function(data)
   {
+    console.log(data.mensaje);
       if($.isEmptyObject(data.error)){
-        console.log(data);
+
 
         $('#modal-exito').modal({
              backdrop: 'static',

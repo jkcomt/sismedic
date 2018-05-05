@@ -11,15 +11,17 @@ class AntecendeDosPersonal extends Model
 
   protected $fillable=[
     'tuberculosis',
+    'tuberculosis_anio_dx',
     'tuberculosis_meses_tratamiento',
-    'hepatitis',
+    'hepatitis' ,
     'hepatitis_descripcion',
     'hepatitis_edad',
-    'tifoidea',
+    'tifoidea' ,
     'tifoidea_ano_dx',
-    'tifoidea_brucelosis',
-    'tifoidea_ulcera_peptica',
-    'convulsiones',
+    'brucelosis',
+    'brucelosis_anio_dx',
+    'ulcera_hepatica',
+    'convulsiones' ,
     'convulsiones_descripcion',
     'convulsiones_ano_dx',
     'convulsiones_tratamiento_actual',
@@ -53,16 +55,16 @@ class AntecendeDosPersonal extends Model
     'its_descripcion',
     'its_ano_dx',
     'its_tratamiento_actual',
-    'otros',
-    'otros_descripcion',
+    'otros_sintomas',
+    'otros_sintomas_descripcion',
     'sintomatologia_6_meses',
     'fecha_registro',
-    'cita_id ',
-    'estado'
+    'paciente_id',
+    'estado',
   ];
-  public function cita()
+  public function paciente()
   {
-    return $this->belongsTo(Cita::class);
+    return $this->belongsTo(Paciente::class);
   }
 
       public $timestamps = false;

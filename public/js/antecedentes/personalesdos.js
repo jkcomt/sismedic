@@ -6,37 +6,57 @@ $(function(){
 console.log("personados");
 
 
+var url_='';
+$("#cbotuberculosis").change(function(){
+          alert($(this).val());
+});
+
 $('body').on('click','.conformidadapdos',function(e){
     e.preventDefault();
     console.log('click')
     $tipo = $(this).attr('tipo');
+    console.log($tipo);
   //  alert($tipo);
-    if($tipo == "registrar")
+    if($tipo == "registrardos")
     {
       $('.confirmar').attr('estado','conforme')
       $('#modal-confirmacion .modal-body').html('<h3 class="text-warning text-center">Registrar Antecedentes Seccion <br>Personal Dos</h3>')
-      $('.confirmar').attr('estado','conformedos')
+      $('.confirmar').attr('estado','conforme')
       $('.confirmar').removeClass('btn-danger')
       $('.confirmar').addClass('btn-success')
       $('#modal-confirmacion').modal('show')
     }
+     else if($tipo == "actualizardos")
+      {
+
+        $('.confirmar').attr('estado','conforme')
+        $('#modal-confirmacion .modal-body').html('<h3 class="text-warning text-center">Actualizar Antecedentes Seccion <br>Personal Dos</h3>')
+        $('.confirmar').attr('estado','conforme')
+        $('.confirmar').removeClass('btn-danger')
+        $('.confirmar').addClass('btn-success')
+        $('#modal-confirmacion').modal('show')
+      }
 
 });
 
 $('.confirmar').on('click',function (e) {
     e.preventDefault();
+  //     alert("actualizar");
     $estado = $(this).attr('estado')
-    //console.log($estado);
+//
     var token = $('input[name=_token]').attr('value')
 
     if($estado == 'eliminar'){
 
-    }else if($estado == 'conformedos'){
-        if($tipo == "registrar"){
+    }else if($estado == 'conforme'){
+        if($tipo == "registrardos"){
+          url_='/antecedentes/dos/crear';
             $('#registrar_antecedente_personal_dos').submit();
       //    console.log("REGISTRANDO ANTECEDENTE PACIENTE 1");
-        }else if($tipo == "actualizar"){
+    }else if($tipo == "actualizardos"){
+          url_='/antecedentes/dos/actualizar';
             $('#registrar_antecedente_personal_dos').submit();
+
         }
     }
 });
@@ -44,12 +64,13 @@ $('.confirmar').on('click',function (e) {
 $('#registrar_antecedente_personal_dos').submit(function(e)
 {
   e.preventDefault();
-    var url='/antecedentes/dos/crear';
 
-  $.post(url,$(this).serialize(),function (result) {
+
+  $.post(url_,$(this).serialize(),function (result) {
 
   }).success(function(data)
   {
+    console.log(data);
       if($.isEmptyObject(data.error)){
         $('#modal-exito').modal({
              backdrop: 'static',

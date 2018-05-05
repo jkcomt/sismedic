@@ -308,6 +308,11 @@ Route::group([
   Route::get('/{idpaciente}/principal','AntecedentePersonalController@principal')->name('antecedentes.principal');
   Route::post('/crear','AntecedentePersonalController@store')->name('antecedentes.create');
   Route::post('/dos/crear','AntecendeDosPersonalController@store')->name('antecedentesdos.create');
+  Route::post('/tres/crear','AntecedentesOcularesController@store')->name('antecedentes.tres.create');
+
+  Route::post('/uno/actualizar','AntecedentePersonalController@update')->name('antecedentes.uno.actualizar');
+  Route::post('/dos/actualizar','AntecendeDosPersonalController@update')->name('antecedentes.dos.actualizar');
+  Route::post('/tres/actualizar','AntecedentesOcularesController@update')->name('antecedentes.tres.actualizar');
 });
 
 Route::resource('colesterol_hdl','ColesterolHdlController');
