@@ -99,9 +99,14 @@
                                   disabled
                                 @endisset
                                class="form-control" id="cbohipertensionarterial" name="cbohipertensionarterial">
+                                @isset($paciente->antecedentesFamiliares->hipertension_arterial)
+                                  <option value="Primer Grado"  @if($paciente->antecedentesFamiliares->hipertension_arterial_parentesco_uno == "Primer Grado") selected @else  @endif>Primer Grado</option>
+                                  <option value="Segundo Grado"  @if($paciente->antecedentesFamiliares->hipertension_arterial_parentesco_uno == "Segundo Grado") selected @else  @endif>Segundo Grado</option>
+                                @else
+                                  <option value="Primer Grado">Primer Grado</option>
+                                  <option value="Segundo Grado">Segundo Grado</option>
+                                @endisset
 
-                                <option value="Primer Grado"  @if($paciente->antecedentesFamiliares->hipertension_arterial_parentesco_uno == "Primer Grado") selected @else  @endif>Primer Grado</option>
-                                <option value="Segundo Grado"  @if($paciente->antecedentesFamiliares->hipertension_arterial_parentesco_uno == "Segundo Grado") selected @else  @endif>Segundo Grado</option>
 
                               </select>
                           </div>
@@ -115,9 +120,13 @@
                                   disabled
                                 @endisset
                                class="form-control"  id="cbodoshipertensionarterial" name="cbodoshipertensionarterial">
-
-                                <option value="Primer Grado" @if($paciente->antecedentesFamiliares->hipertension_arterial_parentesco_dos == "Primer Grado") selected @else  @endif>Primer Grado</option>
-                                <option value="Segundo Grado" @if($paciente->antecedentesFamiliares->hipertension_arterial_parentesco_dos == "Segundo Grado") selected @else  @endif>Segundo Grado</option>
+                               @isset($paciente->antecedentesFamiliares->hipertension_arterial)
+                                 <option value="Primer Grado" @if($paciente->antecedentesFamiliares->hipertension_arterial_parentesco_dos == "Primer Grado") selected @else  @endif>Primer Grado</option>
+                                 <option value="Segundo Grado" @if($paciente->antecedentesFamiliares->hipertension_arterial_parentesco_dos == "Segundo Grado") selected @else  @endif>Segundo Grado</option>
+                               @else
+                                 <option value="Primer Grado" >Primer Grado</option>
+                                 <option value="Segundo Grado">Segundo Grado</option>
+                               @endisset
 
                               </select>
                           </div>
@@ -144,9 +153,13 @@
                                   @else
                                     disabled
                                   @endisset class="form-control"  id="cboenfermedadcardiovascular" name="cboenfermedadcardiovascular">
-
-                                <option value="Primer Grado" @if($paciente->antecedentesFamiliares->enfermedad_cardiovascular_parentesco_uno == "Primer Grado") selected @else  @endif>Primer Grado</option>
-                                <option value="Segundo Grado" @if($paciente->antecedentesFamiliares->enfermedad_cardiovascular_parentesco_uno == "Segundo Grado") selected @else  @endif>Segundo Grado</option>
+                                @isset($paciente->antecedentesFamiliares->enfermedad_cardiovascular)
+                                  <option value="Primer Grado" @if($paciente->antecedentesFamiliares->enfermedad_cardiovascular_parentesco_uno == "Primer Grado") selected @else  @endif>Primer Grado</option>
+                                  <option value="Segundo Grado" @if($paciente->antecedentesFamiliares->enfermedad_cardiovascular_parentesco_uno == "Segundo Grado") selected @else  @endif>Segundo Grado</option>
+                                @else
+                                  <option value="Primer Grado" >Primer Grado</option>
+                                  <option value="Segundo Grado" >Segundo Grado</option>
+                                @endif
 
                               </select>
                           </div>
@@ -159,8 +172,13 @@
                                   @else
                                     disabled
                                   @endisset class="form-control" id="cbodosenfermedadcardiovascular" name="cbodosenfermedadcardiovascular">
+                                  @isset($paciente->antecedentesFamiliares->enfermedad_cardiovascular)
                                 <option value="Primer Grado" @if($paciente->antecedentesFamiliares->enfermedad_cardiovascular_parentesco_dos == "Primer Grado") selected @else  @endif >Primer Grado</option>
                                 <option value="Segundo Grado" @if($paciente->antecedentesFamiliares->enfermedad_cardiovascular_parentesco_dos == "Segundo Grado") selected @else  @endif >Segundo Grado</option>
+                                @else
+                                  <option value="Primer Grado" >Primer Grado</option>
+                                  <option value="Segundo Grado" >Segundo Grado</option>
+                                @endif
                               </select>
                           </div>
                         </div>
@@ -187,8 +205,13 @@
                                   @else
                                     disabled
                                   @endisset  class="form-control" id="cboinsuficienciavenosa" name="cboinsuficienciavenosa">
+                                  @isset($paciente->antecedentesFamiliares->insuficiencia_venosa)
                                 <option value="Primer Grado"  @if($paciente->antecedentesFamiliares->insuficiencia_venosa_parentesco_uno == "Primer Grado") selected @else  @endif >Primer Grado</option>
                                 <option value="Segundo Grado" @if($paciente->antecedentesFamiliares->insuficiencia_venosa_parentesco_uno == "Segundo Grado") selected @else  @endif >Segundo Grado</option>
+                                @else
+                                  <option value="Primer Grado" >Primer Grado</option>
+                                  <option value="Segundo Grado" >Segundo Grado</option>
+                                @endif
                               </select>
                           </div>
                         </div>
@@ -200,8 +223,13 @@
                                   @else
                                     disabled
                                   @endisset  class="form-control" id="cbodosinsuficienciavenosa" name="cbodosinsuficienciavenosa">
+                                    @isset($paciente->antecedentesFamiliares->insuficiencia_venosa)
                                 <option value="Primer Grado" @if($paciente->antecedentesFamiliares->insuficiencia_venosa_parentesco_dos == "Primer Grado") selected @else  @endif  >Primer Grado</option>
                                 <option value="Segundo Grado" @if($paciente->antecedentesFamiliares->insuficiencia_venosa_parentesco_dos == "Segundo Grado") selected @else  @endif >Segundo Grado</option>
+                                @else
+                                  <option value="Primer Grado" >Primer Grado</option>
+                                  <option value="Segundo Grado" >Segundo Grado</option>
+                                @endif
                               </select>
                           </div>
                         </div>
@@ -227,8 +255,13 @@
                                     @else
                                       disabled
                                     @endisset  class="form-control" id="cbodislipidemia" name="cbodislipidemia">
+                                    @isset($paciente->antecedentesFamiliares->dislipidemia)
                                 <option value="Primer Grado"  @if($paciente->antecedentesFamiliares->dislipidemia_parentesco_uno == "Primer Grado") selected @else  @endif  >Primer Grado</option>
                                 <option value="Segundo Grado"  @if($paciente->antecedentesFamiliares->dislipidemia_parentesco_uno == "Segundo Grado") selected @else  @endif   >Segundo Grado</option>
+                                @else
+                                  <option value="Primer Grado" >Primer Grado</option>
+                                  <option value="Segundo Grado" >Segundo Grado</option>
+                                @endif
                               </select>
                           </div>
                         </div>
@@ -240,8 +273,13 @@
                                     @else
                                       disabled
                                     @endisset class="form-control" id="cbodosdislipidemia" name="cbodosdislipidemia">
+                                    @isset($paciente->antecedentesFamiliares->dislipidemia)
                                 <option value="Primer Grado"  @if($paciente->antecedentesFamiliares->dislipidemia_parentesco_dos == "Primer Grado") selected @else  @endif  >Primer Grado</option>
                                 <option value="Segundo Grado"  @if($paciente->antecedentesFamiliares->dislipidemia_parentesco_dos == "Segundo Grado") selected @else  @endif  >Segundo Grado</option>
+                                @else
+                                  <option value="Primer Grado" >Primer Grado</option>
+                                  <option value="Segundo Grado" >Segundo Grado</option>
+                                @endif
                               </select>
                           </div>
                         </div>
@@ -266,8 +304,13 @@
                                         @else
                                           disabled
                                         @endisset class="form-control"  id="cbodiabetesmelitus" name="cbodiabetesmelitus">
+                                  @isset($paciente->antecedentesFamiliares->diabetes_melitus)
                                 <option value="Primer Grado" @if($paciente->antecedentesFamiliares->diabetes_melitus_parentesco_uno == "Primer Grado") selected @else  @endif >Primer Grado</option>
                                 <option value="Segundo Grado"@if($paciente->antecedentesFamiliares->diabetes_melitus_parentesco_uno == "Segundo Grado") selected @else  @endif >Segundo Grado</option>
+                                @else
+                                  <option value="Primer Grado" >Primer Grado</option>
+                                  <option value="Segundo Grado" >Segundo Grado</option>
+                                @endif
                               </select>
                           </div>
                         </div>
@@ -278,8 +321,13 @@
                                         @else
                                           disabled
                                         @endisset class="form-control"   id="cbodosdiabetesmelitus" name="cbodosdiabetesmelitus">
+                                  @isset($paciente->antecedentesFamiliares->diabetes_melitus)
                                 <option value="Primer Grado"  @if($paciente->antecedentesFamiliares->diabetes_melitus_parentesco_dos == "Primer Grado") selected @else  @endif >Primer Grado</option>
                                 <option value="Segundo Grado" @if($paciente->antecedentesFamiliares->diabetes_melitus_parentesco_dos == "Segundo Grado") selected @else  @endif>Segundo Grado</option>
+                                @else
+                                  <option value="Primer Grado" >Primer Grado</option>
+                                  <option value="Segundo Grado" >Segundo Grado</option>
+                                @endif
                               </select>
                           </div>
                         </div>
@@ -304,8 +352,15 @@
                                         @else
                                           disabled
                                         @endisset class="form-control" id="cboglaucoma" name="cboglaucoma">
+                                        @isset($paciente->antecedentesFamiliares->glaucoma)
                                 <option value="Primer Grado"  @if($paciente->antecedentesFamiliares->glaucoma_parentesco_uno == "Primer Grado") selected @else  @endif >Primer Grado</option>
                                 <option value="Segundo Grado" @if($paciente->antecedentesFamiliares->glaucoma_parentesco_uno == "Segundo Grado") selected @else  @endif >Segundo Grado</option>
+
+                                @else
+                                  <option value="Primer Grado" >Primer Grado</option>
+                                  <option value="Segundo Grado" >Segundo Grado</option>
+                                @endif
+
                               </select>
                           </div>
                         </div>
@@ -316,8 +371,13 @@
                                         @else
                                           disabled
                                         @endisset class="form-control" id="cbodosglaucoma" name="cbodosglaucoma">
+                                    @isset($paciente->antecedentesFamiliares->glaucoma)
                                 <option value="Primer Grado" @if($paciente->antecedentesFamiliares->glaucoma_parentesco_dos == "Primer Grado") selected @else  @endif  >Primer Grado</option>
                                 <option value="Segundo Grado" @if($paciente->antecedentesFamiliares->glaucoma_parentesco_dos == "Segundo Grado") selected @else  @endif >Segundo Grado</option>
+                                @else
+                                  <option value="Primer Grado" >Primer Grado</option>
+                                  <option value="Segundo Grado" >Segundo Grado</option>
+                                @endif
                               </select>
                           </div>
                         </div>
@@ -360,8 +420,13 @@
                                           @else
                                             disabled
                                           @endisset  class="form-control"  id="cbocataratas" name="cbocataratas" >
+                                          @isset($paciente->antecedentesFamiliares->cataratas)
                                   <option value="Primer Grado" @if($paciente->antecedentesFamiliares->cataratas_parentesco_uno == "Primer Grado") selected @else  @endif  >Primer Grado</option>
                                   <option value="Segundo Grado" @if($paciente->antecedentesFamiliares->cataratas_parentesco_uno == "Segundo Grado") selected @else  @endif >Segundo Grado</option>
+                                  @else
+                                    <option value="Primer Grado" >Primer Grado</option>
+                                    <option value="Segundo Grado" >Segundo Grado</option>
+                                  @endif
                                 </select>
                             </div>
                           </div>
@@ -372,8 +437,13 @@
                                           @else
                                             disabled
                                           @endisset  class="form-control" id="cbodoscataratas" name="cbodoscataratas">
+                                  @isset($paciente->antecedentesFamiliares->cataratas)
                                   <option value="Primer Grado"  @if($paciente->antecedentesFamiliares->cataratas_parentesco_dos == "Primer Grado") selected @else  @endif >Primer Grado</option>
                                   <option value="Segundo Grado" @if($paciente->antecedentesFamiliares->cataratas_parentesco_dos == "Segundo Grado") selected @else  @endif >Segundo Grado</option>
+                                  @else
+                                    <option value="Primer Grado" >Primer Grado</option>
+                                    <option value="Segundo Grado" >Segundo Grado</option>
+                                  @endif
                                 </select>
                             </div>
                           </div>
@@ -399,8 +469,13 @@
                                           @else
                                             disabled
                                           @endisset  class="form-control"  id="cbocancerginecologico" name="cbocancerginecologico" >
+                                  @isset($paciente->antecedentesFamiliares->cancer_ginecologico)
                                   <option value="Primer Grado" @if($paciente->antecedentesFamiliares->cancer_ginecologico_parentesco_uno == "Primer Grado") selected @else  @endif  >Primer Grado</option>
                                   <option value="Segundo Grado" @if($paciente->antecedentesFamiliares->cancer_ginecologico_parentesco_uno == "Segundo Grado") selected @else  @endif >Segundo Grado</option>
+                                  @else
+                                    <option value="Primer Grado" >Primer Grado</option>
+                                    <option value="Segundo Grado" >Segundo Grado</option>
+                                  @endif
                                 </select>
                             </div>
                           </div>
@@ -411,8 +486,13 @@
                                           @else
                                             disabled
                                           @endisset  class="form-control" id="cbodoscancerginecologico" name="cbodoscancerginecologico">
+                                  @isset($paciente->antecedentesFamiliares->cancer_ginecologico)
                                   <option value="Primer Grado" @if($paciente->antecedentesFamiliares->cancer_ginecologico_parentesco_dos == "Primer Grado") selected @else  @endif >Primer Grado</option>
                                   <option value="Segundo Grado"  @if($paciente->antecedentesFamiliares->cancer_ginecologico_parentesco_dos == "Segundo Grado") selected @else  @endif >Segundo Grado</option>
+                                  @else
+                                    <option value="Primer Grado" >Primer Grado</option>
+                                    <option value="Segundo Grado" >Segundo Grado</option>
+                                  @endif
                                 </select>
                             </div>
                           </div>
@@ -445,8 +525,13 @@
                                           @else
                                             disabled
                                           @endisset class="form-control" id="cbocanercolon" name="cbocancercolon">
+                                          @isset($paciente->antecedentesFamiliares->cancer_colon)
                                   <option value="Primer Grado"  @if($paciente->antecedentesFamiliares->cancer_colon_parentesco_uno == "Primer Grado") selected @else  @endif >Primer Grado</option>
                                   <option value="Segundo Grado"  @if($paciente->antecedentesFamiliares->cancer_colon_parentesco_uno == "Segundo Grado") selected @else  @endif >Segundo Grado</option>
+                                  @else
+                                    <option value="Primer Grado" >Primer Grado</option>
+                                    <option value="Segundo Grado" >Segundo Grado</option>
+                                  @endif
                                 </select>
                             </div>
                           </div>
@@ -457,8 +542,13 @@
                                           @else
                                             disabled
                                           @endisset class="form-control" id="cbodoscanercolon" name="cbodoscancercolon">
+                                          @isset($paciente->antecedentesFamiliares->cancer_colon)
                                   <option value="Primer Grado" @if($paciente->antecedentesFamiliares->cancer_colon_parentesco_dos == "Primer Grado") selected @else  @endif >Primer Grado</option>
                                   <option value="Segundo Grado" @if($paciente->antecedentesFamiliares->cancer_colon_parentesco_dos == "Segundo Grado") selected @else  @endif >Segundo Grado</option>
+                                  @else
+                                    <option value="Primer Grado" >Primer Grado</option>
+                                    <option value="Segundo Grado" >Segundo Grado</option>
+                                  @endif
                                 </select>
                             </div>
                           </div>
@@ -468,7 +558,7 @@
                           <div class="col-md-3">
                             <div class="input-group">
                               <span class="input-group-addon ">
-                                  <input type="checkbox"  value="1" @if($paciente->antecedentesFamiliares->otros_formas_cancer) checked @endif   aria-label="" id="famotroscancer" name="famotroscancer">
+                                  <input type="checkbox"  value="1" @isset($paciente->antecedentesFamiliares->otros_formas_cancer) checked @endisset    aria-label="" id="famotroscancer" name="famotroscancer">
                               </span>
                               <span class="span-width input-group-addon" style="padding-top:8px;padding-bottom:9px;">Otras Formas de Cancer</span>
                                   {{-- <span class="span-width input-group-addon" style="padding-top:8px;padding-bottom:9px;">Indique el Año</span>
@@ -482,9 +572,13 @@
                                           @else
                                             disabled
                                           @endisset  class="form-control" id="cbootroscancer" name="cbootroscancer">
+                                          @isset($paciente->antecedentesFamiliares->otros_formas_cancer)
                                   <option value="Primer Grado" @if($paciente->antecedentesFamiliares->otros_formas_cancer_parentesco_uno == "Primer Grado") selected @else  @endif >Primer Grado</option>
                                   <option value="Segundo Grado" @if($paciente->antecedentesFamiliares->otros_formas_cancer_parentesco_uno == "Segundo Grado") selected @else  @endif >Segundo Grado</option>
-
+                                  @else
+                                    <option value="Primer Grado" >Primer Grado</option>
+                                    <option value="Segundo Grado" >Segundo Grado</option>
+                                  @endif
                               </select>
                             </div>
                           </div>
@@ -495,9 +589,13 @@
                                           @else
                                             disabled
                                           @endisset  class="form-control" id="cbodosotroscancer" name="cbodosotroscancer">
+                                    @isset($paciente->antecedentesFamiliares->otros_formas_cancer)
                                   <option value="Primer Grado" @if($paciente->antecedentesFamiliares->otros_formas_cancer_parentesco_dos == "Primer Grado") selected @else  @endif >Primer Grado</option>
                                   <option value="Segundo Grado" @if($paciente->antecedentesFamiliares->otros_formas_cancer_parentesco_dos == "Segundo Grado") selected @else  @endif >Segundo Grado</option>
-
+                                  @else
+                                    <option value="Primer Grado" >Primer Grado</option>
+                                    <option value="Segundo Grado" >Segundo Grado</option>
+                                  @endif
                                 </select>
                             </div>
                           </div>
@@ -526,8 +624,13 @@
                                           @else
                                             disabled
                                           @endisset  class="form-control" id="cboepilepsia" name="cboepilepsia" >
+                                  @isset($paciente->antecedentesFamiliares->epilepsia)
                                   <option value="Primer Grado" @if($paciente->antecedentesFamiliares->epilepsia_parentesco_uno == "Primer Grado") selected @else  @endif >Primer Grado</option>
                                   <option value="Segundo Grado" @if($paciente->antecedentesFamiliares->epilepsia_parentesco_uno == "Segundo Grado") selected @else  @endif >Segundo Grado</option>
+                                  @else
+                                    <option value="Primer Grado" >Primer Grado</option>
+                                    <option value="Segundo Grado" >Segundo Grado</option>
+                                  @endif
                                 </select>
                             </div>
                           </div>
@@ -538,8 +641,13 @@
                                           @else
                                             disabled
                                           @endisset  class="form-control" id="cbodosepilepsia" name="cbodosepilepsia">
+                                  @isset($paciente->antecedentesFamiliares->epilepsia)
                                   <option value="Primer Grado"  @if($paciente->antecedentesFamiliares->epilepsia_parentesco_dos == "Primer Grado") selected @else  @endif >Primer Grado</option>
                                   <option value="Segundo Grado"  @if($paciente->antecedentesFamiliares->epilepsia_parentesco_dos == "Segundo Grado") selected @else  @endif >Segundo Grado</option>
+                                  @else
+                                    <option value="Primer Grado" >Primer Grado</option>
+                                    <option value="Segundo Grado" >Segundo Grado</option>
+                                  @endif
                                 </select>
                             </div>
                           </div>
@@ -564,8 +672,13 @@
                                           @else
                                             disabled
                                           @endisset  class="form-control"  id="cboasma" name="cboasma">
+                                  @isset($paciente->antecedentesFamiliares->asma)
                                   <option value="Primer Grado"  @if($paciente->antecedentesFamiliares->asma_parentesco_uno == "Primer Grado") selected @else  @endif >Primer Grado</option>
                                   <option value="Segundo Grado"  @if($paciente->antecedentesFamiliares->asma_parentesco_uno == "Segundo Grado") selected @else  @endif >Segundo Grado</option>
+                                  @else
+                                    <option value="Primer Grado" >Primer Grado</option>
+                                    <option value="Segundo Grado" >Segundo Grado</option>
+                                  @endif
                                 </select>
                             </div>
                           </div>
@@ -576,8 +689,13 @@
                                           @else
                                             disabled
                                           @endisset  class="form-control"  id="cbodosasma" name="cbodosasma">
+                                          @isset($paciente->antecedentesFamiliares->asma)
                                   <option value="Primer Grado"  @if($paciente->antecedentesFamiliares->asma_parentesco_dos == "Primer Grado") selected @else  @endif >Primer Grado</option>
                                   <option value="Segundo Grado"  @if($paciente->antecedentesFamiliares->asma_parentesco_dos == "Segundo Grado") selected @else  @endif >Segundo Grado</option>
+                                  @else
+                                    <option value="Primer Grado" >Primer Grado</option>
+                                    <option value="Segundo Grado" >Segundo Grado</option>
+                                  @endif
                                 </select>
                             </div>
                           </div>
