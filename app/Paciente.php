@@ -173,5 +173,28 @@ class Paciente extends Model
     {
         return $this->hasOne(AntecedentesOculares::class);
     }
+    public function antecedentesOrl()
+    {
+        return $this->hasOne(AntecedentesORL::class);
+    }
+    public function antecedentesNeumologicos()
+    {
+        return $this->hasOne(AntecedentesNeumologicos::class);
+    }
+    public function antecedentesGinecologicos()
+    {
+        return $this->hasOne(AntecedentesGinecologicos::class);
+    }
+
+    public function antecedentesQuirurgicos()
+    {
+        return $this->hasOne(AntecedentesQuirurgicos::class);
+    }
+
+    public function antecedentesFamiliares()
+    {
+        return $this->hasOne(AntecedentesFamiliares::class);
+    }
+
 
 }

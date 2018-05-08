@@ -98,7 +98,53 @@
                       <div class="row form-group">
                         <div class="col-md-12">
                           <h5>Riesgos Ocupacionales</h5>
-                          <textarea name="name" style="resize:none;" rows="8" class="form-control" cols="50"></textarea>
+                              <div class="" style="overflow:scroll;">
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox"> Ninguno
+                                    </label>
+                                  </div>
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox"> Ruido
+                                    </label>
+                                  </div>
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox"> Vibracion
+                                    </label>
+                                  </div>
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox"> Iluminacion
+                                    </label>
+                                  </div>
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox"> Temperatura
+                                    </label>
+                                  </div>
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox"> Ruido
+                                    </label>
+                                  </div>
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox"> Vibracion
+                                    </label>
+                                  </div>
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox"> Iluminacion
+                                    </label>
+                                  </div>
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox"> Temperatura
+                                    </label>
+                                  </div>
+                              </div>
                           </div>
                       </div>
 
@@ -139,7 +185,7 @@
     </div>
 
   <div class="row form-group">
-<hr>
+{{-- <hr>
     <table class="table">
 
       <thead>
@@ -180,7 +226,7 @@
           </tr>
       </tbody>
 
-    </table>
+    </table> --}}
 
   </div>
 

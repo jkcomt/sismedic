@@ -43,7 +43,7 @@
                 </div>
                 <div class="col-md-3">
                   <div class="input-group">
-                    <span class="span-width input-group-addon">Año Dx</span>
+                    <span  class="span-width input-group-addon">Año Dx</span>
                     <input type="text" class="form-control" aria-label="..." name="txttuberculosis" id="txttuberculosis"  @isset($paciente->antecendeDosPersonal->tuberculosis_anio_dx)  value="{{$paciente->antecendeDosPersonal->tuberculosis_anio_dx}}" @else readonly @endisset >
                   </div>
                 </div>
@@ -52,9 +52,16 @@
                   <div class="input-group ">
 
                     <span class="input-group-addon span-width">Tiempo Tratamiento en meses</span>
-                    <select class="form-control"    name="cbotuberculosis" id="cbotuberculosis">
-                        <option value="1">OPTION 1</option>
-
+                    <select
+                    @isset($paciente->antecendeDosPersonal->tuberculosis)
+                        @else
+                          disabled
+                        @endisset  class="form-control"    name="cbotuberculosis" id="cbotuberculosis">
+                          @isset($paciente->antecendeDosPersonal->tuberculosis)
+                        <option value="1" @if($paciente->antecendeDosPersonal->tuberculosis_meses_tratamiento == "1") selected @else  @endif >OPTION 1</option>
+                        @else
+                          <option value="1">OPTION 1</option>
+                          @endisset
                       </select>
                   </div>
                 </div>
@@ -72,9 +79,16 @@
                 </div>
 
                 <div class="col-md-5">
-                      <select class="form-control" name="cbohepatitis"   id="cbohepatitis" @isset($paciente->antecendeDosPersonal->hepatitis) @else disabled  @endisset   >
-                          <option value="2">NADA</option>
-                        </select>
+                      <select   @isset($paciente->antecendeDosPersonal->hepatitis)
+                            @else
+                              disabled
+                            @endisset  class="form-control" name="cbohepatitis"   id="cbohepatitis">
+                            @isset($paciente->antecendeDosPersonal->hepatitis)
+                          <option value="2" @if($paciente->antecendeDosPersonal->hepatitis_descripcion == "2") selected @else  @endif >NADA</option>
+                          @else
+                            <option value="2">NADA</option>
+                              @endisset
+                      </select>
 
                 </div>
 
@@ -261,8 +275,17 @@
                         <div class="input-group ">
 
                           <span class="input-group-addon span-width">Lado</span>
-                          <select class="form-control" name="cboherniainguinal" id="cboherniainguinal" >
-                              <option value="1">OPTION</option>
+                          <select  @isset($paciente->antecendeDosPersonal->hernia_inguinal)
+                                @else
+                                  disabled
+                                @endisset  class="form-control" name="cboherniainguinal" id="cboherniainguinal" >
+                                @isset($paciente->antecendeDosPersonal->hernia_inguinal)
+                                  <option value="1" @if($paciente->antecendeDosPersonal->hernia_inguinal_lado == "1") selected @else  @endif >OPTION</option>
+
+                                @else
+                                  <option value="1">OPTION</option>
+
+                                @endisset
                             </select>
                         </div>
                       </div>
@@ -307,9 +330,18 @@
                         <div class="input-group ">
 
                           <span class="input-group-addon span-width">Lado</span>
-                          <select class="form-control"    id="cbolumbalgia" name="cbolumbalgia">
-                              <option value="2">OPTION</option>
-                            </select>
+                          <select   @isset($paciente->antecendeDosPersonal->lumbalgia)
+                                @else
+                                  disabled
+                                @endisset  class="form-control"    id="cbolumbalgia" name="cbolumbalgia">
+                                @isset($paciente->antecendeDosPersonal->lumbalgia)
+                                  <option value="2" @if($paciente->antecendeDosPersonal->lumbalgia_lado == "2") selected @else  @endif >OPTION</option>
+
+                                @else
+                                  <option value="2"  >OPTION</option>
+
+                                @endisset
+                          </select>
                         </div>
                       </div>
                       <div class="col-md-2">

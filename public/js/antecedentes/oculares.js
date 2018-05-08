@@ -4,11 +4,7 @@ $(function(){
 });
 // console.log("OCULARES.JS");
 
-
-
-
 var urls_='';
-
 
 $('body').on('click','.conformidadtres',function(e){
     e.preventDefault();
@@ -63,7 +59,6 @@ $('.confirmar').on('click',function (e) {
 $('#registrar_antecedente_personal_tres').submit(function(e)
 {
   e.preventDefault();
-console.log($(this).serialize());
 
   $.post(urls_,$(this).serialize(),function (result) {
 
@@ -97,15 +92,6 @@ console.log($(this).serialize());
       });
 
 });
-
-
-
-
-
-
-
-
-
 
 $('#glaucoma').on('change',function(e){
 

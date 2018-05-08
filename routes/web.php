@@ -309,10 +309,22 @@ Route::group([
   Route::post('/crear','AntecedentePersonalController@store')->name('antecedentes.create');
   Route::post('/dos/crear','AntecendeDosPersonalController@store')->name('antecedentesdos.create');
   Route::post('/tres/crear','AntecedentesOcularesController@store')->name('antecedentes.tres.create');
+  Route::post('/orl/crear','AntecedentesORLController@store')->name('antecedentes.orl.create');
+  Route::post('/neumologicos/crear','AntecedentesNeumologicosController@store')->name('antecedentes.neumologicos.create');
+  Route::post('/ginecologicos/crear','AntecedentesGinecologicosController@store')->name('antecedentes.ginecologicos.create');
+  Route::post('/quirurgicos/crear','AntecedentesQuirurgicosController@store')->name('antecedentes.quirurgicos.create');
+  Route::post('/familiares/crear','AntecedentesFamiliaresController@store')->name('antecedentes.familiares.create');
+
 
   Route::post('/uno/actualizar','AntecedentePersonalController@update')->name('antecedentes.uno.actualizar');
   Route::post('/dos/actualizar','AntecendeDosPersonalController@update')->name('antecedentes.dos.actualizar');
   Route::post('/tres/actualizar','AntecedentesOcularesController@update')->name('antecedentes.tres.actualizar');
+  Route::post('/orl/actualizar','AntecedentesORLController@update')->name('antecedentes.orl.actualizar');
+  Route::post('/neumologicos/actualizar','AntecedentesNeumologicosController@update')->name('antecedentes.neumologicos.actualizar');
+  Route::post('/ginecologicos/actualizar','AntecedentesGinecologicosController@update')->name('antecedentes.ginecologicos.actualizar');
+  Route::post('/quirurgicos/actualizar','AntecedentesQuirurgicosController@update')->name('antecedentes.quirurgicos.actualizar');
+  Route::post('/familiares/actualizar','AntecedentesFamiliaresController@update')->name('antecedentes.familiares.actualizar');
+
 });
 
 Route::resource('colesterol_hdl','ColesterolHdlController');
