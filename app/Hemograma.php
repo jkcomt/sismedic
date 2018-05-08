@@ -25,4 +25,12 @@ class Hemograma extends Model
     ];
 
     public $timestamps = false;
+
+    public function cita(){
+        return $this->belongsTo(Cita::class);
+    }
+
+    public function listaExamen(){
+        return $this->belongsTo(ListaExamen::class);
+    }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Electrocardiograma;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class ElectrocardiogramaController extends Controller
 {
@@ -35,7 +36,43 @@ class ElectrocardiogramaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if(request()->ajax()) {
+            $data = request()->validate([
+                'cboritmo'=>'nullable',
+                'frecuencia_cardiaca'=>'nullable',
+                'eje_qrs'=>'nullable',
+                'eje_qrs_dos'=>'nullable',
+                'onda_p'=>'nullable',
+                'intervalo'=>'nullable',
+                'segmento_qrs'=>'nullable',
+                'qt_corregido'=>'nullable',
+                'isquemia'=>'nullable',
+                'hipertrofias'=>'nullable',
+                'otros_hallazgos'=>'nullable',
+                'lista_examen_id'=>'required',
+                'cita_id'=>'required'
+            ]);
+
+            $electrocardiograma = Electrocardiograma::create([
+                'ritmo'=>$data['cboritmo'],
+                'frecuencia_cardiaca'=>$data['frecuencia_cardiaca'],
+                'eje_qrs'=>$data['eje_qrs'],
+                'eje_qrs_dos'=>$data['eje_qrs_dos'],
+                'onda_p'=>$data['onda_p'],
+                'intervalo'=>$data['intervalo'],
+                'segmento_qrs'=>$data['segmento_qrs'],
+                'qt_corregido'=>$data['qt_corregido'],
+                'isquemia'=>$data['isquemia'],
+                'hipertrofias'=>$data['hipertrofias'],
+                'otros_hallazgos'=>$data['otros_hallazgos'],
+                'fecha_registro'=>Carbon::now(),
+                'lista_examen_id'=>$data['lista_examen_id'],
+                'cita_id'=>$data['cita_id'],
+                'estado'=>true
+            ]);
+
+            return response()->json(['mensaje' => 'registro exitoso']);
+        }
     }
 
     /**

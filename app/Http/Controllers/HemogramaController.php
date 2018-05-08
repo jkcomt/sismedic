@@ -35,7 +35,41 @@ class HemogramaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if(request()->ajax()) {
+            $data = request()->validate([
+                'hemoglobina'=>'nullable',
+                'hematocrito'=>'nullable',
+                'leucocitos'=>'nullable',
+                'abastonados'=>'nullable',
+                'segmentados'=>'nullable',
+                'monocitos'=>'nullable',
+                'linfocitos'=>'nullable',
+                'eosinofilos'=>'nullable',
+                'basofilos'=>'nullable',
+                'conclusion'=>'nullable',
+                'lista_examen_id'=>'required',
+                'cita_id'=>'required'
+            ]);
+
+            $hemograma = Hemograma::create([
+                'hemoglobina'=>'',
+                'hematocrito'=>'',
+                'leucocitos'=>'',
+                'abastonados'=>'',
+                'segmentados'=>'',
+                'monocitos'=>'',
+                'linfocitos'=>'',
+                'eosinofilos'=>'',
+                'basofilos'=>'',
+                'conclusion_hemograma'=>'',
+                'fecha_registro'=>Carbon::now(),
+                'lista_examen_id'=>$data['lista_examen_id'],
+                'cita_id'=>$data['cita_id'],
+                'estado'=>true
+            ]);
+
+            return response()->json(['mensaje' => 'registro exitoso']);
+        }
     }
 
     /**
