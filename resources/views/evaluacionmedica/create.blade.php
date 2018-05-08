@@ -774,5 +774,8 @@
     <script src="{{asset('js/evaluacionmedica/examen/triglicerido.js')}}"></script>
     <script src="{{asset('js/evaluacionmedica/examen/gamma.js')}}"></script>
     <script src="{{asset('js/evaluacionmedica/examen/sifilis.js')}}"></script>
+    <script src="{{asset('js/evaluacionmedica/examen/anexo7ds.js')}}"></script>
+    <script src="{{asset('js/evaluacionmedica/examen/electrocardiograma.js')}}"></script>
+    <script src="{{asset('js/evaluacionmedica/examen/hemograma.js')}}"></script>
     {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>--}}
 @endsection

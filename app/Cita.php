@@ -141,4 +141,16 @@ class Cita extends Model
     public function sifilis(){
         return $this->hasOne(Sifilis::class);
     }
+    public function anexo7d(){
+        return $this->hasOne(Anexo7ds::class);
+    }
+
+    public function electrocardiograma(){
+        return $this->hasOne(Electrocardiograma::class);
+    }
+
+    public function hemograma(){
+        return $this->hasOne(Hemograma::class);
+    }
+
 }
