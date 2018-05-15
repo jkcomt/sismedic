@@ -2,7 +2,7 @@
     <div class="modal-dialog " role="document">
         <div class="modal-content">
             @include('evaluacionmedica.examenes.encabezado')
-            <form action="{{route('anexo7d.store')}}" id="registrarAnexo7d" method="post">
+            <form id="registrarAnexo7d">
                 <input type="hidden" name="lista_examen_id" value="{{$listaExamen->id}}">
                 <input type="hidden" name="cita_id" value="{{$cita->id}}">
             <div class="modal-body ">
@@ -10,6 +10,10 @@
 
                 <div class="row ">
                   <div class="col-md-8">
+
+                    @isset($cita->anexo7d->id)
+                      <input type="hidden" name="anexo7d_id" value="{{$cita->anexo7d->id}}">
+                    @endisset
 
                     <table class="table table-responsive table-hover box">
                       <thead>
@@ -19,74 +23,74 @@
                       <tbody class="">
                         <tr>
                             <td class=""> Anemia </td>
-                            <td class="" ><input type="checkbox" value="1" name="anemia"></td>
+                            <td class="" ><input type="checkbox" value="1" name="anemia" @isset($cita->anexo7d->anemia) checked @endisset ></td>
                         </tr>
                         <tr>
                           <td class="">Cirugia mayor reciente </td>
-                          <td class="" ><input type="checkbox" value="1" name="cirugia_mayor"></td>
+                          <td class="" ><input type="checkbox" value="1" name="cirugia_mayor" @isset($cita->anexo7d->cirugia_mayor) checked @endisset  ></td>
                         </tr>
                         <tr>
                           <td class="">Desórdenes de la coagulación, trombosis, etc </td>
-                          <td class="" ><input type="checkbox" value="1" name="desordenes_coagulacion"></td>
+                          <td class="" ><input type="checkbox" value="1" name="desordenes_coagulacion" @isset($cita->anexo7d->desordenes_coagulacion) checked @endisset ></td>
                         </tr>
                         <tr>
                           <td class=" "> Diabetes Mellitus </td>
-                          <td class="" ><input type="checkbox" value="1" name="diabetes_mellitus"></td>
+                          <td class="" ><input type="checkbox" value="1" name="diabetes_mellitus" @isset($cita->anexo7d->diabetes_mellitus) checked @endisset ></td>
                         </tr>
                         <tr>
                           <td class=" ">Hipertensión Arterial </td>
-                          <td class="" ><input type="checkbox" value="1" name="hipertension_arterial"></td>
+                          <td class="" ><input type="checkbox" value="1" name="hipertension_arterial" @isset($cita->anexo7d->hipertension_arterial) checked @endisset ></td>
                         </tr>
                         <tr>
                           <td class=" ">Embarazo </td>
-                          <td class="" ><input type="checkbox" value="1" name="embarazo"></td>
+                          <td class="" ><input type="checkbox" value="1" name="embarazo" @isset($cita->anexo7d->embarazo) checked @endisset></td>
                         </tr>
                         <tr>
                           <td class=" "> Problemas neurológicos: epilepsia, vértigo, etc. </td>
-                          <td class="" ><input type="checkbox" value="1" name="problemas_neurologicos"></td>
+                          <td class="" ><input type="checkbox" value="1" name="problemas_neurologicos" @isset($cita->anexo7d->problemas_neurologicos) checked @endisset></td>
                         </tr>
                         <tr>
                           <td class=" ">Infecciones recientes(especialmente oídos,naruz,graganta) </td>
-                          <td class="" ><input type="checkbox" value="1" name="infecciones_recientes"></td>
+                          <td class="" ><input type="checkbox" value="1" name="infecciones_recientes" @isset($cita->anexo7d->infecciones_recientes) checked @endisset ></td>
                         </tr>
                         <tr>
                           <td class=" ">Obesidad Mórbida (IMC mayor a 35m/kg2) </td>
-                          <td class="" ><input type="checkbox" value="1" name="obesidad_morbida"></td>
+                          <td class="" ><input type="checkbox" value="1" name="obesidad_morbida" @isset($cita->anexo7d->obesidad_morbida) checked @endisset ></td>
                         </tr>
                         <tr>
                           <td class=" ">Problemas Cardiacos: marcapasos, coronariopatia, etc </td>
-                          <td class="" ><input type="checkbox" value="1" name="problemas_cardiacos"></td>
+                          <td class="" ><input type="checkbox" value="1" name="problemas_cardiacos" @isset($cita->anexo7d->problemas_cardiacos) checked @endisset ></td>
                         </tr>
                         <tr>
                           <td class=" ">Problemas respiratorios: asma, EPOC, etc. </td>
-                          <td class="" ><input type="checkbox" value="1" name="problemas_respiratorios"></td>
+                          <td class="" ><input type="checkbox" value="1" name="problemas_respiratorios" @isset($cita->anexo7d->problemas_respiratorios) checked @endisset></td>
                         </tr>
                         <tr>
                           <td class=" ">Problemas Oftalmologicos: retinopatis, glucoma, etc </td>
-                          <td class="" ><input type="checkbox" value="1" name="problemas_oftalmologicos"></td>
+                          <td class="" ><input type="checkbox" value="1" name="problemas_oftalmologicos" @isset($cita->anexo7d->problemas_oftalmologicos) checked @endisset ></td>
                         </tr>
                         <tr>
                           <td class=" ">Problemas Digestivos: úlcera péptica, hepatitis, etc. </td>
-                          <td class="" ><input type="checkbox" value="1" name="problemas_digestivos"></td>
+                          <td class="" ><input type="checkbox" value="1" name="problemas_digestivos" @isset($cita->anexo7d->problemas_digestivos) checked @endisset ></td>
                         </tr>
                         <tr>
                           <td class=" ">Apnea del Sueño </td>
-                          <td class="" ><input type="checkbox" value="1" name="apnea_sueno"></td>
+                          <td class="" ><input type="checkbox" value="1" name="apnea_sueno" @isset($cita->anexo7d->apnea_sueno) checked @endisset  ></td>
                         </tr>
                         <tr>
                           <td class=" ">Otra condición medica importante </td>
-                          <td class="" ><input type="checkbox" value="1" name="otra_condicion"></td>
+                          <td class="" ><input type="checkbox" value="1" name="otra_condicion" @isset($cita->anexo7d->otra_condicion) checked @endisset ></td>
                         </tr>
                         <tr>
                           <td class=" ">Alergias</td>
-                          <td class="" ><input type="checkbox" value="1" name="alergias"></td>
+                          <td class="" ><input type="checkbox" value="1" name="alergias" @isset($cita->anexo7d->alergias) checked @endisset  ></td>
                         </tr>
                       </tbody>
                     </table>
                     <div class="form-group">
 
                         <input type="text" class="form-control" name="uso_medicacion"
-                                 placeholder="Uso de Medicacion Actual">
+                                 placeholder="Uso de Medicacion Actual" @isset($cita->anexo7d->uso_de_medicacion_actual) value="{{$cita->anexo7d->uso_de_medicacion_actual}}" @endisset>
                     </div>
                         {{-- <input type="text" class="form-control" placeholder="Observaciones"> --}}
                   </div>
@@ -101,13 +105,16 @@
                 </div>
                 <div class="row">
                     <div class="col-md-8">
-                      <textarea class="form-control" rows="3" id="comment"placeholder="Observaciones" style="resize:none" name="observacion"></textarea>
+                      <textarea class="form-control" rows="3" id="comment"placeholder="Observaciones" style="resize:none" name="observacion">
+
+
+                      </textarea>
                     </div>
                     <div class="col-md-4">
                       <h5><strong>CERTIFICO QUE EL O LA PACIENTE SE ENCUENTRA: </strong></h5>
                       <div class="checkbox text-center">
                              <label>
-                               <input type="checkbox" name="aptitud_7d" value="1"> <strong style="color:red">APTITUD 7D</strong>
+                               <input type="checkbox" name="aptitud_7d" value="1"  @isset($cita->anexo7d->aptitud_7d) checked @endisset > <strong style="color:red">APTITUD 7D</strong>
                              </label>
                       </div>
                     </div>
@@ -117,7 +124,11 @@
             <div class="modal-footer">
                 <div class="row">
                     <div class="col-md-12 text-right">
-                        <button class="btn btn-sm btn-success registrarAnexo7d" type="button">GUARDAR</button>
+                      @isset($cita->colesterolTotal->id)
+                        <button class="btn btn-sm btn-primary  registrarAnexo7d" tipo="anexo7d_modificar" type="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>EDITAR</button>
+                       @else
+                        <button class="btn btn-sm btn-success registrarAnexo7d"  tipo="anexo7d_guardar" type="button">GUARDAR</button>
+                      @endisset
                         <a href="" class="btn btn-sm btn-info" data-dismiss="modal">DIAGNOSTICO</a>
 
                         <a href="" class="btn btn-sm btn-warning" data-dismiss="modal">Volver</a>

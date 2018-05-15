@@ -84,9 +84,26 @@ class ColesterolTotalController extends Controller
      * @param  \App\ColesterolTotal  $colesterolTotal
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ColesterolTotal $colesterolTotal)
+    public function update(Request $request)
     {
-        //
+        $colesterolTotal = ColesterolTotal::find($request['colesteroltotal_id']);
+      if(request()->ajax()) {
+          $data = request()->validate([
+              'colesterol_total'=>'required',
+              'lista_examen_id'=>'required',
+              'cita_id'=>'required'
+          ]);
+
+          $colesterolTotal->update([
+              'colesterol_total'=>$data['colesterol_total'],
+              'fecha_registro'=>Carbon::now(),
+              'lista_examen_id'=>$data['lista_examen_id'],
+              'cita_id'=>$data['cita_id'],
+              'estado'=>true
+          ]);
+            $colesterolTotal->save();
+          return response()->json(['mensaje' => 'registro Actualizado']);
+      }
     }
 
     /**
@@ -98,5 +115,15 @@ class ColesterolTotalController extends Controller
     public function destroy(ColesterolTotal $colesterolTotal)
     {
         //
+    }
+    public function examenes($id)
+    {
+      $cita=Cita::find($id);
+      $sedimentacions = VelocidadSedimentacion::where('cita_id','=',$cita->id)->get()->toArray();
+      $view=View::make('evaluacionmedica.reportes.examenes',compact('cita','sedimentacions'));
+      $pdf = \App::make('dompdf.wrapper');
+      $pdf->loadHTML($view);
+      $pdf->stream($view);
+      return $pdf->stream();
     }
 }

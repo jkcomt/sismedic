@@ -187,4 +187,7 @@ th,td{
 <script src="{{asset('js/antecedentes/personalestres.js')}}"></script>
 <script src="{{asset('js/antecedentes/personalesuno.js')}}"></script>
 <script src="{{asset('js/antecedentes/quirurgico.js')}}"></script>
+<script src="{{asset('js/antecedentes/hospitalizacion.js')}}"></script>
+<script src="{{asset('js/antecedentes/accidentelaboral.js')}}"></script>
+<script src="{{asset('js/antecedentes/accidenteparticular.js')}}"></script>
 @endsection

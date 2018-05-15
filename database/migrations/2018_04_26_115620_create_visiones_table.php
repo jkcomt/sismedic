@@ -31,6 +31,10 @@ class CreateVisionesTable extends Migration
             $table->string('test_ishihara_colores');
             $table->string('discriminacion_colores');
             $table->string('vision_profundidad');
+            $table->string('vision_perimetral');
+            $table->string('foria_vertical');
+            $table->string('foria_horizontal');
+            $table->string('vision_nocturna');
             $table->string('vision_encandilada');
             $table->string('recuperacion_encandilamiento');
             $table->date('fecha_registro');

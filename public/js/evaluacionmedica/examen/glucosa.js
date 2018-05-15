@@ -1,9 +1,13 @@
 $(document).ready(function() {
 });
-
+var urls_="";
+var tipo="";
 $('body').on('click','.registrarGlucosa',function(e) {
     e.preventDefault();
     $botonPresionado = 'registrar'
+
+    tipo = $(this).attr('tipo');
+
 
     if(!$('body #registrarGlucosa input[name=glucosa]').val())
     {
@@ -17,7 +21,17 @@ $('body').on('click','.registrarGlucosa',function(e) {
 
 $('.confirmar').on('click',function (e) {
     e.preventDefault();
-    $('body #registrarGlucosa').trigger('submit');
+    if(tipo=="glucosa_modificar")
+    {
+      urls_='/glucosa/actualizar';
+      //    console.log("if probando "+tipo);
+        $('body #registrarGlucosa').trigger('submit');
+    }
+    else if(tipo=="glucosa_guardar")
+    {
+        urls_='/glucosa/crear';
+      $('body #registrarGlucosa').trigger('submit');
+    }
 });
 
 $('.volver-form-examen').on('click',function(e){
@@ -31,7 +45,7 @@ $('body').on('submit','#registrarGlucosa',function(e){
 
     var datos = $(this);
     var url = datos.attr('action');
-    $.post(url,datos.serialize(),function (result) {
+    $.post(urls_,datos.serialize(),function (result) {
 
     }).success(function(data)
     {

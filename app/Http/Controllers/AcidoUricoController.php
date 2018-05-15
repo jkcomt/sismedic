@@ -83,9 +83,26 @@ class AcidoUricoController extends Controller
      * @param  \App\AcidoUrico  $acidoUrico
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AcidoUrico $acidoUrico)
+    public function update(Request $request)
     {
-        //
+        $acidoUrico = AcidoUrico::find($request['acidourico_id']);
+      if(request()->ajax())
+      {
+          $data = request()->validate([
+              'acido_urico'=>'required',
+              'lista_examen_id'=>'required',
+              'cita_id'=>'required'
+          ]);
+          $acidoUrico->update([
+              'acido_urico'=>$data['acido_urico'],
+              'fecha_registro'=>Carbon::now(),
+              'lista_examen_id'=>$data['lista_examen_id'],
+              'cita_id'=>$data['cita_id'],
+              'estado'=>true
+          ]);
+          $acidoUrico->save();
+          return response()->json(['mensaje' => 'registro actualizado']);
+      }
     }
 
     /**
@@ -97,5 +114,15 @@ class AcidoUricoController extends Controller
     public function destroy(AcidoUrico $acidoUrico)
     {
         //
+    }
+    public function examenes($id)
+    {
+      $cita=Cita::find($id);
+      $sedimentacions = VelocidadSedimentacion::where('cita_id','=',$cita->id)->get()->toArray();
+      $view=View::make('evaluacionmedica.reportes.examenes',compact('cita','sedimentacions'));
+      $pdf = \App::make('dompdf.wrapper');
+      $pdf->loadHTML($view);
+      $pdf->stream($view);
+      return $pdf->stream();
     }
 }

@@ -1,10 +1,11 @@
 $(document).ready(function() {
 });
-
+var urls_="";
+var tipo="";
 $('body').on('click','.registrarElectrocardiograma',function(e) {
     e.preventDefault();
     $botonPresionado = 'registrar';
-
+        tipo = $(this).attr('tipo');
     $('.confirmar').attr('estado','registrar')
     $('#modal-electrocardiograma').modal('hide');
     $('#modal-confirmacion').modal('show')
@@ -22,7 +23,19 @@ $('body').on('click','.registrarElectrocardiograma',function(e) {
 
 $('.confirmar').on('click',function (e) {
     e.preventDefault();
-    $('body #registrarElectrocardiograma').trigger('submit');
+
+    if(tipo=="Electrocardiograma_modificar")
+    {
+      urls_='/electrocardiograma/actualizar';
+      console.log(  urls_);
+       $('body #registrarElectrocardiograma').trigger('submit');
+    }
+    else if(tipo=="Electrocardiograma_guardar")
+    {
+        urls_='/electrocardiograma/crear';
+          console.log(  urls_);
+        $('body #registrarElectrocardiograma').trigger('submit');
+    }
 });
 
 $('.volver-form-examen').on('click',function(e){
@@ -35,8 +48,8 @@ $('body').on('submit','#registrarElectrocardiograma',function(e){
     e.preventDefault();
 
     var datos = $(this);
-    var url = datos.attr('action');
-    $.post(url,datos.serialize(),function (result) {
+    //var url = datos.attr('action');
+    $.post(urls_,datos.serialize(),function (result) {
 
     }).success(function(data)
     {

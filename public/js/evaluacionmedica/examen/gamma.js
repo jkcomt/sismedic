@@ -1,10 +1,11 @@
 $(document).ready(function() {
 });
-
+var urls_="";
+var tipo="";
 $('body').on('click','.registrarGamma',function(e) {
     e.preventDefault();
     $botonPresionado = 'registrar';
-
+    tipo = $(this).attr('tipo');
     if(!$('body #registrarGamma input[name=ggt]').val())
     {
         $('body #registrarGamma input[name=ggt]').parent().addClass('has-error')
@@ -17,7 +18,19 @@ $('body').on('click','.registrarGamma',function(e) {
 
 $('.confirmar').on('click',function (e) {
     e.preventDefault();
-    $('body #registrarGamma').trigger('submit');
+    if(tipo=="ggt_modificar")
+    {
+      urls_='/gamma/actualizar';
+      //    console.log("if probando "+tipo);
+        $('body #registrarGamma').trigger('submit');
+    }
+    else if(tipo=="ggt_guardar")
+    {
+        urls_='/gamma/crear';
+    //    console.log(urls_);
+        $('body #registrarGamma').trigger('submit');
+    }
+
 });
 
 $('.volver-form-examen').on('click',function(e){
@@ -30,8 +43,8 @@ $('body').on('submit','#registrarGamma',function(e){
     e.preventDefault();
 
     var datos = $(this);
-    var url = datos.attr('action');
-    $.post(url,datos.serialize(),function (result) {
+  //  var url = datos.attr('action');
+    $.post(urls_,datos.serialize(),function (result) {
 
     }).success(function(data)
     {

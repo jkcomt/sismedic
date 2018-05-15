@@ -84,9 +84,27 @@ class TrigliceridoController extends Controller
      * @param  \App\Triglicerido  $triglicerido
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Triglicerido $triglicerido)
+    public function update(Request $request)
     {
-        //
+        $triglicerido = Triglicerido::find($request['triglicerido_id']);
+      if(request()->ajax()) {
+          $data = request()->validate([
+              'triglicerido'=>'required',
+              'lista_examen_id'=>'required',
+              'cita_id'=>'required'
+          ]);
+
+          $triglicerido->update([
+              'triglicerido'=>$data['triglicerido'],
+              'fecha_registro'=>Carbon::now(),
+              'lista_examen_id'=>$data['lista_examen_id'],
+              'cita_id'=>$data['cita_id'],
+              'estado'=>true
+          ]);
+            $triglicerido->save();
+          return response()->json(['mensaje' => 'registro actualizado']);
+      }
+
     }
 
     /**
@@ -98,5 +116,15 @@ class TrigliceridoController extends Controller
     public function destroy(Triglicerido $triglicerido)
     {
         //
+    }
+    public function examenes($id)
+    {
+      $cita=Cita::find($id);
+      $sedimentacions = VelocidadSedimentacion::where('cita_id','=',$cita->id)->get()->toArray();
+      $view=View::make('evaluacionmedica.reportes.examenes',compact('cita','sedimentacions'));
+      $pdf = \App::make('dompdf.wrapper');
+      $pdf->loadHTML($view);
+      $pdf->stream($view);
+      return $pdf->stream();
     }
 }

@@ -84,9 +84,26 @@ class ColesterolHdlController extends Controller
      * @param  \App\ColesterolHdl  $colesterolHdl
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ColesterolHdl $colesterolHdl)
+    public function update(Request $request)
     {
-        //
+        $colesterolHdl = ColesterolHdl::find($request['colesterol_hdl_id']);
+      if(request()->ajax()) {
+          $data = request()->validate([
+              'colesterol_hdl'=>'required',
+              'lista_examen_id'=>'required',
+              'cita_id'=>'required'
+          ]);
+
+          $colesterolHdl->update([
+              'colesterol_hdl'=>$data['colesterol_hdl'],
+              'fecha_registro'=>Carbon::now(),
+              'lista_examen_id'=>$data['lista_examen_id'],
+              'cita_id'=>$data['cita_id'],
+              'estado'=>true
+          ]);
+          $colesterolHdl->save();
+          return response()->json(['mensaje' => 'registro actualizado']);
+      }
     }
 
     /**

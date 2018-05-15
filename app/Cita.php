@@ -152,5 +152,11 @@ class Cita extends Model
     public function hemograma(){
         return $this->hasOne(Hemograma::class);
     }
+    public function vision(){
+        return $this->hasOne(Vision::class);
+    }
+    public function orinas(){
+        return $this->hasOne(Orina::class);
+    }
 
 }

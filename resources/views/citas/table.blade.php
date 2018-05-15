@@ -21,7 +21,7 @@
                      {{--<button class="btn btn-xs btn-warning edit"  value=""><span class="glyphicon glyphicon-pencil"></span> EDITAR</button>--}}
 
                      {{csrf_field()}}
-            
+
                      <a href="{{route('citas.examenescliente',[$cita->id])}}" class="btn btn-xs btn-info editar" target="_blank" id=""><span class="glyphicon glyphicon-print"></span></a>
 
                      <a href="{{route('pacientes.citas.edit',[$cita->id])}}" class="btn btn-xs btn-warning editar"  id=""><span class="glyphicon glyphicon-pencil"></span> EDITAR</a>

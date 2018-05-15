@@ -314,6 +314,10 @@ Route::group([
   Route::post('/ginecologicos/crear','AntecedentesGinecologicosController@store')->name('antecedentes.ginecologicos.create');
   Route::post('/quirurgicos/crear','AntecedentesQuirurgicosController@store')->name('antecedentes.quirurgicos.create');
   Route::post('/familiares/crear','AntecedentesFamiliaresController@store')->name('antecedentes.familiares.create');
+  Route::post('/hospitalizacion/crear','AntperHozpitalizacionesController@store')->name('antecedentes.hospitalizacion.create');
+  Route::post('/accidentes_laborales/crear','AntperAccidenteLaboralesController@store')->name('accidentes_laborales.create');
+  Route::post('/accidentes_particular/crear','AntperAccidenteParticularesController@store')->name('accidentes_particular.create');
+
 
 
   Route::post('/uno/actualizar','AntecedentePersonalController@update')->name('antecedentes.uno.actualizar');
@@ -323,22 +327,110 @@ Route::group([
   Route::post('/neumologicos/actualizar','AntecedentesNeumologicosController@update')->name('antecedentes.neumologicos.actualizar');
   Route::post('/ginecologicos/actualizar','AntecedentesGinecologicosController@update')->name('antecedentes.ginecologicos.actualizar');
   Route::post('/quirurgicos/actualizar','AntecedentesQuirurgicosController@update')->name('antecedentes.quirurgicos.actualizar');
-  Route::post('/familiares/actualizar','AntecedentesFamiliaresController@update')->name('antecedentes.familiares.actualizar');
+  Route::post('/familiares/actualizar','AntperAccidenteParticularesController@update')->name('antecedentes.familiares.actualizar');
+  Route::post('/hospitalizacion/actualizar','AntperHozpitalizacionesController@update')->name('antecedentes.hospitalizacion.update');
+  Route::post('/accidentes_laborales/actualizar','AntperAccidenteLaboralesController@update')->name('accidentes_laborales.update');
+  Route::post('/accidentes_particular/actualizar','AntperAccidenteParticularesController@update')->name('accidentes_particular.update');
 
 });
+//Route::resource('velocidad_sedimentacion','VelocidadSedimentacionController');
+Route::group(["prefix"=>"sedimentacion"],function(){
+  Route::post('/crear','VelocidadSedimentacionController@store')->name('velocidad_sedimentacion.store');
+  Route::post('/actualizar','VelocidadSedimentacionController@update')->name('velocidad_sedimentacion.update');
+  Route::get('/{id}/pdf','VelocidadSedimentacionController@examenes')->name('velocidad_sedimentacion.reporte');
+});
+//Route::resource('glucosa','GlucosaController');
+Route::group(["prefix"=>"glucosa"],function(){
+  Route::post('/crear','GlucosaController@store')->name('glucosa.store');
+  Route::post('/actualizar','GlucosaController@update')->name('glucosa.update');
+  Route::get('/{id}/pdf','GlucosaController@examenes')->name('glucosa.reporte');
+});
+//Route::resource('creatinina','CreatininaController');
+Route::group(["prefix"=>"creatinina"],function(){
+  Route::post('/crear','CreatininaController@store')->name('creatinina.store');
+  Route::post('/actualizar','CreatininaController@update')->name('creatinina.update');
+  Route::get('/{id}/pdf','CreatininaController@examenes')->name('creatinina.reporte');
+});
+//Route::resource('acido_urico','AcidoUricoController');
+Route::group(["prefix"=>"acido_urico"],function(){
+  Route::post('/crear','AcidoUricoController@store')->name('acido_urico.store');
+  Route::post('/actualizar','AcidoUricoController@update')->name('acido_urico.update');
+  Route::get('/{id}/pdf','AcidoUricoController@examenes')->name('acido_urico.reporte');
+});
 
-Route::resource('colesterol_hdl','ColesterolHdlController');
-Route::resource('colesterol_ldl','ColesterolLdlController');
-Route::resource('trigliceridos','TrigliceridoController');
-Route::resource('gamma','GammaController');
-Route::resource('sifilis','SifilisController');
-Route::resource('anexo7d','Anexo7dsController');
-Route::resource('electrocardiograma','ElectrocardiogramaController');
-Route::resource('hemograma','HemogramaController');
-Route::resource('creatinina','CreatininaController');
-Route::resource('glucosa','GlucosaController');
-Route::resource('velocidad_sedimentacion','VelocidadSedimentacionController');
-Route::resource('acido_urico','AcidoUricoController');
-Route::resource('colesterol_total','ColesterolTotalController');
+//Route::resource('colesterol_total','ColesterolTotalController');
+Route::group(["prefix"=>"colesterol_total"],function(){
+  Route::post('/crear','ColesterolTotalController@store')->name('colesterol_total.store');
+  Route::post('/actualizar','ColesterolTotalController@update')->name('colesterol_total.update');
+  Route::get('/{id}/pdf','ColesterolTotalController@examenes')->name('colesterol_total.reporte');
+});
+//Route::resource('trigliceridos','TrigliceridoController');
+Route::group(["prefix"=>"trigliceridos"],function(){
+  Route::post('/crear','TrigliceridoController@store')->name('trigliceridos.store');
+  Route::post('/actualizar','TrigliceridoController@update')->name('trigliceridos.update');
+  Route::get('/{id}/pdf','TrigliceridoController@examenes')->name('trigliceridos.reporte');
+});
+//Route::resource('electrocardiograma','ElectrocardiogramaController');
+Route::group(["prefix"=>"electrocardiograma"],function(){
+  Route::post('/crear','ElectrocardiogramaController@store')->name('electrocardiograma.store');
+  Route::post('/actualizar','ElectrocardiogramaController@update')->name('electrocardiograma.update');
+  Route::get('/{id}/pdf','ElectrocardiogramaController@examenes')->name('electrocardiograma.reporte');
+});
+//Route::resource('anexo7d','Anexo7dsController');
+Route::group(["prefix"=>"anexo7d"],function(){
+  Route::post('/crear','Anexo7dsController@store')->name('anexo7d.store');
+  Route::post('/actualizar','Anexo7dsController@update')->name('anexo7d.update');
+  Route::get('/{id}/pdf','Anexo7dsController@examenes')->name('anexo7d.reporte');
+});
+
+//Route::resource('colesterol_hdl','ColesterolHdlController');
+Route::group(["prefix"=>"colesterol_hdl"],function(){
+  Route::post('/crear','ColesterolHdlController@store')->name('colesterol_hdl.store');
+  Route::post('/actualizar','ColesterolHdlController@update')->name('colesterol_hdl.update');
+  Route::get('/{id}/pdf','ColesterolHdlController@examenes')->name('colesterol_hdl.reporte');
+});
+//Route::resource('sifilis','SifilisController');
+Route::group(["prefix"=>"sifilis"],function(){
+  Route::post('/crear','SifilisController@store')->name('sifilis.store');
+  Route::post('/actualizar','SifilisController@update')->name('sifilis.update');
+  Route::get('/{id}/pdf','SifilisController@examenes')->name('sifilis.reporte');
+});
+
+
+//Route::resource('colesterol_ldl','ColesterolLdlController');
+Route::group(["prefix"=>"colesterol_ldl"],function(){
+  Route::post('/crear','ColesterolLdlController@store')->name('colesterol_ldl.store');
+  Route::post('/actualizar','ColesterolLdlController@update')->name('colesterol_ldl.update');
+  Route::get('/{id}/pdf','ColesterolLdlController@examenes')->name('colesterol_ldl.reporte');
+});
+//Route::resource('gamma','GammaController');
+
+Route::group(["prefix"=>"gamma"],function(){
+  Route::post('/crear','GammaController@store')->name('gamma.store');
+  Route::post('/actualizar','GammaController@update')->name('gamma.update');
+  Route::get('/{id}/pdf','GammaController@examenes')->name('gamma.reporte');
+});
+
+
+//Route::resource('hemograma','HemogramaController');
+
+Route::group(["prefix"=>"hemograma"],function(){
+  Route::post('/crear','HemogramaController@store')->name('hemograma.store');
+  Route::post('/actualizar','HemogramaController@update')->name('hemograma.update');
+  Route::get('/{id}/pdf','HemogramaController@examenes')->name('hemograma.reporte');
+});
+
+//vision
+Route::group(["prefix"=>"vision"],function(){
+  Route::post('/crear','VisionController@store')->name('vision.store');
+  Route::post('/actualizar','VisionController@update')->name('vision.update');
+});
+
+Route::group(["prefix"=>"orina"],function(){
+  Route::post('/crear','OrinaController@store')->name('orina.store');
+  Route::post('/actualizar','OrinaController@update')->name('orina.update');
+});
+
+
 
 Route::view('/antecedentes', 'antecedentes.index');

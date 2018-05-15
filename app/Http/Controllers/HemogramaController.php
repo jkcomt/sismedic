@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Hemograma;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class HemogramaController extends Controller
 {
@@ -52,23 +53,23 @@ class HemogramaController extends Controller
             ]);
 
             $hemograma = Hemograma::create([
-                'hemoglobina'=>'',
-                'hematocrito'=>'',
-                'leucocitos'=>'',
-                'abastonados'=>'',
-                'segmentados'=>'',
-                'monocitos'=>'',
-                'linfocitos'=>'',
-                'eosinofilos'=>'',
-                'basofilos'=>'',
-                'conclusion_hemograma'=>'',
+                 'hemoglobina'=>$data['hemoglobina'],
+                 'hematocrito'=>$data['hematocrito'],
+                 'leucocitos'=>$data['leucocitos'],
+                 'abastonados'=>$data['abastonados'],
+                 'segmentados'=>$data['segmentados'],
+                 'monocitos'=>$data['monocitos'],
+                 'linfocitos'=>$data['linfocitos'],
+                 'eosinofilos'=>$data['eosinofilos'],
+                 'basofilos'=>$data['basofilos'],
+                'conclusion_hemograma'=>$data['conclusion'],
                 'fecha_registro'=>Carbon::now(),
                 'lista_examen_id'=>$data['lista_examen_id'],
                 'cita_id'=>$data['cita_id'],
                 'estado'=>true
             ]);
 
-            return response()->json(['mensaje' => 'registro exitoso']);
+            return response()->json(['mensaje' =>"registro exitoso"]);
         }
     }
 
@@ -101,9 +102,44 @@ class HemogramaController extends Controller
      * @param  \App\Hemograma  $hemograma
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Hemograma $hemograma)
+    public function update(Request $request)
     {
-        //
+      $hemograma = Hemograma::find($request['hemograma_id']);
+      if(request()->ajax()) {
+          $data = request()->validate([
+              'hemoglobina'=>'nullable',
+              'hematocrito'=>'nullable',
+              'leucocitos'=>'nullable',
+              'abastonados'=>'nullable',
+              'segmentados'=>'nullable',
+              'monocitos'=>'nullable',
+              'linfocitos'=>'nullable',
+              'eosinofilos'=>'nullable',
+              'basofilos'=>'nullable',
+              'conclusion'=>'nullable',
+              'lista_examen_id'=>'required',
+              'cita_id'=>'required'
+          ]);
+
+          $hemograma->update([
+               'hemoglobina'=>$data['hemoglobina'],
+               'hematocrito'=>$data['hematocrito'],
+               'leucocitos'=>$data['leucocitos'],
+               'abastonados'=>$data['abastonados'],
+               'segmentados'=>$data['segmentados'],
+               'monocitos'=>$data['monocitos'],
+               'linfocitos'=>$data['linfocitos'],
+               'eosinofilos'=>$data['eosinofilos'],
+               'basofilos'=>$data['basofilos'],
+              'conclusion_hemograma'=>$data['conclusion'],
+              'fecha_registro'=>Carbon::now(),
+              'lista_examen_id'=>$data['lista_examen_id'],
+              'cita_id'=>$data['cita_id'],
+              'estado'=>true
+          ]);
+            $hemograma->save();
+          return response()->json(['mensaje' =>"registro exitoso"]);
+            }
     }
 
     /**

@@ -1,23 +1,43 @@
 $(document).ready(function() {
 });
-
+var urls_="";
+var tipo="";
 $('body').on('click','.registrarTriglicerido',function(e) {
     e.preventDefault();
     $botonPresionado = 'registrar';
-
+      tipo = $(this).attr('tipo');
+           console.log("if "+tipo+"   ");
     if(!$('body #registrarTriglicerido input[name=triglicerido]').val())
     {
+    //  $var1=$('body #registrarTriglicerido input[name=triglicerido]').val();
+    //  console.log("1 "+tipo+"   "+$var1);
         $('body #registrarTriglicerido input[name=triglicerido]').parent().addClass('has-error')
     }else{
+    //  $var1=$('body #registrarTriglicerido input[name=triglicerido]').val();
+    //  console.log("2 "+tipo+"   "+$var1);
         $('.confirmar').attr('estado','registrar')
         $('#modal-triglicerido').modal('hide');
         $('#modal-confirmacion').modal('show')
     }
+
 });
 
 $('.confirmar').on('click',function (e) {
     e.preventDefault();
-    $('body #registrarTriglicerido').trigger('submit');
+
+    if(tipo=="triglicerido_modificar")
+    {
+       console.log("if "+tipo+"   ");
+      urls_='/trigliceridos/actualizar';
+      $('body #registrarTriglicerido').trigger('submit');
+
+    }
+    else if(tipo=="triglicerido_guardar")
+    {
+      urls_='/trigliceridos/crear';
+      $('body #registrarTriglicerido').trigger('submit');
+    }
+
 });
 
 $('.volver-form-examen').on('click',function(e){
@@ -30,8 +50,8 @@ $('body').on('submit','#registrarTriglicerido',function(e){
     e.preventDefault();
 
     var datos = $(this);
-    var url = datos.attr('action');
-    $.post(url,datos.serialize(),function (result) {
+  //  var url = datos.attr('action');
+    $.post(urls_,datos.serialize(),function (result) {
 
     }).success(function(data)
     {

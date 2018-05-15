@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +11,6 @@
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}" crossorigin="anonymous">
     <link href="{{asset('css/ie10-viewport-bug-workaround.css')}}" rel="stylesheet">
     <script src="{{asset('js/ie-emulation-modes-warning.js')}}"></script>
-
     <style>
         body{
             font-size: 12px;
@@ -46,11 +44,8 @@
 
     <hr>
 
-
-
     <div class="row">
         <h4 class="text-left">DETALLE DE CITA : {{$cita->nro_serie_cita}}</h4>
-
         <table class="table table-condensed">
           <tr>
             <th>PACIENTE</th>
@@ -65,7 +60,6 @@
             <td>{{$cita->fecha_examen.' - '.Carbon\Carbon::parse($cita->hora_examen)->format('h:i A')}}</td>
           </tr>
         </table>
-
         <table class="table table-condensed">
           <tr>
             <th>CLIENTE CUENTA</th>
@@ -78,7 +72,6 @@
             <td>{{$cita->perfil->descripcion}}</td>
           </tr>
         </table>
-
         <table class="table table-condensed">
           <tr>
             <th>EXAMEN</th>
@@ -86,7 +79,6 @@
             <th>VALOR</th>
             <th>DSCTO</th>
           </tr>
-
         @foreach($cita->citaExamen as $examen)
           <tr>
             <td>{{$examen->perfilExamen->listaExamen->descripcion}}</td>
@@ -94,7 +86,6 @@
             <td>{{$examen->perfilExamen->listaExamen->valor}}</td>
             <td>{{$examen->perfilExamen->listaExamen->dscto}}</td>
           </tr>
-
         @endforeach
         </table>
     </div>

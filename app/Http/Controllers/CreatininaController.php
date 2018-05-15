@@ -84,9 +84,27 @@ class CreatininaController extends Controller
      * @param  \App\Creatinina  $creatinina
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Creatinina $creatinina)
+    public function update(Request $request)
     {
-        //
+      $creatinina = Creatinina::find($request['creatina_id']);
+      if(request()->ajax()) {
+          $data = request()->validate([
+              'creatinina'=>'required',
+              'lista_examen_id'=>'required',
+              'cita_id'=>'required'
+          ]);
+
+          $creatinina->update([
+              'creatinina'=>$data['creatinina'],
+              'fecha_registro'=>Carbon::now(),
+              'lista_examen_id'=>$data['lista_examen_id'],
+              'cita_id'=>$data['cita_id'],
+              'estado'=>true
+          ]);
+
+          return response()->json(['mensaje' => 'registro Actualizado']);
+      }
+
     }
 
     /**
@@ -98,5 +116,15 @@ class CreatininaController extends Controller
     public function destroy(Creatinina $creatinina)
     {
         //
+    }
+    public function examenes($id)
+    {
+      $cita=Cita::find($id);
+      $sedimentacions = VelocidadSedimentacion::where('cita_id','=',$cita->id)->get()->toArray();
+      $view=View::make('evaluacionmedica.reportes.examenes',compact('cita','sedimentacions'));
+      $pdf = \App::make('dompdf.wrapper');
+      $pdf->loadHTML($view);
+      $pdf->stream($view);
+      return $pdf->stream();
     }
 }

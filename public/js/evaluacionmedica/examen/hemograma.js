@@ -1,10 +1,11 @@
 $(document).ready(function() {
 });
-
+var urls_="";
+var tipo="";
 $('body').on('click','.registrarHemograma',function(e) {
     e.preventDefault();
     $botonPresionado = 'registrar';
-
+    tipo = $(this).attr('tipo');
     $('.confirmar').attr('estado','registrar')
     $('#modal-hemograma').modal('hide');
     $('#modal-confirmacion').modal('show')
@@ -22,7 +23,18 @@ $('body').on('click','.registrarHemograma',function(e) {
 
 $('.confirmar').on('click',function (e) {
     e.preventDefault();
-    $('body #registrarHemograma').trigger('submit');
+    if(tipo=="hemograma_modificar")
+    {
+      urls_='/hemograma/actualizar';
+      //    console.log("if probando "+tipo);
+        $('body #registrarHemograma').trigger('submit');
+    }
+    else if(tipo=="hemograma_guardar")
+    {
+        urls_='/hemograma/crear';
+      $('body #registrarHemograma').trigger('submit');
+    }
+
 });
 
 $('.volver-form-examen').on('click',function(e){
@@ -35,8 +47,8 @@ $('body').on('submit','#registrarHemograma',function(e){
     e.preventDefault();
 
     var datos = $(this);
-    var url = datos.attr('action');
-    $.post(url,datos.serialize(),function (result) {
+  //  var url = datos.attr('action');
+    $.post(urls_,datos.serialize(),function (result) {
 
     }).success(function(data)
     {
@@ -48,6 +60,7 @@ $('body').on('submit','#registrarHemograma',function(e){
                 keyboard:false
             });
             $('#modal-exito').modal('show')
+            console.log(data);
         }else{
             console.log(data.error)
             return;

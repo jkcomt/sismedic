@@ -20,6 +20,7 @@ class Hemograma extends Model
         'basofilos',
         'conclusion_hemograma',
         'fecha_registro',
+        'lista_examen_id',
         'cita_id',
         'estado'
     ];

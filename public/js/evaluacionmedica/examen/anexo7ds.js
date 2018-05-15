@@ -1,10 +1,11 @@
 $(document).ready(function() {
 });
-
+var urls_="";
+var tipo="";
 $('body').on('click','.registrarAnexo7d',function(e) {
     e.preventDefault();
     $botonPresionado = 'registrar';
-
+    tipo = $(this).attr('tipo');
     $('.confirmar').attr('estado','registrar')
     $('#modal-anexo7d').modal('hide');
     $('#modal-confirmacion').modal('show')
@@ -22,7 +23,21 @@ $('body').on('click','.registrarAnexo7d',function(e) {
 
 $('.confirmar').on('click',function (e) {
     e.preventDefault();
-    $('body #registrarAnexo7d').trigger('submit');
+
+    if(tipo=="anexo7d_modificar")
+    {
+      urls_='/anexo7d/actualizar';
+      //    console.log("if probando "+tipo);
+          $('body #registrarAnexo7d').trigger('submit');
+    }
+    else if(tipo=="anexo7d_guardar")
+    {
+        urls_='/anexo7d/crear';
+    //    console.log(urls_);
+      $('body #registrarAnexo7d').trigger('submit');
+    }
+
+
 });
 
 $('.volver-form-examen').on('click',function(e){
@@ -36,7 +51,7 @@ $('body').on('submit','#registrarAnexo7d',function(e){
 
     var datos = $(this);
     var url = datos.attr('action');
-    $.post(url,datos.serialize(),function (result) {
+    $.post(urls_,datos.serialize(),function (result) {
 
     }).success(function(data)
     {

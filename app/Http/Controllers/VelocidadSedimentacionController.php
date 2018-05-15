@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\VelocidadSedimentacion;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
+use App\Cita;
+use View;
 class VelocidadSedimentacionController extends Controller
 {
     /**
@@ -83,9 +86,27 @@ class VelocidadSedimentacionController extends Controller
      * @param  \App\VelocidadSedimentacion  $velocidadSedimentacion
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, VelocidadSedimentacion $velocidadSedimentacion)
+    public function update(Request $request)
     {
-        //
+      $sedimentacion = VelocidadSedimentacion::find($request['sedimentacion_id']);
+      if(request()->ajax()) {
+          $data = request()->validate([
+              'sedimentacion'=>'required',
+              'lista_examen_id'=>'required',
+              'cita_id'=>'required'
+          ]);
+
+          $sedimentacion->update([
+              'velocidad_sedimentacion_globular'=>$data['sedimentacion'],
+              'fecha_registro'=>Carbon::now(),
+              'lista_examen_id'=>$data['lista_examen_id'],
+              'cita_id'=>$data['cita_id'],
+              'estado'=>true
+          ]);
+
+          return response()->json(['mensaje' => 'registro actualizado']);
+      }
+
     }
 
     /**
@@ -98,4 +119,16 @@ class VelocidadSedimentacionController extends Controller
     {
         //
     }
+
+    public function examenes($id)
+    {
+      $cita=Cita::find($id);
+      $sedimentacions = VelocidadSedimentacion::where('cita_id','=',$cita->id)->get()->toArray();
+      $view=View::make('evaluacionmedica.reportes.examenes',compact('cita','sedimentacions'));
+      $pdf = \App::make('dompdf.wrapper');
+      $pdf->loadHTML($view);
+      $pdf->stream($view);
+      return $pdf->stream();
+    }
+
 }

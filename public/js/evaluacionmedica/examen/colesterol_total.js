@@ -1,10 +1,12 @@
 $(document).ready(function() {
 });
 
+var urls_="";
+var tipo="";
 $('body').on('click','.registrarColesterolTotal',function(e) {
     e.preventDefault();
     $botonPresionado = 'registrar';
-
+    tipo = $(this).attr('tipo');
     if(!$('body #registrarColesterolTotal input[name=colesterol_total]').val())
     {
         $('body #registrarColesterolTotal input[name=colesterol_total]').parent().addClass('has-error')
@@ -17,7 +19,19 @@ $('body').on('click','.registrarColesterolTotal',function(e) {
 
 $('.confirmar').on('click',function (e) {
     e.preventDefault();
-    $('body #registrarColesterolTotal').trigger('submit');
+    if(tipo=="colesterol_total_modificar")
+    {
+      urls_='/colesterol_total/actualizar';
+          //console.log("if probando "+urls_);
+          $('body #registrarColesterolTotal').trigger('submit');
+    }
+    else if(tipo=="colesterol_total_guardar")
+    {
+        urls_='/colesterol_total/crear';
+      //  console.log(urls_);
+        $('body #registrarColesterolTotal').trigger('submit');
+    }
+
 });
 
 $('.volver-form-examen').on('click',function(e){
@@ -30,8 +44,8 @@ $('body').on('submit','#registrarColesterolTotal',function(e){
     e.preventDefault();
 
     var datos = $(this);
-    var url = datos.attr('action');
-    $.post(url,datos.serialize(),function (result) {
+    //var url = datos.attr('action');
+    $.post(urls_,datos.serialize(),function (result) {
 
     }).success(function(data)
     {

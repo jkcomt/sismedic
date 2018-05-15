@@ -1,9 +1,14 @@
 $(document).ready(function() {
 });
 
+var urls_="";
+var tipo="";
 $('body').on('click','.registrarSedimentacion',function(e) {
     e.preventDefault();
     $botonPresionado = 'registrar';
+
+    tipo = $(this).attr('tipo');
+  //  console.log(tipo);
 
     if(!$('body #registrarSedimentacion input[name=sedimentacion]').val())
     {
@@ -16,8 +21,21 @@ $('body').on('click','.registrarSedimentacion',function(e) {
 });
 
 $('.confirmar').on('click',function (e) {
+
     e.preventDefault();
+    if(tipo=="sedimentacion_modificar")
+    {
+
+urls_='/sedimentacion/actualizar';
+$('body #registrarSedimentacion').trigger('submit');
+    }
+    else if(tipo=="sedimentacion_guardar")
+    {
+      urls_='/sedimentacion/crear';
     $('body #registrarSedimentacion').trigger('submit');
+    }
+  //  $('body #registrarSedimentacion').trigger('submit');
+
 });
 
 $('.volver-form-examen').on('click',function(e){
@@ -28,10 +46,8 @@ $('.volver-form-examen').on('click',function(e){
 
 $('body').on('submit','#registrarSedimentacion',function(e){
     e.preventDefault();
-
-    var datos = $(this);
-    var url = datos.attr('action');
-    $.post(url,datos.serialize(),function (result) {
+    console.log(urls_);
+    $.post(urls_,$(this).serialize(),function (result) {
 
     }).success(function(data)
     {

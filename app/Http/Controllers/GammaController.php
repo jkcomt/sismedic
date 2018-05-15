@@ -84,9 +84,26 @@ class GammaController extends Controller
      * @param  \App\Gamma  $gamma
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Gamma $gamma)
+    public function update(Request $request)
     {
-        //
+      $gama = Gamma::find($request['ggt_id']);
+      if(request()->ajax()) {
+          $data = request()->validate([
+              'ggt'=>'required',
+              'lista_examen_id'=>'required',
+              'cita_id'=>'required'
+          ]);
+
+          $gama->update([
+              'ggt'=>$data['ggt'],
+              'fecha_registro'=>Carbon::now(),
+              'lista_examen_id'=>$data['lista_examen_id'],
+              'cita_id'=>$data['cita_id'],
+              'estado'=>true
+          ]);
+          $gama->save();
+          return response()->json(['mensaje' => 'registro actualizado']);
+      }
     }
 
     /**

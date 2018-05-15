@@ -1,10 +1,11 @@
 $(document).ready(function() {
 });
-
+var urls_="";
+var tipo="";
 $('body').on('click','.registrarColesterolLdl',function(e) {
     e.preventDefault();
     $botonPresionado = 'registrar'
-
+tipo = $(this).attr('tipo');
     if(!$('body #registrarColesterolLdl input[name=colesterol_ldl]').val())
     {
         $('body #registrarColesterolLdl input[name=colesterol_ldl]').parent().addClass('has-error')
@@ -18,7 +19,19 @@ $('body').on('click','.registrarColesterolLdl',function(e) {
 
 $('.confirmar').on('click',function (e) {
     e.preventDefault();
-    $('body #registrarColesterolLdl').trigger('submit');
+    if(tipo=="colesterol_ldl_modificar")
+    {
+      urls_='/colesterol_ldl/actualizar';
+      //    console.log("if probando "+tipo);
+        $('body #registrarColesterolLdl').trigger('submit');
+    }
+    else if(tipo=="colesterol_ldl_guardar")
+    {
+        urls_='/colesterol_ldl/crear';
+    //    console.log(urls_);
+        $('body #registrarColesterolLdl').trigger('submit');
+    }
+
 });
 
 $('.volver-form-examen').on('click',function(e){
@@ -31,8 +44,8 @@ $('body').on('submit','#registrarColesterolLdl',function(e){
     e.preventDefault();
 
     var datos = $(this);
-    var url = datos.attr('action');
-    $.post(url,datos.serialize(),function (result) {
+  //  var url = datos.attr('action');
+    $.post(urls_,datos.serialize(),function (result) {
 
     }).success(function(data)
     {

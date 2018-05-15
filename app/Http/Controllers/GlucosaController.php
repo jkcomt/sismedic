@@ -84,9 +84,26 @@ class GlucosaController extends Controller
      * @param  \App\Glucosa  $glucosa
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Glucosa $glucosa)
+    public function update(Request $request)
     {
-        //
+      $glucosa = Glucosa::find($request['glucosa_id']);
+      if(request()->ajax()) {
+          $data = request()->validate([
+              'glucosa'=>'required',
+              'lista_examen_id'=>'required',
+              'cita_id'=>'required'
+          ]);
+
+          $glucosa->update([
+            'glucosa'=>$data['glucosa'],
+            'fecha_registro'=>Carbon::now(),
+            'lista_examen_id'=>$data['lista_examen_id'],
+            'cita_id'=>$data['cita_id'],
+            'estado'=>true
+          ]);
+          $glucosa->save();
+          return response()->json(['mensaje' => 'registro actualizado']);
+      }
     }
 
     /**
@@ -98,5 +115,15 @@ class GlucosaController extends Controller
     public function destroy(Glucosa $glucosa)
     {
         //
+    }
+    public function examenes($id)
+    {
+      $cita=Cita::find($id);
+      $sedimentacions = VelocidadSedimentacion::where('cita_id','=',$cita->id)->get()->toArray();
+      $view=View::make('evaluacionmedica.reportes.examenes',compact('cita','sedimentacions'));
+      $pdf = \App::make('dompdf.wrapper');
+      $pdf->loadHTML($view);
+      $pdf->stream($view);
+      return $pdf->stream();
     }
 }

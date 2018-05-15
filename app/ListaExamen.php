@@ -22,4 +22,11 @@ class ListaExamen extends Model
     	return $this->belongsToMany(Perfil::class,'perfil_examenes','lista_examen_id','perfil_id');
     }
 
+    public function velocidadSedimentacion(){
+        return $this->hasOne(VelocidadSedimentacion::class);
+    }
+    public function vision(){
+        return $this->hasOne(Vision::class);
+    }
+
 }

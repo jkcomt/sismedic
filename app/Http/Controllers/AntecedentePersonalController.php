@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\AntecedentePersonal;
+use App\Antper_Hozpitalizaciones;
+use App\AntperAccidenteLaborales;
+use App\AntperAccidenteParticulares;
 use Illuminate\Http\Request;
 use App\Paciente;
 use App\Cita;
@@ -24,7 +27,11 @@ class AntecedentePersonalController extends Controller
     {
       $cita=Cita::find($id);
       $paciente = Paciente::find($cita->paciente->id);
-      return view('antecedentes.index',compact('paciente','cita'));
+      $hospitalizaciones = Antper_Hozpitalizaciones::where('paciente_id','=',$cita->paciente->id)->get()->toArray();
+      $laborales=AntperAccidenteLaborales::where('paciente_id','=',$cita->paciente->id)->get()->toArray();
+      $particulares=AntperAccidenteParticulares::where('paciente_id','=',$cita->paciente->id)->get()->toArray();
+
+      return view('antecedentes.index',compact('paciente','cita','hospitalizaciones','laborales','particulares'));
     }
     /**
      * Show the form for creating a new resource.

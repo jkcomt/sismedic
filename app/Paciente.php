@@ -195,6 +195,14 @@ class Paciente extends Model
     {
         return $this->hasOne(AntecedentesFamiliares::class);
     }
-
+    public function antecedenteHospitalizaciones()
+    {
+        return $this->hasOne(Antper_Hozpitalizaciones::class);
+    }
+    /****AQUI MODIFIQUE***/
+    public function accidente_laboral()
+    {
+        return $this->hasOne(AntperAccidenteLaborales::class);
+    }
 
 }

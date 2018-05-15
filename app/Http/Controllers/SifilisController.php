@@ -83,9 +83,26 @@ class SifilisController extends Controller
      * @param  \App\Sifilis  $sifilis
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Sifilis $sifilis)
+    public function update(Request $request)
     {
-        //
+      $sifilis = Sifilis::find($request['sifilis_id']);
+      if(request()->ajax()) {
+          $data = request()->validate([
+              'resultado'=>'required',
+              'lista_examen_id'=>'required',
+              'cita_id'=>'required'
+          ]);
+
+          $sifilis->update([
+              'resultado'=>$data['resultado'],
+              'fecha_registro'=>Carbon::now(),
+              'lista_examen_id'=>$data['lista_examen_id'],
+              'cita_id'=>$data['cita_id'],
+              'estado'=>true
+          ]);
+          $sifilis->save();
+          return response()->json(['mensaje' => 'registro actualizado']);
+      }
     }
 
     /**
