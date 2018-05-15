@@ -40,10 +40,10 @@ class AntperAccidenteParticularesController extends Controller
       if(request()->ajax())
       {
           $data=request()->validate([
-            'paciente_id'=>'required',
-            'descripcion'=>'required',
-            'anio'=>'required',
-            'tratamiento_actual'=>'required'
+            'paciente_id'=>'nullable',
+            'descripcion'=>'nullable',
+            'anio'=>'nullable',
+            'tratamiento_actual'=>'nullable'
           ]);
           $antecedentes=AntperAccidenteParticulares::create([
             'descripcion'=>$data['descripcion'],

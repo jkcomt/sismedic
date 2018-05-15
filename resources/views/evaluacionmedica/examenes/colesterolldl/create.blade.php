@@ -17,7 +17,7 @@
                        <label for="colesterol_ldl" class="col-sm-4 control-label">Colesterol LDL </label>
                        <div class="col-sm-4">
                          <div class="input-group">
-                          <input type="text" class="form-control" name="colesterol_ldl" value="{{$cita->colesterolLdl->colesterol_ldl}}">
+                          <input type="text" class="form-control" name="colesterol_ldl"   @isset($cita->colesterolLdl->colesterol_ldl) value="{{$cita->colesterolLdl->colesterol_ldl}}"   @endisset>
                           <input type="hidden" name="lista_examen_id" value="{{$listaExamen->id}}">
                           <input type="hidden" name="cita_id" value="{{$cita->id}}">
                           <div class="input-group-addon">mm/h</div>

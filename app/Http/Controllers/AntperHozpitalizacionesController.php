@@ -38,9 +38,9 @@ class AntperHozpitalizacionesController extends Controller
       if(request()->ajax())
       {
           $data=request()->validate([
-            'paciente_id'=>'required',
-            'hospitalizacion_descripcion'=>'required',
-            'hospitalizacion_anio'=>'required',
+            'paciente_id'=>'nullable',
+            'hospitalizacion_descripcion'=>'nullable',
+            'hospitalizacion_anio'=>'nullable',
             'hos_id'=>'nullable'
           ]);
           $antecedentesHospitalizacion=Antper_Hozpitalizaciones::create([
