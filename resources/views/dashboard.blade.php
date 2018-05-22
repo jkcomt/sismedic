@@ -1,70 +1,83 @@
 @extends('layout')
 @section('api')
-    <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <style>
+        th,td{
+            text-align: center;
+        }
+        #calendar {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+    </style>
+
+    <link rel="stylesheet" href="{{asset('providers/fullcalendar/fullcalendar.min.css')}}">
+
+    <link rel="stylesheet" href="{{asset('providers/fullcalendar/fullcalendar.print.min.css')}}" media='print'>
+    <script src="{{asset('providers/fullcalendar/lib/moment.min.js')}}"></script>
+    {{--<script src="{{asset('providers/fullcalendar/lib/jquery.min.js')}}"></script>--}}
+    <script src="{{asset('providers/fullcalendar/fullcalendar.min.js')}}"></script>
+    <script src="{{asset('providers/fullcalendar/locale-all.js')}}"></script>
+    <link rel="stylesheet" href="{{asset('providers/fullcalendar/scheduler.css')}}">
+    <script src="{{asset('providers/fullcalendar/scheduler.js')}}"></script>
+    <script src="{{asset('providers/calendario.js')}}"></script>
+    <script>
+        $(document).ready(function() {
+
+            $('#calendar').fullCalendar({
+                schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
+                locale: 'es',
+                aspectRatio: 2,
+                eventLimit: true, // allow "more" link when too many events
+                events: [
+                    @foreach($events as $event)
+                        {
+                            title : '{{ $event->title }}',
+                            start : '{{ $event->start_date }}',
+                            color : '{{ $event->color }}',
+                            id : '{{$event->id}}'
+                            {{--url : '{{ route('tasks.edit', $event->id) }}'--}}
+                        },
+                    @endforeach
+                ],
+                dayClick: function(date) {
+                    $citas = 0;
+                    var dayEvents = $('#calendar').fullCalendar( 'clientEvents' ,function(event){
+                        if(event.start >= date && event.start <= date){
+                            $citas = $citas + 1;
+                        }
+                    });
+
+                    if($citas > 0){
+                        listarCitas(date.format())
+                    }
+
+                }
+            });
+
+        });
+    </script>
 @endsection
 @section('header')
-    {{--<div class="panel panel-heading">--}}
-        <h1 class="panel-title">
-            <strong>
-                Bienvenid@ {{auth()->user()->personal->nombres}}
-            </strong>
-        </h1>
-    {{--</div>--}}
+  <div class="row">
+    <div class="col-md-4">
+      CALENDARIO DE CITAS
+    </div>
+    <div class="col-md-8 text-right">
+      <a href="{{route('citas.nuevacita')}}" class="btn btn-success">REGISTRAR NUEVA CITA</a>
+    </div>
+  </div>
+
 @endsection
 @section('content')
-{{-- <div class="panel panel-body">
-    <h2 class="text-center">
-        SISMEDIC
-    </h2>
-</div> --}}
-<div class="row">
-    <div class="col-md-6">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                Citas para hoy
-            </div>
-            <div class="panel-body" style="padding:0px;">
-                <div class="box" style="margin-bottom: 0px;">
-                    <ul id="first-list">
-                        @foreach($citas as $cita)
-                        <li>
-                            <span>
-                            </span>
-                            <div class="title">
-                                {{Jenssegers\Date\Date::parse($cita->fecha_registro)->toFormattedDateString()}}
-                            </div>
-                            <div class="info">
-                                {{$cita->paciente->nombres." ".$cita->paciente->apellido_paterno." ".$cita->paciente->apellido_materno}}
-                            </div>
-                            <div class="text-left">
-                                Tipo de Examen : <span class="label label-warning">{{$cita->tipoexamen->descripcion}}</span>
-                            </div>
-                            <div class="time">
-                                <span>
-                                    {{Carbon\Carbon::parse($cita->hora_examen)->format('h:i A')}}
-                                    <sup>
-                                    </sup>
-                                </span>
-                                <span>
-                                </span>
-                            </div>
-                        </li>
-                        @endforeach
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                Opciones
-            </div>
-            <div class="panel-body" style="padding:0px;">
-                <div style="height: 55vh;"></div>
-            </div>
-        </div>
+<div id="tabla">
+
+</div>
+<div class="panel panel-default" style="margin-bottom: 0px;">
+    <div class="panel-body" style="padding-bottom: 10px;padding-top: 10px">
+        {{csrf_field()}}
+        <div id='calendar'></div>
     </div>
 </div>
+
 
 @endsection

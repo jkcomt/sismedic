@@ -24,7 +24,10 @@ class CreateHemogramasTable extends Migration
             $table->decimal('linfocitos',10,2);
             $table->decimal('eosinofilos',10,2);
             $table->decimal('basofilos',10,2);
-            $table->string('conclusion_hemograma');
+            $table->string('conclusion_hemograma')->nullable();
+            $table->string('vsg')->nullable();
+            $table->string('gpo_sanguineo')->nullable();
+            $table->string('factor_rh')->nullable();
             $table->date('fecha_registro');
             $table->foreign('lista_examen_id')->references('id')->on('lista_examenes');
             $table->integer('lista_examen_id')->unsigned()->nullable();

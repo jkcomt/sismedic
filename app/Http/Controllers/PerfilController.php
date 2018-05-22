@@ -134,4 +134,25 @@ class PerfilController extends Controller
         ['mensaje'=>'eliminacion exitosa']
       );
     }
+
+    public function filtroPerfil(Request $request)
+    {
+        $id =$request['filtro'];
+        if($id=='1' || $id=='2' || $id=='3' || $id=='4')
+        {
+          $lista_perfil = Perfil::where('estado',true)->where('id','<>','3')->pluck('descripcion','id')->toArray();
+          //dd($lista_ocupacional); crear una tabla   tipo examen para ocupaional y para individual
+        }
+        else if($id='5')
+        {
+          $lista_perfil = Perfil::where('estado',true)->where('id','3')->pluck('descripcion','id')->toArray();
+        }
+        $view = view('citas.perfil',compact('lista_perfil'))->render();
+        return response()->json(['html'=>$view]);
+      //  dd($lista_perfil);
+    }
+
+
+
+
 }

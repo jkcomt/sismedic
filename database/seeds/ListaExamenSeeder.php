@@ -131,5 +131,86 @@ class ListaExamenSeeder extends Seeder
             'dscto'=>1,
             'tipo'=>null
         ]);
+
+        factory(ListaExamen::class)->create([
+            'descripcion'=>'SUFICIENCIA DE TRABAJO EN ALTURA',
+            'valor'=>1,
+            'dscto'=>1,
+            'tipo'=>null
+        ]);
+        factory(ListaExamen::class)->create([
+            'descripcion'=>'APNEA DEL SUEÑO',
+            'valor'=>1,
+            'dscto'=>1,
+            'tipo'=>null
+        ]);
+        factory(ListaExamen::class)->create([
+            'descripcion'=>'USO DE RESPIRADORES',
+            'valor'=>1,
+            'dscto'=>1,
+            'tipo'=>null
+        ]);
+        factory(ListaExamen::class)->create([
+            'descripcion'=>'CUESTIONARIO NORDICO',
+            'valor'=>1,
+            'dscto'=>1,
+            'tipo'=>null
+        ]);
+        factory(ListaExamen::class)->create([
+            'descripcion'=>'CONDUCCION VEHICULO',
+            'valor'=>1,
+            'dscto'=>1,
+            'tipo'=>null
+        ]);
+        factory(ListaExamen::class)->create([
+            'descripcion'=>'CONDUCTOR OPERADOR',
+            'valor'=>1,
+            'dscto'=>1,
+            'tipo'=>null
+        ]);
+        factory(ListaExamen::class)->create([
+            'descripcion'=>'EVALUACION COGNITIVA',
+            'valor'=>1,
+            'dscto'=>1,
+            'tipo'=>null
+        ]);
+
+        // factory(ListaExamen::class)->create([
+        //     'descripcion'=>'HEMOGRAMA',
+        //     'valor'=>1,
+        //     'dscto'=>1,
+        //     'tipo'=>null,
+        //     'individual'=>true
+        // ]);
+
+        factory(ListaExamen::class)->create([
+            'descripcion'=>'BIOQUIMICA',
+            'valor'=>1,
+            'dscto'=>1,
+            'tipo'=>null,
+            'individual'=>true
+        ]);
+        factory(ListaExamen::class)->create([
+            'descripcion'=>'INMUNOLOGIA',
+            'valor'=>1,
+            'dscto'=>1,
+            'tipo'=>null,
+            'individual'=>true
+        ]);
+        factory(ListaExamen::class)->create([
+            'descripcion'=>'PERFIL HEPATICO',
+            'valor'=>1,
+            'dscto'=>1,
+            'tipo'=>null,
+            'individual'=>true
+        ]);
+        // factory(ListaExamen::class)->create([
+        //     'descripcion'=>'ORINA COMPLETA',
+        //     'valor'=>1,
+        //     'dscto'=>1,
+        //     'tipo'=>null,
+        //     'individual'=>true
+        // ]);
+
     }
 }

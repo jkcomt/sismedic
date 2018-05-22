@@ -20,6 +20,9 @@ class Perfil extends Model
     public function listaExamen(){
     	return $this->belongsToMany(ListaExamen::class,'perfil_examenes','perfil_id','lista_examen_id');
     }
+    public function paciente(){
+      return $this->hasOne(Paciente::class);
+    }
 
     public $timestamps = false;
 }

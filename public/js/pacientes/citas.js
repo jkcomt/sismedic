@@ -1,11 +1,11 @@
 $(document).ready(function() {
     $('#msg-error').hide();
 
-    $('#perfil').trigger('change');
+    //$('#perfil').trigger('change');
     $('#perfilEditar').trigger('change');
     $('#tipoBusqueda').trigger('change');
     $('#tipoBusquedacita').trigger('change');
-
+    $('#tipo_examen_uno').trigger('change');
     startdate = fechaActual();
     enddate = startdate;
     console.log(startdate+' '+enddate)
@@ -185,6 +185,16 @@ $idCita = '';
 $('#registrarCita').submit(function(e){
     e.preventDefault();
 
+    $items.length = 0;
+        if($items.length <= 0){
+            $('input[type=checkbox]').each(function () {
+                if (this.checked) {
+                    $items.push($(this).val());
+                }
+            });
+        }
+
+
     var datos = $('#registrarCita')
     var url = datos.attr('action');
     console.log(datos);
@@ -274,7 +284,7 @@ $('#tipoBusquedacita').on('change',function(e){
 });
 
 
-$('#perfil').on('change',function(e){
+$('body').on('change','#perfil',function(e){
     e.preventDefault();
     $valor = $(this).val();
     //console.log($valor);
@@ -496,6 +506,65 @@ $('#buscarCitaDni').on('keyup',function(){
   }
 
 });
+
+
+
+$('#tipo_examen_uno').on('change',function(e)
+{
+  $valor = $('#tipo_examen_uno').val();
+  //console.log($valor);
+  var token = $('input[name=_token]').attr('value')
+
+  var url = "/tipo_examen/filtro";
+  $.ajax({
+      type:"post",
+      headers: {'X-CSRF-TOKEN':token},
+      url:url,
+      dataType:"json",
+      data:{
+          filtro : $valor
+      },
+      success: function(data){
+      //  console.log(JSON.stringify(data))
+          $('#tipoExamenGroup').html(data.html)
+        $('#tipoExamen').trigger('change');
+      },
+      error: function(data){
+          console.log("Error "+JSON.stringify(data))
+      }
+  });
+});
+
+
+
+$('body').on('change','#tipoExamen',function(e)
+{
+  e.preventDefault();
+      $valor = $(this).val();
+      //console.log($valor);
+      var token = $('input[name=_token]').attr('value')
+
+      var url = "/perfil/filtro";
+      $.ajax({
+          type:"post",
+          headers: {'X-CSRF-TOKEN':token},
+          url:url,
+          dataType:"json",
+          data:{
+              filtro : $valor
+          },
+          success: function(data){
+            //console.log(JSON.stringify(data))
+               $('#perfilGroup').html(data.html)
+             $('#perfil').trigger('change');
+          },
+          error: function(data){
+              console.log("Error "+JSON.stringify(data))
+          }
+      });
+ });
+
+
 
 
 $('body').on('click','button[name=imprimirCita]',function(e){

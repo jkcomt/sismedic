@@ -134,10 +134,26 @@ class PerfilExamenController extends Controller
     }
 
 
+    // public function search(Request $request){
+    //     $perfilesExamenes = null;
+    //     if($request['buscar'] != '') {
+    //         $perfilesExamenes = PerfilExamen::where('perfil_id',$request['buscar'])->where('estado',true)->get();
+    //     }
+    //
+    //     if($request->ajax())
+    //     {
+    //         $view = view('pacientes.citas.perfilexamen',compact('perfilesExamenes'))->render();
+    //         return response()->json(['html'=>$view]);
+    //     }
+    // }
+
     public function search(Request $request){
         $perfilesExamenes = null;
         if($request['buscar'] != '') {
-            $perfilesExamenes = PerfilExamen::where('perfil_id',$request['buscar'])->where('estado',true)->get();
+            // $perfilesExamenes = PerfilExamen::where('perfil_id',$request['buscar'])->where('estado',true)->get();
+
+            $perfilesExamenes = PerfilExamen::where('perfil_id',$request['buscar'])->get();
+            
         }
 
         if($request->ajax())
@@ -146,6 +162,8 @@ class PerfilExamenController extends Controller
             return response()->json(['html'=>$view]);
         }
     }
+
+
 
     public function searchedit(Request $request){
         $perfilesExamenes = null;
@@ -163,5 +181,13 @@ class PerfilExamenController extends Controller
             return response()->json(['html'=>$view]);
         }
     }
+
+
+
+
+
+
+
+
 
 }

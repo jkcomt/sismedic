@@ -19,10 +19,10 @@ class CreateElectrocardiogramasTable extends Migration
             $table->string('frecuencia_cardiaca')->nullable();
             $table->string('eje_qrs')->nullable();
             $table->string('eje_qrs_dos')->nullable();
-            $table->decimal('onda_p',10,2)->nullable();
-            $table->decimal('intervalo',10,2)->nullable();
-            $table->decimal('segmento_qrs',10,2)->nullable();
-            $table->decimal('qt_corregido',10,2)->nullable();
+            $table->string('onda_p')->nullable();
+            $table->string('intervalo')->nullable();
+            $table->string('segmento_qrs')->nullable();
+            $table->string('qt_corregido')->nullable();
             $table->string('isquemia')->nullable();
             $table->string('hipertrofias')->nullable();
             $table->string('otros_hallazgos',400)->nullable();

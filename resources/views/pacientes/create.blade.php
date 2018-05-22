@@ -71,11 +71,11 @@
 
                         <div class="row">
                             <div class="col-md-2 form-group">
-                                <label for="apellido_paterno" class="control-label">Ape. Paterno:</label>
+                                <label  class="control-label">Ape. Paterno:</label>
                                 <input type="text" value="" class="form-control" name="apellido_paterno">
                             </div>
                             <div class="col-md-2 form-group">
-                                <label for="apellido_materno" class="control-label">Ape. Materno:</label>
+                                <label  class="control-label">Ape. Materno:</label>
                                 <input type="text"  value="" class="form-control" name="apellido_materno">
                             </div>
                             <div class="col-md-4 form-group">
@@ -229,7 +229,7 @@
                             <div class="col-md-12">
                                 <label class="control-label">Dirección:</label>
                                 <div class="form-group" id="direccionGroup">
-                                    <input type="text" name="direccion" id="direccion" class="form-control">
+                                    <input type="text" name="direccion" id="direcciontxt" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -266,7 +266,7 @@
                                 <div class="form-group" id="departamentoGroup">
                                     <select name="tipo_dni" id="tipo_dni" class="form-control" >
                                         {{--<input type="text" class=" form-control" name="personal" value="{{old('personal')}}">--}}
-                                        <option value="dni">DNI</option>
+                                        <option value="dni" selected>DNI</option>
                                         {{--@foreach($agricultores as $key => $agricultor)--}}
                                         {{--<option value="{{$key}}">{{$agricultor}}</option>--}}
                                         {{--@endforeach--}}
@@ -353,7 +353,7 @@
                                     <div class="col-md-12 form-group">
                                         <label for="email" class="control-label">Email:</label>
                                         <div class="form-group">
-                                            <input type="email"  value="" class="form-control" name="email">
+                                            <input type="email"   class="form-control" name="email" id="emails">
                                         </div>
                                     </div>
                                 </div>
@@ -361,7 +361,7 @@
                                     <div class="col-md-12 form-group">
                                         <label for="comentarios" class="control-label">Comentarios:</label>
                                         <div class="form-group">
-                                            <input type="text"  value="" class="form-control" name="comentarios">
+                                            <input type="text"  value="" class="form-control" name="comentarios" id="comentarios">
                                         </div>
                                     </div>
                                 </div>
@@ -369,7 +369,7 @@
                                     <div class="col-md-12 form-group">
                                         <label for="alergias" class="control-label">Alergias:</label>
                                         <div class="">
-                                            <input type="alergias"  value="" class="form-control" name="alergias">
+                                            <input type="text"  value="" class="form-control" id="alergias" name="alergias">
                                         </div>
                                     </div>
                                 </div>
@@ -410,7 +410,7 @@
                                     <div class="col-md-12 form-group">
                                         <label for="tiempodesempeno" class="control-label">Tiempo Desempeño:</label>
                                         <div class="form-group">
-                                            <input type="text"  value="" class="form-control" name="tiempodesempeno">
+                                            <input type="text"  value="" class="form-control" name="tiempo_desempeno" id="tiempo_desempeno">
                                         </div>
                                     </div>
                                 </div>
@@ -447,7 +447,7 @@
                                         <label class="control-label">Regimen:</label>
                                         <div class="form-inline">
                                             <div class="form-group ">
-                                                <input type="text"  value="" class="form-control" name="regimenInput">
+                                                <input type="text"  value="" class="form-control" name="regimen_descripcion" id="regimen_descripcion">
                                             </div>
                                             <div class="form-group">
                                                 <select name="regimen" id="regimen" class="form-control" >
@@ -484,6 +484,21 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12 form-group">
+                                        <label class="control-label">perfil:</label>
+                                        <div class="form-group" id="perfilGroup">
+                                            <select name="perfil" id="perfil" class="form-control" >
+                                                {{--<input type="text" class=" form-control" name="personal" value="{{old('personal')}}">--}}
+                                                {{--<option>Seleccione contratador</option>--}}
+                                                @foreach($perfiles as $key => $perfil)
+                                                    <option value="{{$key}}">{{ucfirst($perfil)}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12 form-group">
                                         <label class="control-label">Sección:</label>
                                         <input type="text" class="form-control" name="seccion" value="">
                                     </div>
@@ -499,7 +514,7 @@
                                 <div class="row">
                                     <div class="col-md-12 form-group">
                                         <label for="emergencia" class="control-label">En caso de emergencia:</label>
-                                        <input type="text"  value="" class="form-control" name="emergencia">
+                                        <input type="text"  value="" class="form-control" name="caso_emergencia">
                                     </div>
                                 </div>
                             </div>

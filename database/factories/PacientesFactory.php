@@ -32,8 +32,8 @@ $factory->define(App\Paciente::class, function (Faker $faker) {
         'instruccion_id'=>1,
         'contrata_id'=>1,
         'ocupacion_id'=>1,
+        'perfil_id'=>1,
         'lugar_labores_id'=>1,
-
         'email'=>$faker->email,
         'comentarios'=>'MANTENIMIENTO Y REPARACION DE EQUIPOS',
         'alergias'=>'ALERGIA CAMARONES',

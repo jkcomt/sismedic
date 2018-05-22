@@ -13,7 +13,8 @@ class ListaExamen extends Model
         'tipo',
         'valor',
         'dscto',
-        'estado'
+        'estado',
+        'individual'
     ];
 
     public $timestamps = false;

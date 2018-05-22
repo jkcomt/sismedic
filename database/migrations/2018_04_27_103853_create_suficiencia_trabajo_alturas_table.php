@@ -27,6 +27,7 @@ class CreateSuficienciaTrabajoAlturasTable extends Migration
             $table->boolean('anamnesis_item8')->nullable();
             $table->boolean('anamnesis_item9')->nullable();
             $table->boolean('anamnesis_item10')->nullable();
+            $table->string('anamnesis_comentarios')->nullable();
             $table->integer('exploracion_fisica_fc')->nullable();
             $table->integer('exploracion_fisica_fr')->nullable();
             $table->integer('exploracion_fisica_pa')->nullable();
@@ -35,6 +36,7 @@ class CreateSuficienciaTrabajoAlturasTable extends Migration
             $table->integer('exploracion_fisica_imc')->nullable();
             $table->integer('exploracion_fisica_perimetro_cuello')->nullable();
             $table->integer('exploracion_fisica_perimetro_cintura')->nullable();
+            $table->integer('exploracion_fisica_perimetro_cadera')->nullable();
             $table->integer('exploracion_fisica_icc')->nullable();//aclarar tipo de dato
             $table->integer('exploracion_fisica_perimetro_toracico_inspiracion')->nullable();
             $table->integer('exploracion_fisica_perimetro_toracico_espiracion')->nullable();
@@ -60,7 +62,6 @@ class CreateSuficienciaTrabajoAlturasTable extends Migration
             $table->date('desde')->nullable();
             $table->date('hasta')->nullable();
             $table->string('recomendacion')->nullable();
-
             $table->date('fecha_registro');
             $table->foreign('lista_examen_id')->references('id')->on('lista_examenes');
             $table->integer('lista_examen_id')->unsigned()->nullable();

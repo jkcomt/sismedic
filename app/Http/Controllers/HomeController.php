@@ -25,14 +25,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $eventos= Event::where('estado',true)->get();
+        $events= Event::where('estado',true)->get();
         //$citas= Cita::where('estado',true)->get();
-       
+
         $citas=Cita::where('fecha_examen','=',\Carbon\Carbon::now()->toDateString())
                     //->where('hora_examen','>',\Carbon\Carbon::now()->toTimeString())
                     ->orderBy('hora_examen')->get();
 
 
-        return view('dashboard',compact('citas','eventos'));
+        return view('dashboard',compact('citas','events'));
     }
 }

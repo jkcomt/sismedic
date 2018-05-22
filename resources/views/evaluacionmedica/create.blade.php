@@ -7,7 +7,7 @@
 @section('header')
   <div class="row">
     <div class="col-md-6">
-      EVALUACIÓN MÉDICA - Evaluación de Resultados
+      EVALUACIÓN MÉDICA  <br>{{$paciente->apellido_paterno ." ".$paciente->apellido_materno." ".$paciente->nombres." | ".$paciente->perfil->descripcion}}
     </div>
     <div class="col-md-6 text-right">
       <a href="{{route('evaluacion_medica.index')}}" class="btn btn-warning">VOLVER A CATÁLOGO</a>
@@ -694,7 +694,9 @@
                                                             <label for="inputEmail3" class="col-sm-4 control-label">APTITUD LABORAL</label>
                                                             <div class="col-sm-8">
                                                                 <select name="" id="" class="form-control">
-                                                                    <option value=""></option>
+                                                                    <option value="">Apto</option>
+                                                                    <option value="">Apto con Resttriccion</option>
+                                                                    <option value="">No Apto</option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -708,7 +710,9 @@
                                                     <div class="col-md-4">
                                                         <div class="row">
                                                             <div class="col-md-12">
-                                                                <button class="btn btn-default btn-sm btn-block">Interconsulta</button>
+                                                                {{-- <button class="btn btn-default btn-sm btn-block"></button> --}}
+                                                                <a href="{{route('word.reporte',[$cita->id])}}" class="btn btn-default btn-sm btn-block">Interconsulta Formato WORD</a>
+                                                                <a href="{{route('interconsultapdf.reporte',[$cita->id])}}" target="_blank" class="btn btn-default btn-sm btn-block">Interconsulta Formato PDF</a>
                                                             </div>
                                                         </div><br>
                                                         <div class="row">
@@ -729,6 +733,12 @@
                                                         <div class="row">
                                                             <div class="col-md-12">
                                                                 <button class="btn btn-default btn-sm btn-block">Terminar Atención</button>
+                                                            </div>
+                                                        </div><br>
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <a href="{{route('evaluacionmedica.informelaboratorio',[$cita->id])}}"   target="_blank"  class="btn btn-default btn-sm btn-block">Imprimir</a>
+                                                                {{-- <button class="btn btn-default btn-sm btn-block">Terminar Atención</button> --}}
                                                             </div>
                                                         </div><br>
                                                     </div>

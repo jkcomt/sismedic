@@ -16,7 +16,7 @@ class CreatePacientesTable extends Migration
         Schema::create('pacientes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nro_historia');
-            $table->string('matricula');
+            $table->string('matricula')->nullable();
             $table->string('apellido_paterno');
             $table->string('apellido_materno');
             $table->string('nombres');
@@ -24,8 +24,7 @@ class CreatePacientesTable extends Migration
             $table->date('fecha_nacimiento');
             $table->date('fecha_ingreso');
             $table->date('fecha_ingreso_minera');
-            $table->string('jefe_inmediato');
-
+            $table->string('jefe_inmediato')->nullable();
             $table->foreign('pais_origen_id')->references('id')->on('paises');
             $table->integer('pais_origen_id')->unsigned()->nullable();
             $table->foreign('departamento_origen_id')->references('id')->on('departamentos');
@@ -34,7 +33,6 @@ class CreatePacientesTable extends Migration
             $table->integer('provincia_origen_id')->unsigned()->nullable();
             $table->foreign('distrito_origen_id')->references('id')->on('distritos');
             $table->integer('distrito_origen_id')->unsigned()->nullable();
-
             $table->foreign('pais_domicilio_id')->references('id')->on('paises');
             $table->integer('pais_domicilio_id')->unsigned()->nullable();
             $table->foreign('departamento_domicilio_id')->references('id')->on('departamentos');
@@ -58,12 +56,15 @@ class CreatePacientesTable extends Migration
             $table->foreign('contrata_id')->references('id')->on('contratadores');
             $table->integer('contrata_id')->unsigned()->nullable();
 
+            $table->foreign('perfil_id')->references('id')->on('perfiles');
+            $table->integer('perfil_id')->unsigned()->nullable();
+
             $table->foreign('ocupacion_id')->references('id')->on('ocupaciones');
             $table->integer('ocupacion_id')->unsigned()->nullable();
 
             $table->foreign('lugar_labores_id')->references('id')->on('lugar_labores');
             $table->integer('lugar_labores_id')->unsigned()->nullable();
-            //$table->string('tiempo_desempeno')->nullable();
+            $table->string('tiempo_desempeno')->nullable();
 
             $table->string('email')->nullable();
             $table->string('comentarios')->nullable();

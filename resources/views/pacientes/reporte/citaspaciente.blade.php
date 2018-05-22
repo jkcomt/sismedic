@@ -46,8 +46,6 @@
 
     <hr>
 
-
-
     <div class="row">
     <h4> <label for="">Paciente: <strong>{{$paciente->nombres." ".$paciente->apellido_paterno." ".$paciente->apellido_materno}}</strong> </label></h4>
     <h5>  <label for="">DNI: <strong>{{$paciente->num_dni}}</strong></h5>

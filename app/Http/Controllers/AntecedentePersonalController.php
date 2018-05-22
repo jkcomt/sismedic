@@ -6,6 +6,7 @@ use App\AntecedentePersonal;
 use App\Antper_Hozpitalizaciones;
 use App\AntperAccidenteLaborales;
 use App\AntperAccidenteParticulares;
+use App\AntperHistoriaOcupacionales;
 use Illuminate\Http\Request;
 use App\Paciente;
 use App\Cita;
@@ -30,8 +31,8 @@ class AntecedentePersonalController extends Controller
       $hospitalizaciones = Antper_Hozpitalizaciones::where('paciente_id','=',$cita->paciente->id)->get()->toArray();
       $laborales=AntperAccidenteLaborales::where('paciente_id','=',$cita->paciente->id)->get()->toArray();
       $particulares=AntperAccidenteParticulares::where('paciente_id','=',$cita->paciente->id)->get()->toArray();
-
-      return view('antecedentes.index',compact('paciente','cita','hospitalizaciones','laborales','particulares'));
+      $historiaocupacionals=AntperHistoriaOcupacionales::where('paciente_id','=',$cita->paciente->id)->get()->toArray();
+      return view('antecedentes.index',compact('paciente','cita','hospitalizaciones','laborales','particulares','historiaocupacionals'));
     }
     /**
      * Show the form for creating a new resource.

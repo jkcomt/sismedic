@@ -15,6 +15,7 @@ class AcidoUricoController extends Controller
     public function index()
     {
         //
+        
     }
 
     /**

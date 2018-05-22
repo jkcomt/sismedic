@@ -20,6 +20,7 @@ class CreateListaExamensTable extends Migration
             $table->decimal('valor',10,2);
             $table->decimal('dscto',10,2);
             $table->boolean('estado');
+            $table->boolean('individual')->nullable();
             //$table->timestamps();
         });
     }

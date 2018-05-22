@@ -12,5 +12,23 @@ class TipoExamenSeeder extends Seeder
     public function run()
     {
         factory(TipoExamen::class,1)->create();
+
+        factory(TipoExamen::class)->create([
+            'descripcion'=>'PRE-OCUPACIONAL',
+            'estado'=>true,
+        ]);
+        factory(TipoExamen::class)->create([
+            'descripcion'=>'PERIODO ANUAL',
+            'estado'=>true,
+        ]);
+        factory(TipoExamen::class)->create([
+            'descripcion'=>'RETIRO',
+            'estado'=>true,
+        ]);
+        factory(TipoExamen::class)->create([
+            'descripcion'=>'INDIVIDUAL - LABORATORIO',
+            'estado'=>true,
+        ]);
+
     }
 }

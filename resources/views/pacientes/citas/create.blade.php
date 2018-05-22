@@ -108,7 +108,7 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-md-4 form-group">
+                            <div class="col-md-3 form-group">
                                 <label for="clienteCuenta" class="control-label">Cliente o Cuenta : </label>
                                 <div class="form-group" id="clienteCuentaGroup">
                                     <select name="clienteCuenta" id="clienteCuenta" class="form-control">
@@ -119,26 +119,42 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-4 form-group">
+                            <div class="col-md-3 form-group">
+
+                                <label for="clienteCuenta" class="control-label">Tipo Examen : </label>
+                                <div class="form-group" id="clienteCuentaGroup">
+                                    <select name="tipo_examen_uno" id="tipo_examen_uno" class="form-control">
+                                            <option value="1">OCUPACIONAL</option>
+                                            <option value="2">INDIVIDUAL</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3 form-group">
+                                <label for="tipoExamen" class="control-label">Examen : </label>
+                                <div class="" id="tipoExamenGroup">
+                                    @include('citas.examen')
+                                </div>
+                            </div>
+                            {{-- <div class="col-md-3 form-group">
                                 <label for="tipoExamen" class="control-label">Tipo de Examen : </label>
                                 <div class="form-group" id="tipoExamenGroup">
                                     <select name="tipoExamen" id="tipoExamen" class="form-control">
-                                        {{--<input type="text" class=" form-control" name="personal" value="{{old('personal')}}">--}}
                                         @foreach($tipoExamenes as $key => $tipoexamen)
                                             <option value="{{$key}}">{{$tipoexamen}}</option>
                                         @endforeach
                                     </select>
                                 </div>
-                            </div>
-                            <div class="col-md-4 form-group">
-                                <label for="perfil" class="control-label">Perfil : </label>
+                            </div> --}}
+                            <div class="col-md-3 form-group">
+                                <label for="perfil" class="control-label" id="perfil_id">Perfil : </label>
                                 <div class="form-group" id="perfilGroup">
-                                    <select name="perfil" id="perfil" class="form-control">
+                                    {{-- <select name="perfil" id="perfil" class="form-control"> --}}
                                         {{--<input type="text" class=" form-control" name="personal" value="{{old('personal')}}">--}}
-                                        @foreach($perfiles as $key => $perfil)
+                                        {{-- @foreach($perfiles as $key => $perfil)
                                             <option value="{{$key}}">{{$perfil}}</option>
                                         @endforeach
-                                    </select>
+                                    </select> --}}
+                                      @include('citas.perfil')
                                 </div>
                             </div>
                         </div>

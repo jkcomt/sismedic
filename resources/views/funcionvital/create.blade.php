@@ -131,9 +131,6 @@
                                 <label for="imc" class="control-label">IMC:</label>
                                 <input type="number" value="0" class="form-control" name="imc" min="0" step="any">
                             </div>
-                        </div>
-                        <hr>
-                        <div class="row">
                             <div class="col-md-2 form-group">
                                 <label for="temperatura" class="control-label">Temperatura:</label>
                                 <div class="input-group">
@@ -141,8 +138,7 @@
                                     <div class="input-group-addon">°C</div>
                                 </div>
                             </div>
-
-                            <div class="col-md-2  col-md-offset-2 form-group">
+                            <div class="col-md-2 form-group">
                                 <label for="fc" class="control-label">F.C. :</label>
                                 <div class="input-group">
                                     <input type="number" value="0" class="form-control" name="fc" min="0" step="any">
@@ -157,7 +153,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                          <div class="row">
                             <div class="col-md-4 form-group">
                                 <label class="control-label">PS/PD:</label>
                                 <div class="input-group">
@@ -179,7 +175,7 @@
                     </div>
                 </div>
                 <div class="box box-default">
-                    <div class="box-header with-border">Información de Función Vital
+                    <div class="box-header with-border">Medidas Antropométricas
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse">
                                 <i class="fa fa-plus"></i>
@@ -202,8 +198,6 @@
                                     <div class="input-group-addon">cm</div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="col-md-4 form-group">
                                 <label for="maxima_inspiracion" class="control-label">Máxima Inspiricación:</label>
                                 <div class="input-group">
@@ -211,6 +205,9 @@
                                     <div class="input-group-addon">cm</div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="row">
+
                             <div class="col-md-4 form-group">
                                 <label for="perimetro_cadera" class="control-label">Perímetro Cadera:</label>
                                 <div class="input-group">
@@ -218,8 +215,6 @@
                                     <div class="input-group-addon">cm</div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="col-md-4 form-group">
                                 <label for="expiracion_forzada" class="control-label">Expiración Forzada:</label>
                                 <div class="input-group">
@@ -232,29 +227,19 @@
                                 <input type="number" value="0" class="form-control" name="indice_cintura" min="0" step="any">
                             </div>
                         </div>
+                        <div class="row">
+                          <div class="col-md-4 form-group">
+                              <label for="circunferencia_cuello" class="control-label">Circunferencia Cuello:</label>
+                              <div class="input-group">
+                                  <input type="number" value="0" class="form-control" name="circunferencia_cuello" min="0" step="any">
+                                  <div class="input-group-addon">cm</div>
+                              </div>
+                          </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="box box-default">
-                    <div class="box-header with-border">Información de Función Vital
-                        <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                                <i class="fa fa-plus"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="box-body">
-                        <div class="row">
-                            <div class="col-md-4 form-group">
-                                <label for="circunferencia_cuello" class="control-label">Circunferencia Cuello:</label>
-                                <div class="input-group">
-                                    <input type="number" value="0" class="form-control" name="circunferencia_cuello" min="0" step="any">
-                                    <div class="input-group-addon">cm</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
 
                 <div class="panel panel-default">
                     <div class="panel-body">

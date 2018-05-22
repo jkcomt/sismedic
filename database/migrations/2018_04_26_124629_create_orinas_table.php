@@ -38,6 +38,8 @@ class CreateOrinasTable extends Migration
             $table->string('filamentos_mucoides')->nullable();
             $table->string('otros')->nullable();
             $table->string('conclusion_orina')->nullable();
+            $table->string('dosaje_cocaina')->nullable();
+            $table->string('dosaje_marihuana')->nullable();
             $table->date('fecha_registro')->nullable();
             $table->foreign('lista_examen_id')->references('id')->on('lista_examenes');
             $table->integer('lista_examen_id')->unsigned()->nullable();

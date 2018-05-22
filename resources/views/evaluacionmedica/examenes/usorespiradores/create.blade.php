@@ -77,23 +77,6 @@
                               </tr>
                               <tr>
                                 <td>
-                                  Todas Aquellas enfermedades que se caractericen por movimientos involuntarios y que interfieran seriamente su capacidad de trabajar, independiente de su tratamiento farmacológico
-                                </td>
-                                <td>
-                                  <input type="checkbox">
-                                </td>
-                                <td>
-
-                                </td>
-                                <td>
-                                  Personas que como consecuencia de una enfermedad o su tratamiento, sufran uno o varios de los siguientes efectos: alteración del estado de consiencia, alteracion del equilibrio, en la percepcion, en la habilidad motriz, en la estabilidad emocional y en el juicio.
-                                </td>
-                                <td>
-                                    <input type="checkbox">
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>
                                   <p>Perdida recurrente de la consciencia, independientemente de su tratamiento, tales como narcolepsia, epilepsia, etc.</p>
                                 </td>
                                 <td>

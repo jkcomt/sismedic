@@ -24,13 +24,71 @@ $(document).ready(function() {
 
     $('#msg-error').hide();
 
-    $('#perfil').trigger('change');
-    $('#perfilEditar').trigger('change');
+  //  $('#perfil').trigger('change');
+    $('#tipo_examen_uno').trigger('change');
 
+    $('#perfilEditar').trigger('change');
+    //$('#tipoExamen').trigger('change');
 
 
 
 });
+
+
+$('#tipo_examen_uno').on('change',function(e)
+{
+  $valor = $('#tipo_examen_uno').val();
+  //console.log($valor);
+  var token = $('input[name=_token]').attr('value')
+
+  var url = "/tipo_examen/filtro";
+  $.ajax({
+      type:"post",
+      headers: {'X-CSRF-TOKEN':token},
+      url:url,
+      dataType:"json",
+      data:{
+          filtro : $valor
+      },
+      success: function(data){
+      //  console.log(JSON.stringify(data))
+          $('#tipoExamenGroup').html(data.html)
+        $('#tipoExamen').trigger('change');
+      },
+      error: function(data){
+          console.log("Error "+JSON.stringify(data))
+      }
+  });
+});
+
+
+$('body').on('change','#tipoExamen',function(e)
+{
+  e.preventDefault();
+      $valor = $(this).val();
+      //console.log($valor);
+      var token = $('input[name=_token]').attr('value')
+
+      var url = "/perfil/filtro";
+      $.ajax({
+          type:"post",
+          headers: {'X-CSRF-TOKEN':token},
+          url:url,
+          dataType:"json",
+          data:{
+              filtro : $valor
+          },
+          success: function(data){
+            //console.log(JSON.stringify(data))
+               $('#perfilGroup').html(data.html)
+             $('#perfil').trigger('change');
+          },
+          error: function(data){
+              console.log("Error "+JSON.stringify(data))
+          }
+      });
+ });
+
 
 $items = [];
 
@@ -80,9 +138,18 @@ $('body').on('click','.item',function(e){
 $('#registrarCita').submit(function(e){
     e.preventDefault();
 
+    $items.length = 0;
+        if($items.length <= 0){
+            $('input[type=checkbox]').each(function () {
+                if (this.checked) {
+                    $items.push($(this).val());
+                }
+            });
+        }
+
     var datos = $('#registrarCita')
     var url = datos.attr('action');
-    console.log(datos);
+    console.log($items);
     //$.post(url,datos.serialize() + "&items=" + $items,function (result) {
     $.post(url,datos.serialize() + "&" + $.param({'items':$items}),function (result) {
 
@@ -97,7 +164,6 @@ $('#registrarCita').submit(function(e){
             });
             $('#modal-confirmacion').modal('hide');
             $('#modal-exito .modal-body').html('<h3 class="text-success text-center">Cita Ocupacional '+ data.mensaje.nro_serie_cita+' al paciente '+ data.mensaje.paciente.apellido_paterno +' '+ data.mensaje.paciente.apellido_materno +', '+ data.mensaje.paciente.nombres +'</h3> <div class="text-center"><button type="button" name="imprimirCita" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-print"></span> Imprimir Cita</button></div>')
-
             $('#modal-exito').modal('show')
         }else{
             console.log(data.error)
@@ -111,12 +177,11 @@ $('#registrarCita').submit(function(e){
             console.log(value);
             $('#listaerrores').append('<li>'+value+'</li>')
         });
-
         return;
     });
 });
 
-$('#perfil').on('change',function(e){
+$('body').on('change','#perfil',function(e){
     e.preventDefault();
     $valor = $(this).val();
     //console.log($valor);

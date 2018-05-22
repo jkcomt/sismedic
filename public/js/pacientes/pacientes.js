@@ -3,7 +3,7 @@ $(document).ready(function() {
     $('#msg-error').hide();
 
     $('#filtro').trigger('change');
-
+    console.log("paciente");
     //$("select[name=paisOrigen]").val("13");
 
     //$('select[name=paisOrigen]').trigger('change');
@@ -214,159 +214,145 @@ $('#registrarPaciente').submit(function(e){
             return;
         }
     }).error(function(data){
-        $('#msg-error').fadeIn();
-        $('#listaerrores').html('')
+        // $('#msg-error').fadeIn();
+        // $('#listaerrores').html('')
+        // COMENTARIO TEMPORAL
+        // $.each(data.responseJSON.errors, function( index, value ) {
+        //   console.log(value)
+        //     $('#listaerrores').append('<li>'+value+'</li>')
+        // })
+       // if(data.responseJSON.errors.matricula)
+       // {
+       //     $('input[name=matricula]').parent().addClass('has-error');
+       //     $('input[name=matricula]').focus();
+       //    }
+       //  else
 
-            $.each(data.responseJSON.errors, function( index, value ) {
-              console.log(value)
-                $('#listaerrores').append('<li>'+value+'</li>')
-            })
-
-       if(data.responseJSON.errors.matricula)
-       {
-           $('input[name=matricula]').parent().addClass('has-error')
-       }else{
-           $('input[name=matricula]').parent().removeClass('has-error')
-       }
-
-        if(data.responseJSON.errors.apellido_materno)
+      console.log(data.responseJSON.errors);
+         if(data.responseJSON.errors.apellido_paterno)
         {
-            $('input[name=apellido_materno]').parent().addClass('has-error')
+           $('input[name=apellido_paterno]').parent().addClass('has-error')
+            $('input[name=apellido_paterno]').focus()
+  /*          if(data.responseJSON.errors.apellido_materno) $('input[name=apellido_materno]').parent().addClass('has-error')
+            if(data.responseJSON.errors.nombres)  $('input[name=nombres]').parent().addClass('has-error')
+            if(data.responseJSON.errors.paisOrigen)  $('#paisOrigen').parent().addClass('has-error')
+            if(data.responseJSON.errors.departamentoOrigen)$('#departamentoOrigen').parent().addClass('has-error')
+*/
+          }
+        if(data.responseJSON.errors.apellido_materno)
+         {
+             $('input[name=apellido_materno]').parent().addClass('has-error')
+             $('input[name=apellido_materno]').focus()
 
-        }else{
-            $('input[name=apellido_materno]').parent().removeClass('has-error')
+         }
+       if(data.responseJSON.errors.nombres)
+         {
+             $('input[name=nombres]').parent().addClass('has-error')
+             $('input[name=nombres]').focus()
+         }
+         if(data.responseJSON.errors.jefe_inmediato)
+         {
+             $('input[name=jefe_inmediato]').parent().addClass('has-error')
+              $('input[name=jefe_inmediato]').focus()
+         }
+           if(data.responseJSON.errors.departamentoOrigen)
+         {
+             $('#departamentoOrigen').parent().addClass('has-error')
+             $('#departamentoOrigen').focus()
+
+         }
+           if(data.responseJSON.errors.distritoOrigen)
+         {
+             $('#distritoOrigen').parent().addClass('has-error')
+              $('#distritoOrigen').focus()
+         }
+         if(data.responseJSON.errors.provinciaOrigen)
+        {
+            $('#provinciaOrigen').parent().addClass('has-error')
+            $('#provinciaOrigen').focus()
         }
 
-       if(data.responseJSON.errors.apellido_paterno)
-       {
-           $('input[name=apellido_paterno]').parent().addClass('has-error')
-
-       }else{
-           $('input[name=apellido_paterno]').parent().removeClass('has-error')
-       }
-
-       if(data.responseJSON.errors.nombres)
-       {
-           $('input[name=nombres]').parent().addClass('has-error')
-
-       }else{
-           $('input[name=nombres]').parent().removeClass('has-error')
-       }
-
-       if(data.responseJSON.errors.jefe_inmediato)
-       {
-           $('input[name=jefe_inmediato]').parent().addClass('has-error')
-
-       }else{
-           $('input[name=jefe_inmediato]').parent().removeClass('has-error')
-       }
-
-       if(data.responseJSON.errors.departamentoOrigen)
-       {
-           $('#departamentoOrigen').parent().addClass('has-error')
-
-       }else{
-           $('#departamentoOrigen').parent().removeClass('has-error')
-       }
-
-       if(data.responseJSON.errors.provinciaOrigen)
-       {
-           $('select[name=provinciaOrigen]').parent().addClass('has-error')
-
-       }else{
-           $('select[name=provinciaOrigen]').parent().removeClass('has-error')
-       }
-
-       if(data.responseJSON.errors.departamentoDomicilio)
+         if(data.responseJSON.errors.departamentoDomicilio)
        {
            $('#departamentoDomGroup').parent().addClass('has-error')
-
-       }else{
-           $('#departamentoDomGroup').parent().removeClass('has-error')
+            $('#departamentoDomGroup').focus()
        }
-
-       if(data.responseJSON.errors.provinciaDomicilio)
+        if(data.responseJSON.errors.provinciaDomicilio)
        {
            $('#provinciaDomGroup').parent().addClass('has-error')
-
-       }else{
-           $('#provinciaDomGroup').parent().removeClass('has-error')
+           $('#provinciaDomGroup').focus()
        }
-
-       if(data.responseJSON.errors.direccion)
-       {
-           $('#direccionGroup').parent().addClass('has-error')
-
-       }else{
-           $('#direccionGroup').parent().removeClass('has-error')
-       }
-
+       if(data.responseJSON.errors.distritoDom)
+      {
+          $('#distritoDom').parent().addClass('has-error')
+          $('#distritoDom').focus()
+      }
+        if(data.responseJSON.errors.direccion)
+      {
+          $('#direcciontxt').parent().addClass('has-error')
+            $('#direcciontxt').focus()
+      }
        if(data.responseJSON.errors.telf_fijo)
-       {
-           $('input[name=telf_fijo]').parent().addClass('has-error')
-
-       }else{
-           $('input[name=telf_fijo]').parent().removeClass('has-error')
-       }
-
-       if(data.responseJSON.errors.celular)
+      {
+          $('input[name=telf_fijo]').parent().addClass('has-error')
+          $('input[name=telf_fijo]').focus();
+      }
+        if(data.responseJSON.errors.celular)
        {
            $('input[name=celular]').parent().addClass('has-error')
-
-       }else{
-           $('input[name=celular]').parent().removeClass('has-error')
+           $('input[name=celular]').focus();
        }
-
-       if(data.responseJSON.errors.trabajo)
+        if(data.responseJSON.errors.trabajo)
        {
-           $('input[name=trabajo]').parent().addClass('has-error')
-
-       }else{
-           $('input[name=trabajo]').parent().removeClass('has-error')
+          $('input[name=trabajo]').parent().addClass('has-error')
+          $('input[name=celular]').focus();
        }
-
-       if(data.responseJSON.errors.tipo_dni)
+        if(data.responseJSON.errors.tipo_dni)
        {
-           $('select[name=tipo_dni]').parent().addClass('has-error')
-
-       }else{
-           $('select[name=tipo_dni]').parent().removeClass('has-error')
+          $('select[name=tipo_dni]').parent().addClass('has-error')
+            $('select[name=tipo_dni]').focus();
        }
-
-       if(data.responseJSON.errors.num_dni)
+        if(data.responseJSON.errors.num_dni)
        {
            $('input[name=num_dni]').parent().addClass('has-error')
-
-       }else{
-           $('input[name=num_dni]').parent().removeClass('has-error')
+           $('input[name=num_dni]').focus();
        }
-
-       if(data.responseJSON.errors.nr_hijo_vivos)
+        if(data.responseJSON.errors.num_dni)
        {
-           $('input[name=nr_hijo_vivos]').parent().addClass('has-error')
-
-       }else{
-           $('input[name=nr_hijo_vivos]').parent().removeClass('has-error')
+           $('input[name=num_dni]').parent().addClass('has-error')
+           $('input[name=num_dni]').focus();
        }
-
-       if(data.responseJSON.errors.nr_hijo_muertos)
+        if(data.responseJSON.errors.email)
        {
-           $('input[name=nr_hijo_muertos]').parent().addClass('has-error')
-
-       }else{
-           $('input[name=nr_hijo_muertos]').parent().removeClass('has-error')
+           $('#emails').parent().addClass('has-error')
+           $('#emails').focus();
        }
-
-       if(data.responseJSON.errors.seccion)
-       {
-           $('input[name=seccion]').parent().addClass('has-error')
-
-       }else{
-           $('input[name=seccion]').parent().removeClass('has-error')
-       }
-
+       if(data.responseJSON.errors.comentarios)
+      {
+          $('#comentarios').parent().addClass('has-error')
+          $('#comentarios').focus();
+      }
+      if(data.responseJSON.errors.alergias)
+     {
+         $('#alergias').parent().addClass('has-error')
+          $('#alergias').focus();
+     }
+     if(data.responseJSON.errors.regimen)
+    {
+        $('#regimen').parent().addClass('has-error')
+        $('#regimen').focus();
+    }
+    if(data.responseJSON.errors.tiempo_desempeno)
+   {
+       $('#tiempo_desempeno').parent().addClass('has-error')
+       $('#tiempo_desempeno').focus();
+   }
+   if(data.responseJSON.errors.regimen_descripcion)
+  {
+      $('#regimen_descripcion').parent().addClass('has-error')
+      $('#regimen_descripcion').focus();
+  }
         return;
-
     });
 });
 
@@ -394,158 +380,138 @@ $('#actualizarPaciente').submit(function(e){
             return;
         }
     }).error(function(data){
-        $('#msg-error').fadeIn();
-        $('#listaerrores').html('')
+    //    $('#msg-error').fadeIn();
+    //    $('#listaerrores').html('')
 
         $.each(data.responseJSON.errors, function( index, value ) {
             console.log(value)
-            $('#listaerrores').append('<li>'+value+'</li>')
-        })
-
-        if(data.responseJSON.errors.matricula)
-        {
-            $('input[name=matricula]').parent().addClass('has-error')
-        }else{
-            $('input[name=matricula]').parent().removeClass('has-error')
-        }
-
-        if(data.responseJSON.errors.apellido_materno)
-        {
-            $('input[name=apellido_materno]').parent().addClass('has-error')
-
-        }else{
-            $('input[name=apellido_materno]').parent().removeClass('has-error')
-        }
-
-        if(data.responseJSON.errors.apellido_paterno)
-        {
+          //  $('#listaerrores').append('<li>'+value+'</li>')
+          if(data.responseJSON.errors.apellido_paterno)
+         {
             $('input[name=apellido_paterno]').parent().addClass('has-error')
+             $('input[name=apellido_paterno]').focus()
+   /*          if(data.responseJSON.errors.apellido_materno) $('input[name=apellido_materno]').parent().addClass('has-error')
+             if(data.responseJSON.errors.nombres)  $('input[name=nombres]').parent().addClass('has-error')
+             if(data.responseJSON.errors.paisOrigen)  $('#paisOrigen').parent().addClass('has-error')
+             if(data.responseJSON.errors.departamentoOrigen)$('#departamentoOrigen').parent().addClass('has-error')
+  */
+           }
+         if(data.responseJSON.errors.apellido_materno)
+          {
+              $('input[name=apellido_materno]').parent().addClass('has-error')
+              $('input[name=apellido_materno]').focus()
 
-        }else{
-            $('input[name=apellido_paterno]').parent().removeClass('has-error')
-        }
-
+          }
         if(data.responseJSON.errors.nombres)
-        {
-            $('input[name=nombres]').parent().addClass('has-error')
+          {
+              $('input[name=nombres]').parent().addClass('has-error')
+              $('input[name=nombres]').focus()
+          }
+          if(data.responseJSON.errors.jefe_inmediato)
+          {
+              $('input[name=jefe_inmediato]').parent().addClass('has-error')
+               $('input[name=jefe_inmediato]').focus()
+          }
+            if(data.responseJSON.errors.departamentoOrigen)
+          {
+              $('#departamentoOrigen').parent().addClass('has-error')
+              $('#departamentoOrigen').focus()
 
-        }else{
-            $('input[name=nombres]').parent().removeClass('has-error')
-        }
+          }
+            if(data.responseJSON.errors.distritoOrigen)
+          {
+              $('#distritoOrigen').parent().addClass('has-error')
+               $('#distritoOrigen').focus()
+          }
+          if(data.responseJSON.errors.provinciaOrigen)
+         {
+             $('#provinciaOrigen').parent().addClass('has-error')
+             $('#provinciaOrigen').focus()
+         }
 
-        if(data.responseJSON.errors.jefe_inmediato)
-        {
-            $('input[name=jefe_inmediato]').parent().addClass('has-error')
-
-        }else{
-            $('input[name=jefe_inmediato]').parent().removeClass('has-error')
-        }
-
-        if(data.responseJSON.errors.departamentoOrigen)
-        {
-            $('#departamentoOrigen').parent().addClass('has-error')
-
-        }else{
-            $('#departamentoOrigen').parent().removeClass('has-error')
-        }
-
-        if(data.responseJSON.errors.provinciaOrigen)
-        {
-            $('select[name=provinciaOrigen]').parent().addClass('has-error')
-
-        }else{
-            $('select[name=provinciaOrigen]').parent().removeClass('has-error')
-        }
-
-        if(data.responseJSON.errors.departamentoDomicilio)
+          if(data.responseJSON.errors.departamentoDomicilio)
         {
             $('#departamentoDomGroup').parent().addClass('has-error')
-
-        }else{
-            $('#departamentoDomGroup').parent().removeClass('has-error')
+             $('#departamentoDomGroup').focus()
         }
-
-        if(data.responseJSON.errors.provinciaDomicilio)
+         if(data.responseJSON.errors.provinciaDomicilio)
         {
             $('#provinciaDomGroup').parent().addClass('has-error')
-
-        }else{
-            $('#provinciaDomGroup').parent().removeClass('has-error')
+            $('#provinciaDomGroup').focus()
         }
-
-        if(data.responseJSON.errors.direccion)
-        {
-            $('#direccionGroup').parent().addClass('has-error')
-
-        }else{
-            $('#direccionGroup').parent().removeClass('has-error')
-        }
-
+        if(data.responseJSON.errors.distritoDom)
+       {
+           $('#distritoDom').parent().addClass('has-error')
+           $('#distritoDom').focus()
+       }
+         if(data.responseJSON.errors.direccion)
+       {
+           $('#direcciontxt').parent().addClass('has-error')
+             $('#direcciontxt').focus()
+       }
         if(data.responseJSON.errors.telf_fijo)
-        {
-            $('input[name=telf_fijo]').parent().addClass('has-error')
-
-        }else{
-            $('input[name=telf_fijo]').parent().removeClass('has-error')
-        }
-
-        if(data.responseJSON.errors.celular)
+       {
+           $('input[name=telf_fijo]').parent().addClass('has-error')
+           $('input[name=telf_fijo]').focus();
+       }
+         if(data.responseJSON.errors.celular)
         {
             $('input[name=celular]').parent().addClass('has-error')
-
-        }else{
-            $('input[name=celular]').parent().removeClass('has-error')
+            $('input[name=celular]').focus();
         }
-
-        if(data.responseJSON.errors.trabajo)
+         if(data.responseJSON.errors.trabajo)
         {
-            $('input[name=trabajo]').parent().addClass('has-error')
-
-        }else{
-            $('input[name=trabajo]').parent().removeClass('has-error')
+           $('input[name=trabajo]').parent().addClass('has-error')
+           $('input[name=celular]').focus();
         }
-
-        if(data.responseJSON.errors.tipo_dni)
+         if(data.responseJSON.errors.tipo_dni)
         {
-            $('select[name=tipo_dni]').parent().addClass('has-error')
-
-        }else{
-            $('select[name=tipo_dni]').parent().removeClass('has-error')
+           $('select[name=tipo_dni]').parent().addClass('has-error')
+             $('select[name=tipo_dni]').focus();
         }
-
-        if(data.responseJSON.errors.num_dni)
+         if(data.responseJSON.errors.num_dni)
         {
             $('input[name=num_dni]').parent().addClass('has-error')
-
-        }else{
-            $('input[name=num_dni]').parent().removeClass('has-error')
+            $('input[name=num_dni]').focus();
         }
-
-        if(data.responseJSON.errors.nr_hijo_vivos)
+         if(data.responseJSON.errors.num_dni)
         {
-            $('input[name=nr_hijo_vivos]').parent().addClass('has-error')
-
-        }else{
-            $('input[name=nr_hijo_vivos]').parent().removeClass('has-error')
+            $('input[name=num_dni]').parent().addClass('has-error')
+            $('input[name=num_dni]').focus();
         }
-
-        if(data.responseJSON.errors.nr_hijo_muertos)
+         if(data.responseJSON.errors.email)
         {
-            $('input[name=nr_hijo_muertos]').parent().addClass('has-error')
-
-        }else{
-            $('input[name=nr_hijo_muertos]').parent().removeClass('has-error')
+            $('#emails').parent().addClass('has-error')
+            $('#emails').focus();
         }
+        if(data.responseJSON.errors.comentarios)
+       {
+           $('#comentarios').parent().addClass('has-error')
+           $('#comentarios').focus();
+       }
+       if(data.responseJSON.errors.alergias)
+      {
+          $('#alergias').parent().addClass('has-error')
+           $('#alergias').focus();
+      }
+      if(data.responseJSON.errors.regimen)
+     {
+         $('#regimen').parent().addClass('has-error')
+         $('#regimen').focus();
+     }
+     if(data.responseJSON.errors.tiempo_desempeno)
+    {
+        $('#tiempo_desempeno').parent().addClass('has-error')
+        $('#tiempo_desempeno').focus();
+    }
+    if(data.responseJSON.errors.regimen_descripcion)
+     {
+         $('#regimen_descripcion').parent().addClass('has-error')
+         $('#regimen_descripcion').focus();
+     }
+       return;
+        })
 
-        if(data.responseJSON.errors.seccion)
-        {
-            $('input[name=seccion]').parent().addClass('has-error')
-
-        }else{
-            $('input[name=seccion]').parent().removeClass('has-error')
-        }
-
-        return;
 
     });
 });

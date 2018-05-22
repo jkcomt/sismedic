@@ -215,6 +215,8 @@ Route::group([
     Route::post('/buscar','TipoExamenController@search')->name('tipo_examen.search');
     Route::post('/delete','TipoExamenController@destroy')->name('tipo_examen.destroy');
     Route::post('/update','TipoExamenController@update')->name('tipo_examen.update');
+    Route::post('/buscar_individal','TipoExamenController@searchListaExamen')->name('buscar_individal.update');
+    Route::post('/filtro','TipoExamenController@filtroTipoExamen')->name('tipo_examen.filtro');
 });
 
 Route::resource('perfil','PerfilController');
@@ -224,6 +226,7 @@ Route::group([
     Route::post('/buscar','PerfilController@search')->name('perfil.search');
     Route::post('/delete','PerfilController@destroy')->name('perfil.destroy');
     Route::post('/update','PerfilController@update')->name('perfil.update');
+    Route::post('/filtro','PerfilController@filtroPerfil')->name('perfil.filtro');
 });
 
 Route::resource('lista_examen','ListaExamenController');
@@ -300,6 +303,7 @@ Route::get('evaluacion_medica/recargar_lista_examen/{id}', [
     'as' => 'evaluacion_medica.recargarlistaexamen',
     'uses' => 'EvaluacionMedicaController@recargarListaExamenes'
 ]);
+Route::get('/informe_laboratorio/{id}','EvaluacionMedicaController@informelaboratorio')->name('evaluacionmedica.informelaboratorio');
 Route::resource('evaluacion_medica','EvaluacionMedicaController',['except' => 'create']);
 
 Route::group([
@@ -317,6 +321,7 @@ Route::group([
   Route::post('/hospitalizacion/crear','AntperHozpitalizacionesController@store')->name('antecedentes.hospitalizacion.create');
   Route::post('/accidentes_laborales/crear','AntperAccidenteLaboralesController@store')->name('accidentes_laborales.create');
   Route::post('/accidentes_particular/crear','AntperAccidenteParticularesController@store')->name('accidentes_particular.create');
+  Route::post('/ocupacionales/crear','AntperHistoriaOcupacionalesController@store')->name('ocupacionales.create');
 
 
 
@@ -434,3 +439,8 @@ Route::group(["prefix"=>"orina"],function(){
 
 
 Route::view('/antecedentes', 'antecedentes.index');
+
+
+
+Route::get('/word/{id}','WordTestController@createWordDocx')->name('word.reporte');
+Route::get('/interconsulta_pdf/{id}','WordTestController@interconsultapdf')->name('interconsultapdf.reporte');

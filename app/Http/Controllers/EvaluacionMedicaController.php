@@ -23,6 +23,9 @@ use App\Provincia;
 use App\Regimen;
 use App\TipoExamen;
 use App\TipoInstruccion;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
+use View;
 use Illuminate\Http\Request;
 
 class EvaluacionMedicaController extends Controller
@@ -193,4 +196,15 @@ class EvaluacionMedicaController extends Controller
     {
         //
     }
+    public function informelaboratorio($id)
+    {
+      $cita=Cita::find($id);
+      $view=View::make('evaluacionmedica.reportes.informelaboratorio',compact('cita'));
+      $pdf = \App::make('dompdf.wrapper');
+      $pdf->loadHTML($view);
+      $pdf->stream($view);
+      return $pdf->stream();
+    }
+
+
 }

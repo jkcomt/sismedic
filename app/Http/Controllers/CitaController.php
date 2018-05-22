@@ -247,13 +247,23 @@ class CitaController extends Controller
           ],[
               'items.required'=>'Seleccione al menos un examen para la cita'
           ]);
-
+/***********CODIGO QUE AGREGUE***********/
+// $variable="";
+// if($data['tipoExamen']=='5')
+// {
+// $variable='3';
+// }
+// else
+// {
+// $variable=$data['perfil'];
+// }
+/*********************/
           $cita = Cita::create([
               'nro_serie_cita'=>$data['nro_serie_cita'],
               'paciente_id'=>$data['paciente'],
               'cliente_cuenta_id'=>$data['clienteCuenta'],
               'tipo_examen_id'=>$data['tipoExamen'],
-              'perfil_id'=>$data['perfil'],
+              'perfil_id'=>$data['perfil'],//$variable,//$data['perfil'],
               'fecha_examen'=>$data['fecha_examen'],
               'hora_examen'=>$data['hora_examen'],
               'fecha_registro'=>Carbon::now(),
@@ -279,7 +289,7 @@ class CitaController extends Controller
               ]);
           }
 
-          return response()->json(['mensaje' => $cita->with('paciente')->get()->last()]);
+          return response()->json(['mensaje' =>$cita->with('paciente')->get()->last()]);
       }
 
 
@@ -396,7 +406,24 @@ class CitaController extends Controller
             case 18:
                 $view = view('evaluacionmedica.examenes.examenmedicoinsuficiencia.create',compact('cita','listaExamen'))->render();
                 break;
-
+            case 19:
+                $view = view('evaluacionmedica.examenes.apneasuenio.create',compact('cita','listaExamen'))->render();
+                break;
+            case 20:
+                $view = view('evaluacionmedica.examenes.usorespiradores.create',compact('cita','listaExamen'))->render();
+                break;
+            case 21:
+                $view = view('evaluacionmedica.examenes.cuestionarionordico.create',compact('cita','listaExamen'))->render();
+                break;
+            case 22:
+                $view = view('evaluacionmedica.examenes.conduccionvehiculo.create',compact('cita','listaExamen'))->render();
+                break;
+            case 23:
+                $view = view('evaluacionmedica.examenes.conductoroperador.create',compact('cita','listaExamen'))->render();
+                break;
+            case 24:
+                $view = view('evaluacionmedica.examenes.evaluacioncognitiva.create',compact('cita','listaExamen'))->render();
+                break;
 
 
         }

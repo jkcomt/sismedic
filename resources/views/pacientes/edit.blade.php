@@ -56,22 +56,22 @@
                             </div>
                             <div class="col-md-2 form-group">
                                 <label for="matricula" class="control-label">Matrícula:</label>
-                                <input type="text"  value="{{$paciente->matricula}}" class="form-control" name="matricula">
+                                <input type="text"  value="{{$paciente->matricula}}" class="form-control" name="matricula" id="matricula">
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-2 form-group">
                                 <label for="apellido_paterno" class="control-label">Ape. Paterno:</label>
-                                <input type="text" value="{{$paciente->apellido_paterno}}" class="form-control" name="apellido_paterno">
+                                <input type="text" value="{{$paciente->apellido_paterno}}" class="form-control" name="apellido_paterno" id="apellido_paterno">
                             </div>
                             <div class="col-md-2 form-group">
                                 <label for="apellido_materno" class="control-label">Ape. Materno:</label>
-                                <input type="text"  value="{{$paciente->apellido_materno}}" class="form-control" name="apellido_materno">
+                                <input type="text"  value="{{$paciente->apellido_materno}}" class="form-control" name="apellido_materno" id="apellido_materno">
                             </div>
                             <div class="col-md-4 form-group">
                                 <label for="nombres" class="control-label">Nombres:</label>
-                                <input type="text"  value="{{$paciente->nombres}}" class="form-control" name="nombres">
+                                <input type="text"  value="{{$paciente->nombres}}" class="form-control" name="nombres" id="nombres">
                             </div>
                             <div class="col-md-4">
                                 <label for="">Sexo:</label><br>
@@ -236,7 +236,7 @@
                             <div class="col-md-12">
                                 <label class="control-label">Dirección:</label>
                                 <div class="form-group" id="direccion">
-                                    <input type="text" name="direccion" id="direccion" class="form-control" value="{{ucfirst($paciente->direccion)}}">
+                                    <input type="text" name="direccion" id="direcciontxt" class="form-control" value="{{ucfirst($paciente->direccion)}}">
                                 </div>
                             </div>
                         </div>
@@ -259,7 +259,7 @@
                             </div>
                             <div class="col-md-4 form-group">
                                 <label for="celular" class="control-label">Móvil:</label>
-                                <input type="number"  value="{{$paciente->celular}}" class="form-control" name="celular">
+                                <input type="number"  value="{{$paciente->celular}}" class="form-control" name="celular" id="celular">
                             </div>
                             <div class="col-md-4 form-group">
                                 <label for="trabajo" class="control-label">Trabajo:</label>
@@ -282,7 +282,7 @@
                             </div>
                             <div class="col-md-4 form-group">
                                 <label for="num_dni" class="control-label">Número Doc. Identidad:</label>
-                                <input type="number"  value="{{$paciente->num_dni}}" class="form-control" name="num_dni">
+                                <input type="number"  value="{{$paciente->num_dni}}" class="form-control" name="num_dni" >
                             </div>
                         </div>
 
@@ -360,7 +360,7 @@
                                     <div class="col-md-12 form-group">
                                         <label for="email" class="control-label">Email:</label>
                                         <div class="form-group">
-                                            <input type="email"  value="{{$paciente->email}}" class="form-control" name="email">
+                                            <input type="email"  value="{{$paciente->email}}" class="form-control" name="email" id="emails">
                                         </div>
                                     </div>
                                 </div>
@@ -368,7 +368,7 @@
                                     <div class="col-md-12 form-group">
                                         <label for="comentarios" class="control-label">Comentarios:</label>
                                         <div class="form-group">
-                                            <input type="text"  value="{{$paciente->comentarios}}" class="form-control" name="comentarios">
+                                            <input type="text"  value="{{$paciente->comentarios}}" class="form-control" name="comentarios" id="comentarios">
                                         </div>
                                     </div>
                                 </div>
@@ -376,7 +376,7 @@
                                     <div class="col-md-12">
                                         <label for="alergias" class="control-label">Alergias:</label>
                                         <div class="form-group">
-                                            <input type="alergias"  value="{{$paciente->alergias}}" class="form-control" name="alergias">
+                                            <input type="alergias"  value="{{$paciente->alergias}}" class="form-control" name="alergias" id="alergias">
                                         </div>
                                     </div>
                                 </div>
@@ -408,7 +408,7 @@
                                                 {{--<input type="text" class=" form-control" name="personal" value="{{old('personal')}}">--}}
                                                 {{--<option>Seleccione ocupación</option>--}}
                                                 @foreach($ocupaciones as $key => $ocupacion)
-                                                    <option value="{{$key}}" @if($paciente->ocupacion->id == $key) selected="selected" @endif>{{ucfirst($ocupacion)}}</option>
+                                                    <option value="{{$key}}"  @if($paciente->ocupacion->id == $key) selected="selected" @endif>{{ucfirst($ocupacion)}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -418,7 +418,7 @@
                                     <div class="col-md-12 form-group">
                                         <label for="tiempodesempeno" class="control-label">Tiempo Desempeño:</label>
                                         <div class="form-group">
-                                            <input type="text"  value="" class="form-control" name="tiempodesempeno">
+                                            <input type="text"  value="{{$paciente->tiempo_desempeno}}" class="form-control" name="tiempo_desempeno" id="tiempo_desempeno">
                                         </div>
                                     </div>
                                 </div>
@@ -492,6 +492,20 @@
                                     </div>
                                 </div>
                                 <div class="row">
+                                    <div class="col-md-12 form-group">
+                                        <label class="control-label">perfil:</label>
+                                        <div class="form-group" id="perfilGroup">
+                                            <select name="perfil" id="perfil" class="form-control" >
+                                                {{--<input type="text" class=" form-control" name="personal" value="{{old('personal')}}">--}}
+                                                {{--<option>Seleccione contratador</option>--}}
+                                                @foreach($perfiles as $key => $perfil)
+                                                    <option value="{{$key}}">{{ucfirst($perfil)}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
                                     <div class="col-md-12">
                                         <label class="control-label">Sección:</label>
                                         <div class="form-group">
@@ -509,7 +523,7 @@
                         <div class="row">
                             <div class="col-md-12 form-group">
                                 <label for="emergencia" class="control-label">En caso de emergencia:</label>
-                                <input type="text"  value="{{$paciente->en_caso_emergencia}}" class="form-control" name="emergencia">
+                                <input type="text"  value="{{$paciente->en_caso_emergencia}}" class="form-control" name="caso_emergencia">
                             </div>
                         </div>
                     </div>

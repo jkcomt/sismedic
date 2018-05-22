@@ -89,9 +89,12 @@
                                     <div class="form-group" id="pacienteGroup">
                                         <select name="paciente" id="paciente" class="form-control selectPersonal">
                                             <option value=""></option>
-                                            @foreach($pacientes as $key => $paciente)
-                                                <option value="{{$key}}">{{$paciente}}</option>
-                                            @endforeach
+                                            {{-- @isset($pacientes) --}}
+                                              @foreach($pacientes as $key => $paciente)
+                                                  <option value="{{$key}}">{{$paciente}}</option>
+                                              @endforeach
+                                            {{-- @endisset --}}
+
                                         </select>
                                     </div>
                                 </div>
@@ -143,37 +146,45 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-md-4 form-group">
+                            <div class="col-md-3 form-group">
                                 <label for="clienteCuenta" class="control-label">Cliente o Cuenta : </label>
                                 <div class="form-group" id="clienteCuentaGroup">
                                     <select name="clienteCuenta" id="clienteCuenta" class="form-control">
                                         {{--<input type="text" class=" form-control" name="personal" value="{{old('personal')}}">--}}
-                                        @foreach($clienteCuentas as $key => $clientecuenta)
-                                            <option value="{{$key}}">{{$clientecuenta}}</option>
-                                        @endforeach
+                                        {{-- @isset($clienteCuentas) --}}
+                                          @foreach($clienteCuentas as $key => $clientecuenta)
+                                              <option value="{{$key}}">{{$clientecuenta}}</option>
+                                          @endforeach
+                                        {{-- @endisset --}}
+
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-4 form-group">
-                                <label for="tipoExamen" class="control-label">Tipo de Examen : </label>
-                                <div class="form-group" id="tipoExamenGroup">
-                                    <select name="tipoExamen" id="tipoExamen" class="form-control">
-                                        {{--<input type="text" class=" form-control" name="personal" value="{{old('personal')}}">--}}
-                                        @foreach($tipoExamenes as $key => $tipoexamen)
-                                            <option value="{{$key}}">{{$tipoexamen}}</option>
-                                        @endforeach
+                            <div class="col-md-3 form-group">
+
+                                <label for="clienteCuenta" class="control-label">Tipo Examen : </label>
+                                <div class="form-group" id="clienteCuentaGroup">
+                                    <select name="tipo_examen_uno" id="tipo_examen_uno" class="form-control">
+                                            <option value="1">OCUPACIONAL</option>
+                                            <option value="2">INDIVIDUAL</option>
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-4 form-group">
-                                <label for="perfil" class="control-label">Perfil : </label>
+                            <div class="col-md-3 form-group">
+                                <label for="tipoExamen" class="control-label">Examen : </label>
+                                <div class="" id="tipoExamenGroup">
+                                    @include('citas.examen')
+                                </div>
+                            </div>
+                            <div class="col-md-3 form-group">
+                                <label for="perfil" class="control-label" id="perfil_id">Perfil : </label>
                                 <div class="form-group" id="perfilGroup">
-                                    <select name="perfil" id="perfil" class="form-control">
-                                        {{--<input type="text" class=" form-control" name="personal" value="{{old('personal')}}">--}}
-                                        @foreach($perfiles as $key => $perfil)
-                                            <option value="{{$key}}">{{$perfil}}</option>
-                                        @endforeach
-                                    </select>
+                                    {{-- <select name="perfil" id="perfil" class="form-control">
+                                          @foreach($perfiles as $key => $perfil)
+                                              <option value="{{$key}}">{{$perfil}}</option>
+                                          @endforeach
+                                    </select> --}}
+                                      @include('citas.perfil')
                                 </div>
                             </div>
                         </div>
@@ -191,6 +202,7 @@
                         </div>
                     </div>
                 </div>
+
       </form>
                 <div class="panel panel-default">
                     <div class="panel-body">

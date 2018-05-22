@@ -16,12 +16,12 @@ use App\LugarLabor;
 use App\Ocupacion;
 use App\Paciente;
 use App\Pais;
-use App\Perfil;
 use App\PerfilExamen;
 use App\Profesion;
 use App\Provincia;
 use App\Regimen;
 use App\TipoExamen;
+use App\Perfil;
 use App\TipoInstruccion;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -80,7 +80,10 @@ class PacientesController extends Controller
 
         $regimenes = Regimen::where('estado',true)->get()->pluck('descripcion','id')->toArray();
 
-        return view('pacientes.create',compact('paciente','paises','departamentos','provincias','tipoInstrucciones','profesiones','contratadores','areas','ocupaciones','lugarLabores','alturas','grupoSanguineos','regimenes','distritos'));
+        $perfiles = Perfil::where('estado',true)->get()->pluck('descripcion','id')->toArray();
+
+
+        return view('pacientes.create',compact('paciente','paises','departamentos','provincias','tipoInstrucciones','profesiones','contratadores','areas','ocupaciones','lugarLabores','alturas','grupoSanguineos','regimenes','distritos','perfiles'));
     }
 
     /**
@@ -96,7 +99,7 @@ class PacientesController extends Controller
             //$data = request()->input();
             $data = request()->validate([
                 'nro_historia'=>'required',
-                'matricula'=>'required|unique:pacientes,matricula',
+                'matricula'=>'nullable',//'required|unique:pacientes,matricula',
                 'apellido_paterno'=>'required',
                 'apellido_materno'=>'required',
                 'nombres'=>'required',
@@ -104,7 +107,7 @@ class PacientesController extends Controller
                 'fecha_nacimiento'=>'required',
                 'fecha_ingreso'=>'required',
                 'fecha_ingreso_minera'=>'required',
-                'jefe_inmediato'=>'required',
+                'jefe_inmediato'=>'nullable',//'required',
 
                 'paisOrigen'=>'required',
                 'departamentoOrigen'=>'required',
@@ -115,32 +118,34 @@ class PacientesController extends Controller
                 'provinciaDomicilio'=>'required',
                 'distritoDom'=>'required',
                 'direccion'=>'required',
-                'telf_fijo'=>'required',
+                'telf_fijo'=>'nullable',
                 'celular'=>'required|unique:pacientes',
 
-                'trabajo'=>'required',
+                'trabajo'=>'nullable',
                 'tipo_dni'=>'required',
                 'num_dni'=>'required',
                 'estadoCivil'=>'required',
                 'tipoIntruccion'=>'required',
                 'profesion'=>'required',
                 'contrata'=>'required',
+                'perfil'=>'nullable',
                 'area'=>'required',
                 'ocupacion'=>'required',
-                'seccion'=>'required',
+                'seccion'=>'nullable',
 
                 'lugarLabores'=>'required',
-                'email'=>'nullable|email',
-                'comentarios'=>'nullable',
-                'alergias'=>'nullable',
-                'emergencia'=>'nullable',
-                'nr_hijo_muertos'=>'required',
-                'nr_hijo_vivos'=>'required',
+                'tiempo_desempeno'=>'required',
+                'email'=>'required',
+                'comentarios'=>'required',
+                'alergias'=>'required',
+                'nr_hijo_muertos'=>'nullable',
+                'nr_hijo_vivos'=>'nullable',
                 'altura'=>'required',
                 'grupoSanguineo'=>'required',
-                'regimen'=>'required'
-
+                'regimen'=>'required',
+                'caso_emergencia'=>'nullable'
             ]);
+
 
           $paciente= Paciente::create([
                'nro_historia'=>$data['nro_historia'],
@@ -170,12 +175,14 @@ class PacientesController extends Controller
                'estado_civil'=>$data['estadoCivil'],
                'instruccion_id'=>$data['tipoIntruccion'],
                'contrata_id'=>$data['contrata'],
+               'perfil_id'=>$data['perfil'],
                'ocupacion_id'=>$data['ocupacion'],
                'lugar_labores_id'=>$data['lugarLabores'],
+               'tiempo_desempeno'=>$data['tiempo_desempeno'],
                'email'=>$data['email'],
                'comentarios'=>$data['comentarios'],
                'alergias'=>$data['alergias'],
-               'en_caso_emergencia'=>$data['emergencia'],
+               'en_caso_emergencia'=>$data['caso_emergencia'],
                'nro_hijo_vivos'=>$data['nr_hijo_vivos'],
                'nro_hijo_muertos'=>$data['nr_hijo_muertos'],
                'profesion_id'=>$data['profesion'],
@@ -331,7 +338,9 @@ class PacientesController extends Controller
 
         $regimenes = Regimen::where('estado',true)->get()->pluck('descripcion','id')->toArray();
 
-        return view('pacientes.edit',compact('paciente','paises','departamentos','provincias','tipoInstrucciones','profesiones','contratadores','areas','ocupaciones','lugarLabores','alturas','grupoSanguineos','regimenes','distritos'));
+          $perfiles = Perfil::where('estado',true)->get()->pluck('descripcion','id')->toArray();
+
+        return view('pacientes.edit',compact('paciente','paises','departamentos','provincias','tipoInstrucciones','profesiones','contratadores','areas','ocupaciones','lugarLabores','alturas','grupoSanguineos','regimenes','distritos','perfiles'));
     }
 
     /**
@@ -347,97 +356,102 @@ class PacientesController extends Controller
             if (request()->ajax()) {
                 //$data = request()->input();
                 $data = request()->validate([
-                    'id'=>'required',
-                    'nro_historia' => 'required',
-                    'matricula' => 'required',
-                    'apellido_paterno' => 'required',
-                    'apellido_materno' => 'required',
-                    'nombres' => 'required',
-                    'sexo' => 'required',
-                    'fecha_nacimiento' => 'required',
-                    'fecha_ingreso' => 'required',
-                    'fecha_ingreso_minera' => 'required',
-                    'jefe_inmediato' => 'required',
+                  'id'=>'required',
+                  'nro_historia'=>'required',
+                  'matricula'=>'nullable',//'required|unique:pacientes,matricula',
+                  'apellido_paterno'=>'required',
+                  'apellido_materno'=>'required',
+                  'nombres'=>'required',
+                  'sexo'=>'required',
+                  'fecha_nacimiento'=>'required',
+                  'fecha_ingreso'=>'required',
+                  'fecha_ingreso_minera'=>'required',
+                  'jefe_inmediato'=>'nullable',//'required',
 
-                    'paisOrigen' => 'required',
-                    'departamentoOrigen' => 'required',
-                    'provinciaOrigen' => 'required',
-                    'distritoOrigen' => 'required',
-                    'paisOrigenDom' => 'required',
-                    'departamentoDomicilio' => 'required',
-                    'provinciaDomicilio' => 'required',
-                    'distritoDom' => 'required',
-                    'direccion' => 'required',
-                    'telf_fijo' => 'required',
-                    'celular' => 'required',
+                  'paisOrigen'=>'required',
+                  'departamentoOrigen'=>'required',
+                  'provinciaOrigen'=>'required',
+                  'distritoOrigen'=>'required',
+                  'paisOrigenDom'=>'required',
+                  'departamentoDomicilio'=>'required',
+                  'provinciaDomicilio'=>'required',
+                  'distritoDom'=>'required',
+                  'direccion'=>'required',
+                  'telf_fijo'=>'nullable',
+                  'celular'=>'required',
 
-                    'trabajo' => 'required',
-                    'tipo_dni' => 'required',
-                    'num_dni' => 'required',
-                    'estadoCivil' => 'required',
-                    'tipoIntruccion' => 'required',
-                    'profesion' => 'required',
-                    'contrata' => 'required',
-                    'area' => 'required',
-                    'ocupacion' => 'required',
-                    'seccion' => 'required',
-
-                    'lugarLabores' => 'required',
-                    'email' => 'nullable|email',
-                    'comentarios' => 'nullable',
-                    'alergias' => 'nullable',
-                    'emergencia' => 'nullable',
-                    'nr_hijo_muertos' => 'required',
-                    'nr_hijo_vivos' => 'required',
-                    'altura' => 'required',
-                    'grupoSanguineo' => 'required',
-                    'regimen' => 'required'
+                  'trabajo'=>'nullable',
+                  'tipo_dni'=>'required',
+                  'num_dni'=>'required',
+                  'estadoCivil'=>'required',
+                  'tipoIntruccion'=>'required',
+                  'profesion'=>'required',
+                  'contrata'=>'required',
+                  'perfil'=>'nullable',
+                  'area'=>'required',
+                  'ocupacion'=>'required',
+                  'seccion'=>'nullable',
+                  'lugarLabores'=>'required',
+                  'tiempo_desempeno'=>'required',
+                  'email'=>'required',
+                  'comentarios'=>'required',
+                  'alergias'=>'required',
+                  'nr_hijo_muertos'=>'nullable',
+                  'nr_hijo_vivos'=>'nullable',
+                  'altura'=>'required',
+                  'grupoSanguineo'=>'required',
+                  'regimen'=>'required',
+                  'caso_emergencia'=>'nullable'
 
                 ]);
 
                 $paciente = Paciente::find($data['id']);
 
                 $paciente->update([
-                    'matricula' => $data['matricula'],
-                    'apellido_paterno' => $data['apellido_paterno'],
-                    'apellido_materno' => $data['apellido_materno'],
-                    'nombres' => $data['nombres'],
-                    'sexo' => $data['sexo'],
-                    'fecha_nacimiento' => $data['fecha_nacimiento'],
-                    'fecha_ingreso' => $data['fecha_ingreso'],
-                    'fecha_ingreso_minera' => $data['fecha_ingreso_minera'],
-                    'jefe_inmediato' => $data['jefe_inmediato'],
-                    'pais_origen_id' => $data['paisOrigen'],
-                    'departamento_origen_id' => $data['departamentoOrigen'],
-                    'provincia_origen_id' => $data['provinciaOrigen'],
-                    'distrito_origen_id' => $data['distritoOrigen'],
-                    'pais_domicilio_id' => $data['paisOrigenDom'],
-                    'departamento_domicilio_id' => $data['departamentoDomicilio'],
-                    'provincia_domicilio_id' => $data['provinciaDomicilio'],
-                    'distrito_domicilio_id' => $data['distritoDom'],
-                    'direccion' => $data['direccion'],
-                    'telf_fijo' => $data['telf_fijo'],
-                    'celular' => $data['celular'],
-                    'trabajo' => $data['trabajo'],
-                    'tipo_dni' => $data['tipo_dni'],
-                    'num_dni' => $data['num_dni'],
-                    'estado_civil' => $data['estadoCivil'],
-                    'instruccion_id' => $data['tipoIntruccion'],
-                    'contrata_id' => $data['contrata'],
-                    'ocupacion_id' => $data['ocupacion'],
-                    'lugar_labores_id' => $data['lugarLabores'],
-                    'email' => $data['email'],
-                    'comentarios' => $data['comentarios'],
-                    'alergias' => $data['alergias'],
-                    'en_caso_emergencia' => $data['emergencia'],
-                    'nro_hijo_vivos' => $data['nr_hijo_vivos'],
-                    'nro_hijo_muertos' => $data['nr_hijo_muertos'],
-                    'profesion_id' => $data['profesion'],
-                    'area_id' => $data['area'],
-                    'seccion' => $data['seccion'],
-                    'altura_id' => $data['altura'],
-                    'gs_id' => $data['grupoSanguineo'],
-                    'regimen_id' => $data['regimen']
+                  'nro_historia'=>$data['nro_historia'],
+                  'matricula'=>$data['matricula'],
+                  'apellido_paterno'=>$data['apellido_paterno'],
+                  'apellido_materno'=>$data['apellido_materno'],
+                  'nombres'=>$data['nombres'],
+                  'sexo' =>$data['sexo'],
+                  'fecha_nacimiento'=>$data['fecha_nacimiento'],
+                  'fecha_ingreso'=>$data['fecha_ingreso'],
+                  'fecha_ingreso_minera'=>$data['fecha_ingreso_minera'],
+                  'jefe_inmediato'=>$data['jefe_inmediato'],
+                  'pais_origen_id'=>$data['paisOrigen'],
+                  'departamento_origen_id'=>$data['departamentoOrigen'],
+                  'provincia_origen_id'=>$data['provinciaOrigen'],
+                  'distrito_origen_id'=>$data['distritoOrigen'],
+                  'pais_domicilio_id'=>$data['paisOrigenDom'],
+                  'departamento_domicilio_id'=>$data['departamentoDomicilio'],
+                  'provincia_domicilio_id'=>$data['provinciaDomicilio'],
+                  'distrito_domicilio_id'=>$data['distritoDom'],
+                  'direccion'=>$data['direccion'],
+                  'telf_fijo'=>$data['telf_fijo'],
+                  'celular'=>$data['celular'],
+                  'trabajo'=>$data['trabajo'],
+                  'tipo_dni'=>$data['tipo_dni'],
+                  'num_dni'=>$data['num_dni'],
+                  'estado_civil'=>$data['estadoCivil'],
+                  'instruccion_id'=>$data['tipoIntruccion'],
+                  'contrata_id'=>$data['contrata'],
+                  'perfil_id'=>$data['perfil'],
+                  'ocupacion_id'=>$data['ocupacion'],
+                  'lugar_labores_id'=>$data['lugarLabores'],
+                  'tiempo_desempeno'=>$data['tiempo_desempeno'],
+                  'email'=>$data['email'],
+                  'comentarios'=>$data['comentarios'],
+                  'alergias'=>$data['alergias'],
+                  'en_caso_emergencia'=>$data['caso_emergencia'],
+                  'nro_hijo_vivos'=>$data['nr_hijo_vivos'],
+                  'nro_hijo_muertos'=>$data['nr_hijo_muertos'],
+                  'profesion_id'=>$data['profesion'],
+                  'area_id'=>$data['area'],
+                  'seccion'=>$data['seccion'],
+                  'altura_id'=>$data['altura'],
+                  'gs_id'=>$data['grupoSanguineo'],
+                  'regimen_id'=>$data['regimen']
+
                 ]);
 
                 $paciente->save();
@@ -733,17 +747,14 @@ class PacientesController extends Controller
       if($request->ajax())
         {
               $paciente = Paciente::find($request['id']);
-
                 $citas = Cita::where('estado',true)
                 ->where('fecha_examen','>=',$request['startdate'])
                 ->where('fecha_examen','<=',$request['enddate'])
                 ->where('paciente_id',$request['id'])
                     ->orderBy('fecha_examen','asc')
                     ->orderBy('hora_examen','asc')->paginate(10);
-
                 $view = view('pacientes.citas.tabla',compact('citas'))->render();
                 return response()->json(['html'=>$view]);
-
         }
 
 

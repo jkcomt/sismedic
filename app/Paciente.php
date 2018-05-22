@@ -37,7 +37,9 @@ class Paciente extends Model
         'instruccion_id',
         'contrata_id',
         'ocupacion_id',
+        'perfil_id',
         'lugar_labores_id',
+        'tiempo_desempeno',
         'email',
         'comentarios',
         'alergias',
@@ -203,6 +205,14 @@ class Paciente extends Model
     public function accidente_laboral()
     {
         return $this->hasOne(AntperAccidenteLaborales::class);
+    }
+    public function antperhistoriaocupacional()
+    {
+        return $this->hasOne(AntperHistoriaOcupacionales::class);
+    }
+    public function perfil()
+    {
+        return $this->belongsTo(Perfil::class);
     }
 
 }
