@@ -2,13 +2,11 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             @include('evaluacionmedica.examenes.encabezado')
-            <form action="" id="" method="post">
+            <form id="suficiencia_trabajo_alturas">
             <div class="modal-body ">
                 {{csrf_field()}}
 
                 <div class="row form-horizontal">
-
-
 
                   <div class="col-md-12">
                     <ul class="nav nav-tabs">
