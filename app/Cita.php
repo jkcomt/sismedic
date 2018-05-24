@@ -159,4 +159,12 @@ class Cita extends Model
         return $this->hasOne(Orina::class);
     }
 
+    public function evaluacionCognitiva(){
+        return $this->hasOne(EvaluacionCognitiva::class);
+    }
+
+    public function usoRespirador(){
+        return $this->hasOne(UsoRespirador::class);
+    }
+
 }

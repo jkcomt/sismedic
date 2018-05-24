@@ -114,9 +114,7 @@ class CitaController extends Controller
            {
              $funcionVital=FuncionVital::find($cita->funcionVital->id);
              $funcionVital->delete();
-
            }
-
           return response()->json([
               'mensaje'=>"eliminación exitosa"
           ]);
@@ -247,17 +245,7 @@ class CitaController extends Controller
           ],[
               'items.required'=>'Seleccione al menos un examen para la cita'
           ]);
-/***********CODIGO QUE AGREGUE***********/
-// $variable="";
-// if($data['tipoExamen']=='5')
-// {
-// $variable='3';
-// }
-// else
-// {
-// $variable=$data['perfil'];
-// }
-/*********************/
+
           $cita = Cita::create([
               'nro_serie_cita'=>$data['nro_serie_cita'],
               'paciente_id'=>$data['paciente'],

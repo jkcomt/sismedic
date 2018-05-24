@@ -109,6 +109,11 @@
                     <strong for="" class="text-success">Examen Realizado</strong>
                     {{-- <a href="{{route('velocidad_sedimentacion.reporte',[$cita->id])}}"  target="_blank" class="btn-sm btn-info"> <i class="fa fa-print" aria-hidden="true"></i></a> --}}
                     <a href="#" class="btn-sm btn-warning modificarExamen"  idcita="{{$cita->id}}" idexamen="{{$citaExamen->perfilExamen->listaExamen->id}}" valor=" {{$citaExamen->perfilExamen->listaExamen->id}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                @elseif(isset($cita->evaluacionCognitiva) && $citaExamen->perfilExamen->listaExamen->id == $cita->evaluacionCognitiva->lista_examen_id)
+                    {{--<button type="button" idcita="{{$cita->id}}" idexamen="{{$citaExamen->perfilExamen->listaExamen->id}}" class="btn btn-xs btn-block btn-warning filtrarEditarExamen">EDITAR EXAMEN</button>--}}
+                    <strong for="" class="text-success">Examen Realizado</strong>
+                    {{-- <a href="{{route('velocidad_sedimentacion.reporte',[$cita->id])}}"  target="_blank" class="btn-sm btn-info"> <i class="fa fa-print" aria-hidden="true"></i></a> --}}
+                    <a href="#" class="btn-sm btn-warning modificarExamen"  idcita="{{$cita->id}}" idexamen="{{$citaExamen->perfilExamen->listaExamen->id}}" valor=" {{$citaExamen->perfilExamen->listaExamen->id}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
 
                 @else
                     <button type="button" idcita="{{$cita->id}}" idexamen="{{$citaExamen->perfilExamen->listaExamen->id}}" class="btn btn-xs btn-block btn-primary filtrarExamen">REGISTRAR EXAMEN {{--$citaExamen->perfilExamen->listaExamen->id--}}</button>

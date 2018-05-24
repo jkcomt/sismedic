@@ -436,11 +436,19 @@ Route::group(["prefix"=>"orina"],function(){
   Route::post('/actualizar','OrinaController@update')->name('orina.update');
 });
 
-
-
 Route::view('/antecedentes', 'antecedentes.index');
-
-
 
 Route::get('/word/{id}','WordTestController@createWordDocx')->name('word.reporte');
 Route::get('/interconsulta_pdf/{id}','WordTestController@interconsultapdf')->name('interconsultapdf.reporte');
+
+//evaluacion cognitiva
+Route::group(["prefix"=>"evaluacion_cognitiva"],function(){
+    Route::post('/crear','EvaluacionCognitivaController@store')->name('evaluacion_cognitiva.store');
+    Route::post('/actualizar','EvaluacionCognitivaController@update')->name('evaluacion_cognitiva.update');
+});
+
+//uso respiradores
+Route::group(["prefix"=>"uso_respiradores"],function(){
+    Route::post('/crear','UsoRespiradorController@store')->name('uso_respiradores.store');
+    Route::post('/actualizar','UsoRespiradorController@update')->name('uso_respiradores.update');
+});
