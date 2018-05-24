@@ -416,6 +416,10 @@ Route::group(["prefix"=>"gamma"],function(){
   Route::get('/{id}/pdf','GammaController@examenes')->name('gamma.reporte');
 });
 
+Route::group(["prefix"=>"conduccion_vehicular"],function(){
+  Route::post('/crear','EvaluacionConduccionVehiculosController@store')->name('conduccion_vehicular.store');
+  Route::post('/actualizar','EvaluacionConduccionVehiculosController@update')->name('conduccion_vehicular.update');
+});
 
 //Route::resource('hemograma','HemogramaController');
 
@@ -436,11 +440,32 @@ Route::group(["prefix"=>"orina"],function(){
   Route::post('/actualizar','OrinaController@update')->name('orina.update');
 });
 
+Route::group(["prefix"=>"trabajo_altura"],function(){
+  Route::post('/crear','SuficienciaTrabajoAlturaController@store')->name('trabajo_altura.store');
+  Route::post('/actualizar','SuficienciaTrabajoAlturaController@update')->name('trabajo_altura.update');
+});
+
+
+Route::group(["prefix"=>"conductor_operador"],function(){
+  Route::post('/crear','EvaluacionConductorOperadorController@store')->name('conductor_operador.store');
+  Route::post('/actualizar','EvaluacionConductorOperadorController@update')->name('conductor_operador.update');
+});
+
+
+Route::group(["prefix"=>"cuestionario_nordico"],function(){
+  Route::post('/crear','CuestionarioNordicoController@store')->name('cuestionario_nordico.store');
+  Route::post('/actualizar','CuestionarioNordicoController@update')->name('cuestionario_nordico.update');
+});
+
+
 
 
 Route::view('/antecedentes', 'antecedentes.index');
+Route::get('/word/{id}','WordTestController@createWordDocx')->name('word.reporte');
+Route::get('/interconsulta_pdf/{id}','WordTestController@interconsultapdf')->name('interconsultapdf.reporte');
 
 
 
+Route::view('/antecedentes', 'antecedentes.index');
 Route::get('/word/{id}','WordTestController@createWordDocx')->name('word.reporte');
 Route::get('/interconsulta_pdf/{id}','WordTestController@interconsultapdf')->name('interconsultapdf.reporte');

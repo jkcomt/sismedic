@@ -8,7 +8,12 @@ width: 90% !important;
     <div class="modal-dialog" id="mdlapnea" role="document">
         <div class="modal-content">
             @include('evaluacionmedica.examenes.encabezado')
-            <form id="registrarAnexo7d">
+            <form id="apnea_suenio">
+
+              {{-- @isset($cita->conduccionvehiculo->id)
+                 <input type="hidden" name="conduccion_vehicular_id" value="{{$cita->conduccionvehiculo->id}}">
+             @endisset --}}
+
                 <input type="hidden" name="lista_examen_id" value="{{$listaExamen->id}}">
                 <input type="hidden" name="cita_id" value="{{$cita->id}}">
                 <div class="modal-body ">
@@ -68,28 +73,39 @@ width: 90% !important;
                                           </div>
                                   </div>
                                   <div class=" col-md-12">
-                                      <div class="col-md-6 form-horizontal">
-                                        <div class="form-group">
-                                            <label for="inputEmail3" class="col-sm-8 control-label">Años que trabaja en dicho horario de trabajo</label>
-                                            <div class="col-sm-4">
-                                                <div class="input-group">
-                                                    <input type="text" class="form-control">
-                                                    <div class="input-group-addon">Años</div>
-                                                </div>
-                                            </div>
-                                          </div>
-                                      </div>
-                                  </div>
+                                        <div class=" col-md-12">
 
+                                                <div class="col-md-6 form-inline">
+                                                    <div class="form-group">
+                                                    <label for="exampleInputName2">Años que trabaja en dicho horario de trabajo</label>
+                                                    <input type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                        </div>
+                                  </div>
                                   <div class="col-md-12">
                                     <div class="row">
-
-                                      <div class="col-md-2">
-                                        <strong> Antecedentes Personales</strong>
+                                      <div class="col-md-12">
+                                        <strong>2.- Antecedentes Personales</strong>
+                                      </div>
+                                      <div class="col-md-12">
+                                        <div class="col-md-2">
+                                          <div class="input-group" >
+                                            <label for="apneasuenio_m" style="border:none;"  class="form-control">Apnea del sueño</label>
+                                            <span class="input-group-addon" id="basic-addon2" style="border:none;" >  <input id="apneasuenio_m" type="checkbox"  value="1"></span>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                          <div class="input-group">
+                                            <span class="span-width input-group-addon" style="border:none;">Ultimo control de Apnea</span>
+                                            <input type="text" class="form-control" >
+                                          </div>
+                                        </div>
                                       </div>
                                     </div>
                                   </div>
                           </div>
+
 
 
                           </div>

@@ -54,20 +54,20 @@ class ElectrocardiogramaController extends Controller
             ]);
 
             $electrocardiograma = Electrocardiograma::create([
-                'ritmo'=>$data['cboritmo'],
-                'frecuencia_cardiaca'=>$data['frecuencia_cardiaca'],
-                'eje_qrs'=>$data['eje_qrs'],
-                'eje_qrs_dos'=>$data['eje_qrs_dos'],
-                'onda_p'=>$data['onda_p'],
-                'intervalo'=>$data['intervalo'],
-                'segmento_qrs'=>$data['segmento_qrs'],
-                'qt_corregido'=>$data['qt_corregido'],
-                'isquemia'=>$data['isquemia'],
-                'hipertrofias'=>$data['hipertrofias'],
-                'otros_hallazgos'=>$data['otros_hallazgos'],
+                'ritmo'=>isset($data['cboritmo'])? $data['cboritmo']:null,
+                'frecuencia_cardiaca'=>isset($data['frecuencia_cardiaca'])? $data['frecuencia_cardiaca']:null,
+                'eje_qrs'=>isset($data['eje_qrs'])? $data['eje_qrs']:null,
+                'eje_qrs_dos'=>isset($data['eje_qrs_dos'])? $data['eje_qrs_dos']:null,
+                'onda_p'=>isset($data['onda_p'])? $data['onda_p']:null,
+                'intervalo'=>isset($data['intervalo'])? $data['intervalo']:null,
+                'segmento_qrs'=>isset($data['segmento_qrs'])? $data['segmento_qrs']:null,
+                'qt_corregido'=>isset($data['qt_corregido'])? $data['qt_corregido']:null,
+                'isquemia'=>isset($data['isquemia'])? $data['isquemia']:null,
+                'hipertrofias'=>isset($data['hipertrofias'])? $data['hipertrofias']:null,
+                'otros_hallazgos'=>isset($data['otros_hallazgos'])? $data['otros_hallazgos']:null,
                 'fecha_registro'=>Carbon::now(),
-                'lista_examen_id'=>$data['lista_examen_id'],
-                'cita_id'=>$data['cita_id'],
+                'lista_examen_id'=>isset($data['lista_examen_id'])? $data['lista_examen_id']:null,
+                'cita_id'=>isset($data['cita_id'])? $data['cita_id']:null,
                 'estado'=>true
             ]);
 
@@ -126,20 +126,20 @@ class ElectrocardiogramaController extends Controller
               'cita_id'=>'required'
           ]);
           $electrocardiograma->update([
-              'ritmo'=>$data['cboritmo'],
-              'frecuencia_cardiaca'=>$data['frecuencia_cardiaca'],
-              'eje_qrs'=>$data['eje_qrs'],
-              'eje_qrs_dos'=>$data['eje_qrs_dos'],
-              'onda_p'=>$data['onda_p'],
-              'intervalo'=>$data['intervalo'],
-              'segmento_qrs'=>$data['segmento_qrs'],
-              'qt_corregido'=>$data['qt_corregido'],
-              'isquemia'=>$data['isquemia'],
-              'hipertrofias'=>$data['hipertrofias'],
-              'otros_hallazgos'=>$data['otros_hallazgos'],
+              'ritmo'=>isset($data['cboritmo'])? $data['cboritmo']:null,
+              'frecuencia_cardiaca'=>isset($data['frecuencia_cardiaca'])? $data['frecuencia_cardiaca']:null,
+              'eje_qrs'=>isset($data['eje_qrs'])? $data['eje_qrs']:null,
+              'eje_qrs_dos'=>isset($data['eje_qrs_dos'])? $data['eje_qrs_dos']:null,
+              'onda_p'=>isset($data['onda_p'])? $data['onda_p']:null,
+              'intervalo'=>isset($data['intervalo'])? $data['intervalo']:null,
+              'segmento_qrs'=>isset($data['segmento_qrs'])? $data['segmento_qrs']:null,
+              'qt_corregido'=>isset($data['qt_corregido'])? $data['qt_corregido']:null,
+              'isquemia'=>isset($data['isquemia'])? $data['isquemia']:null,
+              'hipertrofias'=>isset($data['hipertrofias'])? $data['hipertrofias']:null,
+              'otros_hallazgos'=>isset($data['otros_hallazgos'])? $data['otros_hallazgos']:null,
               'fecha_registro'=>Carbon::now(),
-              'lista_examen_id'=>$data['lista_examen_id'],
-              'cita_id'=>$data['cita_id'],
+              'lista_examen_id'=>isset($data['lista_examen_id'])? $data['lista_examen_id']:null,
+              'cita_id'=>isset($data['cita_id'])? $data['cita_id']:null,
               'estado'=>true
           ]);
             $electrocardiograma->save();

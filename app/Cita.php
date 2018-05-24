@@ -159,4 +159,27 @@ class Cita extends Model
         return $this->hasOne(Orina::class);
     }
 
+    public function sudicienciatrabajoaltura()
+    {
+      return $this->hasOne(SuficienciaTrabajoAltura::class);
+    }
+
+
+    public function conductoroperador()
+    {
+      return $this->hasOne(EvaluacionConductorOperador::class);
+    }
+
+    public function conduccionvehiculo()
+    {
+      return $this->hasOne(EvaluacionConduccionVehiculos::class);
+    }
+
+    public function custionarionordico()
+    {
+      return $this->hasOne(CuestionarioNordico::class);
+    }
+
+
+
 }

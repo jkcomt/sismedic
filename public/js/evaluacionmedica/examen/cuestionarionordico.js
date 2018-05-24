@@ -1,33 +1,30 @@
 $(document).ready(function(){
-
 });
 
 var urls_="";
 var tipo="";
-$('body').on('click','.trabajoaltura',function(e) {
+$('body').on('click','.cuestionarionordico',function(e) {
     e.preventDefault();
-
     tipo = $(this).attr('tipo');
-
     $('.confirmar').attr('estado','registrar')
-    $('#modal-trabajoaltura').modal('hide');
+    $('#modal-cuestionario_nordico').modal('hide');
     $('#modal-confirmacion').modal('show')
 
 });
 
 $('.confirmar').on('click',function (e) {
     e.preventDefault();
-    if(tipo=="trabajoaltura_modificar")
+    if(tipo=="cuestionario_nordico_modificar")
     {
-      urls_='/trabajo_altura/actualizar';
+      urls_='/cuestionario_nordico/actualizar';
       // console.log("if probando "+tipo);
-        $('body #suficiencia_trabajo_alturas').trigger('submit');
+        $('body #cuestionario_nordico').trigger('submit');
     }
-    else if(tipo=="trabajoaltura_guardar")
+    else if(tipo=="cuestionario_nordico_guardar")
     {
-        urls_='/trabajo_altura/crear';
+        urls_='/cuestionario_nordico/crear';
        //console.log(urls_);
-    $('body #suficiencia_trabajo_alturas').trigger('submit');
+    $('body #cuestionario_nordico').trigger('submit');
     }
 
 });
@@ -35,10 +32,10 @@ $('.confirmar').on('click',function (e) {
 $('.volver-form-examen').on('click',function(e){
     e.preventDefault();
     $('#modal-confirmacion').modal('hide')
-    $('#modal-trabajoaltura').modal('show');
+    $('#modal-cuestionario_nordico').modal('show');
 });
 
-$('body').on('submit','#suficiencia_trabajo_alturas',function(e){
+$('body').on('submit','#cuestionario_nordico',function(e){
     e.preventDefault();
 
     var datos = $(this);
@@ -48,7 +45,7 @@ $('body').on('submit','#suficiencia_trabajo_alturas',function(e){
     {
         if($.isEmptyObject(data.error)){
             $('#modal-confirmacion').modal('hide')
-            $('body #registrartrabajoaltura').modal('hide')
+            $('body #cuestionarionordico').modal('hide')
             $('#modal-exito').modal({
                 backdrop: 'static',
                 keyboard:false
@@ -60,7 +57,7 @@ $('body').on('submit','#suficiencia_trabajo_alturas',function(e){
         }
     }).error(function(data){
         $('#modal-confirmacion').modal('hide');
-        $('#modal-trabajoaltura').modal('show');
+        $('#modal-cuestionario_nordico').modal('show');
 
         return;
     });

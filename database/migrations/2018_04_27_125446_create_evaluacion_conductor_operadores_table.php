@@ -22,7 +22,6 @@ class CreateEvaluacionConductorOperadoresTable extends Migration
             $table->date('fecha_revalidacion');
             $table->string('aptitud');
             $table->string('observaciones');
-
             $table->date('fecha_registro');
             $table->foreign('lista_examen_id')->references('id')->on('lista_examenes');
             $table->integer('lista_examen_id')->unsigned()->nullable();

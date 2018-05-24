@@ -1,33 +1,32 @@
 $(document).ready(function(){
-
 });
 
 var urls_="";
 var tipo="";
-$('body').on('click','.trabajoaltura',function(e) {
+$('body').on('click','.conductoroperador',function(e) {
     e.preventDefault();
 
     tipo = $(this).attr('tipo');
 
     $('.confirmar').attr('estado','registrar')
-    $('#modal-trabajoaltura').modal('hide');
+    $('#modal-conductoroperador').modal('hide');
     $('#modal-confirmacion').modal('show')
 
 });
 
 $('.confirmar').on('click',function (e) {
     e.preventDefault();
-    if(tipo=="trabajoaltura_modificar")
+    if(tipo=="conductor_operador_modificar")
     {
-      urls_='/trabajo_altura/actualizar';
+      urls_='/conductor_operador/actualizar';
       // console.log("if probando "+tipo);
-        $('body #suficiencia_trabajo_alturas').trigger('submit');
+        $('body #conductor_operador').trigger('submit');
     }
-    else if(tipo=="trabajoaltura_guardar")
+    else if(tipo=="conductor_operador_guardar")
     {
-        urls_='/trabajo_altura/crear';
+        urls_='/conductor_operador/crear';
        //console.log(urls_);
-    $('body #suficiencia_trabajo_alturas').trigger('submit');
+    $('body #conductor_operador').trigger('submit');
     }
 
 });
@@ -35,10 +34,10 @@ $('.confirmar').on('click',function (e) {
 $('.volver-form-examen').on('click',function(e){
     e.preventDefault();
     $('#modal-confirmacion').modal('hide')
-    $('#modal-trabajoaltura').modal('show');
+    $('#modal-conductoroperador').modal('show');
 });
 
-$('body').on('submit','#suficiencia_trabajo_alturas',function(e){
+$('body').on('submit','#conductor_operador',function(e){
     e.preventDefault();
 
     var datos = $(this);
@@ -48,7 +47,7 @@ $('body').on('submit','#suficiencia_trabajo_alturas',function(e){
     {
         if($.isEmptyObject(data.error)){
             $('#modal-confirmacion').modal('hide')
-            $('body #registrartrabajoaltura').modal('hide')
+            $('body #conductoroperador').modal('hide')
             $('#modal-exito').modal({
                 backdrop: 'static',
                 keyboard:false
@@ -60,7 +59,7 @@ $('body').on('submit','#suficiencia_trabajo_alturas',function(e){
         }
     }).error(function(data){
         $('#modal-confirmacion').modal('hide');
-        $('#modal-trabajoaltura').modal('show');
+        $('#modal-conductoroperador').modal('show');
 
         return;
     });

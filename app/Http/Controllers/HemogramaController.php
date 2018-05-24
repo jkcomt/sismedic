@@ -53,20 +53,20 @@ class HemogramaController extends Controller
             ]);
 
             $hemograma = Hemograma::create([
-                 'hemoglobina'=>$data['hemoglobina'],
-                 'hematocrito'=>$data['hematocrito'],
-                 'leucocitos'=>$data['leucocitos'],
-                 'abastonados'=>$data['abastonados'],
-                 'segmentados'=>$data['segmentados'],
-                 'monocitos'=>$data['monocitos'],
-                 'linfocitos'=>$data['linfocitos'],
-                 'eosinofilos'=>$data['eosinofilos'],
-                 'basofilos'=>$data['basofilos'],
-                'conclusion_hemograma'=>$data['conclusion'],
-                'fecha_registro'=>Carbon::now(),
-                'lista_examen_id'=>$data['lista_examen_id'],
-                'cita_id'=>$data['cita_id'],
-                'estado'=>true
+              'hemoglobina'=>isset($data['hemoglobina'])? $data['hemoglobina']:null,
+              'hematocrito'=>isset($data['hematocrito'])? $data['hematocrito']:null,
+              'leucocitos'=>isset($data['leucocitos'])? $data['leucocitos']:null,
+              'abastonados'=>isset($data['abastonados'])? $data['abastonados']:null,
+              'segmentados'=>isset($data['segmentados'])? $data['segmentados']:null,
+              'monocitos'=>isset($data['monocitos'])? $data['monocitos']:null,
+              'linfocitos'=>isset($data['linfocitos'])? $data['linfocitos']:null,
+              'eosinofilos'=>isset($data['eosinofilos'])? $data['eosinofilos']:null,
+              'basofilos'=>isset($data['basofilos'])? $data['basofilos']:null,
+             'conclusion_hemograma'=>isset($data['conclusion'])? $data['conclusion']:null,
+             'fecha_registro'=>Carbon::now(),
+             'lista_examen_id'=>isset($data['lista_examen_id'])? $data['lista_examen_id']:null,
+             'cita_id'=>isset($data['cita_id'])? $data['cita_id']:null,
+             'estado'=>true
             ]);
 
             return response()->json(['mensaje' =>"registro exitoso"]);
@@ -122,19 +122,19 @@ class HemogramaController extends Controller
           ]);
 
           $hemograma->update([
-               'hemoglobina'=>$data['hemoglobina'],
-               'hematocrito'=>$data['hematocrito'],
-               'leucocitos'=>$data['leucocitos'],
-               'abastonados'=>$data['abastonados'],
-               'segmentados'=>$data['segmentados'],
-               'monocitos'=>$data['monocitos'],
-               'linfocitos'=>$data['linfocitos'],
-               'eosinofilos'=>$data['eosinofilos'],
-               'basofilos'=>$data['basofilos'],
-              'conclusion_hemograma'=>$data['conclusion'],
+               'hemoglobina'=>isset($data['hemoglobina'])? $data['hemoglobina']:null,
+               'hematocrito'=>isset($data['hematocrito'])? $data['hematocrito']:null,
+               'leucocitos'=>isset($data['leucocitos'])? $data['leucocitos']:null,
+               'abastonados'=>isset($data['abastonados'])? $data['abastonados']:null,
+               'segmentados'=>isset($data['segmentados'])? $data['segmentados']:null,
+               'monocitos'=>isset($data['monocitos'])? $data['monocitos']:null,
+               'linfocitos'=>isset($data['linfocitos'])? $data['linfocitos']:null,
+               'eosinofilos'=>isset($data['eosinofilos'])? $data['eosinofilos']:null,
+               'basofilos'=>isset($data['basofilos'])? $data['basofilos']:null,
+              'conclusion_hemograma'=>isset($data['conclusion'])? $data['conclusion']:null,
               'fecha_registro'=>Carbon::now(),
-              'lista_examen_id'=>$data['lista_examen_id'],
-              'cita_id'=>$data['cita_id'],
+              'lista_examen_id'=>isset($data['lista_examen_id'])? $data['lista_examen_id']:null,
+              'cita_id'=>isset($data['cita_id'])? $data['cita_id']:null,
               'estado'=>true
           ]);
             $hemograma->save();

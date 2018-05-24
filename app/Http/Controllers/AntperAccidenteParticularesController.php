@@ -46,11 +46,11 @@ class AntperAccidenteParticularesController extends Controller
             'tratamiento_actual'=>'nullable'
           ]);
           $antecedentes=AntperAccidenteParticulares::create([
-            'descripcion'=>$data['descripcion'],
-            'anio'=>$data['anio'],
-            'tratamiento_actual'=>$data['tratamiento_actual'],
+            'descripcion'=>isset($data['descripcion'])? $data['descripcion']:null,
+            'anio'=>isset($data['anio'])? $data['anio']:null,
+            'tratamiento_actual'=>isset($data['tratamiento_actual'])? $data['tratamiento_actual']:null,
             'fecha_registro'=>Carbon::now(),
-            'paciente_id'=>$data['paciente_id'],
+            'paciente_id'=>isset($data['paciente_id'])? $data['paciente_id']:null,
             'estado'=>true
           ]);
               return response()->json(['mensaje'=>"Registro exitoso"]);

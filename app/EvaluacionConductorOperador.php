@@ -17,9 +17,15 @@ class EvaluacionConductorOperador extends Model
       'aptitud',
       'observaciones',
       'fecha_registro',
+      'lista_examen_id',
       'cita_id',
       'estado'
     ];
+
+    public function paciente()
+    {
+      return $this->belongsTo(Paciente::class);
+    }
 
     public $timestamps = false;
 }

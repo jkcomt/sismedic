@@ -21,7 +21,7 @@ class SuficienciaTrabajoAltura extends Model
         'anamnesis_item8',
         'anamnesis_item9',
         'anamnesis_item10',
-
+        'anamnesis_comentarios',
         'exploracion_fisica_fc',
         'exploracion_fisica_fr',
         'exploracion_fisica_pa',
@@ -30,10 +30,10 @@ class SuficienciaTrabajoAltura extends Model
         'exploracion_fisica_imc',
         'exploracion_fisica_perimetro_cuello',
         'exploracion_fisica_perimetro_cintura',
+        'exploracion_fisica_perimetro_cadera',
         'exploracion_fisica_icc',
         'exploracion_fisica_perimetro_toracico_inspiracion',
         'exploracion_fisica_perimetro_toracico_espiracion',
-
         'exploracion_fisica_item_1',
         'exploracion_fisica_item_2',
         'exploracion_fisica_item_3',
@@ -59,9 +59,15 @@ class SuficienciaTrabajoAltura extends Model
         'hasta',
         'recomendacion',
         'fecha_registro',
+        'lista_examen_id',
         'cita_id',
         'estado'
     ];
+
+    public function cita(){
+        return $this->belongsTo(Cita::class);
+    }
+
 
     public $timestamps = false;
 }

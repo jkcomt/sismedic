@@ -46,13 +46,14 @@ class AntperAccidenteLaboralesController extends Controller
             'tratamiento_actual'=>'nullable',
             'importancia_patologica'=>'nullable',
           ]);
+
           $antecedentes=AntperAccidenteLaborales::create([
-            'descripcion'=>$data['descripcion'],
-            'anio'=>$data['anio'],
-            'tratamiento_actual'=>$data['tratamiento_actual'],
-            'importancia_patologica'=>$data['importancia_patologica'],
+            'descripcion'=>isset($data['descripcion'])?$data['descripcion']:null,
+            'anio'=>isset($data['anio'])?$data['anio']:null,
+            'tratamiento_actual'=>isset($data['tratamiento_actual'])?$data['tratamiento_actual']:null,
+            'importancia_patologica'=>isset($data['importancia_patologica'])?$data['importancia_patologica']:null,
             'fecha_registro'=>Carbon::now(),
-            'paciente_id'=>$data['paciente_id'],
+            'paciente_id'=>isset($data['paciente_id'])?$data['paciente_id']:null,
             'estado'=>true
           ]);
               return response()->json(['mensaje'=>"Registro exitoso"]);

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\EvaluacionConductorOperador;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class EvaluacionConductorOperadorController extends Controller
 {
@@ -35,7 +36,38 @@ class EvaluacionConductorOperadorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+
+            if(request()->ajax()) {
+                $data = request()->validate([
+                  'clase'=>'nullable',
+                  'nro_licencia'=>'nullable',
+                  'categoria'=>'nullable',
+                  'maquina'=>'nullable',
+                  'fecha_revalidacion'=>'nullable',
+                  'aptitud'=>'nullable',
+                  'observaciones'=>'nullable',
+                  'fecha_registro'=>'nullable',
+                  'lista_examen_id'=>'nullable',
+                  'cita_id'=>'nullable'
+                ]);
+                $conductoroperador = EvaluacionConductorOperador::create([
+                  'clase'=>isset($data['clase'])? $data['clase']:null,
+                  'nro_licencia'=>isset($data['nro_licencia'])? $data['nro_licencia']:null,
+                  'categoria'=>isset($data['categoria'])? $data['categoria']:null,
+                  'maquina'=>isset($data['maquina'])? $data['maquina']:null,
+                  'fecha_revalidacion'=>isset($data['fecha_revalidacion'])? $data['fecha_revalidacion']:null,
+                  'aptitud'=>isset($data['aptitud'])? $data['aptitud']:null,
+                  'observaciones'=>isset($data['observaciones'])? $data['observaciones']:null,
+                  'fecha_registro'=>Carbon::now(),
+                  'cita_id'=>isset($data['cita_id'])? $data['cita_id']:null,
+                  'lista_examen_id'=>isset($data['lista_examen_id'])? $data['lista_examen_id']:null,
+                  'estado'=>true
+                ]);
+
+                return response()->json(['mensaje' => 'registro exitoso']);
+            }
+
     }
 
     /**
@@ -67,9 +99,39 @@ class EvaluacionConductorOperadorController extends Controller
      * @param  \App\EvaluacionConductorOperador  $evaluacionConductorOperador
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, EvaluacionConductorOperador $evaluacionConductorOperador)
+    public function update(Request $request)
     {
-        //
+          $conductoroperador=EvaluacionConductorOperador::find($request['conducto_operador_id']);
+      if(request()->ajax()) {
+          $data = request()->validate([
+            'clase'=>'nullable',
+            'nro_licencia'=>'nullable',
+            'categoria'=>'nullable',
+            'maquina'=>'nullable',
+            'fecha_revalidacion'=>'nullable',
+            'aptitud'=>'nullable',
+            'observaciones'=>'nullable',
+            'fecha_registro'=>'nullable',
+            'lista_examen_id'=>'nullable',
+            'cita_id'=>'nullable'
+          ]);
+          $conductoroperador->update([
+            'clase'=>isset($data['clase'])? $data['clase']:null,
+            'nro_licencia'=>isset($data['nro_licencia'])? $data['nro_licencia']:null,
+            'categoria'=>isset($data['categoria'])? $data['categoria']:null,
+            'maquina'=>isset($data['maquina'])? $data['maquina']:null,
+            'fecha_revalidacion'=>isset($data['fecha_revalidacion'])? $data['fecha_revalidacion']:null,
+            'aptitud'=>isset($data['aptitud'])? $data['aptitud']:null,
+            'observaciones'=>isset($data['observaciones'])? $data['observaciones']:null,
+            'fecha_registro'=>Carbon::now(),
+            'cita_id'=>isset($data['cita_id'])? $data['cita_id']:null,
+            'lista_examen_id'=>isset($data['lista_examen_id'])? $data['lista_examen_id']:null,
+            'estado'=>true
+          ]);
+            $conductoroperador->save();
+          return response()->json(['mensaje' => 'registro actualizar']);
+      }
+
     }
 
     /**

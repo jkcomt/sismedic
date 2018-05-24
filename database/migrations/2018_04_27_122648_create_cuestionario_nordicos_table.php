@@ -14,76 +14,89 @@ class CreateCuestionarioNordicosTable extends Migration
     public function up()
     {
         Schema::create('cuestionario_nordicos', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('datos_personales_anos_tiempo_trabajo');
-            $table->integer('datos_personales_meses_tiempo_trabajo');
-            $table->integer('promedio_hora_semanal_trabajo');
-            $table->string('usted_es');
+          $table->increments('id');
+          $table->string('datos_personales_anio')->nullable();
+          $table->string('datos_personales_mes')->nullable();
+          $table->string('datos_personales_horas')->nullable();
+          $table->string('datos_personales_usted_es')->nullable();
 
-            $table->boolean('todos_cuello');
-            $table->string('todos_hombros');
-            $table->string('todos_codo');
-            $table->string('todos_muneca');
-            $table->boolean('todos_espalda_alta');
-            $table->boolean('todos_espalda_baja');
-            $table->boolean('todos_caderas_muslos');
-            $table->boolean('todos_rodillas');
-            $table->boolean('todos_tobillos_pies');
+          $table->boolean('problemas_organos_cuello')->nullable();
+          $table->boolean('cuello_rendimiento_laboral_casa')->nullable();
+          $table->boolean('cuello_ultimos7dias')->nullable();
 
-            $table->boolean('problema_12_meses_cuello');
-            $table->boolean('problema_12_meses_hombros');
-            $table->boolean('problema_12_meses_codo');
-            $table->boolean('problema_12_meses_muneca');
-            $table->boolean('problema_12_meses_espalda_alta');
-            $table->boolean('problema_12_meses_caderas_muslos');
-            $table->boolean('problema_12_meses_rodillas');
-            $table->boolean('problema_12_meses_tobillos_pies');
+          $table->string('problemas_organos_hombros')->nullable();
+          $table->boolean('hombros_rendimiento_laboral_casa')->nullable();
+          $table->boolean('hombros_ultimos7dias')->nullable();
 
-            $table->boolean('problema_7_dias_cuello');
-            $table->boolean('problema_7_dias_hombros');
-            $table->boolean('problema_7_dias_codo');
-            $table->boolean('problema_7_dias_muneca');
-            $table->boolean('problema_7_dias_espalda_alta');
-            $table->boolean('problema_7_dias_caderas_muslos');
-            $table->boolean('problema_7_dias_rodillas');
-            $table->boolean('problema_7_dias_tobillos_pies');
+          $table->string('problemas_organos_codos')->nullable();
+          $table->boolean('codos_rendimiento_laboral_casa')->nullable();
+          $table->boolean('codos_ultimos7dias')->nullable();
 
-            $table->boolean('problemas_espalda_baja_item_1');
-            $table->boolean('problemas_espalda_baja_item_2');
-            $table->boolean('problemas_espalda_baja_item_3');
-            $table->string('problemas_espalda_baja_item_4');
-            $table->boolean('problemas_espalda_baja_item_5_1');
-            $table->boolean('problemas_espalda_baja_item_5_2');
-            $table->string('problemas_espalda_baja_item_6');
-            $table->boolean('problemas_espalda_baja_item_7');
-            $table->boolean('problemas_espalda_baja_item_8');
 
-            $table->boolean('problemas_espalda_baja_item_9');
-            $table->string('problemas_espalda_baja_item_10');
-            $table->boolean('problemas_espalda_baja_item_11');
-            $table->string('problemas_espalda_baja_item_12');
-            $table->string('problemas_espalda_baja_item_13');
-            $table->boolean('problemas_espalda_baja_item_14_1');
-            $table->boolean('problemas_espalda_baja_item_14_2');
-            $table->string('problemas_espalda_baja_item_15');
-            $table->boolean('problemas_espalda_baja_item_16');
+          $table->string('problemas_organos_muniecas')->nullable();
+          $table->boolean('muniecas_rendimiento_laboral_casa')->nullable();
+          $table->boolean('muniecas_ultimos7dias')->nullable();
 
-            $table->boolean('problemas_con_cuello_item_1');
-            $table->boolean('problemas_con_cuello_item_2');
-            $table->boolean('problemas_con_cuello_item_3');
-            $table->string('problemas_con_cuello_item_4');
-            $table->boolean('problemas_con_cuello_item_5_1');
-            $table->boolean('problemas_con_cuello_item_5_2');
-            $table->string('problemas_con_cuello_item_6');
-            $table->boolean('problemas_con_cuello_item_7');
-            $table->boolean('problemas_con_cuello_item_8');
 
-            $table->date('fecha_registro');
-            $table->foreign('lista_examen_id')->references('id')->on('lista_examenes');
-            $table->integer('lista_examen_id')->unsigned()->nullable();
-            $table->foreign('cita_id')->references('id')->on('citas');
-            $table->integer('cita_id')->unsigned()->nullable();
-            $table->boolean('estado');
+          $table->boolean('problemas_organos_espalda_alta')->nullable();
+          $table->boolean('espalda_alta_rendimiento_laboral_casa')->nullable();
+          $table->boolean('espalda_alta_ultimos7dias')->nullable();
+
+          $table->boolean('problemas_organos_espalda_baja')->nullable();
+          $table->boolean('espalda_baja_rendimiento_laboral_casa')->nullable();
+          $table->boolean('espalda_baja_ultimos7dias')->nullable();
+
+          $table->boolean('problemas_organos_caderas_muslos')->nullable();
+          $table->boolean('caderas_muslos_rendimiento_laboral_casa')->nullable();
+          $table->boolean('caderas_muslos_ultimos7dias')->nullable();
+
+          $table->boolean('problemas_organos_rodillas')->nullable();
+          $table->boolean('rodillas_rendimiento_laboral_casa')->nullable();
+          $table->boolean('rodillas_ultimos7dias')->nullable();
+
+          $table->boolean('problemas_organos_tobillos_pies')->nullable();
+          $table->boolean('tobillos_pies_laboral_casa')->nullable();
+          $table->boolean('tobillos_pies_ultimos7dias')->nullable();
+
+          $table->boolean('problemas_espalda_baja_uno')->nullable();
+          $table->boolean('problemas_espalda_baja_dos')->nullable();
+          $table->boolean('problemas_espalda_baja_tres')->nullable();
+          $table->string('problemas_espalda_baja_cuatro')->nullable();
+          $table->boolean('problemas_espalda_baja_cinco')->nullable();
+          $table->boolean('problemas_espalda_baja_seis')->nullable();
+          $table->string('problemas_espalda_baja_siete')->nullable();
+          $table->boolean('problemas_espalda_baja_ocho')->nullable();
+          $table->boolean('problemas_espalda_baja_nueve')->nullable();
+
+          $table->boolean('problemas_hombros_uno')->nullable();
+          $table->string('problemas_hombros_dos')->nullable();
+          $table->boolean('problemas_hombros_tres')->nullable();
+          $table->string('problemas_hombros_cuatro')->nullable();
+          $table->string('problemas_hombros_cinco')->nullable();
+          $table->boolean('problemas_hombros_seis')->nullable();
+          $table->boolean('problemas_hombros_siete')->nullable();
+          $table->string('problemas_hombros_ocho')->nullable();
+          $table->boolean('problemas_hombros_nueve')->nullable();
+          $table->boolean('problemas_hombros_dies')->nullable();
+
+          $table->boolean('problemas_cuello_uno')->nullable();
+          $table->boolean('problemas_cuello_dos')->nullable();
+          $table->boolean('problemas_cuello_tres')->nullable();
+          $table->string('problemas_cuello_cuatro')->nullable();
+          $table->boolean('problemas_cuello_cinco')->nullable();
+          $table->boolean('problemas_cuello_seis')->nullable();
+          $table->string('problemas_cuello_siete')->nullable();
+          $table->boolean('problemas_cuello_ocho')->nullable();
+          $table->boolean('problemas_cuello_nueve')->nullable();
+
+
+          $table->date('fecha_registro');
+          $table->foreign('lista_examen_id')->references('id')->on('lista_examenes');
+          $table->integer('lista_examen_id')->unsigned()->nullable();
+          $table->foreign('cita_id')->references('id')->on('citas');
+          $table->integer('cita_id')->unsigned()->nullable();
+          $table->boolean('estado');
+          //$table->timestamps();
         });
     }
 

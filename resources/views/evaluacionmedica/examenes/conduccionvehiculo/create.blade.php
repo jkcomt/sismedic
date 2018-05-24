@@ -3,13 +3,20 @@
 width: 90% !important;
 }
 </style>
-<div class="modal fade" tabindex="-1" role="dialog" id="modal-vision">
+<div class="modal fade" tabindex="-1" role="dialog" id="modal-conduccionvehicular">
     <div class="modal-dialog" id="mdlconduccionvehiculos" role="document">
         <div class="modal-content">
             @include('evaluacionmedica.examenes.encabezado')
-            <form action="" id="" method="post">
+            <form id="conduccion_vehicularesq">
             <div class="modal-body ">
                 {{csrf_field()}}
+
+
+                @isset($cita->conduccionvehiculo->id)
+                   <input type="hidden" name="conduccion_vehicular_id" value="{{$cita->conduccionvehiculo->id}}">
+               @endisset
+               <input type="hidden" name="lista_examen_id" value="{{$listaExamen->id}}">
+               <input type="hidden" name="cita_id" value="{{$cita->id}}">
 
                 <div class="row">
 
@@ -26,8 +33,8 @@ width: 90% !important;
                       <div class="row">
                         <div class="col-md-12">
                             <div class="col-md-4">
-                              <label class="radio-inline"><input type="radio" name="optradio">Primera Evaluacion</label>
-                              <label class="radio-inline"><input type="radio" name="optradio">Revalidación</label>
+                              <label class="radio-inline"><input type="radio" name="estado_evaluacion" value="primera_evaluacion" @isset($cita->conduccionvehiculo->estado_evaluacion) @if($cita->conduccionvehiculo->estado_evaluacion=='primera_evaluacion') checked @endif @endisset>Primera Evaluacion</label>
+                              <label class="radio-inline"><input type="radio" name="estado_evaluacion" value="revalidacion" @isset($cita->conduccionvehiculo->estado_evaluacion) @if($cita->conduccionvehiculo->estado_evaluacion=='revalidacion') checked @endif @endisset>Revalidación</label>
                             </div>
                             <div class="col-md-8">
                             </div>
@@ -45,7 +52,7 @@ width: 90% !important;
                                     Todas las enfermedades que produzcan alteración de la consciencia sin importar su causa e independientemente de su tratamiento
                                 </td>
                                 <td>
-                                  <input type="checkbox">
+                                  <input type="checkbox" name="anamnesis_evaluacion_capacidades1" value="1" @isset($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades1)  checked @endisset>
                                 </td>
                                 <td>
 
@@ -54,7 +61,7 @@ width: 90% !important;
                                   Personas que consumen sustancias estupefacientes o psicotrópicas en niveles que alteren su  capacidad o trabajar como controlar un vehículo
                                 </td>
                                 <td>
-                                    <input type="checkbox">
+                                    <input type="checkbox" name="anamnesis_evaluacion_capacidades2" value="1" @isset($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades2)  checked @endisset >
                                 </td>
                               </tr>
                               <tr>
@@ -62,7 +69,7 @@ width: 90% !important;
                                               Alcoholismo crónico y en general  todas aquellas enfermedades que produzcan incapacidad de efectuar movimientos voluntarios y/o que limiten la capacidad de trabajo como conduccion, maneja o control fisico de un vehículo motorizado,subir y bajar escaleras, etc
                                 </td>
                                 <td>
-                                  <input type="checkbox">
+                                  <input type="checkbox" name="anamnesis_evaluacion_capacidades3" value="1" @isset($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades3)  checked @endisset >
                                 </td>
                                 <td>
 
@@ -71,7 +78,7 @@ width: 90% !important;
                                   Personas que consumen sustancias estupefacientes o psicotrópicas en niveles que no alteren su capacidad de rabajar, pero  que se encuentran sin tratamiento o en tratamiento sin prescripcion médica
                                 </td>
                                 <td>
-                                    <input type="checkbox">
+                                    <input type="checkbox" name="anamnesis_evaluacion_capacidades4" value="1" @isset($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades4)  checked @endisset>
                                 </td>
                               </tr>
                               <tr>
@@ -79,7 +86,7 @@ width: 90% !important;
                                   Todas aquellas enfermedades que se caractericen por movimientos involuntarios y que  interfieran seriamente su capacidad de trabajar, independientemente de su tratamiento farmalogico
                                 </td>
                                 <td>
-                                  <input type="checkbox">
+                                  <input type="checkbox" name="anamnesis_evaluacion_capacidades5" value="1" @isset($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades5)  checked @endisset>
                                 </td>
                                 <td>
 
@@ -89,7 +96,7 @@ width: 90% !important;
                                   </p>
                                 </td>
                                 <td>
-                                    <input type="checkbox">
+                                    <input type="checkbox" name="anamnesis_evaluacion_capacidades6" value="1" @isset($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades6)  checked @endisset >
                                 </td>
                               </tr>
                               <tr>
@@ -97,7 +104,7 @@ width: 90% !important;
                                     Perdida recurrente de la consciencia, independiente de su tratamiento, tales como narcolepsia, epilepsia, etc
                                 </td>
                                 <td>
-                                  <input type="checkbox">
+                                  <input type="checkbox" name="anamnesis_evaluacion_capacidades7" value="1" @isset($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades7)  checked @endisset >
                                 </td>
                                 <td>
 
@@ -106,7 +113,7 @@ width: 90% !important;
                                   Síndrome apnea obstructiva del sueño sospecha o confirmada(Ficha SAS)
                                 </td>
                                 <td>
-                                    <input type="checkbox">
+                                    <input type="checkbox" name="anamnesis_evaluacion_capacidades8" value="1" @isset($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades8)  checked @endisset  >
                                 </td>
                               </tr>
                               <tr>
@@ -114,16 +121,16 @@ width: 90% !important;
                                     Anemia de cualquier grado, según criterios OMS 2011
                                 </td>
                                 <td>
-                                  <input type="checkbox">
+                                  <input type="checkbox" name="anamnesis_evaluacion_capacidades9" value="1" @isset($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades9)  checked @endisset>
                                 </td>
                                 <td>
 
                                 </td>
                                 <td>
-                                  Obesidad (IMC > o igual a 35)
+                                  Obesidad (IMC > o igual a 30)
                                 </td>
                                 <td>
-                                    <input type="checkbox">
+                                    <input type="checkbox"  name="anamnesis_evaluacion_capacidades10" value="1" @isset($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades10)  checked @endisset>
                                 </td>
                               </tr>
                             </tbody>
@@ -140,37 +147,37 @@ width: 90% !important;
                                 <div class="col-md-2 form-group">
                                      <label for="inputEmail3" class="col-sm-2 control-label">FC:</label>
                                      <div class="col-sm-8">
-                                       <input type="email" class="form-control">
+                                       <input type="text" class="form-control" name="exploracion_fisica_fc" @isset($cita->conduccionvehiculo->exploracion_fisica_fc)  value="{{$cita->conduccionvehiculo->exploracion_fisica_fc}}" @endisset >
                                      </div>
                                   </div>
                                   <div class="col-md-2 form-group">
                                        <label for="inputEmail3" class="col-sm-2 control-label">FR:</label>
                                        <div class="col-sm-8">
-                                         <input type="email" class="form-control">
+                                         <input type="text" class="form-control"  name="exploracion_fisica_fr" @isset($cita->conduccionvehiculo->exploracion_fisica_fr)  value="{{$cita->conduccionvehiculo->exploracion_fisica_fr}}" @endisset >
                                        </div>
                                     </div>
                                     <div class="col-md-2 form-group">
                                          <label for="inputEmail3" class="col-sm-2 control-label">PA:</label>
                                          <div class="col-sm-8">
-                                           <input type="email" class="form-control">
+                                           <input type="text" class="form-control" name="exploracion_fisica_pa" @isset($cita->conduccionvehiculo->exploracion_fisica_pa)  value="{{$cita->conduccionvehiculo->exploracion_fisica_pa}}" @endisset>
                                          </div>
                                       </div>
                                       <div class="col-md-2 form-group">
                                            <label for="inputEmail3" class="col-sm-4 control-label">Talla:</label>
                                            <div class="col-sm-8">
-                                             <input type="email" class="form-control">
+                                             <input type="text" class="form-control" name="exploracion_fisica_talla" @isset($cita->conduccionvehiculo->exploracion_fisica_talla)  value="{{$cita->conduccionvehiculo->exploracion_fisica_talla}}" @endisset >
                                        </div>
                                     </div>
                                     <div class="col-md-2 form-group">
                                          <label for="inputEmail3" class="col-sm-4 control-label">Peso</label>
                                          <div class="col-sm-8">
-                                           <input type="email" class="form-control">
+                                           <input type="text" class="form-control" name="exploracion_fisica_peso" @isset($cita->conduccionvehiculo->anamnesis_exploracion_fisica_peso)  value="{{$cita->conduccionvehiculo->exploracion_fisica_peso}}" @endisset>
                                          </div>
                                       </div>
                                     <div class="col-md-2 form-group">
                                          <label for="inputEmail3" class="col-sm-2 control-label">IMC:</label>
                                          <div class="col-sm-8">
-                                           <input type="email" class="form-control">
+                                           <input type="text" class="form-control" name="exploracion_fisica_imc" @isset($cita->conduccionvehiculo->exploracion_fisica_imc)  value="{{$cita->conduccionvehiculo->exploracion_fisica_imc}}" @endisset>
                                          </div>
                                       </div>
                             </div>
@@ -178,14 +185,14 @@ width: 90% !important;
                                 <div class="col-md-4 form-group">
                                      <label for="inputEmail3" class="col-sm-6 control-label">Perímetro del cuello:</label>
                                      <div class="col-sm-6">
-                                       <input type="email" class="form-control">
+                                       <input type="text" class="form-control" name="exploracion_fisica_perimetro_cuello" @isset($cita->conduccionvehiculo->exploracion_fisica_perimetro_cuello)  value="{{$cita->conduccionvehiculo->exploracion_fisica_perimetro_cuello}}" @endisset>
                                      </div>
                                   </div>
 
                                   <div class="col-md-4 form-group">
                                        <label for="inputEmail3" class="col-sm-6 control-label">Perímetro de cintura:</label>
                                        <div class="col-sm-6">
-                                         <input type="email" class="form-control">
+                                         <input type="text" class="form-control" name="exploracion_fisica_perimetro_cintura" @isset($cita->conduccionvehiculo->exploracion_fisica_perimetro_cintura)  value="{{$cita->conduccionvehiculo->exploracion_fisica_perimetro_cintura}}" @endisset>
                                        </div>
                                     </div>
 
@@ -193,7 +200,7 @@ width: 90% !important;
                                          <label for="inputEmail3" class="col-sm-6 control-label">Perímetro de cadera:</label>
                                          <div class="col-md-4">
                                            <div class="input-group">
-                                                 <input type="text" class="form-control">
+                                                 <input type="text" class="form-control" name="exploracion_fisica_perimetro_cadera" @isset($cita->conduccionvehiculo->exploracion_fisica_perimetro_cadera)  value="{{$cita->conduccionvehiculo->exploracion_fisica_perimetro_cadera}}" @endisset >
                                              </div>
                                          </div>
                                          <div class="col-sm-2">
@@ -205,14 +212,14 @@ width: 90% !important;
                                 <div class="col-md-4 form-group">
                                      <label for="inputEmail3" class="col-sm-6 control-label">ICC:</label>
                                      <div class="col-sm-6">
-                                       <input type="email" class="form-control">
+                                       <input type="text" class="form-control" name="exploracion_fisica_icc" @isset($cita->conduccionvehiculo->exploracion_fisica_icc)  value="{{$cita->conduccionvehiculo->exploracion_fisica_icc}}" @endisset >
                                      </div>
                                   </div>
 
                                   <div class="col-md-4 form-group">
                                        <label for="inputEmail3" class="col-sm-6 control-label">P Toraxico Inspiracion:</label>
                                        <div class="col-sm-6">
-                                         <input type="email" class="form-control">
+                                         <input type="text" class="form-control" name="exploracion_fisica_perimetro_toraxico_inspiracion" @isset($cita->conduccionvehiculo->exploracion_fisica_perimetro_toraxico_inspiracion)  value="{{$cita->conduccionvehiculo->exploracion_fisica_perimetro_toraxico_inspiracion}}" @endisset >
                                        </div>
                                     </div>
 
@@ -220,7 +227,7 @@ width: 90% !important;
                                          <label for="inputEmail3" class="col-sm-6 control-label">P Toraxico Espiracion:</label>
                                          <div class="col-md-6">
                                            <div class="input-group">
-                                                 <input type="text" class="form-control">
+                                                 <input type="text" class="form-control" name="exploracion_fisica_perimetro_toraxico_espiracion" @isset($cita->conduccionvehiculo->exploracion_fisica_perimetro_toraxico_espiracion)  value="{{$cita->conduccionvehiculo->exploracion_fisica_perimetro_toraxico_espiracion}}" @endisset >
                                              </div>
                                          </div>
                                       </div>
@@ -238,7 +245,7 @@ width: 90% !important;
                                         Limitación en fuerza y/o movilidad de extremidades (Mayor a 2kg/ fuerza cada mano)
                                     </td>
                                     <td>
-                                      <input type="checkbox">
+                                      <input type="checkbox" name="exploracion_fisica_capacidades1" value="1" @isset($cita->conduccionvehiculo->exploracion_fisica_capacidades1)  checked @endisset >
                                     </td>
                                     <td>
 
@@ -247,7 +254,7 @@ width: 90% !important;
                                       presencia de nistagmus
                                     </td>
                                     <td>
-                                        <input type="checkbox">
+                                        <input type="checkbox" name="exploracion_fisica_capacidades2" value="1" @isset($cita->conduccionvehiculo->exploracion_fisica_capacidades2)  checked @endisset>
                                     </td>
                                   </tr>
                                   <tr>
@@ -255,7 +262,7 @@ width: 90% !important;
                                       Alteración presente del equilibrio(Romberg)
                                     </td>
                                     <td>
-                                      <input type="checkbox">
+                                      <input type="checkbox" name="exploracion_fisica_capacidades3" value="1" @isset($cita->conduccionvehiculo->exploracion_fisica_capacidades3)  checked @endisset>
                                     </td>
                                     <td>
 
@@ -264,7 +271,7 @@ width: 90% !important;
                                       Anormalidad en movimientos oculares
                                     </td>
                                     <td>
-                                        <input type="checkbox">
+                                        <input type="checkbox" name="exploracion_fisica_capacidades4" value="1" @isset($cita->conduccionvehiculo->exploracion_fisica_capacidades4)  checked @endisset >
                                     </td>
                                   </tr>
                                   <tr>
@@ -272,7 +279,7 @@ width: 90% !important;
                                       Anormalidad en marcha con ojos cerrados
                                     </td>
                                     <td>
-                                      <input type="checkbox">
+                                      <input type="checkbox" name="exploracion_fisica_capacidades5" value="1" @isset($cita->conduccionvehiculo->exploracion_fisica_capacidades5)  checked @endisset>
                                     </td>
                                     <td>
 
@@ -281,7 +288,7 @@ width: 90% !important;
                                       pupilas no CIRLA
                                     </td>
                                     <td>
-                                        <input type="checkbox">
+                                        <input type="checkbox" name="exploracion_fisica_capacidades6" value="1" @isset($cita->conduccionvehiculo->exploracion_fisica_capacidades6)  checked @endisset>
                                     </td>
                                   </tr>
                                   <tr>
@@ -289,7 +296,7 @@ width: 90% !important;
                                       Alteración de la coordinacion presente(dedo Indice Nariz)
                                     </td>
                                     <td>
-                                      <input type="checkbox">
+                                      <input type="checkbox" name="exploracion_fisica_capacidades7" value="1" @isset($cita->conduccionvehiculo->exploracion_fisica_capacidades7)  checked @endisset >
                                     </td>
                                     <td>
 
@@ -298,7 +305,7 @@ width: 90% !important;
                                       Anormalidad del Lenguaje
                                     </td>
                                     <td>
-                                        <input type="checkbox">
+                                        <input type="checkbox" name="exploracion_fisica_capacidades8" value="1" @isset($cita->conduccionvehiculo->exploracion_fisica_capacidades8)  checked @endisset>
                                     </td>
                                   </tr>
                                   <tr>
@@ -306,7 +313,7 @@ width: 90% !important;
                                         Asimetria Facial
                                     </td>
                                     <td>
-                                      <input type="checkbox">
+                                      <input type="checkbox" name="exploracion_fisica_capacidades9" value="1" @isset($cita->conduccionvehiculo->exploracion_fisica_capacidades9)  checked @endisset>
                                     </td>
                                     <td>
 
@@ -315,7 +322,7 @@ width: 90% !important;
                                       Movimientos involuntarios
                                     </td>
                                     <td>
-                                        <input type="checkbox">
+                                        <input type="checkbox" name="exploracion_fisica_capacidades10" value="1" @isset($cita->conduccionvehiculo->exploracion_fisica_capacidades10)  checked @endisset>
                                     </td>
                                   </tr>
 
@@ -328,7 +335,7 @@ width: 90% !important;
                                     <label for="">Detalle Información</label>
                                 </div>
                                 <div class="col-md-10">
-                                    <input type="text" class="form-control" value="">
+                                    <input type="text" class="form-control" name="exploracion_fisica_perimetro_detalle" @isset($cita->conduccionvehiculo->exploracion_fisica_perimetro_detalle)  value="{{$cita->conduccionvehiculo->exploracion_fisica_perimetro_detalle}}" @endisset>
                                 </div>
                             </div>
                         </div>
@@ -349,7 +356,7 @@ width: 90% !important;
                                             Hipoacusia con compromiso de frecuencias conversacionales con promedio mayor a 40 db uni o bilateral incluso con audifonos
                                         </td>
                                         <td>
-                                          <input type="checkbox">
+                                          <input type="checkbox" name="prueba_auxiliar_capacidades1" value="1" @isset($cita->conduccionvehiculo->prueba_auxiliar_capacidades1)  checked @endisset >
                                         </td>
                                         <td>
 
@@ -358,7 +365,7 @@ width: 90% !important;
                                           No Reconocimiento de colores Rojo,Azul y verde
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="checkbox" name="prueba_auxiliar_capacidades2" value="1" @isset($cita->conduccionvehiculo->prueba_auxiliar_capacidades2)  checked @endisset >
                                         </td>
                                       </tr>
                                       <tr>
@@ -366,7 +373,7 @@ width: 90% !important;
                                           Alteración de la agudeza visual(de lejos diferente a 20/30 en carda ojo) y/o de la vision en profundidad incluso con lentes correctores
                                         </td>
                                         <td>
-                                          <input type="checkbox">
+                                          <input type="checkbox" name="prueba_auxiliar_capacidades3" value="1" @isset($cita->conduccionvehiculo->prueba_auxiliar_capacidades3)  checked @endisset >
                                         </td>
                                         <td>
 
@@ -375,7 +382,7 @@ width: 90% !important;
                                           Prueba de visión de profundidad alterada
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="checkbox" name="prueba_auxiliar_capacidades4" value="1" @isset($cita->conduccionvehiculo->prueba_auxiliar_capacidades4)  checked @endisset >
                                         </td>
                                       </tr>
                                       <tr>
@@ -383,7 +390,7 @@ width: 90% !important;
                                           Campintería Anormal(Test de confrontacion alterada)
                                         </td>
                                         <td>
-                                          <input type="checkbox">
+                                          <input type="checkbox" name="prueba_auxiliar_capacidades5" value="1" @isset($cita->conduccionvehiculo->prueba_auxiliar_capacidades5)  checked @endisset >
                                         </td>
                                         <td>
 
@@ -392,7 +399,7 @@ width: 90% !important;
                                           Alguno de los parametros de la evaluacion psicosensometrica alterada:test de palanca, punteo o reactimetria o su equivalente clinico
                                         </td>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="checkbox" name="prueba_auxiliar_capacidades6" value="1" @isset($cita->conduccionvehiculo->prueba_auxiliar_capacidades6)  checked @endisset>
                                         </td>
                                       </tr>
                                     </tbody>
@@ -410,7 +417,7 @@ width: 90% !important;
                                         <div class="col-md-12 form-group">
                                              <label for="inputEmail3" class="col-sm-3 control-label text-left">Detalle las medicinas que esta tomando</label>
                                              <div class="col-sm-9">
-                                               <input type="email" class="form-control">
+                                               <input type="text" class="form-control" name="detalle_medicinas" @isset($cita->conduccionvehiculo->detalle_medicinas)  value="{{$cita->conduccionvehiculo->detalle_medicinas}}" @endisset>
                                              </div>
                                           </div>
                                       </div>
@@ -420,7 +427,7 @@ width: 90% !important;
                                         <div class="col-md-12 form-group">
                                              <label for="inputEmail3" class="col-sm-3 control-label text-left">Otro: </label>
                                              <div class="col-sm-9">
-                                               <input type="email" class="form-control">
+                                               <input type="text" class="form-control" name="otro" @isset($cita->conduccionvehiculo->otro)  value="{{$cita->conduccionvehiculo->otro}}" @endisset >
                                              </div>
                                           </div>
                                       </div>
@@ -436,40 +443,40 @@ width: 90% !important;
                                         <div class=" form-group">
                                              <label for="inputEmail3" class="col-sm-1 control-label text-left">Desde</label>
                                              <div class="col-sm-2">
-                                               <input type="date" class="form-control">
+                                               <input type="date" class="form-control" name="evaluacion_funcional_desde" @isset($cita->conduccionvehiculo->evaluacion_funcional_desde)  value="{{$cita->conduccionvehiculo->evaluacion_funcional_desde}}" @endisset >
                                              </div>
                                              <div class="col-sm-1">
                                                <input type="text" class="form-control">
                                              </div>
                                              <label for="inputEmail3" class="col-sm-1 control-label text-left">Desde</label>
                                              <div class="col-sm-2">
-                                               <input type="date" class="form-control">
+                                               <input type="date" class="form-control" name="evaluacion_funcional_hasta" @isset($cita->conduccionvehiculo->evaluacion_funcional_hasta)  value="{{$cita->conduccionvehiculo->evaluacion_funcional_hasta}}" @endisset  >
                                              </div>
                                              <div class="col-sm-1">
                                                     <div class="checkbox">
                                                        <label>
-                                                         <input type="checkbox"> No Apto
+                                                         <input type="checkbox" value="noapto" name="evaluacion_funcional_estado"  @isset($cita->conduccionvehiculo->evaluacion_funcional_estado)   @if($cita->conduccionvehiculo->evaluacion_funcional_estado=='noapto') checked @endif @endisset> No Apto
                                                        </label>
                                                      </div>
                                              </div>
                                              <div class="col-sm-1">
                                                  <div class="checkbox">
                                                     <label>
-                                                      <input type="checkbox"> Observado
+                                                      <input type="checkbox"  value="observado" name="evaluacion_funcional_estado" @isset($cita->conduccionvehiculo->evaluacion_funcional_estado)  @if($cita->conduccionvehiculo->evaluacion_funcional_estado=='observado') checked @endif @endisset> Observado
                                                     </label>
                                                   </div>
                                              </div>
                                              <div class="col-sm-2">
                                                <div class="checkbox">
                                                   <label>
-                                                    <input type="checkbox">Apto con Restriccion
+                                                    <input type="checkbox"  value="aptoconrestriccion" name="evaluacion_funcional_estado" @isset($cita->conduccionvehiculo->evaluacion_funcional_estado)   @if($cita->conduccionvehiculo->evaluacion_funcional_estado=='aptoconrestriccion') checked @endif @endisset >Apto con Restriccion
                                                   </label>
                                                 </div>
                                              </div>
                                              <div class="col-sm-1">
                                                <div class="checkbox">
                                                   <label>
-                                                    <input type="checkbox"> Apto
+                                                    <input type="checkbox"  value="apto" name="evaluacion_funcional_estado" @isset($cita->conduccionvehiculo->evaluacion_funcional_estado)   @if($cita->conduccionvehiculo->evaluacion_funcional_estado=='apto') checked @endif @endisset > Apto
                                                   </label>
                                                 </div>
                                              </div>
@@ -484,7 +491,7 @@ width: 90% !important;
                                     <label> comentarios</label>
                                   </div>
                                   <div class="col-md-12">
-                                      <input type="text" class="form-control" name="" value="">
+                                      <input type="text" class="form-control"  name="evaluacion_funcional_comentarios" @isset($cita->conduccionvehiculo->evaluacion_funcional_comentarios)  value="{{$cita->conduccionvehiculo->evaluacion_funcional_comentarios}}" @endisset  >
                                   </div>
                               </div>
                               <h5></h5>
@@ -493,7 +500,7 @@ width: 90% !important;
                                     <label> Observaciones y recomendaciones</label>
                                   </div>
                                   <div class="col-md-12">
-                                      <input type="text" class="form-control" name="" value="">
+                                      <input type="text" class="form-control" name="evaluacion_funcional_observaciones" @isset($cita->conduccionvehiculo->evaluacion_funcional_observaciones)  value="{{$cita->conduccionvehiculo->evaluacion_funcional_observaciones}}" @endisset  >
                                   </div>
                               </div>
                       </div>
@@ -509,10 +516,17 @@ width: 90% !important;
             <div class="modal-footer">
                 <div class="row">
                     <div class="col-md-12 text-right">
-                        <a href="" class="btn btn-sm btn-success" data-dismiss="modal">GUARDAR</a>
+
+
+                      @isset($cita->conduccionvehiculo->id)
+                       <button class="btn btn-sm btn-primary conduccionvehicular" tipo="conduccion_vehicular_modificar" type="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>EDITAR</button>
+                       @else
+                       <button class="btn btn-sm btn-success conduccionvehicular" tipo="conduccion_vehicular_guardar" type="button">GUARDAR</button>
+                       @endisset
+                        {{-- <a href="" class="btn btn-sm btn-success" data-dismiss="modal">GUARDAR</a>
                         <a href="" class="btn btn-sm btn-info" data-dismiss="modal">TERMINAR</a>
 
-                        <a href="" class="btn btn-sm btn-warning" data-dismiss="modal">Volver</a>
+                        <a href="" class="btn btn-sm btn-warning" data-dismiss="modal">Volver</a> --}}
                     </div>
                 </div>
             </div>
