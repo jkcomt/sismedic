@@ -9,16 +9,7 @@ $('body').on('click','.registrarAnexo7d',function(e) {
     $('.confirmar').attr('estado','registrar')
     $('#modal-anexo7d').modal('hide');
     $('#modal-confirmacion').modal('show')
-    //validar formulario fron end
-/*
-    if(!$('body #registrarAnexo7d input[name=acido_urico]').val())
-    {
-        $('body #registrarAnexo7d input[name=acido_urico]').parent().addClass('has-error')
-    }else{
-        $('.confirmar').attr('estado','registrar')
-        $('#modal-anexo7d').modal('hide');
-        $('#modal-confirmacion').modal('show')
-    }*/
+
 });
 
 $('.confirmar').on('click',function (e) {
