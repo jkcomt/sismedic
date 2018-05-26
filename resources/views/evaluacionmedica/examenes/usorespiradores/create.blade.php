@@ -20,8 +20,8 @@
                 <input type="hidden" name="lista_examen_id" value="{{$listaExamen->id}}">
                 <input type="hidden" name="cita_id" value="{{$cita->id}}">
 
-                @isset($cita->evaluacionCognitiva->id)
-                    <input type="hidden" name="registrarUsoRespiradores_id" value="{{$cita->usoRespirador->id}}">
+                @isset($cita->usoRespirador->id)
+                    <input type="hidden" name="usoRespirador_id" value="{{$cita->usoRespirador->id}}">
                 @endisset
 
                 <div class="modal-body" style="padding-bottom: 0px;">
@@ -237,7 +237,11 @@
                                                                     <div class="form-inline form-group">
                                                                         <label for="promedio_horas_dia" class="control-label">Promedio de horas de uso por Día:</label>
                                                                         <div class="input-group col-md-3">
-                                                                            <input type="number" value="" min="0" name="promedio_horas_dia" class="form-control input-sm ">
+                                                                            @isset($cita->usoRespirador->promedio_horas_dia)
+                                                                                <input type="number" value="{{$cita->usoRespirador->promedio_horas_dia}}" min="0" name="promedio_horas_dia" class="form-control input-sm ">
+                                                                                @else
+                                                                                <input type="number" value="" min="0" name="promedio_horas_dia" class="form-control input-sm ">
+                                                                                @endisset
                                                                             <div class="input-group-addon">Hrs.</div>
                                                                         </div>
                                                                     </div>
@@ -365,7 +369,12 @@
                                                                                 <label>
                                                                                 <input type="checkbox" name="cond_especiales_otros" value="1"  @isset($cita->usoRespirador->cond_especiales_otros) checked @endisset> Otros:
                                                                                 </label>
-                                                                                <input type="text" name="cond_especiales_otros_descripcion" class="form-control input-sm">
+                                                                                @isset($cita->usoRespirador->cond_especiales_otros_descripcion)
+                                                                                    <input type="text" name="cond_especiales_otros_descripcion" value="{{$cita->usoRespirador->cond_especiales_otros_descripcion}}" class="form-control input-sm">
+                                                                                    @else
+                                                                                        <input type="text" name="cond_especiales_otros_descripcion" value="" class="form-control input-sm">
+                                                                                @endisset
+
                                                                             </div>
                                                                         </li>
                                                                     </ul>
@@ -386,6 +395,15 @@
                                 <div id="menu1" class="tab-pane fade">
                                     <div class="col-md-12">
                                         <div class="row">
+                                            <div class="col-md-12">
+                                                <h4>Seccion 1</h4>
+                                                <p>
+                                                    Las Preguntas de la 1 a 8 deben ser respondidas por los empleados que usarán cualquier respirador.
+
+                                                    Por favor colocar “Sí” o “No”
+
+                                                </p>
+                                            </div>
                                             <div class="col-md-6" style="height: 100%;">
                                                 <div class="box box-solid box-body">
                                                     <strong>1. ¿Fuma o fumó en el último mes?</strong>
@@ -462,8 +480,8 @@
                                                                     <li>
                                                                         <label>
                                                                             <input type="radio" name="cond_convulsiones" value="0"
-                                                                                   @isset($cita->usoRespirador->frecuencia_uso)
-                                                                                   @if($cita->usoRespirador->frecuencia_uso == 0)
+                                                                                   @isset($cita->usoRespirador->cond_convulsiones)
+                                                                                   @if($cita->usoRespirador->cond_convulsiones == 0)
                                                                                    checked
                                                                                     @endif
                                                                                     @endisset> No
@@ -863,9 +881,9 @@
                                                                 <ul>
                                                                     <li>
                                                                         <label>
-                                                                            <input type="radio" name="prob_cualquier_lesion_pulmon" value="1"
-                                                                                   @isset($cita->usoRespirador->prob_cualquier_lesion_pulmon)
-                                                                                   @if($cita->usoRespirador->prob_cualquier_lesion_pulmon == 1)
+                                                                            <input type="radio" name="prob_otros" value="1"
+                                                                                   @isset($cita->usoRespirador->prob_otros)
+                                                                                   @if($cita->usoRespirador->prob_otros == 1)
                                                                                    checked
                                                                                     @endif
                                                                                     @endisset> Sí
@@ -873,9 +891,9 @@
                                                                     </li>
                                                                     <li>
                                                                         <label>
-                                                                            <input type="radio" name="prob_cualquier_lesion_pulmon" value="0"
-                                                                                   @isset($cita->usoRespirador->prob_cualquier_lesion_pulmon)
-                                                                                   @if($cita->usoRespirador->prob_cualquier_lesion_pulmon == 0)
+                                                                            <input type="radio" name="prob_otros" value="0"
+                                                                                   @isset($cita->usoRespirador->prob_otros)
+                                                                                   @if($cita->usoRespirador->prob_otros == 0)
                                                                                    checked
                                                                                     @endif
                                                                                     @endisset> No
@@ -884,7 +902,12 @@
                                                                     <li>
                                                                         <label for="">
                                                                             <div class="form-group form-inline">
-                                                                                l. Otros: <input type="text" class="form-control input-sm" name="prob_otros_descripcion">
+                                                                                @isset($cita->usoRespirador->prob_otros_descripcion)
+                                                                                    l. Otros: <input type="text" value="{{$cita->usoRespirador->prob_otros_descripcion}}" class="form-control input-sm" name="prob_otros_descripcion">
+                                                                                    @else
+                                                                                    l. Otros: <input type="text" class="form-control input-sm" name="prob_otros_descripcion">
+                                                                                @endisset
+
                                                                             </div>
 
                                                                         </label>
@@ -1035,6 +1058,33 @@
                                                                 <ul>
                                                                     <li>
                                                                         <label>
+                                                                            <input type="radio" name="enf_pulmonar_dif_tos_despierta_temprano" value="1"
+                                                                                   @isset($cita->usoRespirador->enf_pulmonar_dif_tos_despierta_temprano)
+                                                                                   @if($cita->usoRespirador->enf_pulmonar_dif_tos_despierta_temprano == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="enf_pulmonar_dif_tos_despierta_temprano" value="0"
+                                                                                   @isset($cita->usoRespirador->enf_pulmonar_dif_tos_despierta_temprano)
+                                                                                   @if($cita->usoRespirador->enf_pulmonar_dif_tos_despierta_temprano == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            f.	Tos que lo despierta temprano por la mañana.
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
                                                                             <input type="radio" name="enf_pulmonar_dif_tos_echado" value="1"
                                                                                    @isset($cita->usoRespirador->enf_pulmonar_dif_tos_echado)
                                                                                    @if($cita->usoRespirador->enf_pulmonar_dif_tos_echado == 1)
@@ -1055,7 +1105,776 @@
                                                                     </li>
                                                                     <li>
                                                                         <label for="">
-                                                                            f.	Tos que lo despierta temprano por la mañana
+                                                                            g.	Tos que ocurre cuando se encuentra echado
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="enf_pulmonar_dif_tos_sangre" value="1"
+                                                                                   @isset($cita->usoRespirador->enf_pulmonar_dif_tos_sangre)
+                                                                                   @if($cita->usoRespirador->enf_pulmonar_dif_tos_sangre == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="enf_pulmonar_dif_tos_sangre" value="0"
+                                                                                   @isset($cita->usoRespirador->enf_pulmonar_dif_tos_sangre)
+                                                                                   @if($cita->usoRespirador->enf_pulmonar_dif_tos_sangre == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            h.	Tos con sangre.
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="enf_pulmonar_dif_silbidos_pecho_respira" value="1"
+                                                                                   @isset($cita->usoRespirador->enf_pulmonar_dif_silbidos_pecho_respira)
+                                                                                   @if($cita->usoRespirador->enf_pulmonar_dif_silbidos_pecho_respira == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="enf_pulmonar_dif_silbidos_pecho_respira" value="0"
+                                                                                   @isset($cita->usoRespirador->enf_pulmonar_dif_silbidos_pecho_respira)
+                                                                                   @if($cita->usoRespirador->enf_pulmonar_dif_silbidos_pecho_respira == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            i.	Silbidos del pecho cuando respira
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="enf_pulmonar_dif_dolor_pecho_respira_profundo" value="1"
+                                                                                   @isset($cita->usoRespirador->enf_pulmonar_dif_dolor_pecho_respira_profundo)
+                                                                                   @if($cita->usoRespirador->enf_pulmonar_dif_dolor_pecho_respira_profundo == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="enf_pulmonar_dif_dolor_pecho_respira_profundo" value="0"
+                                                                                   @isset($cita->usoRespirador->enf_pulmonar_dif_dolor_pecho_respira_profundo)
+                                                                                   @if($cita->usoRespirador->enf_pulmonar_dif_dolor_pecho_respira_profundo == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            j.	Dolor en el pecho cuando respira profundamente
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="enf_pulmonar_dif_otros" value="1"
+                                                                                   @isset($cita->usoRespirador->enf_pulmonar_dif_otros)
+                                                                                   @if($cita->usoRespirador->enf_pulmonar_dif_otros == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="enf_pulmonar_dif_otros" value="0"
+                                                                                   @isset($cita->usoRespirador->enf_pulmonar_dif_otros)
+                                                                                   @if($cita->usoRespirador->enf_pulmonar_dif_otros == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            <div class="form-group form-inline">
+                                                                                @isset($cita->usoRespirador->enf_pulmonar_dif_otros_descripcion)
+                                                                                    l. Otros: <input type="text" value="{{$cita->usoRespirador->enf_pulmonar_dif_otros_descripcion}}" class="form-control input-sm" name="enf_pulmonar_dif_otros_descripcion">
+                                                                                    @else
+                                                                                    l. Otros: <input type="text" value="" class="form-control input-sm" name="enf_pulmonar_dif_otros_descripcion">
+                                                                                @endisset
+
+                                                                            </div>
+
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="box box-solid box-body">
+                                                    <strong>5. ¿Ha tenido alguna vez cualquiera de los siguientes problemas cardiovasculares?</strong>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="checkbox small horizontal radio">
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="pro_cardiovascular_infarto" value="1"
+                                                                                   @isset($cita->usoRespirador->pro_cardiovascular_infarto)
+                                                                                   @if($cita->usoRespirador->pro_cardiovascular_infarto == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="pro_cardiovascular_infarto" value="0"
+                                                                                   @isset($cita->usoRespirador->pro_cardiovascular_infarto)
+                                                                                   @if($cita->usoRespirador->pro_cardiovascular_infarto == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            a.	Infarto.
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="pro_cardiovascular_angina" value="1"
+                                                                                   @isset($cita->usoRespirador->pro_cardiovascular_angina)
+                                                                                   @if($cita->usoRespirador->pro_cardiovascular_angina == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="pro_cardiovascular_angina" value="0"
+                                                                                   @isset($cita->usoRespirador->pro_cardiovascular_angina)
+                                                                                   @if($cita->usoRespirador->pro_cardiovascular_angina == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            b.	Angina.
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="pro_cardiovascular_insuficiencia_cardiaca" value="1"
+                                                                                   @isset($cita->usoRespirador->pro_cardiovascular_insuficiencia_cardiaca)
+                                                                                   @if($cita->usoRespirador->pro_cardiovascular_insuficiencia_cardiaca == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="pro_cardiovascular_insuficiencia_cardiaca" value="0"
+                                                                                   @isset($cita->usoRespirador->pro_cardiovascular_insuficiencia_cardiaca)
+                                                                                   @if($cita->usoRespirador->pro_cardiovascular_insuficiencia_cardiaca == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            c.	Insuficiencia cardiaca.
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="pro_cardiovascular_hinchazon_piernas" value="1"
+                                                                                   @isset($cita->usoRespirador->pro_cardiovascular_hinchazon_piernas)
+                                                                                   @if($cita->usoRespirador->pro_cardiovascular_hinchazon_piernas == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="pro_cardiovascular_hinchazon_piernas" value="0"
+                                                                                   @isset($cita->usoRespirador->pro_cardiovascular_hinchazon_piernas)
+                                                                                   @if($cita->usoRespirador->pro_cardiovascular_hinchazon_piernas == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            d.	Hinchazón en las piernas/pies (no causado por caminar)
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="pro_cardiovascular_arritmia_corazon" value="1"
+                                                                                   @isset($cita->usoRespirador->pro_cardiovascular_arritmia_corazon)
+                                                                                   @if($cita->usoRespirador->pro_cardiovascular_arritmia_corazon == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="pro_cardiovascular_arritmia_corazon" value="0"
+                                                                                   @isset($cita->usoRespirador->pro_cardiovascular_arritmia_corazon)
+                                                                                   @if($cita->usoRespirador->pro_cardiovascular_arritmia_corazon == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            e.	Arritmia al corazón.
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="pro_cardiovascular_reflujo_gastroesofagico" value="1"
+                                                                                   @isset($cita->usoRespirador->pro_cardiovascular_reflujo_gastroesofagico)
+                                                                                   @if($cita->usoRespirador->pro_cardiovascular_reflujo_gastroesofagico == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="pro_cardiovascular_reflujo_gastroesofagico" value="0"
+                                                                                   @isset($cita->usoRespirador->pro_cardiovascular_reflujo_gastroesofagico)
+                                                                                   @if($cita->usoRespirador->pro_cardiovascular_reflujo_gastroesofagico == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            f.	Reflujo gastroesofágico (no relacionado con la comida).
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+
+
+
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="pro_cardiovascular_otros" value="1"
+                                                                                   @isset($cita->usoRespirador->pro_cardiovascular_otros)
+                                                                                   @if($cita->usoRespirador->pro_cardiovascular_otros == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="pro_cardiovascular_otros" value="0"
+                                                                                   @isset($cita->usoRespirador->pro_cardiovascular_otros)
+                                                                                   @if($cita->usoRespirador->pro_cardiovascular_otros == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            <div class="form-group form-inline">
+                                                                                @isset($cita->usoRespirador->pro_cardiovascular_otros_descripcion)
+                                                                                    g. Otros: <input type="text" value="{{$cita->usoRespirador->pro_cardiovascular_otros_descripcion}}" class="form-control input-sm" name="pro_cardiovascular_otros_descripcion">
+                                                                                    @else
+                                                                                    g. Otros: <input type="text" value="" class="form-control input-sm" name="pro_cardiovascular_otros_descripcion">
+                                                                                @endisset
+
+                                                                            </div>
+
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <strong>6 ¿Ha tenido alguna vez cualquiera de los siguientes síntomas cardiovasculares?</strong>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="checkbox small horizontal radio">
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="sint_dolor_pecho" value="1"
+                                                                                   @isset($cita->usoRespirador->sint_dolor_pecho)
+                                                                                   @if($cita->usoRespirador->sint_dolor_pecho == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="sint_dolor_pecho" value="0"
+                                                                                   @isset($cita->usoRespirador->sint_dolor_pecho)
+                                                                                   @if($cita->usoRespirador->sint_dolor_pecho == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            a.	Dolor o presión en su pecho.
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="sint_dolor_pecho_actividad_fisica" value="1"
+                                                                                   @isset($cita->usoRespirador->sint_dolor_pecho_actividad_fisica)
+                                                                                   @if($cita->usoRespirador->sint_dolor_pecho_actividad_fisica == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="sint_dolor_pecho_actividad_fisica" value="0"
+                                                                                   @isset($cita->usoRespirador->sint_dolor_pecho_actividad_fisica)
+                                                                                   @if($cita->usoRespirador->sint_dolor_pecho_actividad_fisica == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            b.	Dolor/presión en su pecho durante actividad física.
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="sint_dolor_pecho_actividad_trabajo" value="1"
+                                                                                   @isset($cita->usoRespirador->sint_dolor_pecho_actividad_trabajo)
+                                                                                   @if($cita->usoRespirador->sint_dolor_pecho_actividad_trabajo == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="sint_dolor_pecho_actividad_trabajo" value="0"
+                                                                                   @isset($cita->usoRespirador->sint_dolor_pecho_actividad_trabajo)
+                                                                                   @if($cita->usoRespirador->sint_dolor_pecho_actividad_trabajo == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            c.	Dolor/presión en su pecho durante su actividad de trabajo.
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="sint_palpitaciones" value="1"
+                                                                                   @isset($cita->usoRespirador->sint_palpitaciones)
+                                                                                   @if($cita->usoRespirador->sint_palpitaciones == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="sint_palpitaciones" value="0"
+                                                                                   @isset($cita->usoRespirador->sint_palpitaciones)
+                                                                                   @if($cita->usoRespirador->sint_palpitaciones == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            d.	Palpitaciones
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="sint_acidez_estomacal_indigestion" value="1"
+                                                                                   @isset($cita->usoRespirador->sint_acidez_estomacal_indigestion)
+                                                                                   @if($cita->usoRespirador->sint_acidez_estomacal_indigestion == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="sint_acidez_estomacal_indigestion" value="0"
+                                                                                   @isset($cita->usoRespirador->sint_acidez_estomacal_indigestion)
+                                                                                   @if($cita->usoRespirador->sint_acidez_estomacal_indigestion == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            e.	Acidez estomacal o indigestión (no relacionado con la comida)
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="sint_otros" value="1"
+                                                                                   @isset($cita->usoRespirador->sint_otros)
+                                                                                   @if($cita->usoRespirador->sint_otros == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="sint_otros" value="0"
+                                                                                   @isset($cita->usoRespirador->sint_otros)
+                                                                                   @if($cita->usoRespirador->sint_otros == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            <div class="form-group form-inline">
+                                                                                @isset($cita->usoRespirador->sint_otros_descripcion)
+                                                                                    f. Otros: <input type="text" value="{{$cita->usoRespirador->sint_otros_descripcion}}" class="form-control input-sm" name="sint_otros_descripcion">
+                                                                                @else
+                                                                                    f. Otros: <input type="text" value="" class="form-control input-sm" name="sint_otros_descripcion">
+                                                                                @endisset
+
+                                                                            </div>
+
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <strong>7 ¿Toma actualmente medicinas para cualquiera de las siguientes condiciones?</strong>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="checkbox small horizontal radio">
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="usa_medicina_problema_respiratorio" value="1"
+                                                                                   @isset($cita->usoRespirador->usa_medicina_problema_respiratorio)
+                                                                                   @if($cita->usoRespirador->usa_medicina_problema_respiratorio == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="usa_medicina_problema_respiratorio" value="0"
+                                                                                   @isset($cita->usoRespirador->usa_medicina_problema_respiratorio)
+                                                                                   @if($cita->usoRespirador->usa_medicina_problema_respiratorio == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            g.	Problema respiratorio.
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="usa_medicina_problema_corazon" value="1"
+                                                                                   @isset($cita->usoRespirador->usa_medicina_problema_corazon)
+                                                                                   @if($cita->usoRespirador->usa_medicina_problema_corazon == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="usa_medicina_problema_corazon" value="0"
+                                                                                   @isset($cita->usoRespirador->usa_medicina_problema_corazon)
+                                                                                   @if($cita->usoRespirador->usa_medicina_problema_corazon == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            h.	Problemas al corazón.
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="usa_medicina_presion_sanguinea" value="1"
+                                                                                   @isset($cita->usoRespirador->usa_medicina_presion_sanguinea)
+                                                                                   @if($cita->usoRespirador->usa_medicina_presion_sanguinea == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="usa_medicina_presion_sanguinea" value="0"
+                                                                                   @isset($cita->usoRespirador->usa_medicina_presion_sanguinea)
+                                                                                   @if($cita->usoRespirador->usa_medicina_presion_sanguinea == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            i.	Presión Sanguínea.
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="usa_medicina_convulsion" value="1"
+                                                                                   @isset($cita->usoRespirador->usa_medicina_convulsion)
+                                                                                   @if($cita->usoRespirador->usa_medicina_convulsion == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="usa_medicina_convulsion" value="0"
+                                                                                   @isset($cita->usoRespirador->usa_medicina_convulsion)
+                                                                                   @if($cita->usoRespirador->usa_medicina_convulsion == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            j.	Convulsiones
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <strong>8 ¿Si ha utilizado un respirador, ha tenido usted alguno de los siguientes problemas?</strong>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="checkbox small horizontal radio">
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="usa_respirador_irritacion_ojos" value="1"
+                                                                                   @isset($cita->usoRespirador->usa_respirador_irritacion_ojos)
+                                                                                   @if($cita->usoRespirador->usa_respirador_irritacion_ojos == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="usa_respirador_irritacion_ojos" value="0"
+                                                                                   @isset($cita->usoRespirador->usa_respirador_irritacion_ojos)
+                                                                                   @if($cita->usoRespirador->usa_respirador_irritacion_ojos == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            a.	Irritación a los ojos.
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="usa_respirador_alergias" value="1"
+                                                                                   @isset($cita->usoRespirador->usa_respirador_alergias)
+                                                                                   @if($cita->usoRespirador->usa_respirador_alergias == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="usa_respirador_alergias" value="0"
+                                                                                   @isset($cita->usoRespirador->usa_respirador_alergias)
+                                                                                   @if($cita->usoRespirador->usa_respirador_alergias == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            b.	Alergias a la piel o erupciones.
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="usa_respirador_ansiedad" value="1"
+                                                                                   @isset($cita->usoRespirador->usa_respirador_ansiedad)
+                                                                                   @if($cita->usoRespirador->usa_respirador_ansiedad == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="usa_respirador_ansiedad" value="0"
+                                                                                   @isset($cita->usoRespirador->usa_respirador_ansiedad)
+                                                                                   @if($cita->usoRespirador->usa_respirador_ansiedad == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            c.	Ansiedad.
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="usa_respirador_fatiga" value="1"
+                                                                                   @isset($cita->usoRespirador->usa_respirador_fatiga)
+                                                                                   @if($cita->usoRespirador->usa_respirador_fatiga == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="usa_respirador_fatiga" value="0"
+                                                                                   @isset($cita->usoRespirador->usa_respirador_fatiga)
+                                                                                   @if($cita->usoRespirador->usa_respirador_fatiga == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            d.	Fatiga o debilidad.
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="usa_respirador_otros" value="1"
+                                                                                   @isset($cita->usoRespirador->usa_respirador_otros)
+                                                                                   @if($cita->usoRespirador->usa_respirador_otros == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="usa_respirador_otros" value="0"
+                                                                                   @isset($cita->usoRespirador->usa_respirador_otros)
+                                                                                   @if($cita->usoRespirador->usa_respirador_otros == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            <div class="form-group form-inline">
+                                                                                @isset($cita->usoRespirador->usa_respirador_otros_descripcion)
+                                                                                    e. Otros: <input type="text" value="{{$cita->usoRespirador->usa_respirador_otros_descripcion}}" class="form-control input-sm" name="usa_respirador_otros_descripcion">
+                                                                                @else
+                                                                                    e. Otros: <input type="text" value="" class="form-control input-sm" name="usa_respirador_otros_descripcion">
+                                                                                @endisset
+
+                                                                            </div>
+
                                                                         </label>
                                                                     </li>
                                                                 </ul>
@@ -1065,174 +1884,1328 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-12">
                                         <div class="row">
+                                            <div class="col-md-12">
+                                                <h4>Sección 2:
+                                                    (Discrecional)
+                                                </h4>
+                                                <p>
+                                                    Las preguntas de la 9 a la 14 deben ser contestadas por empleados que han sido seleccionados para usar un respirador de casa completa o un aparato de respiración autónomo. (SCBA)
+                                                    Para los empleados que han sido seleccionados para utilizar otros tipos de respiradores contestar a estas preguntas de manera voluntaria.
+                                                    Por favor, marque “SI” o “NO”.
+                                                </p>
+                                            </div>
                                             <div class="col-md-6">
                                                 <div class="box box-solid box-body">
-                                                    <strong>6. Hace un momento le leí una serie de 3 palabras y Ud. repitió las
-                                                        que recordo. Dígame ahora cuáles recuerda:</strong>
+                                                    <strong>9 ¿Ha perdido la visión en cualquier ojo(temporal o permanente)?</strong>
                                                     <div class="row">
-                                                        <div class="col-md-6">
-                                                            <div class="checkbox small">
+                                                        <div class="col-md-12">
+                                                            <div class="checkbox small horizontal radio">
                                                                 <ul>
                                                                     <li>
                                                                         <label>
-                                                                            <input type="checkbox" name="repite_arbol_dos" value="1" @isset($cita->evaluacionCognitiva->repite_arbol_dos) checked @endisset> ¿Árbol?
+                                                                            <input type="radio" name="perdida_vision_cualquier_ojo_temporal_permanente" value="1"
+                                                                                   @isset($cita->usoRespirador->perdida_vision_cualquier_ojo_temporal_permanente)
+                                                                                   @if($cita->usoRespirador->perdida_vision_cualquier_ojo_temporal_permanente == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
                                                                         </label>
                                                                     </li>
                                                                     <li>
                                                                         <label>
-                                                                            <input type="checkbox" name="repite_mesa_dos" value="1" @isset($cita->evaluacionCognitiva->repite_mesa_dos) checked @endisset> ¿Mesa?
-                                                                        </label>
-                                                                    </li>
-                                                                    <li>
-                                                                        <label>
-                                                                            <input type="checkbox" name="repite_avion_dos" value="1" @isset($cita->evaluacionCognitiva->repite_avion_dos) checked @endisset> ¿Avión?
+                                                                            <input type="radio" name="perdida_vision_cualquier_ojo_temporal_permanente" value="0"
+                                                                                   @isset($cita->usoRespirador->perdida_vision_cualquier_ojo_temporal_permanente)
+                                                                                   @if($cita->usoRespirador->perdida_vision_cualquier_ojo_temporal_permanente == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
                                                                         </label>
                                                                     </li>
                                                                 </ul>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-6">
-                                                            <br>
-                                                            <p>
-                                                                <small>
-                                                                    Anote un punto por cada objeto recordado
-                                                                </small>
-                                                            </p>
-                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-6">
-                                                <div class="box box-solid box-body">
-                                                    <strong>7. Mostrarle un lápiz o un bolígrafo y preguntar ¿qué es esto? Hacer
-                                                        lo mismo con un reloj de pulsera</strong>
+                                                    <strong>10 ¿Ha perdido la visión en cualquier ojo(temporal o permanente)?</strong>
                                                     <div class="row">
-                                                        <div class="col-md-6">
-                                                            <div class="checkbox small">
+                                                        <div class="col-md-12">
+                                                            <div class="checkbox small horizontal radio">
                                                                 <ul>
                                                                     <li>
                                                                         <label>
-                                                                            <input type="checkbox" name="reconoce_lapiz" value="1" @isset($cita->evaluacionCognitiva->reconoce_lapiz) checked @endisset> Lápiz
+                                                                            <input type="radio" name="perdida_vision_cualquier_usa_lentes_contacto" value="1"
+                                                                                   @isset($cita->usoRespirador->perdida_vision_cualquier_usa_lentes_contacto)
+                                                                                   @if($cita->usoRespirador->perdida_vision_cualquier_usa_lentes_contacto == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
                                                                         </label>
                                                                     </li>
                                                                     <li>
                                                                         <label>
-                                                                            <input type="checkbox" name="reconoce_reloj" value="1" @isset($cita->evaluacionCognitiva->reconoce_reloj) checked @endisset> Reloj
+                                                                            <input type="radio" name="perdida_vision_cualquier_usa_lentes_contacto" value="0"
+                                                                                   @isset($cita->usoRespirador->perdida_vision_cualquier_usa_lentes_contacto)
+                                                                                   @if($cita->usoRespirador->perdida_vision_cualquier_usa_lentes_contacto == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            a.	Usa lentes de contacto.
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="perdida_vision_usa_lentes" value="1"
+                                                                                   @isset($cita->usoRespirador->perdida_vision_usa_lentes)
+                                                                                   @if($cita->usoRespirador->perdida_vision_usa_lentes == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="perdida_vision_usa_lentes" value="0"
+                                                                                   @isset($cita->usoRespirador->perdida_vision_usa_lentes)
+                                                                                   @if($cita->usoRespirador->perdida_vision_usa_lentes == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            b.	Usa lentes.
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="perdida_vision_daltonismo" value="1"
+                                                                                   @isset($cita->usoRespirador->perdida_vision_daltonismo)
+                                                                                   @if($cita->usoRespirador->perdida_vision_daltonismo == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="perdida_vision_daltonismo" value="0"
+                                                                                   @isset($cita->usoRespirador->perdida_vision_daltonismo)
+                                                                                   @if($cita->usoRespirador->perdida_vision_daltonismo == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            c.	Daltonismo
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="perdida_vision_otros" value="1"
+                                                                                   @isset($cita->usoRespirador->perdida_vision_otros)
+                                                                                   @if($cita->usoRespirador->perdida_vision_otros == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="perdida_vision_otros" value="0"
+                                                                                   @isset($cita->usoRespirador->perdida_vision_otros)
+                                                                                   @if($cita->usoRespirador->perdida_vision_otros == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            <div class="form-group form-inline">
+                                                                                @isset($cita->usoRespirador->perdida_vision_otros_descripcion)
+                                                                                    d. Otros: <input type="text" value="{{$cita->usoRespirador->perdida_vision_otros_descripcion}}" class="form-control input-sm" name="perdida_vision_otros_descripcion">
+                                                                                 @else
+                                                                                    d. Otros: <input type="text" class="form-control input-sm" name="perdida_vision_otros_descripcion">
+                                                                                 @endisset
+                                                                            </div>
+
                                                                         </label>
                                                                     </li>
                                                                 </ul>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-6">
-                                                            <br>
-                                                            <p>
-                                                                <small>
-                                                                    Anote un punto por cada objeto recordado
-                                                                </small>
-                                                            </p>
+                                                    </div>
+                                                    <strong>11 ¿Ha tenido alguna lesión a sus oídos, incluyendo un tímpano roto?</strong>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="checkbox small horizontal radio">
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="lesion_oido" value="1"
+                                                                                   @isset($cita->usoRespirador->lesion_oido)
+                                                                                   @if($cita->usoRespirador->lesion_oido == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="lesion_oido" value="0"
+                                                                                   @isset($cita->usoRespirador->lesion_oido)
+                                                                                   @if($cita->usoRespirador->lesion_oido == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <strong>12 ¿Tiene actualmente algunos de los siguientes problemas de audición)?</strong>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="checkbox small horizontal radio">
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="prob_audicion_dificultad_escucha" value="1"
+                                                                                   @isset($cita->usoRespirador->prob_audicion_dificultad_escucha)
+                                                                                   @if($cita->usoRespirador->prob_audicion_dificultad_escucha == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="prob_audicion_dificultad_escucha" value="0"
+                                                                                   @isset($cita->usoRespirador->prob_audicion_dificultad_escucha)
+                                                                                   @if($cita->usoRespirador->prob_audicion_dificultad_escucha == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            a.	Dificultad para escuchar.
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="prob_audicion_usa_audifono" value="1"
+                                                                                   @isset($cita->usoRespirador->prob_audicion_usa_audifono)
+                                                                                   @if($cita->usoRespirador->prob_audicion_usa_audifono == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="prob_audicion_usa_audifono" value="0"
+                                                                                   @isset($cita->usoRespirador->prob_audicion_usa_audifono)
+                                                                                   @if($cita->usoRespirador->prob_audicion_usa_audifono == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            b.	Usa un audífono.
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="prob_audicion_otros" value="1"
+                                                                                   @isset($cita->usoRespirador->prob_audicion_otros)
+                                                                                   @if($cita->usoRespirador->prob_audicion_otros == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="prob_audicion_otros" value="0"
+                                                                                   @isset($cita->usoRespirador->prob_audicion_otros)
+                                                                                   @if($cita->usoRespirador->prob_audicion_otros == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            <div class="form-group form-inline">
+                                                                                @isset($cita->usoRespirador->prob_audicion_otros_descripcion)
+                                                                                    c. Otros: <input type="text" value="{{$cita->usoRespirador->prob_audicion_otros_descripcion}}" class="form-control input-sm" name="prob_audicion_otros_descripcion">
+                                                                                    @else
+                                                                                        c. Otros: <input type="text" class="form-control input-sm" name="prob_audicion_otros_descripcion">
+                                                                                    @endisset
+                                                                            </div>
 
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="box box-solid box-body">
+                                                    <strong>13 ¿Ha tenido alguna lesión a la espalda?</strong>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="checkbox small radio horizontal">
+
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="lesion_espalda"
+                                                                                   value="1"
+                                                                                   @isset($cita->usoRespirador->lesion_espalda)
+                                                                                   @if($cita->usoRespirador->lesion_espalda == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="lesion_espalda"
+                                                                                   value="0"
+                                                                                   @isset($cita->usoRespirador->lesion_espalda)
+                                                                                   @if($cita->usoRespirador->lesion_espalda == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <strong>14 ¿Tiene actualmente algunos de los siguientes problemas musculoesqueléticos?</strong>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="checkbox small radio horizontal">
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="prob_muscular_debilidad_extremidades"
+                                                                                   value="1"
+                                                                                   @isset($cita->usoRespirador->prob_muscular_debilidad_extremidades)
+                                                                                   @if($cita->usoRespirador->prob_muscular_debilidad_extremidades == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="prob_muscular_debilidad_extremidades"
+                                                                                   value="0"
+                                                                                   @isset($cita->usoRespirador->prob_muscular_debilidad_extremidades)
+                                                                                   @if($cita->usoRespirador->prob_muscular_debilidad_extremidades == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            a.	Debilidad en los brazos, manos, piernas o pies.
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="prob_muscular_debilidad_dolor_espalda"
+                                                                                   value="1"
+                                                                                   @isset($cita->usoRespirador->prob_muscular_debilidad_dolor_espalda)
+                                                                                   @if($cita->usoRespirador->prob_muscular_debilidad_dolor_espalda == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="prob_muscular_debilidad_dolor_espalda"
+                                                                                   value="0"
+                                                                                   @isset($cita->usoRespirador->prob_muscular_debilidad_dolor_espalda)
+                                                                                   @if($cita->usoRespirador->prob_muscular_debilidad_dolor_espalda == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            b.	Dolor de espalda.
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="prob_muscular_dificultad_mover_brazos_piernas"
+                                                                                   value="1"
+                                                                                   @isset($cita->usoRespirador->prob_muscular_dificultad_mover_brazos_piernas)
+                                                                                   @if($cita->usoRespirador->prob_muscular_dificultad_mover_brazos_piernas == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="prob_muscular_dificultad_mover_brazos_piernas"
+                                                                                   value="0"
+                                                                                   @isset($cita->usoRespirador->prob_muscular_dificultad_mover_brazos_piernas)
+                                                                                   @if($cita->usoRespirador->prob_muscular_dificultad_mover_brazos_piernas == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            c.	Dificultad para mover sus brazos y piernas.
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="prob_muscular_dolor_inclina_adelanta_atras_cintura"
+                                                                                   value="1"
+                                                                                   @isset($cita->usoRespirador->prob_muscular_dolor_inclina_adelanta_atras_cintura)
+                                                                                   @if($cita->usoRespirador->prob_muscular_dolor_inclina_adelanta_atras_cintura == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="prob_muscular_dolor_inclina_adelanta_atras_cintura"
+                                                                                   value="0"
+                                                                                   @isset($cita->usoRespirador->prob_muscular_dolor_inclina_adelanta_atras_cintura)
+                                                                                   @if($cita->usoRespirador->prob_muscular_dolor_inclina_adelanta_atras_cintura == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            a.	Dolor o rigidez cuando se inclina hacia adelante o atrás en la cintura
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="prob_muscular_dificultad_mover_cabeza_arriba_abajo"
+                                                                                   value="1"
+                                                                                   @isset($cita->usoRespirador->prob_muscular_dificultad_mover_cabeza_arriba_abajo)
+                                                                                   @if($cita->usoRespirador->prob_muscular_dificultad_mover_cabeza_arriba_abajo == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="prob_muscular_dificultad_mover_cabeza_arriba_abajo"
+                                                                                   value="0"
+                                                                                   @isset($cita->usoRespirador->prob_muscular_dificultad_mover_cabeza_arriba_abajo)
+                                                                                   @if($cita->usoRespirador->prob_muscular_dificultad_mover_cabeza_arriba_abajo == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            b.	Dificultad para mover su cabeza de arriba o abajo.
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="prob_muscular_dificultad_mover_cabeza_lado"
+                                                                                   value="1"
+                                                                                   @isset($cita->usoRespirador->prob_muscular_dificultad_mover_cabeza_lado)
+                                                                                   @if($cita->usoRespirador->prob_muscular_dificultad_mover_cabeza_lado == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="prob_muscular_dificultad_mover_cabeza_lado"
+                                                                                   value="0"
+                                                                                   @isset($cita->usoRespirador->prob_muscular_dificultad_mover_cabeza_lado)
+                                                                                   @if($cita->usoRespirador->prob_muscular_dificultad_mover_cabeza_lado == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            c.	Dificultad para mover su cabeza de lado a lado.
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="prob_muscular_doblar_rodillas"
+                                                                                   value="1"
+                                                                                   @isset($cita->usoRespirador->prob_muscular_doblar_rodillas)
+                                                                                   @if($cita->usoRespirador->prob_muscular_doblar_rodillas == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="prob_muscular_doblar_rodillas"
+                                                                                   value="0"
+                                                                                   @isset($cita->usoRespirador->prob_muscular_doblar_rodillas)
+                                                                                   @if($cita->usoRespirador->prob_muscular_doblar_rodillas == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            d.	Dificultad al doblar las rodillas
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="prob_muscular_ponerse_cuclillas"
+                                                                                   value="1"
+                                                                                   @isset($cita->usoRespirador->prob_muscular_ponerse_cuclillas)
+                                                                                   @if($cita->usoRespirador->prob_muscular_ponerse_cuclillas == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="prob_muscular_ponerse_cuclillas"
+                                                                                   value="0"
+                                                                                   @isset($cita->usoRespirador->prob_muscular_ponerse_cuclillas)
+                                                                                   @if($cita->usoRespirador->prob_muscular_ponerse_cuclillas == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            e.	Dificultad en ponerse en cuclillas.
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="prob_muscular_subir_escaleras"
+                                                                                   value="1"
+                                                                                   @isset($cita->usoRespirador->prob_muscular_subir_escaleras)
+                                                                                   @if($cita->usoRespirador->prob_muscular_subir_escaleras == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="prob_muscular_subir_escaleras"
+                                                                                   value="0"
+                                                                                   @isset($cita->usoRespirador->prob_muscular_subir_escaleras)
+                                                                                   @if($cita->usoRespirador->prob_muscular_subir_escaleras == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            f.	Subir las escaleras o una escalera.
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="prob_muscular_otros"
+                                                                                   value="1"
+                                                                                   @isset($cita->usoRespirador->prob_muscular_otros)
+                                                                                   @if($cita->usoRespirador->prob_muscular_otros == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="prob_muscular_otros"
+                                                                                   value="0"
+                                                                                   @isset($cita->usoRespirador->prob_muscular_otros)
+                                                                                   @if($cita->usoRespirador->prob_muscular_otros == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            <div class="form-group form-inline">
+                                                                                @isset($cita->usoRespirador->prob_muscular_otros_descripcion)
+                                                                                    g. Otros: <input type="text" value="{{$cita->usoRespirador->prob_muscular_otros_descripcion}}" class="form-control input-sm" name="prob_muscular_otros_descripcion">
+                                                                                    @else
+                                                                                    g. Otros: <input type="text" class="form-control input-sm" name="prob_muscular_otros_descripcion">
+                                                                                    @endisset
+
+                                                                            </div>
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <h4>Sección 3:
+                                                    (Confidencial)
+
+                                                </h4>
+                                                <p>
+                                                    El profesional de la salud que va a revisar este cuestionario determinara si esta parte debe ser completada por el empleado.
+
+                                                    Por favor, marque “SI” o “NO”
+
+                                                </p>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="box box-solid box-body">
+                                                    <strong>1 Cuando trabaja en alturas por encima de 2500 msnm en una atmosfera que tenga cantidades de oxigeno menor a la cantidad normal, tiene las siguientes sensaciones de:</strong>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="checkbox small horizontal radio">
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="sensacion_mareos" value="1"
+                                                                                   @isset($cita->usoRespirador->sensacion_mareos)
+                                                                                   @if($cita->usoRespirador->sensacion_mareos == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="sensacion_mareos" value="0"
+                                                                                   @isset($cita->usoRespirador->sensacion_mareos)
+                                                                                   @if($cita->usoRespirador->sensacion_mareos == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            a.	Mareos.
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="sensacion_dificultad_respirar" value="1"
+                                                                                   @isset($cita->usoRespirador->sensacion_dificultad_respirar)
+                                                                                   @if($cita->usoRespirador->sensacion_dificultad_respirar == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="sensacion_dificultad_respirar" value="0"
+                                                                                   @isset($cita->usoRespirador->sensacion_dificultad_respirar)
+                                                                                   @if($cita->usoRespirador->sensacion_dificultad_respirar == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            b.	Dificultad para respirar.
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="sensacion_palpitaciones" value="1"
+                                                                                   @isset($cita->usoRespirador->sensacion_palpitaciones)
+                                                                                   @if($cita->usoRespirador->sensacion_palpitaciones == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="sensacion_palpitaciones" value="0"
+                                                                                   @isset($cita->usoRespirador->sensacion_palpitaciones)
+                                                                                   @if($cita->usoRespirador->sensacion_palpitaciones == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            c.	Palpitaciones.
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="sensacion_otros" value="1"
+                                                                                   @isset($cita->usoRespirador->sensacion_otros)
+                                                                                   @if($cita->usoRespirador->sensacion_otros == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="sensacion_otros" value="0"
+                                                                                   @isset($cita->usoRespirador->sensacion_otros)
+                                                                                   @if($cita->usoRespirador->sensacion_otros == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            <div class="form-group form-inline">
+                                                                                @isset($cita->usoRespirador->sensacion_otros_descripcion)
+                                                                                    d. Otros: <input type="text" value="{{$cita->usoRespirador->sensacion_otros_descripcion}}" class="form-control input-sm" name="sensacion_otros_descripcion">
+                                                                                    @else
+                                                                                    d. Otros: <input type="text" class="form-control input-sm" name="sensacion_otros_descripcion">
+                                                                                    @endisset
+                                                                            </div>
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <strong>2. Ha trabajado con alguno de los siguientes materiales listados a continuación:</strong>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="checkbox small horizontal radio">
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="trabaja_material_asbestos" value="1"
+                                                                                   @isset($cita->usoRespirador->trabaja_material_asbestos)
+                                                                                   @if($cita->usoRespirador->trabaja_material_asbestos == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="trabaja_material_asbestos" value="0"
+                                                                                   @isset($cita->usoRespirador->trabaja_material_asbestos)
+                                                                                   @if($cita->usoRespirador->trabaja_material_asbestos == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            a.	Asbestos.
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="trabaja_material_silice" value="1"
+                                                                                   @isset($cita->usoRespirador->trabaja_material_silice)
+                                                                                   @if($cita->usoRespirador->trabaja_material_silice == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="trabaja_material_silice" value="0"
+                                                                                   @isset($cita->usoRespirador->trabaja_material_silice)
+                                                                                   @if($cita->usoRespirador->trabaja_material_silice == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            b.	Sílice.
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="trabaja_material_tungsteno_cobalto" value="1"
+                                                                                   @isset($cita->usoRespirador->trabaja_material_tungsteno_cobalto)
+                                                                                   @if($cita->usoRespirador->trabaja_material_tungsteno_cobalto == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="trabaja_material_tungsteno_cobalto" value="0"
+                                                                                   @isset($cita->usoRespirador->trabaja_material_tungsteno_cobalto)
+                                                                                   @if($cita->usoRespirador->trabaja_material_tungsteno_cobalto == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            c.	Tungsteno / Cobalto (Ej.: Esmerilado o soldadura)
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="trabaja_material_berilio" value="1"
+                                                                                   @isset($cita->usoRespirador->trabaja_material_berilio)
+                                                                                   @if($cita->usoRespirador->trabaja_material_berilio == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="trabaja_material_berilio" value="0"
+                                                                                   @isset($cita->usoRespirador->trabaja_material_berilio)
+                                                                                   @if($cita->usoRespirador->trabaja_material_berilio == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            d.	Berilio
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="trabaja_material_aluminio" value="1"
+                                                                                   @isset($cita->usoRespirador->trabaja_material_aluminio)
+                                                                                   @if($cita->usoRespirador->trabaja_material_aluminio == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="trabaja_material_aluminio" value="0"
+                                                                                   @isset($cita->usoRespirador->trabaja_material_aluminio)
+                                                                                   @if($cita->usoRespirador->trabaja_material_aluminio == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            e.	Aluminio.
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="trabaja_material_carbon" value="1"
+                                                                                   @isset($cita->usoRespirador->trabaja_material_carbon)
+                                                                                   @if($cita->usoRespirador->trabaja_material_carbon == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="trabaja_material_carbon" value="0"
+                                                                                   @isset($cita->usoRespirador->trabaja_material_carbon)
+                                                                                   @if($cita->usoRespirador->trabaja_material_carbon == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            f.	Carbón.
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="trabaja_material_hierro" value="1"
+                                                                                   @isset($cita->usoRespirador->trabaja_material_hierro)
+                                                                                   @if($cita->usoRespirador->trabaja_material_hierro == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="trabaja_material_hierro" value="0"
+                                                                                   @isset($cita->usoRespirador->trabaja_material_hierro)
+                                                                                   @if($cita->usoRespirador->trabaja_material_hierro == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            g.	Hierro.
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="trabaja_material_laton" value="1"
+                                                                                   @isset($cita->usoRespirador->trabaja_material_laton)
+                                                                                   @if($cita->usoRespirador->trabaja_material_laton == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="trabaja_material_laton" value="0"
+                                                                                   @isset($cita->usoRespirador->trabaja_material_laton)
+                                                                                   @if($cita->usoRespirador->trabaja_material_laton == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            h.	Latón.
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="trabaja_material_ambientes_polvo" value="1"
+                                                                                   @isset($cita->usoRespirador->trabaja_material_ambientes_polvo)
+                                                                                   @if($cita->usoRespirador->trabaja_material_ambientes_polvo == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="trabaja_material_ambientes_polvo" value="0"
+                                                                                   @isset($cita->usoRespirador->trabaja_material_ambientes_polvo)
+                                                                                   @if($cita->usoRespirador->trabaja_material_ambientes_polvo == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            i.	Ambientes con exceso de polvo.
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="trabaja_otros" value="1"
+                                                                                   @isset($cita->usoRespirador->trabaja_otros)
+                                                                                   @if($cita->usoRespirador->trabaja_otros == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="trabaja_otros" value="0"
+                                                                                   @isset($cita->usoRespirador->trabaja_otros)
+                                                                                   @if($cita->usoRespirador->trabaja_otros == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label for="">
+                                                                            <div class="form-group form-inline">
+                                                                                @isset($cita->usoRespirador->trabaja_otros_descripcion)
+                                                                                d. Otros: <input type="text" value="{{$cita->usoRespirador->trabaja_otros_descripcion}}" class="form-control input-sm" name="trabaja_otros_descripcion">
+                                                                                @else
+                                                                                d. Otros: <input type="text" class="form-control input-sm" name="trabaja_otros_descripcion">
+                                                                                @endisset
+                                                                            </div>
+
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <strong>3. Liste cualquier trabajo previo/pasatiempo en los que haya sido expuestos a peligros 	respiratorios:</strong>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="checkbox small horizontal radio">
+                                                                <ul>
+                                                                    <li>
+                                                                        <div class="form-group form-inline">
+                                                                            <input type="text" class="form-control input-sm" name="trabajo_previo_pasatiempo_riesgo"
+                                                                                   @isset($cita->usoRespirador->trabajo_previo_pasatiempo_riesgo)
+                                                                                   value = "{{$cita->usoRespirador->trabajo_previo_pasatiempo_riesgo}}"
+                                                                                    @endisset>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <strong>4 ¿Has hecho alguna vez Servicio Militar?</strong>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="checkbox small horizontal radio">
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="servicio_militar" value="1"
+                                                                                   @isset($cita->usoRespirador->servicio_militar)
+                                                                                   @if($cita->usoRespirador->servicio_militar == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="servicio_militar" value="0"
+                                                                                   @isset($cita->usoRespirador->servicio_militar)
+                                                                                   @if($cita->usoRespirador->servicio_militar == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <strong>5 ¿Has estado alguna vez en un equipo de MATPEL o Respuesta de emergencias?</strong>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="checkbox small horizontal radio">
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="equipo_matpel_respuesta_emergencia" value="1"
+                                                                                   @isset($cita->usoRespirador->equipo_matpel_respuesta_emergencia)
+                                                                                   @if($cita->usoRespirador->equipo_matpel_respuesta_emergencia == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Sí
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="equipo_matpel_respuesta_emergencia" value="0"
+                                                                                   @isset($cita->usoRespirador->equipo_matpel_respuesta_emergencia)
+                                                                                   @if($cita->usoRespirador->equipo_matpel_respuesta_emergencia == 0)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> No
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
 
                                 <div id="menu2" class="tab-pane fade">
                                     <div class="row">
+
                                         <div class="col-md-12">
-                                            <div class="col-md-6">
+                                            <div class="col-md-12">
                                                 <div class="row">
                                                     <div class="box box-solid box-body">
-                                                        <strong>8. Pedirle que repita la frase: "tres tristes tigres comen trigo
-                                                            en un trigal"</strong>
                                                         <div class="row">
                                                             <div class="col-md-12">
-                                                                <div class="checkbox small">
-                                                                    <ul>
-                                                                        <li>
-                                                                            <label>
-                                                                                <input type="checkbox" name="repite_frase" value="1" @isset($cita->evaluacionCognitiva->repite_frase) checked @endisset> Correcto
-                                                                            </label>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
+                                                                <table class="table table-bordered">
+                                                                    <tr></tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <label for="paciente_id">ID Empleado</label>
+
+                                                                            <input type="text" class="form-control" id="paciente_id" name="paciend_id" value="{{$cita->paciente->num_dni}}">
+                                                                        </td>
+                                                                        <td><label for="perfil">Perfil</label>
+
+                                                                            <input type="text" class="form-control" id="perfil" value="{{$cita->paciente->perfil->descripcion}}"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <label for="trabajador">Trabajador</label>
+                                                                            <input type="text" class="form-control" id="trabajador" name="trabajador" value="{{$cita->paciente->apellido_paterno.' '.$cita->paciente->apellido_materno.' '.$cita->paciente->nombres}}">
+                                                                        </td>
+                                                                        <td>
+                                                                            <label for="area">Área</label>
+                                                                            <input type="text" class="form-control" id="area" name="area" value="{{$cita->paciente->area->nombre}}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><label for="trabajador">Cargo</label>
+                                                                            <input type="text" class="form-control" id="cargo" name="cargo" value="{{$cita->paciente->trabajo}}"></td>
+                                                                        <td>
+                                                                            <label for="supervisor">Supervisor</label>
+                                                                            <input type="text" class="form-control" id="supervisor" name="supervisor" value="{{$cita->paciente->jefe_inmediato}}">
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="box box-solid box-body">
-                                                        <strong>9. Escriba legiblemente en un papel "Cierre los ojos". Pida que
-                                                            lo lea y haga lo que le dice la frase</strong>
+
                                                         <div class="row">
                                                             <div class="col-md-12">
-                                                                <div class="checkbox small">
-                                                                    <ul>
-                                                                        <li>
-                                                                            <label>
-                                                                                <input type="checkbox" name="escribe_lee_actua" value="1" @isset($cita->evaluacionCognitiva->escribe_lee_actua) checked @endisset> Correcto
-                                                                            </label>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
+                                                                <p>El trabajador mencionado ha sido examinado en el ajuste del respirador de conformidad con el Estándar de Barrick de Protección Respiratoria. Esta evaluación limitada es especificada para el uso del respirador solamente.
+                                                                    Basado en mis hallazgos he determinado que la persona:
+                                                                </p>
+
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="autorizacion_clase" value="1"
+                                                                                   @isset($cita->usoRespirador->autorizacion_clase)
+                                                                                   @if($cita->usoRespirador->autorizacion_clase == 1)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Clase I
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="autorizacion_clase" value="2"
+                                                                                   @isset($cita->usoRespirador->autorizacion_clase)
+                                                                                   @if($cita->usoRespirador->autorizacion_clase == 2)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Clase II
+
+                                                                        </label>
+                                                                        <ul>
+                                                                            <li>
+                                                                                <input type="checkbox" name="uso_emergencia_solamente" value="1"
+                                                                                        @isset($cita->usoRespirador->uso_emergencia_solamente)
+                                                                                        @if($cita->usoRespirador->uso_emergencia_solamente == 1)
+                                                                                        checked
+                                                                                        @endif
+                                                                                        @endisset
+                                                                                > A ser utilizados en respuestas a emergencia o para escape solamente
+                                                                            </li>
+                                                                            <li>
+                                                                                <input type="checkbox" name="solo_papr" value="1"
+                                                                                        @isset($cita->usoRespirador->solo_papr)
+                                                                                        @if($cita->usoRespirador->solo_papr == 1)
+                                                                                        checked
+                                                                                        @endif
+                                                                                        @endisset
+                                                                                > Solo PAPR
+                                                                            </li>
+                                                                            <li>
+                                                                                <input type="checkbox" name="no_sbca" value="1"
+                                                                                        @isset($cita->usoRespirador->no_sbca)
+                                                                                        @if($cita->usoRespirador->no_sbca == 1)
+                                                                                        checked
+                                                                                        @endif
+                                                                                        @endisset
+                                                                                > No SBCA
+                                                                            </li>
+                                                                            <li>
+                                                                                <input type="checkbox" name="autorizacion_otros" value="1"
+                                                                                        @isset($cita->usoRespirador->autorizacion_otros)
+                                                                                        @if($cita->usoRespirador->autorizacion_otros == 1)
+                                                                                        checked
+                                                                                        @endif
+                                                                                        @endisset
+                                                                                > Otros
+                                                                            </li>
+                                                                        </ul>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="autorizacion_clase" value="3"
+                                                                                   @isset($cita->usoRespirador->autorizacion_clase)
+                                                                                   @if($cita->usoRespirador->autorizacion_clase == 3)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Clase III
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="autorizacion_clase" value="4"
+                                                                                   @isset($cita->usoRespirador->autorizacion_clase)
+                                                                                   @if($cita->usoRespirador->autorizacion_clase == 4)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Clase IV
+                                                                        </label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="radio" name="autorizacion_clase" value="5"
+                                                                                   @isset($cita->usoRespirador->autorizacion_clase)
+                                                                                   @if($cita->usoRespirador->autorizacion_clase == 5)
+                                                                                   checked
+                                                                                    @endif
+                                                                                    @endisset> Clase V
+                                                                        </label>
+                                                                    </li>
+                                                                </ul>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="box box-solid box-body">
-                                                        <strong>10. Pídale que escriba una frase con sujeto y predicado</strong>
                                                         <div class="row">
-                                                            <div class="col-md-12">
-                                                                <div class="checkbox small">
-                                                                    <ul>
-                                                                        <li>
-                                                                            <label>
-                                                                                <input type="checkbox" name="escribe_sujeto_predicado" value="1" @isset($cita->evaluacionCognitiva->escribe_sujeto_predicado) checked @endisset> Correcto
-                                                                            </label>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
+                                                            <div class="col-md-6">
+                                                                <label for="">Firma:</label>
+                                                                <input type="text" value="" class="form-control">
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label for="">Nombre médico</label>
+                                                                @isset($cita->usoRespirador->nombre_medico)
+                                                                    <input type="text" value="{{$cita->usoRespirador->nombre_medico}}" name="nombre_medico" class="form-control">
+                                                                    @else
+                                                                        <input type="text" value="" name="nombre_medico" class="form-control">
+                                                                 @endisset
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-4">
+                                                                <label for="">CMP</label>
+                                                                @isset($cita->usoRespirador->cmp)
+                                                                    <input type="text" value="{{$cita->usoRespirador->cmp}}" name="cmp" class="form-control">
+                                                                @else
+                                                                        <input type="text" value="" name="cmp" class="form-control">
+                                                                @endisset
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <label for="">Fecha del Examen</label>
+                                                                @isset($cita->usoRespirador->fecha_registro)
+                                                                    <input type="date" value="{{$cita->usoRespirador->fecha_registro}}" name="fecha_registro" class="form-control">
+                                                                    @else
+                                                                        <input type="date" value="{{\Carbon\Carbon::now()}}" name="fecha_registro" class="form-control">
+                                                                 @endisset
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <label for="">Expira En</label>
+                                                                @isset($cita->usoRespirador->fecha_expiracion)
+                                                                    <input type="date" value="{{$cita->usoRespirador->fecha_expiracion}}" name="fecha_expiracion" class="form-control">
+                                                                    @else
+                                                                    <input type="date" value="{{\Carbon\Carbon::now()}}" name="fecha_expiracion" class="form-control">
+                                                                @endisset
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <div class="box box-solid box-body">
-                                                    <strong>11. Por favor copie este dibujo:</strong> <br>
-                                                    <strong>
-                                                        Muestre al entrevistado el dibujo con dos pentágonos cuya interseccion es un cuadrilátero.
-                                                        El dibujo es correcto si los pentágonos se cruzan y forman el cuadrilatero</strong>
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <br>
-                                                            <img src="{{asset('img/cuadrilateros.jpg')}}" alt="" height="80px" width="150px">
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <br>
-                                                            <p>
-                                                                <small>Para otorgar un punto deben estar presentes los 10 ángulos y la intersacción.</small>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <div class="checkbox small">
-                                                                <label>
-                                                                    <input type="checkbox" name="copia_dibujo" value="1"  @isset($cita->evaluacionCognitiva->copia_dibujo) checked @endisset> Correcto
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+
 
                                         </div>
                                     </div>
@@ -1251,11 +3224,11 @@
                 <div class="modal-footer">
                     <div class="row">
                         <div class="col-md-12 text-right">
-                            @isset($cita->evaluacionCognitiva->id)
-                                <button class="btn btn-sm btn-primary  registrarEvaluacionCognitiva" tipo="evaluacionCognitiva_modificar" type="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>EDITAR</button>
+                            @isset($cita->usoRespirador->id)
+                                <button class="btn btn-sm btn-primary  registrarUsoRespiradores" tipo="usoRespiradores_modificar" type="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>EDITAR</button>
                                 @else
-                                    <button class="btn btn-sm btn-success registrarEvaluacionCognitiva"  tipo="evaluacionCognitiva_guardar" type="button">GUARDAR</button>
-                                    @endisset
+                                    <button class="btn btn-sm btn-success registrarUsoRespiradores"  tipo="usoRespiradores_guardar" type="button">GUARDAR</button>
+                            @endisset
                                     <a href="" class="btn btn-sm btn-info" data-dismiss="modal">TERMINAR</a>
 
                                     <a href="" class="btn btn-sm btn-warning" data-dismiss="modal">Volver</a>

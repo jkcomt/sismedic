@@ -471,6 +471,7 @@ Route::get('/interconsulta_pdf/{id}','WordTestController@interconsultapdf')->nam
 Route::group(["prefix"=>"evaluacion_cognitiva"],function(){
     Route::post('/crear','EvaluacionCognitivaController@store')->name('evaluacion_cognitiva.store');
     Route::post('/actualizar','EvaluacionCognitivaController@update')->name('evaluacion_cognitiva.update');
+    Route::get('reporte/{id}','EvaluacionCognitivaController@reporte')->name('evaluacion_cognitiva.reporte');
 });
 
 //uso respiradores

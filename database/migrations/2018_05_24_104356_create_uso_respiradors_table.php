@@ -201,7 +201,7 @@ class CreateUsoRespiradorsTable extends Migration
             $table->string('trabaja_otros_descripcion')->nullable();
 
             //3
-            $table->boolean('trabajo_previo_pasatiempo_riesgo')->nullable();
+            $table->string('trabajo_previo_pasatiempo_riesgo')->nullable();
 
             //4
             $table->boolean('servicio_militar')->nullable();
@@ -211,11 +211,22 @@ class CreateUsoRespiradorsTable extends Migration
 
             //7.3
             //
-            $table->boolean('autorizacion_clase_i')->nullable();
-            $table->boolean('autorizacion_clase_ii')->nullable();
-            $table->boolean('autorizacion_clase_iii')->nullable();
-            $table->boolean('autorizacion_clase_iv')->nullable();
-            $table->boolean('autorizacion_clase_v')->nullable();
+            //autorizacion de clase I II III IV V
+            $table->integer('autorizacion_clase')->nullable();
+
+            //condicional clase II
+            $table->boolean('uso_emergencia_solamente')->nullable();
+
+            $table->boolean('solo_papr')->nullable();
+
+            $table->boolean('no_sbca')->nullable();
+
+            $table->boolean('autorizacion_otros')->nullable();
+
+//            $table->boolean('autorizacion_clase_ii')->nullable();
+//            $table->boolean('autorizacion_clase_iii')->nullable();
+//            $table->boolean('autorizacion_clase_iv')->nullable();
+//            $table->boolean('autorizacion_clase_v')->nullable();
 
             //datos medico
             $table->string('nombre_medico')->nullable();

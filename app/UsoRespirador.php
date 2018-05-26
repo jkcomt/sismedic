@@ -187,11 +187,16 @@ class UsoRespirador extends Model
         'equipo_matpel_respuesta_emergencia',
         //7.3
         //
-        'autorizacion_clase_i',
-        'autorizacion_clase_ii',
-        'autorizacion_clase_iii',
-        'autorizacion_clase_iv',
-        'autorizacion_clase_v',
+        'autorizacion_clase',
+//        'autorizacion_clase_ii',
+//        'autorizacion_clase_iii',
+//        'autorizacion_clase_iv',
+//        'autorizacion_clase_v',
+
+        'uso_emergencia_solamente',
+        'solo_papr',
+        'no_sbca',
+        'autorizacion_otros',
 
         //datos medico
         'nombre_medico',

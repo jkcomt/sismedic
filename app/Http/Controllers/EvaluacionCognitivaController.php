@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\EvaluacionCognitiva;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use App\Cita;
+use View;
+
 class EvaluacionCognitivaController extends Controller
 {
     /**
@@ -281,5 +284,16 @@ class EvaluacionCognitivaController extends Controller
     public function destroy(EvaluacionCognitiva $evaluacionCognitiva)
     {
         //
+    }
+
+    public function reporte($id){
+
+        //$cita=Cita::find($id);
+        $evaluacionCognitiva = EvaluacionCognitiva::find($id);
+        $view=View::make('evaluacionmedica.reportes.evaluacioncognitiva',compact('evaluacionCognitiva'));
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        $pdf->stream($view);
+        return $pdf->stream();
     }
 }
