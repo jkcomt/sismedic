@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\SuficienciaTrabajoAltura;
+use App\Cita;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
-
+use View;
 
 class SuficienciaTrabajoAlturaController extends Controller
 {
@@ -104,16 +105,16 @@ class SuficienciaTrabajoAlturaController extends Controller
           $trabajoaltura = SuficienciaTrabajoAltura::create([
             'primera_aptitud'=>$primera_aptiud,
             'revalidacion'=>$revalidacion,
-            'anamnesis_item1'=>isset($data['anamnesis_item1'])? $data['anamnesis_item1']:null,
-            'anamnesis_item2'=>isset($data['anamnesis_item2'])? $data['anamnesis_item2']:null,
-            'anamnesis_item3'=>isset($data['anamnesis_item3'])? $data['anamnesis_item3']:null,
-            'anamnesis_item4'=>isset($data['anamnesis_item4'])? $data['anamnesis_item4']:null,
-            'anamnesis_item5'=>isset($data['anamnesis_item5'])? $data['anamnesis_item5']:null,
-            'anamnesis_item6'=>isset($data['anamnesis_item6'])? $data['anamnesis_item6']:null,
-            'anamnesis_item7'=>isset($data['anamnesis_item7'])? $data['anamnesis_item7']:null,
-            'anamnesis_item8'=>isset($data['anamnesis_item8'])? $data['anamnesis_item8']:null,
-            'anamnesis_item9'=>isset($data['anamnesis_item9'])? $data['anamnesis_item9']:null,
-            'anamnesis_item10'=>isset($data['anamnesis_item10'])? $data['anamnesis_item10']:null,
+            'anamnesis_item1'=>isset($data['anamnesis_item1'])? $data['anamnesis_item1']:0,
+            'anamnesis_item2'=>isset($data['anamnesis_item2'])? $data['anamnesis_item2']:0,
+            'anamnesis_item3'=>isset($data['anamnesis_item3'])? $data['anamnesis_item3']:0,
+            'anamnesis_item4'=>isset($data['anamnesis_item4'])? $data['anamnesis_item4']:0,
+            'anamnesis_item5'=>isset($data['anamnesis_item5'])? $data['anamnesis_item5']:0,
+            'anamnesis_item6'=>isset($data['anamnesis_item6'])? $data['anamnesis_item6']:0,
+            'anamnesis_item7'=>isset($data['anamnesis_item7'])? $data['anamnesis_item7']:0,
+            'anamnesis_item8'=>isset($data['anamnesis_item8'])? $data['anamnesis_item8']:0,
+            'anamnesis_item9'=>isset($data['anamnesis_item9'])? $data['anamnesis_item9']:0,
+            'anamnesis_item10'=>isset($data['anamnesis_item10'])? $data['anamnesis_item10']:0,
             'anamnesis_comentarios'=>isset($data['anamnesis_comentarios'])? $data['anamnesis_comentarios']:null,
             'exploracion_fisica_fc'=>isset($data['exploracion_fisica_fc'])? $data['exploracion_fisica_fc']:null,
             'exploracion_fisica_fr'=>isset($data['exploracion_fisica_fr'])? $data['exploracion_fisica_fr']:null,
@@ -127,22 +128,22 @@ class SuficienciaTrabajoAlturaController extends Controller
             'exploracion_fisica_icc'=>isset($data['exploracion_fisica_icc'])? $data['exploracion_fisica_icc']:null,
             'exploracion_fisica_perimetro_toracico_inspiracion'=>isset($data['exploracion_fisica_perimetro_toracico_inspiracion'])? $data['exploracion_fisica_perimetro_toracico_inspiracion']:null,
             'exploracion_fisica_perimetro_toracico_espiracion'=>isset($data['exploracion_fisica_perimetro_toracico_espiracion'])? $data['exploracion_fisica_perimetro_toracico_espiracion']:null,
-            'exploracion_fisica_item_1'=>isset($data['exploracion_fisica_item_1'])? $data['exploracion_fisica_item_1']:null,
-            'exploracion_fisica_item_2'=>isset($data['exploracion_fisica_item_2'])? $data['exploracion_fisica_item_2']:null,
-            'exploracion_fisica_item_3'=>isset($data['exploracion_fisica_item_3'])? $data['exploracion_fisica_item_3']:null,
-            'exploracion_fisica_item_4'=>isset($data['exploracion_fisica_item_4'])? $data['exploracion_fisica_item_4']:null,
-            'exploracion_fisica_item_5'=>isset($data['exploracion_fisica_item_5'])? $data['exploracion_fisica_item_5']:null,
-            'exploracion_fisica_item_6'=>isset($data['exploracion_fisica_item_6'])? $data['exploracion_fisica_item_6']:null,
-            'exploracion_fisica_item_7'=>isset($data['exploracion_fisica_item_7'])? $data['exploracion_fisica_item_7']:null,
-            'exploracion_fisica_item_8'=>isset($data['exploracion_fisica_item_8'])? $data['exploracion_fisica_item_8']:null,
-            'exploracion_fisica_item_9'=>isset($data['exploracion_fisica_item_9'])? $data['exploracion_fisica_item_9']:null,
-            'exploracion_fisica_item_10'=>isset($data['exploracion_fisica_item_10'])? $data['exploracion_fisica_item_10']:null,
+            'exploracion_fisica_item_1'=>isset($data['exploracion_fisica_item_1'])? $data['exploracion_fisica_item_1']:0,
+            'exploracion_fisica_item_2'=>isset($data['exploracion_fisica_item_2'])? $data['exploracion_fisica_item_2']:0,
+            'exploracion_fisica_item_3'=>isset($data['exploracion_fisica_item_3'])? $data['exploracion_fisica_item_3']:0,
+            'exploracion_fisica_item_4'=>isset($data['exploracion_fisica_item_4'])? $data['exploracion_fisica_item_4']:0,
+            'exploracion_fisica_item_5'=>isset($data['exploracion_fisica_item_5'])? $data['exploracion_fisica_item_5']:0,
+            'exploracion_fisica_item_6'=>isset($data['exploracion_fisica_item_6'])? $data['exploracion_fisica_item_6']:0,
+            'exploracion_fisica_item_7'=>isset($data['exploracion_fisica_item_7'])? $data['exploracion_fisica_item_7']:0,
+            'exploracion_fisica_item_8'=>isset($data['exploracion_fisica_item_8'])? $data['exploracion_fisica_item_8']:0,
+            'exploracion_fisica_item_9'=>isset($data['exploracion_fisica_item_9'])? $data['exploracion_fisica_item_9']:0,
+            'exploracion_fisica_item_10'=>isset($data['exploracion_fisica_item_10'])? $data['exploracion_fisica_item_10']:0,
             'exploracion_fisica_detalle'=>isset($data['exploracion_fisica_detalle'])? $data['exploracion_fisica_detalle']:null,
-            'prueba_auxiliar_item_1'=>isset($data['prueba_auxiliar_item_1'])? $data['prueba_auxiliar_item_1']:null,
-            'prueba_auxiliar_item_2'=>isset($data['prueba_auxiliar_item_2'])? $data['prueba_auxiliar_item_2']:null,
-            'prueba_auxiliar_item_3'=>isset($data['prueba_auxiliar_item_3'])? $data['prueba_auxiliar_item_3']:null,
-            'prueba_auxiliar_item_4'=>isset($data['prueba_auxiliar_item_4'])? $data['prueba_auxiliar_item_4']:null,
-            'prueba_auxiliar_item_5'=>isset($data['prueba_auxiliar_item_5'])? $data['prueba_auxiliar_item_5']:null,
+            'prueba_auxiliar_item_1'=>isset($data['prueba_auxiliar_item_1'])? $data['prueba_auxiliar_item_1']:0,
+            'prueba_auxiliar_item_2'=>isset($data['prueba_auxiliar_item_2'])? $data['prueba_auxiliar_item_2']:0,
+            'prueba_auxiliar_item_3'=>isset($data['prueba_auxiliar_item_3'])? $data['prueba_auxiliar_item_3']:0,
+            'prueba_auxiliar_item_4'=>isset($data['prueba_auxiliar_item_4'])? $data['prueba_auxiliar_item_4']:0,
+            'prueba_auxiliar_item_5'=>isset($data['prueba_auxiliar_item_5'])? $data['prueba_auxiliar_item_5']:0,
             'prueba_auxiliar_detalle_medicina'=>isset($data['prueba_auxiliar_detalle_medicina'])? $data['prueba_auxiliar_detalle_medicina']:null,
             'prueba_auxiliar_otro'=>isset($data['prueba_auxiliar_otro'])? $data['prueba_auxiliar_otro']:null,
             'conclusion_apto'=>isset($data['conclusion_apto'])? $data['conclusion_apto']:null,
@@ -259,18 +260,19 @@ class SuficienciaTrabajoAlturaController extends Controller
       }
                 $trabajoaltura->update([
 
+
                   'primera_aptitud'=>$primera_aptiud,
                   'revalidacion'=>$revalidacion,
-                  'anamnesis_item1'=>isset($data['anamnesis_item1'])? $data['anamnesis_item1']:null,
-                  'anamnesis_item2'=>isset($data['anamnesis_item2'])? $data['anamnesis_item2']:null,
-                  'anamnesis_item3'=>isset($data['anamnesis_item3'])? $data['anamnesis_item3']:null,
-                  'anamnesis_item4'=>isset($data['anamnesis_item4'])? $data['anamnesis_item4']:null,
-                  'anamnesis_item5'=>isset($data['anamnesis_item5'])? $data['anamnesis_item5']:null,
-                  'anamnesis_item6'=>isset($data['anamnesis_item6'])? $data['anamnesis_item6']:null,
-                  'anamnesis_item7'=>isset($data['anamnesis_item7'])? $data['anamnesis_item7']:null,
-                  'anamnesis_item8'=>isset($data['anamnesis_item8'])? $data['anamnesis_item8']:null,
-                  'anamnesis_item9'=>isset($data['anamnesis_item9'])? $data['anamnesis_item9']:null,
-                  'anamnesis_item10'=>isset($data['anamnesis_item10'])? $data['anamnesis_item10']:null,
+                  'anamnesis_item1'=>isset($data['anamnesis_item1'])? $data['anamnesis_item1']:0,
+                  'anamnesis_item2'=>isset($data['anamnesis_item2'])? $data['anamnesis_item2']:0,
+                  'anamnesis_item3'=>isset($data['anamnesis_item3'])? $data['anamnesis_item3']:0,
+                  'anamnesis_item4'=>isset($data['anamnesis_item4'])? $data['anamnesis_item4']:0,
+                  'anamnesis_item5'=>isset($data['anamnesis_item5'])? $data['anamnesis_item5']:0,
+                  'anamnesis_item6'=>isset($data['anamnesis_item6'])? $data['anamnesis_item6']:0,
+                  'anamnesis_item7'=>isset($data['anamnesis_item7'])? $data['anamnesis_item7']:0,
+                  'anamnesis_item8'=>isset($data['anamnesis_item8'])? $data['anamnesis_item8']:0,
+                  'anamnesis_item9'=>isset($data['anamnesis_item9'])? $data['anamnesis_item9']:0,
+                  'anamnesis_item10'=>isset($data['anamnesis_item10'])? $data['anamnesis_item10']:0,
                   'anamnesis_comentarios'=>isset($data['anamnesis_comentarios'])? $data['anamnesis_comentarios']:null,
                   'exploracion_fisica_fc'=>isset($data['exploracion_fisica_fc'])? $data['exploracion_fisica_fc']:null,
                   'exploracion_fisica_fr'=>isset($data['exploracion_fisica_fr'])? $data['exploracion_fisica_fr']:null,
@@ -284,28 +286,28 @@ class SuficienciaTrabajoAlturaController extends Controller
                   'exploracion_fisica_icc'=>isset($data['exploracion_fisica_icc'])? $data['exploracion_fisica_icc']:null,
                   'exploracion_fisica_perimetro_toracico_inspiracion'=>isset($data['exploracion_fisica_perimetro_toracico_inspiracion'])? $data['exploracion_fisica_perimetro_toracico_inspiracion']:null,
                   'exploracion_fisica_perimetro_toracico_espiracion'=>isset($data['exploracion_fisica_perimetro_toracico_espiracion'])? $data['exploracion_fisica_perimetro_toracico_espiracion']:null,
-                  'exploracion_fisica_item_1'=>isset($data['exploracion_fisica_item_1'])? $data['exploracion_fisica_item_1']:null,
-                  'exploracion_fisica_item_2'=>isset($data['exploracion_fisica_item_2'])? $data['exploracion_fisica_item_2']:null,
-                  'exploracion_fisica_item_3'=>isset($data['exploracion_fisica_item_3'])? $data['exploracion_fisica_item_3']:null,
-                  'exploracion_fisica_item_4'=>isset($data['exploracion_fisica_item_4'])? $data['exploracion_fisica_item_4']:null,
-                  'exploracion_fisica_item_5'=>isset($data['exploracion_fisica_item_5'])? $data['exploracion_fisica_item_5']:null,
-                  'exploracion_fisica_item_6'=>isset($data['exploracion_fisica_item_6'])? $data['exploracion_fisica_item_6']:null,
-                  'exploracion_fisica_item_7'=>isset($data['exploracion_fisica_item_7'])? $data['exploracion_fisica_item_7']:null,
-                  'exploracion_fisica_item_8'=>isset($data['exploracion_fisica_item_8'])? $data['exploracion_fisica_item_8']:null,
-                  'exploracion_fisica_item_9'=>isset($data['exploracion_fisica_item_9'])? $data['exploracion_fisica_item_9']:null,
-                  'exploracion_fisica_item_10'=>isset($data['exploracion_fisica_item_10'])? $data['exploracion_fisica_item_10']:null,
+                  'exploracion_fisica_item_1'=>isset($data['exploracion_fisica_item_1'])? $data['exploracion_fisica_item_1']:0,
+                  'exploracion_fisica_item_2'=>isset($data['exploracion_fisica_item_2'])? $data['exploracion_fisica_item_2']:0,
+                  'exploracion_fisica_item_3'=>isset($data['exploracion_fisica_item_3'])? $data['exploracion_fisica_item_3']:0,
+                  'exploracion_fisica_item_4'=>isset($data['exploracion_fisica_item_4'])? $data['exploracion_fisica_item_4']:0,
+                  'exploracion_fisica_item_5'=>isset($data['exploracion_fisica_item_5'])? $data['exploracion_fisica_item_5']:0,
+                  'exploracion_fisica_item_6'=>isset($data['exploracion_fisica_item_6'])? $data['exploracion_fisica_item_6']:0,
+                  'exploracion_fisica_item_7'=>isset($data['exploracion_fisica_item_7'])? $data['exploracion_fisica_item_7']:0,
+                  'exploracion_fisica_item_8'=>isset($data['exploracion_fisica_item_8'])? $data['exploracion_fisica_item_8']:0,
+                  'exploracion_fisica_item_9'=>isset($data['exploracion_fisica_item_9'])? $data['exploracion_fisica_item_9']:0,
+                  'exploracion_fisica_item_10'=>isset($data['exploracion_fisica_item_10'])? $data['exploracion_fisica_item_10']:0,
                   'exploracion_fisica_detalle'=>isset($data['exploracion_fisica_detalle'])? $data['exploracion_fisica_detalle']:null,
-                  'prueba_auxiliar_item_1'=>isset($data['prueba_auxiliar_item_1'])? $data['prueba_auxiliar_item_1']:null,
-                  'prueba_auxiliar_item_2'=>isset($data['prueba_auxiliar_item_2'])? $data['prueba_auxiliar_item_2']:null,
-                  'prueba_auxiliar_item_3'=>isset($data['prueba_auxiliar_item_3'])? $data['prueba_auxiliar_item_3']:null,
-                  'prueba_auxiliar_item_4'=>isset($data['prueba_auxiliar_item_4'])? $data['prueba_auxiliar_item_4']:null,
-                  'prueba_auxiliar_item_5'=>isset($data['prueba_auxiliar_item_5'])? $data['prueba_auxiliar_item_5']:null,
+                  'prueba_auxiliar_item_1'=>isset($data['prueba_auxiliar_item_1'])? $data['prueba_auxiliar_item_1']:0,
+                  'prueba_auxiliar_item_2'=>isset($data['prueba_auxiliar_item_2'])? $data['prueba_auxiliar_item_2']:0,
+                  'prueba_auxiliar_item_3'=>isset($data['prueba_auxiliar_item_3'])? $data['prueba_auxiliar_item_3']:0,
+                  'prueba_auxiliar_item_4'=>isset($data['prueba_auxiliar_item_4'])? $data['prueba_auxiliar_item_4']:0,
+                  'prueba_auxiliar_item_5'=>isset($data['prueba_auxiliar_item_5'])? $data['prueba_auxiliar_item_5']:0,
                   'prueba_auxiliar_detalle_medicina'=>isset($data['prueba_auxiliar_detalle_medicina'])? $data['prueba_auxiliar_detalle_medicina']:null,
                   'prueba_auxiliar_otro'=>isset($data['prueba_auxiliar_otro'])? $data['prueba_auxiliar_otro']:null,
                   'conclusion_apto'=>isset($data['conclusion_apto'])? $data['conclusion_apto']:null,
                   'desde'=>isset($data['desde'])? $data['desde']:null,
                   'hasta'=>isset($data['hasta'])? $data['hasta']:null,
-                  'recomendacion'=>isset($data['recomendacion'])? $data['recomendacion']:null
+                  'recomendacion'=>isset($data['recomendacion'])? $data['recomendacion']:null,
 
 
                   // 'fecha_registro'=>Carbon::now(),
@@ -329,4 +331,17 @@ class SuficienciaTrabajoAlturaController extends Controller
     {
         //
     }
+
+
+    public function reporte_certificacion_suficiencia_medica($id)
+    {
+      $cita=Cita::find($id);
+      $view=View::make('evaluacionmedica.reportes.certificadosuficienciaaltura',compact('cita'));
+      $pdf = \App::make('dompdf.wrapper');
+      $pdf->loadHTML($view);
+      $pdf->stream($view);
+      return $pdf->stream();
+    }
+
+
 }

@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use App\EvaluacionConduccionVehiculos;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
-
-
+use App\Cita;
+use View;
+use Illuminate\Support\Facades\DB;
 
 class EvaluacionConduccionVehiculosController extends Controller
 {
@@ -303,5 +304,16 @@ class EvaluacionConduccionVehiculosController extends Controller
     public function destroy(EvaluacionConduccionVehiculos $evaluacionConduccionVehiculos)
     {
         //
+    }
+
+
+    public function reporte_certificacion_conduccion_vehicular($id)
+    {
+      $cita=Cita::find($id);
+      $view=View::make('evaluacionmedica.reportes.certificadoconduccionvehiculos',compact('cita'));
+      $pdf = \App::make('dompdf.wrapper');
+      $pdf->loadHTML($view);
+      $pdf->stream($view);
+      return $pdf->stream();
     }
 }

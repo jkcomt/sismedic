@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\AntperHistoriaOcupacionales;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use App\Cita;
+use App\Paciente;
+use View;
 class AntperHistoriaOcupacionalesController extends Controller
 {
     /**
@@ -141,4 +144,22 @@ class AntperHistoriaOcupacionalesController extends Controller
     {
         //
     }
+
+
+
+
+
+  public function reporte_antecedentes_ocupacionales($id)
+  {
+    $paciente=Paciente::find($id);
+  //  $view=View::make('evaluacionmedica.reportes.certificadoconduccionvehiculos',compact('cita'));
+  $view=View::make('evaluacionmedica.reportes.antecedentesocupacionales',compact('paciente'));
+    $pdf = \App::make('dompdf.wrapper');
+    $pdf->loadHTML($view);
+    $pdf->setPaper([0, 0,595.276 ,841.89 ], 'landscape');
+    $pdf->stream($view);
+    return $pdf->stream();
+  }
+
+
 }
