@@ -795,5 +795,6 @@
     <script src="{{asset('js/evaluacionmedica/examen/conduccionvehicular.js')}}"></script>
     <script src="{{asset('js/evaluacionmedica/examen/cuestionarionordico.js')}}"></script>
     <script src="{{asset('js/evaluacionmedica/examen/evaluacioncognitiva.js')}}"></script>
+    <script src="{{asset('js/evaluacionmedica/examen/usorespiradores.js')}}"></script>
     {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>--}}
 @endsection

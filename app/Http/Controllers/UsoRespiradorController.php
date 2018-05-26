@@ -215,11 +215,16 @@ class UsoRespiradorController extends Controller
                 'equipo_matpel_respuesta_emergencia'=>'nullable',
                 //7.3
                 //
-                'autorizacion_clase_i'=>'nullable',
-                'autorizacion_clase_ii'=>'nullable',
-                'autorizacion_clase_iii'=>'nullable',
-                'autorizacion_clase_iv'=>'nullable',
-                'autorizacion_clase_v'=>'nullable',
+                'autorizacion_clase'=>'nullable',
+
+                'uso_emergencia_solamente'=>'nullable',
+                'solo_papr'=>'nullable',
+                'no_sbca'=>'nullable',
+                'autorizacion_otros'=>'nullable',
+//                'autorizacion_clase_ii'=>'nullable',
+//                'autorizacion_clase_iii'=>'nullable',
+//                'autorizacion_clase_iv'=>'nullable',
+//                'autorizacion_clase_v'=>'nullable',
 
                 //datos medico
                 'nombre_medico'=>'nullable',
@@ -237,8 +242,8 @@ class UsoRespiradorController extends Controller
             //7.1 ficha evaluacion del lugar
             //tipo respirador utilizar
             'tipo_respirador_mascara_polvo'=>isset($data['tipo_respirador_mascara_polvo'])? $data['tipo_respirador_mascara_polvo']:null,
-            'tipo_respirador_media_cara'=>isset($data['tipo_respirador_media_cara'])? $data['']:null,
-            'tipo_respirador_cara_completa'=>isset($data['tipo_respirador_cara_completa'])? $data['']:null,
+            'tipo_respirador_media_cara'=>isset($data['tipo_respirador_media_cara'])? $data['tipo_respirador_media_cara']:null,
+            'tipo_respirador_cara_completa'=>isset($data['tipo_respirador_cara_completa'])? $data['tipo_respirador_cara_completa']:null,
             'tipo_respirador_puri_aire_sin_energia'=>isset($data['tipo_respirador_puri_aire_sin_energia'])? $data['tipo_respirador_puri_aire_sin_energia']:null,
             'tipo_respirador_puri_aire_con_energia'=>isset($data['tipo_respirador_puri_aire_con_energia'])? $data['tipo_respirador_puri_aire_con_energia']:null,
             'tipo_respirador_respirador_atmosfera'=>isset($data['tipo_respirador_respirador_atmosfera'])? $data['tipo_respirador_respirador_atmosfera']:null,
@@ -291,7 +296,7 @@ class UsoRespiradorController extends Controller
             //7.2 ficha evaluacion personal del empleado
             //seccion 1
             //1
-            'fuma'=>isset($data[''])? $data['']:null,
+            'fuma'=>isset($data['fuma'])? $data['fuma']:null,
             //2
             'cond_palpitaciones'=>isset($data['cond_palpitaciones'])? $data['cond_palpitaciones']:null,
             'cond_convulsiones'=>isset($data['cond_convulsiones'])? $data['cond_convulsiones']:null,
@@ -412,11 +417,11 @@ class UsoRespiradorController extends Controller
             'equipo_matpel_respuesta_emergencia'=>isset($data['equipo_matpel_respuesta_emergencia'])? $data['equipo_matpel_respuesta_emergencia']:null,
             //7.3
             //
-            'autorizacion_clase_i'=>isset($data['autorizacion_clase_i'])? $data['autorizacion_clase_i']:null,
-            'autorizacion_clase_ii'=>isset($data['autorizacion_clase_ii'])? $data['autorizacion_clase_ii']:null,
-            'autorizacion_clase_iii'=>isset($data['autorizacion_clase_iii'])? $data['autorizacion_clase_iii']:null,
-            'autorizacion_clase_iv'=>isset($data['autorizacion_clase_iv'])? $data['autorizacion_clase_iv']:null,
-            'autorizacion_clase_v'=>isset($data['autorizacion_clase_v'])? $data['autorizacion_clase_v']:null,
+            'autorizacion_clase'=>isset($data['autorizacion_clase'])? $data['autorizacion_clase']:null,
+            'uso_emergencia_solamente'=>isset($data['uso_emergencia_solamente'])? $data['uso_emergencia_solamente']:null,
+            'solo_papr'=>isset($data['solo_papr'])? $data['solo_papr']:null,
+            'no_sbca'=>isset($data['no_sbca'])? $data['no_sbca']:null,
+            'autorizacion_otros'=>isset($data['autorizacion_otros'])? $data['autorizacion_otros']:null,
 
             //datos medico
             'nombre_medico'=>isset($data['nombre_medico'])? $data['nombre_medico']:null,
@@ -462,6 +467,8 @@ class UsoRespiradorController extends Controller
     public function update(Request $request)
     {
         $usoRespirador = UsoRespirador::find($request['usoRespirador_id']);
+
+        //dd($request['promedio_horas_dia']);
 
         if(request()->ajax()) {
             $data = request()->validate([
@@ -643,11 +650,16 @@ class UsoRespiradorController extends Controller
                 'equipo_matpel_respuesta_emergencia' => 'nullable',
                 //7.3
                 //
-                'autorizacion_clase_i' => 'nullable',
-                'autorizacion_clase_ii' => 'nullable',
-                'autorizacion_clase_iii' => 'nullable',
-                'autorizacion_clase_iv' => 'nullable',
-                'autorizacion_clase_v' => 'nullable',
+                'autorizacion_clase' => 'nullable',
+                'uso_emergencia_solamente'=>'nullable',
+                'solo_papr'=>'nullable',
+                'no_sbca'=>'nullable',
+                'autorizacion_otros'=>'nullable',
+//                'autorizacion_clase_i' => 'nullable',
+//                'autorizacion_clase_ii' => 'nullable',
+//                'autorizacion_clase_iii' => 'nullable',
+//                'autorizacion_clase_iv' => 'nullable',
+//                'autorizacion_clase_v' => 'nullable',
 
                 //datos medico
                 'nombre_medico' => 'nullable',
@@ -664,8 +676,8 @@ class UsoRespiradorController extends Controller
                 //7.1 ficha evaluacion del lugar
                 //tipo respirador utilizar
                 'tipo_respirador_mascara_polvo' => isset($data['tipo_respirador_mascara_polvo']) ? $data['tipo_respirador_mascara_polvo'] : null,
-                'tipo_respirador_media_cara' => isset($data['tipo_respirador_media_cara']) ? $data[''] : null,
-                'tipo_respirador_cara_completa' => isset($data['tipo_respirador_cara_completa']) ? $data[''] : null,
+                'tipo_respirador_media_cara' => isset($data['tipo_respirador_media_cara']) ? $data['tipo_respirador_media_cara'] : null,
+                'tipo_respirador_cara_completa' => isset($data['tipo_respirador_cara_completa']) ? $data['tipo_respirador_cara_completa'] : null,
                 'tipo_respirador_puri_aire_sin_energia' => isset($data['tipo_respirador_puri_aire_sin_energia']) ? $data['tipo_respirador_puri_aire_sin_energia'] : null,
                 'tipo_respirador_puri_aire_con_energia' => isset($data['tipo_respirador_puri_aire_con_energia']) ? $data['tipo_respirador_puri_aire_con_energia'] : null,
                 'tipo_respirador_respirador_atmosfera' => isset($data['tipo_respirador_respirador_atmosfera']) ? $data['tipo_respirador_respirador_atmosfera'] : null,
@@ -718,7 +730,7 @@ class UsoRespiradorController extends Controller
                 //7.2 ficha evaluacion personal del empleado
                 //seccion 1
                 //1
-                'fuma' => isset($data['']) ? $data[''] : null,
+                'fuma' => isset($data['fuma']) ? $data['fuma'] : null,
                 //2
                 'cond_palpitaciones' => isset($data['cond_palpitaciones']) ? $data['cond_palpitaciones'] : null,
                 'cond_convulsiones' => isset($data['cond_convulsiones']) ? $data['cond_convulsiones'] : null,
@@ -839,11 +851,17 @@ class UsoRespiradorController extends Controller
                 'equipo_matpel_respuesta_emergencia' => isset($data['equipo_matpel_respuesta_emergencia']) ? $data['equipo_matpel_respuesta_emergencia'] : null,
                 //7.3
                 //
-                'autorizacion_clase_i' => isset($data['autorizacion_clase_i']) ? $data['autorizacion_clase_i'] : null,
-                'autorizacion_clase_ii' => isset($data['autorizacion_clase_ii']) ? $data['autorizacion_clase_ii'] : null,
-                'autorizacion_clase_iii' => isset($data['autorizacion_clase_iii']) ? $data['autorizacion_clase_iii'] : null,
-                'autorizacion_clase_iv' => isset($data['autorizacion_clase_iv']) ? $data['autorizacion_clase_iv'] : null,
-                'autorizacion_clase_v' => isset($data['autorizacion_clase_v']) ? $data['autorizacion_clase_v'] : null,
+                'autorizacion_clase' => isset($data['autorizacion_clase']) ? $data['autorizacion_clase'] : null,
+                'uso_emergencia_solamente'=> isset($data['uso_emergencia_solamente']) ? $data['uso_emergencia_solamente'] : null,
+                'solo_papr'=> isset($data['solo_papr']) ? $data['solo_papr'] : null,
+                'no_sbca'=> isset($data['no_sbca']) ? $data['no_sbca'] : null,
+                'autorizacion_otros'=>isset($data['autorizacion_otros']) ? $data['autorizacion_otros'] : null,
+
+//                'autorizacion_clase_i' => isset($data['autorizacion_clase_i']) ? $data['autorizacion_clase_i'] : null,
+//                'autorizacion_clase_ii' => isset($data['autorizacion_clase_ii']) ? $data['autorizacion_clase_ii'] : null,
+//                'autorizacion_clase_iii' => isset($data['autorizacion_clase_iii']) ? $data['autorizacion_clase_iii'] : null,
+//                'autorizacion_clase_iv' => isset($data['autorizacion_clase_iv']) ? $data['autorizacion_clase_iv'] : null,
+//                'autorizacion_clase_v' => isset($data['autorizacion_clase_v']) ? $data['autorizacion_clase_v'] : null,
 
                 //datos medico
                 'nombre_medico' => isset($data['nombre_medico']) ? $data['nombre_medico'] : null,
