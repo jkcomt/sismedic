@@ -10,6 +10,7 @@
       EVALUACIÓN MÉDICA  <br>{{$paciente->apellido_paterno ." ".$paciente->apellido_materno." ".$paciente->nombres." | ".$paciente->perfil->descripcion}}
     </div>
     <div class="col-md-6 text-right">
+      <a href="{{route('historia_ocupacional.reporte',[$paciente->id])}}" target="_blank"  class="btn btn-success">ANTECEDENTES OCUPACIONAL</a>
       <a href="{{route('evaluacion_medica.index')}}" class="btn btn-warning">VOLVER A CATÁLOGO</a>
     </div>
   </div>

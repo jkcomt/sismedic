@@ -208,7 +208,8 @@ class Paciente extends Model
     }
     public function antperhistoriaocupacional()
     {
-        return $this->hasOne(AntperHistoriaOcupacionales::class);
+      //cuando es a varios debe ser hasmany
+        return $this->hasMany(AntperHistoriaOcupacionales::class);
     }
     public function perfil()
     {

@@ -10,7 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 //Route::get('/', function () {
 //    return view('auth/login');
 //});.
@@ -338,6 +337,12 @@ Route::group([
   Route::post('/accidentes_particular/actualizar','AntperAccidenteParticularesController@update')->name('accidentes_particular.update');
 
 });
+
+
+
+Route::group(["prefix"=>"historia_ocupacional"],function(){
+Route::get('/reporte/{id}','AntperHistoriaOcupacionalesController@reporte_antecedentes_ocupacionales')->name('historia_ocupacional.reporte');
+});
 //Route::resource('velocidad_sedimentacion','VelocidadSedimentacionController');
 Route::group(["prefix"=>"sedimentacion"],function(){
   Route::post('/crear','VelocidadSedimentacionController@store')->name('velocidad_sedimentacion.store');
@@ -419,6 +424,7 @@ Route::group(["prefix"=>"gamma"],function(){
 Route::group(["prefix"=>"conduccion_vehicular"],function(){
   Route::post('/crear','EvaluacionConduccionVehiculosController@store')->name('conduccion_vehicular.store');
   Route::post('/actualizar','EvaluacionConduccionVehiculosController@update')->name('conduccion_vehicular.update');
+  Route::get('/{id}/reporte','EvaluacionConduccionVehiculosController@reporte_certificacion_conduccion_vehicular')->name('conduccion_vehicular.reporte');
 });
 
 //Route::resource('hemograma','HemogramaController');
@@ -443,6 +449,7 @@ Route::group(["prefix"=>"orina"],function(){
 Route::group(["prefix"=>"trabajo_altura"],function(){
   Route::post('/crear','SuficienciaTrabajoAlturaController@store')->name('trabajo_altura.store');
   Route::post('/actualizar','SuficienciaTrabajoAlturaController@update')->name('trabajo_altura.update');
+  Route::get('/{id}/reporte','SuficienciaTrabajoAlturaController@reporte_certificacion_suficiencia_medica')->name('trabajo_altura.reporte');
 });
 
 
