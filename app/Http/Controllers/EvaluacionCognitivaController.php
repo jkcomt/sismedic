@@ -109,7 +109,7 @@ class EvaluacionCognitivaController extends Controller
                 'tiene_27_monedas'=>isset($data['tiene_27_monedas'])? $data['tiene_27_monedas']:null,
                 'tiene_24_monedas'=>isset($data['tiene_24_monedas'])? $data['tiene_24_monedas']:null,
                 'tiene_21_monedas'=>isset($data['tiene_21_monedas'])? $data['tiene_21_monedas']:null,
-                'tiene_18_monedas'=>isset($data[''])? $data['']:null,
+                'tiene_18_monedas'=>isset($data['tiene_18_monedas'])? $data['tiene_18_monedas']:null,
 
                 'toma_papel'=>isset($data['toma_papel'])? $data['toma_papel']:null,
                 'dobla_mitad'=>isset($data['dobla_mitad'])? $data['dobla_mitad']:null,
@@ -246,7 +246,7 @@ class EvaluacionCognitivaController extends Controller
                 'tiene_27_monedas'=>isset($data['tiene_27_monedas'])? $data['tiene_27_monedas']:null,
                 'tiene_24_monedas'=>isset($data['tiene_24_monedas'])? $data['tiene_24_monedas']:null,
                 'tiene_21_monedas'=>isset($data['tiene_21_monedas'])? $data['tiene_21_monedas']:null,
-                'tiene_18_monedas'=>isset($data[''])? $data['']:null,
+                'tiene_18_monedas'=>isset($data['tiene_18_monedas'])? $data['tiene_18_monedas']:null,
 
                 'toma_papel'=>isset($data['toma_papel'])? $data['toma_papel']:null,
                 'dobla_mitad'=>isset($data['dobla_mitad'])? $data['dobla_mitad']:null,
