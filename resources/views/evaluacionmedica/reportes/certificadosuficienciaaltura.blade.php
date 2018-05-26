@@ -54,7 +54,7 @@
       <td colspan="1">Apellidos y Nombres </td>
       <td colspan="3" width="50%"> {{$cita->paciente->apellido_paterno." ".$cita->paciente->apellido_materno." ".$cita->paciente->nombres}} </td>
       <td colspan="1">Fecha</td>
-      <td colspan="4" width="15%">QUE FECHA SE MUESTRA</td>
+      <td colspan="4" width="15%" style="color:red;font-size:xx-small;">que fecha se muestra</td>
     </tr>
     <tr>
       <td colspan="1">DNI </td>
@@ -162,7 +162,7 @@
       </td>
 
       <td style="font-size:xx-small;">Personas que consumen sustancias estupefacientes o psicotrópicas en niveles que no alteren su capacidad de trabajar, pero que se encuentran sin tratamiento o en tratamiento sin prescripción médica.</td>
-      <td align="left">
+      <td align="center">
         @isset($cita->sudicienciatrabajoaltura->anamnesis_item4)
             @if($cita->sudicienciatrabajoaltura->anamnesis_item4=='1')
               x
@@ -199,7 +199,7 @@
       <td style="font-size:xx-small;">
           Personas que como consecuencia de una enfermedad o su tratamiento, sufran uno o varios de los siguientes efectos: alteración del estado de consciencia, alteración del equilibrio, en la percepción, en la habilidad motriz, en la estabilidad emocional y en el juicio.
       </td>
-      <td align="left">
+      <td align="center">
         @isset($cita->sudicienciatrabajoaltura->anamnesis_item6)
             @if($cita->sudicienciatrabajoaltura->anamnesis_item6=='1')
               x
@@ -237,7 +237,7 @@
       <td style="font-size:xx-small;">
         Síndrome Apnea Obstructiva del sueño
       </td>
-      <td align="left">
+      <td align="center">
         @isset($cita->sudicienciatrabajoaltura->anamnesis_item8)
             @if($cita->sudicienciatrabajoaltura->anamnesis_item8=='1')
               x
@@ -256,7 +256,7 @@
 
     <tr>
       <td style="font-size:xx-small;">
-        Diabetes mellitus o hipoglicemia, convulsiones
+        Anemia de cualquier grado, según criterios OMS 2011.
       </td>
       <td align="left">
         @isset($cita->sudicienciatrabajoaltura->anamnesis_item9)
@@ -276,7 +276,7 @@
       <td style="font-size:xx-small;">
         Obesidad (IMC > o igual a 30)
       </td>
-      <td align="left">
+      <td align="center">
         @isset($cita->sudicienciatrabajoaltura->anamnesis_item10)
             @if($cita->sudicienciatrabajoaltura->anamnesis_item10=='1')
               x
@@ -300,7 +300,7 @@
       <td style="color:red;font-size:xx-small;">¿?</td>
 
       <td style="font-size:xx-small;">
-        Anemia de cualquier grado, según criterios OMS 2011.
+        Diabetes mellitus o hipoglicemia, convulsiones
     </td>
       <td style="color:red;font-size:xx-small;">¿?</td>
       <td style="color:red;font-size:xx-small;">¿?</td>
@@ -438,7 +438,7 @@ Limitación en fuerza y/o movilidad de extremidades (Mayor a 2Kg / fuerza cada m
       <td style="font-size:xx-small;">
 Presencia de nistagmus
       </td>
-      <td align="left" style="font-size:xx-small;">
+      <td align="center" style="font-size:xx-small;">
         @isset($cita->sudicienciatrabajoaltura->exploracion_fisica_item_2)
             @if($cita->sudicienciatrabajoaltura->exploracion_fisica_item_2=='1')
               x
@@ -475,7 +475,7 @@ Alteración presente del equilibrio
       <td style="font-size:xx-small;">
 Anormalidad en movimientos oculares
       </td>
-      <td align="left" style="font-size:xx-small;">
+      <td align="center" style="font-size:xx-small;">
         @isset($cita->sudicienciatrabajoaltura->exploracion_fisica_item_4)
             @if($cita->sudicienciatrabajoaltura->exploracion_fisica_item_4=='1')
               x
@@ -512,7 +512,7 @@ Anormalidad en la marcha
       <td style="font-size:xx-small;">
 Pupilas no CIRLA
       </td>
-      <td align="left" style="font-size:xx-small;">
+      <td align="center" style="font-size:xx-small;">
         @isset($cita->sudicienciatrabajoaltura->exploracion_fisica_item_6)
             @if($cita->sudicienciatrabajoaltura->exploracion_fisica_item_6=='1')
               x
@@ -552,7 +552,7 @@ Pupilas no CIRLA
       <td style="font-size:xx-small;">
         Anormalidad del lenguaje 0800 16253
       </td>
-      <td align="left" style="font-size:xx-small;">
+      <td align="center" style="font-size:xx-small;">
         @isset($cita->sudicienciatrabajoaltura->exploracion_fisica_item_8)
             @if($cita->sudicienciatrabajoaltura->exploracion_fisica_item_8=='1')
               x
@@ -590,7 +590,7 @@ Asimetría facial
       <td style="font-size:xx-small;">
 Movimientos involuntarios
       </td>
-      <td align="left" style="font-size:xx-small;">
+      <td align="center" style="font-size:xx-small;">
         @isset($cita->sudicienciatrabajoaltura->exploracion_fisica_item_10)
             @if($cita->sudicienciatrabajoaltura->exploracion_fisica_item_10=='1')
               x

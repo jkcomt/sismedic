@@ -233,124 +233,140 @@ $('#registrarPaciente').submit(function(e){
         {
            $('input[name=apellido_paterno]').parent().addClass('has-error')
             $('input[name=apellido_paterno]').focus()
-  /*          if(data.responseJSON.errors.apellido_materno) $('input[name=apellido_materno]').parent().addClass('has-error')
-            if(data.responseJSON.errors.nombres)  $('input[name=nombres]').parent().addClass('has-error')
-            if(data.responseJSON.errors.paisOrigen)  $('#paisOrigen').parent().addClass('has-error')
-            if(data.responseJSON.errors.departamentoOrigen)$('#departamentoOrigen').parent().addClass('has-error')
-*/
+          myFunc(data.responseJSON.errors);
           }
-        if(data.responseJSON.errors.apellido_materno)
+          else if(data.responseJSON.errors.apellido_materno)
          {
              $('input[name=apellido_materno]').parent().addClass('has-error')
              $('input[name=apellido_materno]').focus()
-
+                   myFunc(data.responseJSON.errors);
          }
-       if(data.responseJSON.errors.nombres)
+         else if(data.responseJSON.errors.nombres)
          {
              $('input[name=nombres]').parent().addClass('has-error')
              $('input[name=nombres]').focus()
+                   myFunc(data.responseJSON.errors);
          }
-         if(data.responseJSON.errors.jefe_inmediato)
+         else if(data.responseJSON.errors.jefe_inmediato)
          {
              $('input[name=jefe_inmediato]').parent().addClass('has-error')
               $('input[name=jefe_inmediato]').focus()
+                    myFunc(data.responseJSON.errors);
          }
-           if(data.responseJSON.errors.departamentoOrigen)
+          else if(data.responseJSON.errors.departamentoOrigen)
          {
              $('#departamentoOrigen').parent().addClass('has-error')
              $('#departamentoOrigen').focus()
-
+                   myFunc(data.responseJSON.errors);
          }
-           if(data.responseJSON.errors.distritoOrigen)
+        else  if(data.responseJSON.errors.distritoOrigen)
          {
              $('#distritoOrigen').parent().addClass('has-error')
               $('#distritoOrigen').focus()
+                    myFunc(data.responseJSON.errors);
          }
-         if(data.responseJSON.errors.provinciaOrigen)
+         else if(data.responseJSON.errors.provinciaOrigen)
         {
             $('#provinciaOrigen').parent().addClass('has-error')
             $('#provinciaOrigen').focus()
+                  myFunc(data.responseJSON.errors);
         }
 
-         if(data.responseJSON.errors.departamentoDomicilio)
+        else  if(data.responseJSON.errors.departamentoDomicilio)
        {
            $('#departamentoDomGroup').parent().addClass('has-error')
             $('#departamentoDomGroup').focus()
+                  myFunc(data.responseJSON.errors);
        }
-        if(data.responseJSON.errors.provinciaDomicilio)
+      else  if(data.responseJSON.errors.provinciaDomicilio)
        {
            $('#provinciaDomGroup').parent().addClass('has-error')
            $('#provinciaDomGroup').focus()
+                 myFunc(data.responseJSON.errors);
        }
-       if(data.responseJSON.errors.distritoDom)
+       else if(data.responseJSON.errors.distritoDom)
       {
           $('#distritoDom').parent().addClass('has-error')
           $('#distritoDom').focus()
+                myFunc(data.responseJSON.errors);
       }
-        if(data.responseJSON.errors.direccion)
+      else  if(data.responseJSON.errors.direccion)
       {
           $('#direcciontxt').parent().addClass('has-error')
             $('#direcciontxt').focus()
+                  myFunc(data.responseJSON.errors);
       }
-       if(data.responseJSON.errors.telf_fijo)
+      else if(data.responseJSON.errors.telf_fijo)
       {
           $('input[name=telf_fijo]').parent().addClass('has-error')
           $('input[name=telf_fijo]').focus();
+                myFunc(data.responseJSON.errors);
       }
-        if(data.responseJSON.errors.celular)
+      else  if(data.responseJSON.errors.celular)
        {
            $('input[name=celular]').parent().addClass('has-error')
            $('input[name=celular]').focus();
+                 myFunc(data.responseJSON.errors);
        }
-        if(data.responseJSON.errors.trabajo)
+      else  if(data.responseJSON.errors.trabajo)
        {
           $('input[name=trabajo]').parent().addClass('has-error')
           $('input[name=celular]').focus();
+                myFunc(data.responseJSON.errors);
        }
-        if(data.responseJSON.errors.tipo_dni)
+     else  if(data.responseJSON.errors.tipo_dni)
        {
           $('select[name=tipo_dni]').parent().addClass('has-error')
             $('select[name=tipo_dni]').focus();
+                  myFunc(data.responseJSON.errors);
        }
-        if(data.responseJSON.errors.num_dni)
+      else  if(data.responseJSON.errors.num_dni)
        {
            $('input[name=num_dni]').parent().addClass('has-error')
            $('input[name=num_dni]').focus();
+                 myFunc(data.responseJSON.errors);
        }
-        if(data.responseJSON.errors.num_dni)
+      else  if(data.responseJSON.errors.num_dni)
        {
            $('input[name=num_dni]').parent().addClass('has-error')
            $('input[name=num_dni]').focus();
+                 myFunc(data.responseJSON.errors);
        }
-        if(data.responseJSON.errors.email)
+      else  if(data.responseJSON.errors.email)
        {
            $('#emails').parent().addClass('has-error')
            $('#emails').focus();
+                 myFunc(data.responseJSON.errors);
        }
-       if(data.responseJSON.errors.comentarios)
+      else if(data.responseJSON.errors.comentarios)
       {
           $('#comentarios').parent().addClass('has-error')
           $('#comentarios').focus();
+                myFunc(data.responseJSON.errors);
       }
-      if(data.responseJSON.errors.alergias)
+    else  if(data.responseJSON.errors.alergias)
      {
          $('#alergias').parent().addClass('has-error')
           $('#alergias').focus();
+                myFunc(data.responseJSON.errors);
      }
-     if(data.responseJSON.errors.regimen)
+     else if(data.responseJSON.errors.regimen)
     {
         $('#regimen').parent().addClass('has-error')
         $('#regimen').focus();
+              myFunc(data.responseJSON.errors);
     }
-    if(data.responseJSON.errors.tiempo_desempeno)
+   else  if(data.responseJSON.errors.tiempo_desempeno)
    {
        $('#tiempo_desempeno').parent().addClass('has-error')
        $('#tiempo_desempeno').focus();
+             myFunc(data.responseJSON.errors);
    }
-   if(data.responseJSON.errors.regimen_descripcion)
+  else if(data.responseJSON.errors.regimen_descripcion)
   {
       $('#regimen_descripcion').parent().addClass('has-error')
       $('#regimen_descripcion').focus();
+            myFunc(data.responseJSON.errors);
   }
         return;
     });
@@ -390,124 +406,141 @@ $('#actualizarPaciente').submit(function(e){
          {
             $('input[name=apellido_paterno]').parent().addClass('has-error')
              $('input[name=apellido_paterno]').focus()
-   /*          if(data.responseJSON.errors.apellido_materno) $('input[name=apellido_materno]').parent().addClass('has-error')
-             if(data.responseJSON.errors.nombres)  $('input[name=nombres]').parent().addClass('has-error')
-             if(data.responseJSON.errors.paisOrigen)  $('#paisOrigen').parent().addClass('has-error')
-             if(data.responseJSON.errors.departamentoOrigen)$('#departamentoOrigen').parent().addClass('has-error')
-  */
+             myFunc(data.responseJSON.errors);
            }
          if(data.responseJSON.errors.apellido_materno)
           {
               $('input[name=apellido_materno]').parent().addClass('has-error')
               $('input[name=apellido_materno]').focus()
-
+                    myFunc(data.responseJSON.errors);
           }
         if(data.responseJSON.errors.nombres)
           {
               $('input[name=nombres]').parent().addClass('has-error')
               $('input[name=nombres]').focus()
+                    myFunc(data.responseJSON.errors);
           }
           if(data.responseJSON.errors.jefe_inmediato)
           {
               $('input[name=jefe_inmediato]').parent().addClass('has-error')
                $('input[name=jefe_inmediato]').focus()
+                     myFunc(data.responseJSON.errors);
           }
             if(data.responseJSON.errors.departamentoOrigen)
           {
               $('#departamentoOrigen').parent().addClass('has-error')
               $('#departamentoOrigen').focus()
+                    myFunc(data.responseJSON.errors);
 
           }
             if(data.responseJSON.errors.distritoOrigen)
           {
               $('#distritoOrigen').parent().addClass('has-error')
                $('#distritoOrigen').focus()
+                     myFunc(data.responseJSON.errors);
           }
           if(data.responseJSON.errors.provinciaOrigen)
          {
              $('#provinciaOrigen').parent().addClass('has-error')
              $('#provinciaOrigen').focus()
+                   myFunc(data.responseJSON.errors);
          }
 
           if(data.responseJSON.errors.departamentoDomicilio)
         {
             $('#departamentoDomGroup').parent().addClass('has-error')
              $('#departamentoDomGroup').focus()
+                   myFunc(data.responseJSON.errors);
         }
          if(data.responseJSON.errors.provinciaDomicilio)
         {
             $('#provinciaDomGroup').parent().addClass('has-error')
             $('#provinciaDomGroup').focus()
+                  myFunc(data.responseJSON.errors);
         }
         if(data.responseJSON.errors.distritoDom)
        {
            $('#distritoDom').parent().addClass('has-error')
            $('#distritoDom').focus()
+                 myFunc(data.responseJSON.errors);
        }
          if(data.responseJSON.errors.direccion)
        {
            $('#direcciontxt').parent().addClass('has-error')
              $('#direcciontxt').focus()
+                   myFunc(data.responseJSON.errors);
        }
         if(data.responseJSON.errors.telf_fijo)
        {
            $('input[name=telf_fijo]').parent().addClass('has-error')
            $('input[name=telf_fijo]').focus();
+                 myFunc(data.responseJSON.errors);
        }
          if(data.responseJSON.errors.celular)
         {
             $('input[name=celular]').parent().addClass('has-error')
             $('input[name=celular]').focus();
+                  myFunc(data.responseJSON.errors);
         }
          if(data.responseJSON.errors.trabajo)
         {
            $('input[name=trabajo]').parent().addClass('has-error')
            $('input[name=celular]').focus();
+                 myFunc(data.responseJSON.errors);
         }
          if(data.responseJSON.errors.tipo_dni)
         {
            $('select[name=tipo_dni]').parent().addClass('has-error')
              $('select[name=tipo_dni]').focus();
+                   myFunc(data.responseJSON.errors);
         }
          if(data.responseJSON.errors.num_dni)
         {
             $('input[name=num_dni]').parent().addClass('has-error')
             $('input[name=num_dni]').focus();
+                  myFunc(data.responseJSON.errors);
         }
          if(data.responseJSON.errors.num_dni)
         {
             $('input[name=num_dni]').parent().addClass('has-error')
             $('input[name=num_dni]').focus();
+                  myFunc(data.responseJSON.errors);
         }
          if(data.responseJSON.errors.email)
         {
             $('#emails').parent().addClass('has-error')
             $('#emails').focus();
+                  myFunc(data.responseJSON.errors);
         }
         if(data.responseJSON.errors.comentarios)
        {
            $('#comentarios').parent().addClass('has-error')
            $('#comentarios').focus();
+                 myFunc(data.responseJSON.errors);
        }
        if(data.responseJSON.errors.alergias)
       {
           $('#alergias').parent().addClass('has-error')
            $('#alergias').focus();
+                 myFunc(data.responseJSON.errors);
       }
       if(data.responseJSON.errors.regimen)
      {
          $('#regimen').parent().addClass('has-error')
          $('#regimen').focus();
+               myFunc(data.responseJSON.errors);
      }
      if(data.responseJSON.errors.tiempo_desempeno)
     {
         $('#tiempo_desempeno').parent().addClass('has-error')
         $('#tiempo_desempeno').focus();
+              myFunc(data.responseJSON.errors);
     }
     if(data.responseJSON.errors.regimen_descripcion)
      {
          $('#regimen_descripcion').parent().addClass('has-error')
          $('#regimen_descripcion').focus();
+               myFunc(data.responseJSON.errors);
      }
        return;
         })
@@ -617,6 +650,32 @@ $('#buscarPaciente').on('keyup',function(){
         }
     });
 });
+
+
+function myFunc(errores) {
+  if(errores.apellido_paterno)$('input[name=apellido_paterno]').parent().addClass('has-error')
+  if(errores.apellido_materno) $('input[name=apellido_materno]').parent().addClass('has-error')
+  if(errores.nombres)  $('input[name=nombres]').parent().addClass('has-error')
+  if(errores.paisOrigen)  $('#paisOrigen').parent().addClass('has-error')
+  if(errores.departamentoOrigen)$('#departamentoOrigen').parent().addClass('has-error')
+  if(errores.distritoOrigen) $('#distritoOrigen').parent().addClass('has-error')
+  if(errores.provinciaOrigen)  $('#provinciaOrigen').parent().addClass('has-error')
+  if(errores.departamentoDomicilio)$('#departamentoDomGroup').parent().addClass('has-error')
+  if(errores.provinciaDomicilio)$('#provinciaDomGroup').parent().addClass('has-error')
+  if(errores.distritoDom)$('#distritoDom').parent().addClass('has-error')
+  if(errores.direccion)$('#direcciontxt').parent().addClass('has-error')
+  if(errores.celular)$('input[name=celular]').parent().addClass('has-error')
+  if(errores.trabajo)  $('input[name=trabajo]').parent().addClass('has-error')
+  if(errores.tipo_dni)  $('select[name=tipo_dni]').parent().addClass('has-error')
+  if(errores.num_dni)  $('input[name=num_dni]').parent().addClass('has-error')
+  if(errores.email) $('#emails').parent().addClass('has-error')
+  if(errores.comentarios) $('#comentarios').parent().addClass('has-error')
+  if(errores.alergias) $('#alergias').parent().addClass('has-error')
+  if(errores.regimen)$('#regimen').parent().addClass('has-error')
+  if(errores.tiempo_desempeno)$('#tiempo_desempeno').parent().addClass('has-error')
+  if(errores.regimen_descripcion)$('#regimen_descripcion').parent().addClass('has-error')
+//console.log("errores json");
+}
 
 $('body').on('click','button[name=imprimirPaciente]',function(e){
   var url = window.location.protocol + "//" + window.location.host+"/pacientes/reporte/"+$idCita+"/detalle/"

@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\UsoRespirador;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use App\Cita;
+use View;
+use Illuminate\Support\Facades\DB;
+
 class UsoRespiradorController extends Controller
 {
     /**
@@ -888,4 +892,17 @@ class UsoRespiradorController extends Controller
     {
         //
     }
+
+    public function reporte_uso_respiradores($id){
+      $cita=Cita::find($id);
+      $view=View::make('evaluacionmedica.reportes.usorespiradores',compact('cita'));
+      $pdf = \App::make('dompdf.wrapper');
+      $pdf->loadHTML($view);
+      $pdf->stream($view);
+      return $pdf->stream();
+    }
+
+
+
+
 }

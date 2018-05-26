@@ -485,4 +485,5 @@ Route::group(["prefix"=>"evaluacion_cognitiva"],function(){
 Route::group(["prefix"=>"uso_respiradores"],function(){
     Route::post('/crear','UsoRespiradorController@store')->name('uso_respiradores.store');
     Route::post('/actualizar','UsoRespiradorController@update')->name('uso_respiradores.update');
+    Route::get('/reporte/{id}','UsoRespiradorController@reporte_uso_respiradores')->name('uso_respiradores.reporte');
 });

@@ -51,25 +51,25 @@
       <td colspan="9" align="left" class="tdheader">1.- FILACION(a partir del registro medico)</td>
     </tr>
     <tr>
-      <td colspan="1">Apellidos y Nombres</td>
-      <td colspan="3" width="50%"></td>
+      <td colspan="1">Apellidos y Nombres </td>
+      <td colspan="3" width="50%"> {{$cita->paciente->apellido_paterno." ".$cita->paciente->apellido_materno." ".$cita->paciente->nombres}} </td>
       <td colspan="1">Fecha</td>
-      <td colspan="4" width="15%">15/20/2018</td>
+      <td colspan="4" width="15%" style="color:red;font-size:xx-small;">que fecha se muestra</td>
     </tr>
     <tr>
-      <td colspan="1">DNI</td>
-      <td colspan="1">70197972</td>
+      <td colspan="1">DNI </td>
+      <td colspan="1">{{$cita->paciente->num_dni}}</td>
       <td colspan="1">EDAD</td>
-      <td colspan="1">27 años </td>
+      <td colspan="1">{{\Carbon\Carbon::parse($cita->paciente->fecha_nacimiento)->age.' años'}} </td>
       <td colspan="1">SEXO</td>
       <td colspan="1" align="rig">M</td>
-      <td colspan="1">X</td>
+      <td colspan="1">@isset($cita->paciente->sexo) @if($cita->paciente->sexo=='masculino') x @endif @endisset</td>
       <td colspan="1">F</td>
-      <td colspan="1">X</td>
+      <td colspan="1">@isset($cita->paciente->sexo) @if($cita->paciente->sexo=='femenino') x @endif  @endisset</td>
     </tr>
     <tr>
       <td colspan="1">Área de Trabajo</td>
-      <td colspan="8"></td>
+      <td colspan="8">{{$cita->paciente->comentarios}}</td>
     </tr>
     <tr>
       <td colspan="1">Empresa</td>
@@ -81,12 +81,21 @@
     <tr>
 
     <td width="22%">Años de Experiencia</td>
-    <td width="10%">55 Años</td>
+    <td width="10%">?¿</td>
     <td width="16%"></td>
     <td width="16%">Primera Actitud</td>
-    <td width="8%">X</td>
+    <td width="8%">@isset($cita->conduccionvehiculo->primera_aptitud)
+        @if($cita->conduccionvehiculo->primera_aptitud=='1')
+          x
+        @endif
+    @endisset
+  </td>
     <td width="16%" align="center">Revalidacion</td>
-    <td width="8%">X</td>
+    <td width="8%">@isset($cita->conduccionvehiculo->revalidacion)
+        @if($cita->conduccionvehiculo->revalidacion=='1')
+          x
+        @endif
+    @endisset</td>
   </tr>
   </table>
   <table>
@@ -104,63 +113,183 @@
 
     <tr>
       <td style="font-size:xx-small;">Todas las enfermedades que produzcan alteración de la consciencia sin importar su causa e independiente de su tratamiento</td>
-      <td></td>
-      <td></td>
+      <td align="left">
+        @isset($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades1)
+            @if($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades1=='1')
+              x
+            @endif
+        @endisset
+      </td>
+      <td align="center">
+        @isset($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades1)
+            @if($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades1=='0')
+              x
+            @endif
+        @endisset
+      </td>
 
       <td style="font-size:xx-small;">Personas que consumen sustancias estupefacientes o psicotrópicas en niveles que alteren su capacidad o trabajar como controlar un vehículo.</td>
-      <td></td>
-      <td></td>
+      <td align="center">
+        @isset($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades2)
+            @if($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades2=='1')
+              x
+            @endif
+        @endisset
+      </td>
+      <td align="center">
+        @isset($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades2)
+            @if($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades2=='0')
+              x
+            @endif
+        @endisset
+      </td>
     </tr>
     <tr>
       <td style="font-size:xx-small;">Alcoholismo crónico y en general todas aquellas enfermedades que produzcan incapacidad de efectuar movimientos voluntarios y/o que limiten la capacidad de trabajo como conducción, manejo o control físico de un vehículo motorizado, subir y bajar escaleras, etc.</td>
-      <td></td>
-      <td></td>
+      <td align="left">
+        @isset($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades3)
+            @if($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades3=='1')
+              x
+            @endif
+        @endisset
+      </td>
+      <td align="center">
+        @isset($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades3)
+            @if($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades3=='0')
+              x
+            @endif
+        @endisset
+      </td>
 
       <td style="font-size:xx-small;">Personas que consumen sustancias estupefacientes o psicotrópicas en niveles que no alteren su capacidad de trabajar, pero que se encuentran sin tratamiento o en tratamiento sin prescripción médica.</td>
-      <td></td>
-      <td></td>
+      <td align="center">
+        @isset($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades4)
+            @if($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades4=='1')
+              x
+            @endif
+        @endisset
+      </td>
+      <td align="center">
+        @isset($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades4)
+            @if($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades4=='0')
+              x
+            @endif
+        @endisset
+      </td>
     </tr>
     <tr>
       <td style="font-size:xx-small;">
           Todas aquellas enfermedades que se caractericen por movimientos involuntarios y que interfieran seriamente su capacidad de trabajar, independiente de su tratamiento farmacológico.
       </td>
-      <td></td>
-      <td></td>
+      <td align="left">
+        @isset($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades5)
+            @if($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades5=='1')
+              x
+            @endif
+        @endisset
+      </td>
+      <td align="center">
+        @isset($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades5)
+            @if($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades5=='0')
+              x
+            @endif
+        @endisset
+      </td>
 
       <td style="font-size:xx-small;">
           Personas que como consecuencia de una enfermedad o su tratamiento, sufran uno o varios de los siguientes efectos: alteración del estado de consciencia, alteración del equilibrio, en la percepción, en la habilidad motriz, en la estabilidad emocional y en el juicio.
       </td>
-      <td></td>
-      <td></td>
+      <td align="center">
+        @isset($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades6)
+            @if($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades6=='1')
+              x
+            @endif
+        @endisset
+      </td>
+      <td align="center">
+        @isset($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades6)
+            @if($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades6=='0')
+              x
+            @endif
+        @endisset
+      </td>
 
     </tr>
     <tr>
       <td style="font-size:xx-small;">
         Perdida recurrente de la consciencia, independiente de su tratamiento, tales como narcolepsia, epilepsia, etc.
       </td>
-      <td></td>
-      <td></td>
+      <td align="left">
+        @isset($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades7)
+            @if($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades7=='1')
+              x
+            @endif
+        @endisset
+      </td>
+      <td align="center">
+        @isset($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades7)
+            @if($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades7=='0')
+              x
+            @endif
+        @endisset
+      </td>
 
       <td style="font-size:xx-small;">
         Síndrome Apnea Obstructiva del sueño
       </td>
-      <td></td>
-      <td></td>
+      <td align="center">
+        @isset($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades8)
+            @if($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades8=='1')
+              x
+            @endif
+        @endisset
+      </td>
+      <td align="center">
+        @isset($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades8)
+            @if($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades8=='0')
+              x
+            @endif
+        @endisset
+      </td>
 
     </tr>
 
     <tr>
       <td style="font-size:xx-small;">
-        Diabetes mellitus o hipoglicemia, convulsiones
+        Anemia de cualquier grado, según criterios OMS 2011.
       </td>
-      <td></td>
-      <td></td>
+      <td align="left">
+        @isset($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades9)
+            @if($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades9=='1')
+              x
+            @endif
+        @endisset
+      </td>
+      <td align="center">
+        @isset($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades9)
+            @if($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades9=='0')
+              x
+            @endif
+        @endisset
+      </td>
 
       <td style="font-size:xx-small;">
         Obesidad (IMC > o igual a 30)
     </td>
-      <td></td>
-      <td></td>
+    <td align="center">
+      @isset($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades10)
+          @if($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades10=='1')
+            x
+          @endif
+      @endisset
+    </td>
+    <td align="center">
+      @isset($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades10)
+          @if($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades10=='0')
+            x
+          @endif
+      @endisset
+    </td>
 
     </tr>
     <tr>
@@ -171,7 +300,7 @@
       <td></td>
 
       <td style="font-size:xx-small;">
-        Anemia de cualquier grado, según criterios OMS 2011.
+        Diabetes mellitus o hipoglicemia, convulsiones
     </td>
       <td></td>
       <td></td>
@@ -292,7 +421,7 @@
       <td style="font-size:xx-small;" > <label for="" style="font-weight:normal;">ICC </label> <label for="">85959</label> </td>
     </tr>
   </table>
-    <table>
+    <table style="font-size:xx-small;">
     <tr>
       <td width="40%"></td>
       <td width="5%" align="left" style="font-size:x-small;">SI</td>
@@ -306,70 +435,190 @@
       <td style="font-size:xx-small;">
 Limitación en fuerza y/o movilidad de extremidades (Mayor a 5Kg / fuerza cada mano)
       </td>
-      <td></td>
-      <td></td>
+      <td align="left">
+        @isset($cita->conduccionvehiculo->exploracion_fisica_capacidades1)
+            @if($cita->conduccionvehiculo->exploracion_fisica_capacidades1=='1')
+              x
+            @endif
+        @endisset
+      </td>
+      <td align="center">
+        @isset($cita->conduccionvehiculo->exploracion_fisica_capacidades1)
+            @if($cita->conduccionvehiculo->exploracion_fisica_capacidades1=='0')
+              x
+            @endif
+        @endisset
+      </td>
 
       <td style="font-size:xx-small;">
 Presencia de nistagmus
       </td>
-      <td></td>
-      <td></td>
+      <td align="center">
+        @isset($cita->conduccionvehiculo->exploracion_fisica_capacidades2)
+            @if($cita->conduccionvehiculo->exploracion_fisica_capacidades2=='1')
+              x
+            @endif
+        @endisset
+      </td>
+      <td align="center">
+        @isset($cita->conduccionvehiculo->exploracion_fisica_capacidades2)
+            @if($cita->conduccionvehiculo->exploracion_fisica_capacidades2=='0')
+              x
+            @endif
+        @endisset
+      </td>
     </tr>
     <tr>
       <td style="font-size:xx-small;">
 Alteración presente del equilibrio
       </td>
-      <td></td>
-      <td></td>
+      <td align="left">
+        @isset($cita->conduccionvehiculo->exploracion_fisica_capacidades3)
+            @if($cita->conduccionvehiculo->exploracion_fisica_capacidades3=='1')
+              x
+            @endif
+        @endisset
+      </td>
+      <td align="center">
+        @isset($cita->conduccionvehiculo->exploracion_fisica_capacidades3)
+            @if($cita->conduccionvehiculo->exploracion_fisica_capacidades3=='0')
+              x
+            @endif
+        @endisset
+      </td>
 
       <td style="font-size:xx-small;">
 Anormalidad en movimientos oculares
       </td>
-      <td></td>
-      <td></td>
+      <td align="center">
+        @isset($cita->conduccionvehiculo->exploracion_fisica_capacidades4)
+            @if($cita->conduccionvehiculo->exploracion_fisica_capacidades4=='1')
+              x
+            @endif
+        @endisset
+      </td>
+      <td align="center">
+        @isset($cita->conduccionvehiculo->exploracion_fisica_capacidades4)
+            @if($cita->conduccionvehiculo->exploracion_fisica_capacidades4=='0')
+              x
+            @endif
+        @endisset
+      </td>
     </tr>
     <tr>
       <td style="font-size:xx-small;">
 Anormalidad en la marcha
       </td>
-      <td></td>
-      <td></td>
+      <td align="left">
+        @isset($cita->conduccionvehiculo->exploracion_fisica_capacidades5)
+            @if($cita->conduccionvehiculo->exploracion_fisica_capacidades5=='1')
+              x
+            @endif
+        @endisset
+      </td>
+      <td align="center">
+        @isset($cita->conduccionvehiculo->exploracion_fisica_capacidades5)
+            @if($cita->conduccionvehiculo->exploracion_fisica_capacidades5=='0')
+              x
+            @endif
+        @endisset
+      </td>
 
       <td style="font-size:xx-small;">
 Pupilas no CIRLA
       </td>
-      <td></td>
-      <td></td>
+      <td align="center">
+        @isset($cita->conduccionvehiculo->exploracion_fisica_capacidades6)
+            @if($cita->conduccionvehiculo->exploracion_fisica_capacidades6=='1')
+              x
+            @endif
+        @endisset
+      </td>
+      <td align="center">
+        @isset($cita->conduccionvehiculo->exploracion_fisica_capacidades6)
+            @if($cita->conduccionvehiculo->exploracion_fisica_capacidades6=='0')
+              x
+            @endif
+        @endisset
+      </td>
 
     </tr>
 
 
     <tr>
-      <td style="font-size:xx-small;">
+      <td >
         Alteración de la coordinación presente (dedo nariz)
       </td>
-      <td></td>
-      <td></td>
+      <td align="left">
+        @isset($cita->conduccionvehiculo->exploracion_fisica_capacidades7)
+            @if($cita->conduccionvehiculo->exploracion_fisica_capacidades7=='1')
+              x
+            @endif
+        @endisset
+      </td>
+      <td align="center">
+        @isset($cita->conduccionvehiculo->exploracion_fisica_capacidades7)
+            @if($cita->conduccionvehiculo->exploracion_fisica_capacidades7=='0')
+              x
+            @endif
+        @endisset
+      </td>
 
       <td style="font-size:xx-small;">
         Anormalidad del lenguaje
       </td>
-      <td></td>
-      <td></td>
+      <td align="center">
+        @isset($cita->conduccionvehiculo->exploracion_fisica_capacidades8)
+            @if($cita->conduccionvehiculo->exploracion_fisica_capacidades8=='1')
+              x
+            @endif
+        @endisset
+      </td>
+      <td align="center">
+        @isset($cita->conduccionvehiculo->exploracion_fisica_capacidades8)
+            @if($cita->conduccionvehiculo->exploracion_fisica_capacidades8=='0')
+              x
+            @endif
+        @endisset
+      </td>
 
     </tr>
     <tr>
       <td style="font-size:xx-small;">
 
       </td>
-      <td></td>
-      <td></td>
+      <td align="left">
+        @isset($cita->conduccionvehiculo->exploracion_fisica_capacidades9)
+            @if($cita->conduccionvehiculo->exploracion_fisica_capacidades9=='1')
+              x
+            @endif
+        @endisset
+      </td>
+      <td align="center">
+        @isset($cita->conduccionvehiculo->exploracion_fisica_capacidades9)
+            @if($cita->conduccionvehiculo->exploracion_fisica_capacidades9=='0')
+              x
+            @endif
+        @endisset
+      </td>
 
       <td style="font-size:xx-small;">
 Movimientos involuntarios
       </td>
-      <td></td>
-      <td></td>
+      <td align="center">
+        @isset($cita->conduccionvehiculo->exploracion_fisica_capacidades10)
+            @if($cita->conduccionvehiculo->exploracion_fisica_capacidades10=='1')
+              x
+            @endif
+        @endisset
+      </td>
+      <td align="center">
+        @isset($cita->conduccionvehiculo->exploracion_fisica_capacidades10)
+            @if($cita->conduccionvehiculo->exploracion_fisica_capacidades10=='0')
+              x
+            @endif
+        @endisset
+      </td>
 
     </tr>
     <tr>
@@ -397,11 +646,11 @@ Movimientos involuntarios
   </table>
   <table>
     <tr>
-      <td width="25%;" style="font-size:xx-small;"><label for="" style="font-weight:normal;">Desde</label> <label for="" style="font-weight:normal;">48488</label> </td>
-      <td width="25%;" style="font-size:xx-small;"><label for="" style="font-weight:normal;">Hasta </label> <label for="" style="font-weight:normal;">48488</label></td>
+      <td width="25%;" style="font-size:xx-small;"><label for="" style="font-weight:normal;color:red;">Desde</label> <label for="" style="font-weight:normal;color:red;">¿?</label> </td>
+      <td width="25%;" style="font-size:xx-small;"><label for="" style="font-weight:normal;color:red;">Hasta </label> <label for="" style="font-weight:normal;color:red;">¿?</label></td>
       <td width="25%"></td>
-      <td width="10%" align="center"  style="font-size:xx-small;">X</td>
-      <td width="11.5%" align="center"  style="font-size:xx-small;">X</td>
+      <td width="10%" align="center"  style="font-size:xx-small;color:red;">¿?</td>
+      <td width="11.5%" align="center"  style="font-size:xx-small;color:red;">¿?</td>
     </tr>
   </table>
   <table>
