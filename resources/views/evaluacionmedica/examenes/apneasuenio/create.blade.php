@@ -88,19 +88,62 @@ width: 90% !important;
                                       <div class="col-md-12">
                                         <strong>2.- Antecedentes Personales</strong>
                                       </div>
-                                      <div class="col-md-12">
+                                      <div class="col-md-12" style="margin-bottom:5px;">
                                         <div class="col-md-2">
                                           <div class="input-group" >
                                             <label for="apneasuenio_m" style="border:none;"  class="form-control">Apnea del sueño</label>
                                             <span class="input-group-addon" id="basic-addon2" style="border:none;" >  <input id="apneasuenio_m" type="checkbox"  value="1"></span>
                                           </div>
                                         </div>
-                                        <div class="col-md-8">
+                                        <div class="col-md-10">
                                           <div class="input-group">
                                             <span class="span-width input-group-addon" style="border:none;">Ultimo control de Apnea</span>
                                             <input type="text" class="form-control" >
                                           </div>
                                         </div>
+                                      </div>
+                                      <div class="col-md-12" style="margin-bottom:5px;">
+                                        <div class="col-md-2">
+                                          <div class="input-group" >
+                                            <label for="hta" style="border:none;"  class="form-control">HTA</label>
+                                            <span class="input-group-addon" id="basic-addon2" style="border:none;" >  <input id="hta" type="checkbox"  value="1"></span>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-10">
+                                          <div class="input-group">
+                                            <span class="span-width input-group-addon" style="border:none;">Medicacion</span>
+                                            <input type="text" class="form-control" >
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-12" style="margin-bottom:5px;">
+                                        <div class="col-md-2">
+                                          <div class="input-group" >
+                                            <label for="apneasuenio_m" style="border:none;"  class="form-control">PSG</label>
+                                            <span class="input-group-addon" id="basic-addon2" style="border:none;" >  <input id="apneasuenio_m" type="checkbox"  value="1"></span>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-10">
+                                          <div class="input-group">
+                                            <span class="span-width input-group-addon" style="border:none;">Ultimo control PSG</span>
+                                            <input type="text" class="form-control" >
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-12" style="margin-bottom:5px;">
+                                        <div class="col-md-2">
+                                          <div class="input-group" >
+                                            <label for="apneasuenio_m" style="border:none;"  class="form-control">PSG</label>
+                                            <span class="input-group-addon" id="basic-addon2" style="border:none;" >  <input id="apneasuenio_m" type="checkbox"  value="1"></span>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-10">
+                                          <div class="input-group">
+                                            <span class="span-width input-group-addon" style="border:none;">Ultimo control PSG</span>
+                                            <input type="text" class="form-control" >
+                                          </div>
+                                        </div>
+
                                       </div>
                                     </div>
                                   </div>
