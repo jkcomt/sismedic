@@ -73,10 +73,18 @@ class CuestionarioNordico extends Model
       'cita_id',
       'estado'
     ];
-
+    //////////esta relacion existe?
     public function paciente()
     {
       return $this->belongsTo(Paciente::class);
+    }
+    ////////////////
+    public function cita(){
+        return $this->belongsTo(Cita::class);
+    }
+
+    public function listaExamen(){
+        return $this->belongsTo(ListaExamen::class);
     }
 
 

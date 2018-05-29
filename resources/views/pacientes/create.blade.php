@@ -526,7 +526,6 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-12 text-right">
-                                <button class="btn btn-success">REGISTRAR</button>
 
                                     @if(str_replace(url('/'), '', url()->previous()) == '/pacientes')
                                         {{-- esto regresa a catalogo de pacientes --}}
@@ -535,6 +534,8 @@
                                         {{-- esto redirige a calendario --}}
                                         <a href="{{route('pacientes.index')}}" class="btn btn-warning">IR A CATÁLOGO DE PACIENTES</a>
                                     @endif
+
+                                    <button class="btn btn-success">REGISTRAR</button>
                             </div>
                         </div>
                     </div>

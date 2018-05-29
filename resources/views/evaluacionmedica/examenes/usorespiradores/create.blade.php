@@ -3205,21 +3205,12 @@
                                                     </div>
                                                 </div>
                                             </div>
-
-
                                         </div>
                                     </div>
-
-
                                 </div>
-
                             </div>
-
                         </div>
-
                     </div>
-
-
                 </div>
                 <div class="modal-footer">
                     <div class="row">
@@ -3227,10 +3218,9 @@
                             @isset($cita->usoRespirador->id)
                                 <button class="btn btn-sm btn-primary  registrarUsoRespiradores" tipo="usoRespiradores_modificar" type="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>EDITAR</button>
                                 @else
-                                    <button class="btn btn-sm btn-success registrarUsoRespiradores"  tipo="usoRespiradores_guardar" type="button">GUARDAR</button>
+                                <button class="btn btn-sm btn-success registrarUsoRespiradores"  tipo="usoRespiradores_guardar" type="button">GUARDAR</button>
                             @endisset
                                     <a href="" class="btn btn-sm btn-info" data-dismiss="modal">TERMINAR</a>
-
                                     <a href="" class="btn btn-sm btn-warning" data-dismiss="modal">Volver</a>
                         </div>
                     </div>

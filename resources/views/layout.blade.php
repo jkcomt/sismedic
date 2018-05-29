@@ -72,6 +72,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
             background-color: white !important;
             color:black !important;
         }
+
+        /*añade padding a los items del submenu*/
+        .treeview-menu{
+            padding-left:  20px;
+        }
     </style>
 
 

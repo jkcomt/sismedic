@@ -11,7 +11,7 @@
         @foreach($citas as $cita)
             <tr>
                 <td>{{$cita->nro_serie_cita}}</td>
-                <td>{{$cita->fecha_examen.' - '.Carbon\Carbon::parse($cita->hora_examen)->format('h:i A')}}</td>
+                <td>{{Carbon\Carbon::parse($cita->fecha_examen)->format("d-m-Y").' - '.Carbon\Carbon::parse($cita->hora_examen)->format('h:i A')}}</td>
                 <td>{{ucfirst($cita->estado_cita)}}</td>
                 <td>
                     <!--form action="">

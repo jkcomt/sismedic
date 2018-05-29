@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\CuestionarioNordico;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use View;
 class CuestionarioNordicoController extends Controller
 {
     /**
@@ -345,5 +346,16 @@ class CuestionarioNordicoController extends Controller
     public function destroy(CuestionarioNordico $cuestionarioNordico)
     {
         //
+    }
+
+    public function reporte($id){
+        //$cita=Cita::find($id);
+        set_time_limit(120);
+        $cuestionarioNordico = CuestionarioNordico::find($id);
+        $view=View::make('evaluacionmedica.reportes.cuestionarionordico',compact('cuestionarioNordico'));
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        $pdf->stream($view);
+        return $pdf->stream();
     }
 }

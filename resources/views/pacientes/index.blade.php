@@ -37,7 +37,7 @@
         <div class="col-md-5">
             <div class="form-group">
               <a href="{{route('pacientes.listareporte')}}" target="_blank"  class="btn btn-info"><span class="glyphicon glyphicon-print"></span> REPORTE GENERAL PACIENTES</a>
-              <a href="{{route('pacientes.create')}}" class="btn btn-success">NUEVA FILIACIÓN</a>
+              <a href="{{route('pacientes.create')}}" class="btn btn-success"><span class="glyphicon glyphicon-user"></span> REGISTRAR PACIENTE</a>
               <input type="hidden" value="{{route('pacientes.destroy')}}" id="deletePaciente">
 
             </div>

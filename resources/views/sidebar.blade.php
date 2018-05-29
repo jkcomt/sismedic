@@ -32,7 +32,7 @@
             </a>
             <ul class="treeview-menu">
                 <li class="{{ Request::is('citas/nueva_cita') ? 'active' : '' }}"><a href="{{route('citas.nuevacita')}}"><i class="fa fa-plus-circle"></i> <span>Nueva Cita</span></a></li>
-                <li class="{{ Request::is('citas/catalogo') ? 'active' : '' }}"><a href="{{route('citas.catalogo')}}"><i class="fa fa-list-alt"></i> <span>Catalogo</span></a></li>
+                <li class="{{ Request::is('citas/catalogo') ? 'active' : '' }}"><a href="{{route('citas.catalogo')}}"><i class="fa fa-list-alt"></i> <span>Catálogo</span></a></li>
                 <li  class="{{ Request::is('citas') ? 'active' : '' }}">
                     <a href="{{route('calendario.index')}}"><i class="fa fa-calendar"></i> <span>Calendario</span></a>
                 </li>

@@ -77,7 +77,7 @@ class CreateCuestionarioNordicosTable extends Migration
           $table->boolean('problemas_hombros_siete')->nullable();
           $table->string('problemas_hombros_ocho')->nullable();
           $table->boolean('problemas_hombros_nueve')->nullable();
-          $table->boolean('problemas_hombros_dies')->nullable();
+          $table->string('problemas_hombros_dies')->nullable();
 
           $table->boolean('problemas_cuello_uno')->nullable();
           $table->boolean('problemas_cuello_dos')->nullable();

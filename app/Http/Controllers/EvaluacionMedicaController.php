@@ -74,7 +74,7 @@ class EvaluacionMedicaController extends Controller
 
     public function index()
     {
-        $citas = Cita::where('estado',true)->orderBy('fecha_examen','asc')->orderBy('hora_examen','asc')->paginate(10);
+        $citas = Cita::where('estado',true)->orderBy('fecha_examen','desc')->orderBy('hora_examen','desc')->paginate(10);
         return view('evaluacionmedica.index',compact('citas'));
     }
 
