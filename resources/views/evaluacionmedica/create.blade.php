@@ -75,7 +75,7 @@
                     </div>
                 </ul>
             </div>
-            <form action="" id="registrarEvaluacionMedica">
+            <for id="registrarEvaluacionMedica">
                 {{csrf_field()}}
                 <input type="hidden" value="{{$cita->id}}" id="CitaId">
                 <div class="panel panel-default">
@@ -791,7 +791,7 @@
                 {{--</div>--}}
 
 
-            </form>
+            </for>
 
         </div>
     </div>
