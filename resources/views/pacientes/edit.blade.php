@@ -5,7 +5,7 @@
         EDITAR PACIENTE : {{$paciente->apellido_paterno." ".$paciente->apellido_materno." ".$paciente->nombres}}
     </div>
     <div class="col-md-6 text-right">
-        <a href="{{route('pacientes.index')}}" class="btn btn-sm btn-warning">Volver</a>
+        <a href="{{route('pacientes.index')}}" class="btn btn-sm btn-warning"> <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Volver</a>
     </div>
 </div>
 
@@ -534,8 +534,8 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-12 text-right">
-                                <button class="btn btn-success">Actualizar</button>
-                                <a href="{{route('pacientes.index')}}" class="btn btn-warning">Volver</a>
+                                <a href="{{route('pacientes.index')}}" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Volver</a>
+                                <button class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Actualizar</button>
                             </div>
                         </div>
                     </div>

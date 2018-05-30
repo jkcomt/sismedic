@@ -5,7 +5,7 @@
             NUEVA CITA
         </div>
         <div class="col-md-6 text-right">
-            <a href="{{route('pacientes.citas',[$paciente->id])}}" class="btn btn-sm btn-warning">Volver</a>
+            <a href="{{route('pacientes.citas',[$paciente->id])}}" class="btn btn-sm btn-warning"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Volver</a>
         </div>
     </div>
 @endsection
@@ -177,8 +177,8 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-12 text-right">
-                                <button class="btn btn-success conformidad" tipo="registrar">Registrar</button>
-                                <a href="{{route('pacientes.citas',[$paciente->id])}}" class="btn btn-warning">Volver</a>
+                                <a href="{{route('pacientes.citas',[$paciente->id])}}" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Volver</a>
+                                <button class="btn btn-success conformidad" tipo="registrar"><span class="glyphicon glyphicon-floppy-disk" aria-hideen="true"></span> Registrar</button>
                             </div>
                         </div>
                     </div>

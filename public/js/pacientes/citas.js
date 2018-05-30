@@ -275,19 +275,55 @@ $('#tipoBusqueda').on('change',function(e){
     e.preventDefault();
     $tipoBusqueda = $(this).val();
 
+    $dni = false;
+    $paciente = false;
+    $fechaDesde = false;
+    $fechaHasta = false;
+    
+    console.log($tipoBusqueda)
+
     if($tipoBusqueda == "dni"){
-        $('input[name=buscarcitadni]').attr('readonly',false);
-        $('input[name=desde]').attr('readonly',true);
-        $('input[name=hasta]').attr('readonly',true);
+        $dni = false;
+        $paciente = true;
+        $fechaDesde = true;
+        $fechaHasta = true;
+    }else if($tipoBusqueda == "paciente"){
+        $dni = true;
+        $paciente = false;
+        $fechaDesde = true;
+        $fechaHasta = true;
+    }else if($tipoBusqueda == "paciente_fecha"){
+        $dni = true;
+        $paciente = false;
+        $fechaDesde = false;
+        $fechaHasta = false;
     }else if($tipoBusqueda == "fecha"){
-        $('input[name=buscarcitadni]').attr('readonly',true);
-        $('input[name=desde]').attr('readonly',false);
-        $('input[name=hasta]').attr('readonly',false);
+        $dni = true;
+        $paciente = true;
+        $fechaDesde = false;
+        $fechaHasta = false;
     }else if($tipoBusqueda == "dni_fecha"){
-        $('input[name=buscarcitadni]').attr('readonly',false);
-        $('input[name=desde]').attr('readonly',false);
-        $('input[name=hasta]').attr('readonly',false);
+        $dni = false;
+        $paciente = true;
+        $fechaDesde = false;
+        $fechaHasta = false;
     }
+    else if($tipoBusqueda == "dni_paciente"){
+        $dni = false;
+        $paciente = false;
+        $fechaDesde = true;
+        $fechaHasta = true;
+    }else if($tipoBusqueda == "dni_paciente_fecha"){
+        $dni = false;
+        $paciente = false;
+        $fechaDesde = false;
+        $fechaHasta = false;
+    }
+
+    $('input[name=buscarcitadni]').attr('readonly',$dni);
+    $('input[name=buscarcitapaciente]').attr('readonly',$paciente);
+    $('input[name=desde]').attr('readonly',$fechaDesde);
+    $('input[name=hasta]').attr('readonly',$fechaHasta);
 });
 /************************PACIENTE-CITA****************************/
 $tipobusquedaCita='';
@@ -475,7 +511,6 @@ if($tipoBusquedaCita =="cita"){
 });
 
 
-
 $('#buscarCitaDni').on('keyup',function(){
   /*valor = $(this).val();
   if($tipoBusqueda == 'dni'){
@@ -535,10 +570,14 @@ $('button[name=buscar]').on('click',function(e){
 
    if($tipoBusqueda == "dni"){
        buscardni();
+   }else if($tipoBusqueda == "paciente"){
+       buscar_paciente();
+   }else if($tipoBusqueda == "paciente_fecha"){
+       buscar_paciente_fecha()
    }else if($tipoBusqueda == "fecha"){
-       buscarfecha();
+       buscar_dni_fecha();
    }else if($tipoBusqueda == "dni_fecha"){
-       buscar_dni_fecha()
+       buscar_dni_fecha();
    }
 
 });
@@ -633,6 +672,57 @@ function buscar_dni_fecha(){
     });
 }
 
+function buscar_paciente(){
+    valor = "";
+    valor = $('#buscarCitaPaciente').val();
+    var token = $('input[name=_token]').attr('value')
+    $.ajax({
+        type:"post",
+        headers: {'X-CSRF-TOKEN':token},
+        url:'/citas/buscar_paciente',
+        dataType:"json",
+        data:{
+            buscar : valor
+        },
+        success: function(data){
+            $('#tabla').html(data.html)
+        },
+        error: function(data){
+            //console.log("Error "+JSON.stringify(data))
+        }
+    });
+}
+
+function buscar_paciente_fecha(){
+    startdate= $('input[name=desde]').val();
+    enddate= $('input[name=hasta]').val();
+    console.log(startdate+''+enddate);
+    valor = "";
+    valor = $('#buscarCitaPaciente').val();
+    var token = $('input[name=_token]').attr('value')
+    $.ajax({
+        type:"post",
+        headers: {'X-CSRF-TOKEN':token},
+        url:'/citas/buscar_paciente_fecha',
+        dataType:"json",
+        data:{
+            buscar : valor,
+            startdate:startdate,
+            enddate:enddate
+        },
+        success: function(data){
+            $('#tabla').html(data.html)
+        },
+        error: function(data){
+            //console.log("Error "+JSON.stringify(data))
+        }
+    });
+}
+
+$('#buscarCitaPaciente').on('keyup',function(e){
+    e.preventDefault();
+    $('button[name=buscar]').trigger('click');
+});
 
 $('#tipo_examen_uno').on('change',function(e)
 {

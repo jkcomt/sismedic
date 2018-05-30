@@ -486,8 +486,9 @@ class PacientesController extends Controller
           $paciente = Paciente::find($id);
 
         $citas = Cita::where('estado',true)->where('paciente_id',$paciente->id)
-            ->orderBy('fecha_examen','asc')
-            ->orderBy('hora_examen','asc')->paginate(10);
+            //->orderBy('fecha_examen','asc')->orderBy('hora_examen','asc')
+            ->orderBy('nro_historia','desc')
+            ->paginate(10);
 
         return view('pacientes.citas.index',compact('paciente','citas'));
     }
@@ -515,7 +516,7 @@ class PacientesController extends Controller
         {
             //$data = request()->input();
             $data = request()->validate([
-                'nro_serie_cita'=>'required',
+                'nro_serie_cita'=>'required|unique',
                 'pacienteId'=>'required',
                 'fecha_examen'=>'required',
                 'hora_examen'=>'required',

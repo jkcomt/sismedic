@@ -6,13 +6,13 @@
     </div>
     <div class="col-md-6 text-right">
       @if(str_replace(url('/'), '', url()->previous()) == '/funcion_vital')
-          <a href="{{route('funcion_vital.index')}}" class="btn btn-sm btn-warning">VOLVER A CATALOGO</a>
+          <a href="{{route('funcion_vital.index')}}" class="btn btn-sm btn-warning"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> VOLVER A CATALOGO</a>
       @elseif(str_replace(url('/'), '', url()->previous()) == '/citas')
-          <a href="{{route('calendario.index')}}" class="btn btn-sm btn-warning">VOLVER A CALENDARIO</a>
+          <a href="{{route('calendario.index')}}" class="btn btn-sm btn-warning"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> VOLVER A CALENDARIO</a>
       @elseif(str_replace(url('/'), '', url()->previous()) == '/citas/catalogo')
-            <a href="{{route('citas.catalogo')}}" class="btn btn-sm btn-warning">VOLVER A CATÁLOGO DE CITAS</a>
+            <a href="{{route('citas.catalogo')}}" class="btn btn-sm btn-warning"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> VOLVER A CATÁLOGO DE CITAS</a>
       @elseif(str_replace(url('/'), '', url()->previous()) == '/evaluacion_medica/create/'.$cita->id)
-           <a href="{{route('evaluacion_medica.create',$cita->id)}}" class="btn btn-sm btn-warning">VOLVER A EVALUACIÓN MÉDICA</a>
+           <a href="{{route('evaluacion_medica.create',$cita->id)}}" class="btn btn-sm btn-warning"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> VOLVER A EVALUACIÓN MÉDICA</a>
       @endif
     </div>
   </div>
@@ -245,8 +245,8 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-12 text-right">
-                                <button class="btn btn-success conformidad" tipo="registrar">Registrar</button>
-                                <a href="" class="btn btn-warning">Volver</a>
+                                <a href="" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>  Volver</a>
+                                <button class="btn btn-success conformidad" tipo="registrar"><span class="glyphicon glyphicon-floppy-disk" aria-hideen="true"></span> Registrar</button>
                             </div>
                         </div>
                     </div>
