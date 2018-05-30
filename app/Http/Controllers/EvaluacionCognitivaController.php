@@ -287,7 +287,7 @@ class EvaluacionCognitivaController extends Controller
     }
 
     public function reporte($id){
-
+        set_time_limit(120);
         //$cita=Cita::find($id);
         $evaluacionCognitiva = EvaluacionCognitiva::find($id);
         $view=View::make('evaluacionmedica.reportes.evaluacioncognitiva',compact('evaluacionCognitiva'));

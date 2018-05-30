@@ -7,7 +7,7 @@
 @section('header')
   <div class="row">
     <div class="col-md-6">
-      EVALUACIÓN MÉDICA  <br>{{$paciente->apellido_paterno ." ".$paciente->apellido_materno." ".$paciente->nombres." | ".$paciente->perfil->descripcion}}
+      EVALUACIÓN MÉDICA
     </div>
     <div class="col-md-6 text-right">
       <a href="{{route('historia_ocupacional.reporte',[$paciente->id])}}" target="_blank"  class="btn btn-success">ANTECEDENTES OCUPACIONAL</a>
@@ -43,6 +43,29 @@
 
     </div>
     <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row text-center">
+                        <div class="col-md-4">
+                            <h4>
+                                <strong>{{'Paciente: '.$paciente->apellido_paterno ." ".$paciente->apellido_materno." ".$paciente->nombres}}</strong>
+                            </h4>
+                        </div>
+                        <div class="col-md-4">
+                            <h4>
+                                <strong>{{'Cita: '.$cita->nro_serie_cita}}</strong>
+                            </h4>
+                        </div>
+                        <div class="col-md-4">
+                            <h4><strong>{{' Perfil: '.$cita->perfil->descripcion}}</strong></h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
 
         <div class="col-lg-12 col-md-12 col-sm-12">
             <div id="msg-error" class="alert alert-danger" style="display:none;">
@@ -52,7 +75,7 @@
                     </div>
                 </ul>
             </div>
-            <form action="" id="registrarEvaluacionMedica">
+            <for id="registrarEvaluacionMedica">
                 {{csrf_field()}}
                 <input type="hidden" value="{{$cita->id}}" id="CitaId">
                 <div class="panel panel-default">
@@ -125,7 +148,7 @@
                                                         <input type="date" value="{{($paciente->fecha_ingreso_minera)}}" class="form-control" name="fecha_ingreso_minera" readonly>
                                                     </div>
 
-                                                    <div class="col-md-10 form-group">
+                                                    <div class="col-md-12 form-group">
                                                         <label for="jefe_inmediato" class="control-label">Jefe Inmediato:</label>
                                                         <input type="text" value="{{$paciente->jefe_inmediato}}" class="form-control" name="jefe_inmediato" readonly>
                                                     </div>
@@ -768,7 +791,7 @@
                 {{--</div>--}}
 
 
-            </form>
+            </for>
 
         </div>
     </div>
