@@ -9,12 +9,12 @@
         <div class="col-md-6 text-right">
             @if(str_replace(url('/'), '', url()->previous()) == '/citas/catalogo')
                 {{-- esto rediriga al catalogo de citas --}}
-                <a class="btn btn-sm btn-warning" href="{{route('citas.catalogo')}}">VOLVER CATÁLOGO DE CITAS</a>
+                <a class="btn btn-sm btn-warning" href="{{route('citas.catalogo')}}"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> VOLVER CATÁLOGO DE CITAS</a>
             @elseif(str_replace(url('/'), '', url()->previous()) == '/citas')
                 {{-- esto redirige a calendario --}}
-                <a class="btn btn-sm btn-warning" href="{{route('calendario.index')}}">VOLVER A CALENDARIO</a>
+                <a class="btn btn-sm btn-warning" href="{{route('calendario.index')}}"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> VOLVER A CALENDARIO</a>
             @else
-                <a class="btn btn-sm btn-warning" href="{{route('citas.catalogo')}}">IR A CATÁLOGO DE CITAS</a>
+                <a class="btn btn-sm btn-warning" href="{{route('citas.catalogo')}}"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> IR A CATÁLOGO DE CITAS</a>
             @endif
         </div>
     </div>
@@ -208,8 +208,8 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-12 text-right">
-                                    <a class="btn  btn-warning" href="{{route('citas.catalogo')}}">Volver</a>
-                                <button class="btn btn-success conformidad"  tipo="registrar">Registrar</button>
+                                <a class="btn  btn-warning" href="{{route('citas.catalogo')}}"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Volver</a>
+                                <button class="btn btn-success conformidad"  tipo="registrar"><span class="glyphicon glyphicon-floppy-disk" aria-hideen="true"></span>  Registrar</button>
                             </div>
                         </div>
                     </div>

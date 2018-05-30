@@ -8,10 +8,10 @@
     <div class="col-md-6 text-right">
       @if(str_replace(url('/'), '', url()->previous()) == '/pacientes')
         {{-- esto regresa a catalogo de pacientes --}}
-          <a href="{{route('pacientes.index')}}" class="btn btn-sm btn-warning">VOLVER A CATÁLOGO DE PACIENTES</a>
+          <a href="{{route('pacientes.index')}}" class="btn btn-sm btn-warning"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> VOLVER A CATÁLOGO DE PACIENTES</a>
       @else
         {{-- esto redirige a calendario --}}
-          <a href="{{route('pacientes.index')}}" class="btn btn-sm btn-warning">IR A CATÁLOGO DE PACIENTES</a>
+          <a href="{{route('pacientes.index')}}" class="btn btn-sm btn-warning"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> IR A CATÁLOGO DE PACIENTES</a>
       @endif
     </div>
   </div>
@@ -529,13 +529,13 @@
 
                                     @if(str_replace(url('/'), '', url()->previous()) == '/pacientes')
                                         {{-- esto regresa a catalogo de pacientes --}}
-                                        <a href="{{route('pacientes.index')}}" class="btn btn-warning">VOLVER A CATÁLOGO DE PACIENTES</a>
+                                        <a href="{{route('pacientes.index')}}" class="btn btn-warning"> <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> VOLVER A CATÁLOGO DE PACIENTES</a>
                                     @else
                                         {{-- esto redirige a calendario --}}
-                                        <a href="{{route('pacientes.index')}}" class="btn btn-warning">IR A CATÁLOGO DE PACIENTES</a>
+                                        <a href="{{route('pacientes.index')}}" class="btn btn-warning"> <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> IR A CATÁLOGO DE PACIENTES</a>
                                     @endif
 
-                                    <button class="btn btn-success">REGISTRAR</button>
+                                    <button class="btn btn-success"> <span class="glyphicon glyphicon-floppy-disk" aria-hideen="true"></span> REGISTRAR</button>
                             </div>
                         </div>
                     </div>

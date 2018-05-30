@@ -335,6 +335,57 @@ class CitaController extends Controller
       }
     }
 
+    public function busquedaPaciente(Request $request)
+    {
+        if($request['buscar'] != '')
+        {
+            $citas= Cita::leftjoin('pacientes','citas.paciente_id','pacientes.id')
+                ->where('pacientes.apellido_paterno','like','%'.$request['buscar'].'%')
+                ->orwhere('pacientes.apellido_materno','like','%'.$request['buscar'].'%')
+                ->where('citas.estado',true)
+                ->orderBy('citas.fecha_registro','desc')
+                ->orderBy('citas.hora_registro','desc')->paginate(10);
+
+            $view = view('citas.table',compact('citas'))->render();
+            return response()->json(['html'=>$view]);
+        }else{
+            $citas= Cita::leftjoin('pacientes','citas.paciente_id','pacientes.id')
+                ->where('citas.estado',true)
+                ->orderBy('citas.fecha_registro','desc')
+                ->orderBy('citas.hora_registro','desc')->paginate(10);
+
+            $view = view('citas.table',compact('citas'))->render();
+            return response()->json(['html'=>$view]);
+        }
+    }
+
+    public function busquedaPacienteFecha(Request $request)
+    {
+        if($request['buscar'] != '')
+        {
+            $citas= Cita::leftjoin('pacientes','citas.paciente_id','pacientes.id')
+                ->where('pacientes.apellido_paterno','like','%'.$request['buscar'].'%')
+                //->orWhere('pacientes.apellido_materno','like','%'.$request['buscar'].'%')
+                ->whereBetween('citas.fecha_examen', [$request['startdate'], $request['enddate']])
+                ->where('citas.estado',true)
+                ->orderBy('citas.nro_serie_cita','desc')
+//                ->orderBy('citas.fecha_registro','desc')
+//                ->orderBy('citas.hora_registro','desc')
+                ->paginate(10);
+
+            $view = view('citas.table',compact('citas'))->render();
+            return response()->json(['html'=>$view]);
+        }else{
+            $citas= Cita::leftjoin('pacientes','citas.paciente_id','pacientes.id')
+                ->where('citas.estado',true)
+                ->orderBy('citas.fecha_registro','desc')
+                ->orderBy('citas.hora_registro','desc')->paginate(10);
+
+            $view = view('citas.table',compact('citas'))->render();
+            return response()->json(['html'=>$view]);
+        }
+    }
+
     public function filtrarExamen(Request $request){
         $cita = Cita::find($request['idCita']);
         $listaExamen = ListaExamen::find($request['idExamen']);

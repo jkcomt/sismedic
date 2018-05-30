@@ -174,10 +174,15 @@ Route::get('citas/examenes_cliente/{var}','CitaController@examenescliente')->nam
 Route::get('citas/listareporte','CitaController@listareporte')->name('citas.listareporte');
 Route::get('citas/catalogo','CitaController@catalogo')->name('citas.catalogo');
 Route::post('citas/delete','CitaController@destroy')->name('citas.destroy');
+
 Route::post('citas/buscarfecha','CitaController@searchFecha')->name('citas.searchfecha');
 Route::post('citas/buscar_dni_fecha','CitaController@searchDniFecha')->name('citas.searchdnifecha');
 Route::post('citas/buscar_dni','CitaController@searchdni')->name('citas.searchdni');
+Route::post('citas/buscar_paciente','CitaController@busquedaPaciente')->name('citas.busquedapaciente');
+Route::post('citas/buscar_paciente_fecha','CitaController@busquedaPacienteFecha')->name('citas.busquedapacientefecha');
+
 Route::get('citas/nueva_cita','CitaController@nuevacita')->name('citas.nuevacita');
+
 //filtrar examen modal
 Route::post('citas/filtra_examen','CitaController@filtrarExamen')->name('citas.filtraexamen');
 //////////CARGAR SELECTED

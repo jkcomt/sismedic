@@ -7,10 +7,10 @@
         <div class="col-md-6 text-right">
             @if(str_replace(url('/'), '', url()->previous()) == '/citas/catalogo')
                 {{-- esto regresa a catalogo de pacientes --}}
-                <a href="{{route('citas.catalogo')}}" class="btn btn-sm btn-warning">VOLVER A CATÁLOGO DE CITAS</a>
+                <a href="{{route('citas.catalogo')}}" class="btn btn-sm btn-warning"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> VOLVER A CATÁLOGO DE CITAS</a>
             @else
                 {{-- esto redirige a calendario --}}
-                <a class="btn btn-sm btn-warning" href="{{route('pacientes.citas',[$paciente->id])}}">Volver</a>
+                <a class="btn btn-sm btn-warning" href="{{route('pacientes.citas',[$paciente->id])}}"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Volver</a>
             @endif
         </div>
     </div>
@@ -171,8 +171,8 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-12 text-right">
-                            <button class="btn btn-success conformidad" tipo="actualizar">Actualizar</button>
-                            <a href="{{route('pacientes.citas',[$paciente->id])}}" class="btn btn-warning">Volver</a>
+                            <a href="{{route('pacientes.citas',[$paciente->id])}}" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Volver</a>
+                            <button class="btn btn-success conformidad" tipo="actualizar"><span class="glyphicon glyphicon-floppy-disk" aria-hideen="true"></span>  Actualizar</button>
                         </div>
                     </div>
                 </div>
