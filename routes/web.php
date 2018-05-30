@@ -470,6 +470,7 @@ Route::group(["prefix"=>"conductor_operador"],function(){
 Route::group(["prefix"=>"cuestionario_nordico"],function(){
   Route::post('/crear','CuestionarioNordicoController@store')->name('cuestionario_nordico.store');
   Route::post('/actualizar','CuestionarioNordicoController@update')->name('cuestionario_nordico.update');
+  Route::get('/reporte/{id}','CuestionarioNordicoController@reporte')->name('cuestionario_nordico.reporte');
 });
 
 

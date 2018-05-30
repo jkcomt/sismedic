@@ -51,7 +51,7 @@
             <div class="form-group">
               <a href="{{route('pacientes.citas_paciente',[$paciente->id])}}" target="_blank"  class="btn btn-info"><span class="glyphicon glyphicon-print"></span> REPORTE DE CITAS POR PACIENTE</a>
 
-                <a href="{{route('pacientes.citas.create',[$paciente->id])}}" class="btn btn-success">NUEVA CITA</a>
+                <a href="{{route('pacientes.citas.create',[$paciente->id])}}" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> NUEVA CITA</a>
                 <input type="hidden" value="{{$paciente->id}}" id="idPaciente">
             </div>
         </div>

@@ -273,7 +273,21 @@ $('#actualizarCita').submit(function(e){
 $tipoBusqueda = ''
 $('#tipoBusqueda').on('change',function(e){
     e.preventDefault();
-    $tipoBusqueda = $(this).val()
+    $tipoBusqueda = $(this).val();
+
+    if($tipoBusqueda == "dni"){
+        $('input[name=buscarcitadni]').attr('readonly',false);
+        $('input[name=desde]').attr('readonly',true);
+        $('input[name=hasta]').attr('readonly',true);
+    }else if($tipoBusqueda == "fecha"){
+        $('input[name=buscarcitadni]').attr('readonly',true);
+        $('input[name=desde]').attr('readonly',false);
+        $('input[name=hasta]').attr('readonly',false);
+    }else if($tipoBusqueda == "dni_fecha"){
+        $('input[name=buscarcitadni]').attr('readonly',false);
+        $('input[name=desde]').attr('readonly',false);
+        $('input[name=hasta]').attr('readonly',false);
+    }
 });
 /************************PACIENTE-CITA****************************/
 $tipobusquedaCita='';
@@ -463,7 +477,7 @@ if($tipoBusquedaCita =="cita"){
 
 
 $('#buscarCitaDni').on('keyup',function(){
-  valor = $(this).val();
+  /*valor = $(this).val();
   if($tipoBusqueda == 'dni'){
     // e.preventDefault();
     var token = $('input[name=_token]').attr('value')
@@ -503,10 +517,121 @@ $('#buscarCitaDni').on('keyup',function(){
             //console.log("Error "+JSON.stringify(data))
         }
     });
-  }
+  }*/
 
 });
 
+$('input[name=desde]').on('change',function(e){
+    console.log("desde "+$(this).val());
+    buscarfecha();
+});
+
+$('input[name=hasta]').on('change',function(e){
+    console.log("hasta "+$(this).val());
+    buscarfecha();
+});
+
+$('button[name=buscar]').on('click',function(e){
+
+   if($tipoBusqueda == "dni"){
+       buscardni();
+   }else if($tipoBusqueda == "fecha"){
+       buscarfecha();
+   }else if($tipoBusqueda == "dni_fecha"){
+       buscar_dni_fecha()
+   }
+
+});
+
+$('button[name=limpiar]').on('click',function(e){
+
+    valor = "";
+    var token = $('input[name=_token]').attr('value')
+    $.ajax({
+        type:"post",
+        headers: {'X-CSRF-TOKEN':token},
+        url:'/citas/buscar_dni',
+        dataType:"json",
+        data:{
+            buscar : valor
+        },
+        success: function(data){
+            $('#tabla').html(data.html)
+        },
+        error: function(data){
+            //console.log("Error "+JSON.stringify(data))
+        }
+    });
+
+    $('input[name=buscarcitadni]').val('');
+
+});
+
+function buscardni(){
+    valor = "";
+    valor = $('#buscarCitaDni').val();
+    var token = $('input[name=_token]').attr('value')
+    $.ajax({
+        type:"post",
+        headers: {'X-CSRF-TOKEN':token},
+        url:'/citas/buscar_dni',
+        dataType:"json",
+        data:{
+            buscar : valor
+        },
+        success: function(data){
+            $('#tabla').html(data.html)
+        },
+        error: function(data){
+            //console.log("Error "+JSON.stringify(data))
+        }
+    });
+}
+
+function buscarfecha(){
+        startdate= $('input[name=desde]').val();
+        enddate= $('input[name=hasta]').val();
+        var token = $('input[name=_token]').attr('value')
+        $.ajax({
+            type:"post",
+            headers: {'X-CSRF-TOKEN':token},
+            url:'/citas/busqueda_fecha',
+            dataType:"json",
+            data:{
+                startdate:startdate,
+                enddate:enddate
+            },
+            success: function(data){
+                $('#tabla').html(data.html)
+            },
+            error: function(data){
+                console.log("Error "+JSON.stringify(data))
+            }
+        });
+}
+
+function buscar_dni_fecha(){
+    valor = "";
+    valor = $('#buscarCitaDni').val();
+    var token = $('input[name=_token]').attr('value')
+    $.ajax({
+        type:"post",
+        headers: {'X-CSRF-TOKEN':token},
+        url:'/citas/buscar_dni_fecha',
+        dataType:"json",
+        data:{
+            startdate:startdate,
+            enddate:enddate,
+            dni: valor
+        },
+        success: function(data){
+            $('#tabla').html(data.html)
+        },
+        error: function(data){
+            //console.log("Error "+JSON.stringify(data))
+        }
+    });
+}
 
 
 $('#tipo_examen_uno').on('change',function(e)

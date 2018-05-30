@@ -63,7 +63,7 @@
       CALENDARIO DE CITAS
     </div>
     <div class="col-md-8 text-right">
-      <a href="{{route('citas.nuevacita')}}" class="btn btn-success">REGISTRAR NUEVA CITA</a>
+      <a href="{{route('citas.nuevacita')}}" class="btn btn-success"> <span class="glyphicon glyphicon-plus"></span> NUEVA CITA</a>
     </div>
   </div>
 

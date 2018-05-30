@@ -229,10 +229,10 @@
                       <a href="{{route('conduccion_vehicular.reporte',[$cita->id])}}"  target="_blank" class="btn-sm btn-info"> <i class="fa fa-print" aria-hidden="true"></i></a>
 
                 @elseif(isset($cita->custionarionordico) && $citaExamen->perfilExamen->listaExamen->id == $cita->custionarionordico->lista_examen_id)
-
+                    <a href="{{route('cuestionario_nordico.reporte',[$cita->custionarionordico->id])}}"  target="_blank" class="btn-sm btn-info"> <i class="fa fa-print" aria-hidden="true"></i></a>
                 @elseif(isset($cita->usoRespirador) && $citaExamen->perfilExamen->listaExamen->id == $cita->usoRespirador->lista_examen_id)
 
-                    <a href="{{route('uso_respiradores.reporte',[$cita->id])}}"  target="_blank" class="btn-sm btn-info"> <i class="fa fa-print" aria-hidden="true"></i></a>
+                    <a href="{{route('uso_respiradores.reporte',[$cita->usoRespirador->id])}}"  target="_blank" class="btn-sm btn-info"> <i class="fa fa-print" aria-hidden="true"></i></a>
                 @elseif(isset($cita->ApneaSuenio) && $citaExamen->perfilExamen->listaExamen->id == $cita->ApneaSuenio->lista_examen_id)
 
                     <a href="{{route('apnea_suenio.reporte',[$cita->id])}}"  target="_blank" class="btn-sm btn-info"> <i class="fa fa-print" aria-hidden="true"></i></a>

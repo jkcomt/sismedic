@@ -15,7 +15,7 @@ class FuncionVitalController extends Controller
      */
     public function index()
     {
-        $citas = Cita::where('estado',true)->orderBy('fecha_examen')->orderBy('hora_examen')->paginate(10);
+        $citas = Cita::where('estado',true)->orderBy('fecha_examen','desc')->orderBy('hora_examen')->paginate(10);
         return view('funcionvital.index',compact('citas'));
     }
 
