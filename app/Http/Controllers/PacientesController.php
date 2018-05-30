@@ -520,6 +520,7 @@ class PacientesController extends Controller
                 'fecha_examen'=>'required',
                 'hora_examen'=>'required',
                 'clienteCuenta'=>'required',
+                'examenes_id'=>'required',
                 'tipoExamen'=>'required',
                 'perfil'=>'required',
                 'items'=>'required|array'
@@ -531,6 +532,7 @@ class PacientesController extends Controller
                 'nro_serie_cita'=>$data['nro_serie_cita'],
                 'paciente_id'=>$data['pacienteId'],
                 'cliente_cuenta_id'=>$data['clienteCuenta'],
+                'examenes_id'=>$data['examenes_id'],
                 'tipo_examen_id'=>$data['tipoExamen'],
                 'perfil_id'=>$data['perfil'],
                 'fecha_examen'=>$data['fecha_examen'],

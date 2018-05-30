@@ -13,5 +13,10 @@ class TipoExamen extends Model
       'estado'
     ];
 
+    public function citas(){
+      return $this->hasMany(Cita::class);//hasmany  o has one
+    }
+
+
     public $timestamps = false;
 }

@@ -123,7 +123,7 @@
 
                                 <label for="clienteCuenta" class="control-label">Tipo Examen : </label>
                                 <div class="form-group" id="clienteCuentaGroup">
-                                    <select name="tipo_examen_uno" id="tipo_examen_uno" class="form-control">
+                                    <select name="examenes_id" id="tipo_examen_uno" class="form-control">
                                             <option value="1">OCUPACIONAL</option>
                                             <option value="2">INDIVIDUAL</option>
                                     </select>

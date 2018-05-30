@@ -12,6 +12,7 @@ class Cita extends Model
         'nro_serie_cita',
         'paciente_id',
         'cliente_cuenta_id',
+        'examenes_id',
         'tipo_examen_id',
         'perfil_id',
         'fecha_examen',

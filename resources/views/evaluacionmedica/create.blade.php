@@ -48,19 +48,36 @@
                 <div class="panel-body">
                     <div class="row text-center">
                         <div class="col-md-4">
-                            <h4>
+                            <h5>
                                 <strong>{{'Paciente: '.$paciente->apellido_paterno ." ".$paciente->apellido_materno." ".$paciente->nombres}}</strong>
-                            </h4>
+                            </h5>
                         </div>
                         <div class="col-md-4">
-                            <h4>
+                            <h5>
                                 <strong>{{'Cita: '.$cita->nro_serie_cita}}</strong>
-                            </h4>
+                            </h5>
                         </div>
                         <div class="col-md-4">
-                            <h4><strong>{{' Perfil: '.$cita->perfil->descripcion}}</strong></h4>
+                            <h5><strong>{{' Perfil: '.$cita->perfil->descripcion}}</strong></h5>
                         </div>
                     </div>
+                    <div class="row text-center">
+                        <div class="col-md-4">
+                            <h5>
+                                <strong>{{'Cliente Cuenta: '.$cita->clienteCuenta->descripcion}}</strong>
+                            </h5>
+                        </div>
+                        <div class="col-md-4">
+                            <h5>
+                                <strong>{{'Examen: '}}@if($cita->examenes_id=='1') {{'OCUPACIONAL'}} @else {{'INDIVIDUAL'}} @endif</strong>
+                            </h5>
+                        </div>
+                        <div class="col-md-4">
+                            <h5><strong>{{'Tipo Examen: '.$cita->tipoExamen->descripcion}}</strong></h5>
+                        </div>
+                    </div>
+{{-- fecha_examen
+hora_examen --}}
                 </div>
             </div>
         </div>

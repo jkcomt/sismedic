@@ -12,6 +12,9 @@ class ClienteCuenta extends Model
         'descripcion',
         'estado'
     ];
+    public function citas(){
+      return $this->hasMany(Cita::class);//hasmany  o has one
+    }
 
     public $timestamps = false;
 }

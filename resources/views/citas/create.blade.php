@@ -162,16 +162,16 @@
                             </div>
                             <div class="col-md-3 form-group">
 
-                                <label for="clienteCuenta" class="control-label">Tipo Examen : </label>
+                                <label for="clienteCuenta" class="control-label">Examen : </label>
                                 <div class="form-group" id="clienteCuentaGroup">
-                                    <select name="tipo_examen_uno" id="tipo_examen_uno" class="form-control">
+                                    <select name="examenes_id" id="tipo_examen_uno" class="form-control">
                                             <option value="1">OCUPACIONAL</option>
                                             <option value="2">INDIVIDUAL</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-3 form-group">
-                                <label for="tipoExamen" class="control-label">Examen : </label>
+                                <label for="tipoExamen" class="control-label">Tipo Examen : </label>
                                 <div class="" id="tipoExamenGroup">
                                     @include('citas.examen')
                                 </div>

@@ -23,6 +23,8 @@ class CreateCitasTable extends Migration
             $table->foreign('cliente_cuenta_id')->references('id')->on('cliente_cuentas');
             $table->integer('cliente_cuenta_id')->unsigned()->nullable();
 
+            $table->string('examenes_id')->nullable();
+
             $table->foreign('tipo_examen_id')->references('id')->on('tipo_examenes');
             $table->integer('tipo_examen_id')->unsigned()->nullable();
 

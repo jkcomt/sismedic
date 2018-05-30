@@ -239,6 +239,7 @@ class CitaController extends Controller
               'fecha_examen'=>'required',
               'hora_examen'=>'required',
               'clienteCuenta'=>'required',
+              'examenes_id'=>'required',
               'tipoExamen'=>'required',
               'perfil'=>'required',
               'items'=>'required|array'
@@ -250,6 +251,7 @@ class CitaController extends Controller
               'nro_serie_cita'=>$data['nro_serie_cita'],
               'paciente_id'=>$data['paciente'],
               'cliente_cuenta_id'=>$data['clienteCuenta'],
+              'examenes_id'=>$data['examenes_id'],
               'tipo_examen_id'=>$data['tipoExamen'],
               'perfil_id'=>$data['perfil'],//$variable,//$data['perfil'],
               'fecha_examen'=>$data['fecha_examen'],
