@@ -52,7 +52,7 @@ width: 90% !important;
                                     Todas las enfermedades que produzcan alteración de la consciencia sin importar su causa e independientemente de su tratamiento
                                 </td>
                                 <td>
-                                  <input type="checkbox" name="anamnesis_evaluacion_capacidades1" value="1" @isset($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades1)  checked @endisset>
+                                  <input type="checkbox" name="anamnesis_evaluacion_capacidades1" value="1" @isset($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades1)   @if($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades1=='1') checked @endif @endisset>
                                 </td>
                                 <td>
 
@@ -61,7 +61,7 @@ width: 90% !important;
                                   Personas que consumen sustancias estupefacientes o psicotrópicas en niveles que alteren su  capacidad o trabajar como controlar un vehículo
                                 </td>
                                 <td>
-                                    <input type="checkbox" name="anamnesis_evaluacion_capacidades2" value="1" @isset($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades2)  checked @endisset >
+                                    <input type="checkbox" name="anamnesis_evaluacion_capacidades2" value="1" @isset($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades2)  @if($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades2=='1') checked @endif @endisset >
                                 </td>
                               </tr>
                               <tr>
@@ -69,7 +69,7 @@ width: 90% !important;
                                               Alcoholismo crónico y en general  todas aquellas enfermedades que produzcan incapacidad de efectuar movimientos voluntarios y/o que limiten la capacidad de trabajo como conduccion, maneja o control fisico de un vehículo motorizado,subir y bajar escaleras, etc
                                 </td>
                                 <td>
-                                  <input type="checkbox" name="anamnesis_evaluacion_capacidades3" value="1" @isset($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades3)  checked @endisset >
+                                  <input type="checkbox" name="anamnesis_evaluacion_capacidades3" value="1" @isset($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades3)  @if($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades3=='1') checked @endif  @endisset >
                                 </td>
                                 <td>
 
@@ -78,7 +78,7 @@ width: 90% !important;
                                   Personas que consumen sustancias estupefacientes o psicotrópicas en niveles que no alteren su capacidad de rabajar, pero  que se encuentran sin tratamiento o en tratamiento sin prescripcion médica
                                 </td>
                                 <td>
-                                    <input type="checkbox" name="anamnesis_evaluacion_capacidades4" value="1" @isset($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades4)  checked @endisset>
+                                    <input type="checkbox" name="anamnesis_evaluacion_capacidades4" value="1" @isset($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades4)   @if($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades4=='1') checked @endif  @endisset>
                                 </td>
                               </tr>
                               <tr>
@@ -86,7 +86,7 @@ width: 90% !important;
                                   Todas aquellas enfermedades que se caractericen por movimientos involuntarios y que  interfieran seriamente su capacidad de trabajar, independientemente de su tratamiento farmalogico
                                 </td>
                                 <td>
-                                  <input type="checkbox" name="anamnesis_evaluacion_capacidades5" value="1" @isset($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades5)  checked @endisset>
+                                  <input type="checkbox" name="anamnesis_evaluacion_capacidades5" value="1" @isset($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades5)  @if($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades5=='1') checked @endif @endisset>
                                 </td>
                                 <td>
 
@@ -96,7 +96,7 @@ width: 90% !important;
                                   </p>
                                 </td>
                                 <td>
-                                    <input type="checkbox" name="anamnesis_evaluacion_capacidades6" value="1" @isset($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades6)  checked @endisset >
+                                    <input type="checkbox" name="anamnesis_evaluacion_capacidades6" value="1" @isset($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades6)  @if($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades6=='1') checked @endif  @endisset >
                                 </td>
                               </tr>
                               <tr>
@@ -104,7 +104,7 @@ width: 90% !important;
                                     Perdida recurrente de la consciencia, independiente de su tratamiento, tales como narcolepsia, epilepsia, etc
                                 </td>
                                 <td>
-                                  <input type="checkbox" name="anamnesis_evaluacion_capacidades7" value="1" @isset($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades7)  checked @endisset >
+                                  <input type="checkbox" name="anamnesis_evaluacion_capacidades7" value="1" @isset($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades7)  @if($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades7=='1') checked @endif  @endisset >
                                 </td>
                                 <td>
 
@@ -113,7 +113,7 @@ width: 90% !important;
                                   Síndrome apnea obstructiva del sueño sospecha o confirmada(Ficha SAS)
                                 </td>
                                 <td>
-                                    <input type="checkbox" name="anamnesis_evaluacion_capacidades8" value="1" @isset($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades8)  checked @endisset  >
+                                    <input type="checkbox" name="anamnesis_evaluacion_capacidades8" value="1" @isset($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades8)   @if($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades8=='1') checked @endif  @endisset  >
                                 </td>
                               </tr>
                               <tr>
@@ -121,7 +121,7 @@ width: 90% !important;
                                     Anemia de cualquier grado, según criterios OMS 2011
                                 </td>
                                 <td>
-                                  <input type="checkbox" name="anamnesis_evaluacion_capacidades9" value="1" @isset($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades9)  checked @endisset>
+                                  <input type="checkbox" name="anamnesis_evaluacion_capacidades9" value="1" @isset($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades9)  @if($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades9=='1') checked @endif  @endisset>
                                 </td>
                                 <td>
 
@@ -130,7 +130,7 @@ width: 90% !important;
                                   Obesidad (IMC > o igual a 30)
                                 </td>
                                 <td>
-                                    <input type="checkbox"  name="anamnesis_evaluacion_capacidades10" value="1" @isset($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades10)  checked @endisset>
+                                    <input type="checkbox"  name="anamnesis_evaluacion_capacidades10" value="1" @isset($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades10)   @if($cita->conduccionvehiculo->anamnesis_evaluacion_capacidades10=='1') checked @endif  @endisset>
                                 </td>
                               </tr>
                             </tbody>
@@ -245,7 +245,7 @@ width: 90% !important;
                                         Limitación en fuerza y/o movilidad de extremidades (Mayor a 2kg/ fuerza cada mano)
                                     </td>
                                     <td>
-                                      <input type="checkbox" name="exploracion_fisica_capacidades1" value="1" @isset($cita->conduccionvehiculo->exploracion_fisica_capacidades1)  checked @endisset >
+                                      <input type="checkbox" name="exploracion_fisica_capacidades1" value="1" @isset($cita->conduccionvehiculo->exploracion_fisica_capacidades1)   @if($cita->conduccionvehiculo->exploracion_fisica_capacidades1=='1') checked @endif  @endisset >
                                     </td>
                                     <td>
 
@@ -254,7 +254,7 @@ width: 90% !important;
                                       presencia de nistagmus
                                     </td>
                                     <td>
-                                        <input type="checkbox" name="exploracion_fisica_capacidades2" value="1" @isset($cita->conduccionvehiculo->exploracion_fisica_capacidades2)  checked @endisset>
+                                        <input type="checkbox" name="exploracion_fisica_capacidades2" value="1" @isset($cita->conduccionvehiculo->exploracion_fisica_capacidades2)   @if($cita->conduccionvehiculo->exploracion_fisica_capacidades2=='1') checked @endif @endisset>
                                     </td>
                                   </tr>
                                   <tr>
@@ -262,7 +262,7 @@ width: 90% !important;
                                       Alteración presente del equilibrio(Romberg)
                                     </td>
                                     <td>
-                                      <input type="checkbox" name="exploracion_fisica_capacidades3" value="1" @isset($cita->conduccionvehiculo->exploracion_fisica_capacidades3)  checked @endisset>
+                                      <input type="checkbox" name="exploracion_fisica_capacidades3" value="1" @isset($cita->conduccionvehiculo->exploracion_fisica_capacidades3)   @if($cita->conduccionvehiculo->exploracion_fisica_capacidades3=='1') checked @endif @endisset>
                                     </td>
                                     <td>
 
@@ -271,7 +271,7 @@ width: 90% !important;
                                       Anormalidad en movimientos oculares
                                     </td>
                                     <td>
-                                        <input type="checkbox" name="exploracion_fisica_capacidades4" value="1" @isset($cita->conduccionvehiculo->exploracion_fisica_capacidades4)  checked @endisset >
+                                        <input type="checkbox" name="exploracion_fisica_capacidades4" value="1" @isset($cita->conduccionvehiculo->exploracion_fisica_capacidades4)  @if($cita->conduccionvehiculo->exploracion_fisica_capacidades4=='1') checked @endif @endisset >
                                     </td>
                                   </tr>
                                   <tr>
@@ -279,7 +279,7 @@ width: 90% !important;
                                       Anormalidad en marcha con ojos cerrados
                                     </td>
                                     <td>
-                                      <input type="checkbox" name="exploracion_fisica_capacidades5" value="1" @isset($cita->conduccionvehiculo->exploracion_fisica_capacidades5)  checked @endisset>
+                                      <input type="checkbox" name="exploracion_fisica_capacidades5" value="1" @isset($cita->conduccionvehiculo->exploracion_fisica_capacidades5)  @if($cita->conduccionvehiculo->exploracion_fisica_capacidades5=='1') checked @endif @endisset>
                                     </td>
                                     <td>
 
@@ -288,7 +288,7 @@ width: 90% !important;
                                       pupilas no CIRLA
                                     </td>
                                     <td>
-                                        <input type="checkbox" name="exploracion_fisica_capacidades6" value="1" @isset($cita->conduccionvehiculo->exploracion_fisica_capacidades6)  checked @endisset>
+                                        <input type="checkbox" name="exploracion_fisica_capacidades6" value="1" @isset($cita->conduccionvehiculo->exploracion_fisica_capacidades6)  @if($cita->conduccionvehiculo->exploracion_fisica_capacidades6=='1') checked @endif  @endisset>
                                     </td>
                                   </tr>
                                   <tr>
@@ -296,7 +296,7 @@ width: 90% !important;
                                       Alteración de la coordinacion presente(dedo Indice Nariz)
                                     </td>
                                     <td>
-                                      <input type="checkbox" name="exploracion_fisica_capacidades7" value="1" @isset($cita->conduccionvehiculo->exploracion_fisica_capacidades7)  checked @endisset >
+                                      <input type="checkbox" name="exploracion_fisica_capacidades7" value="1" @isset($cita->conduccionvehiculo->exploracion_fisica_capacidades7)  @if($cita->conduccionvehiculo->exploracion_fisica_capacidades7=='1') checked @endif @endisset >
                                     </td>
                                     <td>
 
@@ -305,7 +305,7 @@ width: 90% !important;
                                       Anormalidad del Lenguaje
                                     </td>
                                     <td>
-                                        <input type="checkbox" name="exploracion_fisica_capacidades8" value="1" @isset($cita->conduccionvehiculo->exploracion_fisica_capacidades8)  checked @endisset>
+                                        <input type="checkbox" name="exploracion_fisica_capacidades8" value="1" @isset($cita->conduccionvehiculo->exploracion_fisica_capacidades8)  @if($cita->conduccionvehiculo->exploracion_fisica_capacidades8=='1') checked @endif  @endisset>
                                     </td>
                                   </tr>
                                   <tr>
@@ -313,7 +313,7 @@ width: 90% !important;
                                         Asimetria Facial
                                     </td>
                                     <td>
-                                      <input type="checkbox" name="exploracion_fisica_capacidades9" value="1" @isset($cita->conduccionvehiculo->exploracion_fisica_capacidades9)  checked @endisset>
+                                      <input type="checkbox" name="exploracion_fisica_capacidades9" value="1" @isset($cita->conduccionvehiculo->exploracion_fisica_capacidades9)  @if($cita->conduccionvehiculo->exploracion_fisica_capacidades9=='1') checked @endif @endisset>
                                     </td>
                                     <td>
 
@@ -322,7 +322,7 @@ width: 90% !important;
                                       Movimientos involuntarios
                                     </td>
                                     <td>
-                                        <input type="checkbox" name="exploracion_fisica_capacidades10" value="1" @isset($cita->conduccionvehiculo->exploracion_fisica_capacidades10)  checked @endisset>
+                                        <input type="checkbox" name="exploracion_fisica_capacidades10" value="1" @isset($cita->conduccionvehiculo->exploracion_fisica_capacidades10)  @if($cita->conduccionvehiculo->exploracion_fisica_capacidades10=='1') checked @endif @endisset>
                                     </td>
                                   </tr>
 
@@ -356,7 +356,7 @@ width: 90% !important;
                                             Hipoacusia con compromiso de frecuencias conversacionales con promedio mayor a 40 db uni o bilateral incluso con audifonos
                                         </td>
                                         <td>
-                                          <input type="checkbox" name="prueba_auxiliar_capacidades1" value="1" @isset($cita->conduccionvehiculo->prueba_auxiliar_capacidades1)  checked @endisset >
+                                          <input type="checkbox" name="prueba_auxiliar_capacidades1" value="1" @isset($cita->conduccionvehiculo->prueba_auxiliar_capacidades1)  @if($cita->conduccionvehiculo->prueba_auxiliar_capacidades1=='1') checked @endif @endisset >
                                         </td>
                                         <td>
 
@@ -365,7 +365,7 @@ width: 90% !important;
                                           No Reconocimiento de colores Rojo,Azul y verde
                                         </td>
                                         <td>
-                                            <input type="checkbox" name="prueba_auxiliar_capacidades2" value="1" @isset($cita->conduccionvehiculo->prueba_auxiliar_capacidades2)  checked @endisset >
+                                            <input type="checkbox" name="prueba_auxiliar_capacidades2" value="1" @isset($cita->conduccionvehiculo->prueba_auxiliar_capacidades2)    @if($cita->conduccionvehiculo->prueba_auxiliar_capacidades2=='1') checked @endif  @endisset >
                                         </td>
                                       </tr>
                                       <tr>
@@ -373,7 +373,7 @@ width: 90% !important;
                                           Alteración de la agudeza visual(de lejos diferente a 20/30 en carda ojo) y/o de la vision en profundidad incluso con lentes correctores
                                         </td>
                                         <td>
-                                          <input type="checkbox" name="prueba_auxiliar_capacidades3" value="1" @isset($cita->conduccionvehiculo->prueba_auxiliar_capacidades3)  checked @endisset >
+                                          <input type="checkbox" name="prueba_auxiliar_capacidades3" value="1" @isset($cita->conduccionvehiculo->prueba_auxiliar_capacidades3)    @if($cita->conduccionvehiculo->prueba_auxiliar_capacidades3=='1') checked @endif  @endisset >
                                         </td>
                                         <td>
 
@@ -382,7 +382,7 @@ width: 90% !important;
                                           Prueba de visión de profundidad alterada
                                         </td>
                                         <td>
-                                            <input type="checkbox" name="prueba_auxiliar_capacidades4" value="1" @isset($cita->conduccionvehiculo->prueba_auxiliar_capacidades4)  checked @endisset >
+                                            <input type="checkbox" name="prueba_auxiliar_capacidades4" value="1" @isset($cita->conduccionvehiculo->prueba_auxiliar_capacidades4)    @if($cita->conduccionvehiculo->prueba_auxiliar_capacidades4=='1') checked @endif  @endisset >
                                         </td>
                                       </tr>
                                       <tr>
@@ -390,7 +390,7 @@ width: 90% !important;
                                           Campintería Anormal(Test de confrontacion alterada)
                                         </td>
                                         <td>
-                                          <input type="checkbox" name="prueba_auxiliar_capacidades5" value="1" @isset($cita->conduccionvehiculo->prueba_auxiliar_capacidades5)  checked @endisset >
+                                          <input type="checkbox" name="prueba_auxiliar_capacidades5" value="1" @isset($cita->conduccionvehiculo->prueba_auxiliar_capacidades5)   @if($cita->conduccionvehiculo->prueba_auxiliar_capacidades5=='1') checked @endif  @endisset >
                                         </td>
                                         <td>
 
@@ -399,7 +399,7 @@ width: 90% !important;
                                           Alguno de los parametros de la evaluacion psicosensometrica alterada:test de palanca, punteo o reactimetria o su equivalente clinico
                                         </td>
                                         <td>
-                                            <input type="checkbox" name="prueba_auxiliar_capacidades6" value="1" @isset($cita->conduccionvehiculo->prueba_auxiliar_capacidades6)  checked @endisset>
+                                            <input type="checkbox" name="prueba_auxiliar_capacidades6" value="1" @isset($cita->conduccionvehiculo->prueba_auxiliar_capacidades6)  @if($cita->conduccionvehiculo->prueba_auxiliar_capacidades6=='1') checked @endif @endisset>
                                         </td>
                                       </tr>
                                     </tbody>

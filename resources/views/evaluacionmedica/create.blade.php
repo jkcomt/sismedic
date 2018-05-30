@@ -728,7 +728,7 @@
                                                         </div><br>
                                                         <div class="row">
                                                             <div class="col-md-12">
-                                                                <button class="btn btn-default btn-sm btn-block">Informe Ocupacional</button>
+                                                                  <a href="{{route('evaluacionmedica.informemedicoocupacional',[$cita->id])}}"   target="_blank"  class="btn btn-default btn-sm btn-block">Informe Ocupacional</a>
                                                             </div>
                                                         </div><br>
                                                         <div class="row">
@@ -796,5 +796,6 @@
     <script src="{{asset('js/evaluacionmedica/examen/cuestionarionordico.js')}}"></script>
     <script src="{{asset('js/evaluacionmedica/examen/evaluacioncognitiva.js')}}"></script>
     <script src="{{asset('js/evaluacionmedica/examen/usorespiradores.js')}}"></script>
+    <script src="{{asset('js/evaluacionmedica/examen/apneasuenio.js')}}"></script>
     {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>--}}
 @endsection

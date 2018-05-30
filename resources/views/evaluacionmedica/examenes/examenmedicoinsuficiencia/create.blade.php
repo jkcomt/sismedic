@@ -30,8 +30,8 @@
 
                             </div>
                             <div class="col-md-4">
-                              <label class="radio-inline"><input type="radio" value="primera_aptitud" @isset($cita->sudicienciatrabajoaltura->primera_aptitud) @if($cita->sudicienciatrabajoaltura->primera_aptitud)  checked @endif @endisset name="optradio"> Primera Aptitud</label>
-                              <label class="radio-inline"><input type="radio" value="revalidacion" @isset($cita->sudicienciatrabajoaltura->revalidacion) @if($cita->sudicienciatrabajoaltura->revalidacion)  checked @endif @endisset name="optradio">Revalidación</label>
+                              <label class="radio-inline"><input type="radio" value="primera_aptitud" @isset($cita->sudicienciatrabajoaltura->primera_aptitud) @if($cita->sudicienciatrabajoaltura->primera_aptitud=='1')  checked @endif @endisset name="optradio"> Primera Aptitud</label>
+                              <label class="radio-inline"><input type="radio" value="revalidacion" @isset($cita->sudicienciatrabajoaltura->revalidacion) @if($cita->sudicienciatrabajoaltura->revalidacion=='0')  checked @endif @endisset name="optradio">Revalidación</label>
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -48,7 +48,7 @@
 
                                 </td>
                                 <td>
-                                  <input value="1" name="anamnesis_item1" type="checkbox"  @isset($cita->sudicienciatrabajoaltura->anamnesis_item1) checked  @endisset>
+                                  <input value="1" name="anamnesis_item1" type="checkbox"  @isset($cita->sudicienciatrabajoaltura->anamnesis_item1) @if($cita->sudicienciatrabajoaltura->anamnesis_item1=='1') checked @endif  @endisset>
 
                                 </td>
                                 <td>
@@ -59,7 +59,7 @@
                                   </p>
                                 </td>
                                 <td>
-                                    <input value="1" name="anamnesis_item2"  type="checkbox"  @isset($cita->sudicienciatrabajoaltura->anamnesis_item2) checked  @endisset>
+                                    <input value="1" name="anamnesis_item2"  type="checkbox"  @isset($cita->sudicienciatrabajoaltura->anamnesis_item2) @if($cita->sudicienciatrabajoaltura->anamnesis_item2=='1') checked @endif  @endisset>
                                 </td>
                               </tr>
                               <tr>
@@ -67,7 +67,7 @@
                                   <p>Alcoholismo crónico y en general todas aquellas enfermedades que produzcan incapacidad de efectuar movimientos voluntarios y/o que limiten la capacidad de trabajo como conducción, manejo o control fisico de un vehículo motorizado, subir y bajar escaleras, etc</p>
                                 </td>
                                 <td>
-                                  <input value="1" name="anamnesis_item3"  type="checkbox"  @isset($cita->sudicienciatrabajoaltura->anamnesis_item3) checked  @endisset>
+                                  <input value="1" name="anamnesis_item3"  type="checkbox"  @isset($cita->sudicienciatrabajoaltura->anamnesis_item3) @if($cita->sudicienciatrabajoaltura->anamnesis_item3=='1') checked @endif  @endisset>
                                 </td>
                                 <td>
 
@@ -77,7 +77,7 @@
                                   </p>
                                 </td>
                                 <td>
-                                    <input value="1" name="anamnesis_item4" type="checkbox"  @isset($cita->sudicienciatrabajoaltura->anamnesis_item4) checked  @endisset>
+                                    <input value="1" name="anamnesis_item4" type="checkbox"  @isset($cita->sudicienciatrabajoaltura->anamnesis_item4)  @if($cita->sudicienciatrabajoaltura->anamnesis_item4=='1') checked @endif   @endisset>
                                 </td>
                               </tr>
                               <tr>
@@ -85,7 +85,7 @@
                                   Todas Aquellas enfermedades que se caractericen por movimientos involuntarios y que interfieran seriamente su capacidad de trabajar, independiente de su tratamiento farmacológico
                                 </td>
                                 <td>
-                                  <input value="1" name="anamnesis_item5" type="checkbox"  @isset($cita->sudicienciatrabajoaltura->anamnesis_item5) checked  @endisset>
+                                  <input value="1" name="anamnesis_item5" type="checkbox"  @isset($cita->sudicienciatrabajoaltura->anamnesis_item5)  @if($cita->sudicienciatrabajoaltura->anamnesis_item5=='1') checked @endif   @endisset>
                                 </td>
                                 <td>
 
@@ -94,7 +94,7 @@
                                   Personas que como consecuencia de una enfermedad o su tratamiento, sufran uno o varios de los siguientes efectos: alteración del estado de consiencia, alteracion del equilibrio, en la percepcion, en la habilidad motriz, en la estabilidad emocional y en el juicio.
                                 </td>
                                 <td>
-                                    <input value="1" name="anamnesis_item6" type="checkbox"  @isset($cita->sudicienciatrabajoaltura->anamnesis_item6) checked  @endisset>
+                                    <input value="1" name="anamnesis_item6" type="checkbox"  @isset($cita->sudicienciatrabajoaltura->anamnesis_item6) @if($cita->sudicienciatrabajoaltura->anamnesis_item6=='1') checked @endif   @endisset>
                                 </td>
                               </tr>
                               <tr>
@@ -102,7 +102,7 @@
                                   <p>Perdida recurrente de la consciencia, independientemente de su tratamiento, tales como narcolepsia, epilepsia, etc.</p>
                                 </td>
                                 <td>
-                                  <input value="1" name="anamnesis_item7" type="checkbox"  @isset($cita->sudicienciatrabajoaltura->anamnesis_item7) checked  @endisset>
+                                  <input value="1" name="anamnesis_item7" type="checkbox"  @isset($cita->sudicienciatrabajoaltura->anamnesis_item7)  @if($cita->sudicienciatrabajoaltura->anamnesis_item7=='1') checked @endif   @endisset>
                                 </td>
                                 <td>
 
@@ -112,7 +112,7 @@
                                   </p>
                                 </td>
                                 <td>
-                                    <input value="1" name="anamnesis_item8" type="checkbox"  @isset($cita->sudicienciatrabajoaltura->anamnesis_item8) checked  @endisset>
+                                    <input value="1" name="anamnesis_item8" type="checkbox"  @isset($cita->sudicienciatrabajoaltura->anamnesis_item8) @if($cita->sudicienciatrabajoaltura->anamnesis_item8=='1') checked @endif   @endisset>
                                 </td>
                               </tr>
                               <tr>
@@ -120,7 +120,7 @@
                                   <p>Anemia de cualquier grado, según criterios OMS 2011</p>
                                 </td>
                                 <td>
-                                  <input value="1" name="anamnesis_item9" type="checkbox"  @isset($cita->sudicienciatrabajoaltura->anamnesis_item9) checked  @endisset>
+                                  <input value="1" name="anamnesis_item9" type="checkbox"  @isset($cita->sudicienciatrabajoaltura->anamnesis_item9) @if($cita->sudicienciatrabajoaltura->anamnesis_item9=='1') checked @endif   @endisset>
                                 </td>
                                 <td>
 
@@ -130,7 +130,7 @@
                                   </p>
                                 </td>
                                 <td>
-                                    <input value="1" name="anamnesis_item10" type="checkbox"  @isset($cita->sudicienciatrabajoaltura->anamnesis_item10) checked  @endisset>
+                                    <input value="1" name="anamnesis_item10" type="checkbox"  @isset($cita->sudicienciatrabajoaltura->anamnesis_item10) @if($cita->sudicienciatrabajoaltura->anamnesis_item10=='1') checked @endif   @endisset>
                                 </td>
                               </tr>
                               <tr>
@@ -282,7 +282,7 @@
                                                           <p>limitación en fuerza y/o movilidad de extremidades (Mayor a 2kg / fuerza cada mano)</p>
                                                 </div>
                                                 <div class="col-md2">
-                                                        <input type="checkbox" name="exploracion_fisica_item_1" @isset($cita->sudicienciatrabajoaltura->exploracion_fisica_item_1) checked  @endisset   value="1">
+                                                        <input type="checkbox" name="exploracion_fisica_item_1" @isset($cita->sudicienciatrabajoaltura->exploracion_fisica_item_1) @if($cita->sudicienciatrabajoaltura->exploracion_fisica_item_1=='1') checked @endif   @endisset   value="1">
                                                 </div>
                                               </div>
                                             </div>
@@ -291,7 +291,7 @@
                                                         <p>Presencia de nistagnus</p>
                                               </div>
                                               <div class="col-md2">
-                                                      <input type="checkbox" name="exploracion_fisica_item_2" value="1" @isset($cita->sudicienciatrabajoaltura->exploracion_fisica_item_2) checked  @endisset >
+                                                      <input type="checkbox" name="exploracion_fisica_item_2" value="1" @isset($cita->sudicienciatrabajoaltura->exploracion_fisica_item_2)  @if($cita->sudicienciatrabajoaltura->exploracion_fisica_item_2=='1') checked @endif    @endisset >
                                               </div>
                                             </div>
                                           </div>
@@ -304,7 +304,7 @@
                                                           <p>Alteracion presente del equilibrio</p>
                                                 </div>
                                                 <div class="col-md2">
-                                                        <input type="checkbox" name="exploracion_fisica_item_3" value="1" @isset($cita->sudicienciatrabajoaltura->exploracion_fisica_item_3) checked  @endisset>
+                                                        <input type="checkbox" name="exploracion_fisica_item_3" value="1" @isset($cita->sudicienciatrabajoaltura->exploracion_fisica_item_3) @if($cita->sudicienciatrabajoaltura->exploracion_fisica_item_3=='1') checked @endif   @endisset>
                                                 </div>
                                               </div>
                                             </div>
@@ -313,7 +313,7 @@
                                                         <p>Anormalidad en movimientos oculares</p>
                                               </div>
                                               <div class="col-md2">
-                                                      <input type="checkbox" name="exploracion_fisica_item_4" value="1" @isset($cita->sudicienciatrabajoaltura->exploracion_fisica_item_4) checked  @endisset>
+                                                      <input type="checkbox" name="exploracion_fisica_item_4" value="1" @isset($cita->sudicienciatrabajoaltura->exploracion_fisica_item_4) @if($cita->sudicienciatrabajoaltura->exploracion_fisica_item_4=='1') checked @endif   @endisset>
                                               </div>
                                             </div>
                                           </div>
@@ -326,7 +326,7 @@
                                                           <p>Anormalidad en la marcha con los ojos cerrados y/o abiertos</p>
                                                 </div>
                                                 <div class="col-md2">
-                                                        <input type="checkbox" name="exploracion_fisica_item_5" value="1" @isset($cita->sudicienciatrabajoaltura->exploracion_fisica_item_5) checked  @endisset>
+                                                        <input type="checkbox" name="exploracion_fisica_item_5" value="1" @isset($cita->sudicienciatrabajoaltura->exploracion_fisica_item_5) @if($cita->sudicienciatrabajoaltura->exploracion_fisica_item_5=='1') checked @endif   @endisset>
                                                 </div>
                                               </div>
                                             </div>
@@ -335,7 +335,7 @@
                                                         <p>Pupilas no CIRLA</p>
                                               </div>
                                               <div class="col-md2">
-                                                      <input type="checkbox" name="exploracion_fisica_item_6" value="1" @isset($cita->sudicienciatrabajoaltura->exploracion_fisica_item_6) checked  @endisset>
+                                                      <input type="checkbox" name="exploracion_fisica_item_6" value="1" @isset($cita->sudicienciatrabajoaltura->exploracion_fisica_item_6) @if($cita->sudicienciatrabajoaltura->exploracion_fisica_item_6=='1') checked @endif   @endisset>
                                               </div>
                                             </div>
                                           </div>
@@ -348,7 +348,7 @@
                                                           <p>Alteración de la coordinacion presente(dedo nariz)</p>
                                                 </div>
                                                 <div class="col-md2">
-                                                        <input type="checkbox" name="exploracion_fisica_item_7" value="1" @isset($cita->sudicienciatrabajoaltura->exploracion_fisica_item_7) checked  @endisset>
+                                                        <input type="checkbox" name="exploracion_fisica_item_7" value="1" @isset($cita->sudicienciatrabajoaltura->exploracion_fisica_item_7) @if($cita->sudicienciatrabajoaltura->exploracion_fisica_item_7=='1') checked @endif  @endisset>
                                                 </div>
                                               </div>
                                             </div>
@@ -357,7 +357,7 @@
                                                         <p>Anormalidad del lenguaje</p>
                                               </div>
                                               <div class="col-md2">
-                                                      <input type="checkbox" name="exploracion_fisica_item_8" value="1" @isset($cita->sudicienciatrabajoaltura->exploracion_fisica_item_8) checked  @endisset>
+                                                      <input type="checkbox" name="exploracion_fisica_item_8" value="1" @isset($cita->sudicienciatrabajoaltura->exploracion_fisica_item_8) @if($cita->sudicienciatrabajoaltura->exploracion_fisica_item_8=='1') checked @endif   @endisset>
                                               </div>
                                             </div>
                                           </div>
@@ -370,7 +370,7 @@
                                                           <p>Asimetria facil</p>
                                                 </div>
                                                 <div class="col-md2">
-                                                        <input type="checkbox" name="exploracion_fisica_item_9" value="1" @isset($cita->sudicienciatrabajoaltura->exploracion_fisica_item_9) checked  @endisset>
+                                                        <input type="checkbox" name="exploracion_fisica_item_9" value="1" @isset($cita->sudicienciatrabajoaltura->exploracion_fisica_item_9) @if($cita->sudicienciatrabajoaltura->exploracion_fisica_item_9=='1') checked @endif   @endisset>
                                                 </div>
                                               </div>
                                             </div>
@@ -379,7 +379,7 @@
                                                         <p>Movimientos involuntarios</p>
                                               </div>
                                               <div class="col-md2">
-                                                      <input type="checkbox" name="exploracion_fisica_item_10" value="1" @isset($cita->sudicienciatrabajoaltura->exploracion_fisica_item_10) checked  @endisset>
+                                                      <input type="checkbox" name="exploracion_fisica_item_10" value="1" @isset($cita->sudicienciatrabajoaltura->exploracion_fisica_item_10) @if($cita->sudicienciatrabajoaltura->exploracion_fisica_item_10=='1') checked @endif   @endisset>
                                               </div>
                                             </div>
                                           </div>
@@ -401,7 +401,7 @@
                                               <p>Hipoacusia con compromiso de frecuencias conversacionales con promedio mayor de 40 db o bilateral incluso con audifonos</p>
                                           </div>
                                           <div class="col-md-2">
-                                            <input type="checkbox" name="prueba_auxiliar_item_1" value="1" @isset($cita->sudicienciatrabajoaltura->prueba_auxiliar_item_1) checked  @endisset>
+                                            <input type="checkbox" name="prueba_auxiliar_item_1" value="1" @isset($cita->sudicienciatrabajoaltura->prueba_auxiliar_item_1) @if($cita->sudicienciatrabajoaltura->prueba_auxiliar_item_1=='1') checked @endif  @endisset>
                                           </div>
                                         </div>
                                         <div class="col-md-6">
@@ -409,7 +409,7 @@
                                               <p>Evaluación psicológica anormal</p>
                                           </div>
                                           <div class="col-md-2">
-                                            <input type="checkbox" name="prueba_auxiliar_item_2" value="1"@isset($cita->sudicienciatrabajoaltura->prueba_auxiliar_item_2) checked  @endisset>
+                                            <input type="checkbox" name="prueba_auxiliar_item_2" value="1"@isset($cita->sudicienciatrabajoaltura->prueba_auxiliar_item_2)  @if($cita->sudicienciatrabajoaltura->prueba_auxiliar_item_2=='1') checked @endif   @endisset>
                                           </div>
                                         </div>
                                       </div>
@@ -419,7 +419,7 @@
                                               <p>Alteración de la agudeza visual(de los diferente a 20/20 en cada ojo) y/o de la vision profundidad incluso con lentes correctores.</p>
                                           </div>
                                           <div class="col-md-2">
-                                            <input type="checkbox" name="prueba_auxiliar_item_3" value="1" @isset($cita->sudicienciatrabajoaltura->prueba_auxiliar_item_3) checked  @endisset>
+                                            <input type="checkbox" name="prueba_auxiliar_item_3" value="1" @isset($cita->sudicienciatrabajoaltura->prueba_auxiliar_item_3)  @if($cita->sudicienciatrabajoaltura->prueba_auxiliar_item_3=='1') checked @endif    @endisset>
                                           </div>
                                         </div>
                                         <div class="col-md-6">
@@ -427,7 +427,7 @@
                                               <p>Prueba de visión de profundidad alterada</p>
                                           </div>
                                           <div class="col-md-2">
-                                            <input type="checkbox" name="prueba_auxiliar_item_4" value="1" @isset($cita->sudicienciatrabajoaltura->prueba_auxiliar_item_4) checked  @endisset>
+                                            <input type="checkbox" name="prueba_auxiliar_item_4" value="1" @isset($cita->sudicienciatrabajoaltura->prueba_auxiliar_item_4) @if($cita->sudicienciatrabajoaltura->prueba_auxiliar_item_4=='1') checked @endif   @endisset>
                                           </div>
                                         </div>
                                       </div>
@@ -437,7 +437,7 @@
                                               <p>Campimetría Anormal(Test de confrontación alterada)</p>
                                           </div>
                                           <div class="col-md-2">
-                                            <input type="checkbox" name="prueba_auxiliar_item_5" value="1" @isset($cita->sudicienciatrabajoaltura->prueba_auxiliar_item_5) checked  @endisset>
+                                            <input type="checkbox" name="prueba_auxiliar_item_5" value="1" @isset($cita->sudicienciatrabajoaltura->prueba_auxiliar_item_5) @if($cita->sudicienciatrabajoaltura->prueba_auxiliar_item_5=='1') checked @endif   @endisset>
                                           </div>
                                         </div>
                                         <div class="col-md-6">

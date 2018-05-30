@@ -170,98 +170,98 @@
 
             <tr style="border:1px solid gray;">
               <td width="20%" align="left">HEMOGLOBINA</td>
-              <td width="20%" style="border:1px solid gray;" >{{$cita->hemograma->hemoglobina}}</td>
+              <td width="20%" style="border:1px solid gray;" >@isset($cita->hemograma->hemoglobina) {{$cita->hemograma->hemoglobina}} @endisset</td>
               <td align="center" style="font-size:xx-small"> g/dl H: 14–18 M:12–16</td>
               <td colspan="3" style="padding-left:10px"><label for=""> EXAMEN MACROSCÓPICO</label> </td>
             </tr>
 
             <tr style="border:1px solid gray;">
               <td width="20%" align="left">HEMATOCRITO</td>
-              <td width="20%" style="border:1px solid gray;" >{{$cita->hemograma->hematocrito}}</td>
+              <td width="20%" style="border:1px solid gray;" >@isset($cita->hemograma->hematocrito) {{$cita->hemograma->hematocrito}}@endisset</td>
               <td align="center" style="font-size:xx-small">%  H: 44 – 56 M: 38 – 50 </td>
               <td width="20%" align="left">COLOR</td>
-              <td width="35%" style="border:1px solid gray;" >{{$cita->orinas->color}}</td>
+              <td width="35%" style="border:1px solid gray;" >@isset($cita->orinas->color) {{$cita->orinas->color}} @endisset</td>
             </tr>
 
             <tr style="border:1px solid gray;">
               <td colspan="3" align="left"><label for=""> RECUENTO CELULAR</label></td>
               <td width="20%" align="left">ASPECTO</td>
-              <td width="35%" style="border:1px solid gray;" >{{$cita->orinas->aspecto}}</td>
+              <td width="35%" style="border:1px solid gray;" >@isset($cita->orinas->aspecto) {{$cita->orinas->aspecto}} @endisset</td>
             </tr>
             <tr style="border:1px solid gray;">
               <td width="20%" align="left">LEUCOCITOS</td>
-              <td width="20%" style="border:1px solid gray;" >{{$cita->hemograma->leucocitos}}</td>
+              <td width="20%" style="border:1px solid gray;" >@isset($cita->hemograma->leucocitos) {{$cita->hemograma->leucocitos}} @endisset</td>
               <td align="center" style="font-size:xx-small">xmm3 3,800 – 10,500</td>
               <td colspan="3" style="padding-left:10px"><label for=""> EXAMEN BIOQUÍMICO</label> </td>
             </tr>
             <tr style="border:1px solid gray;">
               <td colspan="3" align="left"><label for=""> FORMULA DIFERENCIAL</label></td>
               <td width="20%" align="left">DENSIDAD</td>
-              <td width="35%" style="border:1px solid gray;" >{{$cita->orinas->densidad}}</td>
+              <td width="35%" style="border:1px solid gray;" >@isset($cita->orinas->densidad) {{$cita->orinas->densidad}} @endisset</td>
             </tr>
             <tr style="border:1px solid gray;">
               <td width="20%" align="left">SEGMENTADOS</td>
-              <td width="20%" style="border:1px solid gray;" >{{$cita->hemograma->segmentados}}</td>
+              <td width="20%" style="border:1px solid gray;" >@isset($cita->hemograma->segmentados) {{$cita->hemograma->segmentados}} @endisset</td>
               <td align="center" style="font-size:xx-small">% 36 – 70 </td>
               <td width="20%" align="left">pH</td>
-              <td width="35%" style="border:1px solid gray;" >{{$cita->orinas->ph}}</td>
+              <td width="35%" style="border:1px solid gray;" >@isset($cita->orinas->ph) {{$cita->orinas->ph}} @endisset</td>
             </tr>
 
             <tr style="border:1px solid gray;">
               <td width="20%" align="left">ABASTONADOS</td>
-              <td width="20%" style="border:1px solid gray;" >{{$cita->hemograma->abastonados}}</td>
+              <td width="20%" style="border:1px solid gray;" > @isset($cita->hemograma->abastonados) {{$cita->hemograma->abastonados}} @endisset</td>
               <td align="center" style="font-size:xx-small">% 0 – 5</td>
               <td width="20%" align="left">GLUCOSA</td>
-              <td width="35%" style="border:1px solid gray;" >{{$cita->orinas->glucosa}}</td>
+              <td width="35%" style="border:1px solid gray;" >@isset($cita->orinas->glucosa)  {{$cita->orinas->glucosa}} @endisset</td>
             </tr>
             <tr style="border:1px solid gray;">
               <td width="20%" align="left">EOSINOFILOS</td>
-              <td width="20%" style="border:1px solid gray;" >{{$cita->hemograma->eosinofilos}}</td>
+              <td width="20%" style="border:1px solid gray;" >@isset($cita->hemograma->eosinofilos) {{$cita->hemograma->eosinofilos}} @endisset</td>
               <td align="center" style="font-size:xx-small">% 0 – 1 </td>
               <td width="20%" align="left">BILIRRUBINAS</td>
-              <td width="35%" style="border:1px solid gray;" >{{$cita->orinas->bilirrubinas}}</td>
+              <td width="35%" style="border:1px solid gray;" >@isset($cita->orinas->bilirrubinas)  {{$cita->orinas->bilirrubinas}} @endisset</td>
             </tr>
             <tr style="border:1px solid gray;">
               <td width="20%" align="left">BASOFILOS</td>
-              <td width="20%" style="border:1px solid gray;" >{{$cita->hemograma->basofilos}}</td>
+              <td width="20%" style="border:1px solid gray;" >@isset($cita->hemograma->basofilos)  {{$cita->hemograma->basofilos}} @endisset</td>
               <td align="center" style="font-size:xx-small">% 23 – 49 </td>
               <td width="20%" align="left">CUERPOS CETONICOS</td>
-              <td width="35%" style="border:1px solid gray;" >{{$cita->orinas->cuerpos_cetonicos}}</td>
+              <td width="35%" style="border:1px solid gray;" >@isset($cita->orinas->cuerpos_cetonicos)  {{$cita->orinas->cuerpos_cetonicos}}  @endisset</td>
             </tr>
             <tr style="border:1px solid gray;">
               <td width="20%" align="left">LINFOCITOS</td>
-              <td width="20%" style="border:1px solid gray;" >{{$cita->hemograma->linfocitos}}</td>
+              <td width="20%" style="border:1px solid gray;" >@isset($cita->hemograma->linfocitos)  {{$cita->hemograma->linfocitos}} @endisset</td>
               <td align="center" style="font-size:xx-small">% 23 - 49 </td>
               <td width="20%" align="left">PROTEÍNAS</td>
-              <td width="35%" style="border:1px solid gray;" > {{$cita->orinas->proteinas}} </td>
+              <td width="35%" style="border:1px solid gray;" >@isset($cita->orinas->proteinas) {{$cita->orinas->proteinas}} @endisset</td>
             </tr>
             <tr style="border:1px solid gray;">
               <td width="20%" align="left">MONOCITOS</td>
-              <td width="20%" style="border:1px solid gray;" > {{$cita->hemograma->monocitos}} </td>
+              <td width="20%" style="border:1px solid gray;" >@isset($cita->hemograma->monocitos) {{$cita->hemograma->monocitos}} @endisset</td>
               <td align="center" style="font-size:xx-small">% 0 – 7 </td>
               <td width="20%" align="left">UROBILINOGENO</td>
-              <td width="35%" style="border:1px solid gray;">{{$cita->orinas->urobilinogeno}}</td>
+              <td width="35%" style="border:1px solid gray;"> @isset($cita->orinas->urobilinogeno){{$cita->orinas->urobilinogeno}} @endisset</td>
             </tr>
             <tr style="border:1px solid gray;">
               <td width="20%" align="left"><strong>V.S.G</strong> </td>
               <td width="20%" style="border:1px solid gray;" ></td>
               <td align="center" style="font-size:xx-small">mm/hora H: 0–10 M: 0–20 </td>
               <td width="20%" align="left">NITRITOS</td>
-              <td width="35%" style="border:1px solid gray;" >{{$cita->orinas->nitritos}}</td>
+              <td width="35%" style="border:1px solid gray;" >@isset($cita->orinas->nitritos) {{$cita->orinas->nitritos}} @endisset</td>
             </tr>
             <tr style="border:1px solid gray;">
               <td width="20%" align="left"> <strong>GPO. SANGUINEO</strong>  </td>
               <td width="20%" style="border:1px solid gray;" ></td>
               <td align="center" style="font-size:xx-small"> </td>
               <td width="20%" align="left">HEMOGLOBINA</td>
-              <td width="35%" style="border:1px solid gray;" >{{$cita->orinas->hemoglobina}}</td>
+              <td width="35%" style="border:1px solid gray;" >@isset($cita->orinas->hemoglobina) {{$cita->orinas->hemoglobina}} @endisset</td>
             </tr>
             <tr style="border:1px solid gray;">
               <td width="20%" align="left"> <strong>FACTOR RH</strong>  </td>
               <td width="20%" style="border:1px solid gray;" ></td>
               <td align="center" style="font-size:xx-small"></td>
               <td width="20%" align="left">SANGRE</td>
-              <td width="35%" style="border:1px solid gray;" >{{$cita->orinas->sangre}}</td>
+              <td width="35%" style="border:1px solid gray;" >@isset($cita->orinas->sangre){{$cita->orinas->sangre}}  @endisset</td>
             </tr>
 
             <tr>
@@ -275,56 +275,56 @@
               <td width="20%" style="border:1px solid gray;" ></td>
               <td align="center" style="font-size:xx-small">mg/dl 74 – 106</td>
               <td width="20%" align="left">LEUCOCITOS</td>
-              <td width="35%" style="border:1px solid gray;" >{{$cita->orinas->leucocitos}}</td>
+              <td width="35%" style="border:1px solid gray;" >@isset($cita->orinas->leucocitos)  {{$cita->orinas->leucocitos}} @endisset</td>
             </tr>
             <tr style="border:1px solid gray;">
               <td width="20%" align="left"> <strong>CREATININA</strong>  </td>
               <td width="20%" style="border:1px solid gray;" ></td>
               <td align="center" style="font-size:xx-small">mg/dl H: 0.7–1.3 M: 0.6–1.1</td>
               <td width="20%" align="left">HEMATÍES</td>
-              <td width="35%" style="border:1px solid gray;" >{{$cita->orinas->hematies}}</td>
+              <td width="35%" style="border:1px solid gray;" >@isset($cita->orinas->hematies)  {{$cita->orinas->hematies}} @endisset</td>
             </tr>
             <tr style="border:1px solid gray;">
               <td width="20%" align="left"> <strong>ACIDO ÚRICO</strong>  </td>
               <td width="20%" style="border:1px solid gray;" ></td>
               <td align="center" style="font-size:xx-small">mg/dl H: 3.5–7.2 M: 2.6–6.0</td>
               <td width="20%" align="left">CÉLULAS EPITELIALES</td>
-              <td width="35%" style="border:1px solid gray;" >{{$cita->orinas->celulas_epiteliales}}</td>
+              <td width="35%" style="border:1px solid gray;" >@isset($cita->orinas->celulas_epiteliales) {{$cita->orinas->celulas_epiteliales}}  @endisset</td>
             </tr>
             <tr style="border:1px solid gray;">
               <td width="20%" align="left"> <strong>COL. TOTAL</strong>  </td>
               <td width="20%" style="border:1px solid gray;" ></td>
               <td align="center" style="font-size:xx-small">mg/dl &lt; 200 </td>
               <td width="20%" align="left">CILINDROS</td>
-              <td width="35%" style="border:1px solid gray;" >{{$cita->orinas->cilindros}}</td>
+              <td width="35%" style="border:1px solid gray;" >@isset($cita->orinas->cilindros) {{$cita->orinas->cilindros}} @endisset</td>
             </tr>
             <tr style="border:1px solid gray;">
               <td width="20%" align="left"> <strong>TRIGLICÉRIDOS</strong>  </td>
               <td width="20%" style="border:1px solid gray;" ></td>
               <td align="center" style="font-size:xx-small">mg/dl &lt; = 150 </td>
               <td width="20%" align="left">CRISTALES</td>
-              <td width="35%" style="border:1px solid gray;" >{{$cita->orinas->cristales}}</td>
+              <td width="35%" style="border:1px solid gray;" >@isset($cita->orinas->cristales) {{$cita->orinas->cristales}} @endisset</td>
             </tr>
             <tr style="border:1px solid gray;">
               <td width="20%" align="left"> <strong>HDL COLESTEROL</strong>  </td>
               <td width="20%" style="border:1px solid gray;" ></td>
               <td align="center" style="font-size:xx-small">mg/dl 40 – 60 </td>
               <td width="20%" align="left">GÉRMENES</td>
-              <td width="35%" style="border:1px solid gray;" >{{$cita->orinas->germenes}}</td>
+              <td width="35%" style="border:1px solid gray;" >@isset($cita->orinas->germenes) {{$cita->orinas->germenes}}  @endisset </td>
             </tr>
             <tr style="border:1px solid gray;">
               <td width="20%" align="left"> <strong>LDL COLESTEROL</strong>  </td>
               <td width="20%" style="border:1px solid gray;" ></td>
               <td align="center" style="font-size:xx-small">mg/dl &lt;  130 </td>
               <td width="20%" align="left">FILAMENTOS MUCOIDES</td>
-              <td width="35%" style="border:1px solid gray;" >{{$cita->orinas->filamentos_mucoides}}</td>
+              <td width="35%" style="border:1px solid gray;" >@isset($cita->orinas->filamentos_mucoides) {{$cita->orinas->filamentos_mucoides}} @endisset</td>
             </tr>
             <tr style="border:1px solid gray;">
               <td width="20%" align="left"> <strong>VLDL COLESTEROL</strong>  </td>
               <td width="20%" style="border:1px solid gray;" ></td>
               <td align="center" style="font-size:xx-small"> U/l H: 11–50 M: 7–32</td>
               <td width="20%" align="left">OTROS</td>
-              <td width="35%" style="border:1px solid gray;" >{{$cita->orinas->otros}}</td>
+              <td width="35%" style="border:1px solid gray;" >@isset($cita->orinas->otros) {{$cita->orinas->otros}} @endisset</td>
             </tr>
             <tr style="border:1px solid gray;">
               <td width="20%" align="left"> <strong>GGT</strong>  </td>

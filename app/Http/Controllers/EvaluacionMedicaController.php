@@ -205,6 +205,15 @@ class EvaluacionMedicaController extends Controller
       $pdf->stream($view);
       return $pdf->stream();
     }
+    public function informemedicoocupacional($id)
+    {
+      $cita=Cita::find($id);
+      $view=View::make('evaluacionmedica.reportes.informemedicoocupacional',compact('cita'));
+      $pdf = \App::make('dompdf.wrapper');
+      $pdf->loadHTML($view);
+      $pdf->stream($view);
+      return $pdf->stream();
+    }
 
 
 }

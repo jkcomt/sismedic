@@ -303,6 +303,8 @@ Route::get('evaluacion_medica/recargar_lista_examen/{id}', [
     'uses' => 'EvaluacionMedicaController@recargarListaExamenes'
 ]);
 Route::get('/informe_laboratorio/{id}','EvaluacionMedicaController@informelaboratorio')->name('evaluacionmedica.informelaboratorio');
+Route::get('/informe_medico_ocupacional/{id}','EvaluacionMedicaController@informemedicoocupacional')->name('evaluacionmedica.informemedicoocupacional');
+
 Route::resource('evaluacion_medica','EvaluacionMedicaController',['except' => 'create']);
 
 Route::group([
@@ -390,7 +392,7 @@ Route::group(["prefix"=>"electrocardiograma"],function(){
 Route::group(["prefix"=>"anexo7d"],function(){
   Route::post('/crear','Anexo7dsController@store')->name('anexo7d.store');
   Route::post('/actualizar','Anexo7dsController@update')->name('anexo7d.update');
-  Route::get('/{id}/pdf','Anexo7dsController@examenes')->name('anexo7d.reporte');
+  Route::get('/{id}/reporte_anexo','Anexo7dsController@reporte_anexo7d')->name('anexo7d.reporte');
 });
 
 //Route::resource('colesterol_hdl','ColesterolHdlController');
@@ -450,6 +452,12 @@ Route::group(["prefix"=>"trabajo_altura"],function(){
   Route::post('/crear','SuficienciaTrabajoAlturaController@store')->name('trabajo_altura.store');
   Route::post('/actualizar','SuficienciaTrabajoAlturaController@update')->name('trabajo_altura.update');
   Route::get('/{id}/reporte','SuficienciaTrabajoAlturaController@reporte_certificacion_suficiencia_medica')->name('trabajo_altura.reporte');
+});
+
+Route::group(["prefix"=>"apnea_suenio"],function(){
+  Route::post('/crear','ApneaSueniosController@store')->name('apnea_suenio.store');
+  Route::post('/actualizar','ApneaSueniosController@update')->name('apnea_suenio.update');
+  Route::get('/{id}/reporte','ApneaSueniosController@reporte_apnea_suenio')->name('apnea_suenio.reporte');
 });
 
 

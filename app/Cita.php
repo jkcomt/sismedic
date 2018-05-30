@@ -188,6 +188,10 @@ class Cita extends Model
         return $this->hasOne(UsoRespirador::class);
     }
 
+    public function ApneaSuenio(){
+        return $this->hasOne(ApneaSuenios::class);
+    }
+
 
 
 }
