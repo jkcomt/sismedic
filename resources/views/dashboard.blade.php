@@ -63,17 +63,17 @@
       CALENDARIO DE CITAS
     </div>
     <div class="col-md-8 text-right">
-      <a href="{{route('citas.nuevacita')}}" class="btn btn-success">REGISTRAR NUEVA CITA</a>
+      <a href="{{route('citas.nuevacita')}}" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> NUEVA CITA</a>
     </div>
   </div>
 
 @endsection
 @section('content')
-<div id="tabla">
+{{--<div id="tabla">--}}
 
-</div>
+{{--</div>--}}
 <div class="panel panel-default" style="margin-bottom: 0px;">
-    <div class="panel-body" style="padding-bottom: 10px;padding-top: 10px">
+    <div class="panel-body" style="padding-bottom: 10px;padding-top: 5px">
         {{csrf_field()}}
         <div id='calendar'></div>
     </div>
