@@ -39,17 +39,8 @@
                 {{--<a href="" class="btn btn-success">NUEVA FILIACIÓN</a>--}}
             </div>
         </div>
-        <div class="col-md-10">
-            <form action="" class="form-inline text-right">
-                <select name="filtro" id="filtro" class="form-control">
-                    <option value="historia">Nro. Historia</option>
-                    <option value="paciente">PACIENTE</option>
-                </select>
-                <input type="text" id="buscarFuncionVital" placeholder="BUSCAR..." class="form-control" style="width: 45%">
-
-            </form>
-        </div>
     </div>
+    @include('buscadorgeneral.filtroscita')
 
     <div class="row" id="tabla">
         @include('funcionvital.tabla')

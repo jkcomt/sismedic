@@ -55,29 +55,30 @@
                 <input type="hidden" value="{{$paciente->id}}" id="idPaciente">
             </div>
         </div>
-        <div class="col-md-7">
-            <form action="" class="form-inline text-right">
+        {{--<div class="col-md-7">--}}
+            {{--<form action="" class="form-inline text-right">--}}
 
-              <div class="row">
-                <div class="col-md-4">
-                  <select class="form-control" name="tipoBusquedacita" id="tipoBusquedacita">
-                    <option value="cita">POR N° CITA</option>
-                    <option value="fecha">POR FECHA</option>
-                  </select>
-                </div>
-                <div class="col-md-4">
-                  <input type="text" id="buscarCita" placeholder="N° DE CITA A BUSCAR" class="form-control" >
+              {{--<div class="row">--}}
+                {{--<div class="col-md-4">--}}
+                  {{--<select class="form-control" name="tipoBusquedacita" id="tipoBusquedacita">--}}
+                    {{--<option value="cita">POR N° CITA</option>--}}
+                    {{--<option value="fecha">POR FECHA</option>--}}
+                  {{--</select>--}}
+                {{--</div>--}}
+                {{--<div class="col-md-4">--}}
+                  {{--<input type="text" id="buscarCita" placeholder="N° DE CITA A BUSCAR" class="form-control" >--}}
 
-               </div>
-               <div class="col-md-4">
-                 <input type="text" id="daterangecita"  class="form-control pull-right" name="daterangecita" style="width: 100%">
-                </div>
-              </div>
+               {{--</div>--}}
+               {{--<div class="col-md-4">--}}
+                 {{--<input type="text" id="daterangecita"  class="form-control pull-right" name="daterangecita" style="width: 100%">--}}
+                {{--</div>--}}
+              {{--</div>--}}
 
-            </form>
+            {{--</form>--}}
 
-        </div>
+        {{--</div>--}}
     </div>
+    @include('buscadorgeneral.filtropacientecita')
     <div class="row" id="tabla">
         @include('pacientes.citas.tabla')
     </div>

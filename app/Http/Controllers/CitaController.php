@@ -126,7 +126,8 @@ class CitaController extends Controller
          if($request['fecha'] != '') {
              $citas = Cita::where('fecha_examen','=', $request['fecha'])
                  //->orWhere('num_dni', 'like', '%' . $request['buscar'] . '%')
-                 ->orderBy('hora_examen', 'asc');
+                 //->orderBy('hora_examen', 'asc');
+                 ->orderBy('nro_serie_cita', 'desc');
              $citas = $citas->where('estado', true)->get();
          }
 
@@ -139,24 +140,37 @@ class CitaController extends Controller
      public function searchdni(Request $request)
      {
        $citas = null;
-
+        $view = null;
        if($request['buscar'] != '')
        {
          $citas= Cita::leftjoin('pacientes','citas.paciente_id','pacientes.id')
          ->where('pacientes.num_dni','like','%'.$request['buscar'].'%')
          ->where('citas.estado',true)
-         ->orderBy('citas.fecha_registro','desc')
-         ->orderBy('citas.hora_registro','desc')->paginate(10);
+         //->orderBy('citas.fecha_registro','desc')
+         //->orderBy('citas.hora_registro','desc')
+         ->orderBy('citas.nro_serie_cita','desc')
+             ->paginate(10);
        }
        else{
          $citas= Cita::where('estado',true)
-         ->orderBy('fecha_registro','desc')
-         ->orderBy('hora_registro','desc')->paginate(10);
+         //->orderBy('fecha_registro','desc')
+         //->orderBy('hora_registro','desc')
+         ->orderBy('citas.nro_serie_cita','desc')
+             ->paginate(10);
        }
 
            if($request->ajax())
            {
-               $view = view('citas.table',compact('citas'))->render();
+               //detecta de que vista proviene el request, ejem. cita, funcion vital, evaluacion medica..
+               if($request['origen'] == "funcion_vital")
+               {
+                   $view = view('funcionvital.tabla',compact('citas'))->render();
+               }else if($request['origen'] == "evaluacion_medica"){
+                   $view = view('evaluacionmedica.tabla',compact('citas'))->render();
+               }else {
+                   $view = view('citas.table',compact('citas'))->render();
+               }
+
                return response()->json(['html'=>$view]);
            }
       /*  return  response()->json([
@@ -166,16 +180,27 @@ class CitaController extends Controller
 
      public function searchDniFecha(Request $request)
      {
+         $view = null;
        if($request->ajax())
        {
            $citas = Cita::leftjoin('pacientes','citas.paciente_id','pacientes.id')
               ->where('pacientes.num_dni','like','%'.$request['dni'].'%')
                ->where('fecha_examen','>=',$request['startdate'])
                ->where('fecha_examen','<=',$request['enddate'])
-               ->orderBy('fecha_examen','asc')
-               ->orderBy('hora_examen','asc')->paginate(10);
+//               ->orderBy('fecha_examen','asc')
+//               ->orderBy('hora_examen','asc')
+               ->orderBy('nro_serie_cita','asc')
+               ->paginate(10);
 
+           //detecta de que vista proviene el request, ejem. cita, funcion vital, evaluacion medica..
+           if($request['origen'] == "funcion_vital")
+           {
+               $view = view('funcionvital.tabla',compact('citas'))->render();
+           }else if($request['origen'] == "evaluacion_medica"){
+               $view = view('evaluacionmedica.tabla',compact('citas'))->render();
+           }else {
                $view = view('citas.table',compact('citas'))->render();
+           }
                return response()->json(['html'=>$view]);
        }
 
@@ -205,6 +230,8 @@ class CitaController extends Controller
       return view('citas.create',compact('clienteCuentas','tipoExamenes','perfiles','perfilesExamenes','cita','pacientes'));
     //  dd($citas);
     }
+
+    //metodo para el select2
     public function searchPaciente(Request $request)
     {
       $term = $request->term ?:'';
@@ -303,16 +330,6 @@ class CitaController extends Controller
     {
       $cita=Cita::find($id);
 
-      //$paciente = Paciente::find($cita->paciente->id);
-/*
-      $tipoExamenes = TipoExamen::where('estado',true)->get()->pluck('descripcion','id')->toArray();
-
-      $clienteCuentas = ClienteCuenta::where('estado',true)->get()->pluck('descripcion','id')->toArray();
-
-      $perfiles = Perfil::where('estado',true)->get()->pluck('descripcion','id')->toArray();
-
-      $perfilesExamenes = PerfilExamen::where('estado',true)->get();*/
-
       $view=View::make('citas.reporte.examenescliente',compact('cita'));
       $pdf = \App::make('dompdf.wrapper');
       $pdf->loadHTML($view);
@@ -322,45 +339,67 @@ class CitaController extends Controller
 
     public function busquedafecha(Request $request)
     {
+
       if($request->ajax())
       {
+          $view= null;
           $citas = Cita::where('estado',true)
               ->where('fecha_examen','>=',$request['startdate'])
               ->where('fecha_examen','<=',$request['enddate'])
-              ->orderBy('fecha_examen','asc')
-              ->orderBy('hora_examen','asc')->paginate(10);
+              ->orderBy('nro_serie_cita','desc')
+              ->paginate(10);
 
+          //detecta de que vista proviene el request, ejem. cita, funcion vital, evaluacion medica..
+          if($request['origen'] == "funcion_vital")
+          {
+              $view = view('funcionvital.tabla',compact('citas'))->render();
+          }else if($request['origen'] == "evaluacion_medica"){
+              $view = view('evaluacionmedica.tabla',compact('citas'))->render();
+          }else {
               $view = view('citas.table',compact('citas'))->render();
-              return response()->json(['html'=>$view]);
+          }
+          return response()->json(['html'=>$view]);
       }
     }
 
     public function busquedaPaciente(Request $request)
     {
+        $citas = null;
+        $view = null;
         if($request['buscar'] != '')
         {
             $citas= Cita::leftjoin('pacientes','citas.paciente_id','pacientes.id')
                 ->where('pacientes.apellido_paterno','like','%'.$request['buscar'].'%')
                 ->orwhere('pacientes.apellido_materno','like','%'.$request['buscar'].'%')
                 ->where('citas.estado',true)
-                ->orderBy('citas.fecha_registro','desc')
-                ->orderBy('citas.hora_registro','desc')->paginate(10);
-
-            $view = view('citas.table',compact('citas'))->render();
-            return response()->json(['html'=>$view]);
+                ->orderBy('citas.nro_serie_cita','desc')
+//                ->orderBy('citas.fecha_registro','desc')
+//                ->orderBy('citas.hora_registro','desc')
+                ->paginate(10);
         }else{
             $citas= Cita::leftjoin('pacientes','citas.paciente_id','pacientes.id')
                 ->where('citas.estado',true)
-                ->orderBy('citas.fecha_registro','desc')
-                ->orderBy('citas.hora_registro','desc')->paginate(10);
-
-            $view = view('citas.table',compact('citas'))->render();
-            return response()->json(['html'=>$view]);
+//                ->orderBy('citas.fecha_registro','desc')
+//                ->orderBy('citas.hora_registro','desc')
+                ->orderBy('citas.nro_serie_cita','desc')
+                ->paginate(10);
         }
+
+        //detecta de que vista proviene el request, ejem. cita, funcion vital, evaluacion medica..
+        if($request['origen'] == "funcion_vital")
+        {
+            $view = view('funcionvital.tabla',compact('citas'))->render();
+        }else if($request['origen'] == "evaluacion_medica"){
+            $view = view('evaluacionmedica.tabla',compact('citas'))->render();
+        }else {
+            $view = view('citas.table',compact('citas'))->render();
+        }
+        return response()->json(['html'=>$view]);
     }
 
     public function busquedaPacienteFecha(Request $request)
     {
+        $citas = null;
         if($request['buscar'] != '')
         {
             $citas= Cita::leftjoin('pacientes','citas.paciente_id','pacientes.id')
@@ -372,18 +411,26 @@ class CitaController extends Controller
 //                ->orderBy('citas.fecha_registro','desc')
 //                ->orderBy('citas.hora_registro','desc')
                 ->paginate(10);
-
-            $view = view('citas.table',compact('citas'))->render();
-            return response()->json(['html'=>$view]);
         }else{
             $citas= Cita::leftjoin('pacientes','citas.paciente_id','pacientes.id')
                 ->where('citas.estado',true)
-                ->orderBy('citas.fecha_registro','desc')
-                ->orderBy('citas.hora_registro','desc')->paginate(10);
-
-            $view = view('citas.table',compact('citas'))->render();
-            return response()->json(['html'=>$view]);
+                //->orderBy('citas.fecha_registro','desc')
+                //->orderBy('citas.hora_registro','desc')
+                ->orderBy('citas.nro_serie_cita','desc')
+                ->paginate(10);
         }
+
+        //detecta de que vista proviene el request, ejem. cita, funcion vital, evaluacion medica..
+        if($request['origen'] == "funcion_vital")
+        {
+            $view = view('funcionvital.tabla',compact('citas'))->render();
+        }else if($request['origen'] == "evaluacion_medica"){
+            $view = view('evaluacionmedica.tabla',compact('citas'))->render();
+        }else {
+            $view = view('citas.table',compact('citas'))->render();
+        }
+
+        return response()->json(['html'=>$view]);
     }
 
     public function filtrarExamen(Request $request){

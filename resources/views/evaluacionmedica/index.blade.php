@@ -31,31 +31,12 @@
 @endsection
 
 @section('content')
-    {{--@include('lote.modals.edit')--}}
 
-    <div class="row">
-        <div class="col-md-2">
-            <div class="form-group">
-                {{--<a href="{{route('pacientes.create')}}" class="btn btn-success">NUEVA FILIACIÓN</a>--}}
-            </div>
-        </div>
-        <div class="col-md-10">
-            <form action="" class="form-inline text-right">
-                {{--<select name="filtro" id="filtro" class="form-control">--}}
-                    {{--<option value="historia">Nro. Historia</option>--}}
-                    {{--<option value="dni">DNI</option>--}}
-                    {{--<option value="paciente">PACIENTE</option>--}}
-                {{--</select>--}}
-                <input type="text" id="buscarPaciente" placeholder="BUSCAR..." class="form-control" style="width: 45%">
-                {{--<button class="btn btn-primary form-control">BUSCAR</button>--}}
-            </form>
-        </div>
-    </div>
-    <br>
+    @include('buscadorgeneral.filtroscita')
     <div class="row" id="tabla">
         @include('evaluacionmedica.tabla')
     </div>
 @endsection
 @section('script')
-    {{--<script src="{{asset('js/pacientes/pacientes.js')}}"></script>--}}
+    <script src="{{asset('js/evaluacionmedica/evaluacion.js')}}"></script>
 @endsection
