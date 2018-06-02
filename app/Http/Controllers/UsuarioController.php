@@ -80,7 +80,7 @@ class UsuarioController extends Controller
             $rol = Role::create([
                 'name'=>$data['name'],
                 'slug'=>$data['name'].'role',
-                'descripction'=>$data['name'],
+                'description'=>$data['name'],
                 'special'=>'no-access'
             ]);
 
@@ -185,9 +185,6 @@ class UsuarioController extends Controller
     public function permisos($id){
 
         $usuario = User::find($id);
-        //dd($usuario->roles->first()->id);
-        //$role = Role::find($usuario->role->latest()->get());
-        //$role = $usuario->roles->first();
         $permisos = Permission::all();
         return view('usuario.permisos',compact("usuario","permisos"));
     }

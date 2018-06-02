@@ -1,7 +1,6 @@
 $(document).ready(function() {
 
     $('#msg-error').hide();
-    console.log("personal.js");
 });
 $items= [];
 /***************************CREATE*********************************/
