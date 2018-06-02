@@ -27,10 +27,17 @@
 
       width: 690px;
     }
-
+    body{
+      font-family: Tahoma, Verdana, Segoe, sans-serif;
+      	font-size: 14px;
+      	font-style: normal;
+      	font-variant: normal;
+      	font-weight: 500;
+      	line-height: 15.4px;
+    }
     .tdheader{
       background: rgba(0,0,0,0.2);
-
+        padding: 2px;
       font-size:xx-small;
     }
     .tdheight{
@@ -64,6 +71,14 @@
     .ml-10{
         margin-left: 10px
     }
+    .tdrow{
+    font-size:x-small;
+      border-top:0.5px solid rgba(0,0,0,0.3);
+    border-left:0.5px solid rgba(0,0,0,0.3);
+      border-right:0.5px solid rgba(0,0,0,0.3);
+    border-bottom:0.5px solid rgba(0,0,0,0.3);
+    }
+
 
     li{
         font-size: 10px;
@@ -81,6 +96,12 @@
         margin-bottom:0px !important;
         padding-bottom:0px !important;
     }
+    .tdheader{
+      background: rgba(0,0,0,0.05);
+      border: 1px solid rgba(0,0,0,0.4);
+      padding:1px;
+      font-size:x-small;
+    }
     </style>
 </head>
 <body>
@@ -89,19 +110,19 @@
   <div class="header">
     <u>USO DE RESPIRADORES</u>
   </div>
-<table border="1">
+<table>
     <thead>
     <tr>
-        <td colspan="2">7.1 Ficha: Evaluación del Lugar de Trabajo (llenado por el personal de salud)</td>
+        <td colspan="2" class="tdheader"><strong>7.1 Ficha: Evaluación del Lugar de Trabajo (llenado por el personal de salud)</strong></td>
     </tr>
     </thead>
  <tr>
-     <td style="width: 50%;">
+     <td style="width: 50%;" class="tdrow">
          <table >
              <tr>
                  <td>
-                     <h5>Marcar el tipo de respirador(es) a utilizar</h5>
-                     <ul class="list-unstyled">
+                     <h5 style="margin-left:15px;color:rgba(0,0,0,0.8);"      >Marcar el tipo de respirador(es) a utilizar</h5>
+                     <ul style="margin-left:25px;"  style="margin-left:25px;" class="list-unstyled">
                          <li class="@isset($usoRespirador->tipo_respirador_mascara_polvo) equis @else no-equis @endisset">
 
                              Máscara de polvo
@@ -141,8 +162,8 @@
              </tr>
              <tr>
                  <td>
-                     <h5>Tipo de Protección</h5>
-                     <ul class="list-unstyled">
+                     <h5 style="margin-left:15px;color:rgba(0,0,0,0.8);"      >Tipo de Protección</h5>
+                     <ul style="margin-left:25px;"  class="list-unstyled" style="margin-left:25px;">
                          <li class="@isset($usoRespirador->tipo_respirador_filtro_hepa) equis @else no-equis @endisset">
 
                              Filtro HEPA (partículas)
@@ -164,8 +185,8 @@
              </tr>
              <tr>
                  <td>
-                     <h5>Esfuerzo Físico Esperado Requerido</h5>
-                     <ul class="list-inline" >
+                     <h5 style="margin-left:15px;color:rgba(0,0,0,0.8);"      >Esfuerzo Físico Esperado Requerido</h5>
+                     <ul style="margin-left:25px;"  style="margin-left:25px;" class="list-inline" >
                          <li style="margin-left: 5px" class="@isset($usoRespirador->esfuerzo_fisico_esperado)
                                  @if($usoRespirador->esfuerzo_fisico_esperado == 1)
                                     equis
@@ -186,7 +207,7 @@
                  </td>
              </tr>
              <tr>
-                 <ul class="list-unstyled">
+                 <ul style="margin-left:25px;"  class="list-unstyled">
                      <li>Ligero: Sentado mientras escribe, tipea, manejo, manual de cargas ligero (menor 3 mts)</li>
                      <li>Moderado: Manejo manual de cargas menos de 15 Kg, operando equipos (menor 5 mts)</li>
                      <li>Pesado: manejo de cargas encima de 25 Kg, subiendo escaleras con carga, palaneando (mayor 5 mts)</li>
@@ -194,12 +215,12 @@
              </tr>
          </table>
      </td>
-     <td style="width: 50%;">
+     <td style="width: 50%;" class="tdrow">
          <table >
              <tr>
                  <td>
-                     <h5>Frecuencia de uso</h5>
-                     <ul class="list-unstyled" >
+                     <h5 style="margin-left:15px;color:rgba(0,0,0,0.8);"      >Frecuencia de uso</h5>
+                     <ul style="margin-left:25px;"  style="margin-left:25px;" class="list-unstyled" >
                          <li class="@isset($usoRespirador->frecuencia_uso) @if($usoRespirador->frecuencia_uso == 1) equis @else no-equis @endif @endisset">
 
                              De manera diaria
@@ -218,8 +239,8 @@
              </tr>
              <tr>
                  <td>
-                     <h5>Exposición de Materiales Peligros</h5>
-                     <ul class="list-unstyled">
+                     <h5 style="margin-left:15px;color:rgba(0,0,0,0.8);"      >Exposición de Materiales Peligros</h5>
+                     <ul style="margin-left:25px;"  style="margin-left:25px;" class="list-unstyled">
                          <li class="@isset($usoRespirador->expo_materiales_peligrosos_humo_metal) equis @else no-equis @endisset">
 
                              Humo de Metal
@@ -263,8 +284,8 @@
              </tr>
              <tr>
                  <td>
-                     <h5>Condiciones Especiales de Trabajo</h5>
-                     <ul class="list-unstyled">
+                     <h5 style="margin-left:15px;color:rgba(0,0,0,0.8);"      >Condiciones Especiales de Trabajo</h5>
+                     <ul style="margin-left:25px;"  style="margin-left:25px;" class="list-unstyled">
                          <li class="@isset($usoRespirador->cond_especiales_elevaciones_altas_2500) equis @else no-equis @endisset">
 
                              Elevaciones Altas (mayor a 2500 msnm)
@@ -299,14 +320,14 @@
  </tr>
 </table>
     {{--<br><br><br><br><br><br><br><br><br><br><br><br><br>--}}
-
-    <table border="1">
+<br>
+    <table  >
         <tr>
-            <td colspan="2">7.2 Ficha: Evaluación Personal del Empleado (llenado por el trabajador)</td>
+            <td colspan="2" class="tdheader"><strong>7.2 Ficha: Evaluación Personal del Empleado (llenado por el trabajador)</strong> </td>
         </tr>
         <tr>
-            <td style="width: 25%;">
-                <h5>
+            <td style="width: 25%;"  class="tdrow">
+                <h5 style="margin-left:15px;color:rgba(0,0,0,0.8);"      >
                     Sección 1:
                     <br>
                     Las Preguntas de la 1 a 8 deben ser respondidas por los empleados que usarán cualquier respirador.
@@ -315,10 +336,10 @@
 
                 </h5>
             </td>
-            <td style="width: 75%;">
-                <h5>1. ¿Fuma o fumó en el último mes?</h5>
+            <td style="width: 75%;"  class="tdrow">
+                <h5 style="margin-left:15px;color:rgba(0,0,0,0.8);"      >1. ¿Fuma o fumó en el último mes?</h5>
                 <div>
-                    <ul class="list-inline">
+                    <ul style="margin-left:25px;"   style="margin-left:25px;" class="list-inline">
                         <li style="margin-left: 5px" class="@isset($usoRespirador->fuma) @if($usoRespirador->fuma == 1) equis @else no-equis @endif @endisset">
 
                             Si
@@ -328,9 +349,9 @@
                             No</li>
                     </ul>
                 </div>
-                <h5>2. ¿Ha tenido alguna vez cualquiera de las siguientes condiciones?</h5>
+                <h5 style="margin-left:15px;color:rgba(0,0,0,0.8);"      >2. ¿Ha tenido alguna vez cualquiera de las siguientes condiciones?</h5>
                 <div class="small">
-                    <ul class="list-inline">
+                    <ul style="margin-left:25px;"   style="margin-left:25px;" class="list-inline">
                         <li style="margin-left: 5px;" class="@isset($usoRespirador->cond_palpitaciones) @if($usoRespirador->cond_palpitaciones == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                             Si
@@ -342,7 +363,7 @@
 
                             a.	Palpitaciones.</li>
                     </ul>
-                    <ul class="list-unstyled list-inline" >
+                    <ul style="margin-left:25px;"   style="margin-left:25px;" class="list-unstyled list-inline" >
                         <li style="margin-left: 5px" class="@isset($usoRespirador->cond_convulsiones) @if($usoRespirador->cond_convulsiones == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                             Si
@@ -354,7 +375,7 @@
 
                             b.	Convulsiones</li>
                     </ul>
-                    <ul class="list-unstyled list-inline" >
+                    <ul style="margin-left:25px;"   style="margin-left:25px;" class="list-unstyled list-inline" >
                         <li style="margin-left: 5px" class="@isset($usoRespirador->cond_diabetes) @if($usoRespirador->cond_diabetes == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                             Si
@@ -366,7 +387,7 @@
 
                             a.	Diabetes</li>
                     </ul>
-                    <ul class="list-unstyled list-inline" >
+                    <ul style="margin-left:25px;"   style="margin-left:25px;" class="list-unstyled list-inline" >
                         <li style="margin-left: 5px" class="@isset($usoRespirador->cond_reacciones_alergicas) @if($usoRespirador->cond_reacciones_alergicas == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                             Si
@@ -378,7 +399,7 @@
 
                             b.	Reacciones alérgicas que dificultan su respiración.</li>
                     </ul>
-                    <ul class="list-unstyled list-inline" >
+                    <ul style="margin-left:25px;"   style="margin-left:25px;" class="list-unstyled list-inline" >
                         <li style="margin-left: 5px" class="@isset($usoRespirador->cond_claustrofia) @if($usoRespirador->cond_claustrofia == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                             Si
@@ -391,9 +412,9 @@
                             c.	Claustrofobia</li>
                     </ul>
                 </div>
-                <h5>3. ¿Ha tenido alguna vez algunas de los siguientes problemas pulmonares o de pulmón?</h5>
+                <h5 style="margin-left:15px;color:rgba(0,0,0,0.8);"      >3. ¿Ha tenido alguna vez algunas de los siguientes problemas pulmonares o de pulmón?</h5>
                 <div class="small">
-                    <ul class="list-unstyled list-inline" >
+                    <ul style="margin-left:25px;"   style="margin-left:25px;" class="list-unstyled list-inline" >
                         <li style="margin-left: 5px" class="@isset($usoRespirador->cond_palpitaciones) @if($usoRespirador->cond_palpitaciones == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                             Si
@@ -405,7 +426,7 @@
 
                             a.	Asbestosis.</li>
                     </ul>
-                    <ul class="list-unstyled list-inline" >
+                    <ul style="margin-left:25px;"   style="margin-left:25px;" class="list-unstyled list-inline" >
                         <li style="margin-left: 5px" class="@isset($usoRespirador->prob_pulmonar_asma) @if($usoRespirador->prob_pulmonar_asma == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                             Si
@@ -417,7 +438,7 @@
 
                             b.	Asma</li>
                     </ul>
-                    <ul class="list-unstyled list-inline" >
+                    <ul style="margin-left:25px;"   style="margin-left:25px;" class="list-unstyled list-inline" >
                         <li style="margin-left: 5px" class="@isset($usoRespirador->prob_bronquitis_cronica) @if($usoRespirador->prob_bronquitis_cronica == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                             Si
@@ -429,7 +450,7 @@
 
                             c.	Bronquitis Crónica.</li>
                     </ul>
-                    <ul class="list-unstyled list-inline" >
+                    <ul style="margin-left:25px;"   style="margin-left:25px;" class="list-unstyled list-inline" >
                         <li style="margin-left: 5px" class="@isset($usoRespirador->prob_enfisema) @if($usoRespirador->prob_enfisema == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                             Si
@@ -441,7 +462,7 @@
 
                             d.	Enfisema.</li>
                     </ul>
-                    <ul class="list-unstyled list-inline" >
+                    <ul style="margin-left:25px;"   style="margin-left:25px;" class="list-unstyled list-inline" >
                         <li style="margin-left: 5px" class="@isset($usoRespirador->prob_neumonia) @if($usoRespirador->prob_neumonia == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                             Si
@@ -453,7 +474,7 @@
 
                             e.	Neumonía.</li>
                     </ul>
-                    <ul class="list-unstyled list-inline" >
+                    <ul style="margin-left:25px;"   style="margin-left:25px;" class="list-unstyled list-inline" >
                         <li style="margin-left: 5px" class="@isset($usoRespirador->prob_tuberculosis) @if($usoRespirador->prob_tuberculosis == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                             Si
@@ -465,7 +486,7 @@
 
                             f.	Tuberculosis.</li>
                     </ul>
-                    <ul class="list-unstyled list-inline" >
+                    <ul style="margin-left:25px;"   style="margin-left:25px;" class="list-unstyled list-inline" >
                         <li style="margin-left: 5px" class="@isset($usoRespirador->prob_silicosis) @if($usoRespirador->prob_silicosis == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                             Si
@@ -477,7 +498,7 @@
 
                             g.	Silicosis.</li>
                     </ul>
-                    <ul class="list-unstyled list-inline" >
+                    <ul style="margin-left:25px;"   style="margin-left:25px;" class="list-unstyled list-inline" >
                         <li style="margin-left: 5px" class="@isset($usoRespirador->prob_neumotorax) @if($usoRespirador->prob_neumotorax == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                             Si
@@ -489,7 +510,7 @@
 
                             h.	Neumotórax (pulmón colapsado).</li>
                     </ul>
-                    <ul class="list-unstyled list-inline" >
+                    <ul style="margin-left:25px;"   style="margin-left:25px;" class="list-unstyled list-inline" >
                         <li style="margin-left: 5px" class="@isset($usoRespirador->prob_cancer_pulmon) @if($usoRespirador->prob_cancer_pulmon == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                             Si
@@ -501,7 +522,7 @@
 
                             i.	Cáncer al pulmón.</li>
                     </ul>
-                    <ul class="list-unstyled list-inline" >
+                    <ul style="margin-left:25px;"   style="margin-left:25px;" class="list-unstyled list-inline" >
                         <li style="margin-left: 5px" class="@isset($usoRespirador->prob_costillas_fracturadas) @if($usoRespirador->prob_costillas_fracturadas == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                             Si
@@ -513,7 +534,7 @@
 
                             j.	Costillas fracturadas.</li>
                     </ul>
-                    <ul class="list-unstyled list-inline" >
+                    <ul style="margin-left:25px;"   style="margin-left:25px;" class="list-unstyled list-inline" >
                         <li style="margin-left: 5px" class="@isset($usoRespirador->prob_cualquier_lesion_pulmon) @if($usoRespirador->prob_cualquier_lesion_pulmon == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                             Si
@@ -525,7 +546,7 @@
 
                             j.	Cualquier lesión al pulmón o cirugías.</li>
                     </ul>
-                    <ul class="list-unstyled list-inline" >
+                    <ul style="margin-left:25px;"   style="margin-left:25px;" class="list-unstyled list-inline" >
                         <li style="margin-left: 5px" class="@isset($usoRespirador->prob_otros) @if($usoRespirador->prob_otros == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                             Si
@@ -540,16 +561,16 @@
                 </div>
             </td>
         </tr>
-    </table>
-<table border="1">
+    {{-- </table>
+<table> --}}
 
     <tr>
-        <td style="width: 25%;">
+        <td style="width: 25%;" class="tdrow">
         </td>
-        <td style="width: 75%;">
-            <h5>4. ¿Tiene algunos de los siguientes síntomas pulmonares o de enfermedades al pulmón?</h5>
+        <td style="width: 75%;"  class="tdrow">
+            <h5 style="margin-left:15px;color:rgba(0,0,0,0.8);"      >4. ¿Tiene algunos de los siguientes síntomas pulmonares o de enfermedades al pulmón?</h5>
             <div class="small radio">
-                <ul class="list-unstyled list-inline" >
+                <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                     <li style="margin-left: 5px" class="@isset($usoRespirador->enf_pulmonar_dif_respirar_reposo) @if($usoRespirador->enf_pulmonar_dif_respirar_reposo == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                         Si
@@ -561,7 +582,7 @@
 
                         a.	Dificultad para respirar en reposos.</li>
                 </ul>
-                <ul class="list-unstyled list-inline" >
+                <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                     <li style="margin-left: 5px" class="@isset($usoRespirador->enf_pulmonar_dif_respirar_camina_nivel_suelo) @if($usoRespirador->enf_pulmonar_dif_respirar_camina_nivel_suelo == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                         Si
@@ -573,7 +594,7 @@
 
                         b.	Dificultad para respirar cuando camina a nivel del suelo</li>
                 </ul>
-                <ul class="list-unstyled list-inline" >
+                <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                     <li style="margin-left: 5px" class="@isset($usoRespirador->enf_pulmonar_dif_respirar_camina_inclinado) @if($usoRespirador->enf_pulmonar_dif_respirar_camina_inclinado == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                         Si
@@ -585,7 +606,7 @@
 
                         c.	Dificultad para respirar cuando camina en un inclinado</li>
                 </ul>
-                <ul class="list-unstyled list-inline" >
+                <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                     <li style="margin-left: 5px" class="@isset($usoRespirador->enf_pulmonar_dif_respirar_realiza_tarea) @if($usoRespirador->enf_pulmonar_dif_respirar_realiza_tarea == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                         Si
@@ -597,7 +618,7 @@
 
                         d.	Dificultad para respirar cuando realiza alguna tarea</li>
                 </ul>
-                <ul class="list-unstyled list-inline" >
+                <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                     <li style="margin-left: 5px" class="@isset($usoRespirador->enf_pulmonar_dif_tos_expectoracion) @if($usoRespirador->enf_pulmonar_dif_tos_expectoracion == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                         Si
@@ -609,7 +630,7 @@
 
                         e.	Tos que le produce expectoración.</li>
                 </ul>
-                <ul class="list-unstyled list-inline" >
+                <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                     <li style="margin-left: 5px" class="@isset($usoRespirador->enf_pulmonar_dif_tos_despierta_temprano) @if($usoRespirador->enf_pulmonar_dif_tos_despierta_temprano == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                         Si
@@ -621,7 +642,7 @@
 
                         f.	Tos que lo despierta temprano por la mañana.</li>
                 </ul>
-                <ul class="list-unstyled list-inline" >
+                <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                     <li style="margin-left: 5px" class="@isset($usoRespirador->enf_pulmonar_dif_tos_echado) @if($usoRespirador->enf_pulmonar_dif_tos_echado == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                         Si
@@ -633,7 +654,7 @@
 
                         g.	Tos que ocurre cuando se encuentra echado</li>
                 </ul>
-                <ul class="list-unstyled list-inline" >
+                <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                     <li style="margin-left: 5px" class="@isset($usoRespirador->enf_pulmonar_dif_tos_sangre) @if($usoRespirador->enf_pulmonar_dif_tos_sangre == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                         Si
@@ -645,7 +666,7 @@
 
                         h.	Tos con sangre.</li>
                 </ul>
-                <ul class="list-unstyled list-inline" >
+                <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                     <li style="margin-left: 5px" class="@isset($usoRespirador->enf_pulmonar_dif_silbidos_pecho_respira) @if($usoRespirador->enf_pulmonar_dif_silbidos_pecho_respira == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                         Si
@@ -657,7 +678,7 @@
 
                         i.	Silbidos del pecho cuando respira.</li>
                 </ul>
-                <ul class="list-unstyled list-inline" >
+                <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                     <li style="margin-left: 5px" class="@isset($usoRespirador->enf_pulmonar_dif_dolor_pecho_respira_profundo) @if($usoRespirador->enf_pulmonar_dif_dolor_pecho_respira_profundo == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                         Si
@@ -669,7 +690,7 @@
 
                         j.	Dolor en el pecho cuando respira profundamente.</li>
                 </ul>
-                <ul class="list-unstyled list-inline" >
+                <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                     <li style="margin-left: 5px" class="@isset($usoRespirador->enf_pulmonar_dif_otros) @if($usoRespirador->enf_pulmonar_dif_otros == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                         Si
@@ -682,9 +703,9 @@
                         l.	Otros:{{$usoRespirador->enf_pulmonar_dif_otros_descripcion}}</li>
                 </ul>
             </div>
-            <h5>5. ¿Ha tenido alguna vez cualquiera de los siguientes problemas cardiovasculares?</h5>
+            <h5 style="margin-left:15px;color:rgba(0,0,0,0.8);">5. ¿Ha tenido alguna vez cualquiera de los siguientes problemas cardiovasculares?</h5>
             <div class="small radio">
-                <ul class="list-unstyled list-inline" >
+                <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                     <li style="margin-left: 5px" class="@isset($usoRespirador->pro_cardiovascular_infarto) @if($usoRespirador->pro_cardiovascular_infarto == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                         Si
@@ -696,7 +717,7 @@
 
                         a.	Infarto.</li>
                 </ul>
-                <ul class="list-unstyled list-inline" >
+                <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                     <li style="margin-left: 5px" class="@isset($usoRespirador->pro_cardiovascular_angina) @if($usoRespirador->pro_cardiovascular_angina == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                         Si
@@ -708,7 +729,7 @@
 
                         b.	Angina.</li>
                 </ul>
-                <ul class="list-unstyled list-inline" >
+                <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                     <li style="margin-left: 5px" class="@isset($usoRespirador->pro_cardiovascular_insuficiencia_cardiaca) @if($usoRespirador->pro_cardiovascular_insuficiencia_cardiaca == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                         Si
@@ -720,7 +741,7 @@
 
                         c.	Insuficiencia cardiaca</li>
                 </ul>
-                <ul class="list-unstyled list-inline" >
+                <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                     <li style="margin-left: 5px" class="@isset($usoRespirador->pro_cardiovascular_hinchazon_piernas) @if($usoRespirador->pro_cardiovascular_hinchazon_piernas == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                         Si
@@ -732,7 +753,7 @@
 
                         d.	Hinchazón en las piernas/pies (no causado por caminar)</li>
                 </ul>
-                <ul class="list-unstyled list-inline" >
+                <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                     <li style="margin-left: 5px" class="@isset($usoRespirador->pro_cardiovascular_arritmia_corazon) @if($usoRespirador->pro_cardiovascular_arritmia_corazon == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                         Si
@@ -744,7 +765,7 @@
 
                         e.	Arritmia al corazón.</li>
                 </ul>
-                <ul class="list-unstyled list-inline" >
+                <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                     <li style="margin-left: 5px" class="@isset($usoRespirador->pro_cardiovascular_reflujo_gastroesofagico) @if($usoRespirador->pro_cardiovascular_reflujo_gastroesofagico == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                         Si
@@ -756,7 +777,7 @@
 
                         f.	Reflujo gastroesofágico (no relacionado con la comida).</li>
                 </ul>
-                <ul class="list-unstyled list-inline" >
+                <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                     <li style="margin-left: 5px" class="@isset($usoRespirador->pro_cardiovascular_otros) @if($usoRespirador->pro_cardiovascular_otros == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                         Si
@@ -769,17 +790,17 @@
                         g.	Otros: {{$usoRespirador->pro_cardiovascular_otros_descripcion}}</li>
                 </ul>
             </div>
-        </td>
+        {{-- </td>
     </tr>
-</table>
-<table border="1">
+{{-- </table>
+<table   >
     <tr>
         <td style="width: 25%;">
         </td>
-        <td style="width: 75%;">
-            <h5>6. ¿Ha tenido alguna vez cualquiera de los siguientes síntomas cardiovasculares?</h5>
+        <td style="width: 75%;"> --}}
+            <h5 style="margin-left:15px;color:rgba(0,0,0,0.8);">6. ¿Ha tenido alguna vez cualquiera de los siguientes síntomas cardiovasculares?</h5>
             <div class="checkbox small radio">
-                <ul class="list-unstyled list-inline">
+                <ul style="margin-left:25px;"  class="list-unstyled list-inline">
                     <li style="margin-left: 5px" class="@isset($usoRespirador->sint_dolor_pecho) @if($usoRespirador->sint_dolor_pecho == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                         Si
@@ -791,7 +812,7 @@
 
                         a.	Dolor o presión en su pecho.</li>
                 </ul>
-                <ul class="list-unstyled list-inline" >
+                <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                     <li style="margin-left: 5px" class="@isset($usoRespirador->sint_dolor_pecho_actividad_fisica) @if($usoRespirador->sint_dolor_pecho_actividad_fisica == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                         Si
@@ -803,7 +824,7 @@
 
                         b.	Dolor/presión en su pecho durante actividad física.</li>
                 </ul>
-                <ul class="list-unstyled list-inline" >
+                <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                     <li style="margin-left: 5px" class="@isset($usoRespirador->sint_dolor_pecho_actividad_trabajo) @if($usoRespirador->sint_dolor_pecho_actividad_trabajo == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                         Si
@@ -815,7 +836,7 @@
 
                         c.	Dolor/presión en su pecho durante su actividad de trabajo.</li>
                 </ul>
-                <ul class="list-unstyled list-inline" >
+                <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                     <li style="margin-left: 5px" class="@isset($usoRespirador->sint_palpitaciones) @if($usoRespirador->sint_palpitaciones == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                         Si
@@ -827,7 +848,7 @@
 
                         d.	Palpitaciones</li>
                 </ul>
-                <ul class="list-unstyled list-inline" >
+                <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                     <li style="margin-left: 5px" class="@isset($usoRespirador->sint_acidez_estomacal_indigestion) @if($usoRespirador->sint_acidez_estomacal_indigestion == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                         Si
@@ -840,9 +861,9 @@
                         e.	Acidez estomacal o indigestión (no relacionado con la comida)</li>
                 </ul>
             </div>
-            <h5>3. ¿Ha tenido alguna vez algunas de los siguientes problemas pulmonares o de pulmón?</h5>
+            <h5 style="margin-left:15px;color:rgba(0,0,0,0.8);"      >3. ¿Ha tenido alguna vez algunas de los siguientes problemas pulmonares o de pulmón?</h5>
             <div class="small radio">
-                <ul class="list-unstyled list-inline" >
+                <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                     <li style="margin-left: 5px" class="@isset($usoRespirador->sint_otros) @if($usoRespirador->sint_otros == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                         Si
@@ -855,9 +876,9 @@
                         f.	Otros: {{$usoRespirador->sint_otros_descripcion}}</li>
                 </ul>
             </div>
-            <h5>7. ¿Toma actualmente medicinas para cualquiera de las siguientes condiciones?</h5>
+            <h5 style="margin-left:15px;color:rgba(0,0,0,0.8);"      >7. ¿Toma actualmente medicinas para cualquiera de las siguientes condiciones?</h5>
             <div class="small radio">
-                <ul class="list-unstyled list-inline" >
+                <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                     <li style="margin-left: 5px" class="@isset($usoRespirador->usa_medicina_problema_respiratorio) @if($usoRespirador->usa_medicina_problema_respiratorio == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                         Si
@@ -869,7 +890,7 @@
 
                         g.	Problema respiratorio.</li>
                 </ul>
-                <ul class="list-unstyled list-inline" >
+                <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                     <li style="margin-left: 5px" class="@isset($usoRespirador->usa_medicina_problema_corazon) @if($usoRespirador->usa_medicina_problema_corazon == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                         Si
@@ -881,7 +902,7 @@
 
                         h.	Problemas al corazón.</li>
                 </ul>
-                <ul class="list-unstyled list-inline" >
+                <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                     <li style="margin-left: 5px" class="@isset($usoRespirador->usa_medicina_presion_sanguinea) @if($usoRespirador->usa_medicina_presion_sanguinea == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                         Si
@@ -893,7 +914,7 @@
 
                         i.	Presión Sanguínea.</li>
                 </ul>
-                <ul class="list-unstyled list-inline" >
+                <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                     <li style="margin-left: 5px" class="@isset($usoRespirador->usa_medicina_convulsion) @if($usoRespirador->usa_medicina_convulsion == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                         Si
@@ -906,9 +927,9 @@
                         j.	Convulsiones</li>
                 </ul>
             </div>
-            <h5>8. ¿Si ha utilizado un respirador, ha tenido usted alguno de los siguientes problemas?</h5>
+            <h5 style="margin-left:15px;color:rgba(0,0,0,0.8);">8. ¿Si ha utilizado un respirador, ha tenido usted alguno de los siguientes problemas?</h5>
             <div class="small radio">
-                <ul class="list-unstyled list-inline" >
+                <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                     <li style="margin-left: 5px" class="@isset($usoRespirador->usa_respirador_irritacion_ojos) @if($usoRespirador->usa_respirador_irritacion_ojos == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                         Si
@@ -920,7 +941,7 @@
 
                         a.	Irritación a los ojos.</li>
                 </ul>
-                <ul class="list-unstyled list-inline" >
+                <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                     <li style="margin-left: 5px" class="@isset($usoRespirador->usa_respirador_alergias) @if($usoRespirador->usa_respirador_alergias == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                         Si
@@ -932,7 +953,7 @@
 
                         b.	Alergias a la piel o erupciones.</li>
                 </ul>
-                <ul class="list-unstyled list-inline" >
+                <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                     <li style="margin-left: 5px" class="@isset($usoRespirador->usa_respirador_ansiedad) @if($usoRespirador->usa_respirador_ansiedad == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                         Si
@@ -944,7 +965,7 @@
 
                         c.	Ansiedad.</li>
                 </ul>
-                <ul class="list-unstyled list-inline" >
+                <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                     <li style="margin-left: 5px" class="@isset($usoRespirador->usa_respirador_fatiga) @if($usoRespirador->usa_respirador_fatiga == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                         Si
@@ -956,7 +977,7 @@
 
                         d.	Fatiga o debilidad.</li>
                 </ul>
-                <ul class="list-unstyled list-inline" >
+                <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                     <li style="margin-left: 5px" class="@isset($usoRespirador->usa_respirador_otros) @if($usoRespirador->usa_respirador_otros == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                         Si
@@ -968,7 +989,7 @@
 
                         e.	Otros: {{$usoRespirador->usa_respirador_otros_descripcion}}</li>
                 </ul>
-                <ul class="list-unstyled list-inline" >
+                <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                     <li style="margin-left: 5px" class="@isset($usoRespirador->pro_cardiovascular_reflujo_gastroesofagico) @if($usoRespirador->pro_cardiovascular_reflujo_gastroesofagico == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                         Si
@@ -980,7 +1001,7 @@
 
                         f.	Reflujo gastroesofágico (no relacionado con la comida).</li>
                 </ul>
-                <ul class="list-unstyled list-inline" >
+                <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                     <li style="margin-left: 5px" class="@isset($usoRespirador->pro_cardiovascular_otros) @if($usoRespirador->pro_cardiovascular_otros == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                         Si
@@ -996,10 +1017,10 @@
         </td>
     </tr>
 </table>
-    <table border="1">
+    <table  >
         <tr>
-            <td style="width: 25%;">
-                <h5>
+            <td style="width: 25%;" class="tdrow">
+                <h5 style="margin-left:15px;color:rgba(0,0,0,0.8);"      >
                     Sección 2:
                     (Discrecional)
                     <br>
@@ -1011,10 +1032,10 @@
 
                 </h5>
             </td>
-            <td style="width: 75%;">
-                <h5>9. ¿Ha perdido la visión en cualquier ojo(temporal o permanente)?</h5>
+            <td style="width: 75%;" class="tdrow">
+                <h5 style="margin-left:15px;color:rgba(0,0,0,0.8);"      >9. ¿Ha perdido la visión en cualquier ojo(temporal o permanente)?</h5>
                 <div class="checkbox small radio">
-                    <ul class="list-unstyled list-inline" >
+                    <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                         <li style="margin-left: 5px" class="@isset($usoRespirador->perdida_vision_cualquier_ojo_temporal_permanente) @if($usoRespirador->perdida_vision_cualquier_ojo_temporal_permanente == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                             Si
@@ -1027,9 +1048,9 @@
                         </li>
                     </ul>
                 </div>
-                <h5>10. ¿Ha perdido la visión en cualquier ojo(temporal o permanente)?</h5>
+                <h5 style="margin-left:15px;color:rgba(0,0,0,0.8);"      >10. ¿Ha perdido la visión en cualquier ojo(temporal o permanente)?</h5>
                 <div class="small radio">
-                    <ul class="list-unstyled list-inline" >
+                    <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                         <li style="margin-left: 5px" class="@isset($usoRespirador->perdida_vision_cualquier_usa_lentes_contacto) @if($usoRespirador->perdida_vision_cualquier_usa_lentes_contacto == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                             Si
@@ -1041,7 +1062,7 @@
 
                             a.	Usa lentes de contacto.</li>
                     </ul>
-                    <ul class="list-unstyled list-inline" >
+                    <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                         <li style="margin-left: 5px" class="@isset($usoRespirador->perdida_vision_usa_lentes) @if($usoRespirador->perdida_vision_usa_lentes == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                             Si
@@ -1053,7 +1074,7 @@
 
                             b.	Usa lentes.</li>
                     </ul>
-                    <ul class="list-unstyled list-inline" >
+                    <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                         <li style="margin-left: 5px" class="@isset($usoRespirador->perdida_vision_daltonismo) @if($usoRespirador->perdida_vision_daltonismo == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                             Si
@@ -1065,7 +1086,7 @@
 
                             c.	Daltonismo</li>
                     </ul>
-                    <ul class="list-unstyled list-inline" >
+                    <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                         <li style="margin-left: 5px" class="@isset($usoRespirador->perdida_vision_otros) @if($usoRespirador->perdida_vision_otros == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                             Si
@@ -1078,9 +1099,9 @@
                             d.	Otros: {{$usoRespirador->perdida_vision_otros_descripcion}}</li>
                     </ul>
                 </div>
-                <h5>11. ¿Ha tenido alguna lesión a sus oídos, incluyendo un tímpano roto?</h5>
+                <h5 style="margin-left:15px;color:rgba(0,0,0,0.8);"      >11. ¿Ha tenido alguna lesión a sus oídos, incluyendo un tímpano roto?</h5>
                 <div class="small radio">
-                    <ul class="list-unstyled list-inline" >
+                    <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                         <li style="margin-left: 5px" class="@isset($usoRespirador->lesion_oido) @if($usoRespirador->lesion_oido == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                             Si
@@ -1091,9 +1112,9 @@
                         <li style="margin-left: 10px"></li>
                     </ul>
                 </div>
-                <h5>12. ¿Tiene actualmente algunos de los siguientes problemas de audición)?</h5>
+                <h5 style="margin-left:15px;color:rgba(0,0,0,0.8);"      >12. ¿Tiene actualmente algunos de los siguientes problemas de audición)?</h5>
                 <div class="small radio">
-                    <ul class="list-unstyled list-inline" >
+                    <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                         <li style="margin-left: 5px" class="@isset($usoRespirador->prob_audicion_dificultad_escucha) @if($usoRespirador->prob_audicion_dificultad_escucha == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                             Si
@@ -1105,7 +1126,7 @@
 
                             a.	Dificultad para escuchar.</li>
                     </ul>
-                    <ul class="list-unstyled list-inline" >
+                    <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                         <li style="margin-left: 5px" class="@isset($usoRespirador->prob_audicion_usa_audifono) @if($usoRespirador->prob_audicion_usa_audifono == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                             Si
@@ -1117,7 +1138,7 @@
 
                             b.	Usa un audífono</li>
                     </ul>
-                    <ul class="list-unstyled list-inline" >
+                    <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                         <li style="margin-left: 5px" class="@isset($usoRespirador->prob_audicion_otros) @if($usoRespirador->prob_audicion_otros == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                             Si
@@ -1130,9 +1151,9 @@
                             c.	Otros: {{$usoRespirador->prob_audicion_otros_descripcion}}</li>
                     </ul>
                 </div>
-                <h5>13. ¿Ha tenido alguna lesión a la espalda?</h5>
+                <h5 style="margin-left:15px;color:rgba(0,0,0,0.8);"      >13. ¿Ha tenido alguna lesión a la espalda?</h5>
                 <div class="small radio">
-                    <ul class="list-unstyled list-inline" >
+                    <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                         <li style="margin-left: 5px" class="@isset($usoRespirador->lesion_espalda) @if($usoRespirador->lesion_espalda == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                             Si
@@ -1143,18 +1164,18 @@
                         <li style="margin-left: 10px"></li>
                     </ul>
                 </div>
-            </td>
-        </tr>
+        {{--      </td>
+       </tr>
     </table>
-    <table border="1">
+    <table  >
         <tr>
             <td style="width: 25%;">
 
             </td>
-            <td style="width: 75%;">
-                <h5>14. ¿Tiene actualmente algunos de los siguientes problemas musculoesqueléticos?</h5>
+            <td style="width: 75%;"> --}}
+                <h5 style="margin-left:15px;color:rgba(0,0,0,0.8);"      >14. ¿Tiene actualmente algunos de los siguientes problemas musculoesqueléticos?</h5>
                 <div class="checkbox small radio">
-                    <ul class="list-unstyled list-inline" >
+                    <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                         <li style="margin-left: 5px" class="@isset($usoRespirador->prob_muscular_debilidad_extremidades) @if($usoRespirador->prob_muscular_debilidad_extremidades == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                             Si
@@ -1166,7 +1187,7 @@
                             a.	Debilidad en los brazos, manos, piernas o pies.
                         </li>
                     </ul>
-                    <ul class="list-unstyled list-inline" >
+                    <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                         <li style="margin-left: 5px" class="@isset($usoRespirador->prob_muscular_debilidad_dolor_espalda) @if($usoRespirador->prob_muscular_debilidad_dolor_espalda == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                             Si
@@ -1178,7 +1199,7 @@
                             b.	Dolor de espalda.
                         </li>
                     </ul>
-                    <ul class="list-unstyled list-inline" >
+                    <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                         <li style="margin-left: 5px" class="@isset($usoRespirador->prob_muscular_dificultad_mover_brazos_piernas) @if($usoRespirador->prob_muscular_dificultad_mover_brazos_piernas == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                             Si
@@ -1190,7 +1211,7 @@
                             c.	Dificultad para mover sus brazos y piernas.
                         </li>
                     </ul>
-                    <ul class="list-unstyled list-inline" >
+                    <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                         <li style="margin-left: 5px" class="@isset($usoRespirador->prob_muscular_dolor_inclina_adelanta_atras_cintura) @if($usoRespirador->prob_muscular_dolor_inclina_adelanta_atras_cintura == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                             Si
@@ -1202,7 +1223,7 @@
                             a.	Dolor o rigidez cuando se inclina hacia adelante o atrás en la cintura
                         </li>
                     </ul>
-                    <ul class="list-unstyled list-inline" >
+                    <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                         <li style="margin-left: 5px" class="@isset($usoRespirador->prob_muscular_dificultad_mover_cabeza_arriba_abajo) @if($usoRespirador->prob_muscular_dificultad_mover_cabeza_arriba_abajo == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                             Si
@@ -1214,7 +1235,7 @@
                             b.	Dificultad para mover su cabeza de arriba o abajo.
                         </li>
                     </ul>
-                    <ul class="list-unstyled list-inline" >
+                    <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                         <li style="margin-left: 5px" class="@isset($usoRespirador->prob_muscular_dificultad_mover_cabeza_lado) @if($usoRespirador->prob_muscular_dificultad_mover_cabeza_lado == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                             Si
@@ -1226,7 +1247,7 @@
                             c.	Dificultad para mover su cabeza de lado a lado.
                         </li>
                     </ul>
-                    <ul class="list-unstyled list-inline" >
+                    <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                         <li style="margin-left: 5px" class="@isset($usoRespirador->prob_muscular_doblar_rodillas) @if($usoRespirador->prob_muscular_doblar_rodillas == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                             Si
@@ -1238,7 +1259,7 @@
                             d.	Dificultad al doblar las rodillas
                         </li>
                     </ul>
-                    <ul class="list-unstyled list-inline" >
+                    <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                         <li style="margin-left: 5px" class="@isset($usoRespirador->prob_muscular_ponerse_cuclillas) @if($usoRespirador->prob_muscular_ponerse_cuclillas == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                             Si
@@ -1250,7 +1271,7 @@
                             e.	Dificultad en ponerse en cuclillas.
                         </li>
                     </ul>
-                    <ul class="list-unstyled list-inline" >
+                    <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                         <li style="margin-left: 5px" class="@isset($usoRespirador->prob_muscular_subir_escaleras) @if($usoRespirador->prob_muscular_subir_escaleras == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                             Si
@@ -1262,7 +1283,7 @@
                             f.	Subir las escaleras o una escalera.
                         </li>
                     </ul>
-                    <ul class="list-unstyled list-inline" >
+                    <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                         <li style="margin-left: 5px" class="@isset($usoRespirador->prob_muscular_otros) @if($usoRespirador->prob_muscular_otros == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                             Si
@@ -1278,10 +1299,10 @@
             </td>
         </tr>
     </table>
-    <table border="1" style="font-size:10px;">
+    <table   style="font-size:10px;">
         <tr>
-            <td style="width: 25%;">
-                <h5>
+            <td style="width: 25%;" class="tdrow">
+                <h5 style="margin-left:15px;color:rgba(0,0,0,0.8);"      >
                     Sección 3:
                     (Confidencial)<br>
                     El profesional de la salud que va a revisar este cuestionario determinara si esta parte debe ser completada por el empleado.
@@ -1290,10 +1311,10 @@
 
                 </h5>
             </td>
-            <td style="width: 75%;">
-                <h5>1. Cuando trabaja en alturas por encima de 2500 msnm en una atmosfera que tenga <br> cantidades de oxigeno menor a la cantidad normal, tiene las siguientes sensaciones de:</h5>
+            <td style="width: 75%;" class="tdrow">
+                <h5 style="margin-left:15px;color:rgba(0,0,0,0.8);"      >1. Cuando trabaja en alturas por encima de 2500 msnm en una atmosfera que tenga <br> cantidades de oxigeno menor a la cantidad normal, tiene las siguientes sensaciones de:</h5>
                 <div class="checkbox small radio">
-                    <ul class="list-unstyled list-inline">
+                    <ul style="margin-left:25px;"  class="list-unstyled list-inline">
                         <li style="margin-left: 5px" class="@isset($usoRespirador->sensacion_mareos) @if($usoRespirador->sensacion_mareos == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                             Si
@@ -1305,7 +1326,7 @@
                             a.	Mareos.
                         </li>
                     </ul>
-                    <ul class="list-unstyled list-inline" >
+                    <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                         <li style="margin-left: 5px" class="@isset($usoRespirador->sensacion_dificultad_respirar) @if($usoRespirador->sensacion_dificultad_respirar == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                             Si
@@ -1317,7 +1338,7 @@
                             b.	Dificultad para respirar.
                         </li>
                     </ul>
-                    <ul class="list-unstyled list-inline" >
+                    <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                         <li style="margin-left: 5px" class="@isset($usoRespirador->sensacion_palpitaciones) @if($usoRespirador->sensacion_palpitaciones == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                             Si
@@ -1329,7 +1350,7 @@
                             c.	Palpitaciones.
                         </li>
                     </ul>
-                    <ul class="list-unstyled list-inline" >
+                    <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                         <li style="margin-left: 5px" class="@isset($usoRespirador->sensacion_otros) @if($usoRespirador->sensacion_otros == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                             Si
@@ -1342,9 +1363,9 @@
                         </li>
                     </ul>
                 </div>
-                <h5>2. Ha trabajado con alguno de los siguientes materiales listados a continuación:</h5>
+                <h5 style="margin-left:15px;color:rgba(0,0,0,0.8);"      >2. Ha trabajado con alguno de los siguientes materiales listados a continuación:</h5>
                 <div class="checkbox small radio">
-                    <ul class="list-unstyled list-inline" >
+                    <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                         <li style="margin-left: 5px" class="@isset($usoRespirador->trabaja_material_silice) @if($usoRespirador->trabaja_material_silice == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                             Si
@@ -1356,7 +1377,7 @@
                             a.	Asbestos.
                         </li>
                     </ul>
-                    <ul class="list-unstyled list-inline" >
+                    <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                         <li style="margin-left: 5px" class="@isset($usoRespirador->trabaja_material_silice) @if($usoRespirador->trabaja_material_silice == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                             Si
@@ -1368,7 +1389,7 @@
                             b.	Sílice.
                         </li>
                     </ul>
-                    <ul class="list-unstyled list-inline" >
+                    <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                         <li style="margin-left: 5px" class="@isset($usoRespirador->trabaja_material_tungsteno_cobalto) @if($usoRespirador->trabaja_material_tungsteno_cobalto == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                             Si
@@ -1380,7 +1401,7 @@
                             c.	Tungsteno / Cobalto (Ej.: Esmerilado o soldadura)
                         </li>
                     </ul>
-                    <ul class="list-unstyled list-inline" >
+                    <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                         <li style="margin-left: 5px" class="@isset($usoRespirador->trabaja_material_berilio) @if($usoRespirador->trabaja_material_berilio == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                             Si
@@ -1392,7 +1413,7 @@
                             d.	Berilio
                         </li>
                     </ul>
-                    <ul class="list-unstyled list-inline" >
+                    <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                         <li style="margin-left: 5px" class="@isset($usoRespirador->trabaja_material_aluminio) @if($usoRespirador->trabaja_material_aluminio == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                             Si
@@ -1404,7 +1425,7 @@
                             e.	Aluminio.
                         </li>
                     </ul>
-                    <ul class="list-unstyled list-inline" >
+                    <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                         <li style="margin-left: 5px" class="@isset($usoRespirador->trabaja_material_carbon) @if($usoRespirador->trabaja_material_carbon == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                             Si
@@ -1416,7 +1437,7 @@
                             f.	Carbón.
                         </li>
                     </ul>
-                    <ul class="list-unstyled list-inline" >
+                    <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                         <li style="margin-left: 5px" class="@isset($usoRespirador->trabaja_material_hierro) @if($usoRespirador->trabaja_material_hierro == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                             Si
@@ -1428,7 +1449,7 @@
                             g.	Hierro.
                         </li>
                     </ul>
-                    <ul class="list-unstyled list-inline" >
+                    <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                         <li style="margin-left: 5px" class="@isset($usoRespirador->trabaja_material_laton) @if($usoRespirador->trabaja_material_laton == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                             Si
@@ -1440,7 +1461,7 @@
                             h.	Latón.
                         </li>
                     </ul>
-                    <ul class="list-unstyled list-inline" >
+                    <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                         <li style="margin-left: 5px" class="@isset($usoRespirador->trabaja_material_ambientes_polvo) @if($usoRespirador->trabaja_material_ambientes_polvo == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                             Si
@@ -1452,7 +1473,7 @@
                             i.	Ambientes con exceso de polvo.
                         </li>
                     </ul>
-                    <ul class="list-unstyled list-inline" >
+                    <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                         <li style="margin-left: 5px" class="@isset($usoRespirador->trabaja_otros) @if($usoRespirador->trabaja_otros == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                             Si
@@ -1465,18 +1486,18 @@
                         </li>
                     </ul>
                 </div>
-                <h5>3. Liste cualquier trabajo previo/pasatiempo en los que haya sido expuestos a peligros 	respiratorios:</h5>
+                <h5 style="margin-left:15px;color:rgba(0,0,0,0.8);"      >3. Liste cualquier trabajo previo/pasatiempo en los que haya sido expuestos a peligros 	respiratorios:</h5>
                 <div class="checkbox small radio">
-                    <ul class="list-unstyled list-inline" >
+                    <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                         <li style="margin-left: 5px" class="@isset($usoRespirador->trabajo_previo_pasatiempo_riesgo) @endisset">
 
                             {{$usoRespirador->trabajo_previo_pasatiempo_riesgo}}
                         </li>
                     </ul>
                 </div>
-                <h5>4. ¿Has hecho alguna vez Servicio Militar?</h5>
+                <h5 style="margin-left:15px;color:rgba(0,0,0,0.8);"      >4. ¿Has hecho alguna vez Servicio Militar?</h5>
                 <div class="checkbox small radio">
-                    <ul class="list-unstyled list-inline" >
+                    <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                         <li style="margin-left: 5px" class="@isset($usoRespirador->servicio_militar) @if($usoRespirador->servicio_militar == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                             Si
@@ -1489,9 +1510,9 @@
                         </li>
                     </ul>
                 </div>
-                <h5>5. ¿Has estado alguna vez en un equipo de MATPEL o Respuesta De Emergencias?</h5>
+                <h5 style="margin-left:15px;color:rgba(0,0,0,0.8);"      >5. ¿Has estado alguna vez en un equipo de MATPEL o Respuesta De Emergencias?</h5>
                 <div class="checkbox small radio">
-                    <ul class="list-unstyled list-inline" >
+                    <ul style="margin-left:25px;"  class="list-unstyled list-inline" >
                         <li style="margin-left: 5px" class=" @isset($usoRespirador->equipo_matpel_respuesta_emergencia) @if($usoRespirador->equipo_matpel_respuesta_emergencia == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                             Si
@@ -1507,31 +1528,31 @@
             </td>
         </tr>
     </table>
-    <table style="font-size:10px;" border="1">
+    <table   style="margin-top:3%;" >
         <tr>
-            <td><strong>ID Empleado:</strong></td>
-            <td>{{$usoRespirador->cita->paciente->num_dni}}</td>
-            <td><strong>Perfil:</strong></td>
-            <td>{{$usoRespirador->cita->paciente->perfil->descripcion}}</td>
+            <td class="tdrow"><strong>ID Empleado:</strong></td>
+            <td class="tdrow">{{$usoRespirador->cita->paciente->num_dni}}</td>
+            <td class="tdrow"><strong>Perfil:</strong></td>
+            <td class="tdrow">{{$usoRespirador->cita->paciente->perfil->descripcion}}</td>
             </tr>
         <tr>
-            <td><strong>Trabajador:</strong></td>
-            <td>{{$usoRespirador->cita->paciente->apellido_paterno.' '.$usoRespirador->cita->paciente->apellido_materno.' '.$usoRespirador->cita->paciente->nombres}}</td>
-            <td><strong>Área:</strong></td>
-            <td>{{$usoRespirador->cita->paciente->area->nombre}}</td>
+            <td class="tdrow"><strong>Trabajador:</strong></td>
+            <td class="tdrow">{{$usoRespirador->cita->paciente->apellido_paterno.' '.$usoRespirador->cita->paciente->apellido_materno.' '.$usoRespirador->cita->paciente->nombres}}</td>
+            <td class="tdrow"><strong>Área:</strong></td>
+            <td class="tdrow">{{$usoRespirador->cita->paciente->area->nombre}}</td>
         </tr>
         <tr>
-            <td><strong>Cargo:</strong></td>
-            <td>{{$usoRespirador->cita->paciente->trabajo}}</td>
-            <td><strong>Supervisor:</strong></td>
-            <td>{{$usoRespirador->cita->paciente->jefe_inmediato}}</td>
+            <td class="tdrow"><strong>Cargo:</strong></td>
+            <td class="tdrow">{{$usoRespirador->cita->paciente->trabajo}}</td>
+            <td class="tdrow"><strong>Supervisor:</strong></td>
+            <td class="tdrow">{{$usoRespirador->cita->paciente->jefe_inmediato}}</td>
         </tr>
         <tr>
-            <td colspan="4">
-                <h5>El trabajador mencionado ha sido examinado en el ajuste del respirador de conformidad con el Estándar de Barrick de Protección Respiratoria. Esta evaluación limitada es especificada para el uso del respirador solamente.
+            <td colspan="4" class="tdrow">
+                <h5 style="margin-left:15px;color:rgba(0,0,0,0.8);"      >El trabajador mencionado ha sido examinado en el ajuste del respirador de conformidad con el Estándar de Barrick de Protección Respiratoria. Esta evaluación limitada es especificada para el uso del respirador solamente.
                     Basado en mis hallazgos he determinado que la persona:
                 </h5>
-                <ul class="list-unstyled" style="margin-left:10px;">
+                <ul style="margin-left:25px;"  class="list-unstyled" style="margin-left:10px;">
                     <li class="@isset($usoRespirador->autorizacion_clase) @if($usoRespirador->autorizacion_clase == 1) equis @else no-equis @endif @else no-equis @endisset">
 
                         Clase I - Sin restricciones en el uso del Respirador.
@@ -1539,7 +1560,7 @@
                     <li class="@isset($usoRespirador->autorizacion_clase) @if($usoRespirador->autorizacion_clase == 2) equis @else no-equis @endif @else no-equis @endisset">
 
                         Clase II - Uso condicional: Algunos usos específicos para los respiradores.
-                        <ul class="list-unstyled" style="margin-left:10px;">
+                        <ul style="margin-left:25px;"  class="list-unstyled" style="margin-left:10px;">
                             <li class="@isset($usoRespirador->uso_emergencia_solamente) equis @else  no-equis @endisset">
 
                                 A ser utilizados en respuestas a emergencia o para escape solamente
@@ -1571,20 +1592,29 @@
             </td>
         </tr>
     </table>
-    <table border="1" style="font-size:10px;">
+    <table   style="margin-top:3%;">
         <tr>
-            <td colspan="2"><h5>FIRMA DEL MEDICO</h5></td>
-            <td style="witdh:25%;"></td>
-            <td ><h5>NOMBRE DEL MEDICO</h5></td>
-            <td colspan="2">@isset($usoRespirador->nombre_medico) {{$usoRespirador->nombre_medico}} @else @endif</td>
+          <td class="tdrow" width="50%" style="overflow:hidden;height:50px;"></td>
+          <td class="tdrow" width="50%">@isset($usoRespirador->nombre_medico) {{$usoRespirador->nombre_medico}} @else @endif</td>
         </tr>
         <tr>
-            <td><h5>CMP</h5></td>
-            <td>@isset($usoRespirador->cmp) {{$usoRespirador->cmp}} @else @endif</td>
-            <td><h5>FECHA DEL EXAMEN</h5></td>
-            <td>@isset($usoRespirador->fecha_registro) {{$usoRespirador->fecha_registro}} @else @endif</td>
-            <td><h5>EXPIRA EN</h5></td>
-            <td>@isset($usoRespirador->fecha_expiracion) {{$usoRespirador->fecha_expiracion}} @else @endif</td>
+            <td class="tdrow" width="50%"align="center"><h5 style="margin-left:15px;color:rgba(0,0,0,0.8);" >FIRMA DEL MEDICO</h5></td>
+            <td class="tdrow" width="50%" align="center"><h5 style="margin-left:15px;color:rgba(0,0,0,0.8);">NOMBRE DEL MEDICO</h5></td>
+        </tr>
+      </table>
+        <table>
+          <tr>
+              <td class="tdrow" width="33.33%">@isset($usoRespirador->cmp) {{$usoRespirador->cmp}} @else @endif</td>
+              <td class="tdrow" width="33.33%">@isset($usoRespirador->fecha_registro) {{$usoRespirador->fecha_registro}} @else @endif</td>
+              <td class="tdrow"width="33.33%" >@isset($usoRespirador->fecha_expiracion) {{$usoRespirador->fecha_expiracion}} @else @endif</td>
+          </tr>
+        <tr>
+            <td class="tdrow"><h5 style="margin-left:15px;color:rgba(0,0,0,0.8);">CMP</h5></td>
+
+            <td class="tdrow"><h5 style="margin-left:15px;color:rgba(0,0,0,0.8);"      >FECHA DEL EXAMEN</h5></td>
+
+            <td class="tdrow"><h5 style="margin-left:15px;color:rgba(0,0,0,0.8);"      >EXPIRA EN</h5></td>
+
         </tr>
     </table>
 </div>

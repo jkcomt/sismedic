@@ -65,14 +65,14 @@
 <div class="container-fluid">
 
   <table WIDTH="100%">
-          <tr>
-             <td WIDTH="30%">
-                <img src="{{asset('img/planvital.jpg')}}" alt="" width="200px" height="50px" >
-             </td>
-             <td  WIDTH="70%" align="center">
-                <h4 style="font-family: Verdana, Geneva, sans-serif;"> <strong>ANEXO N° 7-D EVALUACION MEDICA PARA ASCENSO A GRANDES ALTITUDES</strong> </h4>(mayor de 2500 m.s.n.m)
-             </td >
-         </tr>
+      <tr>
+         <td WIDTH="30%">
+            <img src="{{asset('img/logo.ico/logo.jpg')}}" alt="" width="80px" height="100px">
+         </td>
+         <td  WIDTH="70%" align="center">
+            <h4 style="font-family: Verdana, Geneva, sans-serif;"> <strong>ANEXO N° 7-D EVALUACION MEDICA PARA ASCENSO A GRANDES ALTITUDES</strong> </h4>(mayor de 2500 m.s.n.m)
+         </td >
+     </tr>
   </table>
 
 

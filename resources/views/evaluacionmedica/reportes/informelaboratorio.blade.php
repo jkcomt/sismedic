@@ -56,7 +56,7 @@
         <table WIDTH="100%">
             <tr>
                  <td ROWSPAN=3 WIDTH="22%">
-                    <img src="{{asset('img/planvital.jpg')}}" alt="" width="150px" height="50px" >
+                    <img src="{{asset('img/logo.ico/logo.jpg')}}" alt="" width="80px" height="100px">
                  </td>
                  <td  WIDTH="58%" align="center" ROWSPAN=3>
                     <h5>CENTRO MEDICO “EL SAUCO” DEPARTAMENTO DE SALUD OCUPACIONAL  SERVICIO DE LABORATORIO CLÍNICO</h5>

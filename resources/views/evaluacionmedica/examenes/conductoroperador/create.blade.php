@@ -108,11 +108,7 @@
 
                       </div>
                       <div class="col-md-8">
-                          <textarea name="observaciones" rows="8" cols="60" style="resize:none">
-
-                            @isset($cita->conductoroperador->fecha_revalidacion) {{$cita->conductoroperador->observaciones}} @endisset
-
-                          </textarea>
+                          <textarea name="observaciones" rows="8" cols="60" style="resize:none">@isset($cita->conductoroperador->fecha_revalidacion){{$cita->conductoroperador->observaciones}}@endisset</textarea>
                       </div>
                       <div class="col-md-2">
 

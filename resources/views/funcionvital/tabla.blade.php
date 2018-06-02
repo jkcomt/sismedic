@@ -17,24 +17,18 @@
                   <td>{{$cita->paciente->nro_historia}}</td>
                   <td>{{$cita->paciente->num_dni}}</td>
                   <td>{{$cita->paciente->apellido_paterno.' '.$cita->paciente->apellido_materno.' '.$cita->paciente->nombres}}</td>
-
-                    <td>
-                        {{--<button class="btn btn-xs btn-warning edit"  value=""><span class="glyphicon glyphicon-pencil"></span> EDITAR</button>--}}
-                        {{csrf_field()}}
-
-
-                        @isset($cita->funcionVital)
-                        {{--<button href="#" class="btn btn-xs btn-danger delete"  id=""><span class="glyphicon glyphicon-remove"></span> ELIMINAR</button>--}}
-                        <a href="{{route('funcion_vital.edit',[$cita->id])}}" class="btn btn-xs btn-warning editar"  id=""><span class="glyphicon glyphicon-pencil"></span> EDITAR</a>
-                        <a href="#" class="btn btn-xs btn-danger conformidad" tipo="eliminar"  id="{{$cita->funcionVital->id}}" ><span class="glyphicon glyphicon-remove"></span> ELIMINAR</a>
-                        <a href="{{route('funcion_vital.show',$cita)}}" class="btn btn-xs btn-success"  id=""><span class="glyphicon glyphicon-info-sign"></span> DETALLE DE FUNCIONES VITALES</a>
-
-                        @else
-                            <a href="{{route('funcion_vital.create',$cita->id)}}" class="btn btn-xs btn-info"  id=""><span class="glyphicon glyphicon-info-sign"></span> REGISTRAR FUNCIONES VITALES</a>
-                        @endisset
-
-                    </td>
-
+                  <td>
+                      {{--<button class="btn btn-xs btn-warning edit"  value=""><span class="glyphicon glyphicon-pencil"></span> EDITAR</button>--}}
+                      {{csrf_field()}}
+                      @isset($cita->funcionVital)
+                      {{--<button href="#" class="btn btn-xs btn-danger delete"  id=""><span class="glyphicon glyphicon-remove"></span> ELIMINAR</button>--}}
+                      <a href="{{route('funcion_vital.edit',[$cita->id])}}" class="btn btn-xs btn-warning editar"  id=""><span class="glyphicon glyphicon-pencil"></span> EDITAR</a>
+                      <a href="#" class="btn btn-xs btn-danger conformidad" tipo="eliminar"  id="{{$cita->funcionVital->id}}" ><span class="glyphicon glyphicon-remove"></span> ELIMINAR</a>
+                      <a href="{{route('funcion_vital.show',$cita)}}" class="btn btn-xs btn-success"  id=""><span class="glyphicon glyphicon-info-sign"></span> DETALLE DE FUNCIONES VITALES</a>
+                      @else
+                      <a href="{{route('funcion_vital.create',$cita->id)}}" class="btn btn-xs btn-info"  id=""><span class="glyphicon glyphicon-info-sign"></span> REGISTRAR FUNCIONES VITALES</a>
+                      @endisset
+                  </td>
                 </tr>
             @endforeach
         @endisset

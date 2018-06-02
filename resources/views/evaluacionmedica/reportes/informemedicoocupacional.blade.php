@@ -67,7 +67,7 @@
   <table WIDTH="100%">
           <tr>
              <td WIDTH="30%">
-                <img src="{{asset('img/planvital.jpg')}}" alt="" width="200px" height="50px" >
+                <img src="{{asset('img/logo.ico/logo.jpg')}}" alt=""width="80px" height="100px" >
              </td>
              <td  WIDTH="70%" align="center">
                 <h4 style="font-family: Verdana, Geneva, sans-serif;"> <strong>INFORME DE EXAMEN MEDICO OCUPACIONAL</strong> </h4>
