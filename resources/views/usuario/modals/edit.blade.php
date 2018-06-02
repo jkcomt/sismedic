@@ -19,7 +19,7 @@
                         </div>     
 
                         <div class="row">
-                            <div class="col-md-12 form-group">
+                            <div class="col-md-12 form-group" style="display: none;">
                                  <label for="cargo" class="control-label">Cargo :</label>
                                  <select  name="cargo" id="cargo" class="form-control">
                              <option value=""></option>

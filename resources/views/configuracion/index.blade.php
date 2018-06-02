@@ -34,10 +34,6 @@ strong{
 @endsection
 
 @section('content')
-
-
-
-
 <div class="panel panel-body">
  <div class="">
 

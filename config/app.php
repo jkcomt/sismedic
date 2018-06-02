@@ -160,6 +160,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Caffeinated\Shinobi\ShinobiServiceProvider::class
 
     ],
 
@@ -211,6 +212,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Date' => Jenssegers\Date\Date::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
+        'Shinobi' => Caffeinated\Shinobi\Facades\Shinobi::class,
     ],
 
 ];

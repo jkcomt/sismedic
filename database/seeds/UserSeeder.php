@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use App\User;
+use Caffeinated\Shinobi\Models\Role;
+
 class UserSeeder extends Seeder
 {
     /**
@@ -21,6 +23,19 @@ class UserSeeder extends Seeder
                 'estado'=>true
             ]
         );
+
+        $rol = Role::create([
+           'name'=>'Admin',
+           'slug'=>'',
+           'special'=>'all-access'
+        ]);
+
+        $roles = array($rol->id);
+
+        $user = User::find(1);
+
+        $user->roles()->sync($roles);
+
 
         //factory(User::class,5)->create();
     }

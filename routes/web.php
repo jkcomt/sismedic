@@ -33,20 +33,62 @@ Route::group([
    'prefix'=>'pacientes'
 ],function(){
     Route::post('/citas/fecha_rango','PacientesController@citasFechaRange')->name('pacientes.citasfecharange');
-    Route::get('reporte/citas_paciente/{id}','PacientesController@citaspaciente')->name('pacientes.citas_paciente');
-    Route::get('reporte/lista','PacientesController@reporteLista')->name('pacientes.listareporte');
-    Route::get('reporte/{id}/detalle','PacientesController@reporteDetalle')->name('pacientes.reporte');
+
+    //REPORTES
+    Route::get('reporte/citas_paciente/{id}','PacientesController@citaspaciente')->name('pacientes.citas_paciente')
+        ->middleware('permission:pacientes.citas_paciente');
+
+    Route::get('reporte/lista','PacientesController@reporteLista')->name('pacientes.listareporte')
+        ->middleware('permission:pacientes.listareporte');
+
+    Route::get('reporte/{id}/detalle','PacientesController@reporteDetalle')->name('pacientes.reporte')
+        ->middleware('permission:pacientes.reporte');
+
     Route::post('/paciente_ajax','PacientesController@pacienteAjax')->name('pacientes.pacienteajax');
+
+    //CRUD PACIENTE
+    Route::get('/','PacientesController@index')->name('pacientes.index')
+        ->middleware('permission:pacientes.index');
+
+    Route::get('/{id}','PacientesController@show')->name('pacientes.show')
+        ->middleware('permission:pacientes.show');
+
+    Route::get('/create','PacientesController@create')->name('pacientes.create')
+        ->middleware('permission:pacientes.create');
+
+    Route::post('/','PacientesController@store')->name('pacientes.store')
+        ->middleware('permission:pacientes.create');
+
     Route::post('/buscar','PacientesController@search')->name('pacientes.search');
-    Route::post('/delete','PacientesController@destroy')->name('pacientes.destroy');
-    Route::post('/update','PacientesController@update')->name('pacientes.update');
-    Route::post('/citas/store','PacientesController@storeCita')->name('pacientes.citas.store');
-    Route::get('/citas/{id}/create','PacientesController@createCita')->name('pacientes.citas.create');
-    Route::get('/citas/{id}/edit','PacientesController@editCita')->name('pacientes.citas.edit');
-    Route::post('/citas/update','PacientesController@updateCita')->name('pacientes.citas.update');
-    Route::get('/citas/{id}','PacientesController@pacienteCita')->name('pacientes.citas');
+
+    Route::post('/delete','PacientesController@destroy')->name('pacientes.destroy')
+        ->middleware('permission:pacientes.destroy');
+
+    Route::post('/update','PacientesController@update')->name('pacientes.update')
+        ->middleware('permission:pacientes.edit');
+
+    Route::get('{id}/edit','PacientesController@edit')->name('pacientes.edit')
+        ->middleware('permission:pacientes.edit');
+
+    Route::post('/citas/store','PacientesController@storeCita')->name('pacientes.citas.store')
+        ->middleware('permission:pacientes.citas.create');
+
+    Route::get('/citas/{id}/create','PacientesController@createCita')->name('pacientes.citas.create')
+        ->middleware('permission:pacientes.citas.create');
+
+    Route::get('/citas/{id}/edit','PacientesController@editCita')->name('pacientes.citas.edit')
+        ->middleware('permission:pacientes.citas.edit');
+
+    Route::post('/citas/update','PacientesController@updateCita')->name('pacientes.citas.update')
+        ->middleware('permission:pacientes.citas.edit');
+
+    Route::get('/citas/{id}','PacientesController@pacienteCita')->name('pacientes.citas')
+        ->middleware('permission:pacientes.citas');
+
     Route::post('/citas/buscarCita','PacientesController@searchCita')->name('pacientes.citas.buscarCita');
-    Route::get('/citas/{id}/detalle_cita','PacientesController@detailsCita')->name('pacientes.citas.detailsCita');
+
+    Route::get('/citas/{id}/detalle_cita','PacientesController@detailsCita')->name('pacientes.citas.detailsCita')
+        ->middleware('pacientes.citas.detailsCita');
 });
 
 
@@ -80,6 +122,9 @@ Route::resource('tipoinstruccion','TipoInstruccionController');
 Route::group(['prefix'=>'tipoinstruccion'],
     function()
     {
+        Route::get('/','TipoInstruccionController@index')->name('tipoinstruccion.index')
+            ->middleware('permission:tipoinstruccion.index');
+
         Route::post('/update','TipoInstruccionController@update')->name('tipoinstruccion.update');
         Route::post('/busqueda','TipoInstruccionController@search')->name('tipoinstruccion.buscar');//
         Route::post('/delete','TipoInstruccionController@destroy')->name('tipoinstruccion.delete');
@@ -90,6 +135,8 @@ Route::resource('profesion','ProfesionesController');
 Route::group(['prefix'=>'profesion'],
     function()
     {
+        Route::get('/','ProfesionesController@index')->name('profesion.index')
+            ->middleware('permission:profesion.index');
 
         Route::post('/update','ProfesionesController@update')->name('profesion.update');
         Route::post('/busqueda','ProfesionesController@search')->name('profesion.buscar');//
@@ -102,6 +149,8 @@ Route::resource('area','AreasController');
 Route::group(['prefix'=>'area'],
     function()
     {
+        Route::get('/','AreasController@index')->name('area.index')
+            ->middleware('permission:area.index');
 
         Route::post('/update','AreasController@update')->name('area.update');
         Route::post('/busqueda','AreasController@search')->name('area.buscar');//
@@ -115,6 +164,8 @@ Route::resource('contrata','ContratadoresController');
 Route::group(['prefix'=>'contrata'],
     function()
     {
+        Route::get('/','ContratadoresController@index')->name('contrata.index')
+            ->middleware('permission:contrata.index');
 
         Route::post('/update','ContratadoresController@update')->name('contrata.update');
         Route::post('/busqueda','ContratadoresController@search')->name('contrata.buscar');//
@@ -126,6 +177,8 @@ Route::resource('lugarlabor','LugarLaboresController');
 Route::group(['prefix'=>'lugarlabor'],
     function()
     {
+        Route::get('/','LugarLaboresController@index')->name('lugarlabor.index')
+            ->middleware('permission:lugarlabor.index');
 
         Route::post('/update','LugarLaboresController@update')->name('lugarlabor.update');
         Route::post('/busqueda','LugarLaboresController@search')->name('lugarlabor.buscar');//
@@ -137,9 +190,11 @@ Route::resource('ocupaciones','OcupacionesController');
 Route::group(['prefix'=>'ocupaciones'],
     function()
     {
+        Route::get('/','OcupacionesController@index')->name('ocupaciones.index')
+            ->middleware('permission:ocupaciones.index');
 
         Route::post('/update','OcupacionesController@update')->name('ocupaciones.update');
-        Route::post('/busqueda','OcupacionesController@search')->name('ocupaciones.buscar');//
+        Route::post('/busqueda','OcupacionesController@search')->name('ocupaciones.buscar');
         Route::post('/delete','OcupacionesController@destroy')->name('ocupaciones.delete');
     }
 
@@ -150,9 +205,11 @@ Route::resource('gruposanguineo','GrupoSanguineoController');
 Route::group(['prefix'=>'gruposanguineo'],
     function()
     {
+        Route::get('/','GrupoSanguineoController@index')->name('gruposanguineo.index')
+            ->middleware('permission:gruposanguineo.index');
 
         Route::post('/update','GrupoSanguineoController@update')->name('gruposanguineo.update');
-        Route::post('/busqueda','GrupoSanguineoController@search')->name('gruposanguineo.buscar');//
+        Route::post('/busqueda','GrupoSanguineoController@search')->name('gruposanguineo.buscar');
         Route::post('/delete','GrupoSanguineoController@destroy')->name('gruposanguineo.delete');
     }
 );
@@ -162,6 +219,8 @@ Route::resource('altura','AlturasController');
 Route::group(['prefix'=>'altura'],
     function()
     {
+        Route::get('/','AlturasController@index')->name('altura.index')
+            ->middleware('permission:altura.index');
 
         Route::post('/update','AlturasController@update')->name('altura.update');
         Route::post('/busqueda','AlturasController@search')->name('altura.buscar');
@@ -170,10 +229,18 @@ Route::group(['prefix'=>'altura'],
 );
 
 Route::post('citas/busqueda_fecha','CitaController@busquedafecha')->name('citas.busquedafecha');
-Route::get('citas/examenes_cliente/{var}','CitaController@examenescliente')->name('citas.examenescliente');
-Route::get('citas/listareporte','CitaController@listareporte')->name('citas.listareporte');
-Route::get('citas/catalogo','CitaController@catalogo')->name('citas.catalogo');
-Route::post('citas/delete','CitaController@destroy')->name('citas.destroy');
+
+Route::get('citas/examenes_cliente/{var}','CitaController@examenescliente')->name('citas.examenescliente')
+    ->middleware('permission:citas.examenescliente');
+
+Route::get('citas/listareporte','CitaController@listareporte')->name('citas.listareporte')
+    ->middleware('permission:citas.listareporte');
+
+Route::get('citas/catalogo','CitaController@catalogo')->name('citas.catalogo')
+    ->middleware('permission:citas.catalogo');
+
+Route::post('citas/delete','CitaController@destroy')->name('citas.destroy')
+    ->middleware('permission:citas.destroy');
 
 Route::post('citas/buscarfecha','CitaController@searchFecha')->name('citas.searchfecha');
 Route::post('citas/buscar_dni_fecha','CitaController@searchDniFecha')->name('citas.searchdnifecha');
@@ -181,32 +248,43 @@ Route::post('citas/buscar_dni','CitaController@searchdni')->name('citas.searchdn
 Route::post('citas/buscar_paciente','CitaController@busquedaPaciente')->name('citas.busquedapaciente');
 Route::post('citas/buscar_paciente_fecha','CitaController@busquedaPacienteFecha')->name('citas.busquedapacientefecha');
 
-Route::get('citas/nueva_cita','CitaController@nuevacita')->name('citas.nuevacita');
+Route::get('citas/nueva_cita','CitaController@nuevacita')->name('citas.nuevacita')
+    ->middleware('permission:citas.nuevacita');
 
 //filtrar examen modal
 Route::post('citas/filtra_examen','CitaController@filtrarExamen')->name('citas.filtraexamen');
+
 //////////CARGAR SELECTED
 Route::get('/buscar_paciente','CitaController@searchPaciente')->name('citas.buscarpaciente');
 /*************************************************************************************/
-Route::post('citas/cita_registrar','CitaController@registrar')->name('citas.registrar');
+Route::post('citas/cita_registrar','CitaController@registrar')->name('citas.registrar')
+    ->middleware('permission:citas.nuevacita');
+
 Route::resource('citas','CitaController');
 Route::group([
     'prefix'=>'citas'
 ],function(){
-
     Route::get('/','EventController@index')->name('calendario.index');
 });
 
 //  Route::get('/citas_catalogo','CitaController@catalogo')->name('citas.catalogo');
 
-Route::resource('configuracion','ConfiguracionController');
-
+//Route::resource('configuracion','ConfiguracionController');
+Route::group([
+    'prefix'=>'configuracion'
+],function(){
+    Route::get('/','ConfiguracionController@index')->name('configuracion.index')
+        ->middleware('permission:configuracion.index');
+});
 //Route::get('/buscar','LoteController@search')->name('lote.search');
 
 Route::resource('cliente_cuenta','ClienteCuentaController');
 Route::group([
     'prefix'=>'cliente_cuenta'
 ],function(){
+    Route::get('/','ClienteCuentaController@index')->name('cliente_cuenta.index')
+        ->middleware('permission:cliente_cuenta.index');
+
     Route::post('/buscar','ClienteCuentaController@search')->name('cliente_cuenta.search');
     Route::post('/delete','ClienteCuentaController@destroy')->name('cliente_cuenta.destroy');
     Route::post('/update','ClienteCuentaController@update')->name('cliente_cuenta.update');
@@ -216,6 +294,9 @@ Route::resource('tipo_examen','TipoExamenController');
 Route::group([
     'prefix'=>'tipo_examen'
 ],function(){
+    Route::get('/','TipoExamenController@index')->name('tipo_examen.index')
+        ->middleware('permission:tipo_examen.index');
+
     Route::post('/buscar','TipoExamenController@search')->name('tipo_examen.search');
     Route::post('/delete','TipoExamenController@destroy')->name('tipo_examen.destroy');
     Route::post('/update','TipoExamenController@update')->name('tipo_examen.update');
@@ -227,6 +308,9 @@ Route::resource('perfil','PerfilController');
 Route::group([
     'prefix'=>'perfil'
 ],function(){
+    Route::get('/','PerfilController@index')->name('perfil.index')
+        ->middleware('permission:perfil.index');
+
     Route::post('/buscar','PerfilController@search')->name('perfil.search');
     Route::post('/delete','PerfilController@destroy')->name('perfil.destroy');
     Route::post('/update','PerfilController@update')->name('perfil.update');
@@ -237,6 +321,9 @@ Route::resource('lista_examen','ListaExamenController');
 Route::group([
     'prefix'=>'lista_examen'
 ],function(){
+    Route::get('/','ListaExamenController@index')->name('lista_examen.index')
+        ->middleware('permission:lista_examen.index');
+
     Route::post('/buscar','ListaExamenController@search')->name('lista_examen.search');
     Route::post('/delete','ListaExamenController@destroy')->name('lista_examen.destroy');
     Route::post('/update','ListaExamenController@update')->name('lista_examen.update');
@@ -258,6 +345,9 @@ Route::resource('cargo','CargoController');
 Route::group([
     'prefix'=>'cargo'
 ],function(){
+    Route::get('/','CargoController@index')->name('cargo.index')
+        ->middleware('permission:cargo.index');
+
     Route::post('/buscar','CargoController@search')->name('cargo.search');
     Route::post('/delete','CargoController@destroy')->name('cargo.destroy');
     Route::post('/update','CargoController@update')->name('cargo.update');
@@ -266,9 +356,14 @@ Route::group([
 Route::resource('usuario','UsuarioController');
 
 Route::group(['prefix'=>'usuario'],function(){
+    Route::get('/','UsuarioController@index')->name('usuario.index')
+        ->middleware('permission:usuario.index');
+
     Route::post('/buscar','UsuarioController@search')->name('usuario.search');
     Route::post('/delete','UsuarioController@destroy')->name('usuario.destroy');
     Route::post('/update','UsuarioController@update')->name('usuario.update');
+    Route::get('/permisos/{id}','UsuarioController@permisos')->name('usuario.permisos');
+    Route::post('/actualizar_permisos','UsuarioController@permisosUpdate')->name('usuario.updatepermisos');
 });
 
 
@@ -276,6 +371,9 @@ Route::group(['prefix'=>'usuario'],function(){
 Route::resource('personal','PersonalController');
 
 Route::group(['prefix'=>'personal'],function(){
+    Route::get('/','PersonalController@index')->name('personal.index')
+        ->middleware('permission:personal.index');
+
     Route::post('/buscar','PersonalController@search')->name('personal.search');
     Route::post('/delete','PersonalController@destroy')->name('personal.destroy');
     Route::post('/update','PersonalController@update')->name('personal.update');
@@ -286,31 +384,56 @@ Route::get('/calendar',function(){
     return view('calendario.index');
 });
 
-Route::resource('funcion_vital','FuncionVitalController');
+//Route::resource('funcion_vital','FuncionVitalController');
 Route::group([
    'prefix'=>'funcion_vital'
 ],function(){
-    Route::get('reporte/lista','FuncionVitalController@listareporte')->name('funcion_vital.listareporte');
-    Route::get('/{id}/create','FuncionVitalController@create')->name('funcion_vital.create');
-    Route::get('editar/{id}','FuncionVitalController@edit')->name('funcion_vital.edit');
-    Route::post('/update','FuncionVitalController@update')->name('funcion_vital.update');
-    Route::post('/delete','FuncionVitalController@destroy')->name('funcion_vital.destroy');
+    Route::get('reporte/lista','FuncionVitalController@listareporte')->name('funcion_vital.listareporte')
+        ->middleware('permission:funcion_vital.listareporte');
+
+    Route::get('/','FuncionVitalController@index')->name('funcion_vital.index')
+        ->middleware('permission:funcion_vital.index');
+
+    Route::get('/{id}/create','FuncionVitalController@create')->name('funcion_vital.create')
+        ->middleware('permission:funcion_vital.create');
+
+    Route::post('/','FuncionVitalController@store')->name('funcion_vital.store')
+        ->middleware('permission:funcion_vital.create');
+
+    Route::get('editar/{id}','FuncionVitalController@edit')->name('funcion_vital.edit')
+        ->middleware('permission:funcion_vital.edit');
+
+    Route::post('/update','FuncionVitalController@update')->name('funcion_vital.update')
+        ->middleware('permission:funcion_vital.edit');
+
+    Route::post('/delete','FuncionVitalController@destroy')->name('funcion_vital.destroy')
+        ->middleware('permission:funcion_vital.destroy');
+
+    Route::get('/{id}','FuncionVitalController@show')->name('funcion_vital.show')
+        ->middleware('permission:funcion_vital.show');
+
     Route::post('/buscar','FuncionVitalController@search')->name('funcion_vital.buscar');
 });
 
 
 Route::get('evaluacion_medica/create/{id}', [
     'as' => 'evaluacion_medica.create',
-    'uses' => 'EvaluacionMedicaController@create'
+    'uses' => 'EvaluacionMedicaController@create',
+    'middleware'=>'permission:evaluacion_medica.create'
 ]);
+
 Route::get('evaluacion_medica/recargar_lista_examen/{id}', [
     'as' => 'evaluacion_medica.recargarlistaexamen',
     'uses' => 'EvaluacionMedicaController@recargarListaExamenes'
 ]);
+
+Route::get('/evaluacion_medica','EvaluacionMedicaController@index')->name('evaluacion_medica.index')
+    ->middleware('permission:evaluacion_medica.index');
+
 Route::get('/informe_laboratorio/{id}','EvaluacionMedicaController@informelaboratorio')->name('evaluacionmedica.informelaboratorio');
 Route::get('/informe_medico_ocupacional/{id}','EvaluacionMedicaController@informemedicoocupacional')->name('evaluacionmedica.informemedicoocupacional');
 
-Route::resource('evaluacion_medica','EvaluacionMedicaController',['except' => 'create']);
+
 
 Route::group([
   "prefix"=>"antecedentes"

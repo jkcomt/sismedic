@@ -35,8 +35,9 @@ class PacientesController extends Controller
      */
     public function index()
     {
-        $pacientes = Paciente::where('estado',true)->orderBy('fecha_registro','desc')
-            ->orderBy('hora_registro','desc')->paginate(10);
+        $pacientes = Paciente::where('estado',true)
+            ->orderBy('nro_historia','desc')
+            ->paginate(10);
         return view('pacientes.index',compact('pacientes'));
     }
 
@@ -207,15 +208,14 @@ class PacientesController extends Controller
             if($request['filtro'] == "historia") {
                 $pacientes = Paciente::where('nro_historia', 'like', '%' . $request['buscar'] . '%')
                     //->orWhere('num_dni', 'like', '%' . $request['buscar'] . '%')
-                    ->orderBy('fecha_registro', 'desc')
-                    ->orderBy('hora_registro', 'desc');
+                    ->orderBy('nro_historia', 'desc');
+                    //->orderBy('hora_registro', 'desc');
 
                 $pacientes = $pacientes->where('estado', true)->paginate(10);
             }elseif($request['filtro'] == "dni")
             {
                 $pacientes = Paciente::where('num_dni', 'like', '%' . $request['buscar'] . '%')
-                    ->orderBy('fecha_registro', 'desc')
-                    ->orderBy('hora_registro', 'desc');
+                    ->orderBy('nro_historia', 'desc');
 
                 $pacientes = $pacientes->where('estado', true)->paginate(10);
             }
@@ -224,15 +224,13 @@ class PacientesController extends Controller
               $pacientes = Paciente::
                   where('apellido_paterno', 'like', '%' . $request['buscar'] . '%')
                   ->orWhere('apellido_materno', 'like', '%' . $request['buscar'] . '%')
-                  ->orderBy('fecha_registro', 'desc')
-                  ->orderBy('hora_registro', 'desc');
+                  ->orderBy('nro_historia', 'desc');
 
               $pacientes = $pacientes->where('estado', true)->paginate(10);
             }
         }else{
             $pacientes = Paciente::where('estado', true)
-                ->orderBy('fecha_registro', 'desc')
-                ->orderBy('hora_registro', 'desc')
+                ->orderBy('nro_historia', 'desc')
                 ->paginate(10);
         }
         if($request->ajax())
@@ -483,11 +481,11 @@ class PacientesController extends Controller
     }
 
     public function pacienteCita($id){
-          $paciente = Paciente::find($id);
+        $paciente = Paciente::find($id);
 
         $citas = Cita::where('estado',true)->where('paciente_id',$paciente->id)
             //->orderBy('fecha_examen','asc')->orderBy('hora_examen','asc')
-            ->orderBy('nro_historia','desc')
+            ->orderBy('nro_serie_cita','desc')
             ->paginate(10);
 
         return view('pacientes.citas.index',compact('paciente','citas'));
@@ -516,7 +514,7 @@ class PacientesController extends Controller
         {
             //$data = request()->input();
             $data = request()->validate([
-                'nro_serie_cita'=>'required|unique',
+                'nro_serie_cita'=>'required|unique:citas,nro_serie_cita',
                 'pacienteId'=>'required',
                 'fecha_examen'=>'required',
                 'hora_examen'=>'required',
@@ -749,15 +747,31 @@ class PacientesController extends Controller
       {
       if($request->ajax())
         {
-              $paciente = Paciente::find($request['id']);
+            if($request['startdate'] != "")
+            {
+                $paciente = Paciente::find($request['id']);
                 $citas = Cita::where('estado',true)
-                ->where('fecha_examen','>=',$request['startdate'])
-                ->where('fecha_examen','<=',$request['enddate'])
-                ->where('paciente_id',$request['id'])
-                    ->orderBy('fecha_examen','asc')
-                    ->orderBy('hora_examen','asc')->paginate(10);
+                    ->where('fecha_examen','>=',$request['startdate'])
+                    ->where('fecha_examen','<=',$request['enddate'])
+                    ->where('paciente_id',$request['id'])
+                    ->orderBy('nro_serie_cita','desc')
+                    //->orderBy('hora_examen','asc')
+                    ->paginate(10);
                 $view = view('pacientes.citas.tabla',compact('citas'))->render();
                 return response()->json(['html'=>$view]);
+            }else{
+                $paciente = Paciente::find($request['id']);
+                $citas = Cita::where('estado',true)
+                    //->where('fecha_examen','>=',$request['startdate'])
+                    //->where('fecha_examen','<=',$request['enddate'])
+                    ->where('paciente_id',$request['id'])
+                    ->orderBy('nro_serie_cita','desc')
+                    //->orderBy('hora_examen','asc')
+                    ->paginate(10);
+                $view = view('pacientes.citas.tabla',compact('citas'))->render();
+                return response()->json(['html'=>$view]);
+            }
+
         }
 
 

@@ -49,43 +49,48 @@
     <div class="row">
         <div class="col-md-5">
             <div class="form-group">
-              <a href="{{route('pacientes.citas_paciente',[$paciente->id])}}" target="_blank"  class="btn btn-info"><span class="glyphicon glyphicon-print"></span> REPORTE DE CITAS POR PACIENTE</a>
-
+              @can('pacientes.citas_paciente')
+                <a href="{{route('pacientes.citas_paciente',[$paciente->id])}}" target="_blank"  class="btn btn-info"><span class="glyphicon glyphicon-print"></span> REPORTE DE CITAS POR PACIENTE</a>
+              @endcan
+              @can('pacientes.citas.create')
                 <a href="{{route('pacientes.citas.create',[$paciente->id])}}" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> NUEVA CITA</a>
+              @endcan
+
                 <input type="hidden" value="{{$paciente->id}}" id="idPaciente">
             </div>
         </div>
-        <div class="col-md-7">
-            <form action="" class="form-inline text-right">
+        {{--<div class="col-md-7">--}}
+            {{--<form action="" class="form-inline text-right">--}}
 
-              <div class="row">
-                <div class="col-md-4">
-                  <select class="form-control" name="tipoBusquedacita" id="tipoBusquedacita">
-                    <option value="cita">POR N° CITA</option>
-                    <option value="fecha">POR FECHA</option>
-                  </select>
-                </div>
-                <div class="col-md-4">
-                  <input type="text" id="buscarCita" placeholder="N° DE CITA A BUSCAR" class="form-control" >
+              {{--<div class="row">--}}
+                {{--<div class="col-md-4">--}}
+                  {{--<select class="form-control" name="tipoBusquedacita" id="tipoBusquedacita">--}}
+                    {{--<option value="cita">POR N° CITA</option>--}}
+                    {{--<option value="fecha">POR FECHA</option>--}}
+                  {{--</select>--}}
+                {{--</div>--}}
+                {{--<div class="col-md-4">--}}
+                  {{--<input type="text" id="buscarCita" placeholder="N° DE CITA A BUSCAR" class="form-control" >--}}
 
-               </div>
-               <div class="col-md-4">
-                 <input type="text" id="daterangecita"  class="form-control pull-right" name="daterangecita" style="width: 100%">
-                </div>
-              </div>
+               {{--</div>--}}
+               {{--<div class="col-md-4">--}}
+                 {{--<input type="text" id="daterangecita"  class="form-control pull-right" name="daterangecita" style="width: 100%">--}}
+                {{--</div>--}}
+              {{--</div>--}}
 
-            </form>
+            {{--</form>--}}
 
-        </div>
+        {{--</div>--}}
     </div>
+    @include('buscadorgeneral.filtropacientecita')
     <div class="row" id="tabla">
         @include('pacientes.citas.tabla')
     </div>
 @endsection
 @section('script')
 
-  <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
-  <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-  <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+  {{--<script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>--}}
+  {{--<script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>--}}
+  {{--<script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>--}}
     <script src="{{asset('js/pacientes/citas.js')}}"></script>
 @endsection

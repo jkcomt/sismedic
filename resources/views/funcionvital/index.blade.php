@@ -35,21 +35,14 @@
     <div class="row">
         <div class="col-md-2">
             <div class="form-group">
-              <a href="{{route('funcion_vital.listareporte')}}" target="_blank"  class="btn btn-info"><span class="glyphicon glyphicon-print"></span> REPORTE GENERAL</a>
+                @can('funcion_vital.listareporte')
+                  <a href="{{route('funcion_vital.listareporte')}}" target="_blank"  class="btn btn-info"><span class="glyphicon glyphicon-print"></span> REPORTE GENERAL</a>
+                @endcan
                 {{--<a href="" class="btn btn-success">NUEVA FILIACIÓN</a>--}}
             </div>
         </div>
-        <div class="col-md-10">
-            <form action="" class="form-inline text-right">
-                <select name="filtro" id="filtro" class="form-control">
-                    <option value="historia">Nro. Historia</option>
-                    <option value="paciente">PACIENTE</option>
-                </select>
-                <input type="text" id="buscarFuncionVital" placeholder="BUSCAR..." class="form-control" style="width: 45%">
-
-            </form>
-        </div>
     </div>
+    @include('buscadorgeneral.filtroscita')
 
     <div class="row" id="tabla">
         @include('funcionvital.tabla')

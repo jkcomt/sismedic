@@ -8,7 +8,7 @@ $(document).ready(function() {
     $('#tipo_examen_uno').trigger('change');
     startdate = fechaActual();
     enddate = startdate;
-    console.log(startdate+' '+enddate)
+
 
     $('input[name="daterange"]').daterangepicker({
       "locale": {
@@ -470,13 +470,12 @@ $('.confirmar').on('click',function (e) {
 
 $('body').on('click','.delete',function (e) {
     e.preventDefault();
+    $botonPresionado = 'eliminar';
 
-    $botonPresionado = 'eliminar'
-
-    var id = $(this).attr('id')
-    $('.confirmar').attr('id',id)
-    $('.confirmar').attr('estado','eliminar')
-    $('#modal-confirmacion').modal('show')
+    var id = $(this).attr('id');
+    $('.confirmar').attr('id',id);
+    $('.confirmar').attr('estado','eliminar');
+    $('#modal-confirmacion').modal('show');
 });
 
 /*****************************************************************************/
@@ -575,7 +574,7 @@ $('button[name=buscar]').on('click',function(e){
    }else if($tipoBusqueda == "paciente_fecha"){
        buscar_paciente_fecha()
    }else if($tipoBusqueda == "fecha"){
-       buscar_dni_fecha();
+       buscarfecha();
    }else if($tipoBusqueda == "dni_fecha"){
        buscar_dni_fecha();
    }
@@ -779,7 +778,56 @@ $('body').on('change','#tipoExamen',function(e)
       });
  });
 
+$('button[name=buscar_cita_paciente]').on('click',function(e){
 
+        startdate= $('input[name=desde_paciente]').val();
+        enddate= $('input[name=hasta_paciente]').val();
+        var id= $('#idPaciente').val()
+        var token = $('input[name=_token]').attr('value')
+        $.ajax({
+            type:"post",
+            headers: {'X-CSRF-TOKEN':token},
+            url:'/pacientes/citas/fecha_rango',
+            dataType:"json",
+            data:{
+                startdate:startdate,
+                enddate:enddate,
+                id:id
+            },
+            success: function(data){
+                $('#tabla').html(data.html)
+            },
+            error: function(data){
+                console.log("Error "+JSON.stringify(data))
+            }
+        });
+});
+
+$('button[name=limpiar_paciente]').on('click',function(e){
+
+    startdate= "";
+    enddate= "";
+    var id= $('#idPaciente').val()
+    var token = $('input[name=_token]').attr('value')
+    $.ajax({
+        type:"post",
+        headers: {'X-CSRF-TOKEN':token},
+        url:'/pacientes/citas/fecha_rango',
+        dataType:"json",
+        data:{
+            startdate:startdate,
+            enddate:enddate,
+            id:id
+        },
+        success: function(data){
+            $('#tabla').html(data.html)
+        },
+        error: function(data){
+            console.log("Error "+JSON.stringify(data))
+        }
+    });
+
+});
 
 
 $('body').on('click','button[name=imprimirCita]',function(e){
