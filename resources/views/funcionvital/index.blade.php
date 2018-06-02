@@ -35,7 +35,9 @@
     <div class="row">
         <div class="col-md-2">
             <div class="form-group">
-              <a href="{{route('funcion_vital.listareporte')}}" target="_blank"  class="btn btn-info"><span class="glyphicon glyphicon-print"></span> REPORTE GENERAL</a>
+                @can('funcion_vital.listareporte')
+                  <a href="{{route('funcion_vital.listareporte')}}" target="_blank"  class="btn btn-info"><span class="glyphicon glyphicon-print"></span> REPORTE GENERAL</a>
+                @endcan
                 {{--<a href="" class="btn btn-success">NUEVA FILIACIÓN</a>--}}
             </div>
         </div>

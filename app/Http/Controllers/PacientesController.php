@@ -208,15 +208,14 @@ class PacientesController extends Controller
             if($request['filtro'] == "historia") {
                 $pacientes = Paciente::where('nro_historia', 'like', '%' . $request['buscar'] . '%')
                     //->orWhere('num_dni', 'like', '%' . $request['buscar'] . '%')
-                    ->orderBy('fecha_registro', 'desc')
-                    ->orderBy('hora_registro', 'desc');
+                    ->orderBy('nro_historia', 'desc');
+                    //->orderBy('hora_registro', 'desc');
 
                 $pacientes = $pacientes->where('estado', true)->paginate(10);
             }elseif($request['filtro'] == "dni")
             {
                 $pacientes = Paciente::where('num_dni', 'like', '%' . $request['buscar'] . '%')
-                    ->orderBy('fecha_registro', 'desc')
-                    ->orderBy('hora_registro', 'desc');
+                    ->orderBy('nro_historia', 'desc');
 
                 $pacientes = $pacientes->where('estado', true)->paginate(10);
             }
@@ -225,15 +224,13 @@ class PacientesController extends Controller
               $pacientes = Paciente::
                   where('apellido_paterno', 'like', '%' . $request['buscar'] . '%')
                   ->orWhere('apellido_materno', 'like', '%' . $request['buscar'] . '%')
-                  ->orderBy('fecha_registro', 'desc')
-                  ->orderBy('hora_registro', 'desc');
+                  ->orderBy('nro_historia', 'desc');
 
               $pacientes = $pacientes->where('estado', true)->paginate(10);
             }
         }else{
             $pacientes = Paciente::where('estado', true)
-                ->orderBy('fecha_registro', 'desc')
-                ->orderBy('hora_registro', 'desc')
+                ->orderBy('nro_historia', 'desc')
                 ->paginate(10);
         }
         if($request->ajax())

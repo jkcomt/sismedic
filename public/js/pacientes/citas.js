@@ -470,13 +470,12 @@ $('.confirmar').on('click',function (e) {
 
 $('body').on('click','.delete',function (e) {
     e.preventDefault();
+    $botonPresionado = 'eliminar';
 
-    $botonPresionado = 'eliminar'
-
-    var id = $(this).attr('id')
-    $('.confirmar').attr('id',id)
-    $('.confirmar').attr('estado','eliminar')
-    $('#modal-confirmacion').modal('show')
+    var id = $(this).attr('id');
+    $('.confirmar').attr('id',id);
+    $('.confirmar').attr('estado','eliminar');
+    $('#modal-confirmacion').modal('show');
 });
 
 /*****************************************************************************/

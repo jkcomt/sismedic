@@ -25,12 +25,21 @@
 
                         @isset($cita->funcionVital)
                         {{--<button href="#" class="btn btn-xs btn-danger delete"  id=""><span class="glyphicon glyphicon-remove"></span> ELIMINAR</button>--}}
-                        <a href="{{route('funcion_vital.edit',[$cita->id])}}" class="btn btn-xs btn-warning editar"  id=""><span class="glyphicon glyphicon-pencil"></span> EDITAR</a>
-                        <a href="#" class="btn btn-xs btn-danger conformidad" tipo="eliminar"  id="{{$cita->funcionVital->id}}" ><span class="glyphicon glyphicon-remove"></span> ELIMINAR</a>
-                        <a href="{{route('funcion_vital.show',$cita)}}" class="btn btn-xs btn-success"  id=""><span class="glyphicon glyphicon-info-sign"></span> DETALLE DE FUNCIONES VITALES</a>
+                        @can('funcion_vital.edit')
+                                <a href="{{route('funcion_vital.edit',[$cita->id])}}" class="btn btn-xs btn-warning editar"  id=""><span class="glyphicon glyphicon-pencil"></span> EDITAR</a>
+                        @endcan
 
+                        @can('funcion_vital.destroy')
+                                <a href="#" class="btn btn-xs btn-danger conformidad" tipo="eliminar"  id="{{$cita->funcionVital->id}}" ><span class="glyphicon glyphicon-remove"></span> ELIMINAR</a>
+                        @endcan
+
+                        @can('funcion_vital.show')
+                            <a href="{{route('funcion_vital.show',$cita)}}" class="btn btn-xs btn-success"  id=""><span class="glyphicon glyphicon-info-sign"></span> DETALLE DE FUNCIONES VITALES</a>
+                        @endcan
                         @else
-                            <a href="{{route('funcion_vital.create',$cita->id)}}" class="btn btn-xs btn-info"  id=""><span class="glyphicon glyphicon-info-sign"></span> REGISTRAR FUNCIONES VITALES</a>
+                             @can('funcion_vital.create')
+                               <a href="{{route('funcion_vital.create',$cita->id)}}" class="btn btn-xs btn-info"  id=""><span class="glyphicon glyphicon-info-sign"></span> REGISTRAR FUNCIONES VITALES</a>
+                              @endcan
                         @endisset
 
                     </td>

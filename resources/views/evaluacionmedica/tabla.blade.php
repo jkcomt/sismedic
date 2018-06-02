@@ -18,7 +18,9 @@
                 <td class="text-left">{{$cita->paciente->apellido_paterno.' '.$cita->paciente->apellido_materno.' '.$cita->paciente->nombres}}</td>
                 <td>
                   {{csrf_field()}}
-                    <a href="{{route('evaluacion_medica.create',$cita->id)}}" class="btn btn-xs btn-success"  id=""><span class="fa fa-plus"></span> EVALUACION MÉDICA</a>
+                    @can('evaluacion_medica.create')
+                        <a href="{{route('evaluacion_medica.create',$cita->id)}}" class="btn btn-xs btn-success"  id=""><span class="fa fa-plus"></span> EVALUACION MÉDICA</a>
+                    @endcan
                 </td>
             </tr>
         @endforeach

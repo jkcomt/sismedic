@@ -36,8 +36,12 @@
     <div class="row">
         <div class="col-md-5">
             <div class="form-group">
+              @can('pacientes.listareporte')
               <a href="{{route('pacientes.listareporte')}}" target="_blank"  class="btn btn-info"><span class="glyphicon glyphicon-print"></span> REPORTE GENERAL PACIENTES</a>
-              <a href="{{route('pacientes.create')}}" class="btn btn-success"><span class="glyphicon glyphicon-user"></span> REGISTRAR PACIENTE</a>
+              @endcan
+              @can('pacientes.create')
+                <a href="{{route('pacientes.create')}}" class="btn btn-success"><span class="glyphicon glyphicon-user"></span> REGISTRAR PACIENTE</a>
+              @endcan
               <input type="hidden" value="{{route('pacientes.destroy')}}" id="deletePaciente">
 
             </div>

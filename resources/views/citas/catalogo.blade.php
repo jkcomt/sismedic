@@ -41,8 +41,12 @@ th,td{
 <div class="row">
     <div class="col-md-4">
         <div class="form-group">
+            @can('citas.listareporte')
                 <a href="{{route('citas.listareporte')}}" target="_blank"  class="btn btn-info"><span class="glyphicon glyphicon-print"></span> REPORTE GENERAL DE CITAS</a>
+            @endcan
+            @can('citas.nuevacita')
                 <a href="{{route('citas.nuevacita')}}" class="btn btn-success"> <span class="glyphicon glyphicon-plus"></span> NUEVA CITA</a>
+            @endcan
         </div>
     </div>
     <div class="col-md-8">
