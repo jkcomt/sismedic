@@ -13,7 +13,7 @@
             <tr>
                 <td>{{$cita->nro_serie_cita}}</td>
                 <td>{{Carbon\Carbon::parse($cita->fecha_examen)->format("d-m-Y").' - '.Carbon\Carbon::parse($cita->hora_examen)->format('h:i A')}}</td>
-                <td>{{ucfirst($cita->estado_cita)}}</td>
+                <td><span style="font-size: 10px;" class="label label-warning">{{strtoupper($cita->estado_cita)}}</span></td>
                 <td>
                     @can('pacientes.citas.detailsCita')
                         <a href="{{route('pacientes.citas.detailsCita',[$cita->id])}}" class="btn btn-xs btn-default"  id=""><span class="glyphicon glyphicon-info-sign"></span> DETALLE</a>

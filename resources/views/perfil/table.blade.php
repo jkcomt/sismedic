@@ -7,6 +7,7 @@
         </thead>
         <tbody>
         @foreach($perfiles as $perfil)
+            @if($perfil->descripcion != "sistema")
             <tr>
                 <td>{{$perfil->descripcion}}</td>
 
@@ -23,6 +24,7 @@
                     <button href="#" class="btn btn-xs btn-danger delete"  id="{{$perfil->id}}"><span class="glyphicon glyphicon-remove"></span> ELIMINAR</button>
                 </td>
             </tr>
+            @endif
         @endforeach
         </tbody>
     </table>

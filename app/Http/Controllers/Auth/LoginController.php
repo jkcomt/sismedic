@@ -42,15 +42,19 @@ class LoginController extends Controller
 
     public function login()
     {
-        $credentialas = $this->validate(request(),[
-            $this->username()=>'required',
-            'password'=>'string|required'
+        $credentialas = $this->validate(request(), [
+            $this->username() => 'required',
+            'password' => 'string|required'
         ]);
 
-        if(Auth::attempt($credentialas))
-        {
-            
-            return redirect()->route('dashboard');
+        if (Auth::attempt($credentialas)) {
+            if (Auth::user()->perfil->descripcion == 'sistema') {
+                return redirect('/dashboard');
+            } else {
+                return redirect('/pacientes');
+            }
+
+            //return redirect()->route('dashboard');
         }
 
         return back()

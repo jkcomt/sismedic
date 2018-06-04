@@ -16,7 +16,8 @@
 
 Route::get('/','Auth\LoginController@showLoginForm');
 
-Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+Route::get('/dashboard', 'HomeController@index')->name('dashboard')
+->middleware('guest');
 
 Route::get('login','Auth\LoginController@showLoginForm');
 Route::post('login', 'Auth\LoginController@login')->name('login');
@@ -88,7 +89,7 @@ Route::group([
     Route::post('/citas/buscarCita','PacientesController@searchCita')->name('pacientes.citas.buscarCita');
 
     Route::get('/citas/{id}/detalle_cita','PacientesController@detailsCita')->name('pacientes.citas.detailsCita')
-        ->middleware('pacientes.citas.detailsCita');
+        ->middleware('permission:pacientes.citas.detailsCita');
 });
 
 

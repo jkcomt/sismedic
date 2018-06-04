@@ -13,7 +13,7 @@ class User extends Authenticatable
     protected $table = 'users';
 
     protected $fillable = [
-        'name', 'password','cargo_id','personal_id','estado','remember_token'
+        'name', 'password','cargo_id','personal_id','perfil_id','estado','remember_token'
     ];
 
     public function cargo()
@@ -24,6 +24,10 @@ class User extends Authenticatable
     public function personal()
     {
         return $this->belongsTo(Personal::class);
+    }
+
+    public function perfil(){
+        return $this->belongsTo(Perfil::class);
     }
 
     public function getPassword()

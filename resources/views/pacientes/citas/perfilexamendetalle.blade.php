@@ -13,7 +13,7 @@
                                  checked
                             @endif
                         @endforeach
-                 ></div>
+                 disabled></div>
             @endisset
         </div>
 

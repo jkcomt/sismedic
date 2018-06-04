@@ -14,6 +14,10 @@ class PerfilSeeder extends Seeder
         factory(Perfil::class,1)->create();
 
         factory(Perfil::class)->create([
+            'descripcion'=>'EMA BARRICK'
+        ]);
+
+        factory(Perfil::class)->create([
             'descripcion'=>'EMPRESA SAC'
         ]);
 
