@@ -333,6 +333,7 @@ desired effect
 <script src="{{asset('js/ie10-viewport-bug-workaround.js')}}"></script>
 <script src="{{asset('js/holder.min.js')}}"></script>
 <script src="{{asset('js/notificaciones.js')}}"></script>
+<script src="{{asset('js/sidebar.js')}}"></script>
 @yield('script')
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the

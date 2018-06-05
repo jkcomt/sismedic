@@ -522,6 +522,7 @@ Route::group(["prefix"=>"anexo7d"],function(){
   Route::post('/crear','Anexo7dsController@store')->name('anexo7d.store');
   Route::post('/actualizar','Anexo7dsController@update')->name('anexo7d.update');
   Route::get('/{id}/reporte_anexo','Anexo7dsController@reporte_anexo7d')->name('anexo7d.reporte');
+    Route::get('/{id}/reporte_demo','Anexo7dsController@demo')->name('anexo7d.demo');
 });
 
 //Route::resource('colesterol_hdl','ColesterolHdlController');

@@ -200,4 +200,14 @@ class Anexo7dsController extends Controller
       $pdf->stream($view);
       return $pdf->stream();
     }
+
+    public function demo($id){
+        set_time_limit(120);
+        $cita=Cita::find($id);
+        $view=View::make('evaluacionmedica.reportes.reportegeneral',compact('cita'));
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        $pdf->stream($view);
+        return $pdf->stream();
+    }
 }
