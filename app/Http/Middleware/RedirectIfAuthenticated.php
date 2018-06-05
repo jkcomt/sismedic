@@ -18,12 +18,7 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-            if(Auth::user()->perfil->descripcion == 'sistema'){
-                return redirect('/dashboard');
-            }else{
-                return redirect('/pacientes');
-            }
-
+            return redirect('/dashboard');
         }
 
         return $next($request);

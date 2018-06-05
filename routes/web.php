@@ -16,8 +16,8 @@
 
 Route::get('/','Auth\LoginController@showLoginForm');
 
-Route::get('/dashboard', 'HomeController@index')->name('dashboard')
-->middleware('guest');
+Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+    //->middleware('guest');
 
 Route::get('login','Auth\LoginController@showLoginForm');
 Route::post('login', 'Auth\LoginController@login')->name('login');
