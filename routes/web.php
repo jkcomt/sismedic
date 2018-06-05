@@ -186,6 +186,25 @@ Route::group(['prefix'=>'lugarlabor'],
     }
 );
 
+
+// Route::group(['prefix'=>'personal_audiometria'],
+//     function()
+//     {
+//         Route::get('/','EncargadoAudiometriasController@index')->name('personal_audiometria.index');
+//         Route::get('{id}/edit','EncargadoAudiometriasController@edit')->name('personal_audiometria.edit');
+//
+//         Route::post('/crear','EncargadoAudiometriasController@store')->name('personal_audiometria.crear');
+//         Route::post('/update','EncargadoAudiometriasController@update')->name('personal_audiometria.update');
+//     //    Route::post('/busqueda','EncargadoAudiometriasController@search')->name('personal_audiometria.buscar');
+//         Route::post('/delete','EncargadoAudiometriasController@destroy')->name('personal_audiometria.delete');
+//         Route::post('/buscar','EncargadoAudiometriasController@buscarpersonal')->name('personal_audiometria.buscarpersonal');
+//
+//     }
+// );
+
+
+
+
 Route::resource('ocupaciones','OcupacionesController');
 Route::group(['prefix'=>'ocupaciones'],
     function()
@@ -368,15 +387,19 @@ Route::group(['prefix'=>'usuario'],function(){
 
 
 
-Route::resource('personal','PersonalController');
+//Route::resource('personal','PersonalController');
 
 Route::group(['prefix'=>'personal'],function(){
     Route::get('/','PersonalController@index')->name('personal.index')
         ->middleware('permission:personal.index');
+    Route::post('/','PersonalController@store')->name('personal.store');
 
+    Route::get('/{id}/edit','PersonalController@edit')->name('personal.edit');
     Route::post('/buscar','PersonalController@search')->name('personal.search');
     Route::post('/delete','PersonalController@destroy')->name('personal.destroy');
     Route::post('/update','PersonalController@update')->name('personal.update');
+    Route::get('/buscarpersonal','PersonalController@buscarpersonal')->name('personal.buscarpersonal');
+    Route::get('/demo','PersonalController@demo')->name('personal.demo');
 });
 
 

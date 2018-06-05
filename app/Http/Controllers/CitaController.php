@@ -8,10 +8,12 @@ use App\Cita;
 use App\Event;
 use App\PerfilExamen;
 use App\FuncionVital;
+use App\EncargadoAudiometrias;
 use App\Paciente;
 use App\ClienteCuenta;
 use App\TipoExamen;
 use App\Perfil;
+use App\Personal;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use App\CitaExamen;
@@ -435,8 +437,13 @@ class CitaController extends Controller
 
     public function filtrarExamen(Request $request){
         $cita = Cita::find($request['idCita']);
+        $personales= Personal::select(DB::raw("CONCAT(apellidos,' ',nombres) as nombres_completos"),'id')
+            ->where('estado',true)
+            ->get()->pluck('nombres_completos','id')->toArray();
+
         $listaExamen = ListaExamen::find($request['idExamen']);
         $view = null;
+
         switch ($listaExamen->id)
         {
             case 1:
@@ -512,6 +519,10 @@ class CitaController extends Controller
             case 24:
                 $view = view('evaluacionmedica.examenes.evaluacioncognitiva.create',compact('cita','listaExamen'))->render();
                 break;
+            case 28:
+                $view = view('evaluacionmedica.examenes.audiometria.create',compact('cita','listaExamen','personales'))->render();
+                break;
+
 
 
         }

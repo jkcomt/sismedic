@@ -1,9 +1,7 @@
 @extends('layout')
-@section('api')
     <style>
         input.mayusculas{text-transform:uppercase;}
     </style>
-@endsection
 @section('header')
   <div class="row">
     <div class="col-md-6">
@@ -806,10 +804,7 @@ hora_examen --}}
                         {{--</div>--}}
                     {{--</div>--}}
                 {{--</div>--}}
-
-
             </for>
-
         </div>
     </div>
 @endsection
@@ -837,5 +832,7 @@ hora_examen --}}
     <script src="{{asset('js/evaluacionmedica/examen/evaluacioncognitiva.js')}}"></script>
     <script src="{{asset('js/evaluacionmedica/examen/usorespiradores.js')}}"></script>
     <script src="{{asset('js/evaluacionmedica/examen/apneasuenio.js')}}"></script>
+    <script src="{{asset('js/evaluacionmedica/examen/audiometria.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>--}}
 @endsection

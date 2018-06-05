@@ -57,7 +57,7 @@ class AreasController extends Controller
         return response()->json(['mensaje'=>"registro exitoso"]);
     }
 
-    
+
 
 
 
@@ -87,10 +87,9 @@ class AreasController extends Controller
     {
         //
 
-           $area = Area::find($id);    
-
-        return response()->json(
-          $area->toArray()
+           $area = Area::find($id);
+           return response()->json(
+           $area->toArray()
       );
 
 
@@ -107,7 +106,7 @@ class AreasController extends Controller
     {
         //
 
-    $area= Area::find($request['id']); 
+    $area= Area::find($request['id']);
 
         $data = request()->validate([
             'id'=>'required',
@@ -153,6 +152,6 @@ class AreasController extends Controller
         return response()->json(
             ['mensaje'=>'eliminacion exitosa']
         );
-        
+
     }
 }

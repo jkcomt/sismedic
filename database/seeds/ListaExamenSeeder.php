@@ -204,13 +204,13 @@ class ListaExamenSeeder extends Seeder
             'tipo'=>null,
             'individual'=>true
         ]);
-        // factory(ListaExamen::class)->create([
-        //     'descripcion'=>'ORINA COMPLETA',
-        //     'valor'=>1,
-        //     'dscto'=>1,
-        //     'tipo'=>null,
-        //     'individual'=>true
-        // ]);
+        /******/
+        factory(ListaExamen::class)->create([
+            'descripcion'=>'AUDIOMETRIA',
+            'valor'=>1,
+            'dscto'=>1,
+            'tipo'=>null
+        ]);
 
     }
 }

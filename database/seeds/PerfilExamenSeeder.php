@@ -45,5 +45,10 @@ class PerfilExamenSeeder extends Seeder
                 'perfil_id'=>3,
                 'lista_examen_id'=>27
             ]);
+
+            factory(PerfilExamen::class)->create([
+                'perfil_id'=>1,
+                'lista_examen_id'=>28
+            ]);
     }
 }
