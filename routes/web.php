@@ -17,6 +17,7 @@
 Route::get('/','Auth\LoginController@showLoginForm');
 
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+    //->middleware('guest');
 
 Route::get('login','Auth\LoginController@showLoginForm');
 Route::post('login', 'Auth\LoginController@login')->name('login');
@@ -88,7 +89,7 @@ Route::group([
     Route::post('/citas/buscarCita','PacientesController@searchCita')->name('pacientes.citas.buscarCita');
 
     Route::get('/citas/{id}/detalle_cita','PacientesController@detailsCita')->name('pacientes.citas.detailsCita')
-        ->middleware('pacientes.citas.detailsCita');
+        ->middleware('permission:pacientes.citas.detailsCita');
 });
 
 
@@ -544,6 +545,7 @@ Route::group(["prefix"=>"anexo7d"],function(){
   Route::post('/crear','Anexo7dsController@store')->name('anexo7d.store');
   Route::post('/actualizar','Anexo7dsController@update')->name('anexo7d.update');
   Route::get('/{id}/reporte_anexo','Anexo7dsController@reporte_anexo7d')->name('anexo7d.reporte');
+    Route::get('/{id}/reporte_demo','Anexo7dsController@demo')->name('anexo7d.demo');
 });
 
 //Route::resource('colesterol_hdl','ColesterolHdlController');

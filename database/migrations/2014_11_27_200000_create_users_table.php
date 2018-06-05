@@ -22,6 +22,8 @@ class CreateUsersTable extends Migration
             $table->foreign('cargo_id')->references('id')->on('cargos');
             $table->integer('personal_id')->unsigned()->nullable();
             $table->foreign('personal_id')->references('id')->on('personales');
+            $table->integer('perfil_id')->unsigned()->nullable();
+            $table->foreign('perfil_id')->references('id')->on('perfiles');
             $table->boolean('estado',true)->nullable();
             $table->rememberToken();
             $table->timestamps();

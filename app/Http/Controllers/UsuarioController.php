@@ -6,6 +6,7 @@ use App\User;
 use App\Cargo;
 use Illuminate\Support\Facades\DB;
 use App\Personal;
+use App\Perfil;
 use Caffeinated\Shinobi\Models\Permission;
 use Caffeinated\Shinobi\Models\Role;
 
@@ -29,9 +30,10 @@ class UsuarioController extends Controller
 
             $cargos = Cargo::where('estado','=',true)->pluck('descripcion','id')->toArray();
 
+            $perfiles = Perfil::where('estado','=',true)->pluck('descripcion','id')->toArray();
 
             $usuarios= User::where('estado',true)->paginate(10);
-       return view('usuario.index',compact("usuarios","personales","cargos"));
+       return view('usuario.index',compact("usuarios","personales","cargos","perfiles"));
     }
 
     /**
@@ -60,12 +62,12 @@ class UsuarioController extends Controller
                 'password'=>'required',
                 'personal'=>'required',
                 'cargo'=>'required',
+                'perfil'=>'required',
             ],[
                 'name.unique'=>'El nick ya ha sido registrado',
                 'password.unique'=>'Ingrese otra contraseña',
                 'personal.unique'=>'Seleccione otro personal',
-                'cargo.unique'=>'Ingrese Otro cargo'
-
+                //'cargo.unique'=>'Ingrese Otro cargo',
             ]);
 
             $user = User::create([
@@ -73,6 +75,7 @@ class UsuarioController extends Controller
                 'password'=>$data['password'],
                 'cargo_id'=>$data['cargo'],
                 'personal_id'=>$data['personal'],
+                'perfil_id'=>$data['perfil'],
                 'estado'=>true,
                 'remember_token'=>str_random(10)
             ]);

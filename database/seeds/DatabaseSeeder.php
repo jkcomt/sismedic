@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
         // $this->call(UsersTableSeeder::class);
         $this->truncateTables(
             [
+                'perfiles',
                 'users',
                 'personales',
                 'cargos',
@@ -32,13 +33,13 @@ class DatabaseSeeder extends Seeder
                 'regimenes',
                 'cliente_cuentas',
                 'tipo_examenes',
-                'perfiles',
                 'lista_examenes',
                 'perfil_examenes',
                 'pacientes'
             ]
         );
         // $this->call(UsersTableSeeder::class);
+        $this->call(PerfilSeeder::class);
         $this->call(CargoSeeder::class);
         $this->call(PersonalSeeder::class);
         $this->call(UserSeeder::class);
@@ -57,7 +58,6 @@ class DatabaseSeeder extends Seeder
         $this->call(RegimenSeeder::class);
         $this->call(ClienteCuentasSeeder::class);
         $this->call(TipoExamenSeeder::class);
-        $this->call(PerfilSeeder::class);
         $this->call(ListaExamenSeeder::class);
         $this->call(PerfilExamenSeeder::class);
         $this->call(PacienteSeeder::class);

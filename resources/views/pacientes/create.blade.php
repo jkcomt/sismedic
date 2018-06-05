@@ -484,13 +484,15 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12 form-group">
-                                        <label class="control-label">perfil:</label>
+                                        <label class="control-label">Perfil:</label>
                                         <div class="form-group" id="perfilGroup">
                                             <select name="perfil" id="perfil" class="form-control" >
                                                 {{--<input type="text" class=" form-control" name="personal" value="{{old('personal')}}">--}}
                                                 {{--<option>Seleccione contratador</option>--}}
                                                 @foreach($perfiles as $key => $perfil)
-                                                    <option value="{{$key}}">{{ucfirst($perfil)}}</option>
+                                                    @if($perfil != 'sistema')
+                                                        <option value="{{$key}}">{{ucfirst($perfil)}}</option>
+                                                    @endif
                                                 @endforeach
                                             </select>
                                         </div>

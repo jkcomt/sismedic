@@ -4,6 +4,8 @@
     <ul class="sidebar-menu" data-widget="tree">
         <li class="header">OPCIONES</li>
         <!-- Optionally, you can add icons to the links -->
+        @if(auth()->user()->perfil->descripcion == 'sistema')
+
         <li class="{{ Request::is('dashboard') ? 'active' : '' }}"><a href="/"><i class="fa fa-home"></i> <span>Principal</span></a></li>
 
         <li class="treeview {{ Request::is('pacientes/*') ? 'active' : '' }} {{ Request::is('pacientes') ? 'active' : '' }}">
@@ -53,7 +55,23 @@
                 <i class="fa fa-gear"></i><span>Configuración</span>
             </a>
         </li>
-
+            @else
+            <li class="treeview {{ Request::is('pacientes/*') ? 'active' : '' }} {{ Request::is('pacientes') ? 'active' : '' }}">
+                <a href="#"><i class="fa fa-user"></i> <span>Pacientes</span>
+                    <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    {{--<li class="{{ Request::is('pacientes/create') ? 'active' : '' }}">--}}
+                        {{--<a href="{{route('pacientes.create')}}"><i class="fa  fa-plus-circle"></i> <span>Registrar Paciente</span></a>--}}
+                    {{--</li>--}}
+                    <li class="{{ Request::is('pacientes') ? 'active' : '' }} {{ Request::is('pacientes/citas/*') ? 'active' : '' }} {{ Request::is('pacientes/*/edit') ? 'active' : '' }}">
+                        <a href="{{route('pacientes.index')}}"><i class="fa fa-list-alt"></i> <span>Catálogo</span></a>
+                    </li>
+                </ul>
+            </li>
+        @endif
     </ul>
     <!-- /.sidebar-menu -->
 </section>

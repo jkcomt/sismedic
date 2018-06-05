@@ -24,5 +24,9 @@ class Perfil extends Model
       return $this->hasOne(Paciente::class);
     }
 
+    public function usuario(){
+        return $this->hasMany(User::class);
+    }
+
     public $timestamps = false;
 }

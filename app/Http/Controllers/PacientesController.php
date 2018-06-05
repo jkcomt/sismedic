@@ -25,6 +25,8 @@ use App\Perfil;
 use App\TipoInstruccion;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use View;
 class PacientesController extends Controller
 {
@@ -35,9 +37,18 @@ class PacientesController extends Controller
      */
     public function index()
     {
-        $pacientes = Paciente::where('estado',true)
-            ->orderBy('nro_historia','desc')
-            ->paginate(10);
+        $pacientes = null;
+        if(Auth::user()->perfil->descripcion == "sistema"){
+            $pacientes = Paciente::where('estado',true)
+                ->orderBy('nro_historia','desc')
+                ->paginate(10);
+        }else{
+            $pacientes = Paciente::where('estado',true)
+                ->where('perfil_id',Auth::user()->perfil_id)
+                ->orderBy('nro_historia','desc')
+                ->paginate(10);
+        }
+
         return view('pacientes.index',compact('pacientes'));
     }
 
@@ -204,34 +215,71 @@ class PacientesController extends Controller
 
     public function search(Request $request){
         $pacientes = null;
-        if($request['buscar'] != '') {
-            if($request['filtro'] == "historia") {
-                $pacientes = Paciente::where('nro_historia', 'like', '%' . $request['buscar'] . '%')
-                    //->orWhere('num_dni', 'like', '%' . $request['buscar'] . '%')
-                    ->orderBy('nro_historia', 'desc');
-                    //->orderBy('hora_registro', 'desc');
+        if(Auth::user()->perfil->descripcion != "sistema"){
+            if($request['buscar'] != '') {
+                if($request['filtro'] == "historia") {
+                    $pacientes = Paciente::where('nro_historia', 'like', '%' . $request['buscar'] . '%')
+                        ->where('perfil_id',Auth::user()->perfil->id)
+                        ->orderBy('nro_historia', 'desc');
 
-                $pacientes = $pacientes->where('estado', true)->paginate(10);
-            }elseif($request['filtro'] == "dni")
-            {
-                $pacientes = Paciente::where('num_dni', 'like', '%' . $request['buscar'] . '%')
-                    ->orderBy('nro_historia', 'desc');
+                    $pacientes = $pacientes->where('estado', true)->paginate(10);
+                }elseif($request['filtro'] == "dni")
+                {
+                    $pacientes = Paciente::where('num_dni', 'like', '%' . $request['buscar'] . '%')
+                        ->where('perfil_id',Auth::user()->perfil->id)
+                        ->orderBy('nro_historia', 'desc');
 
-                $pacientes = $pacientes->where('estado', true)->paginate(10);
-            }
-            elseif($request['filtro'] == "paciente")
-            {
-              $pacientes = Paciente::
-                  where('apellido_paterno', 'like', '%' . $request['buscar'] . '%')
-                  ->orWhere('apellido_materno', 'like', '%' . $request['buscar'] . '%')
-                  ->orderBy('nro_historia', 'desc');
+                    $pacientes = $pacientes->where('estado', true)->paginate(10);
+                }
+                elseif($request['filtro'] == "paciente")
+                {
+                    $pacientes = Paciente::
+                        where('perfil_id',Auth::user()->perfil_id)
+                        ->where('apellido_paterno', 'like', '%' . $request['buscar'] . '%')
+                        //->orWhere('apellido_materno', 'like', '%' . $request['buscar'] . '%')
+                        ->join('perfiles','pacientes.perfil_id','=','perfiles.id')
+                        ->orderBy('nro_historia', 'desc');
 
-              $pacientes = $pacientes->where('estado', true)->paginate(10);
+//                    $pacientes = Paciente::
+//                        where('apellido_paterno', 'like', '%' . $request['buscar'] . '%')
+//                        ->orWhere('apellido_materno', 'like', '%' . $request['buscar'] . '%')//
+//                        ->orderBy('nro_historia', 'desc');
+
+                    $pacientes = $pacientes->where('pacientes.estado', true)->paginate(10);
+                }
+            }else{
+                $pacientes = Paciente::where('estado', true)
+                    ->where('perfil_id',Auth::user()->perfil->id)
+                    ->orderBy('nro_historia', 'desc')
+                    ->paginate(10);
             }
         }else{
-            $pacientes = Paciente::where('estado', true)
-                ->orderBy('nro_historia', 'desc')
-                ->paginate(10);
+            if($request['buscar'] != '') {
+                if($request['filtro'] == "historia") {
+                    $pacientes = Paciente::where('nro_historia', 'like', '%' . $request['buscar'] . '%')
+                        ->orderBy('nro_historia', 'desc');
+
+                    $pacientes = $pacientes->where('estado', true)->paginate(10);
+                }elseif($request['filtro'] == "dni")
+                {
+                    $pacientes = Paciente::where('num_dni', 'like', '%' . $request['buscar'] . '%')
+                        ->orderBy('nro_historia', 'desc');
+
+                    $pacientes = $pacientes->where('estado', true)->paginate(10);
+                }
+                elseif($request['filtro'] == "paciente")
+                {
+                    $pacientes = Paciente::
+                    where('apellido_paterno', 'like', '%' . $request['buscar'] . '%')
+                        ->orWhere('apellido_materno', 'like', '%' . $request['buscar'] . '%')
+                        ->orderBy('nro_historia', 'desc');
+                    $pacientes = $pacientes->where('estado', true)->paginate(10);
+                }
+            }else{
+                $pacientes = Paciente::where('estado', true)
+                    ->orderBy('nro_historia', 'desc')
+                    ->paginate(10);
+            }
         }
         if($request->ajax())
         {

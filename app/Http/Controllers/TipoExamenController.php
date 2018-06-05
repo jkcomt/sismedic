@@ -183,7 +183,8 @@ class TipoExamenController extends Controller
         if($id=='1')
         {
           $lista_ocupacional = TipoExamen::where('estado',true)->where('id','<>','5')->pluck('descripcion','id')->toArray();
-          //dd($lista_ocupacional); crear una tabla   tipo examen para ocupaional y para individual
+          //dd($lista_ocupacional); //crear una tabla   tipo examen para ocupaional y para individual
+
         }
         else if($id='2')
         {

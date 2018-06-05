@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Cita;
 use App\Event;
+use Illuminate\Support\Facades\Auth;
+
 class HomeController extends Controller
 {
     /**
@@ -32,7 +34,11 @@ class HomeController extends Controller
                     //->where('hora_examen','>',\Carbon\Carbon::now()->toTimeString())
                     ->orderBy('hora_examen')->get();
 
+        if(Auth::user()->perfil->descripcion == "sistema"){
+            return view('dashboard',compact('citas','events'));
+        }else{
+            return redirect(route('pacientes.index'));
+        }
 
-        return view('dashboard',compact('citas','events'));
     }
 }

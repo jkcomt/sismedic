@@ -19,6 +19,7 @@ class UserSeeder extends Seeder
 //                'email'=>'admin@email.com',
                 'password'=>'123456',
                 'cargo_id'=>1,
+                'perfil_id'=>1,
 //                'personal_id'=>1,
                 'estado'=>true
             ]

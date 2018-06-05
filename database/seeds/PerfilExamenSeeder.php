@@ -20,29 +20,30 @@ class PerfilExamenSeeder extends Seeder
         }
         for ($i = 1; $i<=10 ; $i++){
             factory(PerfilExamen::class)->create([
-                'perfil_id'=>2,
+                'perfil_id'=>3,
                 'lista_examen_id'=>$i
             ]);
         }
 
+
             factory(PerfilExamen::class)->create([
-                'perfil_id'=>3,
+                'perfil_id'=>4,
                 'lista_examen_id'=>16
             ]);
             factory(PerfilExamen::class)->create([
-                'perfil_id'=>3,
+                'perfil_id'=>4,
                 'lista_examen_id'=>4
             ]);
             factory(PerfilExamen::class)->create([
-                'perfil_id'=>3,
+                'perfil_id'=>4,
                 'lista_examen_id'=>25
             ]);
             factory(PerfilExamen::class)->create([
-                'perfil_id'=>3,
+                'perfil_id'=>4,
                 'lista_examen_id'=>26
             ]);
             factory(PerfilExamen::class)->create([
-                'perfil_id'=>3,
+                'perfil_id'=>4,
                 'lista_examen_id'=>27
             ]);
 

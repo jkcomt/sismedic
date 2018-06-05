@@ -49,8 +49,8 @@ class LoginController extends Controller
 
         if(Auth::attempt($credentialas))
         {
-            
-            return redirect()->route('dashboard');
+            return redirect('/dashboard');
+            //return redirect()->route('dashboard');
         }
 
         return back()

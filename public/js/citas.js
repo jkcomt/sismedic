@@ -38,7 +38,7 @@ $(document).ready(function() {
 $('#tipo_examen_uno').on('change',function(e)
 {
   $valor = $('#tipo_examen_uno').val();
-  //console.log($valor);
+  console.log($valor);
   var token = $('input[name=_token]').attr('value')
 
   var url = "/tipo_examen/filtro";
