@@ -23,7 +23,10 @@
                        <label for="inputEmail3" class="col-sm-4 control-label">Color:</label>
                        <div class="col-sm-6">
                          <select class="form-control" name="color">
-                           <option value="amarillenta" selected>amarillenta</option>
+
+                           <option value="AMARILLO" selected>AMARILLO</option>
+                            <option value="AMARILLO PAJISO" selected>AMARILLO PAJISO</option>
+                             <option value="AMARILLO ROJISO" selected>AMARILLO ROJISO</option>
                          </select>
                        </div>
                      </div>
@@ -31,7 +34,9 @@
                       <label for="inputEmail3" class="col-sm-4 control-label">Aspecto:</label>
                       <div class="col-sm-6">
                         <select class="form-control" name="aspecto">
-                          <option value="liquida" selected>liquida</option>
+                          <option value="TURBIO" selected>TURBIO</option>
+                          <option value="LIGERAMENTE AMARILLO" selected>LIGERAMENTE AMARILLO</option>
+                          <option value="TRANSPARENTE" selected>TRANSPARENTE</option>
                         </select>
                       </div>
                     </div>
@@ -211,9 +216,7 @@
             <div class="form-group">
              <label for="inputEmail3" class="col-sm-4 control-label">CONCLUSION ORINA:</label>
              <div class="col-sm-6">
-                <select class="form-control" name="conclusion_orina">
-                  <option value="nr" selected>NR</option>
-                </select>
+              <input type="text" name="conclusion_orina" value="" class="form-control">
              </div>
           </div>
                   </div>

@@ -64,9 +64,12 @@ class ApneaSuenios extends Model
  'estado'
  ];
 
- public function paciente()
- {
-   return $this->belongsTo(Paciente::class);
+ public function cita(){
+     return $this->belongsTo(Cita::class);
+ }
+
+ public function listaExamen(){
+     return $this->belongsTo(ListaExamen::class);
  }
 
  public $timestamps = false;

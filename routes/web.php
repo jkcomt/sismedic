@@ -187,6 +187,114 @@ Route::group(['prefix'=>'lugarlabor'],
     }
 );
 
+
+Route::group(['prefix'=>'Audiometria'],
+    function()
+    {
+        Route::post('/crear','AudiometriasController@store')->name('audiometria.store');
+        Route::post('/actualizar','AudiometriasController@update')->name('audiometria.update');
+            Route::get('/reporte_audiometria/{id}','AudiometriasController@reporteaudiometria')->name('Audiometria.reporte');
+    }
+);
+Route::group(['prefix'=>'torax'],
+    function()
+    {
+        Route::post('/crear','ToraxController@store')->name('torax.store');
+        Route::post('/actualizar','ToraxController@update')->name('torax.update');
+        Route::get('/reporte_torax/{id}','ToraxController@reportetorax')->name('Torax.reporte');
+    }
+);
+
+Route::group(['prefix'=>'psa'],
+    function()
+    {
+        Route::post('/crear','PsaController@store')->name('psa.store');
+        Route::post('/actualizar','PsaController@update')->name('psa.update');
+    }
+);
+
+
+Route::group(['prefix'=>'thevenon'],
+    function()
+    {
+        Route::post('/crear','ThevenonController@store')->name('thevenon.store');
+        Route::post('/actualizar','ThevenonController@update')->name('thevenon.update');
+    }
+);
+
+Route::group(['prefix'=>'PerfilHepatico'],
+    function()
+    {
+        Route::post('/crear','PerfilHepaticoController@store')->name('PerfilHepatico.store');
+        Route::post('/actualizar','PerfilHepaticoController@update')->name('PerfilHepatico.update');
+    }
+);
+
+
+Route::group(['prefix'=>'Espirometira'],
+    function()
+    {
+        Route::post('/crear','EspirometriaController@store')->name('Espirometira.store');
+        Route::post('/actualizar','EspirometriaController@update')->name('Espirometira.update');
+    }
+);
+
+Route::group(['prefix'=>'ExamenFisico'],
+    function()
+    {
+        Route::post('/crear','ExamenFisicoController@store')->name('ExamenFisico.store');
+        Route::post('/actualizar','ExamenFisicoController@update')->name('ExamenFisico.update');
+    }
+);
+
+Route::group(['prefix'=>'conclusion'],
+    function()
+    {
+        Route::post('/crear','ConclucionesController@store')->name('conclusion.store');
+        Route::post('/actualizar','ConclucionesController@update')->name('conclusion.update');
+    }
+);
+
+
+
+Route::group(['prefix'=>'DiagnosticoAudiometria'],
+    function()
+    {
+        Route::post('/crear','DiagnosticoAudiometriaController@store')->name('DiagnosticoAudiometria.store');
+        Route::post('/actualizar','DiagnosticoAudiometriaController@update')->name('DiagnosticoAudiometria.update');
+
+    }
+);
+
+Route::group(['prefix'=>'DiagnosticoElectrocardiograma'],
+    function()
+    {
+        Route::post('/crear','DiagnosticoElectrocardiogramaController@store')->name('DiagnosticoElectrocardiograma.store');
+        Route::post('/actualizar','DiagnosticoElectrocardiogramaController@update')->name('DiagnosticoElectrocardiograma.update');
+    }
+);
+
+
+Route::group(['prefix'=>'DiagnosticoEspirometria'],
+    function()
+    {
+        Route::post('/crear','DiagnosticoEspirometriaController@store')->name('DiagnosticoEspirometria.store');
+        Route::post('/actualizar','DiagnosticoEspirometriaController@update')->name('DiagnosticoEspirometria.update');
+    }
+);
+
+
+Route::group(['prefix'=>'DiagnosticoVista'],
+    function()
+    {
+        Route::post('/crear','DiagnosticoVistaController@store')->name('DiagnosticoVista.store');
+        Route::post('/actualizar','DiagnosticoVistaController@update')->name('DiagnosticoVista.update');
+    }
+);
+
+
+
+
 Route::resource('ocupaciones','OcupacionesController');
 Route::group(['prefix'=>'ocupaciones'],
     function()
@@ -316,6 +424,7 @@ Route::group([
     Route::post('/delete','PerfilController@destroy')->name('perfil.destroy');
     Route::post('/update','PerfilController@update')->name('perfil.update');
     Route::post('/filtro','PerfilController@filtroPerfil')->name('perfil.filtro');
+    Route::post('/filtro_listaexamen','PerfilController@filtro_perfil_listaexamen')->name('perfil.filtro_listaexamen');
 });
 
 Route::resource('lista_examen','ListaExamenController');
@@ -339,6 +448,8 @@ Route::group([
     Route::post('/perfil/delete','PerfilExamenController@destroy')->name('perfil_examen.destroy');
     Route::post('/update','PerfilExamenController@update')->name('perfil_examen.update');
     Route::get('/perfil/{id}','PerfilExamenController@index')->name('perfil_examen.index');
+    Route::post('/store_lista','PerfilExamenController@store_lista')->name('perfil_examen.store_lista');
+
 });
 
 
@@ -369,15 +480,19 @@ Route::group(['prefix'=>'usuario'],function(){
 
 
 
-Route::resource('personal','PersonalController');
+//Route::resource('personal','PersonalController');
 
 Route::group(['prefix'=>'personal'],function(){
     Route::get('/','PersonalController@index')->name('personal.index')
         ->middleware('permission:personal.index');
+    Route::post('/','PersonalController@store')->name('personal.store');
 
+    Route::get('/{id}/edit','PersonalController@edit')->name('personal.edit');
     Route::post('/buscar','PersonalController@search')->name('personal.search');
     Route::post('/delete','PersonalController@destroy')->name('personal.destroy');
     Route::post('/update','PersonalController@update')->name('personal.update');
+    Route::get('/buscarpersonal','PersonalController@buscarpersonal')->name('personal.buscarpersonal');
+    Route::get('/demo','PersonalController@demo')->name('personal.demo');
 });
 
 
@@ -433,6 +548,8 @@ Route::get('/evaluacion_medica','EvaluacionMedicaController@index')->name('evalu
 
 Route::get('/informe_laboratorio/{id}','EvaluacionMedicaController@informelaboratorio')->name('evaluacionmedica.informelaboratorio');
 Route::get('/informe_medico_ocupacional/{id}','EvaluacionMedicaController@informemedicoocupacional')->name('evaluacionmedica.informemedicoocupacional');
+Route::get('/certificado_medico_ocupacional/{id}','EvaluacionMedicaController@certificadoocupacional')->name('evaluacionmedica.certificadoocupacional');
+Route::get('/anexo16/{id}','EvaluacionMedicaController@anexo16')->name('evaluacionmedica.anexo16');
 
 
 

@@ -129,17 +129,12 @@
                     </div>
                   </div>
                   <div class="col-md-12">
-
-
                       <div class="form-group">
                        <label for="inputEmail3" class="col-sm-4 control-label">CONCLUSION HEMOGRAMA:</label>
                        <div class="col-sm-6">
-                          <select class="form-control" name="conclusion">
-                            <option value="conclusion" selected>CONCLUSION</option>
-                          </select>
+                          <input type="text" name="conclusion" class="form-control" value="">
                        </div>
                     </div>
-
 
                   </div>
 

@@ -84,7 +84,7 @@ $('body').on('click','.edit',function(e){
         success: function(data){
             $('#update').attr('value',data.id)
             $('#modal-area-edit input[name=editnombre]').val(data.nombre)
-         
+
             $('#modal-area-edit').modal('show');
         },
         error: function(data){
@@ -178,16 +178,3 @@ $('.confirmar').on('click',function (e) {
         }
     });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-

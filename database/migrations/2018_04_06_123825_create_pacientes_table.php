@@ -56,8 +56,8 @@ class CreatePacientesTable extends Migration
             $table->foreign('contrata_id')->references('id')->on('contratadores');
             $table->integer('contrata_id')->unsigned()->nullable();
 
-            $table->foreign('perfil_id')->references('id')->on('perfiles');
-            $table->integer('perfil_id')->unsigned()->nullable();
+            // $table->foreign('perfil_id')->references('id')->on('perfiles');
+            // $table->integer('perfil_id')->unsigned()->nullable();
 
             $table->foreign('ocupacion_id')->references('id')->on('ocupaciones');
             $table->integer('ocupacion_id')->unsigned()->nullable();

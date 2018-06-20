@@ -147,13 +147,13 @@ width: 90% !important;
                                 <div class="col-md-2 form-group">
                                      <label for="inputEmail3" class="col-sm-2 control-label">FC:</label>
                                      <div class="col-sm-8">
-                                       <input type="text" class="form-control" name="exploracion_fisica_fc" @isset($cita->conduccionvehiculo->exploracion_fisica_fc)  value="{{$cita->conduccionvehiculo->exploracion_fisica_fc}}" @endisset >
+                                       <input type="text" class="form-control" name="exploracion_fisica_fc" @isset($cita->funcionVital->fc)  value="{{$cita->funcionVital->fc}}" @endisset>
                                      </div>
                                   </div>
                                   <div class="col-md-2 form-group">
                                        <label for="inputEmail3" class="col-sm-2 control-label">FR:</label>
                                        <div class="col-sm-8">
-                                         <input type="text" class="form-control"  name="exploracion_fisica_fr" @isset($cita->conduccionvehiculo->exploracion_fisica_fr)  value="{{$cita->conduccionvehiculo->exploracion_fisica_fr}}" @endisset >
+                                         <input type="text" class="form-control"  name="exploracion_fisica_fr" @isset($cita->funcionVital->fr)  value="{{$cita->funcionVital->fr}}" @endisset >
                                        </div>
                                     </div>
                                     <div class="col-md-2 form-group">
@@ -165,19 +165,19 @@ width: 90% !important;
                                       <div class="col-md-2 form-group">
                                            <label for="inputEmail3" class="col-sm-4 control-label">Talla:</label>
                                            <div class="col-sm-8">
-                                             <input type="text" class="form-control" name="exploracion_fisica_talla" @isset($cita->conduccionvehiculo->exploracion_fisica_talla)  value="{{$cita->conduccionvehiculo->exploracion_fisica_talla}}" @endisset >
+                                             <input type="text" class="form-control" name="exploracion_fisica_talla"  @isset($cita->funcionVital->talla) value="{{$cita->funcionVital->talla}}" @endisset >
                                        </div>
                                     </div>
                                     <div class="col-md-2 form-group">
                                          <label for="inputEmail3" class="col-sm-4 control-label">Peso</label>
                                          <div class="col-sm-8">
-                                           <input type="text" class="form-control" name="exploracion_fisica_peso" @isset($cita->conduccionvehiculo->anamnesis_exploracion_fisica_peso)  value="{{$cita->conduccionvehiculo->exploracion_fisica_peso}}" @endisset>
+                                           <input type="text" class="form-control" name="exploracion_fisica_peso" @isset($cita->funcionVital->peso) value="{{$cita->funcionVital->peso}}" @endisset>
                                          </div>
                                       </div>
                                     <div class="col-md-2 form-group">
                                          <label for="inputEmail3" class="col-sm-2 control-label">IMC:</label>
                                          <div class="col-sm-8">
-                                           <input type="text" class="form-control" name="exploracion_fisica_imc" @isset($cita->conduccionvehiculo->exploracion_fisica_imc)  value="{{$cita->conduccionvehiculo->exploracion_fisica_imc}}" @endisset>
+                                           <input type="text" class="form-control" name="exploracion_fisica_imc" @isset($cita->funcionVital->talla) value="{{round($cita->funcionVital->peso/($cita->funcionVital->talla*$cita->funcionVital->talla),0,PHP_ROUND_HALF_UP)}}" @endisset >
                                          </div>
                                       </div>
                             </div>
@@ -185,14 +185,14 @@ width: 90% !important;
                                 <div class="col-md-4 form-group">
                                      <label for="inputEmail3" class="col-sm-6 control-label">Perímetro del cuello:</label>
                                      <div class="col-sm-6">
-                                       <input type="text" class="form-control" name="exploracion_fisica_perimetro_cuello" @isset($cita->conduccionvehiculo->exploracion_fisica_perimetro_cuello)  value="{{$cita->conduccionvehiculo->exploracion_fisica_perimetro_cuello}}" @endisset>
+                                       <input type="text" class="form-control" name="exploracion_fisica_perimetro_cuello" @isset($cita->funcionVital->circunferencia_cuello)  value="{{$cita->funcionVital->circunferencia_cuello}}" @endisset>
                                      </div>
                                   </div>
 
                                   <div class="col-md-4 form-group">
                                        <label for="inputEmail3" class="col-sm-6 control-label">Perímetro de cintura:</label>
                                        <div class="col-sm-6">
-                                         <input type="text" class="form-control" name="exploracion_fisica_perimetro_cintura" @isset($cita->conduccionvehiculo->exploracion_fisica_perimetro_cintura)  value="{{$cita->conduccionvehiculo->exploracion_fisica_perimetro_cintura}}" @endisset>
+                                         <input type="text" class="form-control" name="exploracion_fisica_perimetro_cintura" @isset($cita->funcionVital->perimetro_abdominal)  value="{{$cita->funcionVital->perimetro_abdominal}}" @endisset>
                                        </div>
                                     </div>
 
@@ -200,7 +200,7 @@ width: 90% !important;
                                          <label for="inputEmail3" class="col-sm-6 control-label">Perímetro de cadera:</label>
                                          <div class="col-md-4">
                                            <div class="input-group">
-                                                 <input type="text" class="form-control" name="exploracion_fisica_perimetro_cadera" @isset($cita->conduccionvehiculo->exploracion_fisica_perimetro_cadera)  value="{{$cita->conduccionvehiculo->exploracion_fisica_perimetro_cadera}}" @endisset >
+                                                 <input type="text" class="form-control" name="exploracion_fisica_perimetro_cadera" @isset($cita->funcionVital->perimetro_cadera)  value="{{$cita->funcionVital->perimetro_cadera}}" @endisset >
                                              </div>
                                          </div>
                                          <div class="col-sm-2">
@@ -212,14 +212,14 @@ width: 90% !important;
                                 <div class="col-md-4 form-group">
                                      <label for="inputEmail3" class="col-sm-6 control-label">ICC:</label>
                                      <div class="col-sm-6">
-                                       <input type="text" class="form-control" name="exploracion_fisica_icc" @isset($cita->conduccionvehiculo->exploracion_fisica_icc)  value="{{$cita->conduccionvehiculo->exploracion_fisica_icc}}" @endisset >
+                                       <input type="text" class="form-control" name="exploracion_fisica_icc" @isset($cita->funcionVital->perimetro_cadera)  value="{{$cita->funcionVital->perimetro_abdominal/$cita->funcionVital->perimetro_cadera}}" @endisset >
                                      </div>
                                   </div>
 
                                   <div class="col-md-4 form-group">
                                        <label for="inputEmail3" class="col-sm-6 control-label">P Toraxico Inspiracion:</label>
                                        <div class="col-sm-6">
-                                         <input type="text" class="form-control" name="exploracion_fisica_perimetro_toraxico_inspiracion" @isset($cita->conduccionvehiculo->exploracion_fisica_perimetro_toraxico_inspiracion)  value="{{$cita->conduccionvehiculo->exploracion_fisica_perimetro_toraxico_inspiracion}}" @endisset >
+                                         <input type="text" class="form-control" name="exploracion_fisica_perimetro_toraxico_inspiracion" @isset($cita->funcionVital->maxima_inspiracion)  value="{{$cita->funcionVital->maxima_inspiracion}}" @endisset>
                                        </div>
                                     </div>
 
@@ -227,7 +227,7 @@ width: 90% !important;
                                          <label for="inputEmail3" class="col-sm-6 control-label">P Toraxico Espiracion:</label>
                                          <div class="col-md-6">
                                            <div class="input-group">
-                                                 <input type="text" class="form-control" name="exploracion_fisica_perimetro_toraxico_espiracion" @isset($cita->conduccionvehiculo->exploracion_fisica_perimetro_toraxico_espiracion)  value="{{$cita->conduccionvehiculo->exploracion_fisica_perimetro_toraxico_espiracion}}" @endisset >
+                                                 <input type="text" class="form-control" name="exploracion_fisica_perimetro_toraxico_espiracion" @isset($cita->funcionVital->expiracion_forzada)  value="{{$cita->funcionVital->expiracion_forzada}}" @endisset>
                                              </div>
                                          </div>
                                       </div>

@@ -12,7 +12,7 @@
                         <label for="" class="control-label">Area :</label>
                         <input type="text" class=" form-control" name="editnombre" value="">
                     </div>
-              
+
             </div>
             <div class="modal-footer">
                 <button class="btn btn-success" value="" id="update">Actualizar</button>

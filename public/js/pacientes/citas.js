@@ -1,14 +1,23 @@
 $(document).ready(function() {
     $('#msg-error').hide();
-
+    console.log("personales cita");
     //$('#perfil').trigger('change');
-    $('#perfilEditar').trigger('change');
+    $('#perfil_Editar').trigger('change');
     $('#tipoBusqueda').trigger('change');
     $('#tipoBusquedacita').trigger('change');
     $('#tipo_examen_uno').trigger('change');
+
     startdate = fechaActual();
     enddate = startdate;
+/******************************************/
 
+//viernes 08 2018
+
+
+$('#listaExamenGroup').hide();
+$('#add_examen_perfil').hide();
+$('#lbl_lista_examen').hide();
+/******************************************/
 
     $('input[name="daterange"]').daterangepicker({
       "locale": {
@@ -279,7 +288,7 @@ $('#tipoBusqueda').on('change',function(e){
     $paciente = false;
     $fechaDesde = false;
     $fechaHasta = false;
-    
+
     console.log($tipoBusqueda)
 
     if($tipoBusqueda == "dni"){
@@ -337,9 +346,7 @@ $('#tipoBusquedacita').on('change',function(e){
 $('body').on('change','#perfil',function(e){
     e.preventDefault();
     $valor = $(this).val();
-    //console.log($valor);
     var token = $('input[name=_token]').attr('value')
-
     var url = "/perfil_examen/buscar";
     $.ajax({
         type:"post",
@@ -351,16 +358,92 @@ $('body').on('change','#perfil',function(e){
         },
         success: function(data){
             $('#tabla').html(data.html)
+
         },
         error: function(data){
             //console.log("Error "+JSON.stringify(data))
         }
     });
 });
+/***************************viernes 08 de junio 2018**********/
+  $('#chk_perfils').on('change',function(e){
+    e.preventDefault();
 
-$('#perfilEditar').on('change',function(e){
+
+    var token = $('input[name=_token]').attr('value')
+    $('#listaExamenGroup').show();
+    $('#add_examen_perfil').show();
+    $('#lbl_lista_examen').show();
+   if( $('#chk_perfils').prop('checked') )
+   {
+     $valor = $('#perfil_Editar').val();
+     $.ajax({
+         type:"post",
+         headers: {'X-CSRF-TOKEN':token},
+         url:'/perfil/filtro_listaexamen',
+         dataType:"json",
+         data:{
+             id : $valor
+                    },
+         success: function(data){
+           $('#listaExamenGroup').html(data.html);
+           $('#perfil_lista_examenes').trigger('change');
+         },
+         error: function(data){
+             console.log("Error "+JSON.stringify(data))
+         }
+     });
+   }
+  else
+  {
+    $('#listaExamenGroup').hide();
+    $('#add_examen_perfil').hide();
+    $('#lbl_lista_examen').hide();
+
+  }
+  });
+$valor_perfil_lista="";
+$idperfil="";
+$('body').on('change','#perfil_lista_examenes',function(e){
+    e.preventDefault();
+    $valor_perfil_lista= $(this).val();
+});
+
+$('body').on('click','#add_examen_perfil',function(e){
+    e.preventDefault();
+      var token = $('input[name=_token]').attr('value')
+  $.ajax({
+        type:"post",
+        headers: {'X-CSRF-TOKEN':token},
+        url:'/perfil_examen/store_lista',
+        dataType:"json",
+        data:{
+            perfil_id:$idperfil,
+            listaexamen : $valor_perfil_lista
+        },
+        success: function(data){
+          //  $('#modal-exito').modal('show')
+          location.reload();
+        },
+        error: function(data){
+          console.log(data);
+        }
+    });
+});
+
+
+/************************************/
+$('#perfil_Editar').on('change',function(e){
     e.preventDefault();
     $valor = $(this).val();
+    $idperfil = $(this).val();
+    $('#name_perfil').html('<label for="chk_perfils" style="color:black;font-weight: bold;">Agregar Examen al Perfil </label> <label style="color:blue;">'+$('#perfil_Editar option:selected').text()+'</label>')
+    $('#chk_perfils').prop('checked', false);//
+    $('#listaExamenGroup').hide();//
+    $('#add_examen_perfil').hide();//
+    $('#lbl_lista_examen').hide();//
+
+
     $cita = $('input[name=cita_id]').val()
 
     var token = $('input[name=_token]').attr('value')
@@ -393,6 +476,7 @@ $('#perfilEditar').on('change',function(e){
     });
 
 
+
 });
 
 $botonPresionado = '';
@@ -419,7 +503,7 @@ $('body').on('click','.conformidad',function(e){
     }else if($tipo == "actualizar"){
         $('.confirmar').attr('estado','conforme')
 
-        $('#modal-confirmacion .modal-body').html('<h3 class="text-warning text-center">Actualizar Cita con el contrato '+ $('#perfilEditar :selected').text() +' </h3>')
+        $('#modal-confirmacion .modal-body').html('<h3 class="text-warning text-center">Actualizar Cita con el contrato '+ $('#perfil_Editar :selected').text() +' </h3>')
         $('.confirmar').attr('estado','conforme')
 
         $('.confirmar').removeClass('btn-danger')
@@ -768,9 +852,10 @@ $('body').on('change','#tipoExamen',function(e)
               filtro : $valor
           },
           success: function(data){
-            //console.log(JSON.stringify(data))
+
                $('#perfilGroup').html(data.html)
              $('#perfil').trigger('change');
+
           },
           error: function(data){
               console.log("Error "+JSON.stringify(data))

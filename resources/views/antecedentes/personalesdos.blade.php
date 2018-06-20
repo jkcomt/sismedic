@@ -84,9 +84,15 @@
                               disabled
                             @endisset  class="form-control" name="cbohepatitis"   id="cbohepatitis">
                             @isset($paciente->antecendeDosPersonal->hepatitis)
-                          <option value="2" @if($paciente->antecendeDosPersonal->hepatitis_descripcion == "2") selected @else  @endif >NADA</option>
+                                <option value="NADA" @if($paciente->antecendeDosPersonal->hepatitis_descripcion == "NADA") selected @else  @endif >NADA</option>
+                                <option value="Hepatitis A" @if($paciente->antecendeDosPersonal->hepatitis_descripcion == "Hepatitis A") selected @else  @endif >Hepatitis A</option>
+                                <option value="Hepatitis B" @if($paciente->antecendeDosPersonal->hepatitis_descripcion == "Hepatitis B") selected @else  @endif >Hepatitis B</option>
+                                <option value="Hepatitis C" @if($paciente->antecendeDosPersonal->hepatitis_descripcion == "Hepatitis C") selected @else  @endif >Hepatitis C</option>
                           @else
-                            <option value="2">NADA</option>
+                            <option value="NADA">NADA</option>
+                            <option value="Hepatitis A">Hepatitis A</option>
+                            <option value="Hepatitis B">Hepatitis B</option>
+                            <option value="Hepatitis C">Hepatitis C</option>
                               @endisset
                       </select>
 
@@ -280,10 +286,15 @@
                                   disabled
                                 @endisset  class="form-control" name="cboherniainguinal" id="cboherniainguinal" >
                                 @isset($paciente->antecendeDosPersonal->hernia_inguinal)
-                                  <option value="1" @if($paciente->antecendeDosPersonal->hernia_inguinal_lado == "1") selected @else  @endif >OPTION</option>
-
+                                  <option value="Nada" @if($paciente->antecendeDosPersonal->hernia_inguinal_lado == "Nada") selected @else  @endif >Nada</option>
+                                  <option value="derecho" @if($paciente->antecendeDosPersonal->hernia_inguinal_lado == "derecho") selected @else  @endif >Derecho</option>
+                                  <option value="Izquierdo" @if($paciente->antecendeDosPersonal->hernia_inguinal_lado == "Izquierdo") selected @else  @endif >Izquierdo</option>
+                                  <option value="Bilateral" @if($paciente->antecendeDosPersonal->hernia_inguinal_lado == "Bilateral") selected @else  @endif >Bilateral</option>
                                 @else
-                                  <option value="1">OPTION</option>
+                                  <option value="Nada">Nada</option>
+                                  <option value="derecho">Derecho</option>
+                                  <option value="Izquierdo">Izquierdo</option>
+                                  <option value="Bilateral">Bilateral</option>
 
                                 @endisset
                             </select>
@@ -335,11 +346,15 @@
                                   disabled
                                 @endisset  class="form-control"    id="cbolumbalgia" name="cbolumbalgia">
                                 @isset($paciente->antecendeDosPersonal->lumbalgia)
-                                  <option value="2" @if($paciente->antecendeDosPersonal->lumbalgia_lado == "2") selected @else  @endif >OPTION</option>
-
+                                  <option value="Nada" @if($paciente->antecendeDosPersonal->lumbalgia_lado == "Nada") selected @else  @endif >Nada</option>
+                                  <option value="derecho" @if($paciente->antecendeDosPersonal->lumbalgia_lado == "derecho") selected @else  @endif >Derecho</option>
+                                  <option value="Izquierdo" @if($paciente->antecendeDosPersonal->lumbalgia_lado == "Izquierdo") selected @else  @endif >Izquierdo</option>
+                                  <option value="Bilateral" @if($paciente->antecendeDosPersonal->lumbalgia_lado == "Bilateral") selected @else  @endif >Bilateral</option>
                                 @else
-                                  <option value="2"  >OPTION</option>
-
+                                  <option value="Nada">Nada</option>
+                                  <option value="derecho">Derecho</option>
+                                  <option value="Izquierdo">Izquierdo</option>
+                                  <option value="Bilateral">Bilateral</option>
                                 @endisset
                           </select>
                         </div>

@@ -253,6 +253,7 @@
             </table>
         </div>
         <div class="modal-footer">
+              <a href="{{route('historia_ocupacional.reporte',[$paciente->id])}}" target="_blank"  class="btn btn-success">ANTECEDENTES OCUPACIONAL</a>
           {{-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> --}}
         </div>
       </div>

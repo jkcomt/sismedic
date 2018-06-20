@@ -1,5 +1,6 @@
 @extends('layout')
 @section('api')
+
 <style>
 th,td{
     text-align: center;
@@ -67,4 +68,5 @@ th,td{
 @endsection
 @section('script')
 <script src="{{asset('js/perfil.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 @endsection

@@ -193,6 +193,48 @@ class Cita extends Model
         return $this->hasOne(ApneaSuenios::class);
     }
 
+    public function Audiometria(){
+        return $this->hasOne(Audiometrias::class);
+    }
+
+    public function Torax(){
+        return $this->hasOne(Torax::class);
+    }
+
+    public function psa(){
+        return $this->hasOne(Psa::class);
+    }
+
+    public function thevenon(){
+        return $this->hasOne(Thevenon::class);
+    }
+    public function perfilhepatico(){
+        return $this->hasOne(PerfilHepatico::class);
+    }
+
+    public function espirometria(){
+        return $this->hasOne(Espirometria::class);
+    }
+
+/***diagnosticos**/
+    public function diagnosticoaudiometria(){
+        return $this->hasOne(DiagnosticoAudiometria::class);
+    }
+
+    public function diagnosticoelectrocardiograma(){
+        return $this->hasOne(DiagnosticoElectrocardiograma::class);
+    }
+
+    public function diagnosticoespirometria(){
+        return $this->hasOne(DiagnosticoEspirometria::class);
+    }
+
+    public function diagnosticovista(){
+        return $this->hasOne(DiagnosticoVista::class);
+    }
+
+
+
 
 
 }

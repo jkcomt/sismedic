@@ -21,18 +21,14 @@
                     <td>
                         {{--<button class="btn btn-xs btn-warning edit"  value=""><span class="glyphicon glyphicon-pencil"></span> EDITAR</button>--}}
                         {{csrf_field()}}
-
-
                         @isset($cita->funcionVital)
                         {{--<button href="#" class="btn btn-xs btn-danger delete"  id=""><span class="glyphicon glyphicon-remove"></span> ELIMINAR</button>--}}
                         @can('funcion_vital.edit')
                                 <a href="{{route('funcion_vital.edit',[$cita->id])}}" class="btn btn-xs btn-warning editar"  id=""><span class="glyphicon glyphicon-pencil"></span> EDITAR</a>
                         @endcan
-
                         @can('funcion_vital.destroy')
                                 <a href="#" class="btn btn-xs btn-danger conformidad" tipo="eliminar"  id="{{$cita->funcionVital->id}}" ><span class="glyphicon glyphicon-remove"></span> ELIMINAR</a>
                         @endcan
-
                         @can('funcion_vital.show')
                             <a href="{{route('funcion_vital.show',$cita)}}" class="btn btn-xs btn-success"  id=""><span class="glyphicon glyphicon-info-sign"></span> DETALLE DE FUNCIONES VITALES</a>
                         @endcan

@@ -11,7 +11,7 @@
     </style>
 
     <link rel="stylesheet" href="{{asset('providers/fullcalendar/fullcalendar.min.css')}}">
-
+      {{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" /> --}}
     <link rel="stylesheet" href="{{asset('providers/fullcalendar/fullcalendar.print.min.css')}}" media='print'>
     <script src="{{asset('providers/fullcalendar/lib/moment.min.js')}}"></script>
     {{--<script src="{{asset('providers/fullcalendar/lib/jquery.min.js')}}"></script>--}}

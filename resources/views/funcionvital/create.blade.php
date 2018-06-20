@@ -116,20 +116,20 @@
                             <div class="col-md-2 form-group">
                                 <label for="talla" class="control-label">Talla:</label>
                                 <div class="input-group">
-                                    <input type="number" value="0" class="form-control" name="talla" min="0" step="any">
+                                    <input type="number" value="0" class="form-control" id="talla" name="talla" min="0" step="any">
                                     <div class="input-group-addon">mts</div>
                                 </div>
                             </div>
                             <div class="col-md-2 form-group">
                                 <label for="peso" class="control-label">Peso:</label>
                                 <div class="input-group">
-                                    <input type="number" value="0" class="form-control" name="peso" min="0" step="any">
+                                    <input type="number" value="0" class="form-control" id="peso" name="peso" min="0" step="any">
                                     <div class="input-group-addon">kg</div>
                                 </div>
                             </div>
                             <div class="col-md-2 form-group">
                                 <label for="imc" class="control-label">IMC:</label>
-                                <input type="number" value="0" class="form-control" name="imc" min="0" step="any">
+                                <input type="number" value="0" class="form-control" id="imc" name="imc" min="0" step="any">
                             </div>
                             <div class="col-md-2 form-group">
                                 <label for="temperatura" class="control-label">Temperatura:</label>
@@ -171,6 +171,9 @@
                                     <div class="input-group-addon">%</div>
                                 </div>
                             </div>
+                            <div class="col-md-4">
+                                <button type="button" style="margin-top:7%;" id="calcular_imc" class="btn  btn-success" name="button">Calcular IMC</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -194,7 +197,7 @@
                             <div class="col-md-4 form-group">
                                 <label for="perimetro_abdominal" class="control-label">Perímetro Abdominal:</label>
                                 <div class="input-group">
-                                    <input type="number" value="0" class="form-control" name="perimetro_abdominal" min="0" step="any">
+                                    <input type="number" value="0" class="form-control" id="cintura" name="perimetro_abdominal" min="0" step="any">
                                     <div class="input-group-addon">cm</div>
                                 </div>
                             </div>
@@ -211,7 +214,7 @@
                             <div class="col-md-4 form-group">
                                 <label for="perimetro_cadera" class="control-label">Perímetro Cadera:</label>
                                 <div class="input-group">
-                                    <input type="number" value="0" class="form-control" name="perimetro_cadera" min="0" step="any">
+                                    <input type="number" value="0" class="form-control" id="cadera" name="perimetro_cadera" min="0" step="any">
                                     <div class="input-group-addon">cm</div>
                                 </div>
                             </div>
@@ -224,7 +227,7 @@
                             </div>
                             <div class="col-md-4 form-group">
                                 <label for="indice_cintura" class="control-label">Índice Cintura/Cadera:</label>
-                                <input type="number" value="0" class="form-control" name="indice_cintura" min="0" step="any">
+                                <input type="text" value="0" class="form-control" id="icc" name="indice_cintura" min="0" step="any">
                             </div>
                         </div>
                         <div class="row">
@@ -234,6 +237,9 @@
                                   <input type="number" value="0" class="form-control" name="circunferencia_cuello" min="0" step="any">
                                   <div class="input-group-addon">cm</div>
                               </div>
+                          </div>
+                          <div class="col-md-4">
+                              <button type="button" style="margin-top:7%;" id="calcular_icc" class="btn  btn-success" name="button">Calcular ICC</button>
                           </div>
                         </div>
                     </div>

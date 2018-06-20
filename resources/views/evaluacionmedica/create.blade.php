@@ -1,9 +1,7 @@
 @extends('layout')
-@section('api')
     <style>
         input.mayusculas{text-transform:uppercase;}
     </style>
-@endsection
 @section('header')
   <div class="row">
     <div class="col-md-6">
@@ -103,7 +101,7 @@ hora_examen --}}
                             <li><a data-toggle="tab" href="#menuExamenFisico">Examen Físico</a></li>
                             <li><a data-toggle="tab" href="#menuListaExamen">Lista de Examenes</a></li>
                             <li><a data-toggle="tab" href="#menuConclusiones">Conclusiones</a></li>
-                            <li><a data-toggle="tab" href="#menuResultadosAnteriores">Resultados Anteriores</a></li>
+                            {{-- <li><a data-toggle="tab" href="#menuResultadosAnteriores">Resultados Anteriores</a></li> --}}
                         </ul>
 
                         <div class="tab-content">
@@ -534,13 +532,13 @@ hora_examen --}}
                                                         </div>
                                                     </div>
                                                 </div>
-                                                    <hr>
-                                                <div class="row">
+
+                                                {{-- <div class="row">
                                                     <div class="col-md-12" style="height: 50vh;background-color: grey;">
 
                                                     </div>
-                                                </div>
-                                                    <hr>
+                                                </div> --}}
+
                                                 <div class="row">
 
                                                         <div class="col-md-4 form-group">
@@ -612,7 +610,7 @@ hora_examen --}}
                                     <div class="panel panel-default">
                                         <div class="panel-body">
                                             <div class="row">
-                                                <div class="row container-fluid">
+                                                {{-- <div class="row container-fluid">
                                                     <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label for="">Descripción</label>
@@ -628,7 +626,7 @@ hora_examen --}}
                                                     <div class="col-md-2">
                                                         <div class=""><button type="button" class="btn btn-sm btn-block btn-app" style="background-color:#00a65a !important; color:white;"><i class="glyphicon glyphicon-plus"></i>AÑADIR</button></div>
                                                     </div>
-                                                </div>
+                                                </div> --}}
                                                 <div class="box box-default">
                                                     <div class="box-header with-border">Listado de Examenes Físicos
                                                         <div class="box-tools pull-right">
@@ -638,20 +636,166 @@ hora_examen --}}
                                                         </div>
                                                     </div>
                                                     <div class="box-body">
+                                                      <form id="form_examen_fisico_paciente">
+                                                        @csrf
+                                                        <input type="hidden" name="paciente_id" @isset($paciente->id) value="{{$paciente->id}}" @endisset>
+                                                        <input type="hidden" name="examen_fisico_id" @isset($paciente->examenfisicopaciente->id) value="{{$paciente->examenfisicopaciente->id}}" @endisset>
                                                         <table class="table table-hover table-bordered table-condensed">
                                                             <thead>
                                                             <th>Descripción</th>
                                                             <th>Resultado</th>
                                                             </thead>
                                                             <tbody>
-                                                            @foreach($examenes_fisicos as $key=>$value)
+                                                            {{-- @foreach($examenes_fisicos as $key=>$value)
                                                                 <tr>
                                                                     <td><input type="text" class="form-control mayusculas" value="{{$key}}" ></td>
                                                                     <td><input type="text" class="form-control mayusculas" value="{{$value}}"></td>
                                                                 </tr>
-                                                            @endforeach
+                                                            @endforeach --}}
+                                                            <tr>
+                                                                <td><input type="text" class="form-control mayusculas" value="CABEZA" style="background:white;" readonly></td>
+                                                                <td><input type="text" name="cabeza" @isset($paciente->examenfisicopaciente->cabeza) value="{{$paciente->examenfisicopaciente->cabeza}}" @endisset  class="form-control mayusculas"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><input type="text" class="form-control mayusculas" value="PIEL Y FANERAS" style="background:white;" readonly></td>
+                                                                <td><input type="text" name="pies_faneras"  @isset($paciente->examenfisicopaciente->pies_faneras) value="{{$paciente->examenfisicopaciente->pies_faneras}}" @endisset  class="form-control mayusculas"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><input type="text" class="form-control mayusculas" value="REFLEJOS PUPILARES VISTA DERECHA" style="background:white;" readonly></td>
+                                                                <td><input type="text" name="reflejos_pupilares_derecha"  @isset($paciente->examenfisicopaciente->reflejos_pupilares_derecha) value="{{$paciente->examenfisicopaciente->reflejos_pupilares_derecha}}" @endisset  class="form-control mayusculas"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><input type="text" class="form-control mayusculas" value="REFLEJOS PUPILARES VISTA IZQUIERDA" style="background:white;" readonly></td>
+                                                                <td><input type="text" name="reflejos_pupilares_izquierda"  @isset($paciente->examenfisicopaciente->reflejos_pupilares_izquierda) value="{{$paciente->examenfisicopaciente->reflejos_pupilares_izquierda}}" @endisset  class="form-control mayusculas"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><input type="text" class="form-control mayusculas" value="ENFERMEDADES OCULARES" style="background:white;" readonly></td>
+                                                                <td><input type="text" name="enfermedades_oculares" @isset($paciente->examenfisicopaciente->enfermedades_oculares) value="{{$paciente->examenfisicopaciente->enfermedades_oculares}}" @endisset class="form-control mayusculas"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><input type="text" class="form-control mayusculas" value="NARIZ" style="background:white;" readonly></td>
+                                                                <td><input type="text" name="nariz" @isset($paciente->examenfisicopaciente->nariz) value="{{$paciente->examenfisicopaciente->nariz}}" @endisset class="form-control mayusculas"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><input type="text" class="form-control mayusculas" value="OTOSCOPIA OIDO DERECHO" style="background:white;" readonly></td>
+                                                                <td><input type="text" name="otoscopia_oido_derecho" @isset($paciente->examenfisicopaciente->otoscopia_oido_derecho) value="{{$paciente->examenfisicopaciente->otoscopia_oido_derecho}}" @endisset class="form-control mayusculas"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><input type="text" class="form-control mayusculas" value="OTOSCOPIA OIDO IZQUIERDO" style="background:white;" readonly></td>
+                                                                <td><input type="text" name="otoscopia_oido_izquierdo" @isset($paciente->examenfisicopaciente->otoscopia_oido_izquierdo) value="{{$paciente->examenfisicopaciente->otoscopia_oido_izquierdo}}" @endisset class="form-control mayusculas"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><input type="text" class="form-control mayusculas" value="BOCA, AMIGDALAS, FARINGE, LARINGE" style="background:white;" readonly></td>
+                                                                <td><input type="text" name="boca_amigdalas_faringe_laringe" @isset($paciente->examenfisicopaciente->boca_amigdalas_faringe_laringe) value="{{$paciente->examenfisicopaciente->boca_amigdalas_faringe_laringe}}" @endisset class="form-control mayusculas"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><input type="text" class="form-control mayusculas" value="PIEZAS MAL ESTADO" style="background:white;" readonly></td>
+                                                                <td><input type="text" name="piezas_malestado" @isset($paciente->examenfisicopaciente->piezas_malestado) value="{{$paciente->examenfisicopaciente->piezas_malestado}}" @endisset class="form-control mayusculas"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><input type="text" class="form-control mayusculas" value="PIEZAS QUE FALTAN" style="background:white;" readonly></td>
+                                                                <td><input type="text" name="piezas_faltan" @isset($paciente->examenfisicopaciente->piezas_faltan) value="{{$paciente->examenfisicopaciente->piezas_faltan}}" @endisset class="form-control mayusculas"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><input type="text" class="form-control mayusculas" value="ULTIMO CONTROL DENTAL" style="background:white;" readonly></td>
+                                                                <td><input type="text" name="ultimo_ctrl_dental" @isset($paciente->examenfisicopaciente->ultimo_ctrl_dental) value="{{$paciente->examenfisicopaciente->ultimo_ctrl_dental}}" @endisset class="form-control mayusculas"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><input type="text" class="form-control mayusculas" value="CUELLO Y PERIMETRO" style="background:white;" readonly></td>
+                                                                <td><input type="text" name="cuello_perimetro" @isset($paciente->examenfisicopaciente->cuello_perimetro) value="{{$paciente->examenfisicopaciente->cuello_perimetro}}" @endisset class="form-control mayusculas"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><input type="text" class="form-control mayusculas" value="TORAX" style="background:white;" readonly></td>
+                                                                <td><input type="text" name="torax" @isset($paciente->examenfisicopaciente->torax) value="{{$paciente->examenfisicopaciente->torax}}" @endisset class="form-control mayusculas"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><input type="text" class="form-control mayusculas" value="CORAZON" style="background:white;" readonly></td>
+                                                                <td><input type="text" name="corazon" @isset($paciente->examenfisicopaciente->corazon) value="{{$paciente->examenfisicopaciente->corazon}}" @endisset class="form-control mayusculas"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><input type="text" class="form-control mayusculas" value="PULMON DERECHO" style="background:white;" readonly></td>
+                                                                <td><input type="text" name="pulmon_derecho" @isset($paciente->examenfisicopaciente->pulmon_derecho) value="{{$paciente->examenfisicopaciente->pulmon_derecho}}" @endisset class="form-control mayusculas"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><input type="text" class="form-control mayusculas" value="PULMON IZQUIERDO" style="background:white;" readonly></td>
+                                                                <td><input type="text" name="pulmon_izquierdo" @isset($paciente->examenfisicopaciente->pulmon_izquierdo) value="{{$paciente->examenfisicopaciente->pulmon_izquierdo}}" @endisset class="form-control mayusculas"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><input type="text" class="form-control mayusculas" value="COLUMNA VERTEBRAL" style="background:white;" readonly></td>
+                                                                <td><input type="text" name="columna_vertebral" @isset($paciente->examenfisicopaciente->columna_vertebral) value="{{$paciente->examenfisicopaciente->columna_vertebral}}" @endisset class="form-control mayusculas"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><input type="text" class="form-control mayusculas" value="ABDOMEN" style="background:white;" readonly></td>
+                                                                <td><input type="text" name="abdomen" @isset($paciente->examenfisicopaciente->abdomen) value="{{$paciente->examenfisicopaciente->abdomen}}" @endisset class="form-control mayusculas"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><input type="text" class="form-control mayusculas" value="ANILLOS INGUINALES" style="background:white;" readonly></td>
+                                                                <td><input type="text" name="anillos_inguinales" @isset($paciente->examenfisicopaciente->anillos_inguinales) value="{{$paciente->examenfisicopaciente->anillos_inguinales}}" @endisset class="form-control mayusculas"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><input type="text" class="form-control mayusculas" value="HERNIAS" style="background:white;" readonly></td>
+                                                                <td><input type="text" name="hernias" @isset($paciente->examenfisicopaciente->hernias) value="{{$paciente->examenfisicopaciente->hernias}}" @endisset class="form-control mayusculas"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><input type="text" class="form-control mayusculas" value="ORGANOS GENITALES" style="background:white;" readonly></td>
+                                                                <td><input type="text" name="organos_genitales" @isset($paciente->examenfisicopaciente->organos_genitales) value="{{$paciente->examenfisicopaciente->organos_genitales}}" @endisset class="form-control mayusculas"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><input type="text" class="form-control mayusculas" value="GANGLIOS" style="background:white;" readonly></td>
+                                                                <td><input type="text" name="ganglios"@isset($paciente->examenfisicopaciente->ganglios) value="{{$paciente->examenfisicopaciente->ganglios}}" @endisset  class="form-control mayusculas"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><input type="text" class="form-control mayusculas" value="MIEMBRO SUPERIOR DERECHO" style="background:white;" readonly></td>
+                                                                <td><input type="text" name="miembro_superior_derecho" @isset($paciente->examenfisicopaciente->miembro_superior_derecho) value="{{$paciente->examenfisicopaciente->miembro_superior_derecho}}" @endisset class="form-control mayusculas"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><input type="text" class="form-control mayusculas" value="MIEMBRO SUPERIOR IZQUIERDO" style="background:white;" readonly></td>
+                                                                <td><input type="text" name="mienbro_superior_izquierdo" @isset($paciente->examenfisicopaciente->mienbro_superior_izquierdo) value="{{$paciente->examenfisicopaciente->mienbro_superior_izquierdo}}" @endisset class="form-control mayusculas"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><input type="text" class="form-control mayusculas" value="MIEMBRO INFERIOR DERECHO" style="background:white;" readonly></td>
+                                                                <td><input type="text"name="miembro_inferior_derecho" @isset($paciente->examenfisicopaciente->miembro_inferior_derecho) value="{{$paciente->examenfisicopaciente->miembro_inferior_derecho}}" @endisset class="form-control mayusculas"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><input type="text" class="form-control mayusculas" value="MIEMBRO INFERIOR IZQUIERDO" style="background:white;" readonly></td>
+                                                                <td><input type="text" name="mienbro_inferior_izquierdo" @isset($paciente->examenfisicopaciente->mienbro_inferior_izquierdo) value="{{$paciente->examenfisicopaciente->mienbro_inferior_izquierdo}}" @endisset class="form-control mayusculas"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><input type="text" class="form-control mayusculas" value="VARICES" style="background:white;" readonly></td>
+                                                                <td><input type="text" name="varices" @isset($paciente->examenfisicopaciente->varices) value="{{$paciente->examenfisicopaciente->varices}}" @endisset class="form-control mayusculas"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><input type="text" class="form-control mayusculas" value="TACTO RECTAL" style="background:white;" readonly></td>
+                                                                <td><input type="text" name="tacto_rectal" @isset($paciente->examenfisicopaciente->tacto_rectal) value="{{$paciente->examenfisicopaciente->tacto_rectal}}" @endisset class="form-control mayusculas"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><input type="text" class="form-control mayusculas" value="LENGUAJE, ATENCION, MEMORIA,ORIENTACION, INTELIGENCIA" style="background:white;" readonly></td>
+                                                                <td><input type="text" name="lenguaje_atencion_memoria_orientacion_inteligencia" @isset($paciente->examenfisicopaciente->lenguaje_atencion_memoria_orientacion_inteligencia) value="{{$paciente->examenfisicopaciente->lenguaje_atencion_memoria_orientacion_inteligencia}}" @endisset class="form-control mayusculas"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><input type="text" class="form-control mayusculas" value="FUERZA MUSCULAR" style="background:white;" readonly></td>
+                                                                <td><input type="text" name="fuerza_muscular" @isset($paciente->examenfisicopaciente->fuerza_muscular) value="{{$paciente->examenfisicopaciente->fuerza_muscular}}" @endisset class="form-control mayusculas"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><input type="text" class="form-control mayusculas" value="REFLEJOS OSTEOTENDINOSOS" style="background:white;" readonly></td>
+                                                                <td><input type="text" name="relojes_osteotendinosos" @isset($paciente->examenfisicopaciente->relojes_osteotendinosos) value="{{$paciente->examenfisicopaciente->relojes_osteotendinosos}}" @endisset class="form-control mayusculas"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><input type="text" class="form-control mayusculas" value="MARCHA" style="background:white;" readonly></td>
+                                                                <td><input type="text" name="marcha" @isset($paciente->examenfisicopaciente->marcha) value="{{$paciente->examenfisicopaciente->marcha}}" @endisset class="form-control mayusculas"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><input type="text" class="form-control mayusculas" value="EVALUACION CARDIOVASCULAR" style="background:white;" readonly></td>
+                                                                <td><input type="text" name="evaluacion_cardiovascular" @isset($paciente->examenfisicopaciente->evaluacion_cardiovascular) value="{{$paciente->examenfisicopaciente->evaluacion_cardiovascular}}" @endisset class="form-control mayusculas"></td>
+                                                            </tr>
                                                             </tbody>
                                                         </table>
+                                                        @isset($paciente->examenfisicopaciente->id)
+                                                          <button class="btn btn-sm btn-primary examen_fisico_paciente" tipo="examen_fisico_paciente_modificar" type="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>EDITAR</button>
+                                                         @else
+                                                          <button class="btn btn-sm btn-success examen_fisico_paciente" tipo="examen_fisico_paciente_guardar" type="button">GUARDAR</button>
+                                                        @endisset
+                                                      </form>
                                                     </div>
                                                 </div>
                                             </div>
@@ -674,6 +818,10 @@ hora_examen --}}
                                 </div>
                             </div>
                             <div id="menuConclusiones" class="tab-pane fade">
+                              <form id="form_conclusiones">
+                                @csrf
+                                          <input type="hidden" name="paciente_id" value="{{$paciente->id}}">
+                                          <input type="hidden" name="conclusiones_id" @isset($paciente->conclucionpaciente->id) value="{{$paciente->conclucionpaciente->id}}" @endisset>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="panel panel-default">
@@ -682,7 +830,7 @@ hora_examen --}}
                                                     <div class="col-md-4" >
                                                         <label for="">DIAGNOSTICOS MÉDICOS</label>
                                                         <div class="form-group">
-                                                            <textarea name="" id="" class="form-control" rows="11"></textarea>
+                                                            <textarea name="diagnosticos_medicos"  class="form-control" style="resize:none;" rows="11">@isset($paciente->conclucionpaciente->diagnosticos_medicos){{$paciente->conclucionpaciente->diagnosticos_medicos}}@endisset</textarea>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-8">
@@ -690,7 +838,7 @@ hora_examen --}}
                                                             <div class="col-md-12">
                                                                 <label for="">DIAGNOSTICOS EXAMEN MEDICOS</label>
                                                                 <div class="form-group">
-                                                                    <textarea name="" id="" class="form-control" rows="4"></textarea>
+                                                                    <textarea name="diagnosticos_examenes_medicos" style="resize:none;"  class="form-control" rows="4">@isset($paciente->conclucionpaciente->diagnosticos_examenes_medicos){{$paciente->conclucionpaciente->diagnosticos_examenes_medicos}}@endisset</textarea>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -698,7 +846,7 @@ hora_examen --}}
                                                             <div class="col-md-12">
                                                                 <label for="">RECOMENDACIONES</label>
                                                                 <div class="form-group">
-                                                                    <textarea name="" id="" class="form-control" rows="4"></textarea>
+                                                                    <textarea name="recomendaciones" class="form-control" style="resize:none;" rows="4">@isset($paciente->conclucionpaciente->recomendaciones){{$paciente->conclucionpaciente->recomendaciones}}@endisset</textarea>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -708,7 +856,7 @@ hora_examen --}}
                                                     <div class="col-md-12">
                                                         <label for="">OBSERVACIONES / INTERCONSULTAS </label>
                                                         <div class="form-group">
-                                                            <textarea name="" id="" class="form-control" rows="4"></textarea>
+                                                            <textarea name="observacion_interconsulta" style="resize:none;"  class="form-control" rows="4">@isset($paciente->conclucionpaciente->observacion_interconsulta){{$paciente->conclucionpaciente->observacion_interconsulta}}@endisset</textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -716,7 +864,7 @@ hora_examen --}}
                                                     <div class="col-md-4 form-inline">
                                                         <div class="form-group ">
                                                             <label for="">RC 10 años: </label>
-                                                            <input type="text" class="form-control input-sm" >
+                                                            <input type="text" name="rc10_anios" @isset($paciente->conclucionpaciente->rc10_anios) value="{{$paciente->conclucionpaciente->rc10_anios}}" @endisset class="form-control input-sm" >
                                                             <button class="btn btn-sm btn-default">RC</button>
                                                         </div>
                                                     </div>
@@ -734,7 +882,7 @@ hora_examen --}}
                                                         <div class="form-group">
                                                             <label for="inputEmail3" class="col-sm-4 control-label">APTITUD LABORAL</label>
                                                             <div class="col-sm-8">
-                                                                <select name="" id="" class="form-control">
+                                                                <select name="aptitud_larabal" id="" class="form-control">
                                                                     <option value="">Apto</option>
                                                                     <option value="">Apto con Resttriccion</option>
                                                                     <option value="">No Apto</option>
@@ -744,26 +892,42 @@ hora_examen --}}
                                                         <div class="form-group">
                                                             <label for="inputPassword3" class="col-sm-4 control-label">VENCIMIENTO LABORAL</label>
                                                             <div class="col-sm-8">
-                                                                <input type="date" value="{{\Carbon\Carbon::now()->toDateString()}}" class="form-control" name="fecha_funcion_vital" id="fecha_funcion_vital">
+                                                                <input type="date" @isset($paciente->conclucionpaciente->rc10_anios) value="{{$paciente->conclucionpaciente->rc10_anios}}" @else value="{{\Carbon\Carbon::now()->toDateString()}}" @endisset    class="form-control" name="vencimiento_laboral">
                                                             </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                          <label for="inputPassword3" class="col-sm-4 control-label">&nbsp;</label>
+                                                          <div class="col-sm-8">
+
+                                                              {{-- <button type="button" class="btn btn-success" name="button">Guardar</button> --}}
+                                                              @isset($paciente->conclucionpaciente->id)
+                                                                <button class="btn btn-sm btn-primary conclusiones" tipo="conclusiones_modificar" type="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>EDITAR</button>
+                                                                      {{-- <input type="submit" class="btn btn-sm btn-primary  conclusiones" tipo="conclusiones_modificar" name="" value="Editar"> --}}
+                                                               @else
+                                                                <button class="btn btn-sm btn-success conclusiones" tipo="conclusiones_guardar"  type="button">GUARDAR</button>
+                                                                {{-- <input type="submit" class="btn btn-sm btn-success conclusiones" tipo="conclusiones_guardar" name="" value="Guardar"> --}}
+                                                              @endisset
+                                                          </div>
+
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4">
                                                         <div class="row">
                                                             <div class="col-md-12">
                                                                 {{-- <button class="btn btn-default btn-sm btn-block"></button> --}}
-                                                                <a href="{{route('word.reporte',[$cita->id])}}" class="btn btn-default btn-sm btn-block">Interconsulta Formato WORD</a>
+                                                                {{--WORD <a href="{{route('word.reporte',[$cita->id])}}" class="btn btn-default btn-sm btn-block">Interconsulta Formato WORD</a> --}}
                                                                 <a href="{{route('interconsultapdf.reporte',[$cita->id])}}" target="_blank" class="btn btn-default btn-sm btn-block">Interconsulta Formato PDF</a>
                                                             </div>
                                                         </div><br>
-                                                        <div class="row">
+                                                        {{-- <div class="row">
                                                             <div class="col-md-12">
                                                                 <button class="btn btn-default btn-sm btn-block">Seguimiento</button>
                                                             </div>
-                                                        </div><br>
+                                                        </div>
+                                                        <br> --}}
                                                         <div class="row">
                                                             <div class="col-md-12">
-                                                                <button class="btn btn-default btn-sm btn-block">Certificado Ocupacional</button>
+                                                                <a href="{{route('evaluacionmedica.certificadoocupacional',[$cita->id])}}"   target="_blank"  class="btn btn-default btn-sm btn-block">Certificado Aptitud Medico Ocupacional</a>
                                                             </div>
                                                         </div><br>
                                                         <div class="row">
@@ -773,13 +937,12 @@ hora_examen --}}
                                                         </div><br>
                                                         <div class="row">
                                                             <div class="col-md-12">
-                                                                <button class="btn btn-default btn-sm btn-block">Terminar Atención</button>
+                                                                  <a href="{{route('evaluacionmedica.anexo16',[$cita->id])}}"   target="_blank"  class="btn btn-default btn-sm btn-block">Terminar Atención</a>
                                                             </div>
                                                         </div><br>
                                                         <div class="row">
                                                             <div class="col-md-12">
-                                                                <a href="{{route('evaluacionmedica.informelaboratorio',[$cita->id])}}"   target="_blank"  class="btn btn-default btn-sm btn-block">Imprimir</a>
-                                                                {{-- <button class="btn btn-default btn-sm btn-block">Terminar Atención</button> --}}
+                                                                <a href="{{route('evaluacionmedica.informelaboratorio',[$cita->id])}}"   target="_blank"  class="btn btn-default btn-sm btn-block">Imprimir Laboratorio</a>
                                                             </div>
                                                         </div><br>
                                                     </div>
@@ -788,6 +951,7 @@ hora_examen --}}
                                         </div>
                                     </div>
                                 </div>
+                              </form>
                             </div>
                             <div id="menuResultadosAnteriores" class="tab-pane fade">
                                 <h3>Menu 2</h3>
@@ -796,20 +960,8 @@ hora_examen --}}
                         </div>
                     </div>
                 </div>
-                {{--<div class="panel panel-default">--}}
-                    {{--<div class="panel-body">--}}
-                        {{--<div class="row">--}}
-                            {{--<div class="col-md-12 text-right">--}}
-                                {{--<button class="btn btn-success">Registrar</button>--}}
-                                {{--<a href="{{route('evaluacion_medica.index')}}" class="btn btn-warning">Volver</a>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-
 
             </for>
-
         </div>
     </div>
 @endsection
@@ -837,5 +989,19 @@ hora_examen --}}
     <script src="{{asset('js/evaluacionmedica/examen/evaluacioncognitiva.js')}}"></script>
     <script src="{{asset('js/evaluacionmedica/examen/usorespiradores.js')}}"></script>
     <script src="{{asset('js/evaluacionmedica/examen/apneasuenio.js')}}"></script>
+    <script src="{{asset('js/evaluacionmedica/examen/audiometria.js')}}"></script>
+    <script src="{{asset('js/evaluacionmedica/examen/torax.js')}}"></script>
+    <script src="{{asset('js/evaluacionmedica/examen/psa.js')}}"></script>
+    <script src="{{asset('js/evaluacionmedica/examen/thevenon.js')}}"></script>
+    <script src="{{asset('js/evaluacionmedica/examen/perfilhepatico.js')}}"></script>
+    <script src="{{asset('js/evaluacionmedica/examen/espirometria.js')}}"></script>
+    <script src="{{asset('js/evaluacionmedica/examen/evaluacionfisica.js')}}"></script>
+    <script src="{{asset('js/evaluacionmedica/examen/conclucion.js')}}"></script>
+
+    <script src="{{asset('js/diagnosticos/audiometria.js')}}"></script>
+    <script src="{{asset('js/diagnosticos/electrocardiograma.js')}}"></script>
+    <script src="{{asset('js/diagnosticos/espirometria.js')}}"></script>
+    <script src="{{asset('js/diagnosticos/vision.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>--}}
 @endsection

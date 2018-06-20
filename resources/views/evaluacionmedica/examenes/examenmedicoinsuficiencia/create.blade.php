@@ -188,7 +188,7 @@
                                                           <div class="form-group">
                                                             <label class="col-sm-4 control-label">Talla (cms)</label>
                                                             <div class="col-sm-6">
-                                                               <input type="text" name="exploracion_fisica_talla" @isset($cita->sudicienciatrabajoaltura->exploracion_fisica_talla) value="{{$cita->sudicienciatrabajoaltura->exploracion_fisica_talla}}"  @endisset  class="form-control" >
+                                                               <input type="text" name="exploracion_fisica_talla"@isset($cita->funcionVital->talla) value="{{$cita->funcionVital->talla}}" @endisset  class="form-control" >
                                                             </div>
                                                           </div>
                                                       </div>
@@ -197,7 +197,7 @@
                                                           <div class="form-group">
                                                             <label class="col-sm-4 control-label">Peso (Kg)</label>
                                                             <div class="col-sm-6">
-                                                               <input type="text" name="exploracion_fisica_peso" @isset($cita->sudicienciatrabajoaltura->exploracion_fisica_peso) value="{{$cita->sudicienciatrabajoaltura->exploracion_fisica_peso}}"  @endisset class="form-control" >
+                                                               <input type="text" name="exploracion_fisica_peso" @isset($cita->funcionVital->peso) value="{{$cita->funcionVital->peso}}" @endisset class="form-control" >
                                                             </div>
                                                           </div>
                                                       </div>
@@ -206,7 +206,7 @@
                                                           <div class="form-group">
                                                             <label class="col-sm-4 control-label">IMC</label>
                                                             <div class="col-sm-6">
-                                                               <input type="text" name="exploracion_fisica_imc" @isset($cita->sudicienciatrabajoaltura->exploracion_fisica_imc) value="{{$cita->sudicienciatrabajoaltura->exploracion_fisica_imc}}"  @endisset class="form-control" >
+                                                               <input type="text" name="exploracion_fisica_imc" @isset($cita->funcionVital->talla) value="{{round($cita->funcionVital->peso/($cita->funcionVital->talla*$cita->funcionVital->talla),0,PHP_ROUND_HALF_UP)}}" @endisset class="form-control" >
                                                             </div>
                                                           </div>
                                                       </div>

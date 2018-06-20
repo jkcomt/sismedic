@@ -8,10 +8,12 @@ use App\Cita;
 use App\Event;
 use App\PerfilExamen;
 use App\FuncionVital;
+use App\EncargadoAudiometrias;
 use App\Paciente;
 use App\ClienteCuenta;
 use App\TipoExamen;
 use App\Perfil;
+use App\Personal;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use App\CitaExamen;
@@ -429,14 +431,18 @@ class CitaController extends Controller
         }else {
             $view = view('citas.table',compact('citas'))->render();
         }
-
         return response()->json(['html'=>$view]);
     }
 
     public function filtrarExamen(Request $request){
         $cita = Cita::find($request['idCita']);
+        $personales= Personal::select(DB::raw("CONCAT(apellidos,' ',nombres) as nombres_completos"),'id')
+            ->where('estado',true)
+            ->get()->pluck('nombres_completos','id')->toArray();
+
         $listaExamen = ListaExamen::find($request['idExamen']);
         $view = null;
+
         switch ($listaExamen->id)
         {
             case 1:
@@ -456,7 +462,7 @@ class CitaController extends Controller
                 break;
             case 6:
                // $view = view('evaluacionmedica.examenes.gruposanguineo.create',compact('cita','listaExamen'))->render();
-                $view = view('evaluacionmedica.examenes.enproceso.create',compact('cita','listaExamen'))->render();
+                $view = view('evaluacionmedica.examenes.torax.create',compact('cita','listaExamen','personales'))->render();
                 break;
             case 7:
                 $view = view('evaluacionmedica.examenes.glucosa.create',compact('cita','listaExamen'))->render();
@@ -507,11 +513,21 @@ class CitaController extends Controller
                 $view = view('evaluacionmedica.examenes.conduccionvehiculo.create',compact('cita','listaExamen'))->render();
                 break;
             case 23:
-                $view = view('evaluacionmedica.examenes.conductoroperador.create',compact('cita','listaExamen'))->render();
-                break;
-            case 24:
                 $view = view('evaluacionmedica.examenes.evaluacioncognitiva.create',compact('cita','listaExamen'))->render();
                 break;
+            case 24:
+                $view = view('evaluacionmedica.examenes.psa.create',compact('cita','listaExamen'))->render();
+                break;
+            case 25:
+                $view = view('evaluacionmedica.examenes.thevenon.create',compact('cita','listaExamen'))->render();
+                break;
+            case 26:
+                $view = view('evaluacionmedica.examenes.perfilhepatico.create',compact('cita','listaExamen'))->render();
+                break;
+            case 27:
+                $view = view('evaluacionmedica.examenes.audiometria.create',compact('cita','listaExamen','personales'))->render();
+                break;
+
 
 
         }

@@ -33,7 +33,9 @@ class UsuarioController extends Controller
             $perfiles = Perfil::where('estado','=',true)->pluck('descripcion','id')->toArray();
 
             $usuarios= User::where('estado',true)->paginate(10);
-       return view('usuario.index',compact("usuarios","personales","cargos","perfiles"));
+
+            $roles = Role::all()->get('name','id')->toArray();
+       return view('usuario.index',compact("usuarios","personales","cargos","perfiles","roles"));
     }
 
     /**
@@ -63,6 +65,7 @@ class UsuarioController extends Controller
                 'personal'=>'required',
                 'cargo'=>'required',
                 'perfil'=>'required',
+                'rol'=>'required'
             ],[
                 'name.unique'=>'El nick ya ha sido registrado',
                 'password.unique'=>'Ingrese otra contraseña',
@@ -80,12 +83,14 @@ class UsuarioController extends Controller
                 'remember_token'=>str_random(10)
             ]);
 
-            $rol = Role::create([
-                'name'=>$data['name'],
-                'slug'=>$data['name'].'role',
-                'description'=>$data['name'],
-                'special'=>'no-access'
-            ]);
+//            $rol = Role::create([
+//                'name'=>$data['name'],
+//                'slug'=>$data['name'].'role',
+//                'description'=>$data['name'],
+//                'special'=>'no-access'
+//            ]);
+
+            $rol = Role::find($data['role_id'])->get();
 
             $roles = array($rol->id);
 

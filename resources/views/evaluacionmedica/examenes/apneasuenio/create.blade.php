@@ -177,6 +177,7 @@ width: 90% !important;
                                                 <li class="active"><a data-toggle="tab" href="#home">Detalle</a></li>
                                                 <li><a data-toggle="tab" href="#menu1">Clasificación</a></li>
                                                 <li><a data-toggle="tab" href="#menu2">Entrevista</a></li>
+                                                <li><a data-toggle="tab" href="#menu3">Escala de EpWorth</a></li>
                                               </ul>
 
                                               <div class="tab-content">
@@ -357,22 +358,184 @@ width: 90% !important;
                                                   </div>
 
                                                 </div>
-                                                <div class="col-md-12" style="margin-top:10px;">
-                                                    <div class="col-md-12">
-                                                        <div class="col-md-4 text-right">
-                                                            <strong>Puntoación de la Escala Epworth</strong>
+                                                <div id="menu3" class="tab-pane fade">
+
+                                                <div class="row">
+                                                    <div class="col-md-12" style="margin-top:4px;">
+                                                      <div class="col-md-12">
+                                                        <div class="input-group" >
+                                                          <label for="hta" style="border:none;" class="form-control">Situación</label> ¿Con qué frecuencia esta somnoliento o se queda dormido en cada una de las siguientes situaciones?
+                                                            <br>Aplique la siguiente escala: 0: nunca, 1: baja frecuencia, 2: moderada frecuencia, 3: alta frecuencia.
                                                         </div>
-                                                        <div class="col-md-4">
-                                                          <div class="input-group">
-                                                               <div class="input-group-addon">Indique</div>
-                                                               <input type="text" class="form-control">
-                                                             </div>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                              <button type="button" class="btn btn-danger" name="button">Calcular (como se realiza este calculo)</button>
-                                                        </div>
+                                                      </div>
                                                     </div>
+                                                  </div>
+
+                                                  <div class="row">
+                                                    <div class="col-md-12">
+                                                      <div class="col-md-12">
+                                                        <div class="input-group" >
+                                                          <label style="border:none;"  class="form-control">1. Sentado y leyendo.</label>
+                                                          <span class="input-group-addon" id="basic-addon2" style="border:none;" >
+                                                            <label class="radio-inline">
+                                                                <input type="radio" class="uno_epwort" value="0" name="uno_epwort">0
+                                                              </label>
+                                                            <label class="radio-inline">
+                                                                <input type="radio"  class="uno_epwort" value="1" name="uno_epwort">1
+                                                              </label>
+                                                              <label class="radio-inline">
+                                                                <input type="radio" class="uno_epwort" value="2" name="uno_epwort">2
+                                                              </label>
+                                                              <label class="radio-inline">
+                                                                <input type="radio"  class="uno_epwort" value="3"name="uno_epwort">3
+                                                              </label>
+                                                        </div>
+                                                      </div>
+                                                      <div class="col-md-12">
+                                                        <div class="input-group" >
+                                                          <label  style="border:none;"  class="form-control">2. Viendo televisión.	</label>
+                                                          <span class="input-group-addon" id="basic-addon2" style="border:none;" >
+                                                            <label class="radio-inline">
+                                                                <input type="radio" class="dos_epwort" value="0"  name="dos_epwort">0
+                                                              </label>
+                                                            <label class="radio-inline">
+                                                                <input type="radio" class="dos_epwort" value="1"  name="dos_epwort">1
+                                                              </label>
+                                                              <label class="radio-inline">
+                                                                <input type="radio" class="dos_epwort" value="2"  name="dos_epwort">2
+                                                              </label>
+                                                              <label class="radio-inline">
+                                                                <input type="radio" class="dos_epwort" value="3"  name="dos_epwort">3
+                                                              </label>
+                                                        </div>
+                                                      </div>
+                                                      <div class="col-md-12">
+                                                        <div class="input-group" >
+                                                          <label for="entrevista_valor3" style="border:none;"  class="form-control">3. Sentado en un lugar público (ej. cine, reunión).</label>
+                                                          <span class="input-group-addon" id="basic-addon2" style="border:none;" >
+                                                            <label class="radio-inline">
+                                                                <input type="radio"  class="tres_epwort" value="0"  name="tres_epwort">0
+                                                              </label>
+                                                            <label class="radio-inline">
+                                                                <input type="radio" class="tres_epwort" value="1" name="tres_epwort">1
+                                                              </label>
+                                                              <label class="radio-inline">
+                                                                <input type="radio" class="tres_epwort" value="2" name="tres_epwort">2
+                                                              </label>
+                                                              <label class="radio-inline">
+                                                                <input type="radio" class="tres_epwort" value="3" name="tres_epwort">3
+                                                              </label>
+                                                        </div>
+                                                      </div>
+                                                      <div class="col-md-12">
+                                                        <div class="input-group" >
+                                                          <label for="entrevista_valor4" style="border:none;"  class="form-control">4. Viajando como pasajero en un auto durante 1 hora.</label>
+                                                          <span class="input-group-addon" id="basic-addon2" style="border:none;" >
+                                                            <label class="radio-inline">
+                                                                <input type="radio" class="cuatro_epwort" value="0" name="cuatro_epwort">0
+                                                              </label>
+                                                            <label class="radio-inline">
+                                                                <input type="radio" class="cuatro_epwort" value="1" name="cuatro_epwort">1
+                                                              </label>
+                                                              <label class="radio-inline">
+                                                                <input type="radio" class="cuatro_epwort" value="2" name="cuatro_epwort">2
+                                                              </label>
+                                                              <label class="radio-inline">
+                                                                <input type="radio" class="cuatro_epwort" value="3" name="cuatro_epwort">3
+                                                              </label>
+                                                        </div>
+                                                      </div>
+                                                      <div class="col-md-12">
+                                                        <div class="input-group" >
+                                                          <label for="entrevista_valor4" style="border:none;"  class="form-control">5. Descansando en la tarde cuando las circunstancias lo permiten.</label>
+                                                          <span class="input-group-addon" id="basic-addon2" style="border:none;" >
+                                                            <label class="radio-inline">
+                                                                <input type="radio" class="cinco_epwort" value="0" name="cinco_epwort">0
+                                                              </label>
+                                                            <label class="radio-inline">
+                                                                <input type="radio" class="cinco_epwort" value="1" name="cinco_epwort">1
+                                                              </label>
+                                                              <label class="radio-inline">
+                                                                <input type="radio" class="cinco_epwort" value="2" name="cinco_epwort">2
+                                                              </label>
+                                                              <label class="radio-inline">
+                                                                <input type="radio" class="cinco_epwort" value="3" name="cinco_epwort">3
+                                                              </label>
+                                                        </div>
+                                                      </div>
+                                                      <div class="col-md-12">
+                                                        <div class="input-group" >
+                                                          <label for="entrevista_valor4" style="border:none;"  class="form-control">6. Sentado y conversando con alguien.</label>
+                                                          <span class="input-group-addon" id="basic-addon2" style="border:none;" >
+                                                            <label class="radio-inline">
+                                                                <input type="radio" class="seis_epwort" value="0" name="seis_epwort">0
+                                                              </label>
+                                                            <label class="radio-inline">
+                                                                <input type="radio" class="seis_epwort" value="1" name="seis_epwort">1
+                                                              </label>
+                                                              <label class="radio-inline">
+                                                                <input type="radio" class="seis_epwort" value="2" name="seis_epwort">2
+                                                              </label>
+                                                              <label class="radio-inline">
+                                                                <input type="radio" class="seis_epwort" value="3" name="seis_epwort">3
+                                                              </label>
+                                                        </div>
+                                                      </div>
+                                                      <div class="col-md-12">
+                                                        <div class="input-group" >
+                                                          <label for="entrevista_valor4" style="border:none;"  class="form-control">7. Sentado en un ambiente tranquilo después del almuerzo (sin alcohol).</label>
+                                                          <span class="input-group-addon" id="basic-addon2" style="border:none;" >
+                                                            <label class="radio-inline">
+                                                                <input type="radio" class="siete_epwort" value="0" name="siete_epwort">0
+                                                              </label>
+                                                            <label class="radio-inline">
+                                                                <input type="radio" class="siete_epwort" value="1" name="siete_epwort">1
+                                                              </label>
+                                                              <label class="radio-inline">
+                                                                <input type="radio" class="siete_epwort" value="2" name="siete_epwort">2
+                                                              </label>
+                                                              <label class="radio-inline">
+                                                                <input type="radio" class="siete_epwort" value="3" name="siete_epwort">3
+                                                              </label>
+                                                        </div>
+                                                      </div>
+                                                      <div class="col-md-12">
+                                                        <div class="input-group" >
+                                                          <label for="entrevista_valor4" style="border:none;"  class="form-control">8. En un auto, mientras se encuentra detenido por algunos minutos en el tráfico.</label>
+                                                          <span class="input-group-addon" id="basic-addon2" style="border:none;" >
+                                                            <label class="radio-inline">
+                                                                <input type="radio"  class="ocho_epwort" value="0" name="ocho_epwort">0
+                                                              </label>
+                                                            <label class="radio-inline">
+                                                                <input type="radio" class="ocho_epwort" value="1" name="ocho_epwort">1
+                                                              </label>
+                                                              <label class="radio-inline">
+                                                                <input type="radio" class="ocho_epwort" value="2" name="ocho_epwort">2
+                                                              </label>
+                                                              <label class="radio-inline">
+                                                                <input type="radio" class="ocho_epwort" value="3" name="ocho_epwort">3
+                                                              </label>
+                                                        </div>
+                                                      </div>
+                                                      <div class="col-md-12">
+                                                          <div class="col-md-4 text-right">
+                                                              <strong></strong>
+                                                          </div>
+                                                          <div class="col-md-4">
+                                                            <div class="input-group">
+                                                                 <div class="input-group-addon" style="border:none;">Puntuación de la Escala Epworth</div>
+                                                                 <input type="text" id="punto_escala_epworth" class="form-control">
+                                                               </div>
+                                                          </div>
+                                                          <div class="col-md-4">
+
+                                                          </div>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+
                                                 </div>
+
                                               </div>
 
                                           </div>
@@ -397,7 +560,7 @@ width: 90% !important;
                                       <div class="form-group">
                                         <label class="col-sm-6 control-label">Peso (Kg):</label>
                                         <div class="col-sm-6">
-                                           <input type="text" name="peso" class="form-control"  @isset($cita->ApneaSuenio->peso) value="{{$cita->ApneaSuenio->peso}}" @endisset>
+                                           <input type="text" name="peso" class="form-control"  @isset($cita->funcionVital->peso) value="{{$cita->funcionVital->peso}}" @endisset>
                                         </div>
                                       </div>
                                   </div>
@@ -406,7 +569,7 @@ width: 90% !important;
                                       <div class="form-group">
                                         <label class="col-sm-4 control-label">Talla (mts):</label>
                                         <div class="col-sm-6">
-                                           <input type="text" name="talla" class="form-control"  @isset($cita->ApneaSuenio->talla) value="{{$cita->ApneaSuenio->talla}}" @endisset>
+                                           <input type="text" name="talla" class="form-control"  @isset($cita->funcionVital->talla) value="{{$cita->funcionVital->talla}}" @endisset>
                                         </div>
                                       </div>
                                   </div>
@@ -415,7 +578,7 @@ width: 90% !important;
                                       <div class="form-group">
                                         <label class="col-sm-4 control-label">IMC (Kg/m2)</label>
                                         <div class="col-sm-6">
-                                           <input type="text" name="imc" class="form-control" @isset($cita->ApneaSuenio->imc) value="{{$cita->ApneaSuenio->imc}}" @endisset >
+                                           <input type="text" name="imc" class="form-control" @isset($cita->funcionVital->talla) value="{{round($cita->funcionVital->peso/($cita->funcionVital->talla*$cita->funcionVital->talla),0,PHP_ROUND_HALF_UP)}}" @endisset >
 
                                         </div>
                                         <div class="col-sm-2">
@@ -498,7 +661,71 @@ width: 90% !important;
                         </div>
 
                         <div class="col-md-12">
-                            <img src="{{asset('img/apnea.jpg')}}" alt="" style="margin-left:350px;" height="200px" width="400px">
+
+
+                            <div class="col-md-2">
+
+                            </div>
+                            <div class="col-md-2 text-center">
+                                  <label class="radio-inline" >
+                                <img src="{{asset('img/apnea_1.png')}}" alt=""  style="cursor:pointer;">
+                                <br>
+                                  <input type="radio" name="optradio" id="grado_uno" value="1"> GRADO I
+                                </label>
+                            </div>
+                            <div class="col-md-2 text-center">
+                              <label class="radio-inline ">
+                                <img src="{{asset('img/apnea_2.png')}}" alt="" style="cursor:pointer;">
+                                <br>
+                                  <input type="radio" name="optradio" id="grado_dos" value="2"> GRADO II
+                                </label>
+                            </div>
+                            <div class="col-md-2 text-center">
+                                <label class="radio-inline">
+                                <img src="{{asset('img/apnea_3.png')}}" alt="" style="cursor:pointer;">
+                                <br>
+                                  <input type="radio" name="optradio" id="grado_tres" value="3"> GRADO III
+                                </label>
+                            </div>
+                            <div class="col-md-2 text-center">
+                                  <label class="radio-inline">
+                                  <img src="{{asset('img/apnea_4.png')}}" alt="" style="cursor:pointer;">
+                                  <br>
+                                    <input type="radio" name="optradio" id="grado_cuatro" value="4">GRADO IV
+                                  </label>
+                            </div>
+                            <div class="col-md-2">
+
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="col-md-2">
+                                </div>
+                                <div class="col-md-8">
+                                  <table class="table text-center" width="100%">
+                                    <thead>
+                                      <tr>
+                                        <th>Clase</th>
+                                        <th> Visualización directa, paciente sentado</th>
+                                        <th>Imagen Laringoscópica</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td><label for="" id="clase_id"></label> </td>
+                                        <td><label for="" id="visualizacion_id"></label> </td>
+                                        <td><label for="" id="Laringoscopica_id"></label> </td>
+                                      </tr>
+                                      <tr>
+                                        <td colspan="3">Referencia: Mallampati RS, Gatt SP, Gugino LD et al: Al Clinical sign topredict diffuclt traqueal intubation: A prospective study. Can Anaesth Soc J32:429, 1985</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                                <div class="col-md-2">
+                                </div>
+                            </div>
+
                         </div>
 
                     </div>

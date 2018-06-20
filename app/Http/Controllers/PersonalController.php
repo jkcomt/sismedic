@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Personal;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class PersonalController extends Controller
 {
     /**
@@ -80,7 +80,7 @@ class PersonalController extends Controller
      */
     public function show(Personal $personal)
     {
-   
+
 
 
 
@@ -94,7 +94,7 @@ class PersonalController extends Controller
      */
     public function edit($id)
     {
-        $altura = Personal::find($id);    
+        $altura = Personal::find($id);
         return response()->json(
           $altura->toArray()
       );
@@ -109,8 +109,8 @@ class PersonalController extends Controller
      */
     public function update(Request $request)
     {
-  
-        $personal=  Personal::find($request['editid']); 
+
+        $personal=  Personal::find($request['editid']);
 
         $data = request()->validate([
             'editid'=>'required',
@@ -138,7 +138,7 @@ class PersonalController extends Controller
             'dni'=>$data['editdni'],
             'direccion'=>$data['editdireccion'],
             'celular'=>$data['editcelular']
-             
+
         ]);
 
            $personal->save();
@@ -171,7 +171,27 @@ class PersonalController extends Controller
         return response()->json(
             ['mensaje'=>'eliminacion exitosa']
         );
+    }
 
 
+    public function buscarpersonal(Request $request)
+    {
+      $term = $request->term ?:'';
+      $personal =Personal::select(DB::raw("CONCAT(apellidos,' ',nombres) as nombres_completos"),'id')
+          ->where('estado',true)
+          ->where('apellidos','like','%'.$term.'%')
+          ->orWhere('nombres','like','%'.$term.'%')
+          ->orWhere('dni','like','%'.$term.'%')
+          ->take(5)
+          ->get()->pluck('nombres_completos','id')->toArray();
+
+      $personales = [];
+      foreach ($personal as $id => $tag){
+          $personales[] = ['id'=>$id,'text'=>$tag];
+      }
+
+      return response()->json(
+          $personales
+      );
     }
 }

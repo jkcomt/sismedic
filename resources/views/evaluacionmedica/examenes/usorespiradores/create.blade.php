@@ -3039,7 +3039,8 @@
                                                                         </td>
                                                                         <td><label for="perfil">Perfil</label>
 
-                                                                            <input type="text" class="form-control" id="perfil" value="{{$cita->paciente->perfil->descripcion}}"></td>
+                                                                            <input type="text" class="form-control" id="perfil" value="{{$cita->perfil->descripcion}}">
+                                                                          </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>

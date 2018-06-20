@@ -64,27 +64,28 @@
                 </div>
                 <div class="box-body">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <label for="">Paciente : </label>
                             <strong> {{$paciente->apellido_paterno.' '.$paciente->apellido_materno.', '.$paciente->nombres}}</strong>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
+
+                        <div class="col-md-3">
                             <label for="">DNI : </label>
                             <strong> {{$paciente->num_dni}}</strong>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
+
+                        <div class="col-md-3">
                             <label for="">Nro Historia : </label>
                             <strong> {{$paciente->nro_historia}}</strong>
                         </div>
                     </div>
                 </div>
             </div>
+
             <form action="{{route('pacientes.citas.update')}}" id="actualizarCita">
                 {{csrf_field()}}
+
+
                 <input type="hidden" name="pacienteId" value="{{$paciente->id}}">
                 <div class="box box-default">
                     <div class="box-header with-border">Información de Cita Ocupacional
@@ -96,23 +97,57 @@
                     </div>
                     <div class="box-body">
                         <div class="row">
-                            <div class="col-md-2 form-group">
-                                <label for="nro_serie_cita" class="control-label">Nro. Cita : </label>
-                                <input type="text" readonly="true"
-                                       value="{{$cita->nro_serie_cita}}"
-                                       class="form-control" name="nro_serie_cita">
-                                <input type="hidden" value="{{$cita->id}}" name="cita_id">
+                            <div class="col-md-4 form-inline">
+                                <div class="form-group">
+                                  <label for="nro_serie_cita" class="control-label" style="margin-right:10px;">Nro. Cita : </label>
+                                  <input type="text" readonly="true"
+                                         value="{{$cita->nro_serie_cita}}"
+                                         class="form-control" name="nro_serie_cita">
+                                </div>
+                                  <input type="hidden" value="{{$cita->id}}" name="cita_id">
                             </div>
-                            <div class="col-md-2 form-group">
-                                <label for="fecha_examen" class="control-label">Fecha Examen : </label>
+                            <div class="col-md-4 form-inline">
+                              <div class="form-group">
+                                <label for="fecha_examen" class="control-label" style="margin-right:10px;">Fecha Examen : </label>
                                 <input type="date" value="{{\Carbon\Carbon::parse($cita->fecha_examen)->toDateString()}}"
                                        class="form-control" name="fecha_examen">
+                              </div>
                             </div>
-                            <div class="col-md-2 form-group">
-                                <label for="hora_examen" class="control-label">Hora : </label>
+                            <div class="col-md-4 form-inline">
+                              <div class="form-group">
+                                <label for="hora_examen" class="control-label" style="margin-right:10px;">Hora : </label>
                                 <input type="time" value="{{\Carbon\Carbon::parse($cita->hora_examen)->toTimeString()}}"
                                        class="form-control" name="hora_examen">
+                              </div>
                             </div>
+                        </div>
+
+                        <div class="row" >
+
+                          <div class="col-md-4" style="padding:1%;">
+                            <div class="checkbox">
+                            <label>
+                              <input type="checkbox" value="" id="chk_perfils">
+                                <strong id="name_perfil"> </strong>
+                            </label>
+                          </div>
+                          </div>
+
+                          <div class="col-md-6 form-horizontal" >
+
+                            <div class="form-group" style="padding-top:2.4%;">
+                              <label for="inputEmail3" class="col-sm-4 control-label" style="margin-left:-4%;" id="lbl_lista_examen">Lista Exmamen :</label>
+                              <div class="col-sm-8"  id="listaExamenGroup">
+                                  @include('pacientes.citas.listaexamenes')
+                              </div>
+                            </div>
+
+                          </div>
+                          <div class="col-md-1" style="padding-top:1.2%;">
+                            <button type="button" class="btn btn-sm btn-success" id="add_examen_perfil"><span><i class="fa fa-plus" aria-hidden="true"></i></span></button>
+                          </div>
+
+
                         </div>
 
                         <div class="row">
@@ -127,10 +162,19 @@
                                     </select>
                                 </div>
                             </div>
+                            {{-- <div class="col-md-3 form-group">
+                                <label for="clienteCuenta" class="control-label">Examen : </label>
+                                <div class="form-group" id="clienteCuentaGroup">
+                                    <select name="examenes_id" id="tipo_examen_uno_editar" class="form-control">
+                                            <option value="1">OCUPACIONAL</option>
+                                            <option value="2">INDIVIDUAL</option>
+                                    </select>
+                                </div>
+                            </div> --}}
                             <div class="col-md-4 form-group">
                                 <label for="tipoExamen" class="control-label">Tipo de Examen : </label>
                                 <div class="form-group" id="tipoExamenGroup">
-                                    <select name="tipoExamen" id="tipoExamen" class="form-control">
+                                    <select name="tipoExamen" id="tipo_Examen" class="form-control">
                                         {{--<input type="text" class=" form-control" name="personal" value="{{old('personal')}}">--}}
                                         @foreach($tipoExamenes as $key => $tipoexamen)
                                             <option value="{{$key}}" @if($cita->tipoExamen->id == $key) selected="selected" @endif>{{$tipoexamen}}</option>
@@ -141,10 +185,12 @@
                             <div class="col-md-4 form-group">
                                 <label for="perfil" class="control-label">Perfil : </label>
                                 <div class="form-group" id="perfilGroup">
-                                    <select name="perfilEditar" id="perfilEditar" class="form-control">
+                                    <select name="perfilEditar" id="perfil_Editar" class="form-control">
                                         {{--<input type="text" class=" form-control" name="personal" value="{{old('personal')}}">--}}
                                         @foreach($perfiles as $key => $perfil)
-                                            <option value="{{$key}}" @if($cita->perfil->id == $key) selected="selected" @endif>{{$perfil}}</option>
+                                            @if($perfil!='sistema')
+                                              <option value="{{$key}}" @if($cita->perfil->id == $key) selected="selected" @endif>{{$perfil}}</option>
+                                            @endif
                                         @endforeach
                                     </select>
                                 </div>

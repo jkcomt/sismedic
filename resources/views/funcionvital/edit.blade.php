@@ -100,24 +100,21 @@
                             <div class="col-md-2 form-group">
                                 <label for="talla" class="control-label">Talla:</label>
                                 <div class="input-group">
-                                    <input type="number" value="{{$funcionVital->talla}}" class="form-control" name="talla" min="0" step="any" >
+                                    <input type="number" id="talla" value="{{$funcionVital->talla}}" class="form-control" name="talla" min="0" step="any" >
                                     <div class="input-group-addon">mts</div>
                                 </div>
                             </div>
                             <div class="col-md-2 form-group">
                                 <label for="peso" class="control-label">Peso:</label>
                                 <div class="input-group">
-                                    <input type="number" value="{{$funcionVital->peso}}" class="form-control" name="peso" min="0" step="any" >
+                                    <input type="number"  id="peso"  value="{{$funcionVital->peso}}" class="form-control" name="peso" min="0" step="any" >
                                     <div class="input-group-addon">kg</div>
                                 </div>
                             </div>
                             <div class="col-md-2 form-group">
                                 <label for="imc" class="control-label">IMC:</label>
-                                <input type="number" value="{{$funcionVital->imc}}" class="form-control" name="imc" min="0" step="any" >
+                                <input type="number" id="imc" valkue="{{ round( $funcionVital->peso/($funcionVital->talla * $funcionVital->talla), 0, PHP_ROUND_HALF_UP) }}" class="form-control" name="imc" min="0" step="any" >
                             </div>
-                        </div>
-                        <hr>
-                        <div class="row">
                             <div class="col-md-2 form-group">
                                 <label for="temperatura" class="control-label">Temperatura:</label>
                                 <div class="input-group">
@@ -125,8 +122,7 @@
                                     <div class="input-group-addon">°C</div>
                                 </div>
                             </div>
-
-                            <div class="col-md-2  col-md-offset-2 form-group">
+                            <div class="col-md-2 form-group">
                                 <label for="fc" class="control-label">F.C. :</label>
                                 <div class="input-group">
                                     <input type="number" value="{{$funcionVital->fc}}" class="form-control" name="fc" min="0" step="any" >
@@ -141,6 +137,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="col-md-4 form-group">
                                 <label class="control-label">PS/PD:</label>
@@ -159,11 +156,14 @@
                                     <div class="input-group-addon">%</div>
                                 </div>
                             </div>
+                            <div class="col-md-4">
+                                <button type="button" style="margin-top:7%;" id="calcular_imc_edit" class="btn  btn-success" name="button">Calcular IMC</button>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="box box-default">
-                    <div class="box-header with-border">Información de Función Vital
+                    <div class="box-header with-border">Medidas Antropométricas
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse">
                                 <i class="fa fa-plus"></i>
@@ -172,54 +172,62 @@
                     </div>
                     <div class="box-body">
                         <div class="row">
-                            <div class="col-md-4 form-group">
+                            <div class="col-md-2 form-group">
                                 <label for="en_reposo" class="control-label">En Reposo:</label>
                                 <div class="input-group">
                                     <input type="number" value="0" class="form-control" name="en_reposo" min="0" step="any" >
                                     <div class="input-group-addon">cm</div>
                                 </div>
                             </div>
-                            <div class="col-md-4 form-group">
+                            <div class="col-md-2 form-group">
                                 <label for="perimetro_abdominal" class="control-label">Perímetro Abdominal:</label>
                                 <div class="input-group">
-                                    <input type="number" value="{{$funcionVital->perimetro_abdominal}}" class="form-control" name="perimetro_abdominal" min="0" step="any" >
+                                    <input type="number"  id="cintura" value="{{$funcionVital->perimetro_abdominal}}" class="form-control" name="perimetro_abdominal" min="0" step="any" >
                                     <div class="input-group-addon">cm</div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4 form-group">
+                            <div class="col-md-2 form-group">
                                 <label for="maxima_inspiracion" class="control-label">Máxima Inspiricación:</label>
                                 <div class="input-group">
                                     <input type="number" value="{{$funcionVital->maxima_inspiracion}}" class="form-control" name="maxima_inspiracion" min="0" step="any" >
                                     <div class="input-group-addon">cm</div>
                                 </div>
                             </div>
-                            <div class="col-md-4 form-group">
+                            <div class="col-md-2 form-group">
                                 <label for="perimetro_cadera" class="control-label">Perímetro Cadera:</label>
                                 <div class="input-group">
-                                    <input type="number" value="{{$funcionVital->perimetro_cadera}}" class="form-control" name="perimetro_cadera" min="0" step="any" >
+                                    <input type="number"  id="cadera" value="{{$funcionVital->perimetro_cadera}}" class="form-control" name="perimetro_cadera" min="0" step="any" >
                                     <div class="input-group-addon">cm</div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4 form-group">
+                            <div class="col-md-2 form-group">
                                 <label for="expiracion_forzada" class="control-label">Expiración Forzada:</label>
                                 <div class="input-group">
                                     <input type="number" value="{{$funcionVital->expiracion_forzada}}" class="form-control" name="expiracion_forzada" min="0" step="any" >
                                     <div class="input-group-addon">cm</div>
                                 </div>
                             </div>
-                            <div class="col-md-4 form-group">
+                            <div class="col-md-2 form-group">
                                 <label for="indice_cintura" class="control-label">Índice Cintura/Cadera:</label>
-                                <input type="number" value="{{$funcionVital->indice_cintura}}" class="form-control" name="indice_cintura" min="0" step="any" >
+                                <input type="text"   id="icc" valkue="{{$funcionVital->perimetro_abdominal /($funcionVital->perimetro_cadera*1)}}" class="form-control" name="indice_cintura" min="0" step="any" >
                             </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-2 form-group">
+                              <label for="circunferencia_cuello" class="control-label">Circunferencia Cuello:</label>
+                              <div class="input-group">
+                                  <input type="number" value="{{$funcionVital->circunferencia_cuello}}" class="form-control" name="circunferencia_cuello" min="0" step="any" >
+                                  <div class="input-group-addon">cm</div>
+                              </div>
+                          </div>
+                          <div class="col-md-4">
+                              <button type="button" style="margin-top:7%;" id="calcular_icc_edit" class="btn  btn-success" name="button">Calcular ICC</button>
+                          </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="box box-default">
+                {{-- <div class="box box-default">
                     <div class="box-header with-border">Información de Función Vital
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse">
@@ -229,16 +237,10 @@
                     </div>
                     <div class="box-body">
                         <div class="row">
-                            <div class="col-md-4 form-group">
-                                <label for="circunferencia_cuello" class="control-label">Circunferencia Cuello:</label>
-                                <div class="input-group">
-                                    <input type="number" value="{{$funcionVital->circunferencia_cuello}}" class="form-control" name="circunferencia_cuello" min="0" step="any" >
-                                    <div class="input-group-addon">cm</div>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
                 <div class="panel panel-default">
                     <div class="panel-body">

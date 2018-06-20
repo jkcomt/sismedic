@@ -483,12 +483,10 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-12 form-group">
+                                    {{-- <div class="col-md-12 form-group">
                                         <label class="control-label">Perfil:</label>
                                         <div class="form-group" id="perfilGroup">
                                             <select name="perfil" id="perfil" class="form-control" >
-                                                {{--<input type="text" class=" form-control" name="personal" value="{{old('personal')}}">--}}
-                                                {{--<option>Seleccione contratador</option>--}}
                                                 @foreach($perfiles as $key => $perfil)
                                                     @if($perfil != 'sistema')
                                                         <option value="{{$key}}">{{ucfirst($perfil)}}</option>
@@ -496,7 +494,7 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
 
                                 <div class="row">
