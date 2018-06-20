@@ -49,7 +49,7 @@ class ListaExamenSeeder extends Seeder
         ]);
 
         factory(ListaExamen::class)->create([
-            'descripcion'=>'GRUPO SANGUINEO ABO Y FACTOR RH - TIPIFICACION',
+            'descripcion'=>'TORAX',
             'tipo'=>'CM',
             'valor'=>1.05,
             'dscto'=>1.05
@@ -162,12 +162,12 @@ class ListaExamenSeeder extends Seeder
             'dscto'=>1,
             'tipo'=>null
         ]);
-        factory(ListaExamen::class)->create([
-            'descripcion'=>'CONDUCTOR OPERADOR',
-            'valor'=>1,
-            'dscto'=>1,
-            'tipo'=>null
-        ]);
+        /* factory(ListaExamen::class)->create([
+             'descripcion'=>'CONDUCTOR OPERADOR',
+             'valor'=>1,
+             'dscto'=>1,
+             'tipo'=>null
+         ]);*/
         factory(ListaExamen::class)->create([
             'descripcion'=>'EVALUACION COGNITIVA',
             'valor'=>1,
@@ -183,15 +183,22 @@ class ListaExamenSeeder extends Seeder
         //     'individual'=>true
         // ]);
 
+        // factory(ListaExamen::class)->create([
+        //     'descripcion'=>'BIOQUIMICA',
+        //     'valor'=>1,
+        //     'dscto'=>1,
+        //     'tipo'=>null,
+        //     'individual'=>true
+        // ]);
         factory(ListaExamen::class)->create([
-            'descripcion'=>'BIOQUIMICA',
+            'descripcion'=>'psa',
             'valor'=>1,
             'dscto'=>1,
             'tipo'=>null,
             'individual'=>true
         ]);
         factory(ListaExamen::class)->create([
-            'descripcion'=>'INMUNOLOGIA',
+            'descripcion'=>'thevenon',
             'valor'=>1,
             'dscto'=>1,
             'tipo'=>null,

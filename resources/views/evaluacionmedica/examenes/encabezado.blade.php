@@ -9,7 +9,6 @@
           <a href="{{route('antecedentes.principal',$cita->id)}}">antecedentes</a>
         </div>
     </div>
-    <hr>
     @isset($cita)
         <h5>{{$cita->paciente->apellido_paterno.' '.$cita->paciente->apellido_materno.' '.$cita->paciente->nombres}}</h5>
         <h5>{{'Edad: '.Carbon\Carbon::parse($cita->paciente->fecha_nacimiento)->age." años  |   Sexo: ".$cita->paciente->sexo." |  Puesto: ".$cita->paciente->ocupacion->nombre}}</h5>

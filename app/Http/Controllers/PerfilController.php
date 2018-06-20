@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Perfil;
+use App\PerfilExamen;
+use App\ListaExamen;
 use Illuminate\Http\Request;
 
 class PerfilController extends Controller
@@ -39,22 +41,42 @@ class PerfilController extends Controller
 
 
             if(request()->ajax())
-       {
-              //$data = request();
-              //dd($data['rbTipoAgri']);
+        {
           $data = request()->validate([
               'nombre'=>'required',
+              'perfil_copiar_examenes'=>'nullable'
           ],[
               'nombre.required'=>'El campo nombres es obligatorio',
           ]);
 
-          Perfil::create([
+          $perfil=Perfil::create([
               'descripcion'=>$data['nombre'],
               'estado'=>true
           ]);
+          if(isset($request['perfil_copiar_examenes']))
+          {
+            if(999999 == $request['perfil_copiar_examenes'])
+            {
+
+            }
+            else {
+              $perfil2=Perfil::find($request['perfil_copiar_examenes']);
+              $perfilexamen=PerfilExamen::where('perfil_id',$perfil2->id)->get()->pluck('lista_examen_id','lista_examen_id')->toArray();
+
+              foreach ($perfilexamen as $id => $tag)
+              {
+                  PerfilExamen::create([
+                    'perfil_id'=>$perfil->id,
+                    'lista_examen_id'=>$id,
+                    'estado'=>true
+                  ]);
+              }
+            }
+
+          }
           return response()->json(['mensaje'=>"registro exitoso"]);
 
-    }
+        }
   }
     /**
      * Display the specified resource.
@@ -155,4 +177,21 @@ class PerfilController extends Controller
         return response()->json(['html'=>$view]);
       //  dd($lista_perfil);
     }
+
+    public function filtro_perfil_listaexamen(Request $request)
+    {
+      $perfil=Perfil::find($request['id']);
+      $perfilExamenes= PerfilExamen::where('estado',true)->where('perfil_id',$perfil->id)->paginate(10);
+      $listaexamenes=ListaExamen::where('estado',true)
+                      ->whereNOTIn('id',function($query)  use($perfil)
+                      {
+                          $query->select('lista_examen_id')->from('perfil_examenes')->where('perfil_examenes.perfil_id',$perfil->id);
+                      })->pluck('descripcion','id')->toArray();
+     //return view('pacientes.citas.listaexamenes',compact("listaexamenes"));
+     $view = view('pacientes.citas.listaexamenes',compact('listaexamenes'))->render();
+     return response()->json(['html'=>$view]);
+    }
+
+
+
 }

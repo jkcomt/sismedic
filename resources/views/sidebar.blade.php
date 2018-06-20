@@ -40,16 +40,29 @@
                 </li>
             </ul>
         </li>
-        <li class="{{ Request::is('funcion_vital/*') ? 'active' : '' }} {{ Request::is('funcion_vital') ? 'active' : '' }}">
-            <a href="{{route('funcion_vital.index')}}">
-                <i class="fa fa-stethoscope"></i><span>Funciones Vitales</span>
+
+        <li class="treeview {{ Request::is('evaluacion_medica/*') ? 'active' : '' }} {{ Request::is('evaluacion_medica') ? 'active' : '' }}   {{ Request::is('funcion_vital/*') ? 'active' : '' }} {{ Request::is('funcion_vital') ? 'active' : '' }}">
+            <a href="#"><i class="fa fa-heartbeat"></i> <span>Evaluación Médica</span>
+                <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+            </span>
             </a>
+            <ul class="treeview-menu">
+              <li class="{{ Request::is('funcion_vital/*') ? 'active' : '' }} {{ Request::is('funcion_vital') ? 'active' : '' }}">
+                  <a href="{{route('funcion_vital.index')}}">
+                      <i class="fa fa-stethoscope"></i><span>Funciones Vitales</span>
+                  </a>
+              </li>
+              <li class="{{Request::is('evaluacion_medica/*') ? 'active' : '' }} {{Request::is('evaluacion_medica') ? 'active' : '' }}">
+                  <a href="{{route('evaluacion_medica.index')}}">
+                      <i class="fa fa-heartbeat"></i><span>Catalogo</span>
+                  </a>
+              </li>
+            </ul>
         </li>
-        <li class="{{Request::is('evaluacion_medica/*') ? 'active' : '' }} {{Request::is('evaluacion_medica') ? 'active' : '' }}">
-            <a href="{{route('evaluacion_medica.index')}}">
-                <i class="fa fa-heartbeat"></i><span>Evaluación Médica</span>
-            </a>
-        </li>
+
+
+
         <li class="@if(Request::is('configuracion')) active @elseif(Request::is('area')) active @elseif(Request::is('altura')) active @elseif(Request::is('contrata')) active @elseif(Request::is('lugarlabor')) active @elseif(Request::is('ocupaciones')) active @elseif(Request::is('gruposanguineo')) active @elseif(Request::is('profesion')) active  @elseif(Request::is('tipoinstruccion')) active @elseif(Request::is('perfil')) active   @elseif(Request::is('cliente_cuenta')) active   @elseif(Request::is('tipo_examen')) active   @elseif(Request::is('lista_examen')) active @elseif(Request::is('perfil_examen')) active @elseif(Request::is('perfil_examen/*')) active @elseif(Request::is('cargo')) active  @elseif(Request::is('usuario')) active @elseif(Request::is('personal')) active  @endif ">
             <a href="{{route('configuracion.index')}}">
                 <i class="fa fa-gear"></i><span>Configuración</span>

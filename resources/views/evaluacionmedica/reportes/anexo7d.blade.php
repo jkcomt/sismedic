@@ -111,16 +111,16 @@
     </tr>
   </table>
 
-  <table style="margin-top:3px;color:red;">
+  <table style="margin-top:3px;">
     <tr>
       <td width="30%" colspan="5" style="background: RGBA(0,0,0,0.1);font-size:x-small;border: 0.5px solid rgba(0,0,0,0.1);padding:1px;">&nbsp;FUNCIONES VITALES</td>
     </tr>
     <tr>
-      <td align="center" style="font-size:x-small;border: 0.5px solid rgba(0,0,0,0.1);">FC:&nbsp; x min</td>
-      <td align="center" style="font-size:x-small;border: 0.5px solid rgba(0,0,0,0.1);">PA:&nbsp; mmHg</td>
-      <td align="center" style="font-size:x-small;border: 0.5px solid rgba(0,0,0,0.1);">FR:&nbsp; x min</td>
-      <td align="center" style="font-size:x-small;border: 0.5px solid rgba(0,0,0,0.1);">IMC:&nbsp; kg/m2</td>
-      <td align="center" style="font-size:x-small;border: 0.5px solid rgba(0,0,0,0.1);">SAT:&nbsp; %</td>
+      <td align="center" style="font-size:x-small;border: 0.5px solid rgba(0,0,0,0.1);">FC:&nbsp; {{$cita->funcionVital->fc}} x min</td>
+      <td align="center" style="font-size:x-small;border: 0.5px solid rgba(0,0,0,0.1);color:red;">PA:&nbsp;  mmHg</td>
+      <td align="center" style="font-size:x-small;border: 0.5px solid rgba(0,0,0,0.1);">FR:&nbsp; {{$cita->funcionVital->fr}} x min</td>
+      <td align="center" style="font-size:x-small;border: 0.5px solid rgba(0,0,0,0.1);">IMC:&nbsp; {{$cita->funcionVital->imc}} kg/m2</td>
+      <td align="center" style="font-size:x-small;border: 0.5px solid rgba(0,0,0,0.1);">SAT:&nbsp; {{$cita->funcionVital->sat_02}} %</td>
     </tr>
   </table>
 
@@ -237,27 +237,27 @@
 
   <table style="margin-top:10px;">
     <tr>
-      <td width="100%" colspan="2" style="background: RGBA(0,0,0,0.1);font-size:x-small;border: 0.5px solid rgba(0,0,0,0.1);padding:1px;">&nbsp;DATOS DEL MEDICO</td>
+      <td width="100%" colspan="2" style="background: RGBA(0,0,0,0.1);font-size:xx-small;border: 0.5px solid rgba(0,0,0,0.1);padding:1px;">&nbsp;DATOS DEL MEDICO</td>
     </tr>
 
   </table>
   <table style="margin-top:5px;">
     <tr>
-      <td align="left" width="30%" style="background: RGBA(0,0,0,0.1);font-size:x-small;border: 0.5px solid rgba(0,0,0,0.1);">&nbsp; DIRECCION</td>
+      <td align="left" width="30%" style="background: RGBA(0,0,0,0.1);font-size:xx-small;border: 0.5px solid rgba(0,0,0,0.1);">&nbsp; DIRECCION</td>
       <td align="center" width="80%" style="font-size:x-small;border: 0.5px solid rgba(0,0,0,0.1);">&nbsp; </td>
     </tr>
   </table>
   <table style="margin-top:5px;">
     <tr>
-      <td align="left" width="30%" style="background: RGBA(0,0,0,0.1);font-size:x-small;border: 0.5px solid rgba(0,0,0,0.1);">&nbsp; APELLIDOS Y NOMBRES</td>
+      <td align="left" width="30%" style="background: RGBA(0,0,0,0.1);font-size:xx-small;border: 0.5px solid rgba(0,0,0,0.1);">&nbsp; APELLIDOS Y NOMBRES</td>
       <td align="center" width="80%" style="font-size:x-small;border: 0.5px solid rgba(0,0,0,0.1);">&nbsp; </td>
     </tr>
   </table>
   <table style="margin-top:3px;">
     <tr >
-      <td width="5%" style="background:rgba(0,0,0,0.1);font-size:x-small;border: 0.5px solid rgba(0,0,0,0.1);padding:1px;"><strong> &nbsp;CMP</strong></td>
+      <td width="5%" style="background:rgba(0,0,0,0.1);font-size:xx-small;border: 0.5px solid rgba(0,0,0,0.1);padding:1px;"><strong> &nbsp;CMP</strong></td>
       <td width="15%" style="font-size:x-small;border: 0.5px solid rgba(0,0,0,0.1);padding:1px;"><strong> &nbsp;</strong></td>
-      <td width="15%" style="background:rgba(0,0,0,0.1);font-size:x-small;border: 0.5px solid rgba(0,0,0,0.1);padding:1px;"><strong> &nbsp;FECHA</strong></td>
+      <td width="15%" style="background:rgba(0,0,0,0.1);font-size:xx-small;border: 0.5px solid rgba(0,0,0,0.1);padding:1px;"><strong> &nbsp;FECHA</strong></td>
       <td width="15%" style="font-size:x-small;border: 0.5px solid rgba(0,0,0,0.1);padding:1px;"><strong> &nbsp;</strong></td>
     </tr>
   </table>
@@ -268,7 +268,7 @@
         </td>
       </tr>
       <tr>
-        <td align="center" style="font-size:x-small">
+        <td align="center" style="font-size:xx-small">
           FIRMA Y SELLO
         </td>
       </tr>

@@ -122,7 +122,10 @@
             </div>
             <div class="col-md-2">
                   <select class="form-control" name="cbofuma"  id="cbofuma"  @isset($paciente->antecedentePersonal->fuma_opciones) @else diabled @endisset>
-                      <option value="nada">NADA</option>
+                    <option value="ninguna">Ninguna</option>
+                    <option value="bajo">Bajo</option>
+                    <option value="medio">Medio</option>
+                    <option value="alto">Alto</option>
                     </select>
 
             </div>
@@ -178,7 +181,10 @@
                 </div>
                 <div class="col-md-2">
                       <select class="form-control" name="cboalcohol" id="cboalcohol"  @isset($paciente->antecedentePersonal->alcohol_descripcion) @else diabled @endisset>
-                          <option value="nada">NADA</option>
+                            <option value="ninguna">Ninguna</option>
+                            <option value="bajo">Bajo</option>
+                            <option value="medio">Medio</option>
+                            <option value="alto">Alto</option>
                         </select>
                 </div>
 
@@ -210,7 +216,10 @@
                 </div>
                 <div class="col-md-4">
                       <select class="form-control" name="cbococa" id="cbococa"  @isset($paciente->antecedentePersonal->coca_descripcion) @else diabled @endisset>
-                          <option value="nada">NADA</option>
+                        <option value="ninguna">Ninguna</option>
+                        <option value="bajo">Bajo</option>
+                        <option value="medio">Medio</option>
+                        <option value="alto">Alto</option>
                         </select>
 
                 </div>

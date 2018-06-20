@@ -3,6 +3,9 @@ $(document).ready(function() {
     $('#tipoBusqueda').trigger('change');
     startdate = fechaActual();
     enddate = startdate;
+    $( "#calcular_imc_edit" ).trigger( "click" );
+    $( "#calcular_icc_edit" ).trigger( "click" );
+
 });
 var startdate;
 var enddate;
@@ -583,4 +586,33 @@ function buscar_paciente_fecha(){
 $('#buscarCitaPaciente').on('keyup',function(e){
     e.preventDefault();
     $('button[name=buscar]').trigger('click');
+});
+/*******************REALIZAR CALCULOS**************************/
+
+$('#calcular_imc').on('click',function(e)
+{
+    e.preventDefault();
+imc= parseFloat($('#peso').val())/(parseFloat(  $('#talla').val()) * parseFloat(  $('#talla').val()));
+  $('#imc').val(parseInt(imc));
+});
+
+
+$('#calcular_icc').on('click',function(e)
+{
+    e.preventDefault();
+    icc= parseFloat($('#cintura').val())/ parseFloat(  $('#cadera').val());
+  $('#icc').val(parseFloat(icc));
+});
+
+
+$('#calcular_imc_edit').on('click',function(e)
+{
+    e.preventDefault();
+imc= parseFloat($('#peso').val())/(parseFloat(  $('#talla').val()) * parseFloat(  $('#talla').val()));
+  $('#imc').val(parseInt(imc));
+});
+
+$( "#calcular_icc_edit" ).click(function() {
+  icc= parseFloat($('#cintura').val())/ parseFloat(  $('#cadera').val());
+$('#icc').val(parseFloat(icc));
 });

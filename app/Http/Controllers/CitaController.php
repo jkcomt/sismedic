@@ -431,7 +431,6 @@ class CitaController extends Controller
         }else {
             $view = view('citas.table',compact('citas'))->render();
         }
-
         return response()->json(['html'=>$view]);
     }
 
@@ -463,7 +462,7 @@ class CitaController extends Controller
                 break;
             case 6:
                // $view = view('evaluacionmedica.examenes.gruposanguineo.create',compact('cita','listaExamen'))->render();
-                $view = view('evaluacionmedica.examenes.enproceso.create',compact('cita','listaExamen'))->render();
+                $view = view('evaluacionmedica.examenes.torax.create',compact('cita','listaExamen','personales'))->render();
                 break;
             case 7:
                 $view = view('evaluacionmedica.examenes.glucosa.create',compact('cita','listaExamen'))->render();
@@ -514,12 +513,18 @@ class CitaController extends Controller
                 $view = view('evaluacionmedica.examenes.conduccionvehiculo.create',compact('cita','listaExamen'))->render();
                 break;
             case 23:
-                $view = view('evaluacionmedica.examenes.conductoroperador.create',compact('cita','listaExamen'))->render();
-                break;
-            case 24:
                 $view = view('evaluacionmedica.examenes.evaluacioncognitiva.create',compact('cita','listaExamen'))->render();
                 break;
-            case 28:
+            case 24:
+                $view = view('evaluacionmedica.examenes.psa.create',compact('cita','listaExamen'))->render();
+                break;
+            case 25:
+                $view = view('evaluacionmedica.examenes.thevenon.create',compact('cita','listaExamen'))->render();
+                break;
+            case 26:
+                $view = view('evaluacionmedica.examenes.perfilhepatico.create',compact('cita','listaExamen'))->render();
+                break;
+            case 27:
                 $view = view('evaluacionmedica.examenes.audiometria.create',compact('cita','listaExamen','personales'))->render();
                 break;
 

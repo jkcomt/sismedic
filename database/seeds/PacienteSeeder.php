@@ -16,12 +16,12 @@ class PacienteSeeder extends Seeder
             {
                 factory(Paciente::class)->create([
                     'nro_historia'=>'H00000'.$i,
-                    'perfil_id'=>2
+                  //  'perfil_id'=>2
                 ]);
             }else if($i >= 10 && $i<=99){
                 factory(Paciente::class)->create([
                     'nro_historia'=>'H0000'.$i,
-                    'perfil_id'=>3
+              //      'perfil_id'=>3
                 ]);
             }
 

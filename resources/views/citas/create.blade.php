@@ -179,11 +179,6 @@
                             <div class="col-md-3 form-group">
                                 <label for="perfil" class="control-label" id="perfil_id">Perfil : </label>
                                 <div class="form-group" id="perfilGroup">
-                                    {{-- <select name="perfil" id="perfil" class="form-control">
-                                          @foreach($perfiles as $key => $perfil)
-                                              <option value="{{$key}}">{{$perfil}}</option>
-                                          @endforeach
-                                    </select> --}}
                                       @include('citas.perfil')
                                 </div>
                             </div>

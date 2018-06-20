@@ -202,10 +202,19 @@ class Paciente extends Model
         return $this->hasOne(Antper_Hozpitalizaciones::class);
     }
     /****AQUI MODIFIQUE***/
+    public function examenfisicopaciente()
+    {
+        return $this->hasOne(ExamenFisico::class);
+    }
+    public function conclucionpaciente()
+    {
+        return $this->hasOne(Concluciones::class);
+    }
     public function accidente_laboral()
     {
         return $this->hasOne(AntperAccidenteLaborales::class);
     }
+
     public function antperhistoriaocupacional()
     {
       //cuando es a varios debe ser hasmany

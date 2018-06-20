@@ -215,5 +215,29 @@ class EvaluacionMedicaController extends Controller
       return $pdf->stream();
     }
 
+    public function certificadoocupacional($id)
+    {
+      $cita=Cita::find($id);
+      $view=View::make('evaluacionmedica.reportes.certificadoaptitudmedico',compact('cita'));
+      $pdf = \App::make('dompdf.wrapper');
+      $pdf->loadHTML($view);
+      $pdf->stream($view);
+      return $pdf->stream();
+    }
+
+
+    public function anexo16($id)
+    {
+      $cita=Cita::find($id);
+      $view=View::make('evaluacionmedica.reportes.anexo16',compact('cita'));
+      $pdf = \App::make('dompdf.wrapper');
+      $pdf->loadHTML($view);
+      $pdf->stream($view);
+      return $pdf->stream();
+    }
+
+
+
+
 
 }

@@ -75,6 +75,29 @@ class PerfilExamenController extends Controller
 
     }
 
+
+    public function store_lista(Request $request)
+    {
+           if(request()->ajax())
+         {
+            $data = request()->validate([
+                'perfil_id'=>'required',
+                'listaexamen'=>'required'
+            ],[
+                'perfil_id.required'=>'El campo perfil es obligatorio',
+                'listaexamen.required'=>'El campo examen es obligatorio',
+            ]);
+
+            PerfilExamen::create([
+                'perfil_id'=>$data['perfil_id'],
+                'lista_examen_id'=>$data['listaexamen'],
+                'estado'=>true
+            ]);
+            return response()->json(['mensaje'=>"Registro Exitoso"]);
+        }
+
+    }
+
     /**
      * Display the specified resource.
      *
@@ -153,7 +176,7 @@ class PerfilExamenController extends Controller
             // $perfilesExamenes = PerfilExamen::where('perfil_id',$request['buscar'])->where('estado',true)->get();
 
             $perfilesExamenes = PerfilExamen::where('perfil_id',$request['buscar'])->get();
-            
+
         }
 
         if($request->ajax())

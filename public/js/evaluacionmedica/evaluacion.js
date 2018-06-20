@@ -28,7 +28,6 @@ function fechaActual(){
 
 $('body').on('click','.filtrarExamen',function(e){
     e.preventDefault();
-
     $idCita = $(this).attr('idcita');
     $idExamen = $(this).attr('idexamen');
         var token = $('input[name=_token]').attr('value')

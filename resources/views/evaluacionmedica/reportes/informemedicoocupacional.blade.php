@@ -67,7 +67,7 @@
   <table WIDTH="100%">
           <tr>
              <td WIDTH="30%">
-                <img src="{{asset('img/logo.ico/logo.jpg')}}" alt=""width="80px" height="100px" >
+                <img src="{{asset('img/logo.ico/logo.jpg')}}" alt=""width="60px" height="80px" >
              </td>
              <td  WIDTH="70%" align="center">
                 <h4 style="font-family: Verdana, Geneva, sans-serif;"> <strong>INFORME DE EXAMEN MEDICO OCUPACIONAL</strong> </h4>
@@ -99,7 +99,7 @@
   </table>
   <table style="margin-top:5px;">
     <tr>
-      <td align="justify" width="100%" style="font-size:x-small;">
+      <td align="justify" width="100%" style="font-size:xx-small;">
         A través del presente le hacemos alcance de los resultados de su <strong>Examen Médico Anual</strong> que incluye una explicación de sus diagnósticos y las recomendaciones que usted debe seguir.
         Si luego de la explicación que el médico le brinde aún tuviese dudas o deseara una mayor ampliación de la información, contactar al correo: <strong>imunoz@pv-zonaremota.com</strong> o a los teléfonos:
          <strong> RPC: 987544836 </strong>   En el caso que  le hayan indicado controles adicionales o evaluaciones con especialistas, usted debe realizarlos a través del Plan Médico MBM en el plazo establecido y

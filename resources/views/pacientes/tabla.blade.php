@@ -5,7 +5,7 @@
         <th>PACIENTES</th>
         <th>DNI</th>
         <th>EDAD</th>
-        <th>PERFIL</th>
+        {{-- <th>PERFIL</th> --}}
         @can('pacientes.show')
         <th>INFORMACIÓN</th>
         @endcan
@@ -22,9 +22,9 @@
                     <td>
                       {{Carbon\Carbon::parse($paciente->fecha_nacimiento)->age.' años'}}
                     </td>
-                    <td>
+                    {{-- <td>
                         {{$paciente->perfil->descripcion}}
-                    </td>
+                    </td> --}}
                     @can('pacientes.show')
                     <td>
 

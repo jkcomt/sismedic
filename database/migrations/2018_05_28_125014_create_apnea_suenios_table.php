@@ -74,6 +74,9 @@ class CreateApneaSueniosTable extends Migration
 
             $table->string('observaciones_recomendaciones')->nullable();
 
+            $table->string('apnea_grafica')->nullable();
+            $table->string('escala_epworth')->nullable();
+
             $table->date('fecha_registro');
             $table->foreign('lista_examen_id')->references('id')->on('lista_examenes');
             $table->integer('lista_examen_id')->unsigned()->nullable();

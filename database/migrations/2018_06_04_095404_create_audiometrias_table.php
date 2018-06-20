@@ -23,6 +23,7 @@ class CreateAudiometriasTable extends Migration
             $table->boolean('exposicion_ruido')->nullable();
             $table->boolean('enfermedad_respiratorio')->nullable();
             $table->boolean('antecedente_viaje')->nullable();
+            $table->boolean('otros_sintomatologia_actual_estado')->nullable();
             $table->string('otros_sintomatologia_actual')->nullable();
               /*EXAMEN ORL*/
             $table->string('nariz')->nullable();
@@ -39,8 +40,8 @@ class CreateAudiometriasTable extends Migration
             $table->string('calibracion')->nullable();
             /*profesional que realiza la audiometria*/
 
-            $table->foreign('encargado_audiometrias_id')->references('id')->on('encargado_audiometrias');
-            $table->integer('encargado_audiometrias_id')->unsigned()->nullable();
+            $table->foreign('personales_id')->references('id')->on('personales');
+            $table->integer('personales_id')->unsigned()->nullable();
             /*oido derecho hz*/
             $table->string('od_va1')->nullable();
             $table->string('od_va2')->nullable();
@@ -51,6 +52,16 @@ class CreateAudiometriasTable extends Migration
             $table->string('od_va7')->nullable();
             $table->string('od_va8')->nullable();
             $table->string('od_va9')->nullable();
+
+            $table->string('od_vo1')->nullable();
+            $table->string('od_vo2')->nullable();
+            $table->string('od_vo3')->nullable();
+            $table->string('od_vo4')->nullable();
+            $table->string('od_vo5')->nullable();
+            $table->string('od_vo6')->nullable();
+            $table->string('od_vo7')->nullable();
+            $table->string('od_vo8')->nullable();
+            $table->string('od_vo9')->nullable();
             /*oido izquierdo hz*/
             $table->string('oi_va1')->nullable();
             $table->string('oi_va2')->nullable();
@@ -61,6 +72,16 @@ class CreateAudiometriasTable extends Migration
             $table->string('oi_va7')->nullable();
             $table->string('oi_va8')->nullable();
             $table->string('oi_va9')->nullable();
+
+            $table->string('oi_vo1')->nullable();
+            $table->string('oi_vo2')->nullable();
+            $table->string('oi_vo3')->nullable();
+            $table->string('oi_vo4')->nullable();
+            $table->string('oi_vo5')->nullable();
+            $table->string('oi_vo6')->nullable();
+            $table->string('oi_vo7')->nullable();
+            $table->string('oi_vo8')->nullable();
+            $table->string('oi_vo9')->nullable();
 
             /**/
             $table->date('fecha_registro');

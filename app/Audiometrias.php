@@ -15,6 +15,7 @@ class Audiometrias extends Model
       'exposicion_ruido',
       'enfermedad_respiratorio',
       'antecedente_viaje',
+      'otros_sintomatologia_actual_estado',
       'otros_sintomatologia_actual',
       'nariz',
       'garganta',
@@ -25,7 +26,7 @@ class Audiometrias extends Model
       'marca',
       'modelo',
       'calibracion',
-      'encargado_audiometrias_id',
+      'personales_id',
       'od_va1',
       'od_va2',
       'od_va3',
@@ -35,6 +36,15 @@ class Audiometrias extends Model
       'od_va7',
       'od_va8',
       'od_va9',
+      'od_vo1',
+      'od_vo2',
+      'od_vo3',
+      'od_vo4',
+      'od_vo5',
+      'od_vo6',
+      'od_vo7',
+      'od_vo8',
+      'od_vo9',
       'oi_va1',
       'oi_va2',
       'oi_va3',
@@ -44,14 +54,28 @@ class Audiometrias extends Model
       'oi_va7',
       'oi_va8',
       'oi_va9',
+      'oi_vo1',
+      'oi_vo2',
+      'oi_vo3',
+      'oi_vo4',
+      'oi_vo5',
+      'oi_vo6',
+      'oi_vo7',
+      'oi_vo8',
+      'oi_vo9',
       'fecha_registro',
       'lista_examen_id',
       'cita_id',
       'estado'
   ];
 
+  public $timestamps = false;
 
+  public function cita(){
+      return $this->belongsTo(Cita::class);
+  }
 
-
-        public $timestamps = false;
+  public function listaExamen(){
+      return $this->belongsTo(ListaExamen::class);
+  }
 }
