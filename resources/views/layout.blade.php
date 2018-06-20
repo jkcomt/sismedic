@@ -104,6 +104,7 @@ desired effect
 <body class="hold-transition skin-blue-light sidebar-mini fixed">
 @include('mensajes.exito')
 @include('mensajes.confirmacion')
+@include('mensajes.aviso')
 @yield('modal')
 <div class="wrapper">
 

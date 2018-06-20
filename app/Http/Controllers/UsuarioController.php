@@ -140,6 +140,7 @@ class UsuarioController extends Controller
 
         $data = request()->validate([
                 'editid'=>'required',
+                'rolid'=>'required',
                 'password'=>'required',
                 'cargo'=>'required',
             ],[
@@ -151,7 +152,13 @@ class UsuarioController extends Controller
            $user->update([
                 'password'=>$data['password'],
                 'cargo_id'=>$data['cargo'],
-        ]);
+            ]);
+            //falta asignar roles al usuario
+            $rol = Role::find($data['rolid']);
+
+            $roles = array($rol->id);
+
+            $user->roles()->sync($roles);
 
            $user->save();
 

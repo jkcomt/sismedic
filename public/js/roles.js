@@ -3,11 +3,11 @@ $(document).ready(function() {
     $('#msg-error').hide();
 });
 $items= [];
-/***************************CREATE*********************************/
-$('#actualizarPermisos').submit(function(e){
+
+$('#registrarRol').submit(function(e){
     e.preventDefault();
 
-    var datos = $('#actualizarPermisos');
+    var datos = $('#registrarRol');
     var url = datos.attr('action');
 
     $items.length = 0;
@@ -49,9 +49,17 @@ $('#actualizarPermisos').submit(function(e){
     });
 });
 
+$('.confirmar').on('click',function (e) {
+    e.preventDefault();
 
-//
-$('.actualizarPermisos').on('click',function (e) {
+    var id = $(this).attr('id')
+    var token = $('input[name=_token]').attr('value')
+    //var url = "usuario/delete"
+    $('#registrarRol').trigger('submit');
+
+});
+
+$('.registrarRol').on('click',function (e) {
     e.preventDefault();
     //
     // var id = $(this).attr('id')
@@ -59,16 +67,5 @@ $('.actualizarPermisos').on('click',function (e) {
     $('#modal-confirmacion').modal({
         show:true,
         keyboard:false
-    })
-
-});
-
-$('.confirmar').on('click',function (e) {
-    e.preventDefault();
-
-    var id = $(this).attr('id')
-    var token = $('input[name=_token]').attr('value')
-    //var url = "usuario/delete"
-    $('#actualizarPermisos').trigger('submit');
-
+    });
 });

@@ -29,7 +29,6 @@
                             <select  name="cargo" id="cargo" class="form-control">
                                 @foreach($cargos  as $key => $cargo)
                                     <option value="{{$key}}">{{$cargo}}</option>
-
                                 @endforeach
                             </select>
                         </div>
