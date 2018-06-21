@@ -18,11 +18,7 @@
         text-align: center;
         font-weight: bold;
     }
-    /* *{
-      margin-left:0;
-      margin-right:0;
-      padding: 0;
-    } */
+
      table{
 
       width:100%;
@@ -116,11 +112,11 @@
       <td width="30%" colspan="5" style="background: RGBA(0,0,0,0.1);font-size:x-small;border: 0.5px solid rgba(0,0,0,0.1);padding:1px;">&nbsp;FUNCIONES VITALES</td>
     </tr>
     <tr>
-      <td align="center" style="font-size:x-small;border: 0.5px solid rgba(0,0,0,0.1);">FC:&nbsp; {{$cita->funcionVital->fc}} x min</td>
+      <td align="center" style="font-size:x-small;border: 0.5px solid rgba(0,0,0,0.1);">FC:&nbsp; @isset($cita->funcionVital->fc) {{$cita->funcionVital->fc}}  @endisset  x min</td>
       <td align="center" style="font-size:x-small;border: 0.5px solid rgba(0,0,0,0.1);color:red;">PA:&nbsp;  mmHg</td>
-      <td align="center" style="font-size:x-small;border: 0.5px solid rgba(0,0,0,0.1);">FR:&nbsp; {{$cita->funcionVital->fr}} x min</td>
-      <td align="center" style="font-size:x-small;border: 0.5px solid rgba(0,0,0,0.1);">IMC:&nbsp; {{$cita->funcionVital->imc}} kg/m2</td>
-      <td align="center" style="font-size:x-small;border: 0.5px solid rgba(0,0,0,0.1);">SAT:&nbsp; {{$cita->funcionVital->sat_02}} %</td>
+      <td align="center" style="font-size:x-small;border: 0.5px solid rgba(0,0,0,0.1);">FR:&nbsp;@isset($cita->funcionVital->fr) {{$cita->funcionVital->fr}} @endisset  x min</td>
+      <td align="center" style="font-size:x-small;border: 0.5px solid rgba(0,0,0,0.1);">IMC:&nbsp;@isset($cita->funcionVital->imc) {{$cita->funcionVital->imc}}  @endisset kg/m2</td>
+      <td align="center" style="font-size:x-small;border: 0.5px solid rgba(0,0,0,0.1);">SAT:&nbsp;@isset($cita->funcionVital->sat_02) {{$cita->funcionVital->sat_02}} @endisset  %</td>
     </tr>
   </table>
 

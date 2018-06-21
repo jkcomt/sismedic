@@ -18,11 +18,15 @@ class Hemograma extends Model
         'linfocitos',
         'eosinofilos',
         'basofilos',
+        'vsg',
+        'gpo_sanguineo',
+        'factor_rh',
         'conclusion_hemograma',
         'fecha_registro',
         'lista_examen_id',
         'cita_id',
-        'estado'
+        'estado',
+        'user_id'
     ];
 
     public $timestamps = false;

@@ -67,10 +67,18 @@ width: 90% !important;
               <div class="input-group">
                 <div class="input-group-addon" style="border:none">Calidad</div>
                 <select name="calidad" style="width:100% !important;" class="form-control">
-                  <option value="1">BUENA</option>
-                  <option value="2">ACEPTABLE</option>
-                  <option value="3">BAJA CALIDAD</option>
-                  <option value="4">INACEPTABLE</option>
+
+                  @isset($cita->Torax->calidad)
+                    <option value="1"  @if($cita->Torax->calidad == "1") selected @else  @endif >BUENA</option>
+                    <option value="2"  @if($cita->Torax->calidad == "2") selected @else  @endif >ACEPTABLE</option>
+                    <option value="3"  @if($cita->Torax->calidad == "3") selected @else  @endif >BAJA CALIDAD</option>
+                    <option value="4"  @if($cita->Torax->calidad == "4") selected @else  @endif >INACEPTABLE</option>
+                     @else
+                       <option value="1">BUENA</option>
+                       <option value="2">ACEPTABLE</option>
+                       <option value="3">BAJA CALIDAD</option>
+                       <option value="4">INACEPTABLE</option>
+                     @endisset
                 </select>
               </div>
             </div>
@@ -80,13 +88,24 @@ width: 90% !important;
               <div class="input-group">
                 <div class="input-group-addon" style="border:none">Causa</div>
                 <select name="causa" style="width:100% !important;" class="form-control">
-                  <option value="1">SOBREEXPOSICIÓN</option>
-                  <option value="2">SUBEXPOSICION</option>
-                  <option value="3">POSICIÓN CENTRADO</option>
-                  <option value="4">INSPIRACIÓN INSUFICIENTE</option>
-                  <option value="5">ESCAPULAS</option>
-                  <option value="6">ARTEFACTO</option>
-                  <option value="7">OTROS</option>
+
+                  @isset($cita->Torax->causa)
+                    <option value="1"  @if($cita->Torax->causa == "1") selected @else  @endif >SOBREEXPOSICIÓN</option>
+                    <option value="2"  @if($cita->Torax->causa == "2") selected @else  @endif >SUBEXPOSICION</option>
+                    <option value="3"  @if($cita->Torax->causa == "3") selected @else  @endif >POSICIÓN CENTRADO</option>
+                    <option value="4"  @if($cita->Torax->causa == "4") selected @else  @endif >INSPIRACIÓN INSUFICIENTE</option>
+                      <option value="5"  @if($cita->Torax->causa == "5") selected @else  @endif >ESCAPULAS</option>
+                      <option value="6"  @if($cita->Torax->causa == "6") selected @else  @endif >ARTEFACTO</option>
+                      <option value="7"  @if($cita->Torax->causa == "7") selected @else  @endif >OTROS</option>
+                     @else
+                       <option value="1">SOBREEXPOSICIÓN</option>
+                       <option value="2">SUBEXPOSICION</option>
+                       <option value="3">POSICIÓN CENTRADO</option>
+                       <option value="4">INSPIRACIÓN INSUFICIENTE</option>
+                       <option value="5">ESCAPULAS</option>
+                       <option value="6">ARTEFACTO</option>
+                       <option value="7">OTROS</option>
+                     @endisset
                 </select>
               </div>
             </div>

@@ -67,6 +67,7 @@ class CreateAntecendeDosPersonalesTable extends Migration
             $table->foreign('paciente_id')->references('id')->on('pacientes');
             $table->integer('paciente_id')->unsigned()->nullable();
             $table->boolean('estado');
+            
             //$table->timestamps();
         });
     }

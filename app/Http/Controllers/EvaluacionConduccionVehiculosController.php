@@ -8,7 +8,7 @@ use Carbon\Carbon;
 use App\Cita;
 use View;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Auth;
 class EvaluacionConduccionVehiculosController extends Controller
 {
     /**
@@ -143,7 +143,8 @@ class EvaluacionConduccionVehiculosController extends Controller
             'fecha_registro'=>Carbon::now(),
             'cita_id'=>isset($data['cita_id'])? $data['cita_id']:null,
             'lista_examen_id'=>isset($data['lista_examen_id'])? $data['lista_examen_id']:null,
-            'estado'=>true
+            'estado'=>true,
+            'user_id'=>Auth::user()->id
           ]);
 
           return response()->json(['mensaje' => 'registro conduccion exitoso']);

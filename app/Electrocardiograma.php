@@ -23,7 +23,8 @@ class Electrocardiograma extends Model
         'lista_examen_id',
         'cita_id',
         'fecha_registro',
-        'estado'
+        'estado',
+        'user_id'
     ];
 
     public $timestamps = false;

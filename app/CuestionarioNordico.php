@@ -71,7 +71,8 @@ class CuestionarioNordico extends Model
       'fecha_registro',
       'lista_examen_id',
       'cita_id',
-      'estado'
+      'estado',
+      'user_id'
     ];
     //////////esta relacion existe?
     public function paciente()

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Vision;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 class VisionController extends Controller
 {
     /**
@@ -83,7 +84,8 @@ class VisionController extends Controller
               'fecha_registro'=>Carbon::now(),
               'lista_examen_id'=>$data['lista_examen_id'],
               'cita_id'=>$data['cita_id'],
-              'estado'=>true
+              'estado'=>true,
+              'user_id'=>Auth::user()->id
           ]);
 
           return response()->json(['mensaje' => 'registro exitoso']);

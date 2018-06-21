@@ -125,6 +125,43 @@
                   </div>
                   <label for="inputEmail3" class=" control-label text-danger"><strong>0.1-1.0</strong> </label>
                 </div>
+                <div class="form-group">
+                 <label for="inputEmail3" class="col-sm-4 control-label">V.S.G:</label>
+                 <div class="col-sm-4">
+                   <div class="input-group">
+                    <input type="text" class="form-control" name="vsg" @isset($cita->hemograma->vsg) value="{{$cita->hemograma->vsg}}"  @endisset>
+                    <div class="input-group-addon">%</div>
+                  </div>
+                 </div>
+                 <label for="inputEmail3" class=" control-label text-danger"><strong>mm/hora H: 0–10 M: 0–20 </strong> </label>
+               </div>
+               <div class="form-group">
+                <label for="inputEmail3" class="col-sm-4 control-label">GPO. SANGUINEO:</label>
+                <div class="col-sm-4">
+                  <div class="input-group">
+                   {{-- <input type="text" class="form-control" name="basofilos" @isset($cita->hemograma->gpo_sanguineo) value="{{$cita->hemograma->gpo_sanguineo}}"  @endisset> --}}
+                   <select class="form-control" name="gpo_sanguineo">
+                      <option value="O">O</option>
+                      <option value="A">A</option>
+                      <option value="AB">AB</option>
+                      <option value="rhn">Rh(-)</option>
+                      <option value="rhp">Rh(+)</option>
+                   </select>
+                   {{-- <div class="input-group-addon"></div> --}}
+                 </div>
+                </div>
+                <label for="inputEmail3" class=" control-label text-danger"><strong></strong> </label>
+              </div>
+              <div class="form-group">
+               <label for="inputEmail3" class="col-sm-4 control-label">FACTOR RH:</label>
+               <div class="col-sm-4">
+                 <div class="input-group">
+                  <input type="text" class="form-control" name="factor_rh" @isset($cita->hemograma->factor_rh) value="{{$cita->hemograma->factor_rh}}"  @endisset>
+                  <div class="input-group-addon">%</div>
+                </div>
+               </div>
+               <label for="inputEmail3" class=" control-label text-danger"><strong></strong> </label>
+             </div>
 
                     </div>
                   </div>
@@ -132,7 +169,7 @@
                       <div class="form-group">
                        <label for="inputEmail3" class="col-sm-4 control-label">CONCLUSION HEMOGRAMA:</label>
                        <div class="col-sm-6">
-                          <input type="text" name="conclusion" class="form-control" value="">
+                          <input type="text" name="conclusion" class="form-control" @isset($cita->hemograma->conclusion_hemograma) value="{{$cita->hemograma->conclusion_hemograma}}" @endisset>
                        </div>
                     </div>
 

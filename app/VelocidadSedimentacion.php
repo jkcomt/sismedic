@@ -13,7 +13,8 @@ class VelocidadSedimentacion extends Model
         'fecha_registro',
         'lista_examen_id',
         'cita_id',
-        'estado'
+        'estado',
+        'user_id'
     ];
 
     public $timestamps = false;

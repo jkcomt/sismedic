@@ -46,6 +46,8 @@ class CreateOrinasTable extends Migration
             $table->foreign('cita_id')->references('id')->on('citas');
             $table->integer('cita_id')->unsigned()->nullable();
             $table->boolean('estado');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('user_id')->unsigned()->nullable();
         });
     }
 

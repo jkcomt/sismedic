@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Cita;
 use View;
+use Illuminate\Support\Facades\Auth;
 class Anexo7dsController extends Controller
 {
     /**
@@ -85,7 +86,8 @@ class Anexo7dsController extends Controller
                 'fecha_registro'=>Carbon::now(),
                 'lista_examen_id'=>$data['lista_examen_id'],
                 'cita_id'=>$data['cita_id'],
-                'estado'=>true
+                'estado'=>true,
+                'user_id'=>Auth::user()->id
             ]);
 
             return response()->json(['mensaje' => 'registro exitoso']);

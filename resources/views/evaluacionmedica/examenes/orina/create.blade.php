@@ -205,6 +205,24 @@
                </div>
              </div>
              <div class="form-group">
+              <label for="inputEmail3" class="col-sm-4 control-label">Dosaje Cocaina :</label>
+              <div class="col-sm-6">
+
+                 <input type="text"  @isset($cita->orinas->dosaje_cocaina) value="{{$cita->orinas->dosaje_cocaina}}"  @endisset   class="form-control" name="dosaje_cocaina">
+
+              </div>
+            </div>
+            <div class="form-group">
+             <label for="inputEmail3" class="col-sm-4 control-label"> Dosaje Marihuana:</label>
+             <div class="col-sm-6">
+
+                <input type="text"  @isset($cita->orinas->dosaje_marihuana) value="{{$cita->orinas->dosaje_marihuana}}"  @endisset   class="form-control" name="dosaje_marihuana">
+
+             </div>
+           </div>
+
+
+             <div class="form-group">
               <label for="inputEmail3" class="col-sm-4 control-label">Otros:</label>
               <div class="col-sm-6">
                 <div class="input-group">

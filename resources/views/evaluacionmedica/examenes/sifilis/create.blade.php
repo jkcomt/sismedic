@@ -30,7 +30,7 @@
                            <input type="hidden" name="lista_examen_id" value="{{$listaExamen->id}}">
                            <input type="hidden" name="cita_id" value="{{$cita->id}}">
                        </div>
-                       <label for="inputEmail3" class="col-sm-2 control-label text-danger"><strong> NEGATIVO </strong> </label>
+                       {{-- <label for="inputEmail3" class="col-sm-2 control-label text-danger"><strong> NEGATIVO </strong> </label> --}}
                      </div>
                     </div>
                   </div>

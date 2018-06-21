@@ -31,7 +31,8 @@ class Espirometria extends Model
       'fecha_registro',
       'lista_examen_id',
       'cita_id',
-      'estado'
+      'estado',
+      'user_id'
   ];
 
   public $timestamps = false;
@@ -43,5 +44,5 @@ class Espirometria extends Model
   public function listaExamen(){
       return $this->belongsTo(ListaExamen::class);
   }
-  
+
 }

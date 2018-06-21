@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\ColesterolTotal;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
-
+use Illuminate\Support\Facades\Auth;
 class ColesterolTotalController extends Controller
 {
     /**
@@ -48,7 +48,8 @@ class ColesterolTotalController extends Controller
                 'fecha_registro'=>Carbon::now(),
                 'lista_examen_id'=>$data['lista_examen_id'],
                 'cita_id'=>$data['cita_id'],
-                'estado'=>true
+                'estado'=>true,
+                'user_id'=>Auth::user()->id
             ]);
 
             return response()->json(['mensaje' => 'registro exitoso']);

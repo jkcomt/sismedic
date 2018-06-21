@@ -25,6 +25,8 @@ class CreateConclucionesTable extends Migration
             $table->date('fecha_registro')->nullable();
             $table->foreign('paciente_id')->references('id')->on('pacientes');
             $table->integer('paciente_id')->unsigned()->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('user_id')->unsigned()->nullable();
         //    $table->timestamps();
         });
     }

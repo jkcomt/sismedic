@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\PerfilHepatico;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
-
+use Illuminate\Support\Facades\Auth;
 class PerfilHepaticoController extends Controller
 {
     /**
@@ -64,7 +64,8 @@ class PerfilHepaticoController extends Controller
              'fecha_registro'=>Carbon::now(),
              'lista_examen_id'=>isset($data['lista_examen_id'])? $data['lista_examen_id']:null,
              'cita_id'=>isset($data['cita_id'])? $data['cita_id']:null,
-             'estado'=>true
+             'estado'=>true,
+             'user_id'=>Auth::user()->id
           ]);
           return response()->json(['mensaje' =>"registro exitoso"]);
       }

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Hemograma;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
-
+use Illuminate\Support\Facades\Auth;
 class HemogramaController extends Controller
 {
     /**
@@ -47,6 +47,9 @@ class HemogramaController extends Controller
                 'linfocitos'=>'nullable',
                 'eosinofilos'=>'nullable',
                 'basofilos'=>'nullable',
+                'vsg'=>'nullable',
+                'gpo_sanguineo'=>'nullable',
+                'factor_rh'=>'nullable',
                 'conclusion'=>'nullable',
                 'lista_examen_id'=>'required',
                 'cita_id'=>'required'
@@ -62,11 +65,15 @@ class HemogramaController extends Controller
               'linfocitos'=>isset($data['linfocitos'])? $data['linfocitos']:null,
               'eosinofilos'=>isset($data['eosinofilos'])? $data['eosinofilos']:null,
               'basofilos'=>isset($data['basofilos'])? $data['basofilos']:null,
+              'vsg'=>isset($data['vsg'])? $data['vsg']:null,
+              'gpo_sanguineo'=>isset($data['gpo_sanguineo'])? $data['gpo_sanguineo']:null,
+              'factor_rh'=>isset($data['factor_rh'])? $data['factor_rh']:null,
              'conclusion_hemograma'=>isset($data['conclusion'])? $data['conclusion']:null,
              'fecha_registro'=>Carbon::now(),
              'lista_examen_id'=>isset($data['lista_examen_id'])? $data['lista_examen_id']:null,
              'cita_id'=>isset($data['cita_id'])? $data['cita_id']:null,
-             'estado'=>true
+             'estado'=>true,
+             'user_id'=>Auth::user()->id
             ]);
 
             return response()->json(['mensaje' =>"registro exitoso"]);
@@ -116,6 +123,9 @@ class HemogramaController extends Controller
               'linfocitos'=>'nullable',
               'eosinofilos'=>'nullable',
               'basofilos'=>'nullable',
+              'vsg'=>'nullable',
+              'gpo_sanguineo'=>'nullable',
+              'factor_rh'=>'nullable',
               'conclusion'=>'nullable',
               'lista_examen_id'=>'required',
               'cita_id'=>'required'
@@ -131,6 +141,9 @@ class HemogramaController extends Controller
                'linfocitos'=>isset($data['linfocitos'])? $data['linfocitos']:null,
                'eosinofilos'=>isset($data['eosinofilos'])? $data['eosinofilos']:null,
                'basofilos'=>isset($data['basofilos'])? $data['basofilos']:null,
+               'vsg'=>isset($data['vsg'])? $data['vsg']:null,
+               'gpo_sanguineo'=>isset($data['gpo_sanguineo'])? $data['gpo_sanguineo']:null,
+               'factor_rh'=>isset($data['factor_rh'])? $data['factor_rh']:null,
               'conclusion_hemograma'=>isset($data['conclusion'])? $data['conclusion']:null,
               'fecha_registro'=>Carbon::now(),
               'lista_examen_id'=>isset($data['lista_examen_id'])? $data['lista_examen_id']:null,

@@ -5,14 +5,11 @@
 
                 <div class="modal-body ">
 
-
-
                     <ul class="nav nav-pills">
                       <li class="active"><a data-toggle="tab" href="#home">Inicio</a></li>
                       <li><a data-toggle="tab" href="#menu1">Diagnosticos</a></li>
                       {{-- <li><a data-toggle="tab" href="#menu2">Menu 2</a></li> --}}
                     </ul>
-
                                   <div class="tab-content">
                                     <div id="home" class="tab-pane fade in active">
                               <form  id="formespirometria">
@@ -64,7 +61,10 @@
                                                                     <div class="input-group ">
                                                                       <span class="input-group-addon span-width" style="border:none;">Calidad</span>
                                                                       <select  class="form-control" name="calidad">
-                                                                        <option  ></option>
+                                                                        <option value="1" >BUENA</option>
+                                                                        <option  value="2" >ACEPTABLE</option>
+                                                                        <option  value="3" >BAJA CALIDAD</option>
+                                                                        <option  value="4" >INACEPTABLE</option>
                                                                       </select>
                                                                     </div>
                                                                   </div>

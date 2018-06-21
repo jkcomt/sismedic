@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\GrupoSanguineo;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class GrupoSanguineoController extends Controller
 {
     /**
@@ -36,7 +36,7 @@ class GrupoSanguineoController extends Controller
      */
     public function store(Request $request)
     {
-    
+
     if(request()->ajax())
      {
             //$data = request();
@@ -49,7 +49,8 @@ class GrupoSanguineoController extends Controller
 
         GrupoSanguineo::create([
             'descripcion'=>$data['nombre'],
-            'estado'=>true
+            'estado'=>true,
+            'user_id'=>Auth::user()->id
         ]);
         return response()->json(['mensaje'=>"registro exitoso"]);
     }
@@ -75,9 +76,9 @@ class GrupoSanguineoController extends Controller
      */
     public function edit($id)
     {
- 
-   
-           $grupoSanguineo = GrupoSanguineo::find($id);    
+
+
+           $grupoSanguineo = GrupoSanguineo::find($id);
 
         return response()->json(
           $grupoSanguineo->toArray()
@@ -96,7 +97,7 @@ class GrupoSanguineoController extends Controller
      */
     public function update(Request $request)
     {
-           $grupoSanguineo=  GrupoSanguineo::find($request['id']); 
+           $grupoSanguineo=  GrupoSanguineo::find($request['id']);
 
         $data = request()->validate([
             'id'=>'required',

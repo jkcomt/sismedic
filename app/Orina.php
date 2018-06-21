@@ -30,10 +30,13 @@ class Orina extends Model
       'filamentos_mucoides',
       'otros',
       'conclusion_orina',
+      'dosaje_cocaina',
+      'dosaje_marihuana',
       'fecha_registro',
       'lista_examen_id',
       'cita_id',
-      'estado'
+      'estado',
+      'user_id'
     ];
 
     public $timestamps = false;

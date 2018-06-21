@@ -367,7 +367,8 @@ class ToraxController extends Controller
            'fecha_registro'=>Carbon::now(),
            'lista_examen_id'=>isset($data['lista_examen_id'])? $data['lista_examen_id']:null,
            'cita_id'=>isset($data['cita_id'])? $data['cita_id']:null,
-           'estado'=>true
+           'estado'=>true,
+           'user_id'=>Auth::user()->id
           ]);
           return response()->json(['mensaje' =>"registro exitoso"]);
       }
@@ -734,7 +735,7 @@ class ToraxController extends Controller
            // 'lista_examen_id'=>isset($data['lista_examen_id'])? $data['lista_examen_id']:null,
            // 'cita_id'=>isset($data['cita_id'])? $data['cita_id']:null,
            // 'estado'=>true
-           'user_id'=>Auth::user()->id;
+           //
           ]);
           return response()->json(['mensaje' =>"registro exitoso"]);
       }

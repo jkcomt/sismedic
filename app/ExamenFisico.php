@@ -44,7 +44,8 @@ class ExamenFisico extends Model
       'marcha',
       'evaluacion_cardiovascular',
       'fecha_registro',
-      'paciente_id'
+      'paciente_id',
+      'user_id'
     ];
 
     public function paciente()

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Orina;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
-
+use Illuminate\Support\Facades\Auth;
 
 class OrinaController extends Controller
 {
@@ -60,6 +60,8 @@ class OrinaController extends Controller
                     'cristales'=>'nullable',
                     'germenes'=>'nullable',
                     'filamentos_mucoides'=>'nullable',
+                    'dosaje_cocaina'=>'nullable',
+                    'dosaje_marihuana'=>'nullable',
                     'otros'=>'nullable',
                     'conclusion_orina'=>'nullable',
                     'lista_examen_id'=>'nullable',
@@ -67,31 +69,34 @@ class OrinaController extends Controller
                   ]);
 
                 $orina = Orina::create([
-                    'color'=>$data['color'],
-                    'aspecto'=>$data['aspecto'],
-                    'densidad'=>$data['densidad'],
-                    'ph'=>$data['ph'],
-                    'glucosa'=>$data['glucosa'],
-                    'bilirrubinas'=>$data['bilirrubinas'],
-                    'cuerpos_cetonicos'=>$data['cuerpos_cetonicos'],
-                    'proteinas'=>$data['proteinas'],
-                    'urobilinogeno'=>$data['urobilinogeno'],
-                    'nitritos'=>$data['nitritos'],
-                    'hemoglobina'=>$data['hemoglobina'],
-                    'sangre'=>$data['sangre'],
-                    'leucocitos'=>$data['leucocitos'],
-                    'hematies'=>$data['hematies'],
-                    'celulas_epiteliales'=>$data['celulas_epiteliales'],
-                    'cilindros'=>$data['cilindros'],
-                    'cristales'=>$data['cristales'],
-                    'germenes'=>$data['germenes'],
-                    'filamentos_mucoides'=>$data['filamentos_mucoides'],
-                    'otros'=>$data['otros'],
-                    'conclusion_orina'=>$data['conclusion_orina'],
+                    'color'=>isset($data['color'])? $data['color']:null,
+                    'aspecto'=>isset($data['aspecto'])? $data['aspecto']:null,
+                    'densidad'=>isset($data['densidad'])? $data['densidad']:null,
+                    'ph'=>isset($data['ph'])? $data['ph']:null,
+                    'glucosa'=>isset($data['glucosa'])? $data['glucosa']:null,
+                    'bilirrubinas'=>isset($data['bilirrubinas'])? $data['bilirrubinas']:null,
+                    'cuerpos_cetonicos'=>isset($data['cuerpos_cetonicos'])? $data['cuerpos_cetonicos']:null,
+                    'proteinas'=>isset($data['proteinas'])? $data['proteinas']:null,
+                    'urobilinogeno'=>isset($data['urobilinogeno'])? $data['urobilinogeno']:null,
+                    'nitritos'=>isset($data['nitritos'])? $data['nitritos']:null,
+                    'hemoglobina'=>isset($data['hemoglobina'])? $data['hemoglobina']:null,
+                    'sangre'=>isset($data['sangre'])? $data['sangre']:null,
+                    'leucocitos'=>isset($data['leucocitos'])? $data['leucocitos']:null,
+                    'hematies'=>isset($data['hematies'])? $data['hematies']:null,
+                    'celulas_epiteliales'=>isset($data['celulas_epiteliales'])? $data['celulas_epiteliales']:null,
+                    'cilindros'=>isset($data['cilindros'])? $data['cilindros']:null,
+                    'cristales'=>isset($data['cristales'])? $data['cristales']:null,
+                    'germenes'=>isset($data['germenes'])? $data['germenes']:null,
+                    'filamentos_mucoides'=>isset($data['filamentos_mucoides'])? $data['filamentos_mucoides']:null,
+                    'otros'=>isset($data['otros'])? $data['otros']:null,
+                    'conclusion_orina'=>isset($data['conclusion_orina'])? $data['conclusion_orina']:null,
+                    'dosaje_cocaina'=>isset($data['dosaje_cocaina'])? $data['dosaje_cocaina']:null,
+                    'dosaje_marihuana'=>isset($data['dosaje_marihuana'])? $data['dosaje_marihuana']:null,
                     'fecha_registro'=>Carbon::now(),
-                    'lista_examen_id'=>$data['lista_examen_id'],
-                    'cita_id'=>$data['cita_id'],
-                    'estado'=>true
+                    'lista_examen_id'=>isset($data['lista_examen_id'])? $data['lista_examen_id']:null,
+                    'cita_id'=>isset($data['cita_id'])? $data['cita_id']:null,
+                    'estado'=>true,
+                    'user_id'=>Auth::user()->id
                 ]);
 
                 return response()->json(['mensaje' => 'registro exitoso']);
@@ -156,36 +161,40 @@ class OrinaController extends Controller
                           'filamentos_mucoides'=>'nullable',
                           'otros'=>'nullable',
                           'conclusion_orina'=>'nullable',
+                            'dosaje_cocaina'=>'nullable',
+                            'dosaje_marihuana'=>'nullable',
                           'lista_examen_id'=>'nullable',
                           'cita_id'=>'nullable',
                         ]);
 
                       $orina->update([
-                          'color'=>$data['color'],
-                          'aspecto'=>$data['aspecto'],
-                          'densidad'=>$data['densidad'],
-                          'ph'=>$data['ph'],
-                          'glucosa'=>$data['glucosa'],
-                          'bilirrubinas'=>$data['bilirrubinas'],
-                          'cuerpos_cetonicos'=>$data['cuerpos_cetonicos'],
-                          'proteinas'=>$data['proteinas'],
-                          'urobilinogeno'=>$data['urobilinogeno'],
-                          'nitritos'=>$data['nitritos'],
-                          'hemoglobina'=>$data['hemoglobina'],
-                          'sangre'=>$data['sangre'],
-                          'leucocitos'=>$data['leucocitos'],
-                          'hematies'=>$data['hematies'],
-                          'celulas_epiteliales'=>$data['celulas_epiteliales'],
-                          'cilindros'=>$data['cilindros'],
-                          'cristales'=>$data['cristales'],
-                          'germenes'=>$data['germenes'],
-                          'filamentos_mucoides'=>$data['filamentos_mucoides'],
-                          'otros'=>$data['otros'],
-                          'conclusion_orina'=>$data['conclusion_orina'],
-                          'fecha_registro'=>Carbon::now(),
-                          'lista_examen_id'=>$data['lista_examen_id'],
-                          'cita_id'=>$data['cita_id'],
-                          'estado'=>true
+                        'color'=>isset($data['color'])? $data['color']:null,
+                        'aspecto'=>isset($data['aspecto'])? $data['aspecto']:null,
+                        'densidad'=>isset($data['densidad'])? $data['densidad']:null,
+                        'ph'=>isset($data['ph'])? $data['ph']:null,
+                        'glucosa'=>isset($data['glucosa'])? $data['glucosa']:null,
+                        'bilirrubinas'=>isset($data['bilirrubinas'])? $data['bilirrubinas']:null,
+                        'cuerpos_cetonicos'=>isset($data['cuerpos_cetonicos'])? $data['cuerpos_cetonicos']:null,
+                        'proteinas'=>isset($data['proteinas'])? $data['proteinas']:null,
+                        'urobilinogeno'=>isset($data['urobilinogeno'])? $data['urobilinogeno']:null,
+                        'nitritos'=>isset($data['nitritos'])? $data['nitritos']:null,
+                        'hemoglobina'=>isset($data['hemoglobina'])? $data['hemoglobina']:null,
+                        'sangre'=>isset($data['sangre'])? $data['sangre']:null,
+                        'leucocitos'=>isset($data['leucocitos'])? $data['leucocitos']:null,
+                        'hematies'=>isset($data['hematies'])? $data['hematies']:null,
+                        'celulas_epiteliales'=>isset($data['celulas_epiteliales'])? $data['celulas_epiteliales']:null,
+                        'cilindros'=>isset($data['cilindros'])? $data['cilindros']:null,
+                        'cristales'=>isset($data['cristales'])? $data['cristales']:null,
+                        'germenes'=>isset($data['germenes'])? $data['germenes']:null,
+                        'filamentos_mucoides'=>isset($data['filamentos_mucoides'])? $data['filamentos_mucoides']:null,
+                        'otros'=>isset($data['otros'])? $data['otros']:null,
+                        'conclusion_orina'=>isset($data['conclusion_orina'])? $data['conclusion_orina']:null,
+                        'dosaje_cocaina'=>isset($data['dosaje_cocaina'])? $data['dosaje_cocaina']:null,
+                        'dosaje_marihuana'=>isset($data['dosaje_marihuana'])? $data['dosaje_marihuana']:null,
+                        'fecha_registro'=>Carbon::now(),
+                        'lista_examen_id'=>isset($data['lista_examen_id'])? $data['lista_examen_id']:null,
+                        'cita_id'=>isset($data['cita_id'])? $data['cita_id']:null,
+                        'user_id'=>Auth::user()->id
                       ]);
                       $orina->save();
                       return response()->json(['mensaje' => 'registro actualizado']);

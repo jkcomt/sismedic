@@ -65,6 +65,8 @@ class CreateApneaSueniosTable extends Migration
             $table->string('pdiastolica')->nullable();
             $table->boolean('hta_nueva')->nullable();
 
+            $table->boolean('grado')->nullable();
+
             $table->boolean('criterio_a')->nullable();
             $table->boolean('criterio_b')->nullable();
             $table->boolean('criterio_c')->nullable();
@@ -83,6 +85,8 @@ class CreateApneaSueniosTable extends Migration
             $table->foreign('cita_id')->references('id')->on('citas');
             $table->integer('cita_id')->unsigned()->nullable();
             $table->boolean('estado');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('user_id')->unsigned()->nullable();
           //  $table->timestamps();
         });
     }
