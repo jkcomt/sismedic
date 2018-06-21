@@ -515,7 +515,6 @@ width: 90% !important;
 
 
             <div class="modal-footer">
-
             </div>
 
         </div>
@@ -550,7 +549,19 @@ $(document).ready(function() {
 });
 
 });
+var grafico_izquierdo;
+var grafico_derecho;
+var corcheteIzq = new Image(20,20);
+corcheteIzq.src = window.location.protocol+"//"+window.location.host+"/img/simbolos/corchete_izq.png";
 
+var corcheteDer = new Image(20,20);
+corcheteDer.src = window.location.protocol+"//"+window.location.host+"/img/simbolos/corchete_der.png";
+
+var circulo = new Image(20,20);
+circulo.src = window.location.protocol+"//"+window.location.host+"/img/simbolos/circulo.png";
+
+var equis = new Image(20,20);
+equis.src = window.location.protocol+"//"+window.location.host+"/img/simbolos/equis.png";
 $('#grafica_audiometria').on('click',function(e){
 
 grafica_oido_derecho($('#od_va1').val(),$('#od_va2').val(),$('#od_va3').val(),$('#od_va4').val(),$('#od_va5').val(),
@@ -564,24 +575,31 @@ $('#oi_va6').val(),$('#oi_va7').val(),$('#oi_va8').val(),$('#oi_va9').val(),
 $('#oi_vo1').val(),$('#oi_vo2').val(),$('#oi_vo3').val(),$('#oi_vo4').val(),
 $('#oi_vo5').val(),$('#oi_vo6').val(),$('#oi_vo7').val(),$('#oi_vo8').val(),$('#oi_vo9').val());
 
+
 });
 
 function grafica_oido_izquierdo(oiva1,oiva2,oiva3,oiva4,oiva5,oiva6,oiva7,oiva8,oiva9,oivo1,oivo2,oivo3,oivo4,oivo5,oivo6,oivo7,oivo8,oivo9)
 {
-  new Chart(document.getElementById("oido_izquierdo"), {
+
+  grafico_izquierdo = new Chart(document.getElementById("oido_izquierdo"), {
     type: 'line',
     data: {
         labels: ["125", "250", "500", "1000", "2000", "3000","4000","6000","8000","9000"],
       datasets: [{
           data: [oiva1,oiva2,oiva3,oiva4,oiva5,oiva6,oiva7,oiva8,oiva9],
           label: "VA",
-          borderColor: "#3e95cd",
-          fill: false
+          borderColor: "rgba(177, 54, 36, 1)",
+          fill: false,
+          pointRadius: 5,
+          borderWidth: 2,
+          pointStyle: equis
         }, {
           data: [oivo1,oivo2,oivo3,oivo4,oivo5,oivo6,oivo7,oivo8,oivo9],
           label: "VO",
           borderColor: "#8e5ea2",
-          fill: false
+          fill: false,
+          pointRadius: 5,
+          pointStyle: corcheteIzq
         }
       ]
     },
@@ -592,19 +610,20 @@ function grafica_oido_izquierdo(oiva1,oiva2,oiva3,oiva4,oiva5,oiva6,oiva7,oiva8,
       }
     }
   });
+
+
 }
 
 
 function grafica_oido_derecho(oiva1,oiva2,oiva3,oiva4,oiva5,oiva6,oiva7,oiva8,oiva9,oivo1,oivo2,oivo3,oivo4,oivo5,oivo6,oivo7,oivo8,oivo9)
 {
-  new Chart(document.getElementById("oido_derecho"), {
+    grafico_derecho = new Chart(document.getElementById("oido_derecho"), {
     type: 'line',
     data: {
         labels: ["125", "250", "500", "1000", "2000", "3000","4000","6000","8000","9000"],
       datasets: [{
           data: [oiva1,oiva2,oiva3,oiva4,oiva5,oiva6,oiva7,oiva8,oiva9],
           label: "VA",
-          borderColor: "#3e95cd",
           lineTension: 0,
           fill: false,
           borderColor: 'orange',
@@ -616,12 +635,13 @@ function grafica_oido_derecho(oiva1,oiva2,oiva3,oiva4,oiva5,oiva6,oiva7,oiva8,oi
           pointHoverRadius: 10,
           pointHitRadius: 10,
           pointBorderWidth: 2,
-          pointStyle: 'cross'
+          pointStyle: circulo
         }, {
           data: [oivo1,oivo2,oivo3,oivo4,oivo5,oivo6,oivo7,oivo8,oivo9],
           label: "VO",
           borderColor: "#8e5ea2",
-          fill: false
+          fill: false,
+          pointStyle: corcheteDer
         }
       ]
     },
@@ -632,6 +652,8 @@ function grafica_oido_derecho(oiva1,oiva2,oiva3,oiva4,oiva5,oiva6,oiva7,oiva8,oi
       }
     }
   });
+
+
 }
 
 

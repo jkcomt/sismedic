@@ -63,6 +63,8 @@ class Audiometrias extends Model
       'oi_vo7',
       'oi_vo8',
       'oi_vo9',
+      'grafico_derecho',
+      'grafico_izquierdo',
       'fecha_registro',
       'lista_examen_id',
       'cita_id',
