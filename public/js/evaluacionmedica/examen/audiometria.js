@@ -11,7 +11,6 @@ $('body').on('click','.audiometria',function(e) {
     $('.confirmar').attr('estado','registrar')
     $('#modal-audiometria').modal('hide');
     $('#modal-confirmacion').modal('show')
-
 });
 
 $('.confirmar').on('click',function (e) {
@@ -40,8 +39,14 @@ $('.volver-form-examen').on('click',function(e){
 $('body').on('submit','#formaudiometria',function(e){
     e.preventDefault();
 
+    $graficoDerecho = grafico_derecho.toBase64Image();
+    $graficoIzquierdo = grafico_izquierdo.toBase64Image();
+
+    //console.log("der :"+$graficoDerecho);
+    //console.log("izq :"+$graficoIzquierdo);
+
     var datos = $(this);
-    $.post(urls_,datos.serialize(),function (result) {
+    $.post(urls_,datos.serialize() + "&" + $.param({'grafico_derecho':$graficoDerecho}) + "&" + $.param({'grafico_izquierdo':$graficoIzquierdo}),function (result) {
 
     }).success(function(data)
     {

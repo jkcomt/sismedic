@@ -84,5 +84,7 @@ responsive: {
 }
 });
     </script>
+
+    <img src="{{$cita->audiometria->grafico_derecho}}" alt="">
   </body>
 </html>

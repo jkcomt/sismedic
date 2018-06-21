@@ -33,7 +33,7 @@
 @endsection
 @section('modal-confirmacion-footer')
     <button class="btn btn-success confirmar" id="">Confirmar</button>
-    <a href="" class="btn btn-warning volver-form-examen" id="index">Volver</a>
+    <a href="#" class="btn btn-warning volver-form-examen" id="index">Volver</a>
 @endsection
 {{-----------------------------------------------------------------}}
 @section('content')
@@ -966,6 +966,14 @@ hora_examen --}}
     </div>
 @endsection
 @section('script')
+    <script>
+        $('body').on('hidden.bs.modal', function () {
+            if($('.modal.in').length > 0)
+            {
+                $('body').addClass('modal-open');
+            }
+        });
+    </script>
     <script src="{{asset('js/evaluacionmedica/evaluacion.js')}}"></script>
     <script src="{{asset('js/evaluacionmedica/examen/colesterolhdl.js')}}"></script>
     <script src="{{asset('js/evaluacionmedica/examen/creatinina.js')}}"></script>

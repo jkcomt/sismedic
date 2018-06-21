@@ -743,3 +743,10 @@ Route::group(["prefix"=>"uso_respiradores"],function(){
     Route::post('/actualizar','UsoRespiradorController@update')->name('uso_respiradores.update');
     Route::get('/reporte/{id}','UsoRespiradorController@reporte_uso_respiradores')->name('uso_respiradores.reporte');
 });
+
+//roles
+Route::group(["prefix"=>"roles"],function(){
+    Route::get('/','RolesController@index')->name('roles.index');
+    Route::get('/crear','RolesController@create')->name('roles.create');
+    Route::post('/','RolesController@store')->name('roles.store');
+});

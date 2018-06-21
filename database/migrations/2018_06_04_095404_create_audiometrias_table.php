@@ -83,6 +83,10 @@ class CreateAudiometriasTable extends Migration
             $table->string('oi_vo8')->nullable();
             $table->string('oi_vo9')->nullable();
 
+            //grafico en base64
+            $table->longText('grafico_izquierdo')->nullable();
+            $table->longText('grafico_derecho')->nullable();
+
             /**/
             $table->date('fecha_registro');
             $table->foreign('lista_examen_id')->references('id')->on('lista_examenes');

@@ -96,7 +96,9 @@ class AudiometriasController extends Controller
               'oi_vo8'=>'nullable',
               'oi_vo9'=>'nullable',
               'lista_examen_id'=>'nullable',
-              'cita_id'=>'nullable'
+              'cita_id'=>'nullable',
+              'grafico_derecho'=>'nullable',
+              'grafico_izquierdo'=>'nullable',
           ]);
 
           $audiometrias = Audiometrias::create([
@@ -155,6 +157,9 @@ class AudiometriasController extends Controller
             'oi_vo7'=>isset($data['oi_vo7'])? $data['oi_vo7']:null,
             'oi_vo8'=>isset($data['oi_vo8'])? $data['oi_vo8']:null,
             'oi_vo9'=>isset($data['oi_vo9'])? $data['oi_vo9']:null,
+
+            'grafico_derecho'=>isset($data['grafico_derecho'])? $data['grafico_derecho']:null,
+            'grafico_izquierdo'=>isset($data['grafico_izquierdo'])? $data['grafico_izquierdo']:null,
            'fecha_registro'=>Carbon::now(),
            'lista_examen_id'=>isset($data['lista_examen_id'])? $data['lista_examen_id']:null,
            'cita_id'=>isset($data['cita_id'])? $data['cita_id']:null,
@@ -254,6 +259,8 @@ class AudiometriasController extends Controller
               'oi_vo7'=>'nullable',
               'oi_vo8'=>'nullable',
               'oi_vo9'=>'nullable',
+              'grafico_derecho'=>'nullable',
+              'grafico_izquierdo'=>'nullable',
               'lista_examen_id'=>'nullable',
               'cita_id'=>'nullable'
           ]);
@@ -314,6 +321,8 @@ class AudiometriasController extends Controller
             'oi_vo7'=>isset($data['oi_vo7'])? $data['oi_vo7']:null,
             'oi_vo8'=>isset($data['oi_vo8'])? $data['oi_vo8']:null,
             'oi_vo9'=>isset($data['oi_vo9'])? $data['oi_vo9']:null,
+            'grafico_derecho'=>isset($data['grafico_derecho'])? $data['grafico_derecho']:null,
+            'grafico_izquierdo'=>isset($data['grafico_izquierdo'])? $data['grafico_izquierdo']:null,
           ]);
 
           $audiometrias->save();

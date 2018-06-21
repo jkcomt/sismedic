@@ -29,16 +29,25 @@
                             <select  name="cargo" id="cargo" class="form-control">
                                 @foreach($cargos  as $key => $cargo)
                                     <option value="{{$key}}">{{$cargo}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="col-md-12 form-group">
+                            <label for="perfil" class="control-label">Perfiles :</label>
+                            <select  name="perfil" id="perfil" class="form-control">
+                                @foreach($perfiles  as $key => $perfil)
+                                    <option value="{{$key}}">{{strtoupper($perfil)}}</option>
 
                                 @endforeach
                             </select>
                         </div>
 
                         <div class="col-md-12 form-group">
-                            <label for="cargo" class="control-label">Perfiles :</label>
-                            <select  name="perfil" id="perfil" class="form-control">
-                                @foreach($perfiles  as $key => $perfil)
-                                    <option value="{{$key}}">{{strtoupper($perfil)}}</option>
+                            <label for="rol" class="control-label">Rol :</label>
+                            <select  name="rol_id" id="rol_id" class="form-control">
+                                @foreach($roles  as $key => $role)
+                                    <option value="{{$key}}">{{strtoupper($role)}}</option>
 
                                 @endforeach
                             </select>

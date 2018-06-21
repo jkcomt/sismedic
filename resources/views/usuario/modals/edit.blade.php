@@ -25,8 +25,17 @@
                              <option value=""></option>
                                 </select>
                             </div>
-
                         </div>
+
+                      <div class="col-md-12 form-group">
+                          <label for="perfil" class="control-label">Perfiles :</label>
+                          <select  name="perfil" id="perfil" class="form-control">
+                              @foreach($perfiles  as $key => $perfil)
+                                  <option value="{{$key}}">{{strtoupper($perfil)}}</option>
+
+                              @endforeach
+                          </select>
+                      </div>
 
                         <div class="row">
                             <div class="col-md-12 form-group">
@@ -36,7 +45,7 @@
                         </div>
                       
     
-            </div>
+
             <div class="modal-footer">
                     <div class="row">
                             <div class="col-md-12 text-right">
@@ -46,6 +55,7 @@
                 </div>
              </div>
                      </form>
+            </div>
         </div>
     </div>
 </div>
