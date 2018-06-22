@@ -42,8 +42,22 @@ width: 90% !important;
                                                 <label for="inputEmail3" class="col-sm-4 control-label">Tipo de Licencia</label>
                                                 <div class="col-sm-8">
                                                   <select class="form-control" name="licencia">
-                                                      <option value="a2b">A2B</option>
-                                                      <option value="a3b">A3B</option>
+                                                    @isset($cita->ApneaSuenio->licencia)
+                                                        <option value="1"  @if($cita->ApneaSuenio->licencia == "1") selected @else  @endif >Categoría I</option>
+                                                        <option value="2a"  @if($cita->ApneaSuenio->licencia == "2a") selected @else  @endif >CATEGORIA II-a</option>
+                                                        <option value="2b"  @if($cita->ApneaSuenio->licencia == "2b") selected @else  @endif >CATEGORIA II-b</option>
+                                                        <option value="3b"  @if($cita->ApneaSuenio->licencia == "3b") selected @else  @endif >CATEGORIA III-a</option>
+                                                        <option value="3a"  @if($cita->ApneaSuenio->licencia == "3a") selected @else  @endif >CATEGORIA III-b</option>
+                                                        <option value="3c"  @if($cita->ApneaSuenio->licencia == "3c") selected @else  @endif >CATEGORIA III-c</option>
+
+                                                  @else
+                                                    <option value="1">Categoría I</option>
+                                                    <option value="2a">CATEGORIA II-a</option>
+                                                    <option value="2b">CATEGORIA II-b</option>
+                                                    <option value="3a">CATEGORIA III-a</option>
+                                                    <option value="3b">CATEGORIA III-b</option>
+                                                    <option value="3c">CATEGORIA III-c</option>
+                                                  @endisset
                                                   </select>
                                                 </div>
                                               </div>
@@ -670,28 +684,28 @@ width: 90% !important;
                                   <label class="radio-inline" >
                                 <img src="{{asset('img/apnea_1.png')}}" alt=""  style="cursor:pointer;">
                                 <br>
-                                  <input type="radio" name="optradio" id="grado_uno" value="1"> GRADO I
+                                  <input type="radio" name="grado" id="grado_uno" value="1" @isset($cita->ApneaSuenio->grado) @if($cita->ApneaSuenio->grado=='1') checked @endif @endisset> GRADO I
                                 </label>
                             </div>
                             <div class="col-md-2 text-center">
                               <label class="radio-inline ">
                                 <img src="{{asset('img/apnea_2.png')}}" alt="" style="cursor:pointer;">
                                 <br>
-                                  <input type="radio" name="optradio" id="grado_dos" value="2"> GRADO II
+                                  <input type="radio" name="grado" id="grado_dos" value="2" @isset($cita->ApneaSuenio->grado) @if($cita->ApneaSuenio->grado=='2') checked @endif @endisset> GRADO II
                                 </label>
                             </div>
                             <div class="col-md-2 text-center">
                                 <label class="radio-inline">
                                 <img src="{{asset('img/apnea_3.png')}}" alt="" style="cursor:pointer;">
                                 <br>
-                                  <input type="radio" name="optradio" id="grado_tres" value="3"> GRADO III
+                                  <input type="radio" name="grado" id="grado_tres" value="3" @isset($cita->ApneaSuenio->grado) @if($cita->ApneaSuenio->grado=='3') checked @endif @endisset> GRADO III
                                 </label>
                             </div>
                             <div class="col-md-2 text-center">
                                   <label class="radio-inline">
                                   <img src="{{asset('img/apnea_4.png')}}" alt="" style="cursor:pointer;">
                                   <br>
-                                    <input type="radio" name="optradio" id="grado_cuatro" value="4">GRADO IV
+                                    <input type="radio" name="grado" id="grado_cuatro" value="4" @isset($cita->ApneaSuenio->grado) @if($cita->ApneaSuenio->grado=='4') checked @endif @endisset>GRADO IV
                                   </label>
                             </div>
                             <div class="col-md-2">

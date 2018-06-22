@@ -9,12 +9,12 @@
         <tbody>
         @foreach($usuarios as $usuario)
             <tr>
-                <td>{{$usuario->name}}</td> 
+                <td>{{$usuario->name}}</td>
                 {{--<td>{{$usuario->cargo->descripcion}}</td>  --}}
                 <td>{{$usuario->personal->apellidos.", ".$usuario->personal->nombres}}</td>
                  <td>
                      @if($usuario->name != "Admin")
-                         <a href="{{route('usuario.permisos',[$usuario->id])}}" class="btn btn-xs btn-info cita"  id="{{$usuario->id}}"><span class="glyphicon glyphicon-lock"></span> PERMISOS</a>
+                         {{-- <a href="{{route('usuario.permisos',[$usuario->id])}}" class="btn btn-xs btn-info cita"  id="{{$usuario->id}}"><span class="glyphicon glyphicon-lock"></span> PERMISOS</a> --}}
                          <button class="btn btn-xs btn-warning edit"  value="{{$usuario->id}}"><span class="glyphicon glyphicon-pencil"></span> EDITAR</button>
                          {{csrf_field()}}
                          {{--<a href="{{route('lote.reporte',$tipoinstruccion->id)}}" target="_blank" class="btn btn-xs btn-info "><span class="glyphicon glyphicon-print"></span> IMP.</a>--}}

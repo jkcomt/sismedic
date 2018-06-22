@@ -2,7 +2,7 @@ $(document).ready(function() {
 
 });
 
-$('a').on('click',function(e){
+$('.sidebar a').on('click',function(e){
     e.preventDefault();
 
     var datos = $(this).attr('href');

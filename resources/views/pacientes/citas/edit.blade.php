@@ -122,9 +122,9 @@
                             </div>
                         </div>
 
-                        <div class="row" >
+                        <div class="row" style="margin-top:20px;">
 
-                          <div class="col-md-4" style="padding:1%;">
+                          <div class="col-md-4 form-group">
                             <div class="checkbox">
                             <label>
                               <input type="checkbox" value="" id="chk_perfils">
@@ -133,19 +133,25 @@
                           </div>
                           </div>
 
-                          <div class="col-md-6 form-horizontal" >
-
-                            <div class="form-group" style="padding-top:2.4%;">
-                              <label for="inputEmail3" class="col-sm-4 control-label" style="margin-left:-4%;" id="lbl_lista_examen">Lista Exmamen :</label>
-                              <div class="col-sm-8"  id="listaExamenGroup">
-                                  @include('pacientes.citas.listaexamenes')
+                          <div class="col-md-6 form-inline" >
+                            {{-- <div class="form-group" style="padding-top:2.4%;"> --}}
+                              {{-- <label for="inputEmail3" class="col-sm-4 control-label" style="margin-left:-4%;" id="lbl_lista_examen">Lista Examen :</label> --}}
+                              <div class="form-group">
+                                <label for="inputEmail3" class="control-label" id="lbl_lista_examen" style="margin-right:20px;">Lista Examen :</label>
+                                </div>
+                              {{-- <div class="col-sm-8"  id="listaExamenGroup"> --}}
+                              <div class="form-group">
+                                <div id="listaExamenGroup">
+                                    @include('pacientes.citas.listaexamenes')
+                                </div>
                               </div>
-                            </div>
+                              <button type="button" class="btn btn-sm btn-success" id="add_examen_perfil"><span><i class="fa fa-plus" aria-hidden="true"></i></span></button>
+
 
                           </div>
-                          <div class="col-md-1" style="padding-top:1.2%;">
+                          {{-- <div class="col-md-1" style="padding-top:1.2%;">
                             <button type="button" class="btn btn-sm btn-success" id="add_examen_perfil"><span><i class="fa fa-plus" aria-hidden="true"></i></span></button>
-                          </div>
+                          </div> --}}
 
 
                         </div>

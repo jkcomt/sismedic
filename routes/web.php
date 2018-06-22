@@ -748,5 +748,8 @@ Route::group(["prefix"=>"uso_respiradores"],function(){
 Route::group(["prefix"=>"roles"],function(){
     Route::get('/','RolesController@index')->name('roles.index');
     Route::get('/crear','RolesController@create')->name('roles.create');
+    Route::get('/permisos/{id}','RolesController@permisos')->name('roles.permisos');
+    Route::post('/actualizar_permisos','RolesController@permisosUpdate')->name('roles.updatepermisos');
     Route::post('/','RolesController@store')->name('roles.store');
+    Route::post('/delete','RolesController@destroy')->name('roles.delete');
 });

@@ -228,6 +228,7 @@ class EvaluacionMedicaController extends Controller
 
     public function anexo16($id)
     {
+     set_time_limit(120);
       $cita=Cita::find($id);
       $view=View::make('evaluacionmedica.reportes.anexo16',compact('cita'));
       $pdf = \App::make('dompdf.wrapper');

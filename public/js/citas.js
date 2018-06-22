@@ -175,7 +175,16 @@ $('#registrarCita').submit(function(e){
         $('#modal-confirmacion').modal('hide');
         $.each(data.responseJSON.errors, function( index, value ) {
             console.log(value);
-            $('#listaerrores').append('<li>'+value+'</li>')
+          $('#listaerrores').append('<li>'+value+'</li>')
+          if(data.responseJSON.errors.paciente)
+         {
+            $('.select2-selection').addClass('has-error')
+            $('#pacienteGroup').addClass('has-error')
+             $('body #pacienteGroup').focus();//aqui pepe el selecte se llama paciente
+             $(window).scrollTop(0);
+             //$('body #pacienteGroup').select();
+        //   myFunc(data.responseJSON.errors);
+           }
         });
         return;
     });

@@ -47,7 +47,7 @@
             <div class="form-group">
             <!--a href="{{--route('tipoinstruccion.create')--}}" class="btn btn-success">NUEVA INSTRUCCION</a-->
                 {{-- <a href="{{route('configuracion.index')}}" class="btn btn-warning">VOLVER</a> --}}
-                <button class="btn btn-success new"> NUEVO ROL</button>
+                <a class="btn btn-success new" href="{{route('roles.create')}}"> NUEVO ROL</a>
 
 
             </div>
@@ -65,5 +65,5 @@
     </div>
 @endsection
 @section('script')
-    {{--<script src="{{asset('js/usuario.js')}}"></script>--}}
+    <script src="{{asset('js/roles.js')}}"></script>
 @endsection

@@ -37,10 +37,10 @@
 
           }
           .tdcabeza{
-            border:0.45px solid gray;background:rgba(0,0,0,0.2);font-size:xx-small;padding: 2px;
+            border:0.45px solid gray;background:rgba(0,0,0,0.2);font-size:x-small;padding: 2px;
           }
           .tdcuerpo{
-              font-size:7px;border:0.45px solid rgba(0,0,0,0.65);padding: 2px;
+              font-size:8.5px;border:0.45px solid rgba(0,0,0,0.65);padding: 2px;
           }
 
     </style>
@@ -56,7 +56,7 @@
                  <td  WIDTH="60%" align="center" ROWSPAN=3 >
                     <h5 style="font-family: Verdana, Geneva, sans-serif;">CENTRO MEDICO “EL SAUCO” DEPARTAMENTO DE SALUD OCUPACIONAL  SERVICIO DE LABORATORIO CLÍNICO</h5>
                  </td >
-                 <td WIDTH="20%" style="font-size:xx-small;">
+                 <td WIDTH="20%" style="font-size:x-small;">
                     <div class="" style="display:inline-block;WIDTH:70%;">
                          PRE-OCUPACIONAL
                     </div>
@@ -66,7 +66,7 @@
                 </td>
             </tr>
             <tr>
-              <td WIDTH="20%" style="font-size:xx-small;">
+              <td WIDTH="20%" style="font-size:x-small;">
                  <div class="" style="display:inline-block;WIDTH:70%;">
                       ANUAL
                  </div>
@@ -76,7 +76,7 @@
              </td>
             </tr>
             <tr>
-              <td WIDTH="20%" style="font-size:xx-small;">
+              <td WIDTH="20%" style="font-size:x-small;">
                  <div class="" style="display:inline-block;WIDTH:70%;">
                     RETIRO
                  </div>
@@ -92,39 +92,39 @@
         <table WIDTH="100%" >
             <tr>
                  <td  colspan="2" style="background:rgba(0,0,0,0.2);border:1px solid gray">
-                    <strong style="font-size:xx-small;">&nbsp; EXAMENES AUXILIARES</strong>
+                    <strong style="font-size:x-small;">&nbsp; EXAMENES AUXILIARES</strong>
                  </td >
             </tr>
             <tr>
               <td align="left" WIDTH="25%" style="border:1px solid gray">
-               <strong style="font-size:xx-small;"> &nbsp; &nbsp;EMPRESA: </strong>
+               <strong style="font-size:x-small;"> &nbsp; &nbsp;EMPRESA: </strong>
               </td>
               <td WIDTH="75%" style="border:1px solid gray" >
              </td>
             </tr>
             <tr>
-              <td  align="left" WIDTH="25%" style="border:1px solid gray" ><strong style="font-size:xx-small;">&nbsp; PACIENTE</strong> </td>
-                <td  WIDTH="75%" style="border:1px solid gray;font-size:xx-small;">{{ $cita->paciente->nombres." ".$cita->paciente->apellido_paterno." ".$cita->paciente->apellido_materno}}</td>
+              <td  align="left" WIDTH="25%" style="border:1px solid gray" ><strong style="font-size:x-small;">&nbsp; PACIENTE</strong> </td>
+                <td  WIDTH="75%" style="border:1px solid gray;font-size:x-small;">{{ $cita->paciente->nombres." ".$cita->paciente->apellido_paterno." ".$cita->paciente->apellido_materno}}</td>
             </tr>
         </table>
         <table WIDTH="100%">
             <tr>
                  <td  WIDTH="15%" align="center" style="border:0.45px solid rgba(0,0,0,0.65);">
-                  <strong style="font-size:xx-small;"> FECHA </strong>
+                  <strong style="font-size:x-small;"> FECHA </strong>
                  </td>
-                 <td  WIDTH="15%" align="left" style="font-size:xx-small;border:0.45px solid rgba(0,0,0,0.65);">
+                 <td  WIDTH="15%" align="left" style="font-size:x-small;border:0.45px solid rgba(0,0,0,0.65);">
                     &nbsp; {{$cita->fecha_examen}}
                  </td >
                  <td  WIDTH="15%" align="center" style="border:0.45px solid rgba(0,0,0,0.65);">
-                  <strong style="font-size:xx-small;"> EDAD </strong>
+                  <strong style="font-size:x-small;"> EDAD </strong>
                  </td>
-                 <td  WIDTH="15%" align="left" style="font-size:xx-small;border:0.45px solid rgba(0,0,0,0.65);">
+                 <td  WIDTH="15%" align="left" style="font-size:x-small;border:0.45px solid rgba(0,0,0,0.65);">
                    &nbsp;{{Carbon\Carbon::parse($cita->paciente->fecha_nacimiento)->age.' años'}}
                  </td >
                  <td  WIDTH="15%" align="center" style="border:0.45px solid rgba(0,0,0,0.65);">
-                  <strong style="font-size:xx-small;"> SEXO </strong>
+                  <strong style="font-size:x-small;"> SEXO </strong>
                  </td>
-                 <td  WIDTH="15%" align="left" style="font-size:xx-small;border:0.45px solid rgba(0,0,0,0.65);">
+                 <td  WIDTH="15%" align="left" style="font-size:x-small;border:0.45px solid rgba(0,0,0,0.65);">
                    &nbsp;{{$cita->paciente->sexo}}
                  </td >
 
@@ -136,20 +136,20 @@
 
         <table WIDTH="100%" >
             <tr>
-                 <td  WIDTH="16%" align="center" style="font-size:xx-small;">
+                 <td  WIDTH="16%" align="center" style="font-size:x-small;">
                    EXAMEN
                  </td>
-                 <td  WIDTH="16%"  align="center" style="font-size:xx-small;">
+                 <td  WIDTH="16%"  align="center" style="font-size:x-small;">
                       RESULTADOS
                  </td >
-                 <td  WIDTH="28%" align="center" style="font-size:xx-small;">
+                 <td  WIDTH="28%" align="center" style="font-size:x-small;">
                    VALORES NORMALES
                  </td>
 
-                 <td  WIDTH="20%"  align="center" style="font-size:xx-small;">
+                 <td  WIDTH="20%"  align="center" style="font-size:x-small;">
                       EXAMEN
                  </td >
-                 <td  WIDTH="20%" align="center" style="font-size:xx-small;">
+                 <td  WIDTH="20%" align="center" style="font-size:x-small;">
                  RESULTADOS
                  </td>
                  <td  WIDTH="0%">
@@ -161,16 +161,16 @@
             </tr>
             <tr>
               <td  width="20%" align="left" style="font-size:7px;border:0.45px solid rgba(0,0,0,0.45);">HEMOGLOBINA</td>
-              <td width="5%" style="border:0.45px solid rgba(0,0,0,0.45);" >@isset($cita->hemograma->hemoglobina) {{$cita->hemograma->hemoglobina}} @endisset</td>
-              <td align="center" style="font-size:xx-small;border:0.45px solid rgba(0,0,0,0.45);"> g/dl H: 14–18 M:12–16</td>
+              <td width="5%" style="border:0.45px solid rgba(0,0,0,0.45);font-size:8.5px;" >@isset($cita->hemograma->hemoglobina) {{$cita->hemograma->hemoglobina}} @endisset</td>
+              <td align="center" style="font-size:x-small;border:0.45px solid rgba(0,0,0,0.45);"> g/dl H: 14–18 M:12–16</td>
               <td colspan="3" class="tdcabeza"> EXAMEN MACROSCÓPICO</td>
             </tr>
             <tr  class="tdcuerpo">
                  <td width="20%" align="left" style="font-size:7px;border:0.45px solid rgba(0,0,0,0.45);padding:2px;">HEMATOCRITO</td>
                  <td width="10%" style="border:0.45px solid rgba(0,0,0,0.45);"  >@isset($cita->hemograma->hematocrito) {{$cita->hemograma->hematocrito}}@endisset</td>
-                 <td align="center" style="font-size:xx-small;border:0.45px solid rgba(0,0,0,0.45);">%  H: 44 – 56 M: 38 – 50 </td>
+                 <td align="center" style="font-size:x-small;border:0.45px solid rgba(0,0,0,0.45);">%  H: 44 – 56 M: 38 – 50 </td>
                  <td width="20%" align="left" style="font-size:7px;padding: 2px;border:0.45px solid rgba(0,0,0,0.45);">COLOR</td>
-                 <td colspan="2" colspan="2" style="font-size:xx-small;border:0.45px solid rgba(0,0,0,0.45);" >@isset($cita->orinas->color) {{$cita->orinas->color}} @endisset</td>
+                 <td colspan="2" colspan="2" style="font-size:x-small;border:0.45px solid rgba(0,0,0,0.45);" >@isset($cita->orinas->color) {{$cita->orinas->color}} @endisset</td>
              </tr>
              <tr  class="tdcuerpo">
                <td colspan="3" align="left" class="tdcabeza">RECUENTO CELULAR</td>
@@ -234,14 +234,14 @@
              </tr>
              <tr class="tdcuerpo">
                <td width="20%" align="left" class="tdcuerpo"><strong>V.S.G</strong> </td>
-               <td width="20%" class="tdcuerpo" ></td>
+               <td width="20%" class="tdcuerpo" >@isset($cita->hemograma->vsg) {{$cita->hemograma->vsg}} @endisset</td>
                <td align="center"class="tdcuerpo">mm/hora H: 0–10 M: 0–20 </td>
                <td width="20%" align="left" class="tdcuerpo">NITRITOS</td>
                <td colspan="2" class="tdcuerpo" >@isset($cita->orinas->nitritos) {{$cita->orinas->nitritos}} @endisset</td>
              </tr>
              <tr class="tdcuerpo">
                <td width="20%" align="left" class="tdcuerpo"> <strong>GPO. SANGUINEO</strong>  </td>
-               <td width="20%" class="tdcuerpo" ></td>
+               <td width="20%" class="tdcuerpo" >@isset($cita->hemograma->gpo_sanguineo) {{$cita->hemograma->gpo_sanguineo}} @endisset</td>
                <td align="center"class="tdcuerpo"> </td>
                <td width="20%" align="left" class="tdcuerpo">HEMOGLOBINA</td>
                <td colspan="2" class="tdcuerpo" >@isset($cita->orinas->hemoglobina) {{$cita->orinas->hemoglobina}} @endisset</td>
@@ -249,7 +249,7 @@
 
              <tr class="tdcuerpo">
                <td width="20%" align="left" class="tdcuerpo"> <strong>FACTOR RH</strong>  </td>
-               <td width="20%" class="tdcuerpo" ></td>
+               <td width="20%" class="tdcuerpo" >@isset($cita->hemograma->factor_rh) {{$cita->hemograma->factor_rh}} @endisset</td>
                <td align="center"class="tdcuerpo"></td>
                <td width="20%" align="left" class="tdcuerpo">SANGRE</td>
                <td colspan="2"  class="tdcuerpo" >@isset($cita->orinas->sangre){{$cita->orinas->sangre}}  @endisset</td>
@@ -260,49 +260,49 @@
              </tr>
              <tr class="tdcuerpo">
                <td width="20%" align="left" class="tdcuerpo"> <strong>GLUCOSA</strong>  </td>
-               <td width="20%" class="tdcuerpo" ></td>
+               <td width="20%" class="tdcuerpo" > @isset($cita->glucosa->glucosa){{$cita->glucosa->glucosa}}  @endisset</td>
                <td align="center"class="tdcuerpo">mg/dl 74 – 106</td>
                <td width="20%" align="left" class="tdcuerpo">LEUCOCITOS</td>
                <td colspan="2"  class="tdcuerpo" >@isset($cita->orinas->leucocitos)  {{$cita->orinas->leucocitos}} @endisset</td>
              </tr>
              <tr class="tdcuerpo">
                <td width="20%" align="left" class="tdcuerpo"> <strong>CREATININA</strong>  </td>
-               <td width="20%" class="tdcuerpo" ></td>
+               <td width="20%" class="tdcuerpo" >@isset($cita->creatinina->creatinina)  {{$cita->creatinina->creatinina}} @endisset</td>
                <td align="center"class="tdcuerpo">mg/dl H: 0.7–1.3 M: 0.6–1.1</td>
                <td width="20%" align="left" class="tdcuerpo">HEMATÍES</td>
                <td colspan="2"  class="tdcuerpo" >@isset($cita->orinas->hematies)  {{$cita->orinas->hematies}} @endisset</td>
              </tr>
              <tr class="tdcuerpo">
                <td width="20%" align="left" class="tdcuerpo"> <strong>ACIDO ÚRICO</strong>  </td>
-               <td width="20%" class="tdcuerpo" ></td>
+               <td width="20%" class="tdcuerpo" >@isset($cita->acidoUrico->acido_urico)  {{$cita->acidoUrico->acido_urico}} @endisset</td>
                <td align="center"class="tdcuerpo">mg/dl H: 3.5–7.2 M: 2.6–6.0</td>
                <td width="20%" align="left" class="tdcuerpo">CÉLULAS EPITELIALES</td>
                <td colspan="2"  class="tdcuerpo" >@isset($cita->orinas->celulas_epiteliales) {{$cita->orinas->celulas_epiteliales}}  @endisset</td>
              </tr>
              <tr class="tdcuerpo">
                <td width="20%" align="left" class="tdcuerpo"> <strong>COL. TOTAL</strong>  </td>
-               <td width="20%" class="tdcuerpo" ></td>
+               <td width="20%" class="tdcuerpo" >@isset($cita->colesterolTotal->colesterol_total) {{$cita->colesterolTotal->colesterol_total}}  @endisset</td>
                <td align="center"class="tdcuerpo">mg/dl &lt; 200 </td>
                <td width="20%" align="left" class="tdcuerpo">CILINDROS</td>
                <td colspan="2"  class="tdcuerpo" >@isset($cita->orinas->cilindros) {{$cita->orinas->cilindros}} @endisset</td>
              </tr>
              <tr class="tdcuerpo">
                <td width="20%" align="left" class="tdcuerpo"> <strong>TRIGLICÉRIDOS</strong>  </td>
-               <td width="20%" class="tdcuerpo" ></td>
+               <td width="20%" class="tdcuerpo" >@isset($cita->triglicerido->triglicerido) {{$cita->triglicerido->triglicerido}}  @endisset</td>
                <td align="center"class="tdcuerpo">mg/dl &lt; = 150 </td>
                <td width="20%" align="left" class="tdcuerpo">CRISTALES</td>
                <td colspan="2"  class="tdcuerpo" >@isset($cita->orinas->cristales) {{$cita->orinas->cristales}} @endisset</td>
              </tr>
              <tr class="tdcuerpo">
                <td width="20%" align="left" class="tdcuerpo"> <strong>HDL COLESTEROL</strong>  </td>
-               <td width="20%" class="tdcuerpo" ></td>
+               <td width="20%" class="tdcuerpo" >@isset($cita->colesterolHdl->colesterol_hdl) {{$cita->colesterolHdl->colesterol_hdl}} @endisset</td>
                <td align="center"class="tdcuerpo">mg/dl 40 – 60 </td>
                <td width="20%" align="left" class="tdcuerpo">GÉRMENES</td>
                <td colspan="2"  class="tdcuerpo" >@isset($cita->orinas->germenes) {{$cita->orinas->germenes}}  @endisset </td>
              </tr>
              <tr class="tdcuerpo">
                <td width="20%" align="left" class="tdcuerpo"> <strong>LDL COLESTEROL</strong>  </td>
-               <td width="20%" class="tdcuerpo" ></td>
+               <td width="20%" class="tdcuerpo" >@isset($cita->colesterolLdl->colesterol_ldl) {{$cita->colesterolLdl->colesterol_ldl}} @endisset</td>
                <td align="center"class="tdcuerpo">mg/dl &lt;  130 </td>
                <td width="20%" align="left" class="tdcuerpo">FILAMENTOS MUCOIDES</td>
                <td colspan="2"  class="tdcuerpo" >@isset($cita->orinas->filamentos_mucoides) {{$cita->orinas->filamentos_mucoides}} @endisset</td>
@@ -317,7 +317,7 @@
              </tr>
              <tr class="tdcuerpo">
                <td width="20%" align="left" class="tdcuerpo"> <strong>GGT</strong>  </td>
-               <td width="20%" class="tdcuerpo" ></td>
+               <td width="20%" class="tdcuerpo" >@isset($cita->gamma->ggt) {{$cita->gamma->ggt}} @endisset</td>
                <td align="center"class="tdcuerpo"> U/l </td>
                <td colspan="3"align="left" class="tdcuerpo"></td>
              </tr>
@@ -327,22 +327,22 @@
              </tr>
              <tr>
                <td width="20%" align="left" class="tdcuerpo"><strong> SÍFILISS </strong> </td>
-               <td width="20%" class="tdcuerpo" ></td>
+               <td width="20%" class="tdcuerpo" >@isset($cita->sifilis->resultado) {{$cita->sifilis->resultado}} @endisset</td>
                <td align="center"class="tdcuerpo"></td>
                <td width="20%" align="left" class="tdcuerpo">DOSAJE DE COCAINAS</td>
-               <td colspan="2"  class="tdcuerpo" ></td>
+               <td colspan="2"  class="tdcuerpo" >@isset($cita->orinas->dosaje_cocaina) {{$cita->orinas->dosaje_cocaina}} @endisset</td>
              </tr>
 
              <tr>
                <td width="20%" align="left" class="tdcuerpo"><strong>PSA</strong> </td>
-               <td width="20%" class="tdcuerpo" ></td>
+               <td width="20%" class="tdcuerpo" >@isset($cita->psa->psa_descripcion) {{$cita->psa->psa_descripcion}} @endisset</td>
                <td align="center"class="tdcuerpo"></td>
                <td width="20%" align="left" class="tdcuerpo">DOSAJE DE MARIHUANA</td>
-               <td colspan="2"  class="tdcuerpo" ></td>
+               <td colspan="2"  class="tdcuerpo" >@isset($cita->orinas->dosaje_marihuana) {{$cita->orinas->dosaje_marihuana}} @endisset</td>
              </tr>
              <tr>
                <td width="20%" align="left" class="tdcuerpo"><strong>THEVENON</strong> </td>
-               <td width="20%" class="tdcuerpo" ></td>
+               <td width="20%" class="tdcuerpo" >@isset($cita->thevenon->thevenon_descripcion) {{$cita->thevenon->thevenon_descripcion}} @endisset</td>
                <td align="center"class="tdcuerpo"></td>
                <td colspan="3" align="left" class="tdcuerpo"></td>
              </tr>
@@ -352,7 +352,7 @@
              </tr>
              <tr>
                <td width="20%" align="left" class="tdcuerpo"><strong>BILIRRUBINA TOTAL</strong> </td>
-               <td width="20%" class="tdcuerpo" ></td>
+               <td width="20%" class="tdcuerpo" >@isset($cita->perfilhepatico->bilirrubina_total) {{$cita->perfilhepatico->bilirrubina_total}} @endisset</td>
                <td align="center"class="tdcuerpo">mg/dl &lt;= 1.0</td>
 
                <td colspan="3" ></td>
@@ -360,21 +360,21 @@
 
              <tr>
                <td width="20%" align="left" class="tdcuerpo"><strong>BILIRRUBINA DTA.</strong> </td>
-               <td width="20%" class="tdcuerpo" ></td>
+               <td width="20%" class="tdcuerpo" >@isset($cita->perfilhepatico->bilirrubina_dta) {{$cita->perfilhepatico->bilirrubina_dta}} @endisset</td>
                <td align="center"class="tdcuerpo">mg/dl &lt;= 1.0</td>
 
                <td colspan="3" ></td>
              </tr>
              <tr>
                <td width="20%" align="left" class="tdcuerpo"><strong>BILIRRUBINA IDTA.</strong> </td>
-               <td width="20%" class="tdcuerpo" ></td>
+               <td width="20%" class="tdcuerpo" >@isset($cita->perfilhepatico->bilirrubina_idta) {{$cita->perfilhepatico->bilirrubina_idta}} @endisset</td>
                <td align="center"class="tdcuerpo">mg/dl &lt;= 1.0</td>
 
                <td colspan="3" ></td>
              </tr>
              <tr>
                <td width="20%" align="left" class="tdcuerpo"><strong>FOSFATASA ALC.</strong> </td>
-               <td width="20%" class="tdcuerpo" ></td>
+               <td width="20%" class="tdcuerpo" >@isset($cita->perfilhepatico->fosfatosa_alc) {{$cita->perfilhepatico->fosfatosa_alc}} @endisset</td>
                <td align="center"class="tdcuerpo">mg/dl &lt;= 1.0</td>
 
                <td colspan="3" ></td>
@@ -382,7 +382,7 @@
 
              <tr>
                <td width="20%" align="left" class="tdcuerpo"><strong>TGO.</strong> </td>
-               <td width="20%" class="tdcuerpo" ></td>
+               <td width="20%" class="tdcuerpo" >@isset($cita->perfilhepatico->tgo) {{$cita->perfilhepatico->tgo}} @endisset</td>
                <td align="center"class="tdcuerpo">mg/dl &lt;= 1.0</td>
 
                <td colspan="3" ></td>
@@ -390,21 +390,21 @@
 
              <tr>
                <td width="20%" align="left" class="tdcuerpo"><strong>TGP.</strong> </td>
-               <td width="20%" class="tdcuerpo" ></td>
+               <td width="20%" class="tdcuerpo" >@isset($cita->perfilhepatico->tgp) {{$cita->perfilhepatico->tgp}} @endisset</td>
                <td align="center"class="tdcuerpo">mg/dl &lt;= 1.0</td>
 
                <td colspan="3" ></td>
              </tr>
              <tr>
                <td width="20%" align="left" class="tdcuerpo"><strong>PROTEINAS TOT.</strong> </td>
-               <td width="20%" class="tdcuerpo" ></td>
+               <td width="20%" class="tdcuerpo" >@isset($cita->perfilhepatico->proteinas_totales) {{$cita->perfilhepatico->proteinas_totales}} @endisset</td>
                <td align="center"class="tdcuerpo">mg/dl &lt;= 1.0</td>
 
                <td colspan="3" ></td>
              </tr>
              <tr>
                <td width="20%" align="left" class="tdcuerpo"><strong>ALBUMINA.</strong> </td>
-               <td width="20%" class="tdcuerpo" ></td>
+               <td width="20%" class="tdcuerpo" >@isset($cita->perfilhepatico->albumina) {{$cita->perfilhepatico->albumina}} @endisset</td>
                <td align="center"class="tdcuerpo">mg/dl &lt;= 1.0</td>
 
                <td colspan="3" ></td>

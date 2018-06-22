@@ -8,7 +8,7 @@ $('#actualizarPermisos').submit(function(e){
     e.preventDefault();
 
     var datos = $('#actualizarPermisos');
-    var url = datos.attr('action');
+    var url = $(this).attr('action');
 
     $items.length = 0;
     if($items.length <= 0){
@@ -56,6 +56,7 @@ $('.actualizarPermisos').on('click',function (e) {
     //
     // var id = $(this).attr('id')
     // $('.confirmar').attr('id',id)
+    $('#modal-confirmacion .modal-body').html('<h3 class="text-warning text-center">¿Desea actualizar permisos?</h3>')
     $('#modal-confirmacion').modal({
         show:true,
         keyboard:false

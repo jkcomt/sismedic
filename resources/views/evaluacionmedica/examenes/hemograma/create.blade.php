@@ -141,11 +141,19 @@
                   <div class="input-group">
                    {{-- <input type="text" class="form-control" name="basofilos" @isset($cita->hemograma->gpo_sanguineo) value="{{$cita->hemograma->gpo_sanguineo}}"  @endisset> --}}
                    <select class="form-control" name="gpo_sanguineo">
-                      <option value="O">O</option>
-                      <option value="A">A</option>
-                      <option value="AB">AB</option>
-                      <option value="rhn">Rh(-)</option>
-                      <option value="rhp">Rh(+)</option>
+                     @isset($cita->hemograma->gpo_sanguineo)
+                       <option value="O"  @if($cita->hemograma->gpo_sanguineo == "O") selected @else  @endif >O</option>
+                       <option value="A"  @if($cita->hemograma->gpo_sanguineo == "A") selected @else  @endif >A</option>
+                       <option value="AB"  @if($cita->hemograma->gpo_sanguineo == "AB") selected @else  @endif >AB</option>
+                       <option value="rhn"  @if($cita->hemograma->gpo_sanguineo == "rhn") selected @else  @endif >Rh(-)</option>
+                       <option value="rhp"  @if($cita->hemograma->gpo_sanguineo == "rhp") selected @else  @endif >Rh(+)</option>
+                   @else
+                     <option value="O">O</option>
+                     <option value="A">A</option>
+                     <option value="AB">AB</option>
+                     <option value="rhn">Rh(-)</option>
+                     <option value="rhp">Rh(+)</option>
+                   @endisset
                    </select>
                    {{-- <div class="input-group-addon"></div> --}}
                  </div>

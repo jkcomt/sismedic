@@ -88,12 +88,14 @@ class PerfilExamenController extends Controller
                 'listaexamen.required'=>'El campo examen es obligatorio',
             ]);
 
-            PerfilExamen::create([
+            $perfilExamenNuevo = PerfilExamen::create([
                 'perfil_id'=>$data['perfil_id'],
                 'lista_examen_id'=>$data['listaexamen'],
                 'estado'=>true
             ]);
-            return response()->json(['mensaje'=>"Registro Exitoso"]);
+
+            $listaExamen = ListaExamen::find($perfilExamenNuevo->lista_examen_id);
+            return response()->json(['mensaje'=>"Registro Exitoso",'listaExamen'=>$listaExamen,'perfilExamen'=>$perfilExamenNuevo]);
         }
 
     }

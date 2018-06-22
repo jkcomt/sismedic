@@ -70,8 +70,14 @@
                                <td><strong>Test Ishihara (colores) </strong> </td>
                                <td colspan="2">
                                  <select class="form-control" name="test_ishihara_colores">
+
+                                     @isset($cita->vision->test_ishihara_colores)
+                                       <option value="normal"  @if($cita->vision->test_ishihara_colores == "normal") selected @else  @endif >Normal</option>
+                                       <option value="alterado"  @if($cita->vision->test_ishihara_colores == "alterado") selected @else  @endif >Alterado</option>
+                                   @else
                                      <option selected value="normal">Normal</option>
                                      <option value="alterado">Alterado</option>
+                                   @endisset
                                  </select>
                                </td>
                              </tr>
@@ -80,8 +86,13 @@
                                <td><strong>Discriminacion de Colores </strong> </td>
                                <td colspan="2">
                                  <select class="form-control" name="discriminacion_colores">
+                                   @isset($cita->vision->discriminacion_colores)
+                                     <option value="normal"  @if($cita->vision->discriminacion_colores == "normal") selected @else  @endif >Normal</option>
+                                     <option value="alterado"  @if($cita->vision->discriminacion_colores == "alterado") selected @else  @endif >Alterado</option>
+                                 @else
                                    <option selected value="normal">Normal</option>
                                    <option value="alterado">Alterado</option>
+                                 @endisset
                                  </select>
                                </td>
                              </tr>
@@ -89,8 +100,13 @@
                                <td><strong>Vision de Profundidad </strong> </td>
                                <td colspan="2">
                                  <select class="form-control" name="vision_profundidad">
+                                   @isset($cita->vision->vision_profundidad)
+                                     <option value="normal"  @if($cita->vision->vision_profundidad == "normal") selected @else  @endif >Normal</option>
+                                     <option value="alterado"  @if($cita->vision->vision_profundidad == "alterado") selected @else  @endif >Alterado</option>
+                                 @else
                                    <option selected value="normal">Normal</option>
                                    <option value="alterado">Alterado</option>
+                                 @endisset
                                  </select>
                                </td>
                              </tr>
@@ -98,8 +114,13 @@
                                <td><strong>Vision Perimetral </strong> </td>
                                <td colspan="2">
                                  <select class="form-control" name="vision_perimetral">
+                                   @isset($cita->vision->vision_perimetral)
+                                     <option value="normal"  @if($cita->vision->vision_perimetral == "normal") selected @else  @endif >Normal</option>
+                                     <option value="alterado"  @if($cita->vision->vision_perimetral == "alterado") selected @else  @endif >Alterado</option>
+                                 @else
                                    <option selected value="normal">Normal</option>
                                    <option value="alterado">Alterado</option>
+                                        @endisset
                                  </select>
                                </td>
                              </tr>
@@ -107,8 +128,13 @@
                                <td><strong>Foria Vertical </strong> </td>
                                <td colspan="2">
                                  <select class="form-control" name="foria_vertical">
+                                   @isset($cita->vision->foria_vertical)
+                                     <option value="normal"  @if($cita->vision->foria_vertical == "normal") selected @else  @endif >Normal</option>
+                                     <option value="alterado"  @if($cita->vision->foria_vertical == "alterado") selected @else  @endif >Alterado</option>
+                                 @else
                                    <option selected value="normal">Normal</option>
                                    <option value="alterado">Alterado</option>
+                                        @endisset
                                  </select>
                                </td>
                              </tr>
@@ -116,8 +142,13 @@
                                <td><strong>Foria Horizontal </strong> </td>
                                <td colspan="2">
                                  <select class="form-control" name="foria_horizontal">
+                                   @isset($cita->vision->foria_horizontal)
+                                     <option value="normal"  @if($cita->vision->foria_horizontal == "normal") selected @else  @endif >Normal</option>
+                                     <option value="alterado"  @if($cita->vision->foria_horizontal == "alterado") selected @else  @endif >Alterado</option>
+                                 @else
                                    <option selected value="normal">Normal</option>
                                    <option value="alterado">Alterado</option>
+                                        @endisset
                                  </select>
                                </td>
                              </tr>
@@ -125,8 +156,13 @@
                                <td><strong>Vision Nocturna </strong> </td>
                                <td colspan="2">
                                  <select class="form-control" name="vision_nocturna">
+                                   @isset($cita->vision->vision_nocturna)
+                                     <option value="normal"  @if($cita->vision->vision_nocturna == "normal") selected @else  @endif >Normal</option>
+                                     <option value="alterado"  @if($cita->vision->vision_nocturna == "alterado") selected @else  @endif >Alterado</option>
+                                 @else
                                    <option selected value="normal">Normal</option>
                                    <option value="alterado">Alterado</option>
+                                        @endisset
                                  </select>
                                </td>
                              </tr>
@@ -134,8 +170,13 @@
                                <td><strong>Vision Encandilada </strong> </td>
                                <td colspan="2">
                                  <select class="form-control" name="vision_encandilada">
+                                   @isset($cita->vision->vision_encandilada)
+                                     <option value="normal"  @if($cita->vision->vision_encandilada == "normal") selected @else  @endif >Normal</option>
+                                     <option value="alterado"  @if($cita->vision->vision_encandilada == "alterado") selected @else  @endif >Alterado</option>
+                                 @else
                                    <option selected value="normal">Normal</option>
                                    <option value="alterado">Alterado</option>
+                                        @endisset
                                  </select>
                                </td>
                              </tr>
@@ -143,8 +184,13 @@
                                <td><strong>Recuperacion de Encadenamiento</strong> </td>
                                <td colspan="2">
                                  <select class="form-control" name="recuperacion_encandilamiento">
+                                   @isset($cita->vision->recuperacion_encandilamiento)
+                                     <option value="normal"  @if($cita->vision->recuperacion_encandilamiento == "normal") selected @else  @endif >Normal</option>
+                                     <option value="alterado"  @if($cita->vision->recuperacion_encandilamiento == "alterado") selected @else  @endif >Alterado</option>
+                                 @else
                                    <option selected value="normal">Normal</option>
                                    <option value="alterado">Alterado</option>
+                                        @endisset
                                  </select>
                                </td>
                              </tr>

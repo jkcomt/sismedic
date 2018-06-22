@@ -34,7 +34,7 @@
                           <td class="" ><input type="checkbox" value="1" id="desordenes_coagulacion" name="desordenes_coagulacion" @isset($cita->anexo7d->desordenes_coagulacion)   @if($cita->anexo7d->desordenes_coagulacion=='1') checked @endif   @endisset ></td>
                         </tr>
                         <tr>
-                          <td class=" "><label for="" style="font-weight:lighter;width:100%;"> Diabetes Mellitus </label></td>
+                          <td class=" "><label for="diabetes_mellitus" style="font-weight:lighter;width:100%;"> Diabetes Mellitus </label></td>
                           <td class="" ><input type="checkbox" value="1" id="diabetes_mellitus" name="diabetes_mellitus" @isset($cita->anexo7d->diabetes_mellitus)   @if($cita->anexo7d->diabetes_mellitus=='1') checked @endif   @endisset ></td>
                         </tr>
                         <tr>
@@ -74,12 +74,12 @@
                           <td class="" ><input type="checkbox" value="1" id="problemas_digestivos" name="problemas_digestivos" @isset($cita->anexo7d->problemas_digestivos)   @if($cita->anexo7d->problemas_digestivos=='1') checked @endif   @endisset ></td>
                         </tr>
                         <tr>
-                          <td class=" "><label for="anemia" style="font-weight:lighter;width:100%;">Apnea del Sueño </label> </td>
-                          <td class="" ><input type="checkbox" value="1" id=" " name="apnea_sueno" @isset($cita->anexo7d->apnea_del_sueno)   @if($cita->anexo7d->apnea_del_sueno=='1') checked @endif   @endisset  ></td>
+                          <td class=" "><label for="apnea_sueno" style="font-weight:lighter;width:100%;">Apnea del Sueño </label> </td>
+                          <td class="" ><input type="checkbox" value="1" id="apnea_sueno" name="apnea_sueno" @isset($cita->anexo7d->apnea_del_sueno)   @if($cita->anexo7d->apnea_del_sueno=='1') checked @endif   @endisset  ></td>
                         </tr>
                         <tr>
-                          <td class=" "><label for="apnea_sueno" style="font-weight:lighter;width:100%;">Otra condición medica importante </label> </td>
-                          <td class="" ><input type="checkbox" value="1" id="apnea_sueno" name="otra_condicion" @isset($cita->anexo7d->otra_condicion)   @if($cita->anexo7d->otra_condicion=='1') checked @endif   @endisset ></td>
+                          <td class=" "><label for="otra_condicion" style="font-weight:lighter;width:100%;">Otra condición medica importante </label> </td>
+                          <td class="" ><input type="checkbox" value="1" id="otra_condicion" name="otra_condicion" @isset($cita->anexo7d->otra_condicion)   @if($cita->anexo7d->otra_condicion=='1') checked @endif   @endisset ></td>
                         </tr>
                         <tr>
                           <td class=" "><label for="alergias" style="font-weight:lighter;width:100%;">Alergias </label></td>

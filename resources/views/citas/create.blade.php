@@ -61,7 +61,20 @@
 @endsection
 {{-----------------------------------------------------------------}}
 @section('content')
+<style media="screen">
+.has-error{
+  border-color: rgb(185, 74, 72) !important;
+}
+.select2-selection{
+  padding-top: 3px !important;
+  padding-bottom: 3px !important;
+  border-radius: 0px !important;
+}
 
+#pacienteGroup:focus{
+  outline: none !important;
+}
+</style>
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12">
             <div id="msg-error" class="alert alert-danger" style="display:none;">
@@ -85,8 +98,9 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="paciente" class="control-label">Paciente : </label>
-                                    <div class="form-group" id="pacienteGroup">
+                                    <div class="form-group" id="pacienteGroup" tabindex='1'>
+                                      <label for="paciente" class="control-label">Paciente : </label>
+                                      {{-- <input type="text"  value=""> --}}
                                         <select name="paciente" id="paciente" class="form-control selectPersonal">
                                             <option value=""></option>
                                             {{-- @isset($pacientes) --}}

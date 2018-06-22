@@ -83,11 +83,11 @@ padding: 1px;
   <table>
     <tr>
       <td class="font-verdana tdcuerpo" align="left" style="border-top:none;" width="30%">Apellidos Y Nombres</td>
-      <td class="font-verdana tdcuerpo" align="left" style="border-top:none;" width="70%"></td>
+      <td class="font-verdana tdcuerpo" align="left" style="border-top:none;" width="70%">  {{$cita->paciente->apellido_paterno." ".$cita->paciente->apellido_materno." ".$cita->paciente->nombres}}  </td>
     </tr>
     <tr>
       <td class="font-verdana tdcuerpo" align="left" style="border-top:none;font-size:x-small;" width="30%">Doc Identidad (&nbsp;) CE (&nbsp;) Pasaporte (&nbsp;)</td>
-      <td class="font-verdana tdcuerpo" align="left" style="border-top:none;" width="70%"></td>
+      <td class="font-verdana tdcuerpo" align="left" style="border-top:none;" width="70%">  {{$cita->paciente->num_dni}}  </td>
     </tr>
     <tr>
       <td class="font-verdana tdcuerpo" align="left" style="border-top:none;" width="30%">Puesto Laboral</td>

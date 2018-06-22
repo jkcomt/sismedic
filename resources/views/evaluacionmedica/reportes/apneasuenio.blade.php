@@ -18,11 +18,9 @@
         text-align: center;
         font-weight: bold;
     }
-    /* *{
-      margin-top: 0;
-      margin-bottom: 0;
-      padding: 0;
-    } */
+     *{
+    font-family: Verdana, Geneva, sans-serif;
+    }
      table{
 
       width: 690px;
@@ -440,11 +438,63 @@
     </table>
     <table>
       <tr>
-        <td width="100%" class="tdheader" style="border:1px solid rgba(0,0,0,0.4)">Evaluación de vía aérea superior MALLAMPATI (marque con una X)</td>
+        <td width="100%" class="tdheader" style="border:1px solid rgba(0,0,0,0.4)">Evaluación de vía aérea superior MALLAMPATI </td>
+      </tr>
+    </table>
+    <table>
+
+
+
+      <tr>
+        <td align="center" rowspan="2" style="border-left:0.45 solid rgba(0,0,0,0.1);border-right:0.45 solid rgba(0,0,0,0.1)">
+          @isset($cita->ApneaSuenio->grado)
+            @if($cita->ApneaSuenio->grado=='1')<img src="{{asset('img/apnea_1.png')}}" alt=""  style="padding-top:15px; cursor:pointer;">
+            @elseif($cita->ApneaSuenio->grado=='2')<img src="{{asset('img/apnea_1.png')}}" alt=""  style="padding-top:25px;cursor:pointer;">
+            @elseif($cita->ApneaSuenio->grado=='3')  <img src="{{asset('img/apnea_1.png')}}" alt=""  style="padding:10px;cursor:pointer;">
+            @elseif($cita->ApneaSuenio->grado=='4')                    <img src="{{asset('img/apnea_1.png')}}" alt=""  style="padding:10px;cursor:pointer;">
+            @endif
+            @endisset
+        </td>
+        <td align="center" style="font-weight:bold;border-left:0.45 solid rgba(0,0,0,0.1);border-bottom:0.45 solid rgba(0,0,0,0.1);">
+            Clase
+        </td>
+        <td align="center" style="font-weight:bold;border-left:0.45 solid rgba(0,0,0,0.1);border-right:0.45 solid rgba(0,0,0,0.1);border-bottom:0.45 solid rgba(0,0,0,0.1);">
+            Visualización directa, paciente sentado
+        </td>
+        <td align="center" style="font-weight:bold;border-right:0.45 solid rgba(0,0,0,0.1);border-bottom:0.45 solid rgba(0,0,0,0.1);">
+            Imagen Laringoscópica
+        </td>
       </tr>
       <tr>
-        <td><img src="{{asset('img/apnea.jpg')}}" alt="" style="margin-left:140px;margin-top:20px;margin-bottom:10px;" height="200px" width="400px"> </td>
+        <td align="center" style="border-left:0.45 solid rgba(0,0,0,0.1);">
+          @isset($cita->ApneaSuenio->grado)
+            @if($cita->ApneaSuenio->grado=='1') Grado I
+            @elseif($cita->ApneaSuenio->grado=='2')Grado II
+            @elseif($cita->ApneaSuenio->grado=='3')Grado III
+            @elseif($cita->ApneaSuenio->grado=='4')Grado IV
+            @endif
+            @endisset
+        </td>
+        <td align="center" style="border-left:0.45 solid rgba(0,0,0,0.1);border-right:0.45 solid rgba(0,0,0,0.1)">
+          @isset($cita->ApneaSuenio->grado)
+            @if($cita->ApneaSuenio->grado=='1')  Paladar blando, Fauces, uvula, pilares
+            @elseif($cita->ApneaSuenio->grado=='2') Paladar blando, Fauces, uvula,
+            @elseif($cita->ApneaSuenio->grado=='3')Paladar blando y base de uvula
+            @elseif($cita->ApneaSuenio->grado=='4') Solo paladar duro No se observa
+            @endif
+            @endisset
+        </td>
+        <td align="center" style="border-right:0.45 solid rgba(0,0,0,0.1)">
+          @isset($cita->ApneaSuenio->grado)
+            @if($cita->ApneaSuenio->grado=='1')  Toda Laringospica
+            @elseif($cita->ApneaSuenio->grado=='2') Comisura Posterior
+            @elseif($cita->ApneaSuenio->grado=='3') Punta de Epiglotis
+            @elseif($cita->ApneaSuenio->grado=='4') estructura glótica
+            @endif
+            @endisset
+        </td>
       </tr>
+
     </table>
     <table>
       <tr>

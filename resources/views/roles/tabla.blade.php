@@ -14,7 +14,7 @@
                 {{--<td>{{$usuario->personal->apellidos.", ".$usuario->personal->nombres}}</td>--}}
                 <td>
                     @if($rol->name != "Admin")
-                        <a href="" class="btn btn-xs btn-info cita"  id="{{$rol->id}}"><span class="glyphicon glyphicon-lock"></span> PERMISOS</a>
+                        <a href="{{route('roles.permisos',[$rol->id])}}" class="btn btn-xs btn-info cita"  id="{{$rol->id}}"><span class="glyphicon glyphicon-lock"></span> PERMISOS</a>
                         <button class="btn btn-xs btn-warning edit"  value="{{$rol->id}}"><span class="glyphicon glyphicon-pencil"></span> EDITAR</button>
                         {{csrf_field()}}
                         {{--<a href="{{route('lote.reporte',$tipoinstruccion->id)}}" target="_blank" class="btn btn-xs btn-info "><span class="glyphicon glyphicon-print"></span> IMP.</a>--}}

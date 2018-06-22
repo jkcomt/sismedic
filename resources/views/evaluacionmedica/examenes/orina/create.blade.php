@@ -23,10 +23,16 @@
                        <label for="inputEmail3" class="col-sm-4 control-label">Color:</label>
                        <div class="col-sm-6">
                          <select class="form-control" name="color">
-
-                           <option value="AMARILLO" selected>AMARILLO</option>
+                           @isset($cita->orinas->color)
+                             <option value="AMARILLO"  @if($cita->orinas->color == "AMARILLO") selected @else  @endif >AMARILLO</option>
+                             <option value="AMARILLO PAJISO"  @if($cita->orinas->color == "AMARILLO PAJISO") selected @else  @endif >AMARILLO PAJISO</option>
+                             <option value="AMARILLO ROJISO"  @if($cita->orinas->color == "AMARILLO ROJISO") selected @else  @endif >AMARILLO ROJISO</option>
+                         @else
+                            <option value="AMARILLO" selected>AMARILLO</option>
                             <option value="AMARILLO PAJISO" selected>AMARILLO PAJISO</option>
-                             <option value="AMARILLO ROJISO" selected>AMARILLO ROJISO</option>
+                            <option value="AMARILLO ROJISO" selected>AMARILLO ROJISO</option>
+                         @endisset
+
                          </select>
                        </div>
                      </div>
@@ -34,9 +40,16 @@
                       <label for="inputEmail3" class="col-sm-4 control-label">Aspecto:</label>
                       <div class="col-sm-6">
                         <select class="form-control" name="aspecto">
+                          @isset($cita->orinas->color)
+                            <option value="TURBIO"  @if($cita->orinas->color == "TURBIO") selected @else  @endif >TURBIO</option>
+                            <option value="LIGERAMENTE AMARILLO"  @if($cita->orinas->color == "LIGERAMENTE AMARILLO") selected @else  @endif >LIGERAMENTE AMARILLO</option>
+                            <option value="TRANSPARENTE"  @if($cita->orinas->color == "TRANSPARENTE") selected @else  @endif >TRANSPARENTE </option>
+                        @else
                           <option value="TURBIO" selected>TURBIO</option>
                           <option value="LIGERAMENTE AMARILLO" selected>LIGERAMENTE AMARILLO</option>
                           <option value="TRANSPARENTE" selected>TRANSPARENTE</option>
+                        @endisset
+
                         </select>
                       </div>
                     </div>

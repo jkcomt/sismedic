@@ -48,4 +48,46 @@ class RolesController extends Controller
             return response()->json(['mensaje'=>'registro exitoso']);
         }
     }
+
+    public function permisos($id){
+
+        $rol = Role::find($id);
+        $permisos = Permission::all();
+        return view('roles.permisos',compact("rol","permisos"));
+    }
+
+    public function permisosUpdate(){
+        if(request()->ajax()){
+            //dd(request()->items);
+            //$user = User::find(request()->user_id);
+            $role = Role::find(request()->role_id);
+
+            $role->update([
+                'special'=>null,
+                'name'=> request()->name,
+                'description'=>request()->description
+            ]);
+
+            $role->save();
+
+            $role->syncPermissions(request()->items);
+
+            $role->save();
+            return response()->json(
+                ['mensaje'=>$role]
+            );
+        }
+    }
+
+    public function destroy(Request $request)
+    {
+
+        $rol =  Role::find($request['id']);
+
+        $rol->delete();
+
+        return response()->json(
+            ['mensaje'=>'eliminacion exitosa']
+        );
+    }
 }

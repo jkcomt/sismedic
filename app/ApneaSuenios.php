@@ -51,6 +51,7 @@ class ApneaSuenios extends Model
  'psistolica',
  'pdiastolica',
  'hta_nueva',
+ 'grado',
  'criterio_a',
  'criterio_b',
  'criterio_c',

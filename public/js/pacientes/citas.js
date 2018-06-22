@@ -422,8 +422,19 @@ $('body').on('click','#add_examen_perfil',function(e){
             listaexamen : $valor_perfil_lista
         },
         success: function(data){
-          //  $('#modal-exito').modal('show')
-          location.reload();
+          //console.log(data.listaExamen)
+          // $('.item').append(
+          //   '<div class="col-md-8 borde-inferior ">'+data.listaExamen.descripcion+' </div>'+
+          //   '<div class="col-md-1 text-center borde-inferior">'+data.listaExamen.tipo+'</div>'+
+          //   '<div class="col-md-1 text-center borde-inferior">'+data.listaExamen.valor+'</div>'+
+          //   '<div class="col-md-1 text-center borde-inferior">'+data.listaExamen.dscto+'</div>'+
+          //   '<div class="col-md-1 text-center borde-inferior">'+
+          //   '<input type="checkbox" value="'+data.perfilExamen.id+'" style="margin-top:0px;" name="check">'+
+          //   '</div>'
+          // )
+          $('#modal-exito .modal-footer').html('<button class="btn btn-sm btn-warning" onClick="location.reload()">Volver</button>')
+          $('#modal-exito').modal('show')
+          //location.reload();
         },
         error: function(data){
           console.log(data);
@@ -465,7 +476,7 @@ $('#perfil_Editar').on('change',function(e){
                 $('input[type=checkbox]').each(function () {
                     if (this.checked) {
                         $items.push($(this).val());
-                        console.log($items);
+                        //console.log($items);
                     }
                 });
             }

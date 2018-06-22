@@ -49,7 +49,7 @@
                                                                     <div class="input-group ">
                                                                       <span class="input-group-addon span-width" style="border:none;">Fumador</span>
                                                                       <select  class="form-control" name="fumador">
-                                                                        <option  ></option>
+                                                                        <option></option>
                                                                       </select>
                                                                     </div>
                                                                   </div>
@@ -61,12 +61,21 @@
                                                                     <div class="input-group ">
                                                                       <span class="input-group-addon span-width" style="border:none;">Calidad</span>
                                                                       <select  class="form-control" name="calidad">
+                                                                        @isset($cita->espirometria->calidad)
+                                                                          <option value="1"  @if($cita->espirometria->calidad == "1") selected @else  @endif >BUENA</option>
+                                                                          <option value="2"  @if($cita->espirometria->calidad == "2") selected @else  @endif >ACEPTABLE</option>
+                                                                            <option value="3"  @if($cita->espirometria->calidad == "3") selected @else  @endif >BAJA CALIDAD</option>
+                                                                            <option value="4"  @if($cita->espirometria->calidad == "4") selected @else  @endif >INACEPTABLE</option>
+                                                                      @else
                                                                         <option value="1" >BUENA</option>
                                                                         <option  value="2" >ACEPTABLE</option>
                                                                         <option  value="3" >BAJA CALIDAD</option>
                                                                         <option  value="4" >INACEPTABLE</option>
+
+                                                                      @endisset
                                                                       </select>
                                                                     </div>
+
                                                                   </div>
                                                                 </div>
                                                               </div>

@@ -34,7 +34,7 @@ class UsuarioController extends Controller
 
             $usuarios= User::where('estado',true)->paginate(10);
 
-            $roles = Role::all()->get('name','id')->toArray();
+            $roles = Role::all()->pluck('name','id')->toArray();
        return view('usuario.index',compact("usuarios","personales","cargos","perfiles","roles"));
     }
 
@@ -45,7 +45,7 @@ class UsuarioController extends Controller
      */
     public function create()
     {
-        
+
     }
 
     /**
@@ -65,7 +65,7 @@ class UsuarioController extends Controller
                 'personal'=>'required',
                 'cargo'=>'required',
                 'perfil'=>'required',
-                'rol'=>'required'
+                'rol_id'=>'required'
             ],[
                 'name.unique'=>'El nick ya ha sido registrado',
                 'password.unique'=>'Ingrese otra contraseña',
@@ -73,6 +73,7 @@ class UsuarioController extends Controller
                 //'cargo.unique'=>'Ingrese Otro cargo',
             ]);
 
+              //dd($data['rol_id']);
             $user = User::create([
                 'name'=>$data['name'],
                 'password'=>$data['password'],
@@ -90,7 +91,8 @@ class UsuarioController extends Controller
 //                'special'=>'no-access'
 //            ]);
 
-            $rol = Role::find($data['role_id'])->get();
+            $rol = Role::find(2);
+
 
             $roles = array($rol->id);
 
@@ -123,7 +125,7 @@ class UsuarioController extends Controller
      */
     public function edit($id)
     {
-         $usuario = User::find($id);    
+         $usuario = User::find($id);
          $cargo = Cargo::where('estado',true)->pluck('descripcion','id')->toArray();
          return response()->json(
            array('usuario'=>$usuario,'cargo'=>$cargo)
@@ -183,7 +185,7 @@ class UsuarioController extends Controller
      */
     public function destroy(Request $request)
     {
-        
+
         $area =  User::find($request['id']);
 
         $area->update(

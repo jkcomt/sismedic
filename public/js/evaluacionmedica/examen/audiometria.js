@@ -42,8 +42,8 @@ $('body').on('submit','#formaudiometria',function(e){
     $graficoDerecho = grafico_derecho.toBase64Image();
     $graficoIzquierdo = grafico_izquierdo.toBase64Image();
 
-    //console.log("der :"+$graficoDerecho);
-    //console.log("izq :"+$graficoIzquierdo);
+    console.log("der :"+$graficoDerecho);
+    console.log("izq :"+$graficoIzquierdo);
 
     var datos = $(this);
     $.post(urls_,datos.serialize() + "&" + $.param({'grafico_derecho':$graficoDerecho}) + "&" + $.param({'grafico_izquierdo':$graficoIzquierdo}),function (result) {

@@ -130,7 +130,7 @@
   <tr>
     <td width="20%" class="tdresultados">&nbsp;&nbsp; Hemoglobina</td>
     <td width="10%" class="tdresultadosunidad">&nbsp;&nbsp; g/dl</td>
-    <td width="10%" class="tdresultadobd"></td>
+    <td width="10%" class="tdresultadobd">@isset($cita->hemograma->hemoglobina) {{$cita->hemograma->hemoglobina}} @endisset</td>
     <td width="60%" class="tdvalorreferencial">&nbsp;&nbsp; 14 a 18 Varones y 12 a 16 en Mujeres</td>
   </tr>
   <tr>
@@ -142,13 +142,13 @@
   <tr>
     <td width="20%" class="tdresultados">&nbsp;&nbsp; Leucocitos</td>
     <td width="10%" class="tdresultadosunidad"> &nbsp;&nbsp; xmm3</td>
-    <td width="10%" class="tdresultadobd"></td>
+    <td width="10%" class="tdresultadobd">@isset($cita->hemograma->leucocitos) {{$cita->hemograma->leucocitos}} @endisset</td>
     <td width="60%" class="tdvalorreferencial">&nbsp;&nbsp; </td>
   </tr>
   <tr>
     <td width="20%" class="tdresultados">&nbsp;&nbsp; V.S.G.</td>
     <td width="10%" class="tdresultadosunidad">&nbsp;&nbsp; mm/hora</td>
-    <td width="10%" class="tdresultadobd"></td>
+    <td width="10%" class="tdresultadobd">@isset($cita->hemograma->vsg) {{$cita->hemograma->vsg}} @endisset</td>
     <td width="60%" class="tdvalorreferencial">&nbsp;&nbsp; Menor que 10 para varones y menor que 20 para mujeres </td>
   </tr>
 </table>
@@ -175,7 +175,7 @@
   <tr>
     <td width="20%" class="tdresultados"> &nbsp;&nbsp; GGTP</td>
     <td width="10%" class="tdresultadosunidad"> &nbsp;&nbsp; U/l</td>
-    <td width="10%" class="tdresultadobd"></td>
+    <td width="10%" class="tdresultadobd"> @isset($cita->gamma->ggt) {{$cita->gamma->ggt}} @endisset</td>
     <td width="60%" class="tdvalorreferencial">&nbsp;&nbsp; 11 a 50 en varones, 7 a 32 en mujeres</td>
   </tr>
 </table>
@@ -216,7 +216,7 @@
   </tr>
   <tr>
     <td width="30%" class="tdresultados"> &nbsp;&nbsp; PSA</td>
-    <td width="10%" class="tdresultadobd"> </td>
+    <td width="10%" class="tdresultadobd">  @isset($cita->psa->psa_descripcion) {{$cita->psa->psa_descripcion}} @endisset</td>
     <td width="60%" class="tdvalorreferencial">&nbsp;&nbsp;Negativo</td>
   </tr>
 </table>
@@ -253,12 +253,12 @@
 <table style="margin-top:5px;">
   <tr>
     <td width="30%" class="tdresultados">&nbsp;&nbsp; ICC</td>
-    <td width="10%" class="tdresultadobd"></td>
+    <td width="10%" class="tdresultadobd"> @isset($cita->funcionVital->perimetro_cadera)  @isset($cita->funcionVital->perimetro_abdominal) {{$funcionVital->perimetro_abdominal /($funcionVital->perimetro_cadera*1)}} @endisset @endisset </td>
     <td width="60%" class="tdvalorreferencial">&nbsp;&nbsp; 0.85 a 1 para varones, 0.75 a 0.9 para mujeres</td>
   </tr>
   <tr>
     <td width="30%" class="tdresultados"> &nbsp;&nbsp; IMC</td>
-    <td width="10%" class="tdresultadobd"></td>
+    <td width="10%" class="tdresultadobd">@isset($cita->funcionVital->talla)  @isset($cita->funcionVital->peso) {{round( $funcionVital->peso/($funcionVital->talla * $funcionVital->talla), 0, PHP_ROUND_HALF_UP)}} @endisset @endisset</td>
     <td width="60%" class="tdvalorreferencial">&nbsp;&nbsp;Normal: (18.5 – 24.9), Sobrepeso: (25 – 29.9)</td>
   </tr>
   <tr>
